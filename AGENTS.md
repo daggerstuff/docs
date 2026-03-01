@@ -38,8 +38,8 @@ available components.
 ## Content structure
 
 - Add frontmatter (title, description) to every page
-- Use `sidebarTitle` in frontmatter if the nav title should differ from the
-  page title
+- Use `sidebarTitle` in frontmatter if the nav title should differ from the page
+  title
 - Include introductory context before diving into steps or details
 - Add "Next steps" or related links where helpful
 

@@ -1,12 +1,19 @@
 ---
-title: "Development Environment Setup"
-description: "Get your local development environment running for Pixelated Empathy — from prerequisites to running all services."
+title: 'Development Environment Setup'
+description:
+  'Get your local development environment running for Pixelated Empathy — from
+  prerequisites to running all services.'
 ---
 
-This guide walks you through setting up a complete local development environment for Pixelated Empathy. By the end, you'll have the frontend, backend services, AI engine, and supporting infrastructure running on your machine.
+This guide walks you through setting up a complete local development environment
+for Pixelated Empathy. By the end, you'll have the frontend, backend services,
+AI engine, and supporting infrastructure running on your machine.
 
 <Note>
-  Pixelated Empathy handles sensitive mental health data. Even in local development, follow security practices — never commit `.env` files, never use real patient data in test fixtures, and always run `pnpm security:check` before pushing code.
+  Pixelated Empathy handles sensitive mental health data. Even in local
+  development, follow security practices — never commit `.env` files, never use
+  real patient data in test fixtures, and always run `pnpm security:check`
+  before pushing code.
 </Note>
 
 ## Prerequisites
@@ -21,6 +28,7 @@ Ensure the following tools are installed before proceeding:
     node --version
     # v24.x.x or higher
     ```
+
   </Card>
   <Card title="Python 3.11+" icon="python">
     Required for AI services, bias detection, and the research pipeline. We use **uv** as the package manager.
@@ -29,6 +37,7 @@ Ensure the following tools are installed before proceeding:
     python3 --version
     # Python 3.11.x or higher
     ```
+
   </Card>
   <Card title="Docker 20.10+" icon="docker">
     Required for running MongoDB, Redis, and other infrastructure services via Docker Compose.
@@ -37,6 +46,7 @@ Ensure the following tools are installed before proceeding:
     docker --version
     # Docker version 20.10.x or higher
     ```
+
   </Card>
   <Card title="Git 2.30+" icon="git-alt">
     Required for version control. The project uses Git submodules for the AI engine.
@@ -45,6 +55,7 @@ Ensure the following tools are installed before proceeding:
     git --version
     # git version 2.30.x or higher
     ```
+
   </Card>
 </CardGroup>
 
@@ -65,6 +76,7 @@ Ensure the following tools are installed before proceeding:
     <Warning>
       **Never use npm or yarn** for installing dependencies. The project uses pnpm's workspace features and lockfile format. Using a different package manager will cause dependency resolution failures.
     </Warning>
+
   </Accordion>
 
   <Accordion title="uv (Python package manager)" icon="box">
@@ -80,6 +92,7 @@ Ensure the following tools are installed before proceeding:
     <Warning>
       **Never use pip, conda, or venv** for Python dependencies. The project uses uv's lockfile (`uv.lock`) for deterministic builds.
     </Warning>
+
   </Accordion>
 
   <Accordion title="Docker Compose" icon="layer-group">
@@ -89,6 +102,7 @@ Ensure the following tools are installed before proceeding:
     docker compose version
     # Docker Compose version v2.x.x
     ```
+
   </Accordion>
 
   <Accordion title="Recommended: VS Code Extensions" icon="puzzle-piece">
@@ -101,6 +115,7 @@ Ensure the following tools are installed before proceeding:
     - **CSS Modules** — IntelliSense for CSS Module imports
     - **Python** — Python language support
     - **Docker** — Dockerfile and Compose file support
+
   </Accordion>
 </AccordionGroup>
 
@@ -120,6 +135,7 @@ Ensure the following tools are installed before proceeding:
     ```bash
     git submodule update --init --recursive
     ```
+
   </Step>
 
   <Step title="Install Node.js Dependencies">
@@ -130,6 +146,7 @@ Ensure the following tools are installed before proceeding:
     ```
 
     This installs dependencies for the main application, including Astro, React 19, TypeScript, and all backend services.
+
   </Step>
 
   <Step title="Install Python Dependencies">
@@ -140,6 +157,7 @@ Ensure the following tools are installed before proceeding:
     ```
 
     This reads `pyproject.toml` and `uv.lock` to create a deterministic Python environment.
+
   </Step>
 
   <Step title="Configure Environment Variables">
@@ -150,6 +168,7 @@ Ensure the following tools are installed before proceeding:
     ```
 
     Edit `.env.local` with your local configuration. See the [Environment Variables](#environment-variables) section below for details.
+
   </Step>
 
   <Step title="Start Infrastructure Services">
@@ -166,6 +185,7 @@ Ensure the following tools are installed before proceeding:
     ```
 
     You should see MongoDB (port 27017) and Redis (port 6379) in a "running" state.
+
   </Step>
 
   <Step title="Initialize the Database">
@@ -177,6 +197,7 @@ Ensure the following tools are installed before proceeding:
     ```
 
     This creates the required collections, indexes, and populates sample training scenarios.
+
   </Step>
 </Steps>
 
@@ -190,7 +211,8 @@ Start the Astro development server with hot module reloading:
 pnpm dev
 ```
 
-The application will be available at **http://localhost:5173** with automatic hot reloading as you edit files.
+The application will be available at **http://localhost:5173** with automatic
+hot reloading as you edit files.
 
 ### All Services
 
@@ -202,17 +224,17 @@ pnpm dev:all-services
 
 This runs the following services concurrently:
 
-| Service | Port | Command |
-|:---|:---|:---|
-| Frontend (Astro) | 5173 | `pnpm dev` |
-| Bias Detection | 8001 | `pnpm dev:bias-detection` |
-| AI Service | 8002 | `pnpm dev:ai-service` |
-| Analytics | — | `pnpm dev:analytics` |
-| Background Worker | — | `pnpm dev:worker` |
-| Training Server | — | `pnpm dev:training-server` |
-| WebSocket Server | — | `pnpm dev:websocket` |
-| Academic Sourcing API | 8000 | `pnpm dev:academic-sourcing` |
-| Bias Detection (Python) | — | `pnpm bias:py` |
+| Service                 | Port | Command                      |
+| :---------------------- | :--- | :--------------------------- |
+| Frontend (Astro)        | 5173 | `pnpm dev`                   |
+| Bias Detection          | 8001 | `pnpm dev:bias-detection`    |
+| AI Service              | 8002 | `pnpm dev:ai-service`        |
+| Analytics               | —    | `pnpm dev:analytics`         |
+| Background Worker       | —    | `pnpm dev:worker`            |
+| Training Server         | —    | `pnpm dev:training-server`   |
+| WebSocket Server        | —    | `pnpm dev:websocket`         |
+| Academic Sourcing API   | 8000 | `pnpm dev:academic-sourcing` |
+| Bias Detection (Python) | —    | `pnpm bias:py`               |
 
 ### Individual Services
 
@@ -228,7 +250,8 @@ pnpm dev:training-server   # Training platform backend
 
 ## Environment Variables
 
-Environment variables are configured in `.env.local` for local development. Never commit this file.
+Environment variables are configured in `.env.local` for local development.
+Never commit this file.
 
 <Tabs>
   <Tab title="Core">
@@ -241,6 +264,7 @@ Environment variables are configured in `.env.local` for local development. Neve
     FEATURE_AI_INSIGHTS=true
     FEATURE_CRISIS_DETECTION=true
     ```
+
   </Tab>
 
   <Tab title="Database">
@@ -254,6 +278,7 @@ Environment variables are configured in `.env.local` for local development. Neve
     # Redis (local Docker instance)
     REDIS_URL=redis://localhost:6379/0
     ```
+
   </Tab>
 
   <Tab title="Authentication">
@@ -269,6 +294,7 @@ Environment variables are configured in `.env.local` for local development. Neve
     # JWT
     JWT_SECRET=your-local-jwt-secret
     ```
+
   </Tab>
 
   <Tab title="AI Services">
@@ -283,6 +309,7 @@ Environment variables are configured in `.env.local` for local development. Neve
     MEM0_API_KEY=your-mem0-api-key
     MEM0_ENABLED=true
     ```
+
   </Tab>
 
   <Tab title="Security">
@@ -294,22 +321,24 @@ Environment variables are configured in `.env.local` for local development. Neve
     <Warning>
       Never use production keys in local development. Generate fresh secrets for your `.env.local` file. The `security:check` script will flag any committed credentials.
     </Warning>
+
   </Tab>
 </Tabs>
 
 ## Path Aliases
 
-The project uses TypeScript path aliases for clean imports. These are configured in `tsconfig.json`:
+The project uses TypeScript path aliases for clean imports. These are configured
+in `tsconfig.json`:
 
-| Alias | Resolves To | Usage |
-|:---|:---|:---|
-| `@/*` | `./src/*` | General source imports |
-| `~/*` | `./src/*` | Alternative general imports |
-| `@lib/*` | `./src/lib/*` | Core libraries and utilities |
-| `@components/*` | `./src/components/*` | UI components |
-| `@layouts/*` | `./src/layouts/*` | Layout components |
-| `@utils/*` | `./src/utils/*` | Utility functions |
-| `@types/*` | `./src/types/*` | TypeScript type definitions |
+| Alias           | Resolves To          | Usage                        |
+| :-------------- | :------------------- | :--------------------------- |
+| `@/*`           | `./src/*`            | General source imports       |
+| `~/*`           | `./src/*`            | Alternative general imports  |
+| `@lib/*`        | `./src/lib/*`        | Core libraries and utilities |
+| `@components/*` | `./src/components/*` | UI components                |
+| `@layouts/*`    | `./src/layouts/*`    | Layout components            |
+| `@utils/*`      | `./src/utils/*`      | Utility functions            |
+| `@types/*`      | `./src/types/*`      | TypeScript type definitions  |
 
 ### Usage Examples
 
@@ -341,6 +370,7 @@ The `docker/docker-compose.dev.yml` file defines the local infrastructure stack:
     # Or use the shell
     docker exec -it pixelated-mongodb mongosh
     ```
+
   </Accordion>
 
   <Accordion title="Redis" icon="bolt">
@@ -355,6 +385,7 @@ The `docker/docker-compose.dev.yml` file defines the local infrastructure stack:
     # Health check
     pnpm redis:check
     ```
+
   </Accordion>
 
   <Accordion title="Production-Like Stack" icon="server">
@@ -369,6 +400,7 @@ The `docker/docker-compose.dev.yml` file defines the local infrastructure stack:
     ```
 
     This includes the application, all backend services, and infrastructure — useful for integration testing and pre-deployment verification.
+
   </Accordion>
 </AccordionGroup>
 
@@ -383,6 +415,7 @@ Run these checks to confirm everything is working:
     ```
 
     Should complete with zero errors.
+
   </Step>
 
   <Step title="Linting">
@@ -391,6 +424,7 @@ Run these checks to confirm everything is working:
     ```
 
     Should report no errors (warnings are acceptable during initial setup).
+
   </Step>
 
   <Step title="Unit Tests">
@@ -399,6 +433,7 @@ Run these checks to confirm everything is working:
     ```
 
     All tests should pass. If you see failures related to missing environment variables, ensure your `.env.local` is configured correctly.
+
   </Step>
 
   <Step title="Security Check">
@@ -407,6 +442,7 @@ Run these checks to confirm everything is working:
     ```
 
     Should report no committed credentials or secrets.
+
   </Step>
 
   <Step title="Full Quality Gate">
@@ -415,6 +451,7 @@ Run these checks to confirm everything is working:
     ```
 
     Runs linting, type checking, and format verification. This is the same check that runs in CI.
+
   </Step>
 </Steps>
 
@@ -434,6 +471,7 @@ Run these checks to confirm everything is working:
     docker ps
     docker compose -f docker/docker-compose.dev.yml down
     ```
+
   </Accordion>
 
   <Accordion title="Node.js memory issues" icon="memory">
@@ -443,6 +481,7 @@ Run these checks to confirm everything is working:
     export NODE_OPTIONS='--max-old-space-size=16384'
     pnpm dev
     ```
+
   </Accordion>
 
   <Accordion title="Python environment issues" icon="python">
@@ -454,6 +493,7 @@ Run these checks to confirm everything is working:
     ```
 
     Ensure you're using Python 3.11+ (check `.python-version` in the project root).
+
   </Accordion>
 
   <Accordion title="Docker services won't start" icon="docker">
@@ -471,6 +511,7 @@ Run these checks to confirm everything is working:
     docker volume prune
     docker compose -f docker/docker-compose.dev.yml up -d
     ```
+
   </Accordion>
 
   <Accordion title="Git submodule issues" icon="code-branch">
@@ -480,22 +521,41 @@ Run these checks to confirm everything is working:
     git submodule update --init --recursive
     git submodule update --remote
     ```
+
   </Accordion>
 </AccordionGroup>
 
 ## What's Next
 
 <CardGroup cols={2}>
-  <Card title="Code Conventions" icon="code" href="/guides/developers/conventions">
-    Learn the coding standards, file naming conventions, and architectural patterns used across the codebase.
+  <Card
+    title='Code Conventions'
+    icon='code'
+    href='/guides/developers/conventions'
+  >
+    Learn the coding standards, file naming conventions, and architectural
+    patterns used across the codebase.
   </Card>
-  <Card title="Contributing" icon="code-pull-request" href="/guides/developers/contributing">
+  <Card
+    title='Contributing'
+    icon='code-pull-request'
+    href='/guides/developers/contributing'
+  >
     Understand the contribution workflow, quality gates, and PR process.
   </Card>
-  <Card title="Testing Strategy" icon="flask-vial" href="/guides/developers/testing">
+  <Card
+    title='Testing Strategy'
+    icon='flask-vial'
+    href='/guides/developers/testing'
+  >
     Explore the testing pyramid, test commands, and coverage requirements.
   </Card>
-  <Card title="API Reference" icon="terminal" href="/api-reference/introduction">
-    Browse the API endpoints for sessions, analytics, bias detection, and crisis detection.
+  <Card
+    title='API Reference'
+    icon='terminal'
+    href='/api-reference/introduction'
+  >
+    Browse the API endpoints for sessions, analytics, bias detection, and crisis
+    detection.
   </Card>
 </CardGroup>

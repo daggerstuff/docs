@@ -2,16 +2,16 @@
 
 > **IMPORTANT FOR INCOMING AGENT:**
 >
-> Read this document first to instantly acquire the mental context of where
-> the project currently stands. Do not reinvent the wheel. Read `AGENTS.md`
-> before writing a single line of code.
+> Read this document first to instantly acquire the mental context of where the
+> project currently stands. Do not reinvent the wheel. Read `AGENTS.md` before
+> writing a single line of code.
 
 ## 🧭 The Current Mission
 
 We are taking the baseline **PsyDefDetect** (Defense Mechanism Classifier via
-DeBERTa) and weaving it deeply into the Pixelated Empathy platform
-architecture. The goal is to move from a static inference model to a
-real-time component of the Empathy Gym's feedback loop.
+DeBERTa) and weaving it deeply into the Pixelated Empathy platform architecture.
+The goal is to move from a static inference model to a real-time component of
+the Empathy Gym's feedback loop.
 
 ## 📍 Where We Are Right Now (State)
 
@@ -39,7 +39,8 @@ component that consumes `gestalt_update` WebSocket events.
   - `crisis_level` as a color-coded alert (NONE → green, MODERATE → orange,
     ACUTE → red).
   - `breakthrough_score` as a positive flash/animation on breakthroughs.
-- **Where to build:** New component at `src/simulator/components/ResistanceMonitor/`.
+- **Where to build:** New component at
+  `src/simulator/components/ResistanceMonitor/`.
 - **Events to consume:** The WebSocket `gestalt_update` message from
   `TrainingWebSocketServer.ts`.
 

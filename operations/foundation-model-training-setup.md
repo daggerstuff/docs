@@ -2,7 +2,9 @@
 
 ## Overview
 
-This document describes the enhanced Docker/Kubernetes infrastructure for foundation model training in the Pixelated Empathy platform, implementing the requirements from `.kiro/specs/foundation-model-training/requirements.md`.
+This document describes the enhanced Docker/Kubernetes infrastructure for
+foundation model training in the Pixelated Empathy platform, implementing the
+requirements from `.kiro/specs/foundation-model-training/requirements.md`.
 
 ## Architecture
 
@@ -87,12 +89,14 @@ The training service supports the following environment variables:
 ### Resource Requirements
 
 #### GPU Training Node
+
 - **CPU**: 16 cores minimum
-- **Memory**: 64GB minimum  
+- **Memory**: 64GB minimum
 - **GPU**: NVIDIA H100 or A100
 - **Storage**: 1TB SSD for fast I/O
 
 #### Storage Requirements
+
 - **Training Data**: 500GB (read-only, shared)
 - **Model Output**: 200GB (read-write)
 - **Checkpoints**: 100GB (read-write)
@@ -136,6 +140,7 @@ securityContext:
 ### Grafana Dashboard
 
 Access the foundation model training dashboard:
+
 - **URL**: `http://grafana.your-domain.com/d/training`
 - **Metrics**: GPU utilization, training loss, throughput
 - **Alerts**: Training stalls, resource exhaustion
@@ -191,28 +196,31 @@ docker compose -f docker-compose.training.yml up
 ### Common Issues
 
 1. **GPU Not Detected**
+
    ```bash
    # Check GPU nodes
    kubectl get nodes -o json | jq '.items[].status.allocatable'
-   
+
    # Verify NVIDIA GPU Operator
    kubectl get pods -n gpu-operator-resources
    ```
 
 2. **Training Service Fails to Start**
+
    ```bash
    # Check pod logs
    kubectl logs -n pixelated-training deployment/training-service
-   
+
    # Verify secrets
    kubectl get secrets -n pixelated-training
    ```
 
 3. **Storage Issues**
+
    ```bash
    # Check PVC status
    kubectl get pvc -n pixelated-training
-   
+
    # Verify storage class
    kubectl get storageclass
    ```
@@ -220,6 +228,7 @@ docker compose -f docker-compose.training.yml up
 ### Performance Optimization
 
 1. **GPU Memory Optimization**
+
    ```python
    # Set CUDA memory allocation
    os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'max_split_size_mb:512'
@@ -229,10 +238,10 @@ docker compose -f docker-compose.training.yml up
    ```yaml
    # Shared memory for faster data loading
    volumes:
-   - name: shared-memory
-     emptyDir:
-       medium: Memory
-       sizeLimit: 8Gi
+     - name: shared-memory
+       emptyDir:
+         medium: Memory
+         sizeLimit: 8Gi
    ```
 
 ## Integration with Existing Services
@@ -262,6 +271,7 @@ DATABASE_URL = "postgresql://training_user:password@db:5432/pixelated_training"
 ### Backup Procedures
 
 1. **Model Checkpoints**
+
    ```bash
    # Backup model checkpoints
    kubectl exec -n pixelated-training deployment/training-service -- \
@@ -288,6 +298,7 @@ kubectl patch deployment training-service -n pixelated-training -p \
 ## Support
 
 For issues related to the foundation model training infrastructure:
+
 1. Check the troubleshooting section above
 2. Review pod logs and events
 3. Consult the monitoring dashboard

@@ -8,4 +8,5 @@ Reference documentation and architectures.
 
 ## Files
 
-- [Rules System](./rules-system.md) - AI assistant rules organization (Cursor & Warp)
+- [Rules System](./rules-system.md) - AI assistant rules organization (Cursor &
+  Warp)

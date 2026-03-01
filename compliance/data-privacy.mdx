@@ -1,33 +1,51 @@
 ---
-title: "Data Privacy & Consent"
-description: "Privacy-first architecture, PII handling, patient rights, consent framework, data retention policies, and GDPR considerations for Pixelated Empathy."
+title: 'Data Privacy & Consent'
+description:
+  'Privacy-first architecture, PII handling, patient rights, consent framework,
+  data retention policies, and GDPR considerations for Pixelated Empathy.'
 ---
 
-Privacy is not a feature of Pixelated Empathy — it is a **foundational architectural constraint**. Every system, pipeline, and data flow is designed with the assumption that therapeutic data is among the most sensitive information a person can share. We protect it accordingly.
+Privacy is not a feature of Pixelated Empathy — it is a **foundational
+architectural constraint**. Every system, pipeline, and data flow is designed
+with the assumption that therapeutic data is among the most sensitive
+information a person can share. We protect it accordingly.
 
 <Note>
   **Privacy Officer:** [privacy@pixelatedempathy.com](mailto:privacy@pixelatedempathy.com)
   **Data Protection Officer (GDPR):** [dpo@pixelatedempathy.com](mailto:dpo@pixelatedempathy.com)
 
-  Pixelated Empathy does **not** sell, rent, or trade personal information or PHI. Ever.
+Pixelated Empathy does **not** sell, rent, or trade personal information or PHI.
+Ever.
+
 </Note>
 
 ## Privacy-First Architecture
 
-Pixelated Empathy implements a **zero-knowledge-oriented** architecture where the platform minimizes its own access to identifiable information. Privacy controls are enforced at the infrastructure level, not just the application level.
+Pixelated Empathy implements a **zero-knowledge-oriented** architecture where
+the platform minimizes its own access to identifiable information. Privacy
+controls are enforced at the infrastructure level, not just the application
+level.
 
 <CardGroup cols={2}>
-  <Card title="End-to-End Encryption" icon="lock">
-    All data encrypted with AES-256-GCM at rest and TLS 1.3 in transit. PHI is encrypted at the application layer *before* reaching the database — even database administrators cannot read raw PHI.
+  <Card title='End-to-End Encryption' icon='lock'>
+    All data encrypted with AES-256-GCM at rest and TLS 1.3 in transit. PHI is
+    encrypted at the application layer *before* reaching the database — even
+    database administrators cannot read raw PHI.
   </Card>
-  <Card title="PII Filtering at Ingestion" icon="filter">
-    The GeminiMem0Manager filters all PII from data before it enters the AI memory system. Names, emails, phone numbers, SSNs, and other identifiers are scrubbed or replaced with anonymized placeholders.
+  <Card title='PII Filtering at Ingestion' icon='filter'>
+    The GeminiMem0Manager filters all PII from data before it enters the AI
+    memory system. Names, emails, phone numbers, SSNs, and other identifiers are
+    scrubbed or replaced with anonymized placeholders.
   </Card>
-  <Card title="Anonymized Identifiers" icon="fingerprint">
-    Internal systems reference users by anonymized IDs only. No human-readable names, emails, or other PII appear in logs, monitoring dashboards, error reports, or internal documentation.
+  <Card title='Anonymized Identifiers' icon='fingerprint'>
+    Internal systems reference users by anonymized IDs only. No human-readable
+    names, emails, or other PII appear in logs, monitoring dashboards, error
+    reports, or internal documentation.
   </Card>
-  <Card title="Minimum Necessary Access" icon="user-lock">
-    Every data access is scoped to the minimum information required for the specific operation. Role-based access controls enforce this at the API, database, and service layers.
+  <Card title='Minimum Necessary Access' icon='user-lock'>
+    Every data access is scoped to the minimum information required for the
+    specific operation. Role-based access controls enforce this at the API,
+    database, and service layers.
   </Card>
 </CardGroup>
 
@@ -63,7 +81,9 @@ Pixelated Empathy implements a **zero-knowledge-oriented** architecture where th
 
 ### GeminiMem0Manager PII Filtering
 
-The GeminiMem0Manager serves as the privacy gateway between user interactions and the AI memory system. It ensures that **no personally identifiable information is ever stored in AI memory**.
+The GeminiMem0Manager serves as the privacy gateway between user interactions
+and the AI memory system. It ensures that **no personally identifiable
+information is ever stored in AI memory**.
 
 <Tabs>
   <Tab title="How It Works">
@@ -86,6 +106,7 @@ The GeminiMem0Manager serves as the privacy gateway between user interactions an
         DATES = "dates"          # 01/15/1990 → [DATE]
         FINANCIAL = "financial"  # 4111-1111-1111-1111 → [FINANCIAL]
     ```
+
   </Tab>
   <Tab title="What Gets Stored">
     The AI memory system retains only **therapeutic context** — never identity:
@@ -102,6 +123,7 @@ The GeminiMem0Manager serves as the privacy gateway between user interactions an
     <Warning>
       If the PII scrubber detects information it cannot confidently classify, it defaults to **scrubbing** rather than retaining. False positives (over-scrubbing) are preferred over false negatives (PII leakage).
     </Warning>
+
   </Tab>
   <Tab title="Scanning Capabilities">
     The PII scanner uses multi-layered detection:
@@ -128,6 +150,7 @@ The GeminiMem0Manager serves as the privacy gateway between user interactions an
                     result["count"] += len(matches)
         return result
     ```
+
   </Tab>
 </Tabs>
 
@@ -136,18 +159,19 @@ The GeminiMem0Manager serves as the privacy gateway between user interactions an
 <Warning>
   **Absolute rule: No PII in logs, documentation, error reports, or monitoring systems.**
 
-  - Application logs reference anonymized user IDs only (`usr_a1b2c3d4`)
-  - Error reports are scrubbed before transmission to error tracking services
-  - Monitoring dashboards display aggregated, de-identified metrics
-  - Internal documentation uses placeholder data exclusively
-  - Code comments and examples never contain real user data
-</Warning>
+- Application logs reference anonymized user IDs only (`usr_a1b2c3d4`)
+- Error reports are scrubbed before transmission to error tracking services
+- Monitoring dashboards display aggregated, de-identified metrics
+- Internal documentation uses placeholder data exclusively
+- Code comments and examples never contain real user data
+  </Warning>
 
 ---
 
 ## Patient Rights
 
-Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and applicable state privacy laws.
+Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and
+applicable state privacy laws.
 
 ### Rights Summary
 
@@ -165,6 +189,7 @@ Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and ap
                (MFA required)    (30 days)    (completeness    (secure
                                                check)          channel)
     ```
+
   </Accordion>
 
   <Accordion title="Right to Amendment" icon="pen-to-square">
@@ -175,6 +200,7 @@ Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and ap
     - **Amendments:** Appended to original records (originals preserved for integrity)
     - **Appeals:** Formal appeal process for denied requests
     - **Notification:** If amendment affects shared data, downstream recipients are notified
+
   </Accordion>
 
   <Accordion title="Right to Disclosure Accounting" icon="list-check">
@@ -184,6 +210,7 @@ Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and ap
     - **Details:** Date, recipient, description, and purpose of each disclosure
     - **Exceptions:** Treatment, payment, and healthcare operations
     - **Deadline:** 60 days from request
+
   </Accordion>
 
   <Accordion title="Right to Request Restrictions" icon="hand">
@@ -193,6 +220,7 @@ Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and ap
     - Accepted restrictions enforced system-wide through access control policies
     - Written notification of acceptance or denial
     - Patients informed of any limitations resulting from accepted restrictions
+
   </Accordion>
 
   <Accordion title="Right to Confidential Communications" icon="envelope-open-text">
@@ -201,6 +229,7 @@ Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and ap
     - No requirement to explain the reason for the request
     - Honored when reasonable and technically feasible
     - Configured in the patient's privacy preferences dashboard
+
   </Accordion>
 
   <Accordion title="Right to Deletion" icon="trash-can">
@@ -211,6 +240,7 @@ Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and ap
     - **Exceptions:** Data required for legal compliance, active investigations, or ongoing litigation
     - **De-identified data:** Anonymized, aggregated data may be retained for research (cannot be linked back)
     - **Confirmation:** Written confirmation of deletion provided
+
   </Accordion>
 
   <Accordion title="Right to Data Portability" icon="file-export">
@@ -219,6 +249,7 @@ Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and ap
     - **Formats:** JSON, CSV, or FHIR-compatible export
     - **Scope:** All patient-provided data and system-generated data attributable to the patient
     - **Delivery:** Secure download link or encrypted email
+
   </Accordion>
 </AccordionGroup>
 
@@ -226,22 +257,28 @@ Pixelated Empathy upholds comprehensive patient rights under HIPAA, GDPR, and ap
 
 ## Consent Framework
 
-Pixelated Empathy implements a **granular, layered consent model** that gives users meaningful control over how their data is processed.
+Pixelated Empathy implements a **granular, layered consent model** that gives
+users meaningful control over how their data is processed.
 
 ### Consent Principles
 
 <CardGroup cols={2}>
-  <Card title="Informed" icon="circle-info">
-    All consent requests use plain, understandable language. Each request clearly states the purpose, scope, and consequences of granting or withholding consent.
+  <Card title='Informed' icon='circle-info'>
+    All consent requests use plain, understandable language. Each request
+    clearly states the purpose, scope, and consequences of granting or
+    withholding consent.
   </Card>
-  <Card title="Explicit" icon="check-double">
-    Active opt-in required — no pre-checked boxes or implied consent. Users must take affirmative action for each consent category.
+  <Card title='Explicit' icon='check-double'>
+    Active opt-in required — no pre-checked boxes or implied consent. Users must
+    take affirmative action for each consent category.
   </Card>
-  <Card title="Granular" icon="sliders">
-    Separate consent for separate purposes. Users can consent to core services while declining research participation or marketing communications.
+  <Card title='Granular' icon='sliders'>
+    Separate consent for separate purposes. Users can consent to core services
+    while declining research participation or marketing communications.
   </Card>
-  <Card title="Revocable" icon="rotate-left">
-    Users can withdraw any consent at any time through their privacy dashboard. Withdrawal takes effect immediately for new data processing.
+  <Card title='Revocable' icon='rotate-left'>
+    Users can withdraw any consent at any time through their privacy dashboard.
+    Withdrawal takes effect immediately for new data processing.
   </Card>
 </CardGroup>
 
@@ -256,6 +293,7 @@ Pixelated Empathy implements a **granular, layered consent model** that gives us
     | **Service Consent** | Core therapeutic AI service delivery | Contractual necessity | No (service terminates) |
     | **Privacy Policy** | Acknowledgment of data practices | Legal requirement | No (account deletion required) |
     | **HIPAA Authorization** | Use and disclosure of PHI | HIPAA Privacy Rule | Yes (30-day notice, account closure) |
+
   </Tab>
   <Tab title="Recommended Consents">
     | Consent | Purpose | Legal Basis | Withdrawable |
@@ -265,6 +303,7 @@ Pixelated Empathy implements a **granular, layered consent model** that gives us
     <Info>
       Crisis intervention consent is strongly recommended. Without it, the platform's ability to detect and respond to safety risks is significantly limited. Users are informed of these limitations at consent time.
     </Info>
+
   </Tab>
   <Tab title="Optional Consents">
     | Consent | Purpose | Legal Basis | Withdrawable |
@@ -309,7 +348,9 @@ Every consent action is captured with full audit trail:
 - **Method:** How consent was given (click, digital signature)
 
 <Tip>
-  Users can view and manage all their consents through the **Privacy Dashboard** — including current status, grant dates, linked policy versions, and one-click withdrawal for optional consents.
+  Users can view and manage all their consents through the **Privacy Dashboard**
+  — including current status, grant dates, linked policy versions, and one-click
+  withdrawal for optional consents.
 </Tip>
 
 ---
@@ -318,16 +359,16 @@ Every consent action is captured with full audit trail:
 
 ### Retention Schedule
 
-| Data Category | Retention Period | Justification |
-|---|---|---|
-| **Active Account Data** | Duration of account | Service delivery |
-| **Session History** | Account lifetime + 7 years | Clinical record keeping |
-| **Clinical Records** | 6 years minimum | HIPAA requirement |
-| **Audit Logs** | 6 years | HIPAA compliance |
-| **Crisis Records** | 7 years | Safety and legal requirements |
-| **Consent Records** | 6 years after last interaction | Compliance verification |
-| **Inactive Accounts** | 7 years after last activity | Legal retention requirements |
-| **De-identified Research Data** | Indefinite | Cannot be linked to individuals |
+| Data Category                   | Retention Period               | Justification                   |
+| ------------------------------- | ------------------------------ | ------------------------------- |
+| **Active Account Data**         | Duration of account            | Service delivery                |
+| **Session History**             | Account lifetime + 7 years     | Clinical record keeping         |
+| **Clinical Records**            | 6 years minimum                | HIPAA requirement               |
+| **Audit Logs**                  | 6 years                        | HIPAA compliance                |
+| **Crisis Records**              | 7 years                        | Safety and legal requirements   |
+| **Consent Records**             | 6 years after last interaction | Compliance verification         |
+| **Inactive Accounts**           | 7 years after last activity    | Legal retention requirements    |
+| **De-identified Research Data** | Indefinite                     | Cannot be linked to individuals |
 
 ### Data Lifecycle
 
@@ -345,6 +386,7 @@ Every consent action is captured with full audit trail:
     - Location data beyond IP-based country
     - Biometric data
     - Third-party behavioral data
+
   </Tab>
   <Tab title="Processing">
     **Processing controls:**
@@ -354,6 +396,7 @@ Every consent action is captured with full audit trail:
     - Aggregation and anonymization applied before analytics
     - Minimum necessary principle enforced at every processing step
     - All processing operations logged in audit trail
+
   </Tab>
   <Tab title="Deletion">
     **Upon account deletion request:**
@@ -369,6 +412,7 @@ Every consent action is captured with full audit trail:
     <Warning>
       Backup deletion may take up to 90 days due to backup rotation cycles. Data in backups is encrypted and inaccessible without active decryption keys, which are revoked upon deletion.
     </Warning>
+
   </Tab>
 </Tabs>
 
@@ -376,33 +420,38 @@ Every consent action is captured with full audit trail:
 
 ## GDPR Considerations
 
-For users in the European Union and European Economic Area, Pixelated Empathy provides additional protections under the General Data Protection Regulation.
+For users in the European Union and European Economic Area, Pixelated Empathy
+provides additional protections under the General Data Protection Regulation.
 
 ### Lawful Bases for Processing
 
-| Processing Activity | Lawful Basis | GDPR Article |
-|---|---|---|
-| Core service delivery | Contractual necessity | Art. 6(1)(b) |
-| Safety and crisis response | Vital interests | Art. 6(1)(d) |
-| Legal compliance (HIPAA, etc.) | Legal obligation | Art. 6(1)(c) |
-| Research and analytics | Explicit consent | Art. 6(1)(a) |
-| Marketing communications | Explicit consent | Art. 6(1)(a) |
-| Health data processing | Explicit consent for health data | Art. 9(2)(a) |
+| Processing Activity            | Lawful Basis                     | GDPR Article |
+| ------------------------------ | -------------------------------- | ------------ |
+| Core service delivery          | Contractual necessity            | Art. 6(1)(b) |
+| Safety and crisis response     | Vital interests                  | Art. 6(1)(d) |
+| Legal compliance (HIPAA, etc.) | Legal obligation                 | Art. 6(1)(c) |
+| Research and analytics         | Explicit consent                 | Art. 6(1)(a) |
+| Marketing communications       | Explicit consent                 | Art. 6(1)(a) |
+| Health data processing         | Explicit consent for health data | Art. 9(2)(a) |
 
 ### GDPR-Specific Rights
 
 <CardGroup cols={2}>
-  <Card title="Right to Be Forgotten" icon="eraser">
-    EU users can request complete erasure of all personal data. Requests processed within 30 days. Extends to all processors and sub-processors.
+  <Card title='Right to Be Forgotten' icon='eraser'>
+    EU users can request complete erasure of all personal data. Requests
+    processed within 30 days. Extends to all processors and sub-processors.
   </Card>
-  <Card title="Right to Restrict Processing" icon="pause">
-    Users can request that processing of their data be paused while disputes are resolved, without requiring full account deletion.
+  <Card title='Right to Restrict Processing' icon='pause'>
+    Users can request that processing of their data be paused while disputes are
+    resolved, without requiring full account deletion.
   </Card>
-  <Card title="Right to Object" icon="hand">
-    Users can object to specific processing activities, including profiling and automated decision-making.
+  <Card title='Right to Object' icon='hand'>
+    Users can object to specific processing activities, including profiling and
+    automated decision-making.
   </Card>
-  <Card title="Data Portability" icon="right-left">
-    Users can receive all their data in machine-readable format (JSON/CSV) and have it transmitted directly to another controller.
+  <Card title='Data Portability' icon='right-left'>
+    Users can receive all their data in machine-readable format (JSON/CSV) and
+    have it transmitted directly to another controller.
   </Card>
 </CardGroup>
 
@@ -416,7 +465,8 @@ For users in the European Union and European Economic Area, Pixelated Empathy pr
 
 ### Data Protection Impact Assessment
 
-A Data Protection Impact Assessment (DPIA) has been completed for Pixelated Empathy covering:
+A Data Protection Impact Assessment (DPIA) has been completed for Pixelated
+Empathy covering:
 
 - Processing of special category health data
 - Large-scale profiling and automated decision-making
@@ -424,7 +474,9 @@ A Data Protection Impact Assessment (DPIA) has been completed for Pixelated Empa
 - Cross-border data transfers
 
 <Info>
-  The DPIA is reviewed annually and updated whenever there are significant changes to data processing activities. A summary is available upon request from the Data Protection Officer.
+  The DPIA is reviewed annually and updated whenever there are significant
+  changes to data processing activities. A summary is available upon request
+  from the Data Protection Officer.
 </Info>
 
 ---
@@ -433,18 +485,25 @@ A Data Protection Impact Assessment (DPIA) has been completed for Pixelated Empa
 
 ### California Residents (CCPA/CPRA)
 
-California residents have additional rights under the California Consumer Privacy Act and California Privacy Rights Act:
+California residents have additional rights under the California Consumer
+Privacy Act and California Privacy Rights Act:
 
 - **Right to Know:** What personal information is collected, used, and shared
 - **Right to Delete:** Request deletion of personal information
-- **Right to Opt-Out:** Opt out of sale or sharing of personal information (note: we do **not** sell data)
-- **Right to Non-Discrimination:** No degraded service for exercising privacy rights
+- **Right to Opt-Out:** Opt out of sale or sharing of personal information
+  (note: we do **not** sell data)
+- **Right to Non-Discrimination:** No degraded service for exercising privacy
+  rights
 - **Right to Correct:** Request correction of inaccurate personal information
-- **Right to Limit Use:** Limit use and disclosure of sensitive personal information
+- **Right to Limit Use:** Limit use and disclosure of sensitive personal
+  information
 
 ### Children's Privacy
 
-Pixelated Empathy is **not intended for users under 18 years of age**. We do not knowingly collect information from minors. Age verification is performed during registration. If we discover data has been collected from a minor, it is deleted immediately.
+Pixelated Empathy is **not intended for users under 18 years of age**. We do not
+knowingly collect information from minors. Age verification is performed during
+registration. If we discover data has been collected from a minor, it is deleted
+immediately.
 
 ---
 
@@ -453,22 +512,25 @@ Pixelated Empathy is **not intended for users under 18 years of age**. We do not
 ### Response Process
 
 <CardGroup cols={2}>
-  <Card title="Detection & Triage" icon="magnifying-glass">
-    **0–4 hours:** Privacy incident identified, classified by severity, and assigned to the incident response team. Affected data flows isolated.
+  <Card title='Detection & Triage' icon='magnifying-glass'>
+    **0–4 hours:** Privacy incident identified, classified by severity, and
+    assigned to the incident response team. Affected data flows isolated.
   </Card>
-  <Card title="Assessment & Notification" icon="file-medical">
-    **4–72 hours:** Full impact assessment. Affected individuals notified within 72 hours (GDPR) or 60 days (HIPAA). Supervisory authorities notified as required.
+  <Card title='Assessment & Notification' icon='file-medical'>
+    **4–72 hours:** Full impact assessment. Affected individuals notified within
+    72 hours (GDPR) or 60 days (HIPAA). Supervisory authorities notified as
+    required.
   </Card>
 </CardGroup>
 
 ### Breach Notification
 
-| Regulation | Deadline | Recipient |
-|---|---|---|
-| **GDPR** | 72 hours | Supervisory authority + affected individuals (if high risk) |
-| **HIPAA** | 60 days | HHS + affected individuals + media (if 500+) |
-| **CCPA** | Expeditious | California AG + affected individuals |
-| **State Laws** | Varies | State AG + affected individuals (per state requirements) |
+| Regulation     | Deadline    | Recipient                                                   |
+| -------------- | ----------- | ----------------------------------------------------------- |
+| **GDPR**       | 72 hours    | Supervisory authority + affected individuals (if high risk) |
+| **HIPAA**      | 60 days     | HHS + affected individuals + media (if 500+)                |
+| **CCPA**       | Expeditious | California AG + affected individuals                        |
+| **State Laws** | Varies      | State AG + affected individuals (per state requirements)    |
 
 ---
 
@@ -485,9 +547,12 @@ Pixelated Empathy is **not intended for users under 18 years of age**. We do not
     Submit through your Privacy Dashboard or email [privacy@pixelatedempathy.com](mailto:privacy@pixelatedempathy.com).
 
     **Complaints:** You have the right to lodge a complaint with your local data protection authority.
+
   </Card>
 </CardGroup>
 
 <Info>
-  This privacy documentation is reviewed and updated quarterly. Last updated: **January 2025**. Material changes are communicated to all users via email and in-app notification, with re-consent obtained where required.
+  This privacy documentation is reviewed and updated quarterly. Last updated:
+  **January 2025**. Material changes are communicated to all users via email and
+  in-app notification, with re-consent obtained where required.
 </Info>

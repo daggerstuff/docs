@@ -1,9 +1,14 @@
 ---
 title: 'Analytics API'
-description: 'Access dashboard data, performance metrics, competency scores, bias reduction trends, and export capabilities for research and compliance'
+description:
+  'Access dashboard data, performance metrics, competency scores, bias reduction
+  trends, and export capabilities for research and compliance'
 ---
 
-The Analytics API provides programmatic access to all performance and training data generated on Pixelated Empathy. Use these endpoints to build custom dashboards, power reporting workflows, track competency development over time, and export data for research and compliance purposes.
+The Analytics API provides programmatic access to all performance and training
+data generated on Pixelated Empathy. Use these endpoints to build custom
+dashboards, power reporting workflows, track competency development over time,
+and export data for research and compliance purposes.
 
 ## Dashboard data
 
@@ -22,11 +27,11 @@ curl "https://api.pixelatedempathy.com/v1/analytics/dashboard?period=30d" \
 
 ### Query parameters
 
-| Parameter | Type | Default | Description |
-|---|---|---|---|
-| `period` | string | `30d` | Time period: `7d`, `30d`, `90d`, `6m`, `1y`, `all` |
-| `user_id` | string | — | Target user (supervisors and admins only) |
-| `group_id` | string | — | Target training group |
+| Parameter  | Type   | Default | Description                                        |
+| ---------- | ------ | ------- | -------------------------------------------------- |
+| `period`   | string | `30d`   | Time period: `7d`, `30d`, `90d`, `6m`, `1y`, `all` |
+| `user_id`  | string | —       | Target user (supervisors and admins only)          |
+| `group_id` | string | —       | Target training group                              |
 
 ### Response
 
@@ -45,7 +50,7 @@ curl "https://api.pixelatedempathy.com/v1/analytics/dashboard?period=30d" \
       "average_session_duration_minutes": 25.5,
       "sessions_this_week": 7,
       "sessions_last_week": 5,
-      "week_over_week_change": 0.40
+      "week_over_week_change": 0.4
     },
     "competency_scores": {
       "overall": 76,
@@ -83,7 +88,8 @@ curl "https://api.pixelatedempathy.com/v1/analytics/dashboard?period=30d" \
 
 ## Performance metrics over time
 
-Retrieve detailed performance metrics across a specified time range, broken down by interval.
+Retrieve detailed performance metrics across a specified time range, broken down
+by interval.
 
 ### `GET /v1/analytics/performance`
 
@@ -94,12 +100,12 @@ curl "https://api.pixelatedempathy.com/v1/analytics/performance?period=90d&inter
 
 ### Query parameters
 
-| Parameter | Type | Default | Description |
-|---|---|---|---|
-| `period` | string | `30d` | Time period: `7d`, `30d`, `90d`, `6m`, `1y` |
-| `interval` | string | `week` | Data granularity: `session`, `day`, `week`, `month` |
-| `metric` | string | `overall_score` | Metric to retrieve: `overall_score`, `empathic_accuracy`, `bias_awareness`, `crisis_response`, `cultural_sensitivity`, `session_duration`, `turn_count` |
-| `user_id` | string | — | Target user (supervisors and admins only) |
+| Parameter  | Type   | Default         | Description                                                                                                                                             |
+| ---------- | ------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `period`   | string | `30d`           | Time period: `7d`, `30d`, `90d`, `6m`, `1y`                                                                                                             |
+| `interval` | string | `week`          | Data granularity: `session`, `day`, `week`, `month`                                                                                                     |
+| `metric`   | string | `overall_score` | Metric to retrieve: `overall_score`, `empathic_accuracy`, `bias_awareness`, `crisis_response`, `cultural_sensitivity`, `session_duration`, `turn_count` |
+| `user_id`  | string | —               | Target user (supervisors and admins only)                                                                                                               |
 
 ### Response
 
@@ -207,12 +213,15 @@ curl "https://api.pixelatedempathy.com/v1/analytics/competencies?period=30d" \
 ```
 
 <Tip>
-  Use the sub-competency breakdown to identify specific skill areas that need targeted practice. Assign scenarios that specifically exercise low-scoring sub-competencies.
+  Use the sub-competency breakdown to identify specific skill areas that need
+  targeted practice. Assign scenarios that specifically exercise low-scoring
+  sub-competencies.
 </Tip>
 
 ## Bias reduction trends
 
-Track bias detection and mitigation improvements over time, broken down by bias category.
+Track bias detection and mitigation improvements over time, broken down by bias
+category.
 
 ### `GET /v1/analytics/bias-trends`
 
@@ -238,38 +247,78 @@ curl "https://api.pixelatedempathy.com/v1/analytics/bias-trends?period=90d&inter
         "current_incident_rate": 0.12,
         "initial_incident_rate": 0.38,
         "trend_data": [
-          { "date": "2024-10-21", "detection_rate": 0.52, "incident_rate": 0.38 },
-          { "date": "2024-11-18", "detection_rate": 0.68, "incident_rate": 0.28 },
-          { "date": "2024-12-16", "detection_rate": 0.80, "incident_rate": 0.18 },
-          { "date": "2025-01-13", "detection_rate": 0.88, "incident_rate": 0.12 }
+          {
+            "date": "2024-10-21",
+            "detection_rate": 0.52,
+            "incident_rate": 0.38
+          },
+          {
+            "date": "2024-11-18",
+            "detection_rate": 0.68,
+            "incident_rate": 0.28
+          },
+          {
+            "date": "2024-12-16",
+            "detection_rate": 0.8,
+            "incident_rate": 0.18
+          },
+          {
+            "date": "2025-01-13",
+            "detection_rate": 0.88,
+            "incident_rate": 0.12
+          }
         ]
       },
       {
         "type": "confirmation_bias",
         "current_detection_rate": 0.75,
         "initial_detection_rate": 0.45,
-        "improvement": 0.30,
-        "current_incident_rate": 0.20,
+        "improvement": 0.3,
+        "current_incident_rate": 0.2,
         "initial_incident_rate": 0.42,
         "trend_data": [
-          { "date": "2024-10-21", "detection_rate": 0.45, "incident_rate": 0.42 },
-          { "date": "2024-11-18", "detection_rate": 0.58, "incident_rate": 0.35 },
-          { "date": "2024-12-16", "detection_rate": 0.68, "incident_rate": 0.25 },
-          { "date": "2025-01-13", "detection_rate": 0.75, "incident_rate": 0.20 }
+          {
+            "date": "2024-10-21",
+            "detection_rate": 0.45,
+            "incident_rate": 0.42
+          },
+          {
+            "date": "2024-11-18",
+            "detection_rate": 0.58,
+            "incident_rate": 0.35
+          },
+          {
+            "date": "2024-12-16",
+            "detection_rate": 0.68,
+            "incident_rate": 0.25
+          },
+          { "date": "2025-01-13", "detection_rate": 0.75, "incident_rate": 0.2 }
         ]
       },
       {
         "type": "diagnostic_bias",
-        "current_detection_rate": 0.70,
-        "initial_detection_rate": 0.40,
-        "improvement": 0.30,
+        "current_detection_rate": 0.7,
+        "initial_detection_rate": 0.4,
+        "improvement": 0.3,
         "current_incident_rate": 0.22,
         "initial_incident_rate": 0.45,
         "trend_data": [
-          { "date": "2024-10-21", "detection_rate": 0.40, "incident_rate": 0.45 },
-          { "date": "2024-11-18", "detection_rate": 0.52, "incident_rate": 0.38 },
-          { "date": "2024-12-16", "detection_rate": 0.62, "incident_rate": 0.28 },
-          { "date": "2025-01-13", "detection_rate": 0.70, "incident_rate": 0.22 }
+          {
+            "date": "2024-10-21",
+            "detection_rate": 0.4,
+            "incident_rate": 0.45
+          },
+          {
+            "date": "2024-11-18",
+            "detection_rate": 0.52,
+            "incident_rate": 0.38
+          },
+          {
+            "date": "2024-12-16",
+            "detection_rate": 0.62,
+            "incident_rate": 0.28
+          },
+          { "date": "2025-01-13", "detection_rate": 0.7, "incident_rate": 0.22 }
         ]
       }
     ],
@@ -333,7 +382,8 @@ Compare a user's performance against reference groups.
 ### `GET /v1/analytics/benchmarks`
 
 <Note>
-  **Required scope:** `analytics:benchmarks` · **Available to:** Supervisors and admins
+  **Required scope:** `analytics:benchmarks` · **Available to:** Supervisors and
+  admins
 </Note>
 
 ```bash
@@ -343,11 +393,11 @@ curl "https://api.pixelatedempathy.com/v1/analytics/benchmarks?user_id=usr_k1l2m
 
 ### Query parameters
 
-| Parameter | Type | Description |
-|---|---|---|
-| `user_id` | string | Target user to benchmark |
+| Parameter    | Type   | Description                                                                |
+| ------------ | ------ | -------------------------------------------------------------------------- |
+| `user_id`    | string | Target user to benchmark                                                   |
 | `benchmarks` | string | Comma-separated benchmark types: `cohort`, `program`, `national`, `expert` |
-| `period` | string | Time period for score calculation |
+| `period`     | string | Time period for score calculation                                          |
 
 ### Response
 
@@ -400,7 +450,9 @@ Export analytics data for research, compliance, and institutional reporting.
 ### `POST /v1/analytics/export`
 
 <Warning>
-  Export endpoints may generate large files and are rate-limited to the batch tier. De-identified exports exclude all personally identifiable information. Full exports require admin role and appropriate data use agreements.
+  Export endpoints may generate large files and are rate-limited to the batch
+  tier. De-identified exports exclude all personally identifiable information.
+  Full exports require admin role and appropriate data use agreements.
 </Warning>
 
 ```bash
@@ -438,6 +490,7 @@ curl -X POST https://api.pixelatedempathy.com/v1/analytics/export \
       "de_identify": true
     }
     ```
+
   </Tab>
   <Tab title="Compliance export">
     Structured report for accreditation bodies and regulatory compliance. Maps competency scores to standard frameworks (APA, CACREP).
@@ -450,6 +503,7 @@ curl -X POST https://api.pixelatedempathy.com/v1/analytics/export \
       "include_attestations": true
     }
     ```
+
   </Tab>
   <Tab title="Institutional report">
     Aggregate analytics for institutional dashboards and program review. Includes trends, benchmarks, and ROI metrics.
@@ -461,12 +515,14 @@ curl -X POST https://api.pixelatedempathy.com/v1/analytics/export \
       "aggregate_level": "program"
     }
     ```
+
   </Tab>
 </Tabs>
 
 ### Export response
 
-Exports are processed asynchronously. The initial response includes a job ID for status polling:
+Exports are processed asynchronously. The initial response includes a job ID for
+status polling:
 
 ```json
 {
@@ -502,28 +558,38 @@ curl https://api.pixelatedempathy.com/v1/analytics/export/exp_x1y2z3a4 \
 ```
 
 <Info>
-  Export download links are signed and expire after 7 days. Generate a new export if the link has expired. All export files are encrypted at rest and transmitted over TLS.
+  Export download links are signed and expire after 7 days. Generate a new
+  export if the link has expired. All export files are encrypted at rest and
+  transmitted over TLS.
 </Info>
 
 ## Error responses
 
-| Status | Error code | Description |
-|---|---|---|
-| `400` | `INVALID_PERIOD` | Unrecognized time period value |
-| `400` | `INVALID_METRIC` | Unrecognized metric name |
-| `403` | `BENCHMARK_ACCESS_DENIED` | User role cannot access benchmarking data |
-| `403` | `EXPORT_REQUIRES_ADMIN` | Full (non-de-identified) exports require admin role |
-| `404` | `USER_NOT_FOUND` | Specified `user_id` does not exist or is not accessible |
-| `404` | `EXPORT_NOT_FOUND` | Export job ID does not exist |
-| `429` | `RATE_LIMITED` | Rate limit exceeded for analytics tier |
+| Status | Error code                | Description                                             |
+| ------ | ------------------------- | ------------------------------------------------------- |
+| `400`  | `INVALID_PERIOD`          | Unrecognized time period value                          |
+| `400`  | `INVALID_METRIC`          | Unrecognized metric name                                |
+| `403`  | `BENCHMARK_ACCESS_DENIED` | User role cannot access benchmarking data               |
+| `403`  | `EXPORT_REQUIRES_ADMIN`   | Full (non-de-identified) exports require admin role     |
+| `404`  | `USER_NOT_FOUND`          | Specified `user_id` does not exist or is not accessible |
+| `404`  | `EXPORT_NOT_FOUND`        | Export job ID does not exist                            |
+| `429`  | `RATE_LIMITED`            | Rate limit exceeded for analytics tier                  |
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Session Management API" icon="comments" href="/api-reference/session-management">
+  <Card
+    title='Session Management API'
+    icon='comments'
+    href='/api-reference/session-management'
+  >
     Manage the training sessions that generate analytics data.
   </Card>
-  <Card title="Crisis Detection API" icon="triangle-exclamation" href="/api-reference/crisis-detection">
+  <Card
+    title='Crisis Detection API'
+    icon='triangle-exclamation'
+    href='/api-reference/crisis-detection'
+  >
     Monitor for crisis signals and integrate with safety protocols.
   </Card>
 </CardGroup>

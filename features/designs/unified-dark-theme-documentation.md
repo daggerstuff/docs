@@ -2,7 +2,8 @@
 
 ## Overview
 
-The Unified Dark Theme v3.0 is a comprehensive design system that combines the best elements from multiple design philosophies:
+The Unified Dark Theme v3.0 is a comprehensive design system that combines the
+best elements from multiple design philosophies:
 
 - **Brutalist**: Raw, functional, and architectural precision
 - **Minimalist**: Clean, uncluttered, and focused on essentials
@@ -14,12 +15,15 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 
 ### Core Principles
 
-1. **Deep Dark Foundation**: Pure black base (#000000) with layered dark surfaces
-2. **Emerald Accent System**: Green primary accent for positive, growth-oriented feel
+1. **Deep Dark Foundation**: Pure black base (#000000) with layered dark
+   surfaces
+2. **Emerald Accent System**: Green primary accent for positive, growth-oriented
+   feel
 3. **Brutalist Structure**: Strong borders, clear hierarchy, functional forms
 4. **Minimalist Clarity**: Essential elements only, no unnecessary decoration
 5. **Corporate Polish**: Professional appearance with subtle sophistication
-6. **Enterprise Robustness**: Accessibility, performance, and scalability built-in
+6. **Enterprise Robustness**: Accessibility, performance, and scalability
+   built-in
 7. **Antfu Elegance**: Refined details and smooth transitions
 
 ## Color System
@@ -27,23 +31,23 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ### Background Hierarchy
 
 ```css
---color-void: #000000;        /* Pure black foundation */
---color-primary: #0a0a0a;     /* Main background */
---color-secondary: #111111;   /* Secondary surfaces */
---color-tertiary: #181818;    /* Tertiary elements */
---color-elevated: #1f1f1f;    /* Elevated surfaces */
---color-surface: #151515;     /* Card backgrounds */
+--color-void: #000000; /* Pure black foundation */
+--color-primary: #0a0a0a; /* Main background */
+--color-secondary: #111111; /* Secondary surfaces */
+--color-tertiary: #181818; /* Tertiary elements */
+--color-elevated: #1f1f1f; /* Elevated surfaces */
+--color-surface: #151515; /* Card backgrounds */
 ```
 
 ### Text Hierarchy
 
 ```css
---text-primary: #ffffff;      /* Maximum contrast */
---text-secondary: #e8e8e8;    /* Subtle secondary text */
---text-tertiary: #b8b8b8;     /* Supporting text */
---text-muted: #8a8a8a;        /* Muted text */
---text-subtle: #666666;       /* Subtle hints */
---text-disabled: #444444;     /* Disabled state */
+--text-primary: #ffffff; /* Maximum contrast */
+--text-secondary: #e8e8e8; /* Subtle secondary text */
+--text-tertiary: #b8b8b8; /* Supporting text */
+--text-muted: #8a8a8a; /* Muted text */
+--text-subtle: #666666; /* Subtle hints */
+--text-disabled: #444444; /* Disabled state */
 ```
 
 ### Accent System
@@ -66,7 +70,8 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ### Font Families
 
 ```css
---font-sans: 'Geist Sans', 'Inter Variable', -apple-system, BlinkMacSystemFont, sans-serif;
+--font-sans:
+  'Geist Sans', 'Inter Variable', -apple-system, BlinkMacSystemFont, sans-serif;
 --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
 --font-display: 'Geist Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 ```
@@ -89,16 +94,16 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ## Spacing System (8-Point Grid)
 
 ```css
---space-1: 0.25rem;   /* 4px */
---space-2: 0.5rem;    /* 8px */
---space-3: 0.75rem;   /* 12px */
---space-4: 1rem;      /* 16px */
---space-6: 1.5rem;    /* 24px */
---space-8: 2rem;      /* 32px */
---space-12: 3rem;     /* 48px */
---space-16: 4rem;     /* 64px */
---space-20: 5rem;     /* 80px */
---space-24: 6rem;     /* 96px */
+--space-1: 0.25rem; /* 4px */
+--space-2: 0.5rem; /* 8px */
+--space-3: 0.75rem; /* 12px */
+--space-4: 1rem; /* 16px */
+--space-6: 1.5rem; /* 24px */
+--space-8: 2rem; /* 32px */
+--space-12: 3rem; /* 48px */
+--space-16: 4rem; /* 64px */
+--space-20: 5rem; /* 80px */
+--space-24: 6rem; /* 96px */
 ```
 
 ## Component System
@@ -106,17 +111,20 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ### Buttons
 
 #### Variants
+
 - `btn-primary`: Main action button with emerald background
 - `btn-secondary`: Secondary action with transparent background
 - `btn-ghost`: Subtle button with no border
 - `btn-outline`: Border-only button
 
 #### Sizes
+
 - `btn-sm`: Compact size for dense interfaces
 - `btn-lg`: Larger size for prominent actions
 - `btn-xl`: Extra large for hero sections
 
 #### States
+
 - Normal, hover, active, disabled states
 - Smooth transitions with spring animations
 - Focus indicators for accessibility
@@ -124,6 +132,7 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ### Cards
 
 #### Variants
+
 - `card`: Standard card with subtle styling
 - `card--elevated`: Gradient background for premium feel
 - `card--glass`: Glass morphism effect with blur
@@ -134,12 +143,14 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ### Forms
 
 #### Input Types
+
 - Standard text inputs with focus states
 - Large and small variants for different contexts
 - Textarea with resize controls
 - Select dropdowns with custom styling
 
 #### Features
+
 - Focus indicators with emerald accent
 - Placeholder styling for dark backgrounds
 - Error and success states
@@ -148,6 +159,7 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ### Navigation
 
 #### Link System
+
 - Active state indicators
 - Hover effects with background tint
 - Smooth transitions
@@ -156,6 +168,7 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ### Status Indicators
 
 #### Visual States
+
 - Online/Active: Green pulse
 - Processing: Orange animated pulse
 - Error: Red static indicator
@@ -173,6 +186,7 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ```
 
 ### Keyframe Animations
+
 - `fadeIn`: Simple opacity transition
 - `fadeInUp`: Slide up with fade
 - `slideInLeft`: Slide from left with fade
@@ -183,27 +197,31 @@ The Unified Dark Theme v3.0 is a comprehensive design system that combines the b
 ## Glass Effects & Gradients
 
 ### Glass Morphism
+
 ```css
 --color-glass: rgba(15, 15, 15, 0.85);
 backdrop-filter: blur(12px);
 ```
 
 ### Gradients
+
 ```css
---gradient-primary: Emerald → Blue → Purple
---gradient-secondary: Blue → Purple → Emerald
---gradient-text: White → Emerald → Blue
---gradient-surface: Surface → Secondary
+--gradient-primary: Emerald → Blue → Purple --gradient-secondary: Blue → Purple
+  → Emerald --gradient-text: White → Emerald → Blue --gradient-surface: Surface
+  → Secondary;
 ```
 
 ### Mesh Gradients
+
 Radial gradient overlays for sophisticated visual effects:
+
 - `--mesh-1`: Emerald, Blue, Purple combination
 - `--mesh-2`: Green, Blue, Orange combination
 
 ## Accessibility Features
 
 ### Built-in Support
+
 - High contrast mode compatibility
 - Reduced motion preferences
 - Focus indicators for keyboard navigation
@@ -211,6 +229,7 @@ Radial gradient overlays for sophisticated visual effects:
 - Color contrast ratios meeting WCAG 2.1 AA
 
 ### Responsive Considerations
+
 - Mobile-first approach
 - Touch-friendly button sizes
 - Legible typography at all screen sizes
@@ -219,12 +238,14 @@ Radial gradient overlays for sophisticated visual effects:
 ## Performance Optimizations
 
 ### CSS Features
+
 - CSS custom properties for easy theming
 - Efficient selector usage
 - Hardware-accelerated animations
 - Minimal specificity conflicts
 
 ### Loading Strategy
+
 - Critical CSS inline
 - Non-critical styles deferred
 - Font preloading for optimal performance
@@ -233,14 +254,16 @@ Radial gradient overlays for sophisticated visual effects:
 ## Implementation Guide
 
 ### Basic Setup
+
 ```html
-<link rel="stylesheet" href="/src/styles/unified-dark-theme-v3.css">
+<link rel="stylesheet" href="/src/styles/unified-dark-theme-v3.css" />
 <body class="theme-dark">
   <!-- Your content here -->
 </body>
 ```
 
 ### Component Usage
+
 ```html
 <!-- Button -->
 <button class="btn btn-primary">Click me</button>
@@ -260,6 +283,7 @@ Radial gradient overlays for sophisticated visual effects:
 ```
 
 ### Customization
+
 ```css
 /* Override any CSS custom property */
 :root {
@@ -271,12 +295,14 @@ Radial gradient overlays for sophisticated visual effects:
 ## Browser Support
 
 ### Modern Browsers
+
 - Chrome 88+
 - Firefox 85+
 - Safari 14+
 - Edge 88+
 
 ### Fallbacks
+
 - CSS custom properties with fallbacks
 - Progressive enhancement approach
 - Graceful degradation for older browsers
@@ -296,13 +322,15 @@ src/styles/
 - **v1.0**: Basic dark theme with emerald accents
 - **v2.0**: Added brutalist and corporate elements
 - **v3.0**: Comprehensive system with all design philosophies
-- **v3.1**: Unified theme implementation with enhanced accessibility, responsive design, and performance optimizations
+- **v3.1**: Unified theme implementation with enhanced accessibility, responsive
+  design, and performance optimizations
 
 ## Implementation Details (v3.1)
 
 ### Theme Integration
 
-The unified dark theme v3.1 has been successfully implemented across the entire application with the following enhancements:
+The unified dark theme v3.1 has been successfully implemented across the entire
+application with the following enhancements:
 
 1. **Header Component**:
    - Brutalist branding with "PIXELATED EMPATHY" gradient text
@@ -331,7 +359,8 @@ The unified dark theme v3.1 has been successfully implemented across the entire 
 
 ### CSS Architecture
 
-The theme uses a comprehensive CSS variable system with the following key variables:
+The theme uses a comprehensive CSS variable system with the following key
+variables:
 
 - `--bg-primary`: #0a0a0a (main background)
 - `--bg-glass`: rgba(10, 10, 10, 0.7) (glass morphism background)
@@ -359,8 +388,10 @@ The theme has been successfully tested:
 
 ### Known Issues
 
-- Minor CSS minification warnings for responsive utility classes (.5rem, .8rem) - these do not affect functionality
-- Large file count in /ai directory causing file watcher issues during development - resolved by serving from built output
+- Minor CSS minification warnings for responsive utility classes (.5rem,
+  .8rem) - these do not affect functionality
+- Large file count in /ai directory causing file watcher issues during
+  development - resolved by serving from built output
 
 ### Next Steps
 
@@ -379,6 +410,7 @@ The theme has been successfully tested:
 ## Contributing
 
 When extending this theme:
+
 1. Maintain the 8-point grid system
 2. Follow the color hierarchy
 3. Respect accessibility guidelines
@@ -387,4 +419,5 @@ When extending this theme:
 
 ## License
 
-This design system is part of the Pixelated Empathy project and follows the project's licensing terms.
+This design system is part of the Pixelated Empathy project and follows the
+project's licensing terms.

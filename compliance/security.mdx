@@ -1,14 +1,22 @@
 ---
-title: "Security Architecture"
-description: "Defense-in-depth security architecture for Pixelated Empathy's therapeutic AI platform, covering authentication, encryption, access control, and monitoring."
+title: 'Security Architecture'
+description:
+  "Defense-in-depth security architecture for Pixelated Empathy's therapeutic AI
+  platform, covering authentication, encryption, access control, and monitoring."
 ---
 
-Pixelated Empathy employs a **defense-in-depth** security architecture designed for healthcare-grade protection of therapeutic data. Every layer — from network edge to database — enforces strict security controls that exceed HIPAA requirements.
+Pixelated Empathy employs a **defense-in-depth** security architecture designed
+for healthcare-grade protection of therapeutic data. Every layer — from network
+edge to database — enforces strict security controls that exceed HIPAA
+requirements.
 
 <Note>
-  **Security Contact:** [security@pixelatedempathy.com](mailto:security@pixelatedempathy.com)
-  
-  **Responsible Disclosure:** If you discover a security vulnerability, please report it to [security-incidents@pixelatedempathy.com](mailto:security-incidents@pixelatedempathy.com). We follow coordinated disclosure practices.
+  **Security Contact:**
+  [security@pixelatedempathy.com](mailto:security@pixelatedempathy.com)
+  **Responsible Disclosure:** If you discover a security vulnerability, please
+  report it to
+  [security-incidents@pixelatedempathy.com](mailto:security-incidents@pixelatedempathy.com).
+  We follow coordinated disclosure practices.
 </Note>
 
 ## Architecture Overview
@@ -39,11 +47,13 @@ Pixelated Empathy employs a **defense-in-depth** security architecture designed 
 
 ## Authentication
 
-Pixelated Empathy uses **Auth0** as the identity provider, implementing OAuth 2.0 and OpenID Connect with healthcare-specific security enhancements.
+Pixelated Empathy uses **Auth0** as the identity provider, implementing OAuth
+2.0 and OpenID Connect with healthcare-specific security enhancements.
 
 ### JWT Authentication
 
-All API requests are authenticated using signed JSON Web Tokens with short-lived access tokens and secure refresh token rotation.
+All API requests are authenticated using signed JSON Web Tokens with short-lived
+access tokens and secure refresh token rotation.
 
 <Tabs>
   <Tab title="Token Lifecycle">
@@ -70,6 +80,7 @@ All API requests are authenticated using signed JSON Web Tokens with short-lived
     <Warning>
       Access tokens are **never** stored in localStorage or sessionStorage. They are held in memory only to prevent XSS-based token theft.
     </Warning>
+
   </Tab>
   <Tab title="Refresh Token Security">
     Refresh tokens implement **automatic rotation** — each use invalidates the previous token and issues a new one.
@@ -89,6 +100,7 @@ All API requests are authenticated using signed JSON Web Tokens with short-lived
     - Refresh tokens are bound to the originating device fingerprint
     - Absolute expiration prevents indefinite session extension
     - Concurrent session limits enforced per user role
+
   </Tab>
   <Tab title="Multi-Factor Authentication">
     MFA is **required** for all privileged operations and sensitive role types.
@@ -105,6 +117,7 @@ All API requests are authenticated using signed JSON Web Tokens with short-lived
     - Time-based One-Time Passwords (TOTP)
     - Push notifications via Auth0 Guardian
     - WebAuthn / FIDO2 hardware keys
+
   </Tab>
 </Tabs>
 
@@ -112,7 +125,9 @@ All API requests are authenticated using signed JSON Web Tokens with short-lived
 
 ## Role-Based Access Control
 
-Pixelated Empathy implements a **six-role permission matrix** integrated with Auth0's RBAC system. Each role has a defined hierarchy level and precisely scoped permissions.
+Pixelated Empathy implements a **six-role permission matrix** integrated with
+Auth0's RBAC system. Each role has a defined hierarchy level and precisely
+scoped permissions.
 
 ### Role Hierarchy
 
@@ -139,6 +154,7 @@ Pixelated Empathy implements a **six-role permission matrix** integrated with Au
     **Hierarchy Level:** 100 · **PHI Access:** Full · **MFA:** Always required
 
     Full system access with all permissions. Admin accounts cannot be self-assigned — they are created through a secure provisioning process with dual-approval.
+
   </Tab>
   <Tab title="Therapist">
     **Hierarchy Level:** 80 · **PHI Access:** Assigned patients only · **MFA:** Required for PHI
@@ -149,6 +165,7 @@ Pixelated Empathy implements a **six-role permission matrix** integrated with Au
     - `access:crisis_intervention_tools` · `manage:therapy_goals`
 
     **Restrictions:** Cannot delete patient data, access admin functions, or view other therapists' sessions.
+
   </Tab>
   <Tab title="Patient">
     **Hierarchy Level:** 40 · **PHI Access:** Own data only · **MFA:** Optional
@@ -159,6 +176,7 @@ Pixelated Empathy implements a **six-role permission matrix** integrated with Au
     - `access:crisis_support` · `write:feedback`
 
     **Restrictions:** Cannot access other patient data, view therapist notes, or access system analytics.
+
   </Tab>
   <Tab title="Researcher">
     **Hierarchy Level:** 60 · **PHI Access:** Anonymized only · **MFA:** Required for exports
@@ -168,23 +186,31 @@ Pixelated Empathy implements a **six-role permission matrix** integrated with Au
     - `access:research_tools` · `manage:research_projects`
 
     **Restrictions:** Cannot access identifiable patient data or individual therapy sessions. Data access limited to IRB-approved studies.
+
   </Tab>
 </Tabs>
 
 ### Permission Security Features
 
 <CardGroup cols={2}>
-  <Card title="MFA-Gated Permissions" icon="shield-check">
-    Sensitive operations like `write:users`, `delete:users`, `export:research_data`, and `manage:roles` require step-up MFA verification even within an active session.
+  <Card title='MFA-Gated Permissions' icon='shield-check'>
+    Sensitive operations like `write:users`, `delete:users`,
+    `export:research_data`, and `manage:roles` require step-up MFA verification
+    even within an active session.
   </Card>
-  <Card title="Audit-Required Permissions" icon="clipboard-list">
-    Every permission is flagged as `auditRequired: true`. All access to any resource generates an immutable audit log entry with user, action, resource, timestamp, and IP.
+  <Card title='Audit-Required Permissions' icon='clipboard-list'>
+    Every permission is flagged as `auditRequired: true`. All access to any
+    resource generates an immutable audit log entry with user, action, resource,
+    timestamp, and IP.
   </Card>
-  <Card title="Role Transition Validation" icon="arrows-rotate">
-    Role changes are validated through a formal transition process. Escalation requires MFA, approval, and generates security event logs.
+  <Card title='Role Transition Validation' icon='arrows-rotate'>
+    Role changes are validated through a formal transition process. Escalation
+    requires MFA, approval, and generates security event logs.
   </Card>
-  <Card title="Hierarchy Enforcement" icon="layer-group">
-    Users can only assign roles below their own hierarchy level. The system prevents privilege escalation at the API layer regardless of client behavior.
+  <Card title='Hierarchy Enforcement' icon='layer-group'>
+    Users can only assign roles below their own hierarchy level. The system
+    prevents privilege escalation at the API layer regardless of client
+    behavior.
   </Card>
 </CardGroup>
 
@@ -196,12 +222,12 @@ Pixelated Empathy implements a **six-role permission matrix** integrated with Au
 
 All data is encrypted both at rest and in transit, with no exceptions for PHI.
 
-| Layer | Algorithm | Implementation |
-|---|---|---|
-| **At Rest** | AES-256-GCM | All databases, file storage, backups, and cache layers |
-| **In Transit** | TLS 1.3 | All API calls, WebSocket connections, and inter-service communication |
-| **Key Management** | AWS KMS / Azure Key Vault | Hardware Security Modules (HSMs) with automated rotation |
-| **Application-Level** | Fernet (PBKDF2 + AES) | PHI encrypted at the application layer before database storage |
+| Layer                 | Algorithm                 | Implementation                                                        |
+| --------------------- | ------------------------- | --------------------------------------------------------------------- |
+| **At Rest**           | AES-256-GCM               | All databases, file storage, backups, and cache layers                |
+| **In Transit**        | TLS 1.3                   | All API calls, WebSocket connections, and inter-service communication |
+| **Key Management**    | AWS KMS / Azure Key Vault | Hardware Security Modules (HSMs) with automated rotation              |
+| **Application-Level** | Fernet (PBKDF2 + AES)     | PHI encrypted at the application layer before database storage        |
 
 ```typescript
 // Encryption is enforced at every boundary
@@ -212,25 +238,28 @@ All data is encrypted both at rest and in transit, with no exceptions for PHI.
 ```
 
 <Info>
-  **Key Rotation:** Encryption keys are rotated automatically on a defined schedule. Previous key versions are retained only for the duration needed to decrypt existing data, then securely destroyed.
+  **Key Rotation:** Encryption keys are rotated automatically on a defined
+  schedule. Previous key versions are retained only for the duration needed to
+  decrypt existing data, then securely destroyed.
 </Info>
 
 ---
 
 ## Rate Limiting
 
-Pixelated Empathy implements **role-based rate limiting** to protect against abuse while ensuring clinical workflows are uninterrupted.
+Pixelated Empathy implements **role-based rate limiting** to protect against
+abuse while ensuring clinical workflows are uninterrupted.
 
 ### Rate Limit Tiers
 
-| Role | Limit | Window | Burst Allowance |
-|---|---|---|---|
-| **Guest** | 10 req/min | Per IP | None |
-| **Patient** | 60 req/min | Per user | 10 additional |
-| **Therapist** | 200 req/min | Per user | 50 additional |
-| **Researcher** | 100 req/min | Per user | 25 additional |
-| **Support** | 150 req/min | Per user | 30 additional |
-| **Admin** | 1,000 req/min | Per user | 200 additional |
+| Role           | Limit         | Window   | Burst Allowance |
+| -------------- | ------------- | -------- | --------------- |
+| **Guest**      | 10 req/min    | Per IP   | None            |
+| **Patient**    | 60 req/min    | Per user | 10 additional   |
+| **Therapist**  | 200 req/min   | Per user | 50 additional   |
+| **Researcher** | 100 req/min   | Per user | 25 additional   |
+| **Support**    | 150 req/min   | Per user | 30 additional   |
+| **Admin**      | 1,000 req/min | Per user | 200 additional  |
 
 ### Rate Limit Response
 
@@ -243,35 +272,41 @@ X-RateLimit-Reset: 1706745600
 ```
 
 <Tip>
-  Rate limits are applied at the API gateway layer using a sliding window algorithm. Crisis-related endpoints (`/api/crisis/*`) are exempt from rate limiting to ensure safety responses are never delayed.
+  Rate limits are applied at the API gateway layer using a sliding window
+  algorithm. Crisis-related endpoints (`/api/crisis/*`) are exempt from rate
+  limiting to ensure safety responses are never delayed.
 </Tip>
 
 ---
 
 ## Input Validation
 
-All user input is validated at multiple layers using **Zod schemas** for runtime type checking and sanitization.
+All user input is validated at multiple layers using **Zod schemas** for runtime
+type checking and sanitization.
 
 ### Validation Pipeline
 
 ```typescript
-import { z } from 'zod';
+import { z } from 'zod'
 
 // Example: Session message validation
 const SessionMessageSchema = z.object({
   sessionId: z.string().uuid(),
-  content: z.string()
+  content: z
+    .string()
     .min(1, 'Message cannot be empty')
     .max(10000, 'Message exceeds maximum length')
-    .refine(val => !containsPHI(val), {
-      message: 'Message contains detected PHI patterns'
+    .refine((val) => !containsPHI(val), {
+      message: 'Message contains detected PHI patterns',
     }),
   timestamp: z.string().datetime(),
-  metadata: z.object({
-    clientVersion: z.string(),
-    locale: z.string().optional(),
-  }).optional(),
-});
+  metadata: z
+    .object({
+      clientVersion: z.string(),
+      locale: z.string().optional(),
+    })
+    .optional(),
+})
 
 // Validated at:
 // 1. Client-side (immediate feedback)
@@ -282,17 +317,22 @@ const SessionMessageSchema = z.object({
 ### Protection Against Common Attacks
 
 <CardGroup cols={2}>
-  <Card title="XSS Prevention" icon="code">
-    All output is contextually escaped. Content Security Policy (CSP) headers restrict script execution. User-generated content is sanitized with DOMPurify before rendering.
+  <Card title='XSS Prevention' icon='code'>
+    All output is contextually escaped. Content Security Policy (CSP) headers
+    restrict script execution. User-generated content is sanitized with
+    DOMPurify before rendering.
   </Card>
-  <Card title="SQL Injection" icon="database">
-    Parameterized queries used exclusively. No raw SQL string concatenation. ORM-level query building with automatic escaping.
+  <Card title='SQL Injection' icon='database'>
+    Parameterized queries used exclusively. No raw SQL string concatenation.
+    ORM-level query building with automatic escaping.
   </Card>
-  <Card title="CSRF Protection" icon="rotate">
-    Double-submit cookie pattern with SameSite=Strict cookies. All state-changing operations require CSRF token validation.
+  <Card title='CSRF Protection' icon='rotate'>
+    Double-submit cookie pattern with SameSite=Strict cookies. All
+    state-changing operations require CSRF token validation.
   </Card>
-  <Card title="Request Smuggling" icon="truck">
-    Strict HTTP parsing at the edge. Content-Length and Transfer-Encoding validation. Request size limits enforced at the load balancer.
+  <Card title='Request Smuggling' icon='truck'>
+    Strict HTTP parsing at the edge. Content-Length and Transfer-Encoding
+    validation. Request size limits enforced at the load balancer.
   </Card>
 </CardGroup>
 
@@ -316,49 +356,43 @@ const corsConfig = {
   credentials: true,
   maxAge: 600, // Preflight cache: 10 minutes
   // No wildcard origins, no wildcard headers
-};
+}
 ```
 
 <Warning>
-  Wildcard (`*`) origins are **never** permitted. All CORS origins must be explicitly approved and reviewed quarterly.
+  Wildcard (`*`) origins are **never** permitted. All CORS origins must be
+  explicitly approved and reviewed quarterly.
 </Warning>
 
 ---
 
 ## Audit Logging
 
-Every security-relevant action generates an immutable audit log entry. Audit logs are the backbone of our HIPAA compliance and incident investigation capabilities.
+Every security-relevant action generates an immutable audit log entry. Audit
+logs are the backbone of our HIPAA compliance and incident investigation
+capabilities.
 
 ### What Is Logged
 
 <Tabs>
-  <Tab title="Authentication Events">
-    - Login success and failure (with IP, device, location)
-    - MFA challenge and verification
-    - Token issuance, refresh, and revocation
-    - Session creation, timeout, and termination
-    - Password changes and reset requests
+  <Tab title='Authentication Events'>
+    - Login success and failure (with IP, device, location) - MFA challenge and
+    verification - Token issuance, refresh, and revocation - Session creation,
+    timeout, and termination - Password changes and reset requests
   </Tab>
-  <Tab title="Authorization Events">
-    - Permission checks (granted and denied)
-    - Role assignments and removals
-    - Privilege escalation attempts
-    - Resource access decisions
-    - RBAC policy evaluation results
+  <Tab title='Authorization Events'>
+    - Permission checks (granted and denied) - Role assignments and removals -
+    Privilege escalation attempts - Resource access decisions - RBAC policy
+    evaluation results
   </Tab>
-  <Tab title="Data Access Events">
-    - PHI read, create, update, and delete operations
-    - Data export and download requests
-    - Search queries that touch PHI
-    - Bulk data operations
-    - Cross-patient data access patterns
+  <Tab title='Data Access Events'>
+    - PHI read, create, update, and delete operations - Data export and download
+    requests - Search queries that touch PHI - Bulk data operations -
+    Cross-patient data access patterns
   </Tab>
-  <Tab title="System Events">
-    - Configuration changes
-    - Deployment and infrastructure events
-    - Security scan results
-    - Certificate rotation
-    - Encryption key lifecycle events
+  <Tab title='System Events'>
+    - Configuration changes - Deployment and infrastructure events - Security
+    scan results - Certificate rotation - Encryption key lifecycle events
   </Tab>
 </Tabs>
 
@@ -390,31 +424,38 @@ Every security-relevant action generates an immutable audit log entry. Audit log
 
 ### Log Security
 
-| Control | Implementation |
-|---|---|
-| **Immutability** | Append-only log streams with write-once storage |
-| **Integrity** | Cryptographic hash chaining — each entry references the previous entry's hash |
-| **Retention** | 6 years per HIPAA requirements |
-| **Access** | Read access restricted to Security and Compliance roles only |
-| **Encryption** | Logs encrypted at rest with dedicated key material |
-| **Monitoring** | Real-time SIEM ingestion with automated alerting |
+| Control          | Implementation                                                                |
+| ---------------- | ----------------------------------------------------------------------------- |
+| **Immutability** | Append-only log streams with write-once storage                               |
+| **Integrity**    | Cryptographic hash chaining — each entry references the previous entry's hash |
+| **Retention**    | 6 years per HIPAA requirements                                                |
+| **Access**       | Read access restricted to Security and Compliance roles only                  |
+| **Encryption**   | Logs encrypted at rest with dedicated key material                            |
+| **Monitoring**   | Real-time SIEM ingestion with automated alerting                              |
 
 ---
 
 ## Secrets Management
 
 <CardGroup cols={2}>
-  <Card title="Environment Variables" icon="gear">
-    Application secrets are injected via environment variables at runtime. No secrets are committed to source control, stored in configuration files, or hardcoded in application code.
+  <Card title='Environment Variables' icon='gear'>
+    Application secrets are injected via environment variables at runtime. No
+    secrets are committed to source control, stored in configuration files, or
+    hardcoded in application code.
   </Card>
-  <Card title="HashiCorp Vault" icon="vault">
-    Production secrets are managed through HashiCorp Vault with dynamic secret generation, automatic rotation, and lease-based access. Vault audit logs track every secret access.
+  <Card title='HashiCorp Vault' icon='vault'>
+    Production secrets are managed through HashiCorp Vault with dynamic secret
+    generation, automatic rotation, and lease-based access. Vault audit logs
+    track every secret access.
   </Card>
-  <Card title="Key Rotation" icon="arrows-rotate">
-    All secrets — API keys, database credentials, encryption keys, and signing keys — are rotated on a defined schedule. Emergency rotation procedures are documented and tested.
+  <Card title='Key Rotation' icon='arrows-rotate'>
+    All secrets — API keys, database credentials, encryption keys, and signing
+    keys — are rotated on a defined schedule. Emergency rotation procedures are
+    documented and tested.
   </Card>
-  <Card title="Least Privilege" icon="lock">
-    Each service receives only the secrets it requires. Secret access policies are scoped per service identity, preventing lateral credential use.
+  <Card title='Least Privilege' icon='lock'>
+    Each service receives only the secrets it requires. Secret access policies
+    are scoped per service identity, preventing lateral credential use.
   </Card>
 </CardGroup>
 
@@ -435,38 +476,41 @@ Every security-relevant action generates an immutable audit log entry. Audit log
 ### Automated Scanning
 
 <Tabs>
-  <Tab title="Static Analysis (SAST)">
-    - **CodeQL** runs on every pull request with custom HIPAA-specific query suites
-    - Custom queries validate: PHI handling, encryption checks, audit logging presence, and EHR security
-    - Findings block merge until resolved or explicitly accepted with justification
-    - HIPAA compliance mapping validates code changes against Security Rule requirements
+  <Tab title='Static Analysis (SAST)'>
+    - **CodeQL** runs on every pull request with custom HIPAA-specific query
+    suites - Custom queries validate: PHI handling, encryption checks, audit
+    logging presence, and EHR security - Findings block merge until resolved or
+    explicitly accepted with justification - HIPAA compliance mapping validates
+    code changes against Security Rule requirements
   </Tab>
-  <Tab title="Dependency Scanning (SCA)">
-    - Automated dependency vulnerability scanning on every build
-    - Critical and high severity CVEs block deployment
-    - License compliance checking for all third-party packages
-    - Automated dependency update PRs with security advisories
+  <Tab title='Dependency Scanning (SCA)'>
+    - Automated dependency vulnerability scanning on every build - Critical and
+    high severity CVEs block deployment - License compliance checking for all
+    third-party packages - Automated dependency update PRs with security
+    advisories
   </Tab>
-  <Tab title="Dynamic Analysis (DAST)">
-    - Weekly automated DAST scans against staging environments
-    - OWASP Top 10 vulnerability coverage
-    - API-specific security testing including authentication bypass and injection
-    - Automated regression testing for previously identified vulnerabilities
+  <Tab title='Dynamic Analysis (DAST)'>
+    - Weekly automated DAST scans against staging environments - OWASP Top 10
+    vulnerability coverage - API-specific security testing including
+    authentication bypass and injection - Automated regression testing for
+    previously identified vulnerabilities
   </Tab>
-  <Tab title="Container Scanning">
-    - Base image vulnerability scanning before deployment
-    - Runtime container security monitoring
-    - Image signing and verification in the CI/CD pipeline
-    - No root containers permitted in production
+  <Tab title='Container Scanning'>
+    - Base image vulnerability scanning before deployment - Runtime container
+    security monitoring - Image signing and verification in the CI/CD pipeline -
+    No root containers permitted in production
   </Tab>
 </Tabs>
 
 ### Penetration Testing
 
-- **Frequency:** Annual comprehensive penetration test by an independent third party
-- **Scope:** External and internal network, web application, API, and social engineering
+- **Frequency:** Annual comprehensive penetration test by an independent third
+  party
+- **Scope:** External and internal network, web application, API, and social
+  engineering
 - **Standards:** OWASP Testing Guide, PTES, and HIPAA Security Rule requirements
-- **Remediation:** Critical findings remediated within 48 hours; high within 7 days
+- **Remediation:** Critical findings remediated within 48 hours; high within 7
+  days
 
 ---
 
@@ -474,17 +518,23 @@ Every security-relevant action generates an immutable audit log entry. Audit log
 
 ### SIEM Integration
 
-Security Information and Event Management (SIEM) provides centralized visibility across all security controls:
+Security Information and Event Management (SIEM) provides centralized visibility
+across all security controls:
 
 <CardGroup cols={3}>
-  <Card title="Real-Time Alerting" icon="bell">
-    Automated alerts for anomalous authentication patterns, PHI access spikes, failed authorization attempts, and known attack signatures.
+  <Card title='Real-Time Alerting' icon='bell'>
+    Automated alerts for anomalous authentication patterns, PHI access spikes,
+    failed authorization attempts, and known attack signatures.
   </Card>
-  <Card title="Correlation Engine" icon="link">
-    Multi-source event correlation identifies complex attack patterns that individual log sources would miss — such as credential stuffing combined with API abuse.
+  <Card title='Correlation Engine' icon='link'>
+    Multi-source event correlation identifies complex attack patterns that
+    individual log sources would miss — such as credential stuffing combined
+    with API abuse.
   </Card>
-  <Card title="Threat Intelligence" icon="radar">
-    Integrated threat intelligence feeds for IP reputation, known malware signatures, and emerging vulnerability exploitation patterns relevant to healthcare.
+  <Card title='Threat Intelligence' icon='radar'>
+    Integrated threat intelligence feeds for IP reputation, known malware
+    signatures, and emerging vulnerability exploitation patterns relevant to
+    healthcare.
   </Card>
 </CardGroup>
 
@@ -518,19 +568,19 @@ Security Information and Event Management (SIEM) provides centralized visibility
 
 ## Security Compliance Checklist
 
-| Control | Status | Standard |
-|---|---|---|
-| JWT authentication with refresh rotation | ✅ Implemented | OAuth 2.0 / OIDC |
-| Role-based access control (6 roles) | ✅ Implemented | HIPAA §164.312(a) |
-| AES-256-GCM encryption at rest | ✅ Implemented | HIPAA §164.312(a)(2)(iv) |
-| TLS 1.3 encryption in transit | ✅ Implemented | HIPAA §164.312(e)(1) |
-| Multi-factor authentication | ✅ Implemented | HIPAA §164.312(d) |
-| Input validation (Zod schemas) | ✅ Implemented | OWASP Top 10 |
-| Rate limiting (role-based) | ✅ Implemented | API Security Best Practice |
-| CORS strict allowlist | ✅ Implemented | OWASP Top 10 |
-| Audit logging (6-year retention) | ✅ Implemented | HIPAA §164.312(b) |
-| Secrets management (Vault) | ✅ Implemented | CIS Benchmark |
-| SAST/DAST/SCA scanning | ✅ Implemented | NIST SP 800-53 |
-| Annual penetration testing | ✅ Implemented | HIPAA §164.308(a)(8) |
-| SIEM monitoring | ✅ Implemented | HIPAA §164.312(b) |
-| Network segmentation | ✅ Implemented | HIPAA §164.312(e)(1) |
+| Control                                  | Status         | Standard                   |
+| ---------------------------------------- | -------------- | -------------------------- |
+| JWT authentication with refresh rotation | ✅ Implemented | OAuth 2.0 / OIDC           |
+| Role-based access control (6 roles)      | ✅ Implemented | HIPAA §164.312(a)          |
+| AES-256-GCM encryption at rest           | ✅ Implemented | HIPAA §164.312(a)(2)(iv)   |
+| TLS 1.3 encryption in transit            | ✅ Implemented | HIPAA §164.312(e)(1)       |
+| Multi-factor authentication              | ✅ Implemented | HIPAA §164.312(d)          |
+| Input validation (Zod schemas)           | ✅ Implemented | OWASP Top 10               |
+| Rate limiting (role-based)               | ✅ Implemented | API Security Best Practice |
+| CORS strict allowlist                    | ✅ Implemented | OWASP Top 10               |
+| Audit logging (6-year retention)         | ✅ Implemented | HIPAA §164.312(b)          |
+| Secrets management (Vault)               | ✅ Implemented | CIS Benchmark              |
+| SAST/DAST/SCA scanning                   | ✅ Implemented | NIST SP 800-53             |
+| Annual penetration testing               | ✅ Implemented | HIPAA §164.308(a)(8)       |
+| SIEM monitoring                          | ✅ Implemented | HIPAA §164.312(b)          |
+| Network segmentation                     | ✅ Implemented | HIPAA §164.312(e)(1)       |

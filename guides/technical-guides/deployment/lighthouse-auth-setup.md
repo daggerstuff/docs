@@ -2,11 +2,14 @@
 
 ## Overview
 
-The `LH_AUTH_COOKIE` secret is used to authenticate Lighthouse CI when testing protected pages (like `/dashboard`) in your production environment. This ensures performance testing can access authenticated routes.
+The `LH_AUTH_COOKIE` secret is used to authenticate Lighthouse CI when testing
+protected pages (like `/dashboard`) in your production environment. This ensures
+performance testing can access authenticated routes.
 
 ## 🎯 What You Need
 
-Based on your Pixelated Empathy configuration, you're using **Auth0** for authentication with the following setup:
+Based on your Pixelated Empathy configuration, you're using **Auth0** for
+authentication with the following setup:
 
 - **Authentication Method**: Auth0 OAuth (email/password + Google social login)
 - **Access Token Cookie**: `auth-token`
@@ -74,14 +77,19 @@ auth-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...; refresh-token=v1.MRjTvIk8Rqn
 
 ### ✅ Best Practices
 
-1. **Use a Dedicated Test Account**: Create a specific user account for monitoring/testing
-2. **Minimal Permissions**: Give this account only the permissions needed to access the pages being tested
-3. **Regular Rotation**: Rotate the authentication token periodically (recommended: monthly)
-4. **Monitor Usage**: Check GitHub Actions logs to ensure the secret isn't being exposed
+1. **Use a Dedicated Test Account**: Create a specific user account for
+   monitoring/testing
+2. **Minimal Permissions**: Give this account only the permissions needed to
+   access the pages being tested
+3. **Regular Rotation**: Rotate the authentication token periodically
+   (recommended: monthly)
+4. **Monitor Usage**: Check GitHub Actions logs to ensure the secret isn't being
+   exposed
 
 ### ⚠️ Important Notes
 
-- **Token Expiration**: Your access tokens expire based on `sessionDuration` (currently 7 days)
+- **Token Expiration**: Your access tokens expire based on `sessionDuration`
+  (currently 7 days)
 - **Refresh Strategy**: You'll need to update the secret when tokens expire
 - **Environment Isolation**: Use different secrets for staging vs production
 
@@ -91,7 +99,8 @@ For long-term maintenance, consider automating token refresh:
 
 ### Option 1: Create a Long-Lived Service Account Token
 
-If Auth0 supports it, create a machine-to-machine (M2M) token with extended expiration.
+If Auth0 supports it, create a machine-to-machine (M2M) token with extended
+expiration.
 
 ### Option 2: Use GitHub Actions to Refresh Tokens
 
@@ -189,5 +198,4 @@ Performance metrics collected:
 
 ---
 
-**Last Updated**: 2026-02-05
-**Maintained By**: Pixelated Empathy DevOps Team
+**Last Updated**: 2026-02-05 **Maintained By**: Pixelated Empathy DevOps Team

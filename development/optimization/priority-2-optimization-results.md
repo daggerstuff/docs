@@ -2,16 +2,22 @@
 post_title: Priority 2 Optimization Results
 author1: System
 post_slug: priority-2-optimization-results
-microsoft_alias: ""
-featured_image: ""
-categories: ["infrastructure", "kubernetes"]
+microsoft_alias: ''
+featured_image: ''
+categories: ['infrastructure', 'kubernetes']
 tags:
   - kubernetes
   - optimization
   - resource-management
   - vpa
-ai_note: "This document captures Priority 2 optimization outcomes including resource quota implementation and VPA evaluation."
-summary: "Documentation of Priority 2.2 completion (resource requests/limits on all pods) and evaluation of Priority 2.1 (node size reduction) and Priority 2.3 (Vertical Pod Autoscaler), with implementation details, verification steps, and next steps."
+ai_note:
+  'This document captures Priority 2 optimization outcomes including resource
+  quota implementation and VPA evaluation.'
+summary:
+  'Documentation of Priority 2.2 completion (resource requests/limits on all
+  pods) and evaluation of Priority 2.1 (node size reduction) and Priority 2.3
+  (Vertical Pod Autoscaler), with implementation details, verification steps,
+  and next steps.'
 post_date: 2025-11-09
 ---
 
@@ -27,20 +33,24 @@ post_date: 2025-11-09
 
 ### Implementation Summary
 
-All pods now have appropriate resource requests and limits set based on actual usage patterns.
+All pods now have appropriate resource requests and limits set based on actual
+usage patterns.
 
 ### Cert-Manager Optimization
 
 **Before:**
+
 - No resource requests/limits set
 - Actual usage: 1-2m CPU, 28-38Mi memory per pod
 
 **After:**
+
 - **Requests:** 50m CPU, 64Mi memory
 - **Limits:** 200m CPU, 128Mi memory
 - **Pods:** 3 deployments (controller, cainjector, webhook)
 
 **Impact:**
+
 - Better resource predictability
 - Improved scheduling
 - Prevents resource contention
@@ -48,15 +58,18 @@ All pods now have appropriate resource requests and limits set based on actual u
 ### Traefik Optimization
 
 **Before:**
+
 - No resource requests/limits set
 - Actual usage: 3-4m CPU, 34-78Mi memory per pod
 
 **After:**
+
 - **Requests:** 100m CPU, 128Mi memory
 - **Limits:** 500m CPU, 256Mi memory
 - **Pods:** 2 DaemonSet pods (one per node)
 
 **Impact:**
+
 - Adequate headroom for traffic spikes
 - Better resource allocation
 - Improved stability
@@ -64,31 +77,35 @@ All pods now have appropriate resource requests and limits set based on actual u
 ### OTel Collector Optimization
 
 **Before:**
+
 - Resources set to "0" (effectively unlimited)
 - Actual usage: 11-43m CPU, 48-69Mi memory per pod
 
 **After:**
+
 - **Requests:** 100m CPU, 128Mi memory
 - **Limits:** 500m CPU, 256Mi memory
 - **Pods:** 2 DaemonSet pods (one per node)
 
 **Impact:**
+
 - Prevents unbounded resource usage
 - Better resource predictability
 - Improved cluster stability
 
 ### Resource Summary
 
-| Component | Pods | CPU Request | Memory Request | CPU Limit | Memory Limit |
-|-----------|------|-------------|----------------|-----------|--------------|
-| Cert-Manager (3 deployments) | 3 | 150m total | 192Mi total | 600m total | 384Mi total |
-| Traefik (DaemonSet) | 2 | 200m total | 256Mi total | 1000m total | 512Mi total |
-| OTel Collector (DaemonSet) | 2 | 200m total | 256Mi total | 1000m total | 512Mi total |
-| **Total** | **7** | **550m** | **704Mi** | **2600m** | **1408Mi** |
+| Component                    | Pods  | CPU Request | Memory Request | CPU Limit   | Memory Limit |
+| ---------------------------- | ----- | ----------- | -------------- | ----------- | ------------ |
+| Cert-Manager (3 deployments) | 3     | 150m total  | 192Mi total    | 600m total  | 384Mi total  |
+| Traefik (DaemonSet)          | 2     | 200m total  | 256Mi total    | 1000m total | 512Mi total  |
+| OTel Collector (DaemonSet)   | 2     | 200m total  | 256Mi total    | 1000m total | 512Mi total  |
+| **Total**                    | **7** | **550m**    | **704Mi**      | **2600m**   | **1408Mi**   |
 
 ### Verification
 
 All pods verified to have resource requests/limits:
+
 - ✅ Cert-Manager controller
 - ✅ Cert-Manager cainjector
 - ✅ Cert-Manager webhook
@@ -99,7 +116,8 @@ All pods verified to have resource requests/limits:
 
 1. **Better Scheduling:** Kubernetes scheduler can make informed decisions
 2. **Resource Predictability:** Known resource requirements for all pods
-3. **Prevent Resource Contention:** Limits prevent pods from consuming excessive resources
+3. **Prevent Resource Contention:** Limits prevent pods from consuming excessive
+   resources
 4. **Cost Optimization:** Better resource utilization tracking
 5. **Improved Stability:** Prevents OOM kills and CPU throttling
 
@@ -119,10 +137,12 @@ All pods verified to have resource requests/limits:
 ### Analysis
 
 **Current Resource Requests:**
+
 - Total CPU requests: ~3.15 cores (87% of cluster capacity)
 - Total Memory requests: ~3.6GB (59% of cluster capacity)
 
 **Node Size Reduction Feasibility:**
+
 - ❌ **Not Recommended at this time**
 - Current resource requests are too high for smaller nodes
 - g4s.kube.small (if available) would be 1 CPU, ~2GB RAM
@@ -155,6 +175,7 @@ All pods verified to have resource requests/limits:
 
 **VPA Status:** Not installed  
 **Cluster Compatibility:** ✅ Compatible
+
 - Metrics server: ✅ Installed
 - Node count: 2 nodes (adequate)
 - Kubernetes version: Compatible
@@ -162,17 +183,20 @@ All pods verified to have resource requests/limits:
 ### Workload Analysis
 
 **Good VPA Candidates:**
+
 - Cert-Manager (3 deployments) - resources set, VPA can optimize
 - Flux system (5 deployments) - resources set, VPA can optimize
 - Metoro exporter - resources set, VPA can optimize
 - CoreDNS, metrics-server, cluster-autoscaler - resources set, VPA can optimize
 
 **VPA Conflicts:**
+
 - Pixelated service - Has HPA enabled (cannot use VPA simultaneously)
 
 ### VPA Installation Options
 
 #### Method 1: Official VPA Repository (Recommended)
+
 ```bash
 git clone https://github.com/kubernetes/autoscaler.git
 cd autoscaler/vertical-pod-autoscaler
@@ -180,6 +204,7 @@ cd autoscaler/vertical-pod-autoscaler
 ```
 
 #### Method 2: Helm (Easier Management)
+
 ```bash
 helm repo add fairwinds-stable https://charts.fairwinds.com/stable
 helm repo update
@@ -187,6 +212,7 @@ helm install vpa fairwinds-stable/vpa --namespace vpa-system --create-namespace
 ```
 
 #### Method 3: Manual Installation
+
 ```bash
 kubectl apply -f https://github.com/kubernetes/autoscaler/releases/download/vertical-pod-autoscaler-0.14.0/vpa-release.yaml
 ```
@@ -214,12 +240,14 @@ kubectl apply -f https://github.com/kubernetes/autoscaler/releases/download/vert
 ### Risk Assessment
 
 **Risks:**
+
 1. **Pod Evictions:** VPA in 'Auto' mode can evict pods
 2. **HPA Conflicts:** Cannot use VPA and HPA together
 3. **Resource Limits:** VPA can recommend resources outside node capacity
 4. **Performance Impact:** VPA components consume cluster resources
 
 **Mitigations:**
+
 1. Start with 'Off' mode to get recommendations
 2. Review recommendations for 1-2 weeks
 3. Set min/max resource bounds in resourcePolicy
@@ -251,6 +279,7 @@ kubectl apply -f https://github.com/kubernetes/autoscaler/releases/download/vert
 ### Example VPA Configuration
 
 **VPA in 'Off' Mode (Recommendations Only):**
+
 ```yaml
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -263,16 +292,16 @@ spec:
     kind: Deployment
     name: cert-manager
   updatePolicy:
-    updateMode: "Off"  # Only recommendations, no auto-updates
+    updateMode: 'Off' # Only recommendations, no auto-updates
   resourcePolicy:
     containerPolicies:
-    - containerName: cert-manager-controller
-      minAllowed:
-        cpu: 50m
-        memory: 64Mi
-      maxAllowed:
-        cpu: 500m
-        memory: 512Mi
+      - containerName: cert-manager-controller
+        minAllowed:
+          cpu: 50m
+          memory: 64Mi
+        maxAllowed:
+          cpu: 500m
+          memory: 512Mi
 ```
 
 ### Next Steps
@@ -309,12 +338,14 @@ spec:
 ### Resource Impact
 
 **Total Resources Added:**
+
 - CPU Requests: 550m (0.55 cores)
 - Memory Requests: 704Mi (~0.69GB)
 - CPU Limits: 2600m (2.6 cores)
 - Memory Limits: 1408Mi (~1.38GB)
 
 **Benefits:**
+
 - Better resource predictability
 - Improved scheduling
 - Prevent resource contention
@@ -324,7 +355,7 @@ spec:
 ### Cost Impact
 
 - **Direct Savings:** Minimal (resources were already being used)
-- **Indirect Benefits:** 
+- **Indirect Benefits:**
   - Better resource utilization tracking
   - Prevented future resource waste
   - Improved cluster stability
@@ -333,6 +364,7 @@ spec:
 ### Monitoring & Validation
 
 **Metrics to Monitor:**
+
 1. Pod resource usage vs. requests/limits
 2. Pod evictions and OOM kills
 3. CPU throttling events
@@ -347,7 +379,8 @@ spec:
 2. **Validate:** Ensure no performance degradation
 3. **Document:** Update runbooks with new resource requirements
 4. **Optimize:** Continue optimizing workloads based on usage patterns
-5. **Consider VPA:** Evaluate VPA installation if continuous optimization is needed
+5. **Consider VPA:** Evaluate VPA installation if continuous optimization is
+   needed
 
 ---
 
@@ -388,24 +421,28 @@ spec:
 ## 🎯 Summary
 
 ### Priority 2.2: ✅ COMPLETED
+
 - All pods now have resource requests/limits
 - Better resource predictability and scheduling
 - Improved cluster stability
 
 ### Priority 2.1: 📊 EVALUATED
+
 - Node size reduction not recommended at this time
 - Re-evaluate after further optimization
 
 ### Priority 2.3: 🔍 EVALUATED
+
 - VPA installation guide provided
 - Ready for implementation if needed
 - Risk assessment completed
 
 #### Overall Status
-Priority 2.2 completed successfully. Priority 2.1 and 2.3 evaluated and ready for future implementation.
+
+Priority 2.2 completed successfully. Priority 2.1 and 2.3 evaluated and ready
+for future implementation.
 
 ---
 
 **Report Generated:** 2025-11-09  
 **Next Review:** 2025-11-11 (48 hours after implementation)
-

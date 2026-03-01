@@ -1,10 +1,13 @@
 # Rules System Documentation
 
-This document explains how coding rules and AI assistant guidelines are organized across AI agents and Warp.
+This document explains how coding rules and AI assistant guidelines are
+organized across AI agents and Warp.
 
 ## Overview
 
-The project maintains a unified rule system that works across multiple AI coding assistants (Warp, Claude, and other agents) while allowing tool-specific customizations.
+The project maintains a unified rule system that works across multiple AI coding
+assistants (Warp, Claude, and other agents) while allowing tool-specific
+customizations.
 
 ## Rule Files Structure
 
@@ -33,9 +36,11 @@ pixelated/
 ## Primary Rule Files
 
 ### WARP.md (Primary)
+
 **Purpose**: Comprehensive project rules for Warp AI assistant  
 **Audience**: Warp users, primary reference for all rules  
 **Content**:
+
 - Mission and project overview
 - Package manager requirements (pnpm, uv)
 - Testing commands and strategies
@@ -50,9 +55,10 @@ pixelated/
 **When to use**: Primary reference for all AI assistants working on this project
 
 ### .agentrules (Bridge)
-**Purpose**: Bridge file linking AI Agent to WARP.md
-**Audience**: AI Agent users
-**Content**:
+
+**Purpose**: Bridge file linking AI Agent to WARP.md **Audience**: AI Agent
+users **Content**:
+
 - Quick reference to essential commands
 - Links to WARP.md as primary reference
 - Critical security reminders
@@ -61,20 +67,24 @@ pixelated/
 **When to use**: AI Agent will automatically load this file
 
 ### CLAUDE.md (Supplementary)
-**Purpose**: Claude/Agent-specific assistant guide
-**Audience**: Claude AI, Agent users
-**Content**:
+
+**Purpose**: Claude/Agent-specific assistant guide **Audience**: Claude AI,
+Agent users **Content**:
+
 - Start session checklist
 - Links to additional `.agent/steering/` docs
 - Domain-specific guidelines
 - Workflow patterns
 
-**When to use**: Reference for Claude-specific features or `.agent/steering/` structure
+**When to use**: Reference for Claude-specific features or `.agent/steering/`
+structure
 
 ### AGENTS.md (Supplementary)
+
 **Purpose**: Modern ops and AI collaboration workflow  
 **Audience**: All AI assistants  
 **Content**:
+
 - Quick checklist format
 - Tooling requirements
 - Privacy and safety guidelines
@@ -85,9 +95,11 @@ pixelated/
 
 ## Tool-Specific Rules
 
-### Cursor Rules (.cursor/rules/*.mdc)
+### Cursor Rules (.cursor/rules/\*.mdc)
+
 **Format**: MDC (Markdown with frontmatter)  
 **Structure**:
+
 ```markdown
 ---
 name: skill-name
@@ -95,10 +107,12 @@ description: When and how to use this skill
 ---
 
 # Skill Title
+
 [Detailed documentation]
 ```
 
 **Available Skills**:
+
 - Development workflows (TDD, debugging, verification)
 - Architecture patterns (dispatching, subagents)
 - Tool-specific guides (Playwright, TypeScript, Python)
@@ -107,10 +121,12 @@ description: When and how to use this skill
 
 **When to reference**: When using Cursor IDE for specialized tasks
 
-### Warp Rules (.warp/rules/*.md)
+### Warp Rules (.warp/rules/\*.md)
+
 **Format**: Standard Markdown  
 **Content**: Core workflow skills converted for Warp  
 **Available Rules**:
+
 - `test-driven-development.md`: TDD workflow
 - `systematic-debugging.md`: Four-phase debugging
 - `verification-before-completion.md`: Evidence-based completion
@@ -130,6 +146,7 @@ When multiple rules conflict, follow this order (highest to lowest priority):
 ## Converting Rules Between Tools
 
 ### Agent → Warp
+
 1. Extract core concepts from `.agent/rules/*.mdc`
 2. Remove tool-specific formatting (frontmatter)
 3. Convert to standard Markdown
@@ -137,6 +154,7 @@ When multiple rules conflict, follow this order (highest to lowest priority):
 5. Reference in WARP.md if broadly applicable
 
 ### Warp → Agent
+
 1. Add frontmatter with name and description
 2. Keep Markdown content
 3. Save as `.agent/rules/[skill-name].mdc`
@@ -145,41 +163,48 @@ When multiple rules conflict, follow this order (highest to lowest priority):
 ## Maintenance
 
 ### Adding New Rules
+
 1. Determine primary audience (all tools vs. tool-specific)
 2. For universal rules: Add to WARP.md
 3. For tool-specific: Add to `.warp/rules/` or `.agent/rules/`
 4. Update this documentation
 
 ### Updating Rules
+
 1. Check if rule exists in multiple places
 2. Update WARP.md first (source of truth)
 3. Sync to tool-specific versions if needed
 4. Verify no conflicts with other rules
 
 ### Removing Rules
+
 1. Check references in other rule files
 2. Remove or update references
 3. Archive rather than delete (move to `docs/archived-rules/`)
 
 ## Best Practices
 
-1. **WARP.md is source of truth**: Always update WARP.md first for universal rules
+1. **WARP.md is source of truth**: Always update WARP.md first for universal
+   rules
 2. **Avoid duplication**: Link to WARP.md rather than copying content
-3. **Keep tools in sync**: When updating workflows, update both Cursor and Warp versions
+3. **Keep tools in sync**: When updating workflows, update both Cursor and Warp
+   versions
 4. **Document exceptions**: If a rule differs between tools, document why
-5. **Test changes**: Verify rules work with actual AI assistants before committing
+5. **Test changes**: Verify rules work with actual AI assistants before
+   committing
 
 ## Quick Reference
 
-**I'm using an AI Agent**: Start with `.agentrules`, reference WARP.md for details
-**I'm using Warp**: WARP.md is automatically loaded
-**I'm using Claude directly**: Reference CLAUDE.md and WARP.md
-**I need specialized skills**: Check `.agent/rules/` or `.warp/rules/`
-**I'm adding a new rule**: Start with WARP.md, then add tool-specific versions
+**I'm using an AI Agent**: Start with `.agentrules`, reference WARP.md for
+details **I'm using Warp**: WARP.md is automatically loaded **I'm using Claude
+directly**: Reference CLAUDE.md and WARP.md **I need specialized skills**: Check
+`.agent/rules/` or `.warp/rules/` **I'm adding a new rule**: Start with WARP.md,
+then add tool-specific versions
 
 ## Related Documentation
 
 - [WARP.md](../../WARP.md): Primary comprehensive rules
 - [CLAUDE.md](../../CLAUDE.md): Claude/Agent guide
 - [AGENTS.md](../../AGENTS.md): AI collaboration workflow
-- [Warp Documentation](https://docs.warp.dev/features/ai/rules): Official Warp rules docs
+- [Warp Documentation](https://docs.warp.dev/features/ai/rules): Official Warp
+  rules docs

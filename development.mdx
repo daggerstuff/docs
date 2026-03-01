@@ -4,11 +4,9 @@ description: 'Local development setup and commands for Pixelated Empathy'
 ---
 
 <Info>
-  **Prerequisites**:
-  - Node.js v19+ (use `nvm` to manage versions)
-  - pnpm (for Node.js dependencies)
-  - uv (for Python dependencies)
-  - Docker & Docker Compose (for local infrastructure)
+  **Prerequisites**: - Node.js v19+ (use `nvm` to manage versions) - pnpm (for
+  Node.js dependencies) - uv (for Python dependencies) - Docker & Docker Compose
+  (for local infrastructure)
 </Info>
 
 ## Quick Start
@@ -117,8 +115,8 @@ ubs $(git diff --name-only --cached)
 <AccordionGroup>
 <Accordion title="Port Conflicts" icon="circle-exclamation">
 
-If port 5173 is already in use, the Astro dev server will attempt the next available port.
-  You can also specify a custom port:
+If port 5173 is already in use, the Astro dev server will attempt the next
+available port. You can also specify a custom port:
 
 ```bash
 pnpm dev --port 3000
@@ -128,8 +126,8 @@ pnpm dev --port 3000
 
 <Accordion title="Node.js Memory Issues" icon="memory">
 
-The dev server is configured with increased memory (`--max-old-space-size=8192`).
-  If you still encounter memory issues:
+The dev server is configured with increased memory
+(`--max-old-space-size=8192`). If you still encounter memory issues:
 
 ```bash
 NODE_OPTIONS="--max-old-space-size=16384" pnpm dev
@@ -162,7 +160,8 @@ docker system df
 
 ## Documentation
 
-This documentation site is built with [Astro Starlight](https://starlight.astro.build/). To run the docs locally:
+This documentation site is built with
+[Astro Starlight](https://starlight.astro.build/). To run the docs locally:
 
 ```bash
 # From project root

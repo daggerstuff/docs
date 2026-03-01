@@ -10,7 +10,8 @@
 
 ### Cert-Manager Memory Updates
 
-All Cert-Manager deployments have been updated to use 100Mi memory requests (previously 64Mi):
+All Cert-Manager deployments have been updated to use 100Mi memory requests
+(previously 64Mi):
 
 1. **Cert-Manager Controller**
    - Previous: 64Mi memory request
@@ -33,21 +34,21 @@ All Cert-Manager deployments have been updated to use 100Mi memory requests (pre
 
 ### Before Optimization
 
-| Deployment | CPU Request | Memory Request |
-|------------|-------------|----------------|
-| cert-manager | 50m | 64Mi |
-| cert-manager-cainjector | 50m | 64Mi |
-| cert-manager-webhook | 50m | 64Mi |
-| **Total** | **150m** | **192Mi** |
+| Deployment              | CPU Request | Memory Request |
+| ----------------------- | ----------- | -------------- |
+| cert-manager            | 50m         | 64Mi           |
+| cert-manager-cainjector | 50m         | 64Mi           |
+| cert-manager-webhook    | 50m         | 64Mi           |
+| **Total**               | **150m**    | **192Mi**      |
 
 ### After Optimization
 
-| Deployment | CPU Request | Memory Request | Change |
-|------------|-------------|----------------|--------|
-| cert-manager | 50m | 100Mi | +36Mi |
-| cert-manager-cainjector | 50m | 100Mi | +36Mi |
-| cert-manager-webhook | 50m | 100Mi | +36Mi |
-| **Total** | **150m** | **300Mi** | **+108Mi** |
+| Deployment              | CPU Request | Memory Request | Change     |
+| ----------------------- | ----------- | -------------- | ---------- |
+| cert-manager            | 50m         | 100Mi          | +36Mi      |
+| cert-manager-cainjector | 50m         | 100Mi          | +36Mi      |
+| cert-manager-webhook    | 50m         | 100Mi          | +36Mi      |
+| **Total**               | **150m**    | **300Mi**      | **+108Mi** |
 
 ### Resource Impact Summary
 
@@ -63,6 +64,7 @@ All Cert-Manager deployments have been updated to use 100Mi memory requests (pre
 ### Deployment Status
 
 All deployments successfully rolled out:
+
 - ✅ cert-manager: Rolled out successfully
 - ✅ cert-manager-cainjector: Rolled out successfully
 - ✅ cert-manager-webhook: Rolled out successfully
@@ -70,6 +72,7 @@ All deployments successfully rolled out:
 ### Memory Requests Verified
 
 All deployments confirmed with 100Mi memory requests:
+
 - ✅ cert-manager: 100Mi
 - ✅ cert-manager-cainjector: 100Mi
 - ✅ cert-manager-webhook: 100Mi
@@ -94,7 +97,8 @@ All deployments confirmed with 100Mi memory requests:
 
 ## Expected Benefits
 
-1. **Better Safety Margin:** Increased memory provides better buffer for usage spikes
+1. **Better Safety Margin:** Increased memory provides better buffer for usage
+   spikes
 2. **VPA Alignment:** Resources now match VPA recommendations
 3. **Reduced Risk:** Lower risk of OOM kills during high load
 4. **Improved Stability:** Better resource predictability
@@ -212,7 +216,9 @@ kubectl patch deployment cert-manager-webhook -n cert-manager --type='json' -p='
 
 ✅ **Memory optimization successfully applied!**
 
-All Cert-Manager deployments now have 100Mi memory requests, aligning with VPA recommendations. This provides:
+All Cert-Manager deployments now have 100Mi memory requests, aligning with VPA
+recommendations. This provides:
+
 - Better safety margin for memory usage
 - Improved alignment with VPA recommendations
 - Reduced risk of OOM kills
@@ -225,4 +231,3 @@ All Cert-Manager deployments now have 100Mi memory requests, aligning with VPA r
 **Applied:** 2025-11-09  
 **Next Review:** 2025-11-11 (48 hours after application)  
 **Status:** ✅ Successfully Applied
-

@@ -33,7 +33,15 @@
         },
         "source_type": {
           "type": "string",
-          "enum": ["journal", "repository", "clinical_trial", "training_material", "social_media", "synthetic", "internal"],
+          "enum": [
+            "journal",
+            "repository",
+            "clinical_trial",
+            "training_material",
+            "social_media",
+            "synthetic",
+            "internal"
+          ],
           "description": "Type of source"
         },
         "source_url": {
@@ -47,7 +55,7 @@
         },
         "authors": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "description": "Authors or creators of the source data"
         },
         "publication_date": {
@@ -57,7 +65,14 @@
         },
         "acquisition_method": {
           "type": "string",
-          "enum": ["api", "web_scraping", "direct_download", "manual_collection", "contracted", "generated"],
+          "enum": [
+            "api",
+            "web_scraping",
+            "direct_download",
+            "manual_collection",
+            "contracted",
+            "generated"
+          ],
           "description": "Method used to acquire the data"
         },
         "acquisition_date": {
@@ -70,7 +85,13 @@
           "description": "Additional metadata about acquisition (API keys used, scraping parameters, etc.)"
         }
       },
-      "required": ["source_id", "source_name", "source_type", "acquisition_method", "acquisition_date"]
+      "required": [
+        "source_id",
+        "source_name",
+        "source_type",
+        "acquisition_method",
+        "acquisition_date"
+      ]
     },
     "license": {
       "type": "object",
@@ -78,7 +99,17 @@
       "properties": {
         "license_type": {
           "type": "string",
-          "enum": ["permissive", "contracted", "proprietary", "unclear", "cc_by", "cc_by_nc", "cc_by_nc_nd", "custom", "none"],
+          "enum": [
+            "permissive",
+            "contracted",
+            "proprietary",
+            "unclear",
+            "cc_by",
+            "cc_by_nc",
+            "cc_by_nc_nd",
+            "custom",
+            "none"
+          ],
           "description": "Type of license"
         },
         "license_text": {
@@ -87,12 +118,12 @@
         },
         "allowed_uses": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "description": "Explicitly allowed uses (e.g., ['training', 'evaluation', 'research'])"
         },
         "prohibited_uses": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "description": "Explicitly prohibited uses (e.g., ['redistribution', 'commercial'])"
         },
         "attribution_required": {
@@ -118,7 +149,12 @@
           "description": "Date license was verified"
         }
       },
-      "required": ["license_type", "allowed_uses", "prohibited_uses", "license_verification_status"]
+      "required": [
+        "license_type",
+        "allowed_uses",
+        "prohibited_uses",
+        "license_verification_status"
+      ]
     },
     "timestamps": {
       "type": "object",
@@ -190,7 +226,18 @@
               },
               "transformation_type": {
                 "type": "string",
-                "enum": ["ingestion", "normalization", "deduplication", "quality_scoring", "filtering", "anonymization", "redaction", "validation", "curation", "compilation"],
+                "enum": [
+                  "ingestion",
+                  "normalization",
+                  "deduplication",
+                  "quality_scoring",
+                  "filtering",
+                  "anonymization",
+                  "redaction",
+                  "validation",
+                  "curation",
+                  "compilation"
+                ],
                 "description": "Type of transformation"
               },
               "transformation_details": {
@@ -219,16 +266,21 @@
               },
               "errors": {
                 "type": "array",
-                "items": {"type": "string"},
+                "items": { "type": "string" },
                 "description": "Errors encountered during this stage"
               },
               "warnings": {
                 "type": "array",
-                "items": {"type": "string"},
+                "items": { "type": "string" },
                 "description": "Warnings generated during this stage"
               }
             },
-            "required": ["stage_name", "stage_order", "started_at", "transformation_type"]
+            "required": [
+              "stage_name",
+              "stage_order",
+              "started_at",
+              "transformation_type"
+            ]
           },
           "description": "Ordered list of processing stages applied"
         },
@@ -237,8 +289,8 @@
           "items": {
             "type": "object",
             "properties": {
-              "dataset_id": {"type": "string"},
-              "dataset_name": {"type": "string"},
+              "dataset_id": { "type": "string" },
+              "dataset_name": { "type": "string" },
               "contribution_ratio": {
                 "type": "number",
                 "minimum": 0,
@@ -253,11 +305,23 @@
         "quality_scores": {
           "type": "object",
           "properties": {
-            "empathy_score": {"type": "number", "minimum": 0, "maximum": 1},
-            "fidelity_score": {"type": "number", "minimum": 0, "maximum": 1},
-            "harmfulness_score": {"type": "number", "minimum": 0, "maximum": 1},
-            "domain_relevance_score": {"type": "number", "minimum": 0, "maximum": 1},
-            "overall_quality_score": {"type": "number", "minimum": 0, "maximum": 1}
+            "empathy_score": { "type": "number", "minimum": 0, "maximum": 1 },
+            "fidelity_score": { "type": "number", "minimum": 0, "maximum": 1 },
+            "harmfulness_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "domain_relevance_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "overall_quality_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
           }
         },
         "deduplication_info": {
@@ -265,12 +329,21 @@
           "properties": {
             "method": {
               "type": "string",
-              "enum": ["exact_match", "fuzzy_match", "semantic_similarity", "none"],
+              "enum": [
+                "exact_match",
+                "fuzzy_match",
+                "semantic_similarity",
+                "none"
+              ],
               "description": "Deduplication method used"
             },
-            "duplicates_removed": {"type": "integer"},
-            "duplication_rate": {"type": "number", "minimum": 0, "maximum": 1},
-            "threshold_used": {"type": "number"}
+            "duplicates_removed": { "type": "integer" },
+            "duplication_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "threshold_used": { "type": "number" }
           }
         },
         "anonymization_info": {
@@ -281,9 +354,9 @@
               "enum": ["none", "basic", "advanced", "full"],
               "description": "Level of anonymization applied"
             },
-            "pii_removed_count": {"type": "integer"},
-            "phi_removed_count": {"type": "integer"},
-            "anonymization_method": {"type": "string"}
+            "pii_removed_count": { "type": "integer" },
+            "phi_removed_count": { "type": "integer" },
+            "anonymization_method": { "type": "string" }
           }
         }
       },
@@ -330,7 +403,7 @@
         },
         "access_restrictions": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "description": "Access restrictions (e.g., ['hipaa_required', 'internal_only'])"
         }
       },
@@ -356,14 +429,21 @@
             "properties": {
               "finding_type": {
                 "type": "string",
-                "enum": ["compliance_issue", "data_quality", "license_violation", "provenance_gap", "storage_issue", "other"]
+                "enum": [
+                  "compliance_issue",
+                  "data_quality",
+                  "license_violation",
+                  "provenance_gap",
+                  "storage_issue",
+                  "other"
+                ]
               },
               "severity": {
                 "type": "string",
                 "enum": ["low", "medium", "high", "critical"]
               },
-              "description": {"type": "string"},
-              "recommendation": {"type": "string"},
+              "description": { "type": "string" },
+              "recommendation": { "type": "string" },
               "status": {
                 "type": "string",
                 "enum": ["open", "in_progress", "resolved", "dismissed"]
@@ -400,12 +480,19 @@
         },
         "quality_tier": {
           "type": "string",
-          "enum": ["priority", "professional", "cot", "reddit", "synthetic", "archive"],
+          "enum": [
+            "priority",
+            "professional",
+            "cot",
+            "reddit",
+            "synthetic",
+            "archive"
+          ],
           "description": "Quality tier assignment"
         },
         "tags": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "description": "Additional tags for categorization"
         },
         "notes": {
@@ -426,4 +513,3 @@
     "storage"
   ]
 }
-

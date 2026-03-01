@@ -1,6 +1,7 @@
 ## MCP Server Tools Documentation
 
-This document provides comprehensive documentation for all tools available in the Journal Dataset Research MCP Server.
+This document provides comprehensive documentation for all tools available in
+the Journal Dataset Research MCP Server.
 
 ## Table of Contents
 
@@ -20,14 +21,20 @@ This document provides comprehensive documentation for all tools available in th
 Create a new research session with target sources and search keywords.
 
 **Parameters:**
-- `target_sources` (array, required): List of target sources (e.g., `["pubmed", "doaj"]`)
-- `search_keywords` (object, required): Dictionary of search keywords by category
-  - Example: `{"therapeutic": ["therapy", "counseling"], "dataset": ["dataset", "conversation"]}`
+
+- `target_sources` (array, required): List of target sources (e.g.,
+  `["pubmed", "doaj"]`)
+- `search_keywords` (object, required): Dictionary of search keywords by
+  category
+  - Example:
+    `{"therapeutic": ["therapy", "counseling"], "dataset": ["dataset", "conversation"]}`
 - `weekly_targets` (object, optional): Dictionary of weekly targets
   - Example: `{"sources_identified": 10, "datasets_evaluated": 5}`
-- `session_id` (string, optional): Custom session ID (auto-generated if not provided)
+- `session_id` (string, optional): Custom session ID (auto-generated if not
+  provided)
 
 **Returns:**
+
 ```json
 {
   "session_id": "session_123",
@@ -44,6 +51,7 @@ Create a new research session with target sources and search keywords.
 ```
 
 **Example:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -67,7 +75,9 @@ Create a new research session with target sources and search keywords.
 ```
 
 **Errors:**
-- `TOOL_VALIDATION_ERROR` (-32001): Invalid parameters (e.g., empty target_sources or search_keywords)
+
+- `TOOL_VALIDATION_ERROR` (-32001): Invalid parameters (e.g., empty
+  target_sources or search_keywords)
 - `TOOL_EXECUTION_ERROR` (-32000): Failed to create session
 
 ---
@@ -77,12 +87,14 @@ Create a new research session with target sources and search keywords.
 List all research sessions.
 
 **Parameters:**
+
 - `filters` (object, optional): Filters for session listing
   - `status` (string, optional): Filter by status (e.g., "active", "completed")
   - `created_after` (string, optional): Filter by creation date (ISO format)
   - `created_before` (string, optional): Filter by creation date (ISO format)
 
 **Returns:**
+
 ```json
 {
   "sessions": [
@@ -98,6 +110,7 @@ List all research sessions.
 ```
 
 **Example:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -121,9 +134,11 @@ List all research sessions.
 Get details for a specific research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 
 **Returns:**
+
 ```json
 {
   "session_id": "session_123",
@@ -141,6 +156,7 @@ Get details for a specific research session.
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Missing session_id
 - `TOOL_EXECUTION_ERROR` (-32000): Session not found
 
@@ -151,6 +167,7 @@ Get details for a specific research session.
 Update a research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `updates` (object, required): Updates to apply
   - `target_sources` (array, optional): New target sources
@@ -159,6 +176,7 @@ Update a research session.
   - `status` (string, optional): New status
 
 **Returns:**
+
 ```json
 {
   "session_id": "session_123",
@@ -168,6 +186,7 @@ Update a research session.
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Invalid parameters
 - `TOOL_EXECUTION_ERROR` (-32000): Session not found or update failed
 
@@ -178,9 +197,11 @@ Update a research session.
 Delete a research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 
 **Returns:**
+
 ```json
 {
   "session_id": "session_123",
@@ -190,6 +211,7 @@ Delete a research session.
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Missing session_id
 - `TOOL_EXECUTION_ERROR` (-32000): Session not found or deletion failed
 
@@ -199,15 +221,20 @@ Delete a research session.
 
 ### discover_sources
 
-Discover dataset sources for a research session using keywords and target sources.
+Discover dataset sources for a research session using keywords and target
+sources.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
-- `keywords` (array, required): List of search keywords (e.g., `["therapy", "counseling", "dataset"]`)
+- `keywords` (array, required): List of search keywords (e.g.,
+  `["therapy", "counseling", "dataset"]`)
 - `sources` (array, required): List of target sources
-  - Allowed values: `["pubmed", "pubmed_central", "doaj", "dryad", "zenodo", "clinical_trials"]`
+  - Allowed values:
+    `["pubmed", "pubmed_central", "doaj", "dryad", "zenodo", "clinical_trials"]`
 
 **Returns:**
+
 ```json
 {
   "session_id": "session_123",
@@ -229,6 +256,7 @@ Discover dataset sources for a research session using keywords and target source
 ```
 
 **Example:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -246,11 +274,13 @@ Discover dataset sources for a research session using keywords and target source
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Missing required parameters or empty arrays
 - `TOOL_EXECUTION_ERROR` (-32000): Discovery failed
 - `TOOL_TIMEOUT` (-32002): Discovery operation timed out
 
 **Notes:**
+
 - This is an async operation that may take several minutes
 - Progress updates are available via progress resources
 - Sources are automatically deduplicated by DOI and similarity
@@ -262,14 +292,18 @@ Discover dataset sources for a research session using keywords and target source
 Get all sources for a research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `filters` (object, optional): Filters for source listing
   - `source_type` (string, optional): Filter by source type
   - `access_method` (string, optional): Filter by access method
-  - `published_after` (string, optional): Filter by publication date (ISO format)
-  - `published_before` (string, optional): Filter by publication date (ISO format)
+  - `published_after` (string, optional): Filter by publication date (ISO
+    format)
+  - `published_before` (string, optional): Filter by publication date (ISO
+    format)
 
 **Returns:**
+
 ```json
 {
   "sources": [
@@ -294,10 +328,12 @@ Get all sources for a research session.
 Get details for a specific source.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `source_id` (string, required): Source ID
 
 **Returns:**
+
 ```json
 {
   "source_id": "source_1",
@@ -315,6 +351,7 @@ Get details for a specific source.
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Missing required parameters
 - `TOOL_EXECUTION_ERROR` (-32000): Source not found
 
@@ -325,16 +362,20 @@ Get details for a specific source.
 Filter sources for a research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `filters` (object, required): Filters to apply
   - `source_type` (string, optional): Filter by source type
   - `access_method` (string, optional): Filter by access method
-  - `published_after` (string, optional): Filter by publication date (ISO format)
-  - `published_before` (string, optional): Filter by publication date (ISO format)
+  - `published_after` (string, optional): Filter by publication date (ISO
+    format)
+  - `published_before` (string, optional): Filter by publication date (ISO
+    format)
   - `title_search` (string, optional): Search in titles
   - `author_search` (string, optional): Search in authors
 
 **Returns:**
+
 ```json
 {
   "sources": [
@@ -357,13 +398,18 @@ Filter sources for a research session.
 
 ### evaluate_sources
 
-Evaluate dataset sources for a research session. This tool initiates evaluation of sources using the evaluation engine, which assesses therapeutic relevance, data structure quality, training integration, and ethical accessibility.
+Evaluate dataset sources for a research session. This tool initiates evaluation
+of sources using the evaluation engine, which assesses therapeutic relevance,
+data structure quality, training integration, and ethical accessibility.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
-- `source_ids` (array, optional): List of source IDs to evaluate. If not provided, all sources in the session will be evaluated.
+- `source_ids` (array, optional): List of source IDs to evaluate. If not
+  provided, all sources in the session will be evaluated.
 
 **Returns:**
+
 ```json
 {
   "session_id": "session_123",
@@ -372,8 +418,8 @@ Evaluate dataset sources for a research session. This tool initiates evaluation 
       "evaluation_id": "eval_1",
       "source_id": "source_1",
       "therapeutic_relevance_score": 0.85,
-      "data_structure_score": 0.90,
-      "training_integration_score": 0.80,
+      "data_structure_score": 0.9,
+      "training_integration_score": 0.8,
       "ethical_accessibility_score": 0.95,
       "overall_score": 0.875,
       "status": "completed",
@@ -386,6 +432,7 @@ Evaluate dataset sources for a research session. This tool initiates evaluation 
 ```
 
 **Example:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -402,11 +449,13 @@ Evaluate dataset sources for a research session. This tool initiates evaluation 
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Missing session_id
 - `TOOL_EXECUTION_ERROR` (-32000): Evaluation failed
 - `TOOL_TIMEOUT` (-32002): Evaluation operation timed out
 
 **Notes:**
+
 - This is an async operation that may take several minutes
 - Progress updates are available via progress resources
 - Evaluation scores range from 0.0 to 1.0
@@ -418,6 +467,7 @@ Evaluate dataset sources for a research session. This tool initiates evaluation 
 Get all evaluations for a research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `filters` (object, optional): Filters for evaluation listing
   - `min_score` (number, optional): Minimum overall score
@@ -425,6 +475,7 @@ Get all evaluations for a research session.
   - `evaluated_after` (string, optional): Filter by evaluation date (ISO format)
 
 **Returns:**
+
 ```json
 {
   "evaluations": [
@@ -446,17 +497,19 @@ Get all evaluations for a research session.
 Get details for a specific evaluation.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `evaluation_id` (string, required): Evaluation ID
 
 **Returns:**
+
 ```json
 {
   "evaluation_id": "eval_1",
   "source_id": "source_1",
   "therapeutic_relevance_score": 0.85,
-  "data_structure_score": 0.90,
-  "training_integration_score": 0.80,
+  "data_structure_score": 0.9,
+  "training_integration_score": 0.8,
   "ethical_accessibility_score": 0.95,
   "overall_score": 0.875,
   "status": "completed",
@@ -477,6 +530,7 @@ Get details for a specific evaluation.
 Update an evaluation (e.g., override scores, add notes).
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `evaluation_id` (string, required): Evaluation ID
 - `updates` (object, required): Updates to apply
@@ -485,10 +539,11 @@ Update an evaluation (e.g., override scores, add notes).
   - `status` (string, optional): Update status
 
 **Returns:**
+
 ```json
 {
   "evaluation_id": "eval_1",
-  "overall_score": 0.90,
+  "overall_score": 0.9,
   "notes": "Updated after review",
   "updated_at": "2025-01-15T11:00:00Z"
 }
@@ -500,13 +555,18 @@ Update an evaluation (e.g., override scores, add notes).
 
 ### acquire_datasets
 
-Acquire dataset sources for a research session. This tool initiates the acquisition process by submitting access requests and downloading datasets from the specified sources.
+Acquire dataset sources for a research session. This tool initiates the
+acquisition process by submitting access requests and downloading datasets from
+the specified sources.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
-- `source_ids` (array, optional): List of source IDs to acquire. If not provided, all sources in the session will be acquired.
+- `source_ids` (array, optional): List of source IDs to acquire. If not
+  provided, all sources in the session will be acquired.
 
 **Returns:**
+
 ```json
 {
   "session_id": "session_123",
@@ -528,6 +588,7 @@ Acquire dataset sources for a research session. This tool initiates the acquisit
 ```
 
 **Example:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -544,11 +605,13 @@ Acquire dataset sources for a research session. This tool initiates the acquisit
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Missing session_id
 - `TOOL_EXECUTION_ERROR` (-32000): Acquisition failed
 - `TOOL_TIMEOUT` (-32002): Acquisition operation timed out
 
 **Notes:**
+
 - This is an async operation that may take several minutes
 - Progress updates are available via progress resources
 - Datasets are downloaded and stored locally
@@ -560,12 +623,14 @@ Acquire dataset sources for a research session. This tool initiates the acquisit
 Get all acquisitions for a research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `filters` (object, optional): Filters for acquisition listing
   - `status` (string, optional): Filter by status
   - `acquired_after` (string, optional): Filter by acquisition date (ISO format)
 
 **Returns:**
+
 ```json
 {
   "acquisitions": [
@@ -587,10 +652,12 @@ Get all acquisitions for a research session.
 Get details for a specific acquisition.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `acquisition_id` (string, required): Acquisition ID
 
 **Returns:**
+
 ```json
 {
   "acquisition_id": "acq_1",
@@ -614,11 +681,14 @@ Get details for a specific acquisition.
 Update an acquisition (e.g., update status, add notes).
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `acquisition_id` (string, required): Acquisition ID
-- `status` (string, optional): Update status (e.g., "completed", "failed", "pending")
+- `status` (string, optional): Update status (e.g., "completed", "failed",
+  "pending")
 
 **Returns:**
+
 ```json
 {
   "acquisition_id": "acq_1",
@@ -633,16 +703,22 @@ Update an acquisition (e.g., update status, add notes).
 
 ### create_integration_plans
 
-Create integration plans for acquired datasets in a research session. This tool initiates integration planning by analyzing dataset structures and creating transformation specifications for integrating datasets into the training pipeline.
+Create integration plans for acquired datasets in a research session. This tool
+initiates integration planning by analyzing dataset structures and creating
+transformation specifications for integrating datasets into the training
+pipeline.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
-- `source_ids` (array, optional): List of source IDs to create integration plans for. If not provided, all acquired datasets in the session will be used.
+- `source_ids` (array, optional): List of source IDs to create integration plans
+  for. If not provided, all acquired datasets in the session will be used.
 - `target_format` (string, optional): Target format for integration
   - Allowed values: `["chatml", "conversation_record"]`
   - Default: `"chatml"`
 
 **Returns:**
+
 ```json
 {
   "session_id": "session_123",
@@ -668,6 +744,7 @@ Create integration plans for acquired datasets in a research session. This tool 
 ```
 
 **Example:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -685,11 +762,13 @@ Create integration plans for acquired datasets in a research session. This tool 
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Missing session_id or invalid target_format
 - `TOOL_EXECUTION_ERROR` (-32000): Integration planning failed
 - `TOOL_TIMEOUT` (-32002): Integration planning operation timed out
 
 **Notes:**
+
 - This is an async operation that may take several minutes
 - Progress updates are available via progress resources
 - Integration plans include schema mappings and transformation specifications
@@ -701,6 +780,7 @@ Create integration plans for acquired datasets in a research session. This tool 
 Get all integration plans for a research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `filters` (object, optional): Filters for integration plan listing
   - `target_format` (string, optional): Filter by target format
@@ -708,6 +788,7 @@ Get all integration plans for a research session.
   - `status` (string, optional): Filter by status
 
 **Returns:**
+
 ```json
 {
   "integration_plans": [
@@ -730,10 +811,12 @@ Get all integration plans for a research session.
 Get details for a specific integration plan.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `plan_id` (string, required): Integration plan ID
 
 **Returns:**
+
 ```json
 {
   "plan_id": "plan_1",
@@ -765,10 +848,12 @@ Get details for a specific integration plan.
 Generate a preprocessing script from an integration plan.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `plan_id` (string, required): Integration plan ID
 
 **Returns:**
+
 ```json
 {
   "plan_id": "plan_1",
@@ -779,6 +864,7 @@ Generate a preprocessing script from an integration plan.
 ```
 
 **Errors:**
+
 - `TOOL_VALIDATION_ERROR` (-32001): Missing required parameters
 - `TOOL_EXECUTION_ERROR` (-32000): Script generation failed or plan not found
 
@@ -788,9 +874,12 @@ Generate a preprocessing script from an integration plan.
 
 ### generate_report
 
-Generate a report for a research session. This tool creates comprehensive reports including session details, progress metrics, sources, evaluations, acquired datasets, and integration plans.
+Generate a report for a research session. This tool creates comprehensive
+reports including session details, progress metrics, sources, evaluations,
+acquired datasets, and integration plans.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `report_type` (string, optional): Type of report to generate
   - Allowed values: `["session_report", "weekly_report", "summary_report"]`
@@ -803,6 +892,7 @@ Generate a report for a research session. This tool creates comprehensive report
   - `end_date` (string, optional): End date in ISO format
 
 **Returns:**
+
 ```json
 {
   "report_id": "report_123",
@@ -829,6 +919,7 @@ Generate a report for a research session. This tool creates comprehensive report
 ```
 
 **Example:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -846,11 +937,14 @@ Generate a report for a research session. This tool creates comprehensive report
 ```
 
 **Errors:**
-- `TOOL_VALIDATION_ERROR` (-32001): Missing session_id or invalid report_type/format
+
+- `TOOL_VALIDATION_ERROR` (-32001): Missing session_id or invalid
+  report_type/format
 - `TOOL_EXECUTION_ERROR` (-32000): Report generation failed
 - `TOOL_TIMEOUT` (-32002): Report generation operation timed out
 
 **Notes:**
+
 - This is an async operation that may take several minutes for large sessions
 - Progress updates are available via progress resources
 - Reports are stored and can be retrieved using `get_report`
@@ -862,10 +956,12 @@ Generate a report for a research session. This tool creates comprehensive report
 Get a previously generated report.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 - `report_id` (string, required): Report ID
 
 **Returns:**
+
 ```json
 {
   "report_id": "report_123",
@@ -884,9 +980,11 @@ Get a previously generated report.
 List all reports for a research session.
 
 **Parameters:**
+
 - `session_id` (string, required): Session ID
 
 **Returns:**
+
 ```json
 {
   "reports": [
@@ -909,7 +1007,8 @@ All tools follow consistent error handling patterns:
 
 ### Error Codes
 
-- `TOOL_VALIDATION_ERROR` (-32001): Invalid parameters or missing required fields
+- `TOOL_VALIDATION_ERROR` (-32001): Invalid parameters or missing required
+  fields
 - `TOOL_EXECUTION_ERROR` (-32000): Tool execution failed
 - `TOOL_TIMEOUT` (-32002): Tool execution timed out
 
@@ -936,7 +1035,8 @@ All tools follow consistent error handling patterns:
 2. **Invalid Parameter Types**: Check parameter types match the schema
 3. **Session Not Found**: Verify session_id exists
 4. **Resource Not Found**: Verify resource IDs exist
-5. **Operation Timeout**: Long-running operations may timeout; check progress resources
+5. **Operation Timeout**: Long-running operations may timeout; check progress
+   resources
 
 ---
 
@@ -1023,4 +1123,3 @@ All tools follow consistent error handling patterns:
 ---
 
 For more information, see the [API Documentation](./README.md).
-

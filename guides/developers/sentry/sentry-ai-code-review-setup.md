@@ -1,6 +1,7 @@
 ## Sentry AI Code Review Setup Checklist
 
-This document provides a step-by-step checklist to ensure Sentry AI Code Review is fully configured and working.
+This document provides a step-by-step checklist to ensure Sentry AI Code Review
+is fully configured and working.
 
 ## ✅ Prerequisites Already Configured
 
@@ -41,6 +42,7 @@ Based on our current setup, the following are already in place:
 6. Grant the necessary permissions when prompted
 
 **Required Permissions:**
+
 - Contents: Read (to analyze code)
 - Metadata: Read (to access repository information)
 - Pull Requests: Read & Write (to comment on PRs)
@@ -51,7 +53,8 @@ Based on our current setup, the following are already in place:
 1. Log in to your Sentry dashboard
 2. Navigate to: **Settings > Organization Settings > AI Features**
 3. Enable **"PR Review and Test Generation"**
-4. If this option is not visible, ensure your organization has access to AI features
+4. If this option is not visible, ensure your organization has access to AI
+   features
    - AI features may require a Business or Enterprise plan
    - Contact Sentry support if needed
 
@@ -85,6 +88,7 @@ Based on our current setup, the following are already in place:
 5. Check for Sentry comments on the PR
 
 **Expected Behavior:**
+
 - Sentry should automatically comment on the PR
 - Comments should identify potential issues based on historical Sentry errors
 - Up to 5 issues per file should be shown
@@ -122,24 +126,30 @@ Use this checklist to verify everything is set up:
 **Check these in order:**
 
 1. **Seer App Installation**
+
    ```
    Repository Settings > Integrations > GitHub Apps
    ```
+
    - Verify "Seer by Sentry" is installed
    - Check that it has access to the repository
    - Ensure permissions are granted
 
 2. **AI Features Enabled**
+
    ```
    Sentry Dashboard > Settings > Organization Settings > AI Features
    ```
+
    - Verify "PR Review and Test Generation" is enabled
    - If missing, check plan eligibility
 
 3. **Code Mappings**
+
    ```
    Sentry Dashboard > Settings > Integrations > GitHub > Code Mappings
    ```
+
    - Verify mappings exist and are active
    - Check that Stack Trace Root and Source Code Root match your structure
 
@@ -178,7 +188,8 @@ Use this checklist to verify everything is set up:
 Once AI Code Review is working:
 
 1. **Monitor PR comments** - Review Sentry's suggestions
-2. **Integrate into workflow** - Consider making Sentry comments a required check
+2. **Integrate into workflow** - Consider making Sentry comments a required
+   check
 3. **Share with team** - Ensure all developers know about the feature
 4. **Provide feedback** - Help improve Sentry's AI by engaging with suggestions
 
@@ -187,6 +198,6 @@ Once AI Code Review is working:
 - AI Code Review is separate from the regular GitHub integration
 - The Seer GitHub App is specifically for AI features
 - Both the regular GitHub integration AND Seer app can be installed
-- Source maps are critical for JavaScript/TypeScript analysis (already configured)
+- Source maps are critical for JavaScript/TypeScript analysis (already
+  configured)
 - The feature works best with existing error history in Sentry
-

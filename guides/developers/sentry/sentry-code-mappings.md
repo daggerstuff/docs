@@ -1,28 +1,37 @@
 ## Sentry Code Mappings & Stack Trace Linking Configuration
 
-This document explains how to configure Sentry code mappings and stack trace linking for proper error tracking with source code references.
+This document explains how to configure Sentry code mappings and stack trace
+linking for proper error tracking with source code references.
 
 ## Overview
 
-Code mappings enable Sentry to link stack traces to your actual source code in GitHub, allowing you to:
+Code mappings enable Sentry to link stack traces to your actual source code in
+GitHub, allowing you to:
+
 - See the exact source code where errors occurred
 - Navigate directly from Sentry errors to GitHub files
-- View the exact commit version when the error occurred (if commit tracking is enabled)
+- View the exact commit version when the error occurred (if commit tracking is
+  enabled)
 
 ## Prerequisites
 
-1. **GitHub Integration**: Ensure the GitHub integration is installed in your Sentry organization
+1. **GitHub Integration**: Ensure the GitHub integration is installed in your
+   Sentry organization
    - Navigate to `Settings > Integrations > GitHub`
-   - Follow the [Sentry GitHub Integration Guide](https://docs.sentry.io/organization/integrations/source-code-mgmt/github/)
-   - Grant necessary permissions (Contents: Read, Metadata: Read, Pull Requests: Read & Write)
+   - Follow the
+     [Sentry GitHub Integration Guide](https://docs.sentry.io/organization/integrations/source-code-mgmt/github/)
+   - Grant necessary permissions (Contents: Read, Metadata: Read, Pull Requests:
+     Read & Write)
 
 2. **Source Maps**: Ensure source maps are being uploaded with releases
    - ✅ Configured in `astro.config.mjs` (Astro Sentry integration)
    - ✅ Configured in `vite.config.js` (Sentry Vite plugin)
-   - ✅ Configured in `.github/workflows/sentry-build.yml` (CI/CD release creation)
+   - ✅ Configured in `.github/workflows/sentry-build.yml` (CI/CD release
+     creation)
 
 3. **Release Tracking**: Releases must be set during builds
-   - ✅ Configured to use `SENTRY_RELEASE` environment variable (defaults to `github.sha` in CI/CD)
+   - ✅ Configured to use `SENTRY_RELEASE` environment variable (defaults to
+     `github.sha` in CI/CD)
 
 ## Configuring Code Mappings in Sentry Dashboard
 
@@ -39,19 +48,20 @@ Code mappings enable Sentry to link stack traces to your actual source code in G
 
 Based on our project structure:
 
-| Field | Value | Description |
-|-------|-------|-------------|
-| **Project** | `pixel-astro` | The Sentry project name |
-| **Repo** | `your-org/pixelated` | Your GitHub repository (org/repo format) |
-| **Branch** | `master` (or your default branch) | Default branch for code linking |
-| **Stack Trace Root** | `src/` | The root path in stack traces (where Sentry sees files) |
-| **Source Code Root** | `src/` | The root path in your GitHub repository |
+| Field                | Value                             | Description                                             |
+| -------------------- | --------------------------------- | ------------------------------------------------------- |
+| **Project**          | `pixel-astro`                     | The Sentry project name                                 |
+| **Repo**             | `your-org/pixelated`              | Your GitHub repository (org/repo format)                |
+| **Branch**           | `master` (or your default branch) | Default branch for code linking                         |
+| **Stack Trace Root** | `src/`                            | The root path in stack traces (where Sentry sees files) |
+| **Source Code Root** | `src/`                            | The root path in your GitHub repository                 |
 
 ### Determining Stack Trace Root and Source Code Root
 
 #### Example: Client-side JavaScript Errors
 
 If a stack trace shows:
+
 ```
 Error: Something went wrong
   at MyComponent (src/components/MyComponent.tsx:42:15)
@@ -59,6 +69,7 @@ Error: Something went wrong
 ```
 
 Then:
+
 - **Stack Trace Root**: `src/`
 - **Source Code Root**: `src/`
 
@@ -67,6 +78,7 @@ The paths match directly, so both values are `src/`.
 #### Example: Server-side Errors (Node.js)
 
 If a stack trace shows:
+
 ```
 Error: Database connection failed
   at connectDatabase (src/lib/db/index.ts:25:10)
@@ -74,6 +86,7 @@ Error: Database connection failed
 ```
 
 Then:
+
 - **Stack Trace Root**: `src/`
 - **Source Code Root**: `src/`
 
@@ -82,31 +95,38 @@ Again, the paths match directly.
 #### Example: Nested Directory Structure
 
 If your stack trace shows paths like:
+
 ```
 Error: Processing failed
   at processData (/app/src/lib/processing.ts:15:5)
 ```
 
 But in your GitHub repo the file is at:
+
 ```
 https://github.com/your-org/pixelated/blob/master/src/lib/processing.ts
 ```
 
 Then:
+
 - **Stack Trace Root**: `/app/src/` (the prefix Sentry sees)
 - **Source Code Root**: `src/` (where it actually is in the repo)
 
 ### Best Practices
 
-1. **Always provide a non-empty Stack Trace Root** when possible for better accuracy
-2. **Test with a real error** - Create a test error and verify the code mapping works
-3. **Update mappings when structure changes** - If you reorganize your code, update the mappings
+1. **Always provide a non-empty Stack Trace Root** when possible for better
+   accuracy
+2. **Test with a real error** - Create a test error and verify the code mapping
+   works
+3. **Update mappings when structure changes** - If you reorganize your code,
+   update the mappings
 
 ## Verifying Configuration
 
 ### 1. Check Release Creation
 
 In Sentry dashboard:
+
 - Go to `Releases`
 - Verify releases are being created with commit SHAs (e.g., `abc123def456...`)
 - Check that source maps are uploaded (should show file counts)
@@ -122,6 +142,7 @@ In Sentry dashboard:
 ### 3. Check Code Mappings Status
 
 In `Settings > Integrations > GitHub > Configurations > Code Mappings`:
+
 - Status should show as "Active" for each mapping
 - If there are issues, Sentry will show error messages
 
@@ -131,8 +152,10 @@ To enable commit tracking for releases:
 
 1. **Set up GitHub Integration** (already covered in Prerequisites)
 2. **Associate Commits with Releases**:
-   - Our CI/CD workflow (`.github/workflows/sentry-build.yml`) sets `SENTRY_RELEASE` to `github.sha`
-   - When creating releases, commits are automatically associated if the GitHub integration is configured
+   - Our CI/CD workflow (`.github/workflows/sentry-build.yml`) sets
+     `SENTRY_RELEASE` to `github.sha`
+   - When creating releases, commits are automatically associated if the GitHub
+     integration is configured
 
 3. **Verify Commit Association**:
    - Go to a release in Sentry
@@ -159,6 +182,7 @@ To enable commit tracking for releases:
 ### Source maps not being uploaded
 
 1. **Check environment variables**:
+
    ```bash
    SENTRY_AUTH_TOKEN  # Required for uploads
    SENTRY_ORG         # Default: 'pixelated-empathy-dq'
@@ -198,7 +222,8 @@ To enable commit tracking for releases:
 
 ## AI Code Review Setup
 
-Sentry's AI Code Review analyzes pull requests and predicts potential errors before code is merged.
+Sentry's AI Code Review analyzes pull requests and predicts potential errors
+before code is merged.
 
 ### Prerequisites
 
@@ -211,7 +236,8 @@ Sentry's AI Code Review analyzes pull requests and predicts potential errors bef
    - ✅ Repository linked to Sentry project
 
 3. **Seer by Sentry GitHub App** (required):
-   - Install the [Seer by Sentry GitHub App](https://github.com/apps/seer-by-sentry)
+   - Install the
+     [Seer by Sentry GitHub App](https://github.com/apps/seer-by-sentry)
    - Click "Configure" and install for your repository
    - Grant necessary permissions (automatically requested)
 
@@ -223,8 +249,10 @@ Sentry's AI Code Review analyzes pull requests and predicts potential errors bef
 ### How It Works
 
 Once configured, Sentry AI Code Review will:
+
 - **Automatically analyze pull requests** when opened or updated
-- **Predict potential errors** based on code changes and historical Sentry issues
+- **Predict potential errors** based on code changes and historical Sentry
+  issues
 - **Suggest fixes** for code that matches patterns from previous issues
 - **Comment on pull requests** with up to 5 issues per file
 
@@ -233,11 +261,13 @@ Once configured, Sentry AI Code Review will:
 1. **Issue Detection**:
    - Analyzes files and functions modified in PRs
    - Finds recent unhandled, unresolved issues associated with changed code
-   - Shows issues first seen within the past 90 days, last seen within the past 14 days
+   - Shows issues first seen within the past 90 days, last seen within the past
+     14 days
 
 2. **Language Support**:
    - Currently supports: Python, JavaScript/TypeScript, PHP, and Ruby
-   - For JavaScript/TypeScript: Requires source maps to be set up (✅ already configured)
+   - For JavaScript/TypeScript: Requires source maps to be set up (✅ already
+     configured)
 
 3. **Integration**:
    - Automatically enabled once GitHub integration and Seer app are installed
@@ -267,6 +297,7 @@ To verify AI Code Review is working:
 ### Troubleshooting
 
 **AI Code Review not commenting on PRs**:
+
 1. Verify Seer by Sentry GitHub App is installed
 2. Check that AI features are enabled in Sentry organization settings
 3. Ensure code mappings are configured correctly
@@ -274,6 +305,7 @@ To verify AI Code Review is working:
 5. Check that files modified in PR match supported languages
 
 **Comments not appearing**:
+
 1. Wait a few moments - analysis takes time
 2. Check GitHub app permissions are granted
 3. Verify repository is connected in Sentry dashboard
@@ -290,8 +322,8 @@ To verify AI Code Review is working:
 ## Support
 
 If you encounter issues:
+
 1. Check the troubleshooting section above
 2. Review Sentry dashboard error messages
 3. Check build logs for upload failures
 4. Verify environment variables are set correctly
-

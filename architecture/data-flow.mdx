@@ -1,19 +1,28 @@
 ---
-title: "Data Flow & Integration Points"
-description: "How data moves through Pixelated Empathy — from user input to emotional analysis, bias detection, memory storage, and real-time feedback. Covers all external integrations and communication protocols."
+title: 'Data Flow & Integration Points'
+description:
+  'How data moves through Pixelated Empathy — from user input to emotional
+  analysis, bias detection, memory storage, and real-time feedback. Covers all
+  external integrations and communication protocols.'
 ---
 
 ## Data flow overview
 
-Every interaction on the Pixelated Empathy platform triggers a precisely orchestrated data flow across multiple services. Understanding these flows is essential for debugging, performance optimization, and compliance auditing.
+Every interaction on the Pixelated Empathy platform triggers a precisely
+orchestrated data flow across multiple services. Understanding these flows is
+essential for debugging, performance optimization, and compliance auditing.
 
 <Note>
-  All data flows are designed with **HIPAA compliance** as a first-class constraint. PII is filtered before storage, sensitive data never leaves the processing boundary unencrypted, and audit logs track every data movement.
+  All data flows are designed with **HIPAA compliance** as a first-class
+  constraint. PII is filtered before storage, sensitive data never leaves the
+  processing boundary unencrypted, and audit logs track every data movement.
 </Note>
 
 ## Training session flow
 
-The most critical data flow in the platform is the **training session lifecycle** — the path data takes from the moment a trainee types a message to when they receive AI-generated feedback.
+The most critical data flow in the platform is the **training session
+lifecycle** — the path data takes from the moment a trainee types a message to
+when they receive AI-generated feedback.
 
 ```
 ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
@@ -62,6 +71,7 @@ The most critical data flow in the platform is the **training session lifecycle*
       conversation_history: recentMessages
     }
     ```
+
   </Step>
   <Step title="API Gateway Processing" icon="shield-halved">
     The Express API gateway receives the request and runs it through the middleware chain:
@@ -71,6 +81,7 @@ The most critical data flow in the platform is the **training session lifecycle*
     3. **Input Validation**: Schema validation and sanitization
     4. **Request Logging**: Audit trail entry with request metadata
     5. **Routing**: Forward to the appropriate AI service endpoint
+
   </Step>
   <Step title="Parallel AI Analysis" icon="arrows-split-up-and-left">
     The request fans out to multiple AI services simultaneously for maximum throughput:
@@ -79,6 +90,7 @@ The most critical data flow in the platform is the **training session lifecycle*
     - **Bias Detection**: Check for demographic bias patterns in the conversation context
     - **Crisis Detection**: Scan for self-harm, violence, despair, substance abuse, or medical emergency signals
     - **Memory Retrieval**: Search for relevant long-term memories to personalize the response
+
   </Step>
   <Step title="Crisis Detection Gate" icon="triangle-exclamation">
     Crisis detection results are evaluated **before** response generation. If a crisis signal is detected:
@@ -93,6 +105,7 @@ The most critical data flow in the platform is the **training session lifecycle*
         logger.warning(f"Crisis signal: {crisis_severity} for user {uid}")
         # Crisis context injected into response generation prompt
     ```
+
   </Step>
   <Step title="Response Generation" icon="robot">
     The Pixel Inference Service combines all analysis results to generate a contextual response:
@@ -119,6 +132,7 @@ The most critical data flow in the platform is the **training session lifecycle*
         contents=f"{system_prompt}\nUSER: {query}"
     )
     ```
+
   </Step>
   <Step title="Memory Storage" icon="floppy-disk">
     After response generation, the interaction is stored in long-term memory with full filtering:
@@ -129,6 +143,7 @@ The most critical data flow in the platform is the **training session lifecycle*
     4. **Metadata Tagging**: Attach session ID, crisis flags, category, and timestamp
 
     If content fails filtering (>50% redacted, below confidence threshold), it is **not stored**.
+
   </Step>
   <Step title="Feedback & Analytics" icon="chart-mixed">
     The final response is packaged with rich analytics metadata and returned to the frontend:
@@ -154,6 +169,7 @@ The most critical data flow in the platform is the **training session lifecycle*
       "timestamp": "2025-01-24T14:30:00Z"
     }
     ```
+
   </Step>
   <Step title="Real-time Display" icon="display">
     The frontend receives the response and updates the UI in real time:
@@ -162,12 +178,15 @@ The most critical data flow in the platform is the **training session lifecycle*
     - **Emotion Radar**: Updates the real-time emotion visualization
     - **Feedback Sidebar**: Shows empathy score, technique suggestions, and breakthrough indicators
     - **Session Timeline**: Adds the interaction to the session history with emotional trajectory
+
   </Step>
 </Steps>
 
 ## Real-time communication (WebSocket)
 
-Training sessions require low-latency, bidirectional communication that HTTP request-response cannot provide. WebSocket connections handle all real-time data flows.
+Training sessions require low-latency, bidirectional communication that HTTP
+request-response cannot provide. WebSocket connections handle all real-time data
+flows.
 
 <Tabs>
   <Tab title="Connection Lifecycle">
@@ -225,12 +244,15 @@ Training sessions require low-latency, bidirectional communication that HTTP req
     <Tip>
       Supervisor observation is **read-only by default** — supervisors see everything the trainee sees plus additional analytics, but the trainee is unaware of the observation unless the supervisor chooses to intervene.
     </Tip>
+
   </Tab>
 </Tabs>
 
 ## Integration points
 
-Pixelated Empathy integrates with multiple external services and academic databases. Each integration is abstracted behind a service interface with retry logic, circuit breakers, and fallback behavior.
+Pixelated Empathy integrates with multiple external services and academic
+databases. Each integration is abstracted behind a service interface with retry
+logic, circuit breakers, and fallback behavior.
 
 ### Academic databases
 
@@ -239,20 +261,24 @@ Pixelated Empathy integrates with multiple external services and academic databa
     **NIH National Library of Medicine**
 
     Primary source for peer-reviewed mental health research. The Journal Research Pipeline queries PubMed's E-utilities API for therapeutic technique studies, treatment efficacy data, and clinical guidelines.
+
   </Card>
   <Card title="arXiv" icon="file-lines">
     **Open-Access Research**
 
     Source for pre-print research in computational psychology, NLP for mental health, and AI-assisted therapy. Useful for staying current with cutting-edge methodologies before peer review.
+
   </Card>
   <Card title="IEEE Xplore" icon="microchip">
     **Engineering & Computing**
 
     Source for research on affective computing, emotion recognition systems, bias detection algorithms, and human-computer interaction in therapeutic contexts.
+
   </Card>
 </CardGroup>
 
-The Journal Research Pipeline processes academic sources through a standardized ingestion flow:
+The Journal Research Pipeline processes academic sources through a standardized
+ingestion flow:
 
 ```
 ┌───────────┐    ┌────────────┐    ┌──────────────┐    ┌─────────────┐
@@ -289,6 +315,7 @@ The Journal Research Pipeline processes academic sources through a standardized 
       AWS_S3_BUCKET: ${AWS_S3_BUCKET:-pixelated-business-docs}
       AWS_CLOUDFRONT_DOMAIN: ${AWS_CLOUDFRONT_DOMAIN}
     ```
+
   </Tab>
   <Tab title="Authentication (Better Auth)">
     Authentication is handled through a JWT-based flow with role-based access control (RBAC).
@@ -308,6 +335,7 @@ The Journal Research Pipeline processes academic sources through a standardized 
     | `supervisor` | Trainee observation, progress reports, scenario management |
     | `admin` | Full platform access, user management, system configuration |
     | `researcher` | Anonymized analytics, research pipeline access |
+
   </Tab>
   <Tab title="Email & Notifications">
     Transactional email and notification delivery for session summaries, crisis alerts, and administrative communications.
@@ -325,18 +353,21 @@ The Journal Research Pipeline processes academic sources through a standardized 
     SMTP_PORT: ${SMTP_PORT:-587}
     FROM_EMAIL: ${FROM_EMAIL:-noreply@pixelated.com}
     ```
+
   </Tab>
 </Tabs>
 
 ### MCP Protocol for AI agent integration
 
-The Model Context Protocol (MCP) enables external AI agents to interact with Pixelated Empathy's memory system through a standardized interface.
+The Model Context Protocol (MCP) enables external AI agents to interact with
+Pixelated Empathy's memory system through a standardized interface.
 
 <AccordionGroup>
   <Accordion title="What is MCP?" icon="plug">
     The **Model Context Protocol** is an open standard for connecting AI models to external data sources and tools. Pixelated Empathy implements an MCP server that exposes memory operations (add, search, update, delete) to any MCP-compatible AI agent.
 
     This means tools like Claude, custom LangChain agents, or third-party therapy platforms can read and write to the Pixelated Empathy memory system — with full PII filtering and access control.
+
   </Accordion>
   <Accordion title="MCP Server Endpoints" icon="server">
     The MCP Memory Server (port `5003`) exposes these operations:
@@ -355,6 +386,7 @@ The Model Context Protocol (MCP) enables external AI agents to interact with Pix
     - Speculation filtering (confidence thresholds for uncertain statements)
     - Crisis signal detection and flagging
     - Content length limits (max 2000 characters per memory)
+
   </Accordion>
   <Accordion title="Client Integration" icon="code">
     Frontend applications use the `MCPMemoryClient` TypeScript client:
@@ -378,12 +410,14 @@ The Model Context Protocol (MCP) enables external AI agents to interact with Pix
     // Get statistics
     const stats = await mcpMemoryManager.getMemoryStats(userId)
     ```
+
   </Accordion>
 </AccordionGroup>
 
 ## Analytics pipeline
 
-Every training session produces rich analytics data that flows through a dedicated pipeline for reporting and continuous improvement.
+Every training session produces rich analytics data that flows through a
+dedicated pipeline for reporting and continuous improvement.
 
 ```
 ┌─────────────┐    ┌──────────────┐    ┌─────────────┐    ┌──────────────┐
@@ -433,13 +467,16 @@ Every training session produces rich analytics data that flows through a dedicat
     ```
 
     These counters power the supervisor dashboard's real-time activity feed and the admin system health panel.
+
   </Tab>
 </Tabs>
 
 ## Data flow security
 
 <Warning>
-  All data flows between services use **TLS encryption** in production. Internal service-to-service communication within the Docker/Kubernetes network uses mutual TLS where available. No sensitive data is transmitted in plaintext.
+  All data flows between services use **TLS encryption** in production. Internal
+  service-to-service communication within the Docker/Kubernetes network uses
+  mutual TLS where available. No sensitive data is transmitted in plaintext.
 </Warning>
 
 <CardGroup cols={2}>
@@ -471,7 +508,8 @@ Every training session produces rich analytics data that flows through a dedicat
 
 ## Error handling and resilience
 
-Each data flow implements circuit breaker patterns and fallback hierarchies to ensure graceful degradation.
+Each data flow implements circuit breaker patterns and fallback hierarchies to
+ensure graceful degradation.
 
 <AccordionGroup>
   <Accordion title="Memory System Fallback Chain" icon="link-slash">
@@ -486,6 +524,7 @@ Each data flow implements circuit breaker patterns and fallback hierarchies to e
     ```
 
     The `NullMemoryManager` ensures the platform continues functioning even if the entire memory subsystem is unavailable — responses are generated without memory context, and a warning is logged for operations review.
+
   </Accordion>
   <Accordion title="Database Connection Recovery" icon="database">
     The API gateway implements automatic reconnection for all three database systems:
@@ -501,6 +540,7 @@ Each data flow implements circuit breaker patterns and fallback hierarchies to e
     ```
 
     On startup, if any database connection fails, the server exits with a clear error message rather than running in a degraded state that could cause data inconsistency.
+
   </Accordion>
   <Accordion title="Rate Limiting and Back-pressure" icon="gauge-high">
     Rate limiting is applied at the API gateway level to prevent any single user or service from overwhelming the system:
@@ -509,11 +549,15 @@ Each data flow implements circuit breaker patterns and fallback hierarchies to e
     - **Per-endpoint**: Critical endpoints (e.g., `/api/auth`) have stricter limits
     - **Global**: Overall system throughput cap to protect downstream services
     - **WebSocket**: Message frequency limits per session to prevent flooding
+
   </Accordion>
 </AccordionGroup>
 
 ---
 
 <Info>
-  **Next:** Dive into the [Memory System Architecture](/architecture/memory-system) to understand how Mem0 + Gemini powers long-term memory with PII compliance, or explore the [Deployment Architecture](/architecture/deployment) for infrastructure details.
+  **Next:** Dive into the [Memory System
+  Architecture](/architecture/memory-system) to understand how Mem0 + Gemini
+  powers long-term memory with PII compliance, or explore the [Deployment
+  Architecture](/architecture/deployment) for infrastructure details.
 </Info>

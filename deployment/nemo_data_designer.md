@@ -40,18 +40,22 @@ curl https://nemo-data-designer.your-cluster-domain.com/health
 ### Troubleshooting
 
 **Service not accessible?**
+
 - Check deployment status: `kubectl get deployments nemo-data-designer`
 - Check service status: `kubectl get services nemo-data-designer`
 - Check ingress status: `kubectl get ingress nemo-data-designer`
 
 **View logs:**
+
 ```bash
 kubectl logs -l app=nemo-data-designer -f
 ```
 
 **Restart service:**
+
 ```bash
 kubectl rollout restart deployment/nemo-data-designer
 ```
 
-For more details, see [Kubernetes Deployment Guide](./docs/guides/technical-guides/deployment/nemo-data-designer-k8s-deployment.md)
+For more details, see
+[Kubernetes Deployment Guide](./docs/guides/technical-guides/deployment/nemo-data-designer-k8s-deployment.md)

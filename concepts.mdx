@@ -1,6 +1,8 @@
 ---
 title: 'Core Concepts'
-description: 'The psychological frameworks, scoring models, and AI systems that form the scientific foundation of Pixelated Empathy.'
+description:
+  'The psychological frameworks, scoring models, and AI systems that form the
+  scientific foundation of Pixelated Empathy.'
 ---
 
 ## Overview
@@ -91,8 +93,8 @@ more EARS phases.
 
 ### How EARS is scored
 
-Each phase is evaluated on a `0.0` to `1.0` scale based on the presence,
-timing, and quality of the response. The platform also tracks:
+Each phase is evaluated on a `0.0` to `1.0` scale based on the presence, timing,
+and quality of the response. The platform also tracks:
 
 | Metric                  | What it measures                                             |
 | ----------------------- | ------------------------------------------------------------ |
@@ -116,20 +118,20 @@ conversations.
 Plutchik identified eight primary emotions arranged in opposing pairs:
 
 <CardGroup cols={2}>
-  <Card title="Joy ↔ Sadness" icon="face-smile">
+  <Card title='Joy ↔ Sadness' icon='face-smile'>
     **Joy** ranges from serenity (low intensity) through joy (moderate) to
     ecstasy (high intensity). **Sadness** ranges from pensiveness through
     sadness to grief.
   </Card>
-  <Card title="Trust ↔ Disgust" icon="handshake">
+  <Card title='Trust ↔ Disgust' icon='handshake'>
     **Trust** ranges from acceptance through trust to admiration. **Disgust**
     ranges from boredom through disgust to loathing.
   </Card>
-  <Card title="Fear ↔ Anger" icon="shield">
+  <Card title='Fear ↔ Anger' icon='shield'>
     **Fear** ranges from apprehension through fear to terror. **Anger** ranges
     from annoyance through anger to rage.
   </Card>
-  <Card title="Surprise ↔ Anticipation" icon="bolt">
+  <Card title='Surprise ↔ Anticipation' icon='bolt'>
     **Surprise** ranges from distraction through surprise to amazement.
     **Anticipation** ranges from interest through anticipation to vigilance.
   </Card>
@@ -137,7 +139,8 @@ Plutchik identified eight primary emotions arranged in opposing pairs:
 
 ### Intensity levels
 
-Each primary emotion exists at three intensity levels, moving from mild to extreme:
+Each primary emotion exists at three intensity levels, moving from mild to
+extreme:
 
 ```text
 Low Intensity          Medium Intensity       High Intensity
@@ -284,14 +287,15 @@ Each dimension is scored on a `0.0` to `1.0` normalized scale:
 
 In The Empathy Gym™, the AI client's OCEAN profile directly influences:
 
-- **Response style** — How verbose, emotional, or guarded the client's
-  responses are
+- **Response style** — How verbose, emotional, or guarded the client's responses
+  are
 - **Resistance patterns** — What triggers defensiveness and how it manifests
 - **Trust progression** — How quickly the client opens up based on the
   therapist's skill
-- **Crisis vulnerability** — How personality interacts with stressors to
-  elevate risk
-- **Breakthrough potential** — Which therapeutic approaches unlock genuine progress
+- **Crisis vulnerability** — How personality interacts with stressors to elevate
+  risk
+- **Breakthrough potential** — Which therapeutic approaches unlock genuine
+  progress
 
 ---
 
@@ -354,21 +358,21 @@ The platform also scores the _therapist's_ responses:
 
 ## Therapeutic alliance
 
-**Therapeutic alliance** — the collaborative bond between therapist and
-client — is one of the strongest predictors of positive therapeutic outcomes
-across all modalities. Pixelated Empathy tracks alliance development using
-**Bordin's model**, which identifies three core components:
+**Therapeutic alliance** — the collaborative bond between therapist and client —
+is one of the strongest predictors of positive therapeutic outcomes across all
+modalities. Pixelated Empathy tracks alliance development using **Bordin's
+model**, which identifies three core components:
 
 <CardGroup cols={3}>
-  <Card title="Task Agreement" icon="list-check">
+  <Card title='Task Agreement' icon='list-check'>
     The degree to which therapist and client agree on what they're working on in
     session — the specific activities, techniques, and approaches being used.
   </Card>
-  <Card title="Goal Alignment" icon="bullseye">
+  <Card title='Goal Alignment' icon='bullseye'>
     Shared understanding of the desired outcomes of therapy — what success looks
     like, and whether both parties are working toward the same end.
   </Card>
-  <Card title="Relational Bond" icon="heart">
+  <Card title='Relational Bond' icon='heart'>
     The quality of the human connection — mutual trust, respect, warmth, and the
     client's sense that the therapist genuinely cares about their wellbeing.
   </Card>
@@ -379,13 +383,13 @@ across all modalities. Pixelated Empathy tracks alliance development using
 During training sessions, therapeutic alliance is tracked as a `0.0` to `1.0`
 continuous score that evolves throughout the conversation:
 
-- **Below 0.4** — Weak alliance. The system may generate feedback suggesting
-  the therapist focus on rapport-building before introducing interventions.
-- **0.4 – 0.7** — Developing alliance. The client is cautiously engaged, and
-  the system encourages deepening the connection.
-- **Above 0.7** — Strong alliance. The therapeutic relationship can support
-  more challenging interventions like confrontation, cognitive restructuring,
-  or trauma processing.
+- **Below 0.4** — Weak alliance. The system may generate feedback suggesting the
+  therapist focus on rapport-building before introducing interventions.
+- **0.4 – 0.7** — Developing alliance. The client is cautiously engaged, and the
+  system encourages deepening the connection.
+- **Above 0.7** — Strong alliance. The therapeutic relationship can support more
+  challenging interventions like confrontation, cognitive restructuring, or
+  trauma processing.
 
 Alliance strength is influenced by the therapist's demonstrated empathy,
 validation, consistency, and respect for the client's autonomy. Alliance
@@ -474,8 +478,8 @@ real time across five signal categories.
 
 ### Risk levels
 
-Each detected signal is assigned a severity score (`0.0`–`1.0`), which maps to
-a five-level risk classification:
+Each detected signal is assigned a severity score (`0.0`–`1.0`), which maps to a
+five-level risk classification:
 
 ```text
 Risk Level       Severity Score    Response Required
@@ -491,7 +495,8 @@ Imminent         0.9 – 1.0        Contact emergency services immediately
 
 The base severity score is adjusted upward by contextual factors:
 
-- **Specificity** — Mentions of a specific plan, method, timeline, or means (+0.3)
+- **Specificity** — Mentions of a specific plan, method, timeline, or means
+  (+0.3)
 - **Access to means** — References to having weapons, pills, or other lethal
   means (+0.4)
 - **Immediacy** — Language indicating the crisis is happening now ("right now,"
@@ -512,15 +517,15 @@ The base severity score is adjusted upward by contextual factors:
 Based on risk level, the system generates an appropriate escalation protocol:
 
 <Tabs>
-  <Tab title="Moderate">
+  <Tab title='Moderate'>
     - Flag session for supervisor review - Schedule follow-up within 24 hours -
     Provide crisis resources to the user
   </Tab>
-  <Tab title="High">
+  <Tab title='High'>
     - Contact primary therapist for urgent intervention - Notify crisis response
     team - Initiate safety plan review
   </Tab>
-  <Tab title="Imminent">
+  <Tab title='Imminent'>
     - Contact emergency services (911/112) immediately - Notify on-call
     psychiatrist - Activate immediate location tracking (if applicable)
   </Tab>
@@ -548,27 +553,27 @@ multiple dimensions and scored by severity.
       men)
   </Accordion>
 
-<Accordion title="Age bias" icon="calendar">
+<Accordion title='Age bias' icon='calendar'>
   Assumptions based on age group: - Dismissing younger clients as "naive" or
   "inexperienced" - Patronizing older clients or assuming cognitive decline -
   Applying generational stereotypes ("entitled millennial," "out-of-touch
   boomer")
 </Accordion>
 
-<Accordion title="Ethnic and racial bias" icon="globe">
+<Accordion title='Ethnic and racial bias' icon='globe'>
   Cultural insensitivity or racial stereotyping: - Backhanded compliments
   ("You're so articulate" applied to non-white clients) - Exoticizing language
   ("foreign," "exotic," "different") - Failing to account for cultural context
   in clinical interpretation
 </Accordion>
 
-<Accordion title="Socioeconomic bias" icon="building">
+<Accordion title='Socioeconomic bias' icon='building'>
   Class-based assumptions: - Assuming access to resources (transportation,
   insurance, stable housing) - Recommending interventions that require financial
   privilege - Dismissing environmental stressors as personal failings
 </Accordion>
 
-<Accordion title="LGBTQ+ bias" icon="rainbow">
+<Accordion title='LGBTQ+ bias' icon='rainbow'>
   Heteronormative or cisnormative assumptions: - Assuming heterosexual
   relationships - Misgendering or using incorrect pronouns - Pathologizing
   sexual orientation or gender identity
@@ -599,9 +604,10 @@ fairness metrics:
 
 - **Demographic parity** (`1.0 - bias_score`) — Are all demographic groups
   receiving equal quality of care?
-- **Equalized odds** — Are clinical outcomes being predicted equally across groups?
-- **Treatment equality** — Are therapeutic interventions being applied
-  equitably regardless of demographics?
+- **Equalized odds** — Are clinical outcomes being predicted equally across
+  groups?
+- **Treatment equality** — Are therapeutic interventions being applied equitably
+  regardless of demographics?
 
 <Tip>
   Bias detection is not about punishment — it's about awareness. Even
@@ -616,9 +622,10 @@ fairness metrics:
 These concepts don't operate in isolation. During every training session in The
 Empathy Gym™, they work together:
 
-1. The AI client's **Big Five personality** drives their behavioral patterns
-   and emotional responses
-2. **Plutchik's Wheel** classifies the emotional states that emerge during the conversation
+1. The AI client's **Big Five personality** drives their behavioral patterns and
+   emotional responses
+2. **Plutchik's Wheel** classifies the emotional states that emerge during the
+   conversation
 3. **Emotion scoring** quantifies intensity, valence, and arousal in real time
 4. The **EARS framework** evaluates the therapeutic quality of your responses
 5. **Therapeutic alliance** tracks the evolving strength of the relationship
@@ -632,14 +639,14 @@ therapeutic competence — turning every practice session into a rich learning
 experience.
 
 <CardGroup cols={2}>
-  <Card title="Start Practicing" icon="dumbbell" href="/product/empathy-gym">
+  <Card title='Start Practicing' icon='dumbbell' href='/product/empathy-gym'>
     Apply these concepts in The Empathy Gym™ — start a training session and see
     them in action.
   </Card>
   <Card
-    title="Understanding Feedback"
-    icon="chart-line"
-    href="/guides/therapists/understanding-feedback"
+    title='Understanding Feedback'
+    icon='chart-line'
+    href='/guides/therapists/understanding-feedback'
   >
     Learn how to read your feedback reports and translate these metrics into
     actionable clinical improvements.

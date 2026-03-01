@@ -1,9 +1,14 @@
 ---
 title: 'Session Management API'
-description: 'Create, retrieve, update, and delete training sessions with support for real-time WebSocket connections, session recording, and scenario selection'
+description:
+  'Create, retrieve, update, and delete training sessions with support for
+  real-time WebSocket connections, session recording, and scenario selection'
 ---
 
-The Session Management API provides full CRUD operations for training sessions — the core unit of interaction on Pixelated Empathy. Use these endpoints to create sessions, select scenarios, manage session lifecycle, retrieve transcripts, and establish real-time WebSocket connections for live training.
+The Session Management API provides full CRUD operations for training sessions —
+the core unit of interaction on Pixelated Empathy. Use these endpoints to create
+sessions, select scenarios, manage session lifecycle, retrieve transcripts, and
+establish real-time WebSocket connections for live training.
 
 ## Create a session
 
@@ -35,17 +40,17 @@ curl -X POST https://api.pixelatedempathy.com/v1/sessions \
 
 ### Request body parameters
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `scenario_id` | string | Yes | ID of the scenario to use for this session |
-| `mode` | string | No | Session mode: `practice` (feedback after each response), `assessment` (feedback at end only), `freeform` (no scenario). Default: `practice`. |
-| `config` | object | No | Session configuration overrides |
-| `config.max_duration_minutes` | integer | No | Maximum session length in minutes (10–60). Default: 30. |
-| `config.enable_hints` | boolean | No | Show guidance prompts when trainee appears stuck. Default: `false`. |
-| `config.enable_recording` | boolean | No | Record audio for sessions with voice mode. Default: `true`. |
-| `config.enable_bias_detection` | boolean | No | Run real-time bias analysis on trainee responses. Default: `true`. |
-| `config.enable_crisis_detection` | boolean | No | Monitor for crisis signals during the session. Default: `true`. |
-| `config.difficulty_override` | integer | No | Override the scenario's default difficulty (1–10). `null` uses the scenario default. |
+| Parameter                        | Type    | Required | Description                                                                                                                                  |
+| -------------------------------- | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scenario_id`                    | string  | Yes      | ID of the scenario to use for this session                                                                                                   |
+| `mode`                           | string  | No       | Session mode: `practice` (feedback after each response), `assessment` (feedback at end only), `freeform` (no scenario). Default: `practice`. |
+| `config`                         | object  | No       | Session configuration overrides                                                                                                              |
+| `config.max_duration_minutes`    | integer | No       | Maximum session length in minutes (10–60). Default: 30.                                                                                      |
+| `config.enable_hints`            | boolean | No       | Show guidance prompts when trainee appears stuck. Default: `false`.                                                                          |
+| `config.enable_recording`        | boolean | No       | Record audio for sessions with voice mode. Default: `true`.                                                                                  |
+| `config.enable_bias_detection`   | boolean | No       | Run real-time bias analysis on trainee responses. Default: `true`.                                                                           |
+| `config.enable_crisis_detection` | boolean | No       | Monitor for crisis signals during the session. Default: `true`.                                                                              |
+| `config.difficulty_override`     | integer | No       | Override the scenario's default difficulty (1–10). `null` uses the scenario default.                                                         |
 
 ### Response
 
@@ -79,12 +84,15 @@ curl -X POST https://api.pixelatedempathy.com/v1/sessions \
 ```
 
 <Tip>
-  The `websocket_url` is unique to each session and valid until the session expires or is completed. Connect within 5 minutes of creation or the session times out.
+  The `websocket_url` is unique to each session and valid until the session
+  expires or is completed. Connect within 5 minutes of creation or the session
+  times out.
 </Tip>
 
 ## List sessions
 
-Retrieve a paginated list of sessions for the authenticated user, or for assigned trainees if the user has supervisor permissions.
+Retrieve a paginated list of sessions for the authenticated user, or for
+assigned trainees if the user has supervisor permissions.
 
 ### `GET /v1/sessions`
 
@@ -95,18 +103,18 @@ curl "https://api.pixelatedempathy.com/v1/sessions?status=completed&limit=10&sor
 
 ### Query parameters
 
-| Parameter | Type | Default | Description |
-|---|---|---|---|
-| `status` | string | — | Filter by status: `created`, `active`, `completed`, `abandoned`, `expired` |
-| `scenario_id` | string | — | Filter by scenario |
-| `user_id` | string | — | Filter by user (supervisors only) |
-| `mode` | string | — | Filter by mode: `practice`, `assessment`, `freeform` |
-| `date_from` | string | — | Start of date range (ISO 8601) |
-| `date_to` | string | — | End of date range (ISO 8601) |
-| `limit` | integer | 20 | Results per page (max 100) |
-| `cursor` | string | — | Pagination cursor |
-| `sort` | string | `created_at` | Sort field |
-| `order` | string | `desc` | Sort direction: `asc` or `desc` |
+| Parameter     | Type    | Default      | Description                                                                |
+| ------------- | ------- | ------------ | -------------------------------------------------------------------------- |
+| `status`      | string  | —            | Filter by status: `created`, `active`, `completed`, `abandoned`, `expired` |
+| `scenario_id` | string  | —            | Filter by scenario                                                         |
+| `user_id`     | string  | —            | Filter by user (supervisors only)                                          |
+| `mode`        | string  | —            | Filter by mode: `practice`, `assessment`, `freeform`                       |
+| `date_from`   | string  | —            | Start of date range (ISO 8601)                                             |
+| `date_to`     | string  | —            | End of date range (ISO 8601)                                               |
+| `limit`       | integer | 20           | Results per page (max 100)                                                 |
+| `cursor`      | string  | —            | Pagination cursor                                                          |
+| `sort`        | string  | `created_at` | Sort field                                                                 |
+| `order`       | string  | `desc`       | Sort direction: `asc` or `desc`                                            |
 
 ### Response
 
@@ -151,7 +159,8 @@ curl "https://api.pixelatedempathy.com/v1/sessions?status=completed&limit=10&sor
 
 ## Get session details
 
-Retrieve full details for a single session, including the transcript, competency scores, and AI feedback.
+Retrieve full details for a single session, including the transcript, competency
+scores, and AI feedback.
 
 ### `GET /v1/sessions/{session_id}`
 
@@ -197,7 +206,11 @@ curl https://api.pixelatedempathy.com/v1/sessions/sess_7a8b9c0d1e2f \
         "feedback": {
           "empathic_accuracy": 88,
           "bias_flags": [],
-          "strengths": ["Validated client's experience", "Open-ended exploration", "Client-centered pacing"],
+          "strengths": [
+            "Validated client's experience",
+            "Open-ended exploration",
+            "Client-centered pacing"
+          ],
           "suggestions": []
         }
       }
@@ -229,12 +242,14 @@ curl https://api.pixelatedempathy.com/v1/sessions/sess_7a8b9c0d1e2f \
 ```
 
 <Warning>
-  Recording URLs are signed and expire after 30 days. Generate a fresh URL by calling the session details endpoint again if the recording link has expired.
+  Recording URLs are signed and expire after 30 days. Generate a fresh URL by
+  calling the session details endpoint again if the recording link has expired.
 </Warning>
 
 ## Update a session
 
-Update a session's metadata or status. Commonly used to add supervisor annotations or mark a session for review.
+Update a session's metadata or status. Commonly used to add supervisor
+annotations or mark a session for review.
 
 ### `PATCH /v1/sessions/{session_id}`
 
@@ -257,14 +272,14 @@ curl -X PATCH https://api.pixelatedempathy.com/v1/sessions/sess_7a8b9c0d1e2f \
 
 ### Updatable fields
 
-| Field | Type | Description |
-|---|---|---|
-| `flags` | array | System flags: `supervisor_review_requested`, `flagged_for_training`, `marked_as_exemplar` |
-| `annotations` | array | Supervisor annotations attached to specific turns |
-| `annotations[].turn` | integer | The transcript turn number to annotate |
-| `annotations[].type` | string | Annotation type: `strength`, `growth_area`, `critical`, `general` |
-| `annotations[].comment` | string | Annotation text (max 1,000 characters) |
-| `tags` | array | Free-form tags for organizing and searching sessions |
+| Field                   | Type    | Description                                                                               |
+| ----------------------- | ------- | ----------------------------------------------------------------------------------------- |
+| `flags`                 | array   | System flags: `supervisor_review_requested`, `flagged_for_training`, `marked_as_exemplar` |
+| `annotations`           | array   | Supervisor annotations attached to specific turns                                         |
+| `annotations[].turn`    | integer | The transcript turn number to annotate                                                    |
+| `annotations[].type`    | string  | Annotation type: `strength`, `growth_area`, `critical`, `general`                         |
+| `annotations[].comment` | string  | Annotation text (max 1,000 characters)                                                    |
+| `tags`                  | array   | Free-form tags for organizing and searching sessions                                      |
 
 ### Response
 
@@ -283,12 +298,15 @@ curl -X PATCH https://api.pixelatedempathy.com/v1/sessions/sess_7a8b9c0d1e2f \
 
 ## Delete a session
 
-Permanently delete a session and all associated data including transcripts, recordings, and annotations.
+Permanently delete a session and all associated data including transcripts,
+recordings, and annotations.
 
 ### `DELETE /v1/sessions/{session_id}`
 
 <Warning>
-  Session deletion is permanent and cannot be undone. This action removes the session from all analytics and reports. Only the session owner or an admin can delete sessions.
+  Session deletion is permanent and cannot be undone. This action removes the
+  session from all analytics and reports. Only the session owner or an admin can
+  delete sessions.
 </Warning>
 
 ```bash
@@ -322,13 +340,13 @@ curl "https://api.pixelatedempathy.com/v1/scenarios?category=crisis&difficulty_m
 
 ### Query parameters
 
-| Parameter | Type | Description |
-|---|---|---|
-| `category` | string | Filter by category: `intake`, `crisis`, `cultural`, `substance_use`, `mood`, `anxiety`, `trauma`, `personality` |
-| `difficulty_min` | integer | Minimum difficulty (1–10) |
-| `difficulty_max` | integer | Maximum difficulty (1–10) |
-| `tags` | string | Comma-separated tags |
-| `search` | string | Full-text search across scenario titles and descriptions |
+| Parameter        | Type    | Description                                                                                                     |
+| ---------------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| `category`       | string  | Filter by category: `intake`, `crisis`, `cultural`, `substance_use`, `mood`, `anxiety`, `trauma`, `personality` |
+| `difficulty_min` | integer | Minimum difficulty (1–10)                                                                                       |
+| `difficulty_max` | integer | Maximum difficulty (1–10)                                                                                       |
+| `tags`           | string  | Comma-separated tags                                                                                            |
+| `search`         | string  | Full-text search across scenario titles and descriptions                                                        |
 
 ### Response
 
@@ -343,7 +361,11 @@ curl "https://api.pixelatedempathy.com/v1/scenarios?category=crisis&difficulty_m
       "category": "crisis",
       "difficulty": 6,
       "estimated_duration_minutes": 30,
-      "competencies_tested": ["crisis_response", "empathic_accuracy", "bias_awareness"],
+      "competencies_tested": [
+        "crisis_response",
+        "empathic_accuracy",
+        "bias_awareness"
+      ],
       "tags": ["suicide", "risk-assessment", "safety-planning"],
       "completion_count": 12453,
       "average_score": 71
@@ -359,7 +381,8 @@ curl "https://api.pixelatedempathy.com/v1/scenarios?category=crisis&difficulty_m
 
 ## Real-time WebSocket connection
 
-Live training sessions use WebSocket connections for real-time bidirectional communication between the trainee and the AI client.
+Live training sessions use WebSocket connections for real-time bidirectional
+communication between the trainee and the AI client.
 
 ### Connecting
 
@@ -368,32 +391,34 @@ const ws = new WebSocket(
   'wss://rt.pixelatedempathy.com/v1/sessions/sess_7a8b9c0d1e2f/connect',
   {
     headers: {
-      'Authorization': 'Bearer YOUR_JWT_TOKEN'
-    }
-  }
-);
+      Authorization: 'Bearer YOUR_JWT_TOKEN',
+    },
+  },
+)
 
 ws.onopen = () => {
-  console.log('Session connected');
+  console.log('Session connected')
   // Send a start signal to begin the session
-  ws.send(JSON.stringify({
-    type: 'session_start',
-    timestamp: new Date().toISOString()
-  }));
-};
+  ws.send(
+    JSON.stringify({
+      type: 'session_start',
+      timestamp: new Date().toISOString(),
+    }),
+  )
+}
 
 ws.onmessage = (event) => {
-  const message = JSON.parse(event.data);
-  console.log('Received:', message.type, message);
-};
+  const message = JSON.parse(event.data)
+  console.log('Received:', message.type, message)
+}
 
 ws.onerror = (error) => {
-  console.error('WebSocket error:', error);
-};
+  console.error('WebSocket error:', error)
+}
 
 ws.onclose = (event) => {
-  console.log('Session disconnected:', event.code, event.reason);
-};
+  console.log('Session disconnected:', event.code, event.reason)
+}
 ```
 
 ### Sending messages
@@ -402,18 +427,22 @@ Send trainee responses to the AI client:
 
 ```javascript
 // Send a text message
-ws.send(JSON.stringify({
-  type: 'therapist_message',
-  content: 'Can you tell me more about what prompted you to come in today?',
-  timestamp: new Date().toISOString()
-}));
+ws.send(
+  JSON.stringify({
+    type: 'therapist_message',
+    content: 'Can you tell me more about what prompted you to come in today?',
+    timestamp: new Date().toISOString(),
+  }),
+)
 
 // End the session
-ws.send(JSON.stringify({
-  type: 'session_end',
-  reason: 'completed',
-  timestamp: new Date().toISOString()
-}));
+ws.send(
+  JSON.stringify({
+    type: 'session_end',
+    reason: 'completed',
+    timestamp: new Date().toISOString(),
+  }),
+)
 ```
 
 ### Receiving messages
@@ -435,6 +464,7 @@ ws.send(JSON.stringify({
       "timestamp": "2025-01-15T10:02:00Z"
     }
     ```
+
   </Accordion>
   <Accordion title="feedback">
     Real-time feedback on the trainee's most recent response (practice mode only):
@@ -452,6 +482,7 @@ ws.send(JSON.stringify({
       "timestamp": "2025-01-15T10:01:30Z"
     }
     ```
+
   </Accordion>
   <Accordion title="bias_alert">
     Real-time bias detection alert:
@@ -466,6 +497,7 @@ ws.send(JSON.stringify({
       "timestamp": "2025-01-15T10:05:00Z"
     }
     ```
+
   </Accordion>
   <Accordion title="crisis_alert">
     Crisis signal detected in the conversation:
@@ -480,6 +512,7 @@ ws.send(JSON.stringify({
       "timestamp": "2025-01-15T10:08:00Z"
     }
     ```
+
   </Accordion>
   <Accordion title="session_summary">
     Sent when the session ends:
@@ -500,18 +533,19 @@ ws.send(JSON.stringify({
       "timestamp": "2025-01-15T10:24:00Z"
     }
     ```
+
   </Accordion>
 </AccordionGroup>
 
 ### WebSocket error codes
 
-| Code | Description |
-|---|---|
-| `4001` | Authentication failed — invalid or expired token |
-| `4002` | Session not found or already completed |
-| `4003` | Session expired before connection was established |
-| `4004` | Concurrent session limit reached |
-| `4008` | Message rate limit exceeded (max 10 messages/second) |
+| Code   | Description                                                |
+| ------ | ---------------------------------------------------------- |
+| `4001` | Authentication failed — invalid or expired token           |
+| `4002` | Session not found or already completed                     |
+| `4003` | Session expired before connection was established          |
+| `4004` | Concurrent session limit reached                           |
+| `4008` | Message rate limit exceeded (max 10 messages/second)       |
 | `4500` | Internal server error — reconnect with exponential backoff |
 
 ## Session recording and playback
@@ -540,28 +574,33 @@ curl https://api.pixelatedempathy.com/v1/sessions/sess_7a8b9c0d1e2f/recording \
 ```
 
 <Info>
-  Recordings are stored encrypted at rest and served over signed URLs. Each URL is valid for 30 days and scoped to the requesting user's permissions.
+  Recordings are stored encrypted at rest and served over signed URLs. Each URL
+  is valid for 30 days and scoped to the requesting user's permissions.
 </Info>
 
 ## Session status lifecycle
 
 Sessions move through the following statuses:
 
-| Status | Description | Transitions to |
-|---|---|---|
-| `created` | Session initialized, awaiting WebSocket connection | `active`, `expired` |
-| `active` | Live session in progress | `completed`, `abandoned` |
-| `completed` | Session ended normally by the trainee | — (terminal) |
-| `abandoned` | Session ended due to disconnect without proper close | — (terminal) |
-| `expired` | Session timed out before connection or during inactivity | — (terminal) |
+| Status      | Description                                              | Transitions to           |
+| ----------- | -------------------------------------------------------- | ------------------------ |
+| `created`   | Session initialized, awaiting WebSocket connection       | `active`, `expired`      |
+| `active`    | Live session in progress                                 | `completed`, `abandoned` |
+| `completed` | Session ended normally by the trainee                    | — (terminal)             |
+| `abandoned` | Session ended due to disconnect without proper close     | — (terminal)             |
+| `expired`   | Session timed out before connection or during inactivity | — (terminal)             |
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Analytics API" icon="chart-bar" href="/api-reference/analytics">
+  <Card title='Analytics API' icon='chart-bar' href='/api-reference/analytics'>
     Access session performance data, competency trends, and export capabilities.
   </Card>
-  <Card title="Bias Analysis API" icon="scale-balanced" href="/api-reference/bias-analysis">
+  <Card
+    title='Bias Analysis API'
+    icon='scale-balanced'
+    href='/api-reference/bias-analysis'
+  >
     Run standalone bias analysis outside of training sessions.
   </Card>
 </CardGroup>

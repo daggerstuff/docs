@@ -2,7 +2,8 @@
 
 ## Architecture Overview
 
-Pixelated Empathy uses a modern, cloud-native architecture designed for scalability, reliability, and security.
+Pixelated Empathy uses a modern, cloud-native architecture designed for
+scalability, reliability, and security.
 
 ### High-Level Architecture
 
@@ -28,24 +29,28 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Infrastructure Components
 
 ### Compute Layer
+
 - **Kubernetes Cluster**: EKS-managed cluster with auto-scaling
 - **Node Groups**: t3.medium instances with 3-20 node capacity
 - **Application Pods**: 3-10 replicas with horizontal pod autoscaling
 - **Load Balancer**: Nginx with SSL termination and rate limiting
 
 ### Data Layer
+
 - **Primary Database**: PostgreSQL 15 with read replicas
 - **Cache**: Redis cluster with persistence and clustering
 - **Object Storage**: S3 with CloudFront CDN
 - **Backup Storage**: S3 with lifecycle policies
 
 ### Network Layer
+
 - **VPC**: Private network with public/private subnets
 - **Security Groups**: Restrictive firewall rules
 - **Load Balancer**: Application Load Balancer with health checks
 - **CDN**: CloudFlare for global content delivery
 
 ### Monitoring Layer
+
 - **Metrics**: Prometheus with custom application metrics
 - **Visualization**: Grafana dashboards
 - **Logging**: Loki with Promtail log collection
@@ -55,6 +60,7 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Deployment Environments
 
 ### Development
+
 - **Purpose**: Local development and testing
 - **Infrastructure**: Docker Compose on local machines
 - **Database**: Local PostgreSQL container
@@ -62,6 +68,7 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 - **SSL**: Self-signed certificates
 
 ### Staging
+
 - **Purpose**: Pre-production testing and validation
 - **Infrastructure**: Kubernetes cluster (smaller scale)
 - **Database**: Managed PostgreSQL with SSL
@@ -69,6 +76,7 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 - **SSL**: Let's Encrypt certificates
 
 ### Production
+
 - **Purpose**: Live user-facing environment
 - **Infrastructure**: High-availability Kubernetes cluster
 - **Database**: Multi-AZ PostgreSQL with automated backups
@@ -78,18 +86,21 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Security Architecture
 
 ### Network Security
+
 - **VPC**: Isolated network environment
 - **Security Groups**: Least-privilege access rules
 - **Network Policies**: Kubernetes network segmentation
 - **WAF**: Web Application Firewall protection
 
 ### Application Security
+
 - **Authentication**: JWT with refresh tokens
 - **Authorization**: Role-based access control
 - **Encryption**: AES-256 for data at rest
 - **TLS**: TLS 1.3 for data in transit
 
 ### Secrets Management
+
 - **Kubernetes Secrets**: Encrypted secret storage
 - **AWS Secrets Manager**: Centralized secret management
 - **Rotation**: Automated secret rotation
@@ -98,18 +109,21 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Scaling Strategy
 
 ### Horizontal Scaling
+
 - **Application**: Kubernetes HPA based on CPU/memory/custom metrics
 - **Database**: Read replicas for read scaling
 - **Cache**: Redis cluster with sharding
 - **Storage**: S3 with unlimited capacity
 
 ### Vertical Scaling
+
 - **Compute**: Instance type upgrades
 - **Database**: Instance class upgrades
 - **Cache**: Memory increases
 - **Storage**: Volume size increases
 
 ### Auto-Scaling Triggers
+
 - **CPU Utilization**: >70% for 5 minutes
 - **Memory Utilization**: >75% for 5 minutes
 - **Request Rate**: >1000 req/s sustained
@@ -118,18 +132,21 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Disaster Recovery
 
 ### Backup Strategy
+
 - **Database**: Daily automated backups with 30-day retention
 - **Application Data**: Daily file system backups
 - **Configuration**: Version-controlled infrastructure as code
 - **Monitoring Data**: Weekly Grafana dashboard exports
 
 ### Recovery Procedures
+
 - **RTO**: 4 hours (Recovery Time Objective)
 - **RPO**: 1 hour (Recovery Point Objective)
 - **Backup Verification**: Weekly restore testing
 - **Failover**: Automated failover to secondary region
 
 ### Business Continuity
+
 - **Multi-Region**: Primary and secondary AWS regions
 - **Data Replication**: Cross-region database replication
 - **DNS Failover**: Route 53 health check failover
@@ -138,12 +155,14 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Performance Optimization
 
 ### Application Performance
+
 - **Node.js Optimization**: Clustering and memory management
 - **Database Optimization**: Connection pooling and query optimization
 - **Caching Strategy**: Multi-layer caching (Redis, CDN, browser)
 - **Asset Optimization**: Minification, compression, and CDN delivery
 
 ### Infrastructure Performance
+
 - **Load Balancing**: Least-connections algorithm with health checks
 - **Auto-Scaling**: Proactive scaling based on predictive metrics
 - **Resource Allocation**: Right-sized instances with burst capacity
@@ -152,18 +171,21 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Monitoring and Observability
 
 ### Key Metrics
+
 - **Application**: Response time, error rate, throughput
 - **Infrastructure**: CPU, memory, disk, network utilization
 - **Database**: Connection count, query performance, replication lag
 - **Business**: User registrations, chat messages, AI requests
 
 ### Alerting Strategy
+
 - **Critical Alerts**: Immediate notification (PagerDuty, phone)
 - **Warning Alerts**: Slack and email notifications
 - **Info Alerts**: Dashboard notifications only
 - **Escalation**: Automatic escalation after 15 minutes
 
 ### Dashboard Categories
+
 - **Executive**: High-level business and system health
 - **Operations**: Detailed infrastructure and application metrics
 - **Development**: Performance and error tracking
@@ -172,12 +194,14 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Compliance and Governance
 
 ### Security Compliance
+
 - **SOC 2**: Annual compliance audit
 - **GDPR**: Data protection and privacy controls
 - **HIPAA**: Healthcare data protection (if applicable)
 - **PCI DSS**: Payment card data security
 
 ### Operational Compliance
+
 - **Change Management**: All changes through approved process
 - **Access Control**: Principle of least privilege
 - **Audit Logging**: Comprehensive audit trail
@@ -186,12 +210,14 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Maintenance Procedures
 
 ### Regular Maintenance
+
 - **Weekly**: Security updates and patches
 - **Monthly**: Performance optimization review
 - **Quarterly**: Capacity planning and scaling review
 - **Annually**: Architecture review and technology updates
 
 ### Scheduled Maintenance Windows
+
 - **Development**: Anytime
 - **Staging**: Weekdays 2-4 AM EST
 - **Production**: Sundays 2-4 AM EST (with advance notice)
@@ -199,17 +225,20 @@ Pixelated Empathy uses a modern, cloud-native architecture designed for scalabil
 ## Support and Escalation
 
 ### Support Tiers
+
 - **Tier 1**: Basic operational support
 - **Tier 2**: Advanced troubleshooting
 - **Tier 3**: Architecture and development team
 
 ### Escalation Matrix
+
 - **Severity 1**: Critical system down (immediate escalation)
 - **Severity 2**: Major functionality impaired (2-hour response)
 - **Severity 3**: Minor issues (next business day)
 - **Severity 4**: Enhancement requests (planned releases)
 
 ### Contact Information
+
 - **On-Call Engineer**: Slack @oncall or phone rotation
 - **DevOps Team**: devops@pixelatedempathy.com
 - **Security Team**: security@pixelatedempathy.com

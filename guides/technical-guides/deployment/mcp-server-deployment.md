@@ -1,6 +1,7 @@
 ## Journal Dataset Research MCP Server Deployment Guide
 
-This guide provides comprehensive instructions for deploying the Journal Dataset Research MCP Server.
+This guide provides comprehensive instructions for deploying the Journal Dataset
+Research MCP Server.
 
 ## Table of Contents
 
@@ -16,7 +17,9 @@ This guide provides comprehensive instructions for deploying the Journal Dataset
 
 ## Overview
 
-The Journal Dataset Research MCP Server provides a Model Context Protocol (MCP) interface for AI agents to interact with the journal dataset research system. The server can be deployed using Docker or manually.
+The Journal Dataset Research MCP Server provides a Model Context Protocol (MCP)
+interface for AI agents to interact with the journal dataset research system.
+The server can be deployed using Docker or manually.
 
 ## Prerequisites
 
@@ -89,7 +92,8 @@ SESSION_STORAGE_PATH=/app/sessions
 cd docker/journal-research-mcp-server
 ```
 
-1. **Create `.env` file** with your configuration (see [Environment Configuration](#environment-configuration))
+1. **Create `.env` file** with your configuration (see
+   [Environment Configuration](#environment-configuration))
 
 2. **Start the server**:
 
@@ -139,7 +143,8 @@ docker run -d \
 uv sync
 ```
 
-1. **Set environment variables** (see [Environment Configuration](#environment-configuration))
+1. **Set environment variables** (see
+   [Environment Configuration](#environment-configuration))
 
 2. **Create directories**:
 
@@ -155,7 +160,8 @@ uv run python -m ai.journal_dataset_research.mcp.server
 
 ### Systemd Service
 
-Create a systemd service file at `/etc/systemd/system/journal-research-mcp-server.service`:
+Create a systemd service file at
+`/etc/systemd/system/journal-research-mcp-server.service`:
 
 ```ini
 [Unit]
@@ -186,15 +192,20 @@ sudo systemctl start journal-research-mcp-server
 
 ### MCP Server Configuration File
 
-The server can be configured via environment variables (see [Environment Configuration](#environment-configuration)). Future versions may support YAML/JSON configuration files.
+The server can be configured via environment variables (see
+[Environment Configuration](#environment-configuration)). Future versions may
+support YAML/JSON configuration files.
 
 ### Backend Integration
 
-The MCP server integrates with the journal dataset research backend through the `CommandHandlerService`. Ensure the backend is accessible and properly configured.
+The MCP server integrates with the journal dataset research backend through the
+`CommandHandlerService`. Ensure the backend is accessible and properly
+configured.
 
 ### Session Storage
 
-Sessions are stored in the directory specified by `SESSION_STORAGE_PATH`. Ensure this directory:
+Sessions are stored in the directory specified by `SESSION_STORAGE_PATH`. Ensure
+this directory:
 
 - Has sufficient disk space
 - Has proper permissions (read/write for the server user)
@@ -211,12 +222,7 @@ Add to `~/.cursor/mcp.json` or `~/.openhands/mcp.json`:
   "mcpServers": {
     "journal-research": {
       "command": "uv",
-      "args": [
-        "run",
-        "python",
-        "-m",
-        "ai.journal_dataset_research.mcp.server"
-      ],
+      "args": ["run", "python", "-m", "ai.journal_dataset_research.mcp.server"],
       "env": {
         "MCP_HOST": "0.0.0.0",
         "MCP_PORT": "8001",
@@ -341,4 +347,5 @@ For issues, questions, or contributions, please see the project repository.
 
 ---
 
-For API documentation, see [MCP Server API Documentation](../api/mcp-server/README.md).
+For API documentation, see
+[MCP Server API Documentation](../api/mcp-server/README.md).

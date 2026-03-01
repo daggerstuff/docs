@@ -1,7 +1,7 @@
 # Mental Health Datasets Expansion: Repo Map & Runbook (S3-First)
 
-**Purpose**: Map of dataset expansion and training-ready work locations,
-plus an operational checklist for verification and execution.
+**Purpose**: Map of dataset expansion and training-ready work locations, plus an
+operational checklist for verification and execution.
 
 **Last updated**: 2025-12-29
 
@@ -11,8 +11,8 @@ Canonical flow:
 
 - Source/staging (e.g., Google Drive) → sync to S3 bucket
 - S3 becomes **single source of truth**
-- Pipeline reads from S3 → produces processed artifacts, manifests, and
-  compiled exports.
+- Pipeline reads from S3 → produces processed artifacts, manifests, and compiled
+  exports.
 - Training reads from S3 release artifacts
 
 ## 2) Key locations in this workspace
@@ -46,8 +46,8 @@ Canonical flow:
 
 ### Workspace note
 
-The `ai/` directory may be a separate nested repository.
-Treat cross-repo changes carefully.
+The `ai/` directory may be a separate nested repository. Treat cross-repo
+changes carefully.
 
 ## 3) S3 canonical structure (high-level)
 

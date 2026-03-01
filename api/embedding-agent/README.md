@@ -4,7 +4,9 @@ Vector embedding service for clinical knowledge and therapeutic content.
 
 ## Overview
 
-The Embedding Agent API provides text-to-vector conversion and similarity search capabilities optimized for clinical and psychological knowledge. It supports multiple embedding models and provides efficient caching for repeated queries.
+The Embedding Agent API provides text-to-vector conversion and similarity search
+capabilities optimized for clinical and psychological knowledge. It supports
+multiple embedding models and provides efficient caching for repeated queries.
 
 ## Features
 
@@ -56,12 +58,12 @@ Generate embedding for a single text.
 }
 ```
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `text` | string | ✓ | Text to embed (1-10000 chars) |
-| `knowledgeType` | enum | | Type categorization (see below) |
-| `metadata` | object | | Custom metadata |
-| `model` | enum | | Embedding model to use |
+| Parameter       | Type   | Required | Description                     |
+| --------------- | ------ | -------- | ------------------------------- |
+| `text`          | string | ✓        | Text to embed (1-10000 chars)   |
+| `knowledgeType` | enum   |          | Type categorization (see below) |
+| `metadata`      | object |          | Custom metadata                 |
+| `model`         | enum   |          | Embedding model to use          |
 
 **Response:**
 
@@ -96,12 +98,12 @@ Generate embeddings for multiple texts.
 }
 ```
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `texts` | string[] | ✓ | Array of texts (1-100 items) |
-| `knowledgeTypes` | enum[] | | Types for each text |
-| `metadataList` | object[] | | Metadata for each text |
-| `model` | enum | | Embedding model |
+| Parameter        | Type     | Required | Description                  |
+| ---------------- | -------- | -------- | ---------------------------- |
+| `texts`          | string[] | ✓        | Array of texts (1-100 items) |
+| `knowledgeTypes` | enum[]   |          | Types for each text          |
+| `metadataList`   | object[] |          | Metadata for each text       |
+| `model`          | enum     |          | Embedding model              |
 
 **Response:**
 
@@ -143,14 +145,14 @@ Search for similar content in the knowledge base.
 }
 ```
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `query` | string | ✓ | Search query |
-| `queryEmbedding` | number[] | | Pre-computed embedding |
-| `topK` | integer | | Results to return (1-100) |
-| `knowledgeTypes` | enum[] | | Filter by types |
-| `minSimilarity` | number | | Threshold (0-1) |
-| `includeMetadata` | boolean | | Include metadata |
+| Parameter         | Type     | Required | Description               |
+| ----------------- | -------- | -------- | ------------------------- |
+| `query`           | string   | ✓        | Search query              |
+| `queryEmbedding`  | number[] |          | Pre-computed embedding    |
+| `topK`            | integer  |          | Results to return (1-100) |
+| `knowledgeTypes`  | enum[]   |          | Filter by types           |
+| `minSimilarity`   | number   |          | Threshold (0-1)           |
+| `includeMetadata` | boolean  |          | Include metadata          |
 
 **Response:**
 
@@ -180,9 +182,9 @@ Get detailed service status.
 
 **Query Parameters:**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `health` | boolean | Return simple health check |
+| Parameter | Type    | Description                |
+| --------- | ------- | -------------------------- |
+| `health`  | boolean | Return simple health check |
 
 **Response (detailed):**
 
@@ -227,6 +229,7 @@ Administrative actions (requires admin role).
 ```
 
 **Actions:**
+
 - `clear_cache`: Clear the embedding cache
 - `load_knowledge`: Load/reload knowledge base
 
@@ -303,25 +306,25 @@ List available embedding models.
 
 ## Knowledge Types
 
-| Type | Description |
-|------|-------------|
-| `dsm5` | DSM-5 diagnostic criteria |
-| `pdm2` | PDM-2 psychodynamic manual |
-| `clinical` | Clinical guidelines and protocols |
-| `therapeutic_technique` | Therapeutic techniques and interventions |
-| `therapeutic_conversation` | Example therapeutic dialogues |
-| `general` | General psychological knowledge |
+| Type                       | Description                              |
+| -------------------------- | ---------------------------------------- |
+| `dsm5`                     | DSM-5 diagnostic criteria                |
+| `pdm2`                     | PDM-2 psychodynamic manual               |
+| `clinical`                 | Clinical guidelines and protocols        |
+| `therapeutic_technique`    | Therapeutic techniques and interventions |
+| `therapeutic_conversation` | Example therapeutic dialogues            |
+| `general`                  | General psychological knowledge          |
 
 ## Embedding Models
 
-| Model ID | Dimension | Speed | Quality | Use Case |
-|----------|-----------|-------|---------|----------|
-| `all-MiniLM-L6-v2` | 384 | ⚡⚡⚡ | ★★★ | Default, balanced |
-| `all-MiniLM-L12-v2` | 384 | ⚡⚡ | ★★★★ | Better quality |
-| `all-mpnet-base-v2` | 768 | ⚡ | ★★★★★ | Highest quality |
-| `BAAI/bge-small-en-v1.5` | 384 | ⚡⚡⚡ | ★★★★ | Latest efficient |
-| `BAAI/bge-base-en-v1.5` | 768 | ⚡⚡ | ★★★★★ | Latest quality |
-| `emilyalsentzer/Bio_ClinicalBERT` | 768 | ⚡ | ★★★★ | Clinical domain |
+| Model ID                          | Dimension | Speed  | Quality | Use Case          |
+| --------------------------------- | --------- | ------ | ------- | ----------------- |
+| `all-MiniLM-L6-v2`                | 384       | ⚡⚡⚡ | ★★★     | Default, balanced |
+| `all-MiniLM-L12-v2`               | 384       | ⚡⚡   | ★★★★    | Better quality    |
+| `all-mpnet-base-v2`               | 768       | ⚡     | ★★★★★   | Highest quality   |
+| `BAAI/bge-small-en-v1.5`          | 384       | ⚡⚡⚡ | ★★★★    | Latest efficient  |
+| `BAAI/bge-base-en-v1.5`           | 768       | ⚡⚡   | ★★★★★   | Latest quality    |
+| `emilyalsentzer/Bio_ClinicalBERT` | 768       | ⚡     | ★★★★    | Clinical domain   |
 
 ## Error Handling
 
@@ -342,24 +345,24 @@ List available embedding models.
 
 ### HTTP Status Codes
 
-| Code | Description |
-|------|-------------|
-| 200 | Success |
-| 400 | Bad Request - Invalid input |
-| 401 | Unauthorized - Missing/invalid auth |
-| 403 | Forbidden - Insufficient permissions |
-| 422 | Validation Error - Schema validation failed |
-| 429 | Rate Limited |
-| 500 | Internal Server Error |
-| 503 | Service Unavailable |
+| Code | Description                                 |
+| ---- | ------------------------------------------- |
+| 200  | Success                                     |
+| 400  | Bad Request - Invalid input                 |
+| 401  | Unauthorized - Missing/invalid auth         |
+| 403  | Forbidden - Insufficient permissions        |
+| 422  | Validation Error - Schema validation failed |
+| 429  | Rate Limited                                |
+| 500  | Internal Server Error                       |
+| 503  | Service Unavailable                         |
 
 ## Rate Limits
 
-| Role | Limit |
-|------|-------|
-| Anonymous | 10 requests/minute |
-| Authenticated | 100 requests/minute |
-| Admin | 1000 requests/minute |
+| Role          | Limit                |
+| ------------- | -------------------- |
+| Anonymous     | 10 requests/minute   |
+| Authenticated | 100 requests/minute  |
+| Admin         | 1000 requests/minute |
 
 ## TypeScript SDK
 
@@ -410,16 +413,16 @@ uv run uvicorn app:app --host 0.0.0.0 --port 8001
 
 ### Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `EMBEDDING_MODEL` | `all-MiniLM-L6-v2` | Default model |
-| `EMBEDDING_BATCH_SIZE` | `32` | Batch processing size |
-| `EMBEDDING_MAX_LENGTH` | `512` | Max text length |
-| `EMBEDDING_CACHE` | `true` | Enable caching |
-| `EMBEDDING_USE_GPU` | `false` | Enable GPU |
-| `EMBEDDING_AGENT_PORT` | `8001` | Service port |
-| `EMBEDDING_AGENT_HOST` | `0.0.0.0` | Service host |
-| `EMBEDDING_LOAD_KNOWLEDGE` | `false` | Load knowledge on startup |
+| Variable                   | Default            | Description               |
+| -------------------------- | ------------------ | ------------------------- |
+| `EMBEDDING_MODEL`          | `all-MiniLM-L6-v2` | Default model             |
+| `EMBEDDING_BATCH_SIZE`     | `32`               | Batch processing size     |
+| `EMBEDDING_MAX_LENGTH`     | `512`              | Max text length           |
+| `EMBEDDING_CACHE`          | `true`             | Enable caching            |
+| `EMBEDDING_USE_GPU`        | `false`            | Enable GPU                |
+| `EMBEDDING_AGENT_PORT`     | `8001`             | Service port              |
+| `EMBEDDING_AGENT_HOST`     | `0.0.0.0`          | Service host              |
+| `EMBEDDING_LOAD_KNOWLEDGE` | `false`            | Load knowledge on startup |
 
 ### Docker
 
@@ -432,12 +435,12 @@ docker run -p 8001:8001 embedding-agent
 
 ### Response Times
 
-| Operation | Typical | Target |
-|-----------|---------|--------|
-| Single embed | <100ms | <50ms |
-| Batch embed (10) | <500ms | <200ms |
-| Similarity search | <50ms | <30ms |
-| Health check | <10ms | <5ms |
+| Operation         | Typical | Target |
+| ----------------- | ------- | ------ |
+| Single embed      | <100ms  | <50ms  |
+| Batch embed (10)  | <500ms  | <200ms |
+| Similarity search | <50ms   | <30ms  |
+| Health check      | <10ms   | <5ms   |
 
 ### Caching Strategy
 
@@ -450,4 +453,3 @@ docker run -p 8001:8001 embedding-agent
 - [AI API Reference](../README.md)
 - [Clinical Knowledge Embedder](../../implementation/mistral-rag.md)
 - [Mental Health Analysis API](../mental-health/)
-

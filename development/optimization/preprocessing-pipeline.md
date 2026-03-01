@@ -2,7 +2,9 @@
 
 ## Overview
 
-The preprocessing pipeline is a crucial component of the multimodal bias detection system. It handles the preparation and transformation of raw audio, vision, and video data into formats suitable for machine learning models.
+The preprocessing pipeline is a crucial component of the multimodal bias
+detection system. It handles the preparation and transformation of raw audio,
+vision, and video data into formats suitable for machine learning models.
 
 ## Pipeline Components
 
@@ -12,7 +14,8 @@ Handles audio data preprocessing including:
 
 - **Audio Loading**: Supports various audio formats (MP3, WAV, FLAC, etc.)
 - **Normalization**: Peak normalization to [-1, 1] range
-- **Feature Extraction**: Extracts acoustic features like MFCC, tempo, spectral centroid
+- **Feature Extraction**: Extracts acoustic features like MFCC, tempo, spectral
+  centroid
 - **Model Preparation**: Prepares inputs for Whisper and Wav2Vec2 models
 
 #### Key Features
@@ -112,7 +115,8 @@ The pipeline implements comprehensive error handling:
 
 ## Testing
 
-The pipeline includes comprehensive unit tests in `tests/unit/ai/test_preprocessing_pipeline.py` covering:
+The pipeline includes comprehensive unit tests in
+`tests/unit/ai/test_preprocessing_pipeline.py` covering:
 
 - Individual pipeline components
 - Data validation functions

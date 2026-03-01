@@ -1,12 +1,19 @@
 ---
-title: "Code Conventions"
-description: "Coding standards, file naming, formatting rules, state management patterns, and architectural conventions for the Pixelated Empathy codebase."
+title: 'Code Conventions'
+description:
+  'Coding standards, file naming, formatting rules, state management patterns,
+  and architectural conventions for the Pixelated Empathy codebase.'
 ---
 
-Consistent code conventions are critical for a codebase that handles sensitive mental health data. This guide covers every convention enforced across the Pixelated Empathy project — from TypeScript configuration to import ordering to state management patterns.
+Consistent code conventions are critical for a codebase that handles sensitive
+mental health data. This guide covers every convention enforced across the
+Pixelated Empathy project — from TypeScript configuration to import ordering to
+state management patterns.
 
 <Note>
-  These conventions are enforced by automated tooling wherever possible. Running `pnpm check:all` validates most of these rules. When tooling can't catch something, code review fills the gap.
+  These conventions are enforced by automated tooling wherever possible. Running
+  `pnpm check:all` validates most of these rules. When tooling can't catch
+  something, code review fills the gap.
 </Note>
 
 ## TypeScript Configuration
@@ -29,16 +36,14 @@ The project uses **TypeScript strict mode** with no exceptions:
 ### Strict Mode Rules
 
 <CardGroup cols={2}>
-  <Card title="✅ Always Do" icon="check">
-    - Explicitly type all function parameters and return types
-    - Use `unknown` instead of `any` for truly unknown types
-    - Handle all possible `null` and `undefined` cases
-    - Use discriminated unions for complex state
+  <Card title='✅ Always Do' icon='check'>
+    - Explicitly type all function parameters and return types - Use `unknown`
+    instead of `any` for truly unknown types - Handle all possible `null` and
+    `undefined` cases - Use discriminated unions for complex state
   </Card>
-  <Card title="❌ Never Do" icon="xmark">
-    - Use `any` type (use `unknown` and narrow instead)
-    - Use `// @ts-ignore` or `// @ts-expect-error`
-    - Use non-null assertions (`!`) without justification
+  <Card title='❌ Never Do' icon='xmark'>
+    - Use `any` type (use `unknown` and narrow instead) - Use `// @ts-ignore` or
+    `// @ts-expect-error` - Use non-null assertions (`!`) without justification
     - Leave unused variables or parameters
   </Card>
 </CardGroup>
@@ -63,7 +68,8 @@ import type { AnalysisResult } from '@lib/ai/emotion-analyzer'
 
 ### Functional Components with Hooks
 
-All React components must be **functional components** using hooks. No class components.
+All React components must be **functional components** using hooks. No class
+components.
 
 ```tsx
 import { useState, useCallback } from 'react'
@@ -97,7 +103,7 @@ export function EmotionCard({ emotion, onAnalyze }: EmotionCardProps) {
       <button
         className={styles.analyzeButton}
         onClick={handleAnalyze}
-        type="button"
+        type='button'
       >
         Analyze
       </button>
@@ -127,6 +133,7 @@ export function EmotionCard({ emotion, onAnalyze }: EmotionCardProps) {
       onStateChange?: (state: SessionState) => void
     }
     ```
+
   </Accordion>
 
   <Accordion title="Named Exports" icon="arrow-right-from-bracket">
@@ -141,6 +148,7 @@ export function EmotionCard({ emotion, onAnalyze }: EmotionCardProps) {
     ```
 
     Named exports improve refactoring safety, enable better tree-shaking, and make imports explicit.
+
   </Accordion>
 
   <Accordion title="Hook Extraction" icon="hook">
@@ -157,6 +165,7 @@ export function EmotionCard({ emotion, onAnalyze }: EmotionCardProps) {
       return { progress, milestones, isComplete: progress >= 1.0 }
     }
     ```
+
   </Accordion>
 </AccordionGroup>
 
@@ -164,18 +173,18 @@ export function EmotionCard({ emotion, onAnalyze }: EmotionCardProps) {
 
 Consistent file naming makes the codebase navigable at a glance:
 
-| File Type | Convention | Example |
-|:---|:---|:---|
-| React components | PascalCase | `EmotionCard.tsx` |
-| Component styles | PascalCase + `.module.css` | `EmotionCard.module.css` |
-| Component tests | PascalCase + `.test.tsx` | `EmotionCard.test.tsx` |
-| Utility functions | camelCase | `formatScore.ts` |
-| Custom hooks | camelCase with `use` prefix | `useConversation.ts` |
-| Type definitions | camelCase | `emotionTypes.ts` |
-| Constants | camelCase | `emotionConstants.ts` |
-| Astro pages | kebab-case | `training-session.astro` |
-| API routes | kebab-case | `bias-analysis.ts` |
-| Config files | kebab-case or dot notation | `vitest.config.ts` |
+| File Type         | Convention                  | Example                  |
+| :---------------- | :-------------------------- | :----------------------- |
+| React components  | PascalCase                  | `EmotionCard.tsx`        |
+| Component styles  | PascalCase + `.module.css`  | `EmotionCard.module.css` |
+| Component tests   | PascalCase + `.test.tsx`    | `EmotionCard.test.tsx`   |
+| Utility functions | camelCase                   | `formatScore.ts`         |
+| Custom hooks      | camelCase with `use` prefix | `useConversation.ts`     |
+| Type definitions  | camelCase                   | `emotionTypes.ts`        |
+| Constants         | camelCase                   | `emotionConstants.ts`    |
+| Astro pages       | kebab-case                  | `training-session.astro` |
+| API routes        | kebab-case                  | `bias-analysis.ts`       |
+| Config files      | kebab-case or dot notation  | `vitest.config.ts`       |
 
 ### Directory Structure
 
@@ -198,7 +207,8 @@ src/components/training/
 
 ## Formatting Rules
 
-Formatting is enforced by oxfmt (Oxc formatter) and Prettier (for Astro/MDX files):
+Formatting is enforced by oxfmt (Oxc formatter) and Prettier (for Astro/MDX
+files):
 
 <Tabs>
   <Tab title="Core Rules">
@@ -236,6 +246,7 @@ Formatting is enforced by oxfmt (Oxc formatter) and Prettier (for Astro/MDX file
       "anger"
     ];
     ```
+
   </Tab>
 
   <Tab title="Format Commands">
@@ -246,12 +257,14 @@ Formatting is enforced by oxfmt (Oxc formatter) and Prettier (for Astro/MDX file
     # Check formatting without modifying files
     pnpm format:check
     ```
+
   </Tab>
 </Tabs>
 
 ## CSS Modules
 
-The project uses **CSS Modules** with vanilla CSS as the primary styling approach. No Tailwind CSS.
+The project uses **CSS Modules** with vanilla CSS as the primary styling
+approach. No Tailwind CSS.
 
 ### Styling Rules
 
@@ -280,19 +293,15 @@ The project uses **CSS Modules** with vanilla CSS as the primary styling approac
 ```
 
 <CardGroup cols={2}>
-  <Card title="✅ Do" icon="check">
-    - One CSS module per component
-    - Use camelCase for class names
-    - Reference design tokens from `src/styles/`
-    - Use CSS custom properties for theming
-    - Scope all styles to the component
+  <Card title='✅ Do' icon='check'>
+    - One CSS module per component - Use camelCase for class names - Reference
+    design tokens from `src/styles/` - Use CSS custom properties for theming -
+    Scope all styles to the component
   </Card>
-  <Card title="❌ Don't" icon="xmark">
-    - Use Tailwind CSS utility classes
-    - Write global styles outside `src/styles/`
-    - Use inline styles for anything beyond dynamic values
-    - Use `!important` (fix specificity instead)
-    - Use CSS-in-JS libraries
+  <Card title="❌ Don't" icon='xmark'>
+    - Use Tailwind CSS utility classes - Write global styles outside
+    `src/styles/` - Use inline styles for anything beyond dynamic values - Use
+    `!important` (fix specificity instead) - Use CSS-in-JS libraries
   </Card>
 </CardGroup>
 
@@ -335,17 +344,21 @@ import styles from './Component.module.css'
 ### Import Rules
 
 - **External packages** first (React, TanStack Query, Zod, etc.)
-- **Internal modules** second, using path aliases (`@/`, `@lib/`, `@components/`, etc.)
+- **Internal modules** second, using path aliases (`@/`, `@lib/`,
+  `@components/`, etc.)
 - **Type imports** third, always with the `type` keyword
 - **Styles** last
-- **Never use relative imports** that traverse more than one parent directory — use path aliases instead
-- **No barrel imports from large modules** — import specific files to enable tree-shaking
+- **Never use relative imports** that traverse more than one parent directory —
+  use path aliases instead
+- **No barrel imports from large modules** — import specific files to enable
+  tree-shaking
 
 ## State Management
 
 ### Zustand for Application State
 
-Use **Zustand** for global and feature-level state management in React components:
+Use **Zustand** for global and feature-level state management in React
+components:
 
 ```typescript
 import { create } from 'zustand'
@@ -376,7 +389,8 @@ export const useSessionStore = create<SessionStore>((set) => ({
 
 ### Nanostores for Astro Islands
 
-Use **Nanostores** for state that needs to be shared across Astro islands (framework-agnostic):
+Use **Nanostores** for state that needs to be shared across Astro islands
+(framework-agnostic):
 
 ```typescript
 import { atom, computed } from 'nanostores'
@@ -411,7 +425,8 @@ export const $isDarkMode = computed($currentTheme, (theme) => theme === 'dark')
 
 ### TanStack Query
 
-All API calls use **TanStack Query** for caching, deduplication, and optimistic updates:
+All API calls use **TanStack Query** for caching, deduplication, and optimistic
+updates:
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
@@ -441,7 +456,8 @@ export function useEndSession() {
 
 ### Data Fetching Rules
 
-- All API calls organized in a services layer (`src/services/` or `src/lib/services/`)
+- All API calls organized in a services layer (`src/services/` or
+  `src/lib/services/`)
 - Use proper loading and error states — never leave the UI in an ambiguous state
 - Leverage TanStack Query's caching — don't duplicate cache logic in stores
 - Use optimistic updates for user-facing mutations when safe to do so
@@ -450,7 +466,8 @@ export function useEndSession() {
 
 ### Zod for Runtime Validation
 
-Use **Zod** for all runtime data validation — API responses, form inputs, environment variables, and configuration:
+Use **Zod** for all runtime data validation — API responses, form inputs,
+environment variables, and configuration:
 
 ```typescript
 import { z } from 'zod'
@@ -470,22 +487,28 @@ function processEmotionData(raw: unknown): EmotionScore {
 ```
 
 <Warning>
-  **Critical**: All emotion and empathy scores must be validated to the 0–1 range. The `EmotionScoreSchema` above is the canonical way to enforce this. Never trust unvalidated score data from any source — API responses, user input, or AI model output.
+  **Critical**: All emotion and empathy scores must be validated to the 0–1
+  range. The `EmotionScoreSchema` above is the canonical way to enforce this.
+  Never trust unvalidated score data from any source — API responses, user
+  input, or AI model output.
 </Warning>
 
 ### Validation Rules
 
-- **Validate at boundaries** — every API endpoint, every external data source, every user input
+- **Validate at boundaries** — every API endpoint, every external data source,
+  every user input
 - **Use Zod schemas** as the single source of truth for data shapes
 - **Derive TypeScript types** from Zod schemas with `z.infer<typeof Schema>`
 - **Never trust client-side validation alone** — always validate server-side too
-- **Emotion scores**: Must always be in the 0–1 range (`z.number().min(0).max(1)`)
+- **Emotion scores**: Must always be in the 0–1 range
+  (`z.number().min(0).max(1)`)
 
 ## Domain-Specific Conventions
 
 ### Emotion Score Validation
 
-This is the most critical domain convention. All emotion and empathy scores must be normalized to the 0.0–1.0 range:
+This is the most critical domain convention. All emotion and empathy scores must
+be normalized to the 0.0–1.0 range:
 
 ```typescript
 // ✅ Always validate emotion scores
@@ -499,7 +522,8 @@ const validateEmotionScore = (score: number): number => {
 
 ### Crisis Signal Handling
 
-Every component or service that processes user text must check for crisis signals:
+Every component or service that processes user text must check for crisis
+signals:
 
 ```typescript
 // ✅ Always handle crisis signals defensively
@@ -511,7 +535,9 @@ const hasCrisisSignal = (text: string): boolean => {
 ```
 
 <Warning>
-  **Never ignore potential crisis signals.** If your code processes text from users or AI clients, it must integrate with the crisis detection service. When in doubt, flag — false positives are infinitely preferable to missed signals.
+  **Never ignore potential crisis signals.** If your code processes text from
+  users or AI clients, it must integrate with the crisis detection service. When
+  in doubt, flag — false positives are infinitely preferable to missed signals.
 </Warning>
 
 ### Psychological Safety in UI
@@ -524,10 +550,18 @@ const hasCrisisSignal = (text: string): boolean => {
 ## What's Next
 
 <CardGroup cols={2}>
-  <Card title="Contributing Guide" icon="code-pull-request" href="/guides/developers/contributing">
+  <Card
+    title='Contributing Guide'
+    icon='code-pull-request'
+    href='/guides/developers/contributing'
+  >
     Learn the contribution workflow, quality gates, and PR process.
   </Card>
-  <Card title="Testing Strategy" icon="flask-vial" href="/guides/developers/testing">
+  <Card
+    title='Testing Strategy'
+    icon='flask-vial'
+    href='/guides/developers/testing'
+  >
     Understand the testing pyramid, coverage requirements, and test conventions.
   </Card>
 </CardGroup>

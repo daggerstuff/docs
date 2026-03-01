@@ -10,24 +10,21 @@ description: "Because some moments can't wait."
   - **International Association for Suicide Prevention**:
     [iasp.info/resources/Crisis_Centres](https://www.iasp.info/resources/Crisis_Centres/)
 
-We include these resources not because it's expected, but
-because it matters.
+We include these resources not because it's expected, but because it matters.
 
 </Warning>
 
 ## Why This Comes First
 
-In every conversation — simulated or real — there's a possibility
-that someone expresses something that signals imminent danger.
-Self-harm ideation. Suicidal thoughts. A plan. A timeline.
+In every conversation — simulated or real — there's a possibility that someone
+expresses something that signals imminent danger. Self-harm ideation. Suicidal
+thoughts. A plan. A timeline.
 
-We don't treat crisis detection as a feature. We treat it as a
-responsibility.
+We don't treat crisis detection as a feature. We treat it as a responsibility.
 
-Our crisis detection system runs as a **parallel process** across
-every conversation in the platform. It's not something that
-activates when things "seem bad." It's always on. Every exchange.
-Every session.
+Our crisis detection system runs as a **parallel process** across every
+conversation in the platform. It's not something that activates when things
+"seem bad." It's always on. Every exchange. Every session.
 
 ## How It Works
 
@@ -41,7 +38,7 @@ The system monitors for three categories of crisis indicators:
     been thinking about ending it." "I have a plan."
   </Accordion>
 
-<Accordion title="Implicit Signals" icon="eye">
+<Accordion title='Implicit Signals' icon='eye'>
   Indirect language that often precedes or accompanies crisis states.
   Hopelessness language ("things will never get better"), farewell patterns ("I
   just wanted to say goodbye"), sudden calm after prolonged distress (a
@@ -58,8 +55,7 @@ The system monitors for three categories of crisis indicators:
 
 ### Sensitivity Levels
 
-Not every crisis signal requires the same response. We use a
-tiered assessment:
+Not every crisis signal requires the same response. We use a tiered assessment:
 
 | Level        | Signal Type              | System Response                    |
 | :----------- | :----------------------- | :--------------------------------- |
@@ -73,15 +69,15 @@ tiered assessment:
 We want to be honest about what crisis detection can and cannot do:
 
 <CardGroup cols={3}>
-  <Card title="We Don't Diagnose" icon="x">
+  <Card title="We Don't Diagnose" icon='x'>
     Our system identifies _signals_, not conditions. A flag from our system is
     not a clinical assessment.
   </Card>
-  <Card title="We Don't Replace Judgment" icon="x">
+  <Card title="We Don't Replace Judgment" icon='x'>
     Crisis detection in a training environment supplements the learning — it
     doesn't replace the therapist's clinical responsibility.
   </Card>
-  <Card title="We Don't Overcorrect" icon="x">
+  <Card title="We Don't Overcorrect" icon='x'>
     False positives in crisis detection are dangerous in their own way — they
     can lead to unnecessary panic and can undermine trust. We calibrate for
     precision, not just recall.
@@ -93,13 +89,13 @@ We want to be honest about what crisis detection can and cannot do:
 Here's an important distinction:
 
 <Tabs>
-  <Tab title="In The Empathy Gym™">
+  <Tab title='In The Empathy Gym™'>
     Crisis detection serves the _training_ purpose. When a simulated client
     exhibits crisis signals, the system evaluates how the trainee responds. Did
     they notice the signal? Did they ask directly? Did they create safety? The
     feedback helps trainees build crisis response reflexes.
   </Tab>
-  <Tab title="In Real-World Applications">
+  <Tab title='In Real-World Applications'>
     In any future real-world application, crisis detection would serve a
     _safety_ purpose — flagging real distress for human review and intervention.
   </Tab>
@@ -111,8 +107,7 @@ Here's an important distinction:
 
 ## The Ethics of Detection
 
-Crisis detection raises real ethical questions. We think about them
-constantly:
+Crisis detection raises real ethical questions. We think about them constantly:
 
 <AccordionGroup>
   <Accordion
@@ -148,17 +143,16 @@ constantly:
 
 ## For Developers
 
-If you're building on our platform or working with our codebase,
-crisis detection is integrated into the core modules at
-`src/lib/ai/crisis-detection/`. Key principles:
+If you're building on our platform or working with our codebase, crisis
+detection is integrated into the core modules at `src/lib/ai/crisis-detection/`.
+Key principles:
 
 - Crisis checks run on **every** message exchange, not on-demand
-- Detection logic is isolated from response generation — a crash
-  in the AI engine doesn't take crisis monitoring offline
-- All crisis-related data is handled under our strictest privacy
-  protocols
-- The system validates that crisis signals produce **actionable
-  outputs**, not just severity scores
+- Detection logic is isolated from response generation — a crash in the AI
+  engine doesn't take crisis monitoring offline
+- All crisis-related data is handled under our strictest privacy protocols
+- The system validates that crisis signals produce **actionable outputs**, not
+  just severity scores
 
 <Info>
   For technical architecture details, see the
@@ -169,19 +163,19 @@ crisis detection is integrated into the core modules at
 
 <CardGroup cols={3}>
   <Card
-    title="When Someone Is in Crisis"
-    icon="heart-pulse"
-    href="/knowledge/when-someone-is-in-crisis"
+    title='When Someone Is in Crisis'
+    icon='heart-pulse'
+    href='/knowledge/when-someone-is-in-crisis'
   >
     Responding to crisis signals as a human.
   </Card>
-  <Card title="Privacy & Trust" icon="lock" href="/platform/privacy-and-trust">
+  <Card title='Privacy & Trust' icon='lock' href='/platform/privacy-and-trust'>
     How we protect sensitive data.
   </Card>
   <Card
-    title="Ethical AI Framework"
-    icon="scale-balanced"
-    href="/research/ethical-ai-framework"
+    title='Ethical AI Framework'
+    icon='scale-balanced'
+    href='/research/ethical-ai-framework'
   >
     Our approach to responsible AI.
   </Card>

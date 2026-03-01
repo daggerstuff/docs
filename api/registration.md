@@ -1,13 +1,17 @@
 # User Registration Endpoint
 
 ## Overview
-Adds a `POST /register` endpoint that validates input, creates a user record, and returns a JWT token.
+
+Adds a `POST /register` endpoint that validates input, creates a user record,
+and returns a JWT token.
 
 ## Endpoint
+
 - **Method:** `POST /register`
 - **URL:** `/register`
 
 ## Request Body
+
 ```json
 {
   "email": "string (valid email format)",
@@ -17,11 +21,13 @@ Adds a `POST /register` endpoint that validates input, creates a user record, an
 ```
 
 ## Validation Rules
+
 - Email must be a valid email address.
 - Password must be at least 6 characters and at most 128 characters.
 - `confirmPassword` must match `password`.
 
 ## Response
+
 - **201 Created**: User created successfully.
   ```json
   {
@@ -32,10 +38,12 @@ Adds a `POST /register` endpoint that validates input, creates a user record, an
 - **409 Conflict**: Email already registered.
 
 ## Error Codes
+
 - `400` - Validation errors.
 - `409` - Email already registered.
 
 ## Example
+
 ```bash
 curl -X POST http://localhost:3000/register \
   -H "Content-Type: application/json" \
@@ -43,6 +51,7 @@ curl -X POST http://localhost:3000/register \
 ```
 
 Response:
+
 ```json
 {
   "token": "jwt-token-here"
@@ -50,7 +59,9 @@ Response:
 ```
 
 ## Testing
+
 Run the test suite to verify the endpoint:
+
 ```bash
 npm test
 ```

@@ -2,7 +2,10 @@
 
 ## Overview
 
-The Journal Research API provides a comprehensive REST API for managing journal dataset research operations. The API enables you to create research sessions, discover sources, evaluate datasets, acquire data, plan integrations, track progress, and generate reports.
+The Journal Research API provides a comprehensive REST API for managing journal
+dataset research operations. The API enables you to create research sessions,
+discover sources, evaluate datasets, acquire data, plan integrations, track
+progress, and generate reports.
 
 **Base URL**: `/api/journal-research`  
 **API Version**: `1.0.0`  
@@ -26,11 +29,13 @@ The Journal Research API provides a comprehensive REST API for managing journal 
 
 ## Authentication
 
-All API endpoints require authentication via JWT tokens. The API uses Bearer token authentication in the Authorization header.
+All API endpoints require authentication via JWT tokens. The API uses Bearer
+token authentication in the Authorization header.
 
 ### Authentication Flow
 
-1. Obtain a JWT token from your authentication provider (Better Auth or Supabase Auth)
+1. Obtain a JWT token from your authentication provider (Better Auth or Supabase
+   Auth)
 2. Include the token in the Authorization header for all requests:
    ```
    Authorization: Bearer <your-jwt-token>
@@ -60,7 +65,8 @@ The API uses role-based access control (RBAC). Common permissions include:
 
 ## Error Handling
 
-The API uses standard HTTP status codes and returns error responses in a consistent format:
+The API uses standard HTTP status codes and returns error responses in a
+consistent format:
 
 ```json
 {
@@ -118,10 +124,12 @@ GET /api/journal-research/sessions
 ```
 
 **Query Parameters:**
+
 - `page` (integer, default: 1) - Page number
 - `page_size` (integer, default: 20) - Items per page
 
 **Response:**
+
 ```json
 {
   "items": [
@@ -156,6 +164,7 @@ POST /api/journal-research/sessions
 ```
 
 **Request Body:**
+
 ```json
 {
   "target_sources": ["pubmed", "doaj"],
@@ -172,6 +181,7 @@ POST /api/journal-research/sessions
 ```
 
 **Response:** `201 Created`
+
 ```json
 {
   "session_id": "session_123",
@@ -197,6 +207,7 @@ GET /api/journal-research/sessions/{session_id}
 ```
 
 **Response:**
+
 ```json
 {
   "session_id": "session_123",
@@ -224,6 +235,7 @@ PUT /api/journal-research/sessions/{session_id}
 ```
 
 **Request Body:**
+
 ```json
 {
   "target_sources": ["pubmed", "doaj", "arxiv"],
@@ -254,6 +266,7 @@ POST /api/journal-research/sessions/{session_id}/discovery
 ```
 
 **Request Body:**
+
 ```json
 {
   "sources": ["pubmed", "doaj"],
@@ -265,6 +278,7 @@ POST /api/journal-research/sessions/{session_id}/discovery
 ```
 
 **Response:** `202 Accepted`
+
 ```json
 {
   "discovery_id": "discovery_123",
@@ -283,12 +297,14 @@ GET /api/journal-research/sessions/{session_id}/sources
 ```
 
 **Query Parameters:**
+
 - `page` (integer, default: 1)
 - `page_size` (integer, default: 20)
 - `source_type` (string, optional) - Filter by source type
 - `open_access` (boolean, optional) - Filter by open access status
 
 **Response:**
+
 ```json
 {
   "items": [
@@ -323,6 +339,7 @@ GET /api/journal-research/sessions/{session_id}/sources/{source_id}
 ```
 
 **Response:**
+
 ```json
 {
   "source_id": "source_123",
@@ -352,6 +369,7 @@ POST /api/journal-research/sessions/{session_id}/evaluate
 ```
 
 **Request Body:**
+
 ```json
 {
   "source_ids": ["source_123", "source_456"],
@@ -363,6 +381,7 @@ POST /api/journal-research/sessions/{session_id}/evaluate
 ```
 
 **Response:** `202 Accepted`
+
 ```json
 {
   "evaluation_id": "eval_123",
@@ -381,11 +400,14 @@ GET /api/journal-research/sessions/{session_id}/evaluations
 ```
 
 **Query Parameters:**
+
 - `page` (integer, default: 1)
 - `page_size` (integer, default: 20)
-- `status` (string, optional) - Filter by status: `pending`, `completed`, `failed`
+- `status` (string, optional) - Filter by status: `pending`, `completed`,
+  `failed`
 
 **Response:**
+
 ```json
 {
   "items": [
@@ -415,6 +437,7 @@ GET /api/journal-research/sessions/{session_id}/evaluations/{evaluation_id}
 ```
 
 **Response:**
+
 ```json
 {
   "evaluation_id": "eval_123",
@@ -442,6 +465,7 @@ PUT /api/journal-research/sessions/{session_id}/evaluations/{evaluation_id}
 ```
 
 **Request Body:**
+
 ```json
 {
   "recommendation": "acquire",
@@ -462,6 +486,7 @@ POST /api/journal-research/sessions/{session_id}/acquire
 ```
 
 **Request Body:**
+
 ```json
 {
   "source_ids": ["source_123"],
@@ -471,6 +496,7 @@ POST /api/journal-research/sessions/{session_id}/acquire
 ```
 
 **Response:** `202 Accepted`
+
 ```json
 {
   "acquisition_id": "acq_123",
@@ -489,11 +515,14 @@ GET /api/journal-research/sessions/{session_id}/acquisitions
 ```
 
 **Query Parameters:**
+
 - `page` (integer, default: 1)
 - `page_size` (integer, default: 20)
-- `status` (string, optional) - Filter by status: `pending`, `in_progress`, `completed`, `failed`
+- `status` (string, optional) - Filter by status: `pending`, `in_progress`,
+  `completed`, `failed`
 
 **Response:**
+
 ```json
 {
   "items": [
@@ -522,6 +551,7 @@ GET /api/journal-research/sessions/{session_id}/acquisitions/{acquisition_id}
 ```
 
 **Response:**
+
 ```json
 {
   "acquisition_id": "acq_123",
@@ -544,6 +574,7 @@ PUT /api/journal-research/sessions/{session_id}/acquisitions/{acquisition_id}
 ```
 
 **Request Body:**
+
 ```json
 {
   "status": "completed",
@@ -564,6 +595,7 @@ POST /api/journal-research/sessions/{session_id}/integrate
 ```
 
 **Request Body:**
+
 ```json
 {
   "acquisition_ids": ["acq_123", "acq_456"],
@@ -573,6 +605,7 @@ POST /api/journal-research/sessions/{session_id}/integrate
 ```
 
 **Response:** `202 Accepted`
+
 ```json
 {
   "plan_id": "plan_123",
@@ -591,11 +624,14 @@ GET /api/journal-research/sessions/{session_id}/integration-plans
 ```
 
 **Query Parameters:**
+
 - `page` (integer, default: 1)
 - `page_size` (integer, default: 20)
-- `status` (string, optional) - Filter by status: `pending`, `completed`, `failed`
+- `status` (string, optional) - Filter by status: `pending`, `completed`,
+  `failed`
 
 **Response:**
+
 ```json
 {
   "items": [
@@ -628,6 +664,7 @@ GET /api/journal-research/sessions/{session_id}/integration-plans/{plan_id}
 ```
 
 **Response:**
+
 ```json
 {
   "plan_id": "plan_123",
@@ -657,6 +694,7 @@ GET /api/journal-research/sessions/{session_id}/progress
 ```
 
 **Response:**
+
 ```json
 {
   "session_id": "session_123",
@@ -695,6 +733,7 @@ POST /api/journal-research/sessions/{session_id}/reports
 ```
 
 **Request Body:**
+
 ```json
 {
   "report_type": "summary",
@@ -705,6 +744,7 @@ POST /api/journal-research/sessions/{session_id}/reports
 ```
 
 **Response:** `202 Accepted`
+
 ```json
 {
   "report_id": "report_123",
@@ -723,11 +763,14 @@ GET /api/journal-research/sessions/{session_id}/reports
 ```
 
 **Query Parameters:**
+
 - `page` (integer, default: 1)
 - `page_size` (integer, default: 20)
-- `status` (string, optional) - Filter by status: `pending`, `completed`, `failed`
+- `status` (string, optional) - Filter by status: `pending`, `completed`,
+  `failed`
 
 **Response:**
+
 ```json
 {
   "items": [
@@ -756,6 +799,7 @@ GET /api/journal-research/sessions/{session_id}/reports/{report_id}
 ```
 
 **Response:**
+
 ```json
 {
   "report_id": "report_123",
@@ -778,15 +822,18 @@ GET /api/journal-research/sessions/{session_id}/reports/{report_id}
 Connect to a WebSocket endpoint to receive real-time progress updates:
 
 ```javascript
-const ws = new WebSocket('ws://api.example.com/api/journal-research/sessions/{session_id}/progress/stream?token=<jwt-token>');
+const ws = new WebSocket(
+  'ws://api.example.com/api/journal-research/sessions/{session_id}/progress/stream?token=<jwt-token>',
+)
 
 ws.onmessage = (event) => {
-  const update = JSON.parse(event.data);
-  console.log('Progress update:', update);
-};
+  const update = JSON.parse(event.data)
+  console.log('Progress update:', update)
+}
 ```
 
 **Message Format:**
+
 ```json
 {
   "type": "progress_update",
@@ -813,13 +860,13 @@ ws.onmessage = (event) => {
 
 ```typescript
 interface Session {
-  session_id: string;
-  start_date: string; // ISO 8601 datetime
-  target_sources: string[];
-  search_keywords: Record<string, string[]>;
-  weekly_targets: Record<string, number>;
-  current_phase: "discovery" | "evaluation" | "acquisition" | "integration";
-  progress_metrics: Record<string, number>;
+  session_id: string
+  start_date: string // ISO 8601 datetime
+  target_sources: string[]
+  search_keywords: Record<string, string[]>
+  weekly_targets: Record<string, number>
+  current_phase: 'discovery' | 'evaluation' | 'acquisition' | 'integration'
+  progress_metrics: Record<string, number>
 }
 ```
 
@@ -827,19 +874,19 @@ interface Session {
 
 ```typescript
 interface Source {
-  source_id: string;
-  title: string;
-  authors: string[];
-  publication_date: string; // ISO 8601 datetime
-  source_type: string;
-  url: string;
-  doi?: string;
-  abstract: string;
-  keywords: string[];
-  open_access: boolean;
-  data_availability: string;
-  discovery_date: string; // ISO 8601 datetime
-  discovery_method: string;
+  source_id: string
+  title: string
+  authors: string[]
+  publication_date: string // ISO 8601 datetime
+  source_type: string
+  url: string
+  doi?: string
+  abstract: string
+  keywords: string[]
+  open_access: boolean
+  data_availability: string
+  discovery_date: string // ISO 8601 datetime
+  discovery_method: string
 }
 ```
 
@@ -847,15 +894,15 @@ interface Source {
 
 ```typescript
 interface Evaluation {
-  evaluation_id: string;
-  session_id: string;
-  source_id: string;
-  status: "pending" | "completed" | "failed";
-  quality_score: number; // 0-1
-  relevance_score: number; // 0-1
-  recommendation: "acquire" | "reject" | "review";
-  details?: Record<string, unknown>;
-  evaluated_at: string; // ISO 8601 datetime
+  evaluation_id: string
+  session_id: string
+  source_id: string
+  status: 'pending' | 'completed' | 'failed'
+  quality_score: number // 0-1
+  relevance_score: number // 0-1
+  recommendation: 'acquire' | 'reject' | 'review'
+  details?: Record<string, unknown>
+  evaluated_at: string // ISO 8601 datetime
 }
 ```
 
@@ -863,14 +910,14 @@ interface Evaluation {
 
 ```typescript
 interface Acquisition {
-  acquisition_id: string;
-  session_id: string;
-  source_id: string;
-  status: "pending" | "in_progress" | "completed" | "failed";
-  progress: number; // 0-100
-  storage_location?: string;
-  file_size?: number;
-  acquired_at?: string; // ISO 8601 datetime
+  acquisition_id: string
+  session_id: string
+  source_id: string
+  status: 'pending' | 'in_progress' | 'completed' | 'failed'
+  progress: number // 0-100
+  storage_location?: string
+  file_size?: number
+  acquired_at?: string // ISO 8601 datetime
 }
 ```
 
@@ -878,17 +925,17 @@ interface Acquisition {
 
 ```typescript
 interface IntegrationPlan {
-  plan_id: string;
-  session_id: string;
-  status: "pending" | "completed" | "failed";
-  datasets_included: string[];
+  plan_id: string
+  session_id: string
+  status: 'pending' | 'completed' | 'failed'
+  datasets_included: string[]
   preprocessing_steps: Array<{
-    step: string;
-    description: string;
-    script?: string;
-  }>;
-  target_schema: string;
-  created_at: string; // ISO 8601 datetime
+    step: string
+    description: string
+    script?: string
+  }>
+  target_schema: string
+  created_at: string // ISO 8601 datetime
 }
 ```
 
@@ -896,23 +943,23 @@ interface IntegrationPlan {
 
 ```typescript
 interface ProgressMetrics {
-  session_id: string;
-  current_phase: string;
-  overall_progress: number; // 0-100
-  phase_progress: Record<string, number>; // 0-100 per phase
+  session_id: string
+  current_phase: string
+  overall_progress: number // 0-100
+  phase_progress: Record<string, number> // 0-100 per phase
   metrics: {
-    sources_identified: number;
-    sources_evaluated: number;
-    sources_acquired: number;
-    integration_plans_created: number;
-  };
+    sources_identified: number
+    sources_evaluated: number
+    sources_acquired: number
+    integration_plans_created: number
+  }
   targets: {
-    sources_identified: number;
-    sources_evaluated: number;
-    sources_acquired: number;
-    integration_plans_created: number;
-  };
-  last_updated: string; // ISO 8601 datetime
+    sources_identified: number
+    sources_evaluated: number
+    sources_acquired: number
+    integration_plans_created: number
+  }
+  last_updated: string // ISO 8601 datetime
 }
 ```
 
@@ -978,8 +1025,8 @@ curl -X POST https://api.example.com/api/journal-research/sessions/session_123/r
 
 ## Support
 
-For API support, please contact the development team or refer to the project documentation.
+For API support, please contact the development team or refer to the project
+documentation.
 
 **Last Updated**: January 2025  
 **API Version**: 1.0.0
-

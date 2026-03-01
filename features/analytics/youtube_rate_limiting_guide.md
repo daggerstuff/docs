@@ -2,18 +2,25 @@
 
 ## Overview
 
-The YouTube processor has been enhanced with production-ready features including rate limiting, proxy rotation, and anti-detection measures. This guide covers how to use these features effectively.
+The YouTube processor has been enhanced with production-ready features including
+rate limiting, proxy rotation, and anti-detection measures. This guide covers
+how to use these features effectively.
 
 ## Features
 
 ### 🚦 Rate Limiting
-- **Per-minute and per-hour limits** - Configurable request limits to respect YouTube's API constraints
+
+- **Per-minute and per-hour limits** - Configurable request limits to respect
+  YouTube's API constraints
 - **Burst limiting** - Control maximum concurrent requests
-- **Exponential backoff** - Automatic retry with increasing delays on rate limit errors
+- **Exponential backoff** - Automatic retry with increasing delays on rate limit
+  errors
 - **Jitter support** - Add randomness to prevent thundering herd problems
-- **429 response handling** - Automatic detection and handling of rate limit responses
+- **429 response handling** - Automatic detection and handling of rate limit
+  responses
 
 ### 🔄 Proxy Support
+
 - **Multiple proxy types** - Support for HTTP, HTTPS, and SOCKS5 proxies
 - **Rotation strategies** - Random, round-robin, or sticky proxy selection
 - **Failure detection** - Automatic proxy failure detection and removal
@@ -21,6 +28,7 @@ The YouTube processor has been enhanced with production-ready features including
 - **Retry logic** - Configurable retries per proxy before marking as failed
 
 ### 🕵️ Anti-Detection Measures
+
 - **User agent rotation** - Randomize browser user agents
 - **Request delays** - Configurable random delays between requests
 - **Cookie support** - Maintain session cookies for authenticity
@@ -30,6 +38,7 @@ The YouTube processor has been enhanced with production-ready features including
 ## Configuration Classes
 
 ### RateLimitConfig
+
 ```python
 @dataclass
 class RateLimitConfig:
@@ -44,6 +53,7 @@ class RateLimitConfig:
 ```
 
 ### ProxyConfig
+
 ```python
 @dataclass
 class ProxyConfig:
@@ -56,6 +66,7 @@ class ProxyConfig:
 ```
 
 ### AntiDetectionConfig
+
 ```python
 @dataclass
 class AntiDetectionConfig:
@@ -72,6 +83,7 @@ class AntiDetectionConfig:
 ## Usage Examples
 
 ### Basic Rate Limiting
+
 ```python
 from ai.dataset_pipeline.youtube_processor import (
     YouTubePlaylistProcessor,
@@ -95,6 +107,7 @@ processor = YouTubePlaylistProcessor(
 ```
 
 ### Proxy Rotation
+
 ```python
 from ai.dataset_pipeline.youtube_processor import (
     YouTubePlaylistProcessor,
@@ -120,6 +133,7 @@ processor = YouTubePlaylistProcessor(
 ```
 
 ### Complete Configuration
+
 ```python
 # All features enabled
 rate_config = RateLimitConfig(
@@ -179,6 +193,7 @@ python scripts/run_voice_pipeline.py \
 ### CLI Options
 
 #### Rate Limiting
+
 - `--disable-rate-limiting` - Disable rate limiting (not recommended)
 - `--requests-per-minute N` - Maximum requests per minute (default: 30)
 - `--requests-per-hour N` - Maximum requests per hour (default: 1000)
@@ -187,12 +202,14 @@ python scripts/run_voice_pipeline.py \
 - `--max-backoff N` - Maximum backoff time in seconds (default: 300)
 
 #### Proxy Support
+
 - `--proxy-list FILE` - File containing list of proxies (one per line)
 - `--proxy URL` - Single proxy to use
 - `--proxy-rotation STRATEGY` - Rotation strategy: random, round_robin, sticky
 - `--proxy-retries N` - Max retries per proxy before marking as failed
 
 #### Anti-Detection
+
 - `--disable-anti-detection` - Disable anti-detection measures
 - `--disable-user-agent-rotation` - Disable user agent rotation
 - `--min-delay F` - Minimum delay between requests in seconds
@@ -203,6 +220,7 @@ python scripts/run_voice_pipeline.py \
 ## Configuration Templates
 
 ### Development/Testing
+
 ```python
 RateLimitConfig(
     enabled=True,
@@ -213,6 +231,7 @@ RateLimitConfig(
 ```
 
 ### Production Conservative
+
 ```python
 RateLimitConfig(
     enabled=True,
@@ -225,6 +244,7 @@ RateLimitConfig(
 ```
 
 ### High-Volume with Proxies
+
 ```python
 RateLimitConfig(
     enabled=True,
@@ -243,6 +263,7 @@ ProxyConfig(
 ```
 
 ### Stealth Mode
+
 ```python
 RateLimitConfig(
     enabled=True,
@@ -266,24 +287,28 @@ AntiDetectionConfig(
 ## Best Practices
 
 ### Rate Limiting
+
 1. **Start conservative** - Begin with low limits and increase gradually
 2. **Monitor responses** - Watch for 429 errors and adjust accordingly
 3. **Use jitter** - Enable jitter to prevent synchronized requests
 4. **Respect backoff** - Always respect exponential backoff delays
 
 ### Proxy Usage
+
 1. **Test proxies first** - Verify proxy functionality before bulk processing
 2. **Use diverse proxies** - Mix different proxy types and locations
 3. **Monitor failures** - Track proxy failure rates and replace bad proxies
 4. **Rotate regularly** - Use random or round-robin rotation for best results
 
 ### Anti-Detection
+
 1. **Enable all measures** - Use user agent rotation, delays, and cookies
 2. **Vary delays** - Use realistic delay ranges (1-5 seconds minimum)
 3. **Simulate browsers** - Enable browser simulation for authenticity
 4. **Monitor blocks** - Watch for IP blocks and adjust strategies
 
 ### Production Deployment
+
 1. **Use configuration files** - Store settings in external config files
 2. **Monitor metrics** - Track success rates, errors, and performance
 3. **Implement logging** - Log all rate limiting and proxy events
@@ -292,12 +317,14 @@ AntiDetectionConfig(
 ## Troubleshooting
 
 ### Common Issues
+
 - **429 Errors** - Reduce requests_per_minute or increase delays
 - **Proxy Failures** - Check proxy health and replace failed proxies
 - **Slow Processing** - Increase burst_limit or reduce delays
 - **IP Blocks** - Enable more anti-detection measures or use more proxies
 
 ### Monitoring
+
 - Check logs for rate limiting events
 - Monitor proxy failure rates
 - Track processing speeds and success rates
@@ -306,6 +333,7 @@ AntiDetectionConfig(
 ## Integration
 
 The enhanced YouTube processor integrates seamlessly with:
+
 - **Voice Pipeline** - Full pipeline support with enhanced configurations
 - **CLI Interface** - Complete command-line integration
 - **Batch Processing** - Support for large-scale playlist processing

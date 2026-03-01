@@ -2,7 +2,8 @@
 
 ## Issue
 
-Jobs-controller requires Docker registry authentication to execute jobs (for datasets >10 samples). Currently, authentication is failing because:
+Jobs-controller requires Docker registry authentication to execute jobs (for
+datasets >10 samples). Currently, authentication is failing because:
 
 1. **Jobs-controller** connects to a **Docker-in-Docker** service
 2. The Docker-in-Docker service needs credentials to pull images from `nvcr.io`
@@ -15,7 +16,8 @@ Jobs-controller requires Docker registry authentication to execute jobs (for dat
 
 ## Workaround
 
-For now, use the **Preview API** for datasets up to 10 samples. This works perfectly and is fast (~0.3 seconds).
+For now, use the **Preview API** for datasets up to 10 samples. This works
+perfectly and is fast (~0.3 seconds).
 
 ```python
 from ai.data_designer.service import NeMoDataDesignerService
@@ -30,6 +32,7 @@ result = service.generate_therapeutic_dataset(num_samples=10)
 To enable jobs for larger datasets, you need to:
 
 1. **Ensure NIM_API_KEY is in .env file:**
+
    ```bash
    ssh vivi@212.2.244.60
    cd ~/nemo-microservices/nemo-microservices-quickstart_v25.10
@@ -50,4 +53,3 @@ To enable jobs for larger datasets, you need to:
 - NeMo Microservices documentation
 - Docker-in-Docker authentication setup
 - NVIDIA NGC registry authentication
-

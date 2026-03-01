@@ -3,7 +3,9 @@
 ## Blue-Green Deployment Implementation
 
 ### Overview
-Our optimized pipeline implements a blue-green deployment strategy with automatic rollback capabilities, health checks, and zero-downtime deployments.
+
+Our optimized pipeline implements a blue-green deployment strategy with
+automatic rollback capabilities, health checks, and zero-downtime deployments.
 
 ### Architecture
 
@@ -51,7 +53,7 @@ services:
     image: ${CONTAINER_IMAGE_BLUE}
     container_name: pixelated-blue
     restart: unless-stopped
-    user: "1001:1001"
+    user: '1001:1001'
     read_only: true
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=100m
@@ -77,15 +79,23 @@ services:
       - PORT=4321
       - ASTRO_TELEMETRY_DISABLED=1
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:4321/api/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1))"]
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "require('http').get('http://localhost:4321/api/health', (res) =>
+          process.exit(res.statusCode === 200 ? 0 : 1))",
+        ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 30s
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.pixelated-blue.rule=Host(`${DOMAIN}`) && HeadersRegexp(`X-Deployment-Slot`, `blue`)"
-      - "traefik.http.services.pixelated-blue.loadbalancer.server.port=4321"
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.pixelated-blue.rule=Host(`${DOMAIN}`) &&
+        HeadersRegexp(`X-Deployment-Slot`, `blue`)'
+      - 'traefik.http.services.pixelated-blue.loadbalancer.server.port=4321'
     networks:
       - pixelated-network
 
@@ -93,7 +103,7 @@ services:
     image: ${CONTAINER_IMAGE_GREEN}
     container_name: pixelated-green
     restart: unless-stopped
-    user: "1001:1001"
+    user: '1001:1001'
     read_only: true
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=100m
@@ -119,15 +129,23 @@ services:
       - PORT=4321
       - ASTRO_TELEMETRY_DISABLED=1
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:4321/api/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1))"]
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "require('http').get('http://localhost:4321/api/health', (res) =>
+          process.exit(res.statusCode === 200 ? 0 : 1))",
+        ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 30s
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.pixelated-green.rule=Host(`${DOMAIN}`) && HeadersRegexp(`X-Deployment-Slot`, `green`)"
-      - "traefik.http.services.pixelated-green.loadbalancer.server.port=4321"
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.pixelated-green.rule=Host(`${DOMAIN}`) &&
+        HeadersRegexp(`X-Deployment-Slot`, `green`)'
+      - 'traefik.http.services.pixelated-green.loadbalancer.server.port=4321'
     networks:
       - pixelated-network
 
@@ -136,9 +154,9 @@ services:
     container_name: traefik
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
-      - "8080:8080"
+      - '80:80'
+      - '443:443'
+      - '8080:8080'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik:/etc/traefik:ro
@@ -154,10 +172,10 @@ services:
       - --certificatesresolvers.letsencrypt.acme.storage=/certs/acme.json
       - --metrics.prometheus=true
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)"
-      - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
-      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)'
+      - 'traefik.http.routers.traefik.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.traefik.loadbalancer.server.port=8080'
     networks:
       - pixelated-network
 
@@ -535,66 +553,66 @@ spec:
         runAsGroup: 1001
         fsGroup: 1001
       containers:
-      - name: pixelated
-        image: docker.io/pixelatedempathy/pixelated:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 4321
-          name: http
-        env:
-        - name: NODE_ENV
-          value: "production"
-        - name: PORT
-          value: "4321"
-        - name: ASTRO_TELEMETRY_DISABLED
-          value: "1"
-        resources:
-          requests:
-            memory: "1Gi"
-            cpu: "500m"
-          limits:
-            memory: "2Gi"
-            cpu: "2"
-        livenessProbe:
-          httpGet:
-            path: /api/health
-            port: 4321
-          initialDelaySeconds: 30
-          periodSeconds: 30
-          timeoutSeconds: 10
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /api/health
-            port: 4321
-          initialDelaySeconds: 5
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 3
-        securityContext:
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - ALL
-            add:
-            - CHOWN
-            - SETGID
-            - SETUID
-        volumeMounts:
-        - name: tmp
-          mountPath: /tmp
-        - name: var-tmp
-          mountPath: /var/tmp
+        - name: pixelated
+          image: docker.io/pixelatedempathy/pixelated:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4321
+              name: http
+          env:
+            - name: NODE_ENV
+              value: 'production'
+            - name: PORT
+              value: '4321'
+            - name: ASTRO_TELEMETRY_DISABLED
+              value: '1'
+          resources:
+            requests:
+              memory: '1Gi'
+              cpu: '500m'
+            limits:
+              memory: '2Gi'
+              cpu: '2'
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 4321
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 4321
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - CHOWN
+                - SETGID
+                - SETUID
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: var-tmp
+              mountPath: /var/tmp
       volumes:
-      - name: tmp
-        emptyDir:
-          sizeLimit: 100Mi
-      - name: var-tmp
-        emptyDir:
-          sizeLimit: 50Mi
+        - name: tmp
+          emptyDir:
+            sizeLimit: 100Mi
+        - name: var-tmp
+          emptyDir:
+            sizeLimit: 50Mi
       imagePullSecrets:
-      - name: gitlab-registry
+        - name: gitlab-registry
 
 ---
 # k8s/service.yaml
@@ -609,10 +627,10 @@ spec:
   selector:
     app: pixelated
   ports:
-  - name: http
-    port: 80
-    targetPort: 4321
-    protocol: TCP
+    - name: http
+      port: 80
+      targetPort: 4321
+      protocol: TCP
   type: ClusterIP
 
 ---
@@ -623,26 +641,26 @@ metadata:
   name: pixelated-ingress
   namespace: pixelated
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: 'nginx'
+    cert-manager.io/cluster-issuer: 'letsencrypt-prod'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
 spec:
   tls:
-  - hosts:
-    - pixelatedempathy.com
-    secretName: pixelated-tls
+    - hosts:
+        - pixelatedempathy.com
+      secretName: pixelated-tls
   rules:
-  - host: pixelatedempathy.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: pixelated-service
-            port:
-              number: 80
+    - host: pixelatedempathy.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pixelated-service
+                port:
+                  number: 80
 ```
 
 ## Monitoring and Observability
@@ -661,9 +679,9 @@ spec:
     matchLabels:
       app: pixelated
   endpoints:
-  - port: http
-    path: /metrics
-    interval: 30s
+    - port: http
+      path: /metrics
+      interval: 30s
 ```
 
 ### Grafana Dashboard
@@ -719,4 +737,5 @@ This comprehensive deployment strategy provides:
 7. **Kubernetes support** for scalability
 8. **Load balancing** with Traefik/NGINX
 
-The implementation ensures reliable, secure, and efficient deployments while maintaining high availability.
+The implementation ensures reliable, secure, and efficient deployments while
+maintaining high availability.

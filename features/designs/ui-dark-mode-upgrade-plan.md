@@ -1,4 +1,5 @@
 # Pixelated Empathy UI Dark Mode Upgrade Plan
+
 ## SPARC Methodology Implementation
 
 ---
@@ -6,20 +7,28 @@
 ## 🎯 SPECIFICATION
 
 ### Current State Analysis
+
 - **Existing Theme System**: Already has dark mode foundation with CSS variables
-- **Theme Toggle**: Functional dark/light/system toggle with localStorage persistence
-- **Color Palette**: Green accent (#10b981) with dark backgrounds (#0a0a0a, #111111)
+- **Theme Toggle**: Functional dark/light/system toggle with localStorage
+  persistence
+- **Color Palette**: Green accent (#10b981) with dark backgrounds (#0a0a0a,
+  #111111)
 - **Typography**: Geist Sans font family with established hierarchy
 - **Components**: 150+ Astro components with mixed theme support
 
 ### Dark Mode Gaps Identified
-1. **Inconsistent Component Support** - Some components lack proper dark mode styling
-2. **Limited Color Depth** - Insufficient elevation system for dark mode hierarchy
-3. **Accessibility Issues** - Contrast ratios need optimization for dark backgrounds
+
+1. **Inconsistent Component Support** - Some components lack proper dark mode
+   styling
+2. **Limited Color Depth** - Insufficient elevation system for dark mode
+   hierarchy
+3. **Accessibility Issues** - Contrast ratios need optimization for dark
+   backgrounds
 4. **Animation Transitions** - Missing smooth transitions between themes
 5. **Component Isolation** - No systematic dark mode testing framework
 
 ### Requirements Gathering
+
 - **Primary Goal**: Create a cohesive, accessible dark mode experience
 - **User Experience**: Seamless theme switching with smooth transitions
 - **Accessibility**: WCAG 2.1 AA compliance for all color combinations
@@ -28,6 +37,7 @@
 - **Compatibility**: Support for system preference detection
 
 ### Reference Sites Analysis
+
 Based on modern dark mode implementations from leading design systems:
 
 1. **GitHub Dark Mode**
@@ -59,6 +69,7 @@ Based on modern dark mode implementations from leading design systems:
 ## 📝 PSEUDOCODE
 
 ### Dark Mode Toggle System
+
 ```pseudocode
 FUNCTION initializeDarkMode():
     // Detect system preference
@@ -114,6 +125,7 @@ FUNCTION setupToggleButtonListener():
 ```
 
 ### Component Dark Mode Adaptation
+
 ```pseudocode
 FUNCTION createDarkModeAwareComponent(componentName, baseStyles):
     // Define CSS custom properties for all theme variants
@@ -179,6 +191,7 @@ FUNCTION generateDarkStyles(baseStyles, variables):
 ## 🏗️ ARCHITECTURE
 
 ### CSS Variable Architecture
+
 ```css
 /* ================================================
    DARK MODE CSS VARIABLE SYSTEM
@@ -248,9 +261,12 @@ FUNCTION generateDarkStyles(baseStyles, variables):
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -282,13 +298,17 @@ FUNCTION generateDarkStyles(baseStyles, variables):
 
   /* Adjusted shadows for dark mode */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
 }
 ```
 
 ### Component Hierarchy Architecture
+
 ```
 src/
 ├── styles/
@@ -330,6 +350,7 @@ src/
 ```
 
 ### Theme System Architecture
+
 ```typescript
 // Theme configuration system
 interface ThemeConfig {
@@ -366,7 +387,7 @@ const darkModeConfig: ThemeConfig = {
     surface: '#111111',
     text: '#ffffff',
     textSecondary: '#e5e5e5',
-    border: 'rgba(255, 255, 255, 0.1)'
+    border: 'rgba(255, 255, 255, 0.1)',
   },
   typography: {
     fontFamily: 'Geist Sans, system-ui, sans-serif',
@@ -379,7 +400,7 @@ const darkModeConfig: ThemeConfig = {
       '2xl': '1.5rem',
       '3xl': '1.875rem',
       '4xl': '2.25rem',
-      '5xl': '3rem'
+      '5xl': '3rem',
     },
     fontWeight: {
       normal: 400,
@@ -387,13 +408,13 @@ const darkModeConfig: ThemeConfig = {
       semibold: 600,
       bold: 700,
       extrabold: 800,
-      black: 900
+      black: 900,
     },
     lineHeight: {
       tight: '1.25',
       normal: '1.5',
-      relaxed: '1.75'
-    }
+      relaxed: '1.75',
+    },
   },
   spacing: {
     '1': '0.25rem',
@@ -408,19 +429,19 @@ const darkModeConfig: ThemeConfig = {
     '16': '4rem',
     '20': '5rem',
     '24': '6rem',
-    '32': '8rem'
+    '32': '8rem',
   },
   shadows: {
     sm: '0 1px 2px 0 rgba(0, 0, 0, 0.3)',
     md: '0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3)',
     lg: '0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5)'
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5)',
   },
   transitions: {
     fast: '150ms ease',
     base: '250ms ease',
-    slow: '350ms ease'
-  }
+    slow: '350ms ease',
+  },
 }
 ```
 
@@ -431,6 +452,7 @@ const darkModeConfig: ThemeConfig = {
 ### Component-Level Implementation Plan
 
 #### 1. Enhanced Theme Toggle Component
+
 ```astro
 ---
 // Enhanced ThemeToggle.astro
@@ -615,6 +637,7 @@ const { class: className = '', variants = 'animated', showLabels = false } = Ast
 ```
 
 #### 2. Dark Mode Card Component
+
 ```astro
 ---
 // Enhanced Card.astro with dark mode support
@@ -733,6 +756,7 @@ const paddingClasses = {
 ```
 
 #### 3. Dark Mode Button Component
+
 ```astro
 ---
 // Enhanced Button.astro with comprehensive dark mode support
@@ -945,13 +969,14 @@ const sizeClasses = {
 ### Accessibility Implementation Plan
 
 #### 1. Color Contrast Compliance
+
 ```css
 /* WCAG 2.1 AA compliance ratios */
 :root {
   /* Minimum contrast ratios for text */
-  --contrast-normal-text: 4.5;    /* Normal text: 4.5:1 */
-  --contrast-large-text: 3;       /* Large text: 3:1 */
-  --contrast-ui-elements: 3;      /* UI elements: 3:1 */
+  --contrast-normal-text: 4.5; /* Normal text: 4.5:1 */
+  --contrast-large-text: 3; /* Large text: 3:1 */
+  --contrast-ui-elements: 3; /* UI elements: 3:1 */
 }
 
 /* Enhanced contrast mode */
@@ -969,6 +994,7 @@ const sizeClasses = {
 ```
 
 #### 2. Focus Management
+
 ```css
 /* Enhanced focus indicators */
 .focus-visible {
@@ -993,6 +1019,7 @@ const sizeClasses = {
 ```
 
 #### 3. Screen Reader Support
+
 ```html
 <!-- Enhanced accessibility markup -->
 <button
@@ -1012,6 +1039,7 @@ const sizeClasses = {
 ### Testing Strategy
 
 #### 1. Visual Regression Testing
+
 ```javascript
 // Playwright visual regression tests
 test.describe('Dark Mode Visual Regression', () => {
@@ -1021,17 +1049,22 @@ test.describe('Dark Mode Visual Regression', () => {
     // Test light mode
     await page.evaluate(() => localStorage.setItem('theme', 'light'))
     await page.reload()
-    await expect(page.locator('.theme-toggle')).toHaveScreenshot('theme-toggle-light.png')
+    await expect(page.locator('.theme-toggle')).toHaveScreenshot(
+      'theme-toggle-light.png',
+    )
 
     // Test dark mode
     await page.evaluate(() => localStorage.setItem('theme', 'dark'))
     await page.reload()
-    await expect(page.locSelector('.theme-toggle')).toHaveScreenshot('theme-toggle-dark.png')
+    await expect(page.locSelector('.theme-toggle')).toHaveScreenshot(
+      'theme-toggle-dark.png',
+    )
   })
 })
 ```
 
 #### 2. Accessibility Testing
+
 ```javascript
 // Automated accessibility tests
 test.describe('Dark Mode Accessibility', () => {
@@ -1044,8 +1077,8 @@ test.describe('Dark Mode Accessibility', () => {
     const contrastResults = await page.evaluate(() => {
       return axe.run(document, {
         rules: {
-          'color-contrast': { enabled: true }
-        }
+          'color-contrast': { enabled: true },
+        },
       })
     })
 
@@ -1059,6 +1092,7 @@ test.describe('Dark Mode Accessibility', () => {
 ## ✅ SUCCESS CRITERIA
 
 ### Functional Requirements
+
 - [ ] **Theme Persistence**: User theme preference saved across sessions
 - [ ] **System Detection**: Automatic theme detection based on OS preference
 - [ ] **Smooth Transitions**: Animated theme switching without jarring effects
@@ -1068,14 +1102,17 @@ test.describe('Dark Mode Accessibility', () => {
 - [ ] **Mobile Support**: Full dark mode support on mobile devices
 
 ### Design Requirements
+
 - [ ] **Visual Hierarchy**: Clear depth perception in dark mode
 - [ ] **Brand Consistency**: Maintained brand identity across themes
 - [ ] **Typography Readability**: Optimal contrast for all text sizes
-- [ ] **Icon Adaptation**: Icons and illustrations optimized for dark backgrounds
+- [ ] **Icon Adaptation**: Icons and illustrations optimized for dark
+      backgrounds
 - [ ] **Animation Quality**: Smooth, performant theme transitions
 - [ ] **Responsive Design**: Consistent experience across screen sizes
 
 ### Technical Requirements
+
 - [ ] **CSS Architecture**: Modular, maintainable variable system
 - [ ] **Bundle Size**: Minimal impact on overall application size
 - [ ] **Browser Support**: Works in all supported browsers
@@ -1084,6 +1121,7 @@ test.describe('Dark Mode Accessibility', () => {
 - [ ] **Documentation**: Complete implementation documentation
 
 ### User Experience Metrics
+
 - [ ] **Theme Switch Success Rate**: >99% successful theme switches
 - [ ] **Load Time Impact**: <5% increase in initial load time
 - [ ] **User Preference**: >80% of users prefer dark mode when available
@@ -1091,6 +1129,7 @@ test.describe('Dark Mode Accessibility', () => {
 - [ ] **Visual Consistency**: <1px layout shifts during theme transitions
 
 ### Quality Assurance
+
 - [ ] **Cross-browser Testing**: Verified in Chrome, Firefox, Safari, Edge
 - [ ] **Device Testing**: Tested on desktop, tablet, and mobile devices
 - [ ] **Performance Testing**: No regression in Core Web Vitals
@@ -1098,4 +1137,7 @@ test.describe('Dark Mode Accessibility', () => {
 - [ ] **Code Review**: Approved by senior frontend engineers
 - [ ] **User Acceptance**: Positive feedback from stakeholder review
 
-This comprehensive plan provides a systematic approach to implementing a world-class dark mode experience for Pixelated Empathy, ensuring accessibility, performance, and user satisfaction while maintaining the platform's professional healthcare focus.
+This comprehensive plan provides a systematic approach to implementing a
+world-class dark mode experience for Pixelated Empathy, ensuring accessibility,
+performance, and user satisfaction while maintaining the platform's professional
+healthcare focus.

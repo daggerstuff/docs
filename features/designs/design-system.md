@@ -1,11 +1,17 @@
 # Unified Dark Theme v3.0 Design System
 
 ## Overview
-The Unified Dark Theme v3.0 is a comprehensive enterprise design system that combines Brutalist, Minimalist, Corporate, and Antfu elegance principles. This document details the enhancements made to align with the aesthetic of https://mizu-theme.netlify.app/ while maintaining the enterprise-grade functionality of the original system.
+
+The Unified Dark Theme v3.0 is a comprehensive enterprise design system that
+combines Brutalist, Minimalist, Corporate, and Antfu elegance principles. This
+document details the enhancements made to align with the aesthetic of
+https://mizu-theme.netlify.app/ while maintaining the enterprise-grade
+functionality of the original system.
 
 ## Design Tokens
 
 ### Colors
+
 ```css
 :root {
   --color-primary: #0a0a0a;
@@ -18,6 +24,7 @@ The Unified Dark Theme v3.0 is a comprehensive enterprise design system that com
 ```
 
 ### Spacing
+
 ```css
 :root {
   --spacing-xs: 0.25rem;
@@ -31,6 +38,7 @@ The Unified Dark Theme v3.0 is a comprehensive enterprise design system that com
 ```
 
 ### Typography
+
 ```css
 :root {
   --font-base: 'Inter', system-ui, sans-serif;
@@ -50,17 +58,22 @@ The Unified Dark Theme v3.0 is a comprehensive enterprise design system that com
 ```
 
 ### Shadows
+
 ```css
 :root {
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.15);
 }
 ```
 
 ### Borders
+
 ```css
 :root {
   --radius-xs: 0.125rem;
@@ -73,6 +86,7 @@ The Unified Dark Theme v3.0 is a comprehensive enterprise design system that com
 ```
 
 ### Transitions
+
 ```css
 :root {
   --transition-fast: 0.1s ease;
@@ -84,35 +98,119 @@ The Unified Dark Theme v3.0 is a comprehensive enterprise design system that com
 
 ## Mesh Gradients
 
-Three new mesh gradients have been added to create subtle, sophisticated background patterns:
+Three new mesh gradients have been added to create subtle, sophisticated
+background patterns:
 
 ```css
 :root {
-  --mesh-1: radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  --mesh-1:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(16, 185, 129, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(139, 92, 246, 0.05) 0%,
+      transparent 50%
+    );
 
-  --mesh-2: radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 60%),
-            radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+  --mesh-2:
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(16, 185, 129, 0.05) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(59, 130, 246, 0.05) 0%,
+      transparent 60%
+    );
 
-  --mesh-3: radial-gradient(circle at 50% 10%, rgba(139, 92, 246, 0.08) 0%, transparent 70%),
-            radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+  --mesh-3:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(139, 92, 246, 0.08) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(16, 185, 129, 0.08) 0%,
+      transparent 70%
+    );
 
-  --mesh-4: radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 80%),
-            radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 80%),
-            radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.02) 0%, transparent 90%);
+  --mesh-4:
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(16, 185, 129, 0.03) 0%,
+      transparent 80%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(59, 130, 246, 0.03) 0%,
+      transparent 80%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(139, 92, 246, 0.02) 0%,
+      transparent 90%
+    );
 
-  --mesh-5: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.02) 0%, transparent 70%),
-            radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.02) 0%, transparent 70%),
-            radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.01) 0%, transparent 80%);
+  --mesh-5:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(16, 185, 129, 0.02) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(59, 130, 246, 0.02) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(139, 92, 246, 0.01) 0%,
+      transparent 80%
+    );
 
-  --mesh-6: radial-gradient(circle at 25% 75%, rgba(16, 185, 129, 0.04) 0%, transparent 60%),
-            radial-gradient(circle at 75% 25%, rgba(59, 130, 246, 0.04) 0%, transparent 60%),
-            radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 70%);
+  --mesh-6:
+    radial-gradient(
+      circle at 25% 75%,
+      rgba(16, 185, 129, 0.04) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(59, 130, 246, 0.04) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(139, 92, 246, 0.03) 0%,
+      transparent 70%
+    );
 
-  --mesh-7: radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-            radial-gradient(circle at 85% 15%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
+  --mesh-7:
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(16, 185, 129, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(59, 130, 246, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(139, 92, 246, 0.05) 0%,
+      transparent 60%
+    );
 }
 ```
 
@@ -210,7 +308,8 @@ Improved mobile navigation with backdrop blur and spring transitions:
 
 ### Scroll-Triggered Animations
 
-Implemented performant scroll-triggered animations using Intersection Observer API:
+Implemented performant scroll-triggered animations using Intersection Observer
+API:
 
 ```javascript
 const ANIMATION_CLASSES = [
@@ -224,21 +323,21 @@ const ANIMATION_CLASSES = [
   'feature-reveal',
   'data-row-reveal',
   'metric-counter',
-  'hero-letters'
-];
+  'hero-letters',
+]
 
 const OBSERVER_OPTIONS = {
   threshold: 0.15, // Trigger when 15% of element is visible
   rootMargin: '0px',
-};
+}
 
 // Initialize scroll animations
 function initScrollAnimations() {
   // Check if IntersectionObserver is supported
   if (!('IntersectionObserver' in window)) {
     // Fallback for older browsers: animate all elements immediately
-    animateAllElements();
-    return;
+    animateAllElements()
+    return
   }
 
   // Create Intersection Observer
@@ -246,73 +345,73 @@ function initScrollAnimations() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         // Add animation classes to trigger animations
-        entry.target.classList.add('animate-fade-in');
+        entry.target.classList.add('animate-fade-in')
 
         // Add specific animation class if it matches one of our defined classes
-        ANIMATION_CLASSES.forEach(className => {
+        ANIMATION_CLASSES.forEach((className) => {
           if (entry.target.classList.contains(className)) {
-            entry.target.classList.add(`animate-${className}`);
+            entry.target.classList.add(`animate-${className}`)
           }
-        });
+        })
 
         // Mark as animated to prevent re-animation
-        animatedElements.add(entry.target);
+        animatedElements.add(entry.target)
 
         // Remove observer to prevent re-triggering
-        observer.unobserve(entry.target);
+        observer.unobserve(entry.target)
       }
-    });
-  }, OBSERVER_OPTIONS);
+    })
+  }, OBSERVER_OPTIONS)
 
   // Select all elements with animation classes
   const elementsToAnimate = document.querySelectorAll(
-    ANIMATION_CLASSES.map(className => `.${className}`).join(', ')
-  );
+    ANIMATION_CLASSES.map((className) => `.${className}`).join(', '),
+  )
 
   // Observe all elements
   elementsToAnimate.forEach((element) => {
     // Skip if already animated
-    if (animatedElements.has(element)) return;
+    if (animatedElements.has(element)) return
 
     // Add performance optimizations
-    element.classList.add('will-animate', 'gpu-accelerated');
+    element.classList.add('will-animate', 'gpu-accelerated')
 
     // Observe element
-    observer.observe(element);
-  });
+    observer.observe(element)
+  })
 
   // Handle scroll events for initial viewport elements
   // This ensures elements already in viewport get animated
   const checkInitialElements = () => {
     elementsToAnimate.forEach((element) => {
-      if (animatedElements.has(element)) return;
+      if (animatedElements.has(element)) return
 
-      const rect = element.getBoundingClientRect();
+      const rect = element.getBoundingClientRect()
       if (rect.top <= window.innerHeight && rect.bottom >= 0) {
         // Element is in viewport
-        element.classList.add('animate-fade-in');
+        element.classList.add('animate-fade-in')
 
         // Add specific animation class if it matches one of our defined classes
-        ANIMATION_CLASSES.forEach(className => {
+        ANIMATION_CLASSES.forEach((className) => {
           if (element.classList.contains(className)) {
-            element.classList.add(`animate-${className}`);
+            element.classList.add(`animate-${className}`)
           }
-        });
+        })
 
-        animatedElements.add(element);
+        animatedElements.add(element)
       }
-    });
-  };
+    })
+  }
 
   // Check initial elements on load
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', checkInitialElements);
+    document.addEventListener('DOMContentLoaded', checkInitialElements)
   } else {
-    checkInitialElements();
+    checkInitialElements()
   }
 
   // Check elements on scroll
-  window.addEventListener('scroll', checkInitialElements, { passive: true });
+  window.addEventListener('scroll', checkInitialElements, { passive: true })
 }
 ```
 
@@ -369,7 +468,9 @@ Enhanced focus indicators for better visibility:
 *:focus-visible {
   outline: 4px solid var(--accent-emerald);
   outline-offset: 4px;
-  box-shadow: 0 0 0 1px var(--color-primary), 0 0 0 6px rgba(16, 185, 129, 0.4);
+  box-shadow:
+    0 0 0 1px var(--color-primary),
+    0 0 0 6px rgba(16, 185, 129, 0.4);
   z-index: 10;
   border-radius: var(--radius-md);
 }
@@ -418,7 +519,9 @@ Optimized CSS properties for better rendering:
 .animate-fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
 }
 
 .animate-fade-in.animate {
@@ -470,18 +573,20 @@ Implemented feature detection for advanced features:
 ```javascript
 // Feature detection for backdrop-filter
 if (!CSS.supports('backdrop-filter', 'blur(12px)')) {
-  document.documentElement.classList.add('no-backdrop-filter');
+  document.documentElement.classList.add('no-backdrop-filter')
 }
 
 // Feature detection for IntersectionObserver
 if (!('IntersectionObserver' in window)) {
-  document.documentElement.classList.add('no-intersection-observer');
+  document.documentElement.classList.add('no-intersection-observer')
 }
 ```
 
 ## Conclusion
 
-The Unified Dark Theme v3.0 has been significantly enhanced to match the aesthetic of https://mizu-theme.netlify.app/ while maintaining enterprise-grade functionality. The design system now features:
+The Unified Dark Theme v3.0 has been significantly enhanced to match the
+aesthetic of https://mizu-theme.netlify.app/ while maintaining enterprise-grade
+functionality. The design system now features:
 
 - Sophisticated mesh gradients for subtle background patterns
 - Smooth parallax tilt effects for cards
@@ -491,9 +596,11 @@ The Unified Dark Theme v3.0 has been significantly enhanced to match the aesthet
 - Comprehensive cross-browser compatibility
 - Performance optimizations for GPU acceleration
 
-All enhancements maintain consistency with the existing design tokens and follow the SPARC methodology for systematic development.
+All enhancements maintain consistency with the existing design tokens and follow
+the SPARC methodology for systematic development.
 
-> This design system documentation was generated on November 6, 2025, as part of the SPARC refinement phase.
+> This design system documentation was generated on November 6, 2025, as part of
+> the SPARC refinement phase.
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 

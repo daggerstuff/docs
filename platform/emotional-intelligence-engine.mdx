@@ -6,35 +6,34 @@ description: 'Teaching machines to listen like humans do.'
 ## What Is It?
 
 The Emotional Intelligence Engine is the AI system that powers every
-conversation in The Empathy Gym™. It's the brain behind the simulated
-clients — the thing that makes them feel real.
+conversation in The Empathy Gym™. It's the brain behind the simulated clients —
+the thing that makes them feel real.
 
-But "AI that understands emotions" is a phrase that gets thrown around
-a lot. Let's talk about what we actually mean.
+But "AI that understands emotions" is a phrase that gets thrown around a lot.
+Let's talk about what we actually mean.
 
 ## How We Model Emotions
 
-We don't treat emotions as simple labels. "Happy" and "sad" are useful
-in everyday conversation, but they're insufficient for therapeutic
-training. Real emotions are specific, layered, and constantly shifting.
+We don't treat emotions as simple labels. "Happy" and "sad" are useful in
+everyday conversation, but they're insufficient for therapeutic training. Real
+emotions are specific, layered, and constantly shifting.
 
 ### Plutchik's Wheel of Emotions
 
-Our primary emotional framework is based on Robert Plutchik's
-psychoevolutionary theory. Instead of a flat list of emotions, Plutchik
-organizes them into a wheel with:
+Our primary emotional framework is based on Robert Plutchik's psychoevolutionary
+theory. Instead of a flat list of emotions, Plutchik organizes them into a wheel
+with:
 
-- **8 primary emotions**: Joy, Trust, Fear, Surprise, Sadness,
-  Disgust, Anger, Anticipation
-- **Intensity gradients**: Each emotion has three levels.
-  Annoyance → Anger → Rage. Apprehension → Fear → Terror.
-  Serenity → Joy → Ecstasy.
-- **Composite emotions**: When primary emotions combine, they
-  create more complex feelings. Joy + Trust = Love.
-  Surprise + Sadness = Disapproval. Fear + Surprise = Awe.
+- **8 primary emotions**: Joy, Trust, Fear, Surprise, Sadness, Disgust, Anger,
+  Anticipation
+- **Intensity gradients**: Each emotion has three levels. Annoyance → Anger →
+  Rage. Apprehension → Fear → Terror. Serenity → Joy → Ecstasy.
+- **Composite emotions**: When primary emotions combine, they create more
+  complex feelings. Joy + Trust = Love. Surprise + Sadness = Disapproval. Fear +
+  Surprise = Awe.
 
-This gives us a nuanced emotional vocabulary that mirrors the
-complexity therapists encounter in real sessions.
+This gives us a nuanced emotional vocabulary that mirrors the complexity
+therapists encounter in real sessions.
 
 <Info>
   Learn more about our emotional taxonomy in [Plutchik's Wheel
@@ -43,12 +42,11 @@ complexity therapists encounter in real sessions.
 
 ### Big Five Personality Traits (OCEAN)
 
-Emotions don't happen in a vacuum — they're filtered through
-personality. Two people can experience the same situation and feel
-completely different things.
+Emotions don't happen in a vacuum — they're filtered through personality. Two
+people can experience the same situation and feel completely different things.
 
-We use the Big Five model to give each simulated client a stable
-personality profile:
+We use the Big Five model to give each simulated client a stable personality
+profile:
 
 | Trait                 | What It Influences                          |
 | :-------------------- | :------------------------------------------ |
@@ -59,14 +57,13 @@ personality profile:
 | **Neuroticism**       | Emotional volatility, tendency to distress  |
 
 A client with high Neuroticism and low Agreeableness will behave very
-differently from one with high Openness and high Extraversion — even
-in the same scenario.
+differently from one with high Openness and high Extraversion — even in the same
+scenario.
 
 ## How We Score Emotions
 
-Every emotional attribute is represented as a normalized score between
-**0.0** and **1.0**. This isn't arbitrary — it's a deliberate design
-decision.
+Every emotional attribute is represented as a normalized score between **0.0**
+and **1.0**. This isn't arbitrary — it's a deliberate design decision.
 
 - **0.0** = No presence of this emotion/trait
 - **0.5** = Moderate presence
@@ -83,12 +80,12 @@ decision.
 We distinguish between two kinds of scores:
 
 <Tabs>
-  <Tab title="Baseline Scores">
+  <Tab title='Baseline Scores'>
     Baseline scores represent the client's default emotional profile. These are
     relatively stable across a session. A client with a baseline sadness of 0.7
     carries that weight into every exchange.
   </Tab>
-  <Tab title="State Scores">
+  <Tab title='State Scores'>
     State scores represent the client's _current_ emotional state, which shifts
     moment-to-moment based on the conversation. A well-placed validation might
     drop their anxiety from 0.8 to 0.5. A clumsy interpretation might spike it
@@ -100,8 +97,8 @@ The interaction between baseline and state is where the realism lives.
 
 ## How We Generate Responses
 
-When you say something to a simulated client, here's what happens
-behind the scenes:
+When you say something to a simulated client, here's what happens behind the
+scenes:
 
 <Steps>
   <Step title="Your Message Is Analyzed">
@@ -154,9 +151,8 @@ behind the scenes:
 
 ## Conversational Dynamics
 
-Good therapy isn't just about individual responses — it's about the
-flow of the conversation as a whole. We track several meta-level
-patterns:
+Good therapy isn't just about individual responses — it's about the flow of the
+conversation as a whole. We track several meta-level patterns:
 
 <AccordionGroup>
   <Accordion title="Reciprocity" icon="arrows-rotate">
@@ -165,7 +161,7 @@ patterns:
     rhythm to it.
   </Accordion>
 
-<Accordion title="Escalation and De-escalation" icon="chart-line">
+<Accordion title='Escalation and De-escalation' icon='chart-line'>
   We track whether emotional intensity is rising, falling, or stable — and
   whether the therapist's responses are helping or hurting that trajectory.
 </Accordion>
@@ -192,8 +188,8 @@ patterns:
 
 ## What Makes This Different
 
-There are other AI systems that claim to understand emotions. Here's
-what we do differently:
+There are other AI systems that claim to understand emotions. Here's what we do
+differently:
 
 <CardGroup cols={2}>
   <Card title="Multi-Dimensional Modeling" icon="cubes">
@@ -222,23 +218,23 @@ what we do differently:
 
 ## The Science Behind It
 
-Our engine is built on established psychological research — not
-vibes. The key frameworks we draw from:
+Our engine is built on established psychological research — not vibes. The key
+frameworks we draw from:
 
 <AccordionGroup>
   <Accordion title="Plutchik's Psychoevolutionary Theory (1980)">
     Emotional taxonomy and intensity modeling.
   </Accordion>
-  <Accordion title="Big Five Personality Model (Costa & McCrae, 1992)">
+  <Accordion title='Big Five Personality Model (Costa & McCrae, 1992)'>
     Personality profiling.
   </Accordion>
-  <Accordion title="Motivational Interviewing (Miller & Rollnick)">
+  <Accordion title='Motivational Interviewing (Miller & Rollnick)'>
     Therapeutic technique evaluation.
   </Accordion>
   <Accordion title="Carl Rogers' Person-Centered Approach">
     Validation and unconditional positive regard.
   </Accordion>
-  <Accordion title="Dialectical Behavior Theory">
+  <Accordion title='Dialectical Behavior Theory'>
     Distress tolerance and emotional regulation.
   </Accordion>
 </AccordionGroup>
@@ -250,22 +246,22 @@ vibes. The key frameworks we draw from:
 <CardGroup cols={3}>
   <Card
     title="Plutchik's Wheel"
-    icon="circle-half-stroke"
-    href="/knowledge/plutchiks-wheel-explained"
+    icon='circle-half-stroke'
+    href='/knowledge/plutchiks-wheel-explained'
   >
     The emotional framework in detail.
   </Card>
   <Card
-    title="Emotional Cartography"
-    icon="map"
-    href="/knowledge/emotional-cartography"
+    title='Emotional Cartography'
+    icon='map'
+    href='/knowledge/emotional-cartography'
   >
     Mapping the landscape of feeling.
   </Card>
   <Card
-    title="Our Research Approach"
-    icon="flask"
-    href="/research/our-approach"
+    title='Our Research Approach'
+    icon='flask'
+    href='/research/our-approach'
   >
     The science behind the engine.
   </Card>

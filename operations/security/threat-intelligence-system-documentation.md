@@ -2,7 +2,10 @@
 
 ## Overview
 
-The Global Threat Intelligence Network is a comprehensive, enterprise-grade threat intelligence platform designed for the Pixelated AI-powered mental health platform. It provides real-time threat detection, correlation, and response capabilities across multiple regions with advanced AI/ML integration.
+The Global Threat Intelligence Network is a comprehensive, enterprise-grade
+threat intelligence platform designed for the Pixelated AI-powered mental health
+platform. It provides real-time threat detection, correlation, and response
+capabilities across multiple regions with advanced AI/ML integration.
 
 ## Architecture
 
@@ -10,10 +13,13 @@ The Global Threat Intelligence Network is a comprehensive, enterprise-grade thre
 
 The threat intelligence network consists of 8 main components:
 
-1. **GlobalThreatIntelligenceNetwork** - Core orchestration and coordination system
-2. **EdgeThreatDetectionSystem** - AI-powered edge detection with multiple ML models
+1. **GlobalThreatIntelligenceNetwork** - Core orchestration and coordination
+   system
+2. **EdgeThreatDetectionSystem** - AI-powered edge detection with multiple ML
+   models
 3. **ThreatCorrelationEngine** - Cross-region threat analysis and correlation
-4. **ThreatIntelligenceDatabase** - STIX/TAXII compliant database with MongoDB/Redis
+4. **ThreatIntelligenceDatabase** - STIX/TAXII compliant database with
+   MongoDB/Redis
 5. **AutomatedThreatResponseOrchestrator** - Automated response coordination
 6. **ThreatHuntingSystem** - Proactive threat hunting capabilities
 7. **ExternalThreatFeedIntegration** - Integration with external threat feeds
@@ -73,24 +79,24 @@ module.exports = {
   global: {
     networkId: 'your-network-id',
     regions: ['us-east-1', 'eu-west-1', 'ap-southeast-1'],
-    primaryRegion: 'us-east-1'
+    primaryRegion: 'us-east-1',
   },
   database: {
     mongodb: {
       uri: process.env.MONGODB_URI,
-      database: 'threat_intelligence'
+      database: 'threat_intelligence',
     },
     redis: {
-      url: process.env.REDIS_URL
-    }
+      url: process.env.REDIS_URL,
+    },
   },
   security: {
     encryption: {
       enabled: true,
-      algorithm: 'AES-256-GCM'
-    }
-  }
-};
+      algorithm: 'AES-256-GCM',
+    },
+  },
+}
 ```
 
 ## Usage
@@ -100,16 +106,16 @@ module.exports = {
 #### Initialize the System
 
 ```typescript
-import { GlobalThreatIntelligenceNetworkCore } from './src/lib/threat-intelligence/global/GlobalThreatIntelligenceNetwork';
+import { GlobalThreatIntelligenceNetworkCore } from './src/lib/threat-intelligence/global/GlobalThreatIntelligenceNetwork'
 
 const config = {
   networkId: 'pixelated-threat-network',
   regions: ['us-east-1', 'eu-west-1'],
-  primaryRegion: 'us-east-1'
-};
+  primaryRegion: 'us-east-1',
+}
 
-const network = new GlobalThreatIntelligenceNetworkCore(config);
-await network.initialize();
+const network = new GlobalThreatIntelligenceNetworkCore(config)
+await network.initialize()
 ```
 
 #### Process Threat Intelligence
@@ -126,33 +132,33 @@ const threatData = {
       value: '192.168.1.100',
       confidence: 0.9,
       firstSeen: new Date(),
-      lastSeen: new Date()
-    }
+      lastSeen: new Date(),
+    },
   ],
-  regions: ['us-east-1', 'eu-west-1']
-};
+  regions: ['us-east-1', 'eu-west-1'],
+}
 
-const result = await network.processThreatIntelligence(threatData);
-console.log('Threat processed:', result);
+const result = await network.processThreatIntelligence(threatData)
+console.log('Threat processed:', result)
 ```
 
 #### Perform Threat Hunting
 
 ```typescript
-import { ThreatHuntingSystemCore } from './src/lib/threat-intelligence/hunting/ThreatHuntingSystem';
+import { ThreatHuntingSystemCore } from './src/lib/threat-intelligence/hunting/ThreatHuntingSystem'
 
-const huntingSystem = new ThreatHuntingSystemCore(huntingConfig);
-await huntingSystem.initialize();
+const huntingSystem = new ThreatHuntingSystemCore(huntingConfig)
+await huntingSystem.initialize()
 
 const huntQuery = {
   huntId: 'hunt-456',
   patternId: 'network_anomaly_detection',
   scope: ['network', 'endpoint'],
-  regions: ['us-east-1']
-};
+  regions: ['us-east-1'],
+}
 
-const huntResult = await huntingSystem.executeHunt(huntQuery);
-console.log('Hunt completed:', huntResult);
+const huntResult = await huntingSystem.executeHunt(huntQuery)
+console.log('Hunt completed:', huntResult)
 ```
 
 ### Advanced Features
@@ -161,28 +167,30 @@ console.log('Hunt completed:', huntResult);
 
 ```typescript
 // Synchronize threat across regions
-const syncResult = await network.synchronizeThreat(threatData);
-console.log('Synchronized to regions:', syncResult.regionsSynced);
+const syncResult = await network.synchronizeThreat(threatData)
+console.log('Synchronized to regions:', syncResult.regionsSynced)
 ```
 
 #### Threat Correlation
 
 ```typescript
-const threats = [threat1, threat2, threat3];
-const correlations = await network.correlateThreats(threats);
-console.log('Found correlations:', correlations);
+const threats = [threat1, threat2, threat3]
+const correlations = await network.correlateThreats(threats)
+console.log('Found correlations:', correlations)
 ```
 
 #### Automated Response
 
 ```typescript
-import { AutomatedThreatResponseOrchestratorCore } from './src/lib/threat-intelligence/orchestration/AutomatedThreatResponseOrchestrator';
+import { AutomatedThreatResponseOrchestratorCore } from './src/lib/threat-intelligence/orchestration/AutomatedThreatResponseOrchestrator'
 
-const orchestrator = new AutomatedThreatResponseOrchestratorCore(orchestrationConfig);
-await orchestrator.initialize();
+const orchestrator = new AutomatedThreatResponseOrchestratorCore(
+  orchestrationConfig,
+)
+await orchestrator.initialize()
 
-const response = await orchestrator.orchestrateResponse(threatData);
-console.log('Response orchestrated:', response);
+const response = await orchestrator.orchestrateResponse(threatData)
+console.log('Response orchestrated:', response)
 ```
 
 ## API Reference
@@ -190,25 +198,31 @@ console.log('Response orchestrated:', response);
 ### Global Threat Intelligence Network
 
 #### `processThreatIntelligence(threat: GlobalThreatIntelligence): Promise<ThreatProcessingResult>`
+
 Processes incoming threat intelligence data.
 
 **Parameters:**
+
 - `threat`: Threat intelligence object
 
 **Returns:** Processing result with status and metadata
 
 #### `synchronizeThreat(threat: GlobalThreatIntelligence): Promise<SynchronizationResult>`
+
 Synchronizes threat data across configured regions.
 
 **Parameters:**
+
 - `threat`: Threat intelligence object
 
 **Returns:** Synchronization result with region status
 
 #### `correlateThreats(threats: GlobalThreatIntelligence[]): Promise<ThreatCorrelation[]>`
+
 Correlates multiple threats to identify relationships.
 
 **Parameters:**
+
 - `threats`: Array of threat intelligence objects
 
 **Returns:** Array of threat correlations
@@ -216,17 +230,21 @@ Correlates multiple threats to identify relationships.
 ### Edge Threat Detection
 
 #### `detectThreats(data: DetectionData): Promise<DetectionResult>`
+
 Performs AI-powered threat detection on edge data.
 
 **Parameters:**
+
 - `data`: Detection data with features
 
 **Returns:** Detection results with confidence scores
 
 #### `updateModels(models: AIModelConfig[]): Promise<boolean>`
+
 Updates AI models with new configurations.
 
 **Parameters:**
+
 - `models`: Array of AI model configurations
 
 **Returns:** Success status
@@ -234,17 +252,21 @@ Updates AI models with new configurations.
 ### Threat Hunting
 
 #### `executeHunt(query: HuntQuery): Promise<HuntResult>`
+
 Executes a threat hunting query.
 
 **Parameters:**
+
 - `query`: Hunt query with pattern and scope
 
 **Returns:** Hunt results with findings
 
 #### `scheduleHunt(schedule: HuntSchedule): Promise<string>`
+
 Schedules recurring threat hunts.
 
 **Parameters:**
+
 - `schedule`: Hunt schedule configuration
 
 **Returns:** Schedule ID
@@ -286,9 +308,9 @@ module.exports = {
     regions: ['us-east-1', 'eu-west-1', 'ap-southeast-1'],
     primaryRegion: 'us-east-1',
     syncInterval: 30000,
-    healthCheckInterval: 60000
+    healthCheckInterval: 60000,
   },
-  
+
   edge: {
     enabled: true,
     modelUpdateInterval: 3600000,
@@ -297,37 +319,37 @@ module.exports = {
       {
         modelId: 'anomaly-detection-v1',
         modelType: 'anomaly_detection',
-        threshold: 0.8
-      }
-    ]
+        threshold: 0.8,
+      },
+    ],
   },
-  
+
   database: {
     mongodb: {
       uri: process.env.MONGODB_URI,
       connectionPool: {
         minSize: 5,
-        maxSize: 20
-      }
+        maxSize: 20,
+      },
     },
     redis: {
       url: process.env.REDIS_URL,
-      ttl: 3600
-    }
+      ttl: 3600,
+    },
   },
-  
+
   security: {
     encryption: {
       enabled: true,
-      algorithm: 'AES-256-GCM'
+      algorithm: 'AES-256-GCM',
     },
     rateLimiting: {
       enabled: true,
       windowMs: 60000,
-      maxRequests: 100
-    }
-  }
-};
+      maxRequests: 100,
+    },
+  },
+}
 ```
 
 ## Deployment
@@ -376,7 +398,8 @@ The system exposes the following metrics:
 
 - `threat_intelligence_processed_total` - Total threats processed
 - `threat_intelligence_correlations_total` - Total threat correlations found
-- `threat_intelligence_response_time_seconds` - Response time for threat processing
+- `threat_intelligence_response_time_seconds` - Response time for threat
+  processing
 - `threat_intelligence_errors_total` - Total errors encountered
 - `threat_intelligence_hunts_completed_total` - Total threat hunts completed
 
@@ -405,15 +428,15 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "High threat processing volume detected"
-          
+          summary: 'High threat processing volume detected'
+
       - alert: ThreatProcessingErrors
         expr: rate(threat_intelligence_errors_total[5m]) > 0.1
         for: 5m
         labels:
           severity: critical
         annotations:
-          summary: "High error rate in threat processing"
+          summary: 'High error rate in threat processing'
 ```
 
 ## Security
@@ -427,11 +450,11 @@ The system uses JWT-based authentication with role-based access control (RBAC):
 const roles = {
   admin: ['read', 'write', 'delete', 'admin'],
   analyst: ['read', 'write'],
-  viewer: ['read']
-};
+  viewer: ['read'],
+}
 
 // Check permissions
-const hasPermission = checkPermission(user, 'threat:write');
+const hasPermission = checkPermission(user, 'threat:write')
 ```
 
 ### Encryption
@@ -440,10 +463,10 @@ All sensitive data is encrypted using AES-256-GCM:
 
 ```typescript
 // Encrypt threat data
-const encryptedData = await encryptThreatData(threatData, encryptionKey);
+const encryptedData = await encryptThreatData(threatData, encryptionKey)
 
 // Decrypt threat data
-const decryptedData = await decryptThreatData(encryptedData, encryptionKey);
+const decryptedData = await decryptThreatData(encryptedData, encryptionKey)
 ```
 
 ### Audit Logging
@@ -456,8 +479,8 @@ auditLogger.info('Threat processed', {
   threatId: threat.threatId,
   userId: user.id,
   action: 'process',
-  timestamp: new Date()
-});
+  timestamp: new Date(),
+})
 ```
 
 ## Troubleshooting
@@ -465,16 +488,19 @@ auditLogger.info('Threat processed', {
 ### Common Issues
 
 #### High Memory Usage
+
 - Check AI model cache settings
 - Monitor Redis memory usage
 - Adjust batch processing sizes
 
 #### Database Connection Issues
+
 - Verify MongoDB connection string
 - Check connection pool settings
 - Monitor database performance metrics
 
 #### AI Model Performance
+
 - Update model thresholds
 - Retrain models with new data
 - Monitor model accuracy metrics
@@ -496,15 +522,15 @@ pnpm dev
 const optimizedQuery = {
   indexes: ['threatId', 'severity', 'timestamp'],
   projection: { indicators: 0 }, // Exclude large fields
-  limit: 1000
-};
+  limit: 1000,
+}
 
 // Tune AI model parameters
 const modelConfig = {
   threshold: 0.75,
   batchSize: 100,
-  maxConcurrent: 10
-};
+  maxConcurrent: 10,
+}
 ```
 
 ## API Examples
@@ -578,11 +604,13 @@ For support and questions:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of
+conduct and the process for submitting pull requests.
 
 ## Changelog
 

@@ -1,9 +1,15 @@
 ---
 title: 'Bias Analysis API'
-description: 'Analyze text for cognitive, cultural, and diagnostic biases with confidence scoring, explanations, and actionable recommendations'
+description:
+  'Analyze text for cognitive, cultural, and diagnostic biases with confidence
+  scoring, explanations, and actionable recommendations'
 ---
 
-The Bias Analysis API detects and categorizes biases in clinical text — including session notes, treatment plans, intake assessments, and real-time training conversations. Each analysis returns detected bias types, confidence scores, human-readable explanations, and specific recommendations for bias mitigation.
+The Bias Analysis API detects and categorizes biases in clinical text —
+including session notes, treatment plans, intake assessments, and real-time
+training conversations. Each analysis returns detected bias types, confidence
+scores, human-readable explanations, and specific recommendations for bias
+mitigation.
 
 ## Analyze text for bias
 
@@ -39,19 +45,19 @@ curl -X POST https://api.pixelatedempathy.com/v1/bias-analysis/analyze \
 
 ### Request body parameters
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `text` | string | Yes | The text to analyze. Maximum 10,000 characters. |
-| `context` | string | No | The context in which the text was written. Options: `clinical_notes`, `treatment_plan`, `intake_assessment`, `session_transcript`, `supervision_notes`, `general`. Default: `general`. |
-| `demographics` | object | No | Known demographic information about the client discussed in the text. Improves detection accuracy for demographic-specific biases. |
-| `demographics.client_age` | integer | No | Client's age in years. |
-| `demographics.client_race` | string | No | Client's race or ethnicity. |
-| `demographics.client_gender` | string | No | Client's gender identity. |
-| `demographics.client_ses` | string | No | Socioeconomic status: `low`, `working`, `middle`, `upper_middle`, `high`. |
-| `options` | object | No | Configuration options for the analysis. |
-| `options.include_recommendations` | boolean | No | Include actionable rewriting suggestions. Default: `true`. |
-| `options.sensitivity` | string | No | Detection sensitivity: `low`, `standard`, `high`. Higher sensitivity catches subtler biases but may increase false positives. Default: `standard`. |
-| `options.language` | string | No | Language code (ISO 639-1). Default: `en`. |
+| Parameter                         | Type    | Required | Description                                                                                                                                                                            |
+| --------------------------------- | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `text`                            | string  | Yes      | The text to analyze. Maximum 10,000 characters.                                                                                                                                        |
+| `context`                         | string  | No       | The context in which the text was written. Options: `clinical_notes`, `treatment_plan`, `intake_assessment`, `session_transcript`, `supervision_notes`, `general`. Default: `general`. |
+| `demographics`                    | object  | No       | Known demographic information about the client discussed in the text. Improves detection accuracy for demographic-specific biases.                                                     |
+| `demographics.client_age`         | integer | No       | Client's age in years.                                                                                                                                                                 |
+| `demographics.client_race`        | string  | No       | Client's race or ethnicity.                                                                                                                                                            |
+| `demographics.client_gender`      | string  | No       | Client's gender identity.                                                                                                                                                              |
+| `demographics.client_ses`         | string  | No       | Socioeconomic status: `low`, `working`, `middle`, `upper_middle`, `high`.                                                                                                              |
+| `options`                         | object  | No       | Configuration options for the analysis.                                                                                                                                                |
+| `options.include_recommendations` | boolean | No       | Include actionable rewriting suggestions. Default: `true`.                                                                                                                             |
+| `options.sensitivity`             | string  | No       | Detection sensitivity: `low`, `standard`, `high`. Higher sensitivity catches subtler biases but may increase false positives. Default: `standard`.                                     |
+| `options.language`                | string  | No       | Language code (ISO 639-1). Default: `en`.                                                                                                                                              |
 
 ### Response
 
@@ -123,30 +129,32 @@ curl -X POST https://api.pixelatedempathy.com/v1/bias-analysis/analyze \
 
 ### Response fields
 
-| Field | Type | Description |
-|---|---|---|
-| `analysis_id` | string | Unique identifier for this analysis |
-| `overall_bias_score` | float | Aggregate bias score from 0.0 (no bias detected) to 1.0 (severe bias) |
-| `bias_detected` | boolean | Whether any bias was detected above the confidence threshold |
-| `bias_count` | integer | Number of distinct bias instances identified |
-| `biases` | array | Detailed list of each detected bias |
-| `biases[].type` | string | Bias category: `cultural_bias`, `confirmation_bias`, `diagnostic_bias`, `anchoring_bias`, `gender_bias`, `socioeconomic_bias`, `age_bias` |
-| `biases[].subtype` | string | Specific bias subtype within the category |
-| `biases[].confidence` | float | Model confidence in the detection (0.0–1.0) |
-| `biases[].severity` | string | Impact severity: `low`, `moderate`, `high`, `critical` |
-| `biases[].text_span` | object | Character positions of the relevant text |
-| `biases[].explanation` | string | Human-readable explanation of why this constitutes bias |
-| `biases[].recommendation` | string | Specific suggestion for mitigating the bias |
-| `summary.alternative_text` | string | AI-generated rewrite of the full text with biases mitigated |
+| Field                      | Type    | Description                                                                                                                               |
+| -------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `analysis_id`              | string  | Unique identifier for this analysis                                                                                                       |
+| `overall_bias_score`       | float   | Aggregate bias score from 0.0 (no bias detected) to 1.0 (severe bias)                                                                     |
+| `bias_detected`            | boolean | Whether any bias was detected above the confidence threshold                                                                              |
+| `bias_count`               | integer | Number of distinct bias instances identified                                                                                              |
+| `biases`                   | array   | Detailed list of each detected bias                                                                                                       |
+| `biases[].type`            | string  | Bias category: `cultural_bias`, `confirmation_bias`, `diagnostic_bias`, `anchoring_bias`, `gender_bias`, `socioeconomic_bias`, `age_bias` |
+| `biases[].subtype`         | string  | Specific bias subtype within the category                                                                                                 |
+| `biases[].confidence`      | float   | Model confidence in the detection (0.0–1.0)                                                                                               |
+| `biases[].severity`        | string  | Impact severity: `low`, `moderate`, `high`, `critical`                                                                                    |
+| `biases[].text_span`       | object  | Character positions of the relevant text                                                                                                  |
+| `biases[].explanation`     | string  | Human-readable explanation of why this constitutes bias                                                                                   |
+| `biases[].recommendation`  | string  | Specific suggestion for mitigating the bias                                                                                               |
+| `summary.alternative_text` | string  | AI-generated rewrite of the full text with biases mitigated                                                                               |
 
 ## Batch analysis
 
-Analyze multiple texts in a single request. Ideal for processing historical records, bulk clinical notes, or dataset analysis.
+Analyze multiple texts in a single request. Ideal for processing historical
+records, bulk clinical notes, or dataset analysis.
 
 ### `POST /v1/bias-analysis/batch`
 
 <Note>
-  **Required scope:** `bias_analysis:batch` · **Rate limit:** Batch tier · **Maximum:** 100 items per request
+  **Required scope:** `bias_analysis:batch` · **Rate limit:** Batch tier ·
+  **Maximum:** 100 items per request
 </Note>
 
 ```bash
@@ -255,12 +263,14 @@ curl -X POST https://api.pixelatedempathy.com/v1/bias-analysis/batch \
 
 ## Streaming analysis
 
-For real-time applications such as live training sessions, use the streaming endpoint to receive bias analysis as text is being generated.
+For real-time applications such as live training sessions, use the streaming
+endpoint to receive bias analysis as text is being generated.
 
 ### `POST /v1/bias-analysis/stream`
 
 <Note>
-  **Required scope:** `bias_analysis:stream` · **Rate limit:** Standard tier · **Protocol:** Server-Sent Events (SSE)
+  **Required scope:** `bias_analysis:stream` · **Rate limit:** Standard tier ·
+  **Protocol:** Server-Sent Events (SSE)
 </Note>
 
 ```bash
@@ -294,38 +304,49 @@ data: {"analysis_id": "ba_stream_001", "bias_count": 2, "overall_bias_score": 0.
 ```
 
 <Tip>
-  Use streaming analysis during live training sessions to provide real-time bias feedback. The median latency for the first `bias_detected` event is under 200ms.
+  Use streaming analysis during live training sessions to provide real-time bias
+  feedback. The median latency for the first `bias_detected` event is under
+  200ms.
 </Tip>
 
 ## Supported bias types
 
-| Bias type | Description | Example trigger |
-|---|---|---|
-| `cultural_bias` | Assumptions based on race, ethnicity, or cultural background | "Resistant to treatment" applied disproportionately |
-| `confirmation_bias` | Seeking information that confirms existing beliefs | Exclusively deficit-focused documentation |
-| `diagnostic_bias` | Premature or unfounded diagnostic conclusions | "Clearly borderline" without documented criteria |
-| `anchoring_bias` | Over-reliance on first impressions | Diagnosis unchanged despite contradicting evidence |
-| `gender_bias` | Differential treatment based on gender | "Hysterical" applied to female clients |
-| `socioeconomic_bias` | Assumptions based on economic status | "Non-compliant" linked to insurance type |
-| `age_bias` | Stereotyping based on age | "Confused elderly patient" without assessment |
+| Bias type            | Description                                                  | Example trigger                                     |
+| -------------------- | ------------------------------------------------------------ | --------------------------------------------------- |
+| `cultural_bias`      | Assumptions based on race, ethnicity, or cultural background | "Resistant to treatment" applied disproportionately |
+| `confirmation_bias`  | Seeking information that confirms existing beliefs           | Exclusively deficit-focused documentation           |
+| `diagnostic_bias`    | Premature or unfounded diagnostic conclusions                | "Clearly borderline" without documented criteria    |
+| `anchoring_bias`     | Over-reliance on first impressions                           | Diagnosis unchanged despite contradicting evidence  |
+| `gender_bias`        | Differential treatment based on gender                       | "Hysterical" applied to female clients              |
+| `socioeconomic_bias` | Assumptions based on economic status                         | "Non-compliant" linked to insurance type            |
+| `age_bias`           | Stereotyping based on age                                    | "Confused elderly patient" without assessment       |
 
 ## Error responses
 
-| Status | Error code | Description |
-|---|---|---|
-| `400` | `TEXT_TOO_LONG` | Text exceeds the 10,000 character limit |
-| `400` | `INVALID_CONTEXT` | Unrecognized context value |
-| `400` | `BATCH_TOO_LARGE` | Batch request exceeds 100 items |
-| `422` | `EMPTY_TEXT` | The `text` field is present but empty |
-| `429` | `RATE_LIMITED` | Rate limit exceeded for this endpoint |
+| Status | Error code        | Description                             |
+| ------ | ----------------- | --------------------------------------- |
+| `400`  | `TEXT_TOO_LONG`   | Text exceeds the 10,000 character limit |
+| `400`  | `INVALID_CONTEXT` | Unrecognized context value              |
+| `400`  | `BATCH_TOO_LARGE` | Batch request exceeds 100 items         |
+| `422`  | `EMPTY_TEXT`      | The `text` field is present but empty   |
+| `429`  | `RATE_LIMITED`    | Rate limit exceeded for this endpoint   |
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Session Management API" icon="comments" href="/api-reference/session-management">
+  <Card
+    title='Session Management API'
+    icon='comments'
+    href='/api-reference/session-management'
+  >
     Create and manage training sessions that use bias analysis.
   </Card>
-  <Card title="Crisis Detection API" icon="triangle-exclamation" href="/api-reference/crisis-detection">
-    Detect crisis signals alongside bias analysis for comprehensive text evaluation.
+  <Card
+    title='Crisis Detection API'
+    icon='triangle-exclamation'
+    href='/api-reference/crisis-detection'
+  >
+    Detect crisis signals alongside bias analysis for comprehensive text
+    evaluation.
   </Card>
 </CardGroup>

@@ -3,12 +3,15 @@
 ## Decision Matrix
 
 ### ✅ Use Variable Groups (Current Setup) For:
-- **Non-sensitive configuration**: Version numbers, resource names, URLs, namespaces
+
+- **Non-sensitive configuration**: Version numbers, resource names, URLs,
+  namespaces
 - **Build settings**: Node version, Python version, build pool
 - **Deployment config**: Timeouts, resource groups, cluster names
 - **Quick access**: Variables that don't require encryption at rest
 
 ### ✅ Use Azure Key Vault For:
+
 - **Secrets**: API keys, passwords, tokens, certificates
 - **Sensitive data**: Connection strings, credentials, SSH keys
 - **Compliance requirements**: HIPAA, PCI-DSS, GDPR
@@ -18,7 +21,9 @@
 
 ## Current Variables Analysis
 
-All current variables in `pixelated-pipeline-variables` are **non-sensitive configuration values**:
+All current variables in `pixelated-pipeline-variables` are **non-sensitive
+configuration values**:
+
 - ✅ `NODE_VERSION`: Version number (not a secret)
 - ✅ `PNPM_VERSION`: Version number (not a secret)
 - ✅ `AZURE_RESOURCE_GROUP`: Resource name (not a secret)
@@ -32,6 +37,7 @@ All current variables in `pixelated-pipeline-variables` are **non-sensitive conf
 You should use Azure Key Vault if you have:
 
 ### Secrets for Application Deployment:
+
 - `MONGODB_URI` - Database connection string with credentials
 - `REDIS_PASSWORD` - Redis authentication password
 - `JWT_SECRET` - JWT signing secret
@@ -42,6 +48,7 @@ You should use Azure Key Vault if you have:
 - `RESEND_API_KEY` - Email API key
 
 ### Secrets for Pipeline Operations:
+
 - Service principal passwords
 - Docker registry passwords
 - Git credentials (if needed)
@@ -61,7 +68,7 @@ For production pipelines, use a **hybrid approach**:
 variables:
   # Non-sensitive configuration
   - group: pixelated-pipeline-variables
-  
+
   # Secrets from Azure Key Vault
   - group: pixelated-secrets-keyvault
 ```
@@ -71,6 +78,7 @@ variables:
 ### Option 1: Link Variable Group to Key Vault (Recommended)
 
 1. **Create Azure Key Vault**:
+
    ```bash
    az keyvault create \
      --name pixelated-secrets-kv \
@@ -79,6 +87,7 @@ variables:
    ```
 
 2. **Store secrets in Key Vault**:
+
    ```bash
    az keyvault secret set \
      --vault-name pixelated-secrets-kv \
@@ -117,6 +126,7 @@ steps:
 ## Security Best Practices
 
 ### ✅ Do:
+
 - Store all secrets in Azure Key Vault
 - Use Variable Groups only for non-sensitive config
 - Enable audit logging on Key Vault
@@ -125,7 +135,9 @@ steps:
 - Limit access with RBAC
 
 ### ❌ Don't:
-- Store secrets in Variable Groups (unless marked as secret and required for backward compatibility)
+
+- Store secrets in Variable Groups (unless marked as secret and required for
+  backward compatibility)
 - Hardcode secrets in pipeline YAML
 - Commit secrets to repositories
 - Share secrets across environments without rotation
@@ -142,7 +154,8 @@ If you need to add secrets later:
 
 ## Current Status
 
-✅ **Correctly configured**: Current variables are all non-sensitive and appropriately stored in Variable Groups.
+✅ **Correctly configured**: Current variables are all non-sensitive and
+appropriately stored in Variable Groups.
 
-🔒 **Future enhancement**: When adding secrets (API keys, passwords, etc.), create a Key Vault-linked Variable Group.
-
+🔒 **Future enhancement**: When adding secrets (API keys, passwords, etc.),
+create a Key Vault-linked Variable Group.

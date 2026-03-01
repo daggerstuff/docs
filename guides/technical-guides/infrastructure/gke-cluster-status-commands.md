@@ -3,6 +3,7 @@
 ## Essential Commands to Check Your Cluster Status
 
 ### 1. List All GKE Clusters
+
 ```bash
 # List all clusters in your project
 gcloud container clusters list --project=pixelated-463209-e5
@@ -15,6 +16,7 @@ gcloud container clusters list --project=pixelated-463209-e5 --filter="zone:us-e
 ```
 
 ### 2. Check Specific Cluster Status
+
 ```bash
 # Describe the pixelcluster (if it exists)
 gcloud container clusters describe pixelcluster --zone=us-east1-d --project=pixelated-463209-e5
@@ -27,6 +29,7 @@ gcloud container node-pools list --cluster=pixelcluster --zone=us-east1-d --proj
 ```
 
 ### 3. Check Node Status
+
 ```bash
 # Get cluster credentials first
 gcloud container clusters get-credentials pixelcluster --zone=us-east1-d --project=pixelated-463209-e5
@@ -45,6 +48,7 @@ kubectl describe node <node-name>
 ```
 
 ### 4. Check Quota Usage
+
 ```bash
 # Check project quotas
 gcloud compute project-info describe --project=pixelated-463209-e5 | grep -A 20 "quotas"
@@ -57,6 +61,7 @@ gcloud compute regions describe us-east1 --project=pixelated-463209-e5 --format=
 ```
 
 ### 5. Check Disk Usage
+
 ```bash
 # List all disks in the project
 gcloud compute disks list --project=pixelated-463209-e5
@@ -69,6 +74,7 @@ gcloud compute disks list --project=pixelated-463209-e5 --format="table(name,siz
 ```
 
 ### 6. Check Instance Templates
+
 ```bash
 # List instance templates (the missing ones from error)
 gcloud compute instance-templates list --project=pixelated-463209-e5
@@ -79,6 +85,7 @@ gcloud compute instance-templates describe gke-pixelcluster-pixelcluster-node-po
 ```
 
 ### 7. Check Pod Status (if cluster is accessible)
+
 ```bash
 # Check if cluster is accessible
 kubectl cluster-info
@@ -94,6 +101,7 @@ kubectl get pods -n pixelated-prod  # or whatever namespace you use
 ```
 
 ### 8. Check Recent Events
+
 ```bash
 # Check cluster events
 kubectl get events --all-namespaces --sort-by='.lastTimestamp'
@@ -127,7 +135,7 @@ if gcloud container clusters describe pixelcluster --zone=us-east1-d --project=p
     echo "2. Pixelcluster status:"
     gcloud container clusters describe pixelcluster --zone=us-east1-d --project=pixelated-463209-e5 --format="table(name,zone,status,currentNodeCount,currentMasterVersion)"
     echo ""
-    
+
     echo "3. Node pools:"
     gcloud container node-pools list --cluster=pixelcluster --zone=us-east1-d --project=pixelated-463209-e5
     echo ""
@@ -157,6 +165,7 @@ echo "=== Status Check Complete ==="
 ## What to Look For
 
 ### Healthy Cluster Indicators:
+
 - ✅ Cluster status: "RUNNING"
 - ✅ Node count: matches expected (2-4 nodes)
 - ✅ SSD usage: < 80% of quota
@@ -164,6 +173,7 @@ echo "=== Status Check Complete ==="
 - ✅ No recent error events
 
 ### Problem Indicators:
+
 - ❌ Cluster status: "ERROR" or "RECONCILING"
 - ❌ SSD usage: > 90% of 250GB quota
 - ❌ Missing instance templates
@@ -173,18 +183,22 @@ echo "=== Status Check Complete ==="
 ## Next Steps Based on Findings
 
 ### If Cluster is Down:
+
 1. Check quota and request increase
 2. Optimize storage usage
 3. Consider regional migration
 
 ### If Cluster is Running but Overloaded:
+
 1. Scale down unnecessary resources
 2. Implement resource limits
 3. Set up monitoring alerts
 
 ### If Cluster is Healthy:
+
 1. Set up proper monitoring
 2. Implement backup strategy
 3. Plan for future scaling
 
-Run these commands and share the output to get a clear picture of your actual cluster status.
+Run these commands and share the output to get a clear picture of your actual
+cluster status.

@@ -5,9 +5,9 @@ description: "How the pieces fit together — and why they're separate."
 
 ## System Overview
 
-Pixelated Empathy is a multi-service application. Each service handles
-a distinct responsibility and communicates with others through
-well-defined interfaces.
+Pixelated Empathy is a multi-service application. Each service handles a
+distinct responsibility and communicates with others through well-defined
+interfaces.
 
 ```text
 ┌──────────────────────────────────────────────────┐
@@ -52,9 +52,9 @@ well-defined interfaces.
     (Astro island state)
     **Data Fetching**: TanStack Query
 
-The frontend is server-rendered with Astro for fast initial
-loads, with React components hydrated on the client for
-interactive features like The Empathy Gym™ training interface.
+The frontend is server-rendered with Astro for fast initial loads, with React
+components hydrated on the client for interactive features like The Empathy Gym™
+training interface.
 
 **Key directories**:
 
@@ -73,9 +73,8 @@ interactive features like The Empathy Gym™ training interface.
     **Framework**: FastAPI
     **Package Manager**: uv
 
-The emotional intelligence engine — handles emotion analysis,
-client response generation, therapeutic evaluation, and
-crisis detection.
+The emotional intelligence engine — handles emotion analysis, client response
+generation, therapeutic evaluation, and crisis detection.
 
 **Key directories**:
 
@@ -88,7 +87,7 @@ crisis detection.
 
   </Accordion>
 
-<Accordion title="WebSocket Server" icon="bolt">
+<Accordion title='WebSocket Server' icon='bolt'>
   Handles real-time bidirectional communication between the frontend and AI
   service. This is what makes conversations feel live rather than
   request-response.
@@ -104,9 +103,9 @@ crisis detection.
 
   </Accordion>
 
-  <Accordion title="Memory (Mem0)" icon="database">
-    Conversation context persistence. Maintains state across
-    interactions so training scenarios can build over time.
+  <Accordion title='Memory (Mem0)' icon='database'>
+    Conversation context persistence. Maintains state across interactions so
+    training scenarios can build over time.
   </Accordion>
 
 </AccordionGroup>
@@ -124,14 +123,14 @@ crisis detection.
     React capabilities where we need them.
   </Tab>
 
-<Tab title="Why CSS Modules?">
+<Tab title='Why CSS Modules?'>
   CSS Modules give us scoped styles without utility class bloat. For a platform
   that needs careful, accessible design — especially in the training interface —
   explicit stylesheets are easier to maintain and audit than long chains of
   utility classes. Tailwind can be added if explicitly requested.
 </Tab>
 
-<Tab title="Why FastAPI?">
+<Tab title='Why FastAPI?'>
   The AI/ML ecosystem is Python-native. Libraries for NLP, emotion modeling, and
   model fine-tuning have first-class Python support. Running the AI service in
   Python lets us use these tools directly rather than building bridges to a
@@ -154,34 +153,34 @@ crisis detection.
 Here's what happens when a user starts a training session:
 
 <Steps>
-  <Step title="User Selects Scenario">
+  <Step title='User Selects Scenario'>
     Frontend sends scenario config to AI Service.
   </Step>
-  <Step title="AI Initializes Client">
+  <Step title='AI Initializes Client'>
     Creates client profile (Plutchik emotions + Big Five personality + scenario
     context).
   </Step>
-  <Step title="AI Generates Opening">
+  <Step title='AI Generates Opening'>
     First client message sent to Frontend via WebSocket.
   </Step>
-  <Step title="User Responds">Message sent to AI Service for analysis.</Step>
-  <Step title="AI Processes Response">
+  <Step title='User Responds'>Message sent to AI Service for analysis.</Step>
+  <Step title='AI Processes Response'>
     Emotion analysis, state update, therapeutic evaluation, crisis check.
   </Step>
-  <Step title="Client Responds">
+  <Step title='Client Responds'>
     New message generated and sent to Frontend. Steps 4–6 repeat until session
     ends.
   </Step>
-  <Step title="Session Feedback">
+  <Step title='Session Feedback'>
     Aggregated evaluation delivered to Frontend.
   </Step>
-  <Step title="Memory Updated">Session context saved for continuity.</Step>
+  <Step title='Memory Updated'>Session context saved for continuity.</Step>
 </Steps>
 
 ## Validation Strategy
 
-We use **Zod** for runtime validation across all service boundaries.
-Key validation rules:
+We use **Zod** for runtime validation across all service boundaries. Key
+validation rules:
 
 ```typescript
 // Emotion scores MUST be 0.0–1.0
@@ -237,16 +236,16 @@ All deployments go through:
 
 <CardGroup cols={3}>
   <Card
-    title="Getting Started"
-    icon="rocket"
-    href="/developers/getting-started"
+    title='Getting Started'
+    icon='rocket'
+    href='/developers/getting-started'
   >
     Set up your environment.
   </Card>
-  <Card title="API Reference" icon="code" href="/developers/api-reference">
+  <Card title='API Reference' icon='code' href='/developers/api-reference'>
     Work with our APIs.
   </Card>
-  <Card title="Platform Overview" icon="sitemap" href="/platform/overview">
+  <Card title='Platform Overview' icon='sitemap' href='/platform/overview'>
     The non-technical version.
   </Card>
 </CardGroup>

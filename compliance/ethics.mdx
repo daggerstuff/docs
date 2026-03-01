@@ -1,36 +1,59 @@
 ---
-title: "Ethical AI & Psychological Safety"
-description: "Core ethical principles, bias mitigation, crisis handling protocols, and cultural competency standards for Pixelated Empathy's therapeutic AI platform."
+title: 'Ethical AI & Psychological Safety'
+description:
+  "Core ethical principles, bias mitigation, crisis handling protocols, and
+  cultural competency standards for Pixelated Empathy's therapeutic AI platform."
 ---
 
-Pixelated Empathy exists at the intersection of artificial intelligence and human vulnerability. Every design decision, every model output, and every interaction is governed by a rigorous ethical framework that prioritizes **psychological safety above all else**.
+Pixelated Empathy exists at the intersection of artificial intelligence and
+human vulnerability. Every design decision, every model output, and every
+interaction is governed by a rigorous ethical framework that prioritizes
+**psychological safety above all else**.
 
 <Note>
-  Our ethical framework is not aspirational — it is enforced through automated compliance gates, real-time bias detection, and mandatory crisis protocols that are tested continuously in production.
+  Our ethical framework is not aspirational — it is enforced through automated
+  compliance gates, real-time bias detection, and mandatory crisis protocols
+  that are tested continuously in production.
 </Note>
 
 ## Core Ethical Principles
 
-These five principles guide every aspect of Pixelated Empathy's design and operation. They are non-negotiable and are embedded in our AI pipelines, training data, and quality assurance processes.
+These five principles guide every aspect of Pixelated Empathy's design and
+operation. They are non-negotiable and are embedded in our AI pipelines,
+training data, and quality assurance processes.
 
 <CardGroup cols={2}>
-  <Card title="No Toxic Positivity" icon="face-smile-wink">
-    We never dismiss or minimize genuine distress with hollow reassurance. Phrases like *"just look on the bright side"* or *"everything happens for a reason"* are explicitly prohibited. Real empathy means sitting with discomfort, not rushing past it.
+  <Card title='No Toxic Positivity' icon='face-smile-wink'>
+    We never dismiss or minimize genuine distress with hollow reassurance.
+    Phrases like *"just look on the bright side"* or *"everything happens for a
+    reason"* are explicitly prohibited. Real empathy means sitting with
+    discomfort, not rushing past it.
   </Card>
-  <Card title="Authentic Emotional Validation" icon="heart">
-    Every emotional response is treated as valid and meaningful. We acknowledge what someone is feeling before exploring solutions. The system is trained to recognize that validation is itself a therapeutic intervention — not a preamble to one.
+  <Card title='Authentic Emotional Validation' icon='heart'>
+    Every emotional response is treated as valid and meaningful. We acknowledge
+    what someone is feeling before exploring solutions. The system is trained to
+    recognize that validation is itself a therapeutic intervention — not a
+    preamble to one.
   </Card>
-  <Card title="Cultural Sensitivity" icon="globe">
-    Mental health experiences are shaped by culture, language, identity, and context. Our AI adapts its approach based on cultural background, avoids imposing Western therapeutic models as universal, and respects diverse expressions of distress and healing.
+  <Card title='Cultural Sensitivity' icon='globe'>
+    Mental health experiences are shaped by culture, language, identity, and
+    context. Our AI adapts its approach based on cultural background, avoids
+    imposing Western therapeutic models as universal, and respects diverse
+    expressions of distress and healing.
   </Card>
-  <Card title="Crisis Safety First" icon="shield-heart">
-    When crisis signals are detected, safety takes absolute priority. The system shifts to connection-focused protocols, collaborative safety planning, and peer support emphasis — never defaulting to cold institutional referral language.
+  <Card title='Crisis Safety First' icon='shield-heart'>
+    When crisis signals are detected, safety takes absolute priority. The system
+    shifts to connection-focused protocols, collaborative safety planning, and
+    peer support emphasis — never defaulting to cold institutional referral
+    language.
   </Card>
 </CardGroup>
 
 <CardGroup cols={1}>
-  <Card title="Transparency & Informed Consent" icon="eye">
-    Users always know they are interacting with an AI system. The limitations of AI-based therapeutic training are clearly communicated. Users maintain full control over their data and can withdraw consent at any time.
+  <Card title='Transparency & Informed Consent' icon='eye'>
+    Users always know they are interacting with an AI system. The limitations of
+    AI-based therapeutic training are clearly communicated. Users maintain full
+    control over their data and can withdraw consent at any time.
   </Card>
 </CardGroup>
 
@@ -38,7 +61,9 @@ These five principles guide every aspect of Pixelated Empathy's design and opera
 
 ## The EARS Framework
 
-All AI-generated therapeutic responses must comply with the **EARS framework** — **Empathize, Appraise, Reflect, Support**. This framework is enforced by an automated compliance gate that validates every response before delivery.
+All AI-generated therapeutic responses must comply with the **EARS framework** —
+**Empathize, Appraise, Reflect, Support**. This framework is enforced by an
+automated compliance gate that validates every response before delivery.
 
 <Tabs>
   <Tab title="Empathize">
@@ -64,6 +89,7 @@ All AI-generated therapeutic responses must comply with the **EARS framework** �
         "What you're going through", "I can see how"
     ]
     ```
+
   </Tab>
   <Tab title="Appraise">
     ### Appraise the Context
@@ -79,6 +105,7 @@ All AI-generated therapeutic responses must comply with the **EARS framework** �
     - Ignoring context and treating all sadness as equivalent
     - Making assumptions about the person's situation
     - Over-interpreting or reading meaning that wasn't shared
+
   </Tab>
   <Tab title="Reflect">
     ### Reflect Back Understanding
@@ -94,6 +121,7 @@ All AI-generated therapeutic responses must comply with the **EARS framework** �
     - Parroting back exact words without synthesis
     - Projecting feelings or experiences not expressed
     - Intellectualizing or analyzing the person's emotions
+
   </Tab>
   <Tab title="Support">
     ### Support with Agency
@@ -111,12 +139,15 @@ All AI-generated therapeutic responses must comply with the **EARS framework** �
     - "You should..." prescriptive language
     - Creating dependence on the AI system
     - Replacing professional therapeutic relationships
+
   </Tab>
 </Tabs>
 
 ### EARS Compliance Gate
 
-The EARS compliance gate is an automated validation system that runs in the production pipeline. It enforces a **≥95% crisis detection sensitivity** requirement and validates that all responses meet EARS quality standards.
+The EARS compliance gate is an automated validation system that runs in the
+production pipeline. It enforces a **≥95% crisis detection sensitivity**
+requirement and validates that all responses meet EARS quality standards.
 
 ```python
 # Production EARS gate configuration
@@ -128,14 +159,19 @@ class EarsConfig:
 ```
 
 <Warning>
-  **Non-compliant outputs are blocked.** Any dataset or pipeline output that fails the EARS compliance gate cannot proceed to production. There are no override mechanisms for crisis detection sensitivity — the ≥95% threshold is absolute.
+  **Non-compliant outputs are blocked.** Any dataset or pipeline output that
+  fails the EARS compliance gate cannot proceed to production. There are no
+  override mechanisms for crisis detection sensitivity — the ≥95% threshold is
+  absolute.
 </Warning>
 
 ---
 
 ## Bias Mitigation
 
-Bias in therapeutic AI can cause real psychological harm. Pixelated Empathy employs a **four-layer bias detection architecture** that operates in real-time across every interaction.
+Bias in therapeutic AI can cause real psychological harm. Pixelated Empathy
+employs a **four-layer bias detection architecture** that operates in real-time
+across every interaction.
 
 ### Detection Architecture
 
@@ -165,6 +201,7 @@ Bias in therapeutic AI can cause real psychological harm. Pixelated Empathy empl
       };
     }
     ```
+
   </Tab>
   <Tab title="Layer 2: Model-Level">
     **Fairness metrics** evaluated against the AI model's outputs across demographic groups.
@@ -175,6 +212,7 @@ Bias in therapeutic AI can cause real psychological harm. Pixelated Empathy empl
     - Calibration analysis across groups
     - Individual and counterfactual fairness testing
     - Performance metric breakdown by demographic
+
   </Tab>
   <Tab title="Layer 3: Interactive">
     **Real-time counterfactual analysis** during live interactions.
@@ -183,6 +221,7 @@ Bias in therapeutic AI can cause real psychological harm. Pixelated Empathy empl
     - Feature importance analysis to identify demographic-correlated decision factors
     - "What-if" scenario generation for bias edge cases
     - Consistency scoring across substituted scenarios
+
   </Tab>
   <Tab title="Layer 4: Evaluation">
     **Continuous evaluation** using both automated metrics and human review.
@@ -191,54 +230,50 @@ Bias in therapeutic AI can cause real psychological harm. Pixelated Empathy empl
     - Therapeutic-specific bias metrics (therapeutic bias, cultural sensitivity, professional ethics)
     - Temporal trend analysis to detect bias drift over time
     - Intervention effectiveness tracking
+
   </Tab>
 </Tabs>
 
 ### 200+ Cultural Patterns
 
-The bias detection system is trained on over **200 cultural patterns** spanning 8 major cultural backgrounds:
+The bias detection system is trained on over **200 cultural patterns** spanning
+8 major cultural backgrounds:
 
 <CardGroup cols={2}>
-  <Card title="Cultural Backgrounds" icon="earth-americas">
-    - Western Individualistic
-    - East Asian Collectivistic
-    - Latin American
-    - Middle Eastern
-    - African
-    - South Asian
-    - Indigenous
-    - Mixed / Multicultural
+  <Card title='Cultural Backgrounds' icon='earth-americas'>
+    - Western Individualistic - East Asian Collectivistic - Latin American -
+    Middle Eastern - African - South Asian - Indigenous - Mixed / Multicultural
   </Card>
-  <Card title="Diversity Factors" icon="people-group">
-    - Ethnicity and racial identity
-    - Religious and spiritual beliefs
-    - Socioeconomic status
-    - Gender identity and expression
-    - Sexual orientation
-    - Age and generational context
-    - Disability status
-    - Immigration and citizenship status
+  <Card title='Diversity Factors' icon='people-group'>
+    - Ethnicity and racial identity - Religious and spiritual beliefs -
+    Socioeconomic status - Gender identity and expression - Sexual orientation -
+    Age and generational context - Disability status - Immigration and
+    citizenship status
   </Card>
 </CardGroup>
 
 ### Alert Levels & Response
 
-| Alert Level | Bias Score | Response |
-|---|---|---|
-| **Low** | < 0.3 | Logged and monitored. No intervention needed. |
-| **Medium** | 0.3 – 0.6 | Flagged for review. Enhanced monitoring activated. |
-| **High** | 0.6 – 0.8 | Immediate notification to safety team. Response may be modified. |
-| **Critical** | ≥ 0.8 | Response blocked. Manual review required before delivery. |
+| Alert Level  | Bias Score | Response                                                         |
+| ------------ | ---------- | ---------------------------------------------------------------- |
+| **Low**      | < 0.3      | Logged and monitored. No intervention needed.                    |
+| **Medium**   | 0.3 – 0.6  | Flagged for review. Enhanced monitoring activated.               |
+| **High**     | 0.6 – 0.8  | Immediate notification to safety team. Response may be modified. |
+| **Critical** | ≥ 0.8      | Response blocked. Manual review required before delivery.        |
 
 <Tip>
-  HIPAA-compliant audit logging captures every bias analysis result. Demographics are masked using the minimum necessary standard — known PII fields (SSN, phone, email) are stripped before analysis.
+  HIPAA-compliant audit logging captures every bias analysis result.
+  Demographics are masked using the minimum necessary standard — known PII
+  fields (SSN, phone, email) are stripped before analysis.
 </Tip>
 
 ---
 
 ## Crisis Handling
 
-Crisis detection and response is the most critical safety system in Pixelated Empathy. Our approach is grounded in three foundational principles that distinguish it from conventional crisis handling.
+Crisis detection and response is the most critical safety system in Pixelated
+Empathy. Our approach is grounded in three foundational principles that
+distinguish it from conventional crisis handling.
 
 ### Foundational Principles
 
@@ -253,6 +288,7 @@ Crisis detection and response is the most critical safety system in Pixelated Em
     4. Only after connection is established does it collaboratively explore safety
 
     **Why this matters:** Research consistently shows that people in crisis who feel heard and connected are more receptive to safety planning than those who receive immediate directive responses.
+
   </Accordion>
 
   <Accordion title="Collaborative Safety Planning" icon="people-arrows">
@@ -270,6 +306,7 @@ Crisis detection and response is the most critical safety system in Pixelated Em
     - "You should go to the emergency room"
     - Paternalistic language that removes agency
     - Treating the person as a liability rather than a human being
+
   </Accordion>
 
   <Accordion title="Peer Support Emphasis" icon="user-group">
@@ -283,33 +320,39 @@ Crisis detection and response is the most critical safety system in Pixelated Em
     <Warning>
       **No institutional referral language unless the user initiates.** The system does not push crisis hotlines, emergency services, or professional referrals unless the user asks for them or the situation meets the threshold for immediate danger.
     </Warning>
+
   </Accordion>
 </AccordionGroup>
 
 ### Crisis Detection System
 
-The crisis detection system operates at four alert levels with automated escalation:
+The crisis detection system operates at four alert levels with automated
+escalation:
 
 <CardGroup cols={2}>
   <Card title="Concern" icon="circle-info">
     **Confidence < 50%**
 
     Low-level signals detected. Enhanced monitoring activated. Empathetic response adjusted to be more attuned. No escalation.
+
   </Card>
   <Card title="Moderate" icon="triangle-exclamation">
     **Confidence 50–70%**
 
     Meaningful crisis signals present. Response shifts to connection-focused mode. Safety gently explored within conversation.
+
   </Card>
   <Card title="Severe" icon="exclamation-circle">
     **Confidence 70–90%**
 
     Clear crisis indicators. Collaborative safety planning initiated. On-call staff notified via secure channel.
+
   </Card>
   <Card title="Emergency" icon="bell">
     **Confidence ≥ 90%**
 
     Immediate danger indicators (plan, means, timeline). Full crisis protocol activated. Incident response team engaged. Auto-escalation if not handled within configured timeframe.
+
   </Card>
 </CardGroup>
 
@@ -324,14 +367,18 @@ The crisis detection system operates at four alert levels with automated escalat
 ```
 
 <Info>
-  All crisis events are recorded in an immutable audit log including event ID, anonymized user ID, session ID, confidence score, detected risk factors, alert level, and resolution details. Crisis records are retained for 7 years.
+  All crisis events are recorded in an immutable audit log including event ID,
+  anonymized user ID, session ID, confidence score, detected risk factors, alert
+  level, and resolution details. Crisis records are retained for 7 years.
 </Info>
 
 ---
 
 ## Cultural Competency
 
-Pixelated Empathy's cultural competency system dynamically adapts therapeutic interactions based on cultural context, communication preferences, and individual identity.
+Pixelated Empathy's cultural competency system dynamically adapts therapeutic
+interactions based on cultural context, communication preferences, and
+individual identity.
 
 ### Cultural Adaptation Pipeline
 
@@ -348,6 +395,7 @@ Pixelated Empathy's cultural competency system dynamically adapts therapeutic in
     <Tip>
       Cultural profiling is always probabilistic and tentative. The system **never** makes definitive assumptions about a person's cultural identity based on detected signals. Confidence scores below 0.6 result in a culturally neutral default approach.
     </Tip>
+
   </Tab>
   <Tab title="Response Adaptation">
     Based on the cultural profile, the system adapts:
@@ -367,6 +415,7 @@ Pixelated Empathy's cultural competency system dynamically adapts therapeutic in
     - Avoiding idioms and colloquialisms for non-native speakers
     - Using simpler, concrete language when language barriers detected
     - Adapting formality level to cultural expectations
+
   </Tab>
   <Tab title="Bias Avoidance">
     The cultural competency system actively avoids:
@@ -378,17 +427,26 @@ Pixelated Empathy's cultural competency system dynamically adapts therapeutic in
     | **Microaggressions** | "Where are you really from?" patterns | Prohibited phrase lists and response filtering |
     | **Pathologizing Culture** | Treating cultural practices as symptoms | Cultural expression library distinguishing culture from pathology |
     | **Western Bias** | Assuming Western therapy models are universal | Multi-model therapeutic approach with cultural adaptation |
+
   </Tab>
 </Tabs>
 
 ### Linguistic Variation
 
-The system recognizes that mental health expression varies significantly across languages and cultures:
+The system recognizes that mental health expression varies significantly across
+languages and cultures:
 
-- **Somatic expression:** Many cultures express emotional distress through physical symptoms — "my heart is heavy," "I feel a weight on my chest" — and the system recognizes these as emotional expressions, not just physical complaints.
-- **Indirect disclosure:** In cultures where direct emotional expression is stigmatized, the system detects indirect signals of distress and responds with appropriate sensitivity.
-- **Code-switching:** The system recognizes when users shift between cultural communication modes and adapts its responses accordingly.
-- **Honorifics and formality:** Response formality adapts to cultural expectations around respect and social hierarchy.
+- **Somatic expression:** Many cultures express emotional distress through
+  physical symptoms — "my heart is heavy," "I feel a weight on my chest" — and
+  the system recognizes these as emotional expressions, not just physical
+  complaints.
+- **Indirect disclosure:** In cultures where direct emotional expression is
+  stigmatized, the system detects indirect signals of distress and responds with
+  appropriate sensitivity.
+- **Code-switching:** The system recognizes when users shift between cultural
+  communication modes and adapts its responses accordingly.
+- **Honorifics and formality:** Response formality adapts to cultural
+  expectations around respect and social hierarchy.
 
 ---
 
@@ -397,39 +455,49 @@ The system recognizes that mental health expression varies significantly across 
 ### Continuous Monitoring
 
 <CardGroup cols={3}>
-  <Card title="Real-Time Detection" icon="gauge-high">
-    Bias detection engine runs on every interaction. Alert thresholds trigger immediate review for high and critical bias scores.
+  <Card title='Real-Time Detection' icon='gauge-high'>
+    Bias detection engine runs on every interaction. Alert thresholds trigger
+    immediate review for high and critical bias scores.
   </Card>
-  <Card title="Monthly Ethics Review" icon="calendar">
-    Cross-functional ethics committee reviews bias metrics, crisis handling outcomes, cultural competency reports, and user feedback.
+  <Card title='Monthly Ethics Review' icon='calendar'>
+    Cross-functional ethics committee reviews bias metrics, crisis handling
+    outcomes, cultural competency reports, and user feedback.
   </Card>
-  <Card title="Quarterly Audits" icon="clipboard-check">
-    Independent ethical AI audits assess the system against published principles. Results are documented and remediation is tracked.
+  <Card title='Quarterly Audits' icon='clipboard-check'>
+    Independent ethical AI audits assess the system against published
+    principles. Results are documented and remediation is tracked.
   </Card>
 </CardGroup>
 
 ### Prohibited Behaviors
 
-The following AI behaviors are explicitly prohibited and enforced through automated guardrails:
+The following AI behaviors are explicitly prohibited and enforced through
+automated guardrails:
 
-| Prohibited Behavior | Enforcement Mechanism |
-|---|---|
-| Toxic positivity or emotional minimization | EARS compliance gate + response filtering |
-| Diagnosis or diagnostic language | Output filter + training data curation |
-| Unsolicited institutional referrals | Crisis protocol rules — user-initiated only |
-| Prescriptive advice ("You should...") | EARS Support layer validation |
-| Storing identifiable PHI in AI memory | GeminiMem0Manager PII filter (see [Data Privacy](/compliance/data-privacy)) |
-| Cultural stereotyping | Real-time bias detection + cultural competency system |
-| Claiming to be human | Transparency guardrail — AI identity disclosed |
-| Replacing professional therapy | Scope guardrail — training platform positioning enforced |
+| Prohibited Behavior                        | Enforcement Mechanism                                                       |
+| ------------------------------------------ | --------------------------------------------------------------------------- |
+| Toxic positivity or emotional minimization | EARS compliance gate + response filtering                                   |
+| Diagnosis or diagnostic language           | Output filter + training data curation                                      |
+| Unsolicited institutional referrals        | Crisis protocol rules — user-initiated only                                 |
+| Prescriptive advice ("You should...")      | EARS Support layer validation                                               |
+| Storing identifiable PHI in AI memory      | GeminiMem0Manager PII filter (see [Data Privacy](/compliance/data-privacy)) |
+| Cultural stereotyping                      | Real-time bias detection + cultural competency system                       |
+| Claiming to be human                       | Transparency guardrail — AI identity disclosed                              |
+| Replacing professional therapy             | Scope guardrail — training platform positioning enforced                    |
 
 ### Accountability
 
 - **Ethics Officer:** Designated role responsible for ethical AI oversight
-- **Incident Reporting:** [ethics@pixelatedempathy.com](mailto:ethics@pixelatedempathy.com) for ethical concerns
+- **Incident Reporting:**
+  [ethics@pixelatedempathy.com](mailto:ethics@pixelatedempathy.com) for ethical
+  concerns
 - **Whistleblower Protection:** Safe reporting channel for employees and users
 - **Public Transparency:** Ethical AI practices published and updated regularly
 
 <Info>
-  Pixelated Empathy is a **mental health training platform**, not a replacement for professional therapy. This distinction is enforced at every level — from marketing language to system prompts to crisis handling protocols. The AI is designed to help professionals build empathy skills, not to serve as a therapist.
+  Pixelated Empathy is a **mental health training platform**, not a replacement
+  for professional therapy. This distinction is enforced at every level — from
+  marketing language to system prompts to crisis handling protocols. The AI is
+  designed to help professionals build empathy skills, not to serve as a
+  therapist.
 </Info>

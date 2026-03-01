@@ -2,7 +2,10 @@
 
 ## Overview
 
-The Journal Dataset Research Pipeline is a comprehensive, integrated system for discovering, evaluating, acquiring, and integrating therapeutic datasets from academic sources. The pipeline consists of three tightly integrated components that work together to provide a complete research automation solution.
+The Journal Dataset Research Pipeline is a comprehensive, integrated system for
+discovering, evaluating, acquiring, and integrating therapeutic datasets from
+academic sources. The pipeline consists of three tightly integrated components
+that work together to provide a complete research automation solution.
 
 **Version**: 1.0.0  
 **Last Updated**: January 2025  
@@ -61,6 +64,7 @@ The Journal Dataset Research Pipeline is a comprehensive, integrated system for 
 **Purpose**: User-friendly web interface for managing research operations
 
 **Features**:
+
 - Dashboard with session overview and progress tracking
 - Session management (create, view, update, delete)
 - Source discovery interface
@@ -71,6 +75,7 @@ The Journal Dataset Research Pipeline is a comprehensive, integrated system for 
 - Report generation and viewing
 
 **Technology Stack**:
+
 - Astro 5.x for page routing
 - React 19.x for interactive components
 - Zustand for state management
@@ -87,6 +92,7 @@ The Journal Dataset Research Pipeline is a comprehensive, integrated system for 
 **Purpose**: Expose research operations to AI agents via MCP protocol
 
 **Features**:
+
 - Tool-based interface for research operations
 - Resource access for progress and metrics
 - Prompt templates for workflow guidance
@@ -95,6 +101,7 @@ The Journal Dataset Research Pipeline is a comprehensive, integrated system for 
 - Progress streaming for async operations
 
 **Technology Stack**:
+
 - Python with MCP protocol implementation
 - JSON-RPC 2.0 for communication
 - CommandHandlerService for backend integration
@@ -108,6 +115,7 @@ The Journal Dataset Research Pipeline is a comprehensive, integrated system for 
 **Purpose**: Core research automation engine
 
 **Components**:
+
 - **Research Orchestrator**: Coordinates workflow phases
 - **Discovery Service**: Searches academic sources (PubMed, DOAJ, repositories)
 - **Evaluation Engine**: Assesses dataset quality and relevance
@@ -116,12 +124,14 @@ The Journal Dataset Research Pipeline is a comprehensive, integrated system for 
 - **CLI Interface**: Command-line access to all operations
 
 **Technology Stack**:
+
 - Python 3.11+
 - FastAPI for API server
 - Pydantic for data validation
 - Rich for CLI output
 
-**Access**: 
+**Access**:
+
 - CLI: `python -m ai.journal_dataset_research.cli.entry_point`
 - API: HTTP endpoints at `/api/journal-research`
 - Direct Python API: Import and use classes directly
@@ -141,7 +151,7 @@ The Journal Dataset Research Pipeline is a comprehensive, integrated system for 
 1. **User Action**: Initiate discovery via any interface
 2. **CommandHandlerService**: Calls orchestrator's discovery phase
 3. **ResearchOrchestrator**: Coordinates DiscoveryService
-4. **DiscoveryService**: 
+4. **DiscoveryService**:
    - Searches PubMed Central
    - Searches DOAJ journals
    - Queries repositories (Dryad, Zenodo, ClinicalTrials.gov)
@@ -196,6 +206,7 @@ All three components share the same session storage:
 **Format**: JSON files, one per session
 
 **Structure**:
+
 - Session metadata (ID, dates, targets, keywords)
 - Current phase and progress metrics
 - Discovered sources
@@ -204,13 +215,15 @@ All three components share the same session storage:
 - Integration plans
 - Activity logs
 
-**Access**: All components read/write to the same storage directory, ensuring consistency across interfaces.
+**Access**: All components read/write to the same storage directory, ensuring
+consistency across interfaces.
 
 ## Configuration
 
 ### Shared Configuration
 
 All components use consistent configuration for:
+
 - Session storage path
 - API base URLs
 - Authentication settings
@@ -219,40 +232,48 @@ All components use consistent configuration for:
 ### Environment Variables
 
 **API Server** (`ai/journal_dataset_research/api/config.py`):
+
 - `HOST`, `PORT` - Server configuration
 - `CORS_ORIGINS` - Allowed frontend origins
 - `JWT_SECRET` - Authentication secret
 - `SESSION_STORAGE_PATH` - Session storage location
 
 **MCP Server** (`ai/journal_dataset_research/mcp/config.py`):
+
 - `MCP_HOST`, `MCP_PORT` - Server configuration
 - `MCP_AUTH_ENABLED` - Authentication toggle
 - `SESSION_STORAGE_PATH` - Must match API server
 
 **Frontend** (`src/config/env.config.ts`):
+
 - `PUBLIC_JOURNAL_RESEARCH_API_URL` - API server URL
 
 **CLI** (`ai/journal_dataset_research/cli/config.py`):
+
 - `SESSION_STORAGE_PATH` - Must match other components
 
 ## Authentication & Authorization
 
 ### Web Frontend
+
 - Uses platform authentication (Better Auth or Supabase)
 - JWT tokens passed to API server
 - Role-based access control (RBAC)
 
 ### MCP Server
+
 - API key or JWT token authentication
 - RBAC for tool access
 - Configurable per-tool permissions
 
 ### API Server
+
 - JWT token validation
 - RBAC middleware
 - Permission-based endpoint access
 
 ### CLI
+
 - No authentication (local execution)
 - File system permissions control access
 
@@ -263,6 +284,7 @@ All components use consistent configuration for:
 **Endpoint**: `ws://api/journal-research/ws/progress/{session_id}`
 
 **Message Types**:
+
 - `progress_update` - Progress metrics changed
 - `status_update` - Session status changed
 - `notification` - Important events
@@ -272,6 +294,7 @@ All components use consistent configuration for:
 ### MCP Resources (MCP Server)
 
 **Resources**:
+
 - `progress://metrics/{session_id}` - Current progress metrics
 - `progress://history/{session_id}` - Progress history
 - `session://state/{session_id}` - Session state
@@ -281,6 +304,7 @@ All components use consistent configuration for:
 ### Progress Streaming
 
 All components use the same progress tracking system:
+
 - ResearchOrchestrator maintains progress state
 - Updates broadcast via WebSocket manager
 - MCP resources query orchestrator directly
@@ -332,8 +356,11 @@ uv run python -m ai.journal_dataset_research.mcp.server
 ### Production
 
 See deployment guides:
-- `docs/guides/technical-guides/deployment/journal-research-deployment.md` - API server
-- `docs/guides/technical-guides/deployment/mcp-server-deployment.md` - MCP server
+
+- `docs/guides/technical-guides/deployment/journal-research-deployment.md` - API
+  server
+- `docs/guides/technical-guides/deployment/mcp-server-deployment.md` - MCP
+  server
 - Frontend deployed with main application
 
 ### Docker
@@ -370,6 +397,7 @@ pnpm test:all
 ### End-to-End Tests
 
 Full workflow tests verify:
+
 - Session creation across all interfaces
 - Discovery operation completion
 - Evaluation and acquisition workflows
@@ -381,6 +409,7 @@ Full workflow tests verify:
 ### Logging
 
 All components use consistent logging:
+
 - **Backend**: Python logging to files
 - **API Server**: FastAPI logging middleware
 - **MCP Server**: MCP-specific audit logs
@@ -395,6 +424,7 @@ All components use consistent logging:
 ### Metrics
 
 Tracked metrics:
+
 - Session creation rate
 - Discovery success rate
 - Evaluation completion time
@@ -406,21 +436,25 @@ Tracked metrics:
 ### Common Issues
 
 **Session Not Found**:
+
 - Verify session storage path is consistent across components
 - Check file permissions on session directory
 - Ensure session ID is correct
 
 **WebSocket Connection Failed**:
+
 - Verify API server is running
 - Check CORS configuration
 - Verify authentication token is valid
 
 **MCP Tool Execution Failed**:
+
 - Check CommandHandlerService connection
 - Verify session storage path matches
 - Check authentication and permissions
 
 **Frontend API Errors**:
+
 - Verify `PUBLIC_JOURNAL_RESEARCH_API_URL` is set correctly
 - Check API server is accessible
 - Verify authentication token is included
@@ -428,6 +462,7 @@ Tracked metrics:
 ### Debug Mode
 
 Enable debug logging:
+
 - **API Server**: Set `DEBUG=true`
 - **MCP Server**: Set `MCP_DEBUG=true`
 - **Frontend**: Check browser DevTools console
@@ -437,12 +472,15 @@ Enable debug logging:
 - [API Documentation](./api/journal-research-api.md) - Detailed API reference
 - [MCP Server Documentation](./api/mcp-server/README.md) - MCP server guide
 - [User Guide](./user-guides/journal-research-guide.md) - End-user documentation
-- [Deployment Guide](./deployment/journal-research-deployment.md) - Deployment instructions
-- [Component Documentation](./components/journal-research-components.md) - Frontend components
+- [Deployment Guide](./deployment/journal-research-deployment.md) - Deployment
+  instructions
+- [Component Documentation](./components/journal-research-components.md) -
+  Frontend components
 
 ## Support
 
 For issues or questions:
+
 1. Check troubleshooting section above
 2. Review component-specific documentation
 3. Check logs for error details
@@ -453,4 +491,3 @@ For issues or questions:
 **Document Version**: 1.0.0  
 **Last Updated**: January 2025  
 **Maintained By**: Pixelated Empathy Team
-

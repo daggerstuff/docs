@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide explains how to deploy NVIDIA NeMo Data Designer on a Kubernetes cluster using the provided deployment script and manifests.
+This guide explains how to deploy NVIDIA NeMo Data Designer on a Kubernetes
+cluster using the provided deployment script and manifests.
 
 ## Prerequisites
 
@@ -11,15 +12,18 @@ Before deploying NeMo Data Designer to Kubernetes, ensure you have:
 1. **Kubernetes Cluster** - A functioning Kubernetes cluster (v1.20+)
 2. **kubectl** - Kubernetes command-line tool configured to access your cluster
 3. **Helm** - Helm v3.0+ installed locally
-4. **NVIDIA API Key** - From [NVIDIA Build](https://build.nvidia.com/nemo/data-designer)
-5. **Ingress Controller** - Configured in your cluster (nginx-ingress, traefik, etc.)
+4. **NVIDIA API Key** - From
+   [NVIDIA Build](https://build.nvidia.com/nemo/data-designer)
+5. **Ingress Controller** - Configured in your cluster (nginx-ingress, traefik,
+   etc.)
 6. **Persistent Storage** - Available storage class for data persistence
 
 ## Deployment Options
 
 ### Option 1: Automated Deployment Script (Recommended)
 
-The simplest way to deploy NeMo Data Designer is using the provided deployment script:
+The simplest way to deploy NeMo Data Designer is using the provided deployment
+script:
 
 ```bash
 ./scripts/infrastructure/deploy-nemo-data-designer-k8s.sh
@@ -133,6 +137,7 @@ curl https://nemo-data-designer.your-cluster-domain.com/health
 ```
 
 You should see a response like:
+
 ```json
 {
   "status": "healthy",
@@ -183,7 +188,8 @@ kubectl create secret generic nemo-api-key \
 
 ### Resource Constraints
 
-If the pod is being evicted due to resource constraints, adjust the resource limits in the deployment:
+If the pod is being evicted due to resource constraints, adjust the resource
+limits in the deployment:
 
 ```bash
 kubectl edit deployment nemo-data-designer -n nemo
@@ -242,7 +248,8 @@ kubectl port-forward svc/nemo-data-designer 8000:8000 -n nemo
 ## Security Considerations
 
 1. **API Key Security**: The NVIDIA API key is stored as a Kubernetes secret
-2. **Network Policies**: Consider implementing network policies to restrict access
+2. **Network Policies**: Consider implementing network policies to restrict
+   access
 3. **TLS Encryption**: Ensure your ingress controller terminates TLS
 4. **RBAC**: Use appropriate RBAC rules for the service account
 
@@ -262,7 +269,8 @@ For issues with the Kubernetes deployment:
 1. Check the [troubleshooting section](#troubleshooting) above
 2. Review Kubernetes logs and events
 3. Ensure all prerequisites are met
-4. Check the [NVIDIA NeMo Documentation](https://docs.nvidia.com/nemo/microservices/latest/set-up/deploy-as-microservices/data-designer/parent-chart.html)
+4. Check the
+   [NVIDIA NeMo Documentation](https://docs.nvidia.com/nemo/microservices/latest/set-up/deploy-as-microservices/data-designer/parent-chart.html)
 
 For issues with NVIDIA NeMo Data Designer itself:
 

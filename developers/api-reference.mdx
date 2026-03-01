@@ -5,9 +5,9 @@ description: 'Endpoints, data shapes, and how to talk to our services.'
 
 ## Overview
 
-Pixelated Empathy exposes APIs for interacting with The Empathy Gym™,
-the Emotional Intelligence Engine, and supporting services. This
-reference covers the primary endpoints you'll work with.
+Pixelated Empathy exposes APIs for interacting with The Empathy Gym™, the
+Emotional Intelligence Engine, and supporting services. This reference covers
+the primary endpoints you'll work with.
 
 All API routes follow REST conventions and return JSON.
 
@@ -21,16 +21,15 @@ All API routes follow REST conventions and return JSON.
 
 ## Authentication
 
-API requests require a valid JWT token in the `Authorization`
-header:
+API requests require a valid JWT token in the `Authorization` header:
 
 ```text
 Authorization: Bearer <token>
 ```
 
-Tokens are issued on login and expire according to your
-environment configuration. See
-[/developers/getting-started](/developers/getting-started) for setup.
+Tokens are issued on login and expire according to your environment
+configuration. See [/developers/getting-started](/developers/getting-started)
+for setup.
 
 ## Training Sessions
 
@@ -194,8 +193,7 @@ Content-Type: application/json
 
 ## WebSocket Events
 
-For real-time session communication, connect to the WebSocket
-server:
+For real-time session communication, connect to the WebSocket server:
 
 ```javascript
 const ws = new WebSocket('ws://localhost:8080')
@@ -221,16 +219,16 @@ ws.onmessage = (event) => {
 ```
 
 <CardGroup cols={2}>
-  <Card title="client_response" icon="comment">
+  <Card title='client_response' icon='comment'>
     New message from the simulated client.
   </Card>
-  <Card title="emotion_update" icon="chart-line">
+  <Card title='emotion_update' icon='chart-line'>
     Real-time emotional state change.
   </Card>
-  <Card title="crisis_alert" icon="shield-halved">
+  <Card title='crisis_alert' icon='shield-halved'>
     Crisis signal detected — requires attention.
   </Card>
-  <Card title="session_feedback" icon="clipboard-check">
+  <Card title='session_feedback' icon='clipboard-check'>
     End-of-session evaluation results.
   </Card>
 </CardGroup>
@@ -282,17 +280,17 @@ X-RateLimit-Reset: 1708000000
 ## Related Reading
 
 <CardGroup cols={3}>
-  <Card title="Architecture" icon="sitemap" href="/developers/architecture">
+  <Card title='Architecture' icon='sitemap' href='/developers/architecture'>
     System design context.
   </Card>
   <Card
-    title="Getting Started"
-    icon="rocket"
-    href="/developers/getting-started"
+    title='Getting Started'
+    icon='rocket'
+    href='/developers/getting-started'
   >
     Local setup.
   </Card>
-  <Card title="Platform Overview" icon="circle-info" href="/platform/overview">
+  <Card title='Platform Overview' icon='circle-info' href='/platform/overview'>
     How it all works.
   </Card>
 </CardGroup>

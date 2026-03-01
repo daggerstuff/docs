@@ -2,7 +2,10 @@
 
 ## Overview
 
-This document provides comprehensive documentation for the Journal Research frontend components, hooks, and stores. The Journal Research module is built with React, TypeScript, Zustand for state management, and React Query for data fetching.
+This document provides comprehensive documentation for the Journal Research
+frontend components, hooks, and stores. The Journal Research module is built
+with React, TypeScript, Zustand for state management, and React Query for data
+fetching.
 
 ## Table of Contents
 
@@ -24,16 +27,19 @@ This document provides comprehensive documentation for the Journal Research fron
 
 **Location**: `src/components/journal-research/features/Dashboard.tsx`
 
-Main dashboard component that displays session overview, progress charts, and recent activity.
+Main dashboard component that displays session overview, progress charts, and
+recent activity.
 
 **Props:**
+
 ```typescript
 interface DashboardProps {
-  className?: string;
+  className?: string
 }
 ```
 
 **Features:**
+
 - Displays selected session progress
 - Shows recent sessions list
 - Real-time progress metrics with auto-refresh (5s interval)
@@ -41,11 +47,12 @@ interface DashboardProps {
 - Progress charts visualization
 
 **Usage:**
+
 ```tsx
 import { Dashboard } from '@/components/journal-research/features'
 
 function DashboardPage() {
-  return <Dashboard className="container mx-auto" />
+  return <Dashboard className='container mx-auto' />
 }
 ```
 
@@ -56,14 +63,16 @@ function DashboardPage() {
 Displays detailed information about a research session.
 
 **Props:**
+
 ```typescript
 interface SessionDetailProps {
-  sessionId: string;
-  className?: string;
+  sessionId: string
+  className?: string
 }
 ```
 
 **Features:**
+
 - Session metadata display
 - Progress metrics visualization
 - Phase navigation
@@ -76,14 +85,16 @@ interface SessionDetailProps {
 Interface for initiating and monitoring source discovery operations.
 
 **Props:**
+
 ```typescript
 interface SourceDiscoveryProps {
-  sessionId?: string | null;
-  className?: string;
+  sessionId?: string | null
+  className?: string
 }
 ```
 
 **Features:**
+
 - Discovery configuration form
 - Discovery progress tracking
 - Real-time source updates
@@ -96,14 +107,16 @@ interface SourceDiscoveryProps {
 Panel for managing source evaluations.
 
 **Props:**
+
 ```typescript
 interface EvaluationPanelProps {
-  sessionId: string;
-  className?: string;
+  sessionId: string
+  className?: string
 }
 ```
 
 **Features:**
+
 - Evaluation list with filtering
 - Manual evaluation override
 - Bulk evaluation operations
@@ -116,14 +129,16 @@ interface EvaluationPanelProps {
 Panel for managing dataset acquisitions.
 
 **Props:**
+
 ```typescript
 interface AcquisitionPanelProps {
-  sessionId: string;
-  className?: string;
+  sessionId: string
+  className?: string
 }
 ```
 
 **Features:**
+
 - Acquisition status tracking
 - Progress monitoring
 - Approval/rejection workflow
@@ -136,14 +151,16 @@ interface AcquisitionPanelProps {
 Panel for managing integration plans.
 
 **Props:**
+
 ```typescript
 interface IntegrationPanelProps {
-  sessionId: string;
-  className?: string;
+  sessionId: string
+  className?: string
 }
 ```
 
 **Features:**
+
 - Integration plan visualization
 - Preprocessing script generation
 - Schema mapping interface
@@ -156,14 +173,16 @@ interface IntegrationPanelProps {
 Component for tracking research session progress.
 
 **Props:**
+
 ```typescript
 interface ProgressTrackerProps {
-  sessionId: string;
-  className?: string;
+  sessionId: string
+  className?: string
 }
 ```
 
 **Features:**
+
 - Overall progress display
 - Phase-by-phase progress
 - Target vs actual metrics
@@ -176,14 +195,16 @@ interface ProgressTrackerProps {
 Component for generating research reports.
 
 **Props:**
+
 ```typescript
 interface ReportGeneratorProps {
-  sessionId: string;
-  className?: string;
+  sessionId: string
+  className?: string
 }
 ```
 
 **Features:**
+
 - Report type selection
 - Format selection (PDF, HTML, JSON)
 - Section customization
@@ -196,15 +217,17 @@ interface ReportGeneratorProps {
 Component for viewing generated reports.
 
 **Props:**
+
 ```typescript
 interface ReportViewerProps {
-  reportId: string;
-  sessionId: string;
-  className?: string;
+  reportId: string
+  sessionId: string
+  className?: string
 }
 ```
 
 **Features:**
+
 - Report display
 - Download functionality
 - Print support
@@ -219,20 +242,21 @@ interface ReportViewerProps {
 Card component for displaying session summary.
 
 **Props:**
+
 ```typescript
 interface SessionCardProps {
-  session: Session;
-  onClick?: (sessionId: string) => void;
-  className?: string;
+  session: Session
+  onClick?: (sessionId: string) => void
+  className?: string
 }
 ```
 
 **Usage:**
+
 ```tsx
 import { SessionCard } from '@/components/journal-research/shared'
-
-<SessionCard 
-  session={session} 
+;<SessionCard
+  session={session}
   onClick={(id) => navigate(`/journal-research/sessions/${id}`)}
 />
 ```
@@ -244,11 +268,12 @@ import { SessionCard } from '@/components/journal-research/shared'
 Card component for displaying source information.
 
 **Props:**
+
 ```typescript
 interface SourceCardProps {
-  source: Source;
-  onClick?: (sourceId: string) => void;
-  className?: string;
+  source: Source
+  onClick?: (sourceId: string) => void
+  className?: string
 }
 ```
 
@@ -259,11 +284,12 @@ interface SourceCardProps {
 Card component for displaying evaluation results.
 
 **Props:**
+
 ```typescript
 interface EvaluationCardProps {
-  evaluation: Evaluation;
-  onClick?: (evaluationId: string) => void;
-  className?: string;
+  evaluation: Evaluation
+  onClick?: (evaluationId: string) => void
+  className?: string
 }
 ```
 
@@ -274,25 +300,22 @@ interface EvaluationCardProps {
 Progress bar component for displaying progress metrics.
 
 **Props:**
+
 ```typescript
 interface ProgressBarProps {
-  value: number; // 0-100
-  max?: number; // default: 100
-  label?: string;
-  showValue?: boolean;
-  className?: string;
+  value: number // 0-100
+  max?: number // default: 100
+  label?: string
+  showValue?: boolean
+  className?: string
 }
 ```
 
 **Usage:**
+
 ```tsx
 import { ProgressBar } from '@/components/journal-research/shared'
-
-<ProgressBar 
-  value={75} 
-  label="Discovery Progress" 
-  showValue 
-/>
+;<ProgressBar value={75} label='Discovery Progress' showValue />
 ```
 
 #### NotificationCenter
@@ -302,13 +325,15 @@ import { ProgressBar } from '@/components/journal-research/shared'
 Component for displaying notifications and alerts.
 
 **Props:**
+
 ```typescript
 interface NotificationCenterProps {
-  className?: string;
+  className?: string
 }
 ```
 
 **Features:**
+
 - Toast notifications
 - Notification history
 - Notification preferences
@@ -323,23 +348,25 @@ interface NotificationCenterProps {
 Form for creating and editing research sessions.
 
 **Props:**
+
 ```typescript
 interface SessionFormProps {
-  sessionId?: string; // If provided, form is in edit mode
-  onSubmit: (data: CreateSessionRequest) => void | Promise<void>;
-  onCancel?: () => void;
-  defaultValues?: Partial<CreateSessionRequest>;
+  sessionId?: string // If provided, form is in edit mode
+  onSubmit: (data: CreateSessionRequest) => void | Promise<void>
+  onCancel?: () => void
+  defaultValues?: Partial<CreateSessionRequest>
 }
 ```
 
 **Usage:**
+
 ```tsx
 import { SessionForm } from '@/components/journal-research/forms'
 import { useCreateSessionMutation } from '@/lib/hooks/journal-research'
 
 function CreateSessionDialog() {
   const createSession = useCreateSessionMutation()
-  
+
   return (
     <SessionForm
       onSubmit={async (data) => {
@@ -358,11 +385,12 @@ function CreateSessionDialog() {
 Form for configuring discovery operations.
 
 **Props:**
+
 ```typescript
 interface DiscoveryFormProps {
-  sessionId: string;
-  onSubmit: (data: DiscoveryRequest) => void | Promise<void>;
-  onCancel?: () => void;
+  sessionId: string
+  onSubmit: (data: DiscoveryRequest) => void | Promise<void>
+  onCancel?: () => void
 }
 ```
 
@@ -373,14 +401,15 @@ interface DiscoveryFormProps {
 Form for creating and updating evaluations.
 
 **Props:**
+
 ```typescript
 interface EvaluationFormProps {
-  evaluationId?: string; // If provided, form is in edit mode
-  sourceId: string;
-  sessionId: string;
-  onSubmit: (data: EvaluationRequest) => void | Promise<void>;
-  onCancel?: () => void;
-  defaultValues?: Partial<EvaluationRequest>;
+  evaluationId?: string // If provided, form is in edit mode
+  sourceId: string
+  sessionId: string
+  onSubmit: (data: EvaluationRequest) => void | Promise<void>
+  onCancel?: () => void
+  defaultValues?: Partial<EvaluationRequest>
 }
 ```
 
@@ -393,17 +422,19 @@ interface EvaluationFormProps {
 List component for displaying sessions with filtering and sorting.
 
 **Props:**
+
 ```typescript
 interface SessionListProps {
-  sessions?: Session[];
-  isLoading?: boolean;
-  onSessionClick?: (sessionId: string) => void;
-  onSessionDelete?: (sessionId: string) => void;
-  className?: string;
+  sessions?: Session[]
+  isLoading?: boolean
+  onSessionClick?: (sessionId: string) => void
+  onSessionDelete?: (sessionId: string) => void
+  className?: string
 }
 ```
 
 **Features:**
+
 - Pagination
 - Filtering by phase
 - Sorting by date/progress
@@ -416,12 +447,13 @@ interface SessionListProps {
 List component for displaying discovered sources.
 
 **Props:**
+
 ```typescript
 interface SourceListProps {
-  sources?: Source[];
-  isLoading?: boolean;
-  onSourceClick?: (sourceId: string) => void;
-  className?: string;
+  sources?: Source[]
+  isLoading?: boolean
+  onSourceClick?: (sourceId: string) => void
+  className?: string
 }
 ```
 
@@ -432,12 +464,13 @@ interface SourceListProps {
 List component for displaying evaluations.
 
 **Props:**
+
 ```typescript
 interface EvaluationListProps {
-  evaluations?: Evaluation[];
-  isLoading?: boolean;
-  onEvaluationClick?: (evaluationId: string) => void;
-  className?: string;
+  evaluations?: Evaluation[]
+  isLoading?: boolean
+  onEvaluationClick?: (evaluationId: string) => void
+  className?: string
 }
 ```
 
@@ -448,12 +481,13 @@ interface EvaluationListProps {
 List component for displaying acquisitions.
 
 **Props:**
+
 ```typescript
 interface AcquisitionListProps {
-  acquisitions?: Acquisition[];
-  isLoading?: boolean;
-  onAcquisitionClick?: (acquisitionId: string) => void;
-  className?: string;
+  acquisitions?: Acquisition[]
+  isLoading?: boolean
+  onAcquisitionClick?: (acquisitionId: string) => void
+  className?: string
 }
 ```
 
@@ -466,15 +500,17 @@ interface AcquisitionListProps {
 Component for displaying progress visualizations.
 
 **Props:**
+
 ```typescript
 interface ProgressChartsProps {
-  progress: ProgressMetrics;
-  metrics?: ProgressMetrics;
-  className?: string;
+  progress: ProgressMetrics
+  metrics?: ProgressMetrics
+  className?: string
 }
 ```
 
 **Features:**
+
 - Overall progress chart
 - Phase progress breakdown
 - Metrics over time
@@ -487,15 +523,16 @@ interface ProgressChartsProps {
 Chart component for displaying metrics over time.
 
 **Props:**
+
 ```typescript
 interface MetricsChartProps {
   data: Array<{
-    date: Date;
-    sourcesIdentified: number;
-    sourcesEvaluated: number;
-    sourcesAcquired: number;
-  }>;
-  className?: string;
+    date: Date
+    sourcesIdentified: number
+    sourcesEvaluated: number
+    sourcesAcquired: number
+  }>
+  className?: string
 }
 ```
 
@@ -506,10 +543,11 @@ interface MetricsChartProps {
 Chart component for displaying phase-by-phase progress.
 
 **Props:**
+
 ```typescript
 interface PhaseProgressChartProps {
-  phaseProgress: Record<string, number>; // phase -> progress (0-100)
-  className?: string;
+  phaseProgress: Record<string, number> // phase -> progress (0-100)
+  className?: string
 }
 ```
 
@@ -522,6 +560,7 @@ interface PhaseProgressChartProps {
 Hook for session operations.
 
 **Exports:**
+
 - `useSessionQuery(sessionId: string | null, options?)` - Fetch single session
 - `useSessionListQuery(params?, options?)` - Fetch session list
 - `useCreateSessionMutation()` - Create session mutation
@@ -529,24 +568,25 @@ Hook for session operations.
 - `useDeleteSessionMutation()` - Delete session mutation
 
 **Usage:**
+
 ```tsx
-import { 
-  useSessionQuery, 
-  useCreateSessionMutation 
+import {
+  useSessionQuery,
+  useCreateSessionMutation,
 } from '@/lib/hooks/journal-research'
 
 function SessionPage({ sessionId }: { sessionId: string }) {
   const { data: session, isLoading } = useSessionQuery(sessionId)
   const createSession = useCreateSessionMutation()
-  
+
   const handleCreate = async () => {
     await createSession.mutateAsync({
       targetSources: ['pubmed'],
       searchKeywords: { therapeutic: ['therapy'] },
-      weeklyTargets: { sources_identified: 10 }
+      weeklyTargets: { sources_identified: 10 },
     })
   }
-  
+
   if (isLoading) return <div>Loading...</div>
   return <div>{session?.sessionId}</div>
 }
@@ -559,8 +599,10 @@ function SessionPage({ sessionId }: { sessionId: string }) {
 Hook for discovery operations.
 
 **Exports:**
+
 - `useSourceListQuery(sessionId: string, params?, options?)` - Fetch source list
-- `useSourceQuery(sessionId: string, sourceId: string, options?)` - Fetch single source
+- `useSourceQuery(sessionId: string, sourceId: string, options?)` - Fetch single
+  source
 - `useInitiateDiscoveryMutation()` - Initiate discovery mutation
 
 ### useEvaluation
@@ -570,8 +612,11 @@ Hook for discovery operations.
 Hook for evaluation operations.
 
 **Exports:**
-- `useEvaluationListQuery(sessionId: string, params?, options?)` - Fetch evaluation list
-- `useEvaluationQuery(sessionId: string, evaluationId: string, options?)` - Fetch single evaluation
+
+- `useEvaluationListQuery(sessionId: string, params?, options?)` - Fetch
+  evaluation list
+- `useEvaluationQuery(sessionId: string, evaluationId: string, options?)` -
+  Fetch single evaluation
 - `useInitiateEvaluationMutation()` - Initiate evaluation mutation
 - `useUpdateEvaluationMutation()` - Update evaluation mutation
 
@@ -582,8 +627,11 @@ Hook for evaluation operations.
 Hook for acquisition operations.
 
 **Exports:**
-- `useAcquisitionListQuery(sessionId: string, params?, options?)` - Fetch acquisition list
-- `useAcquisitionQuery(sessionId: string, acquisitionId: string, options?)` - Fetch single acquisition
+
+- `useAcquisitionListQuery(sessionId: string, params?, options?)` - Fetch
+  acquisition list
+- `useAcquisitionQuery(sessionId: string, acquisitionId: string, options?)` -
+  Fetch single acquisition
 - `useInitiateAcquisitionMutation()` - Initiate acquisition mutation
 - `useUpdateAcquisitionMutation()` - Update acquisition mutation
 
@@ -594,8 +642,11 @@ Hook for acquisition operations.
 Hook for integration operations.
 
 **Exports:**
-- `useIntegrationPlanListQuery(sessionId: string, params?, options?)` - Fetch integration plan list
-- `useIntegrationPlanQuery(sessionId: string, planId: string, options?)` - Fetch single integration plan
+
+- `useIntegrationPlanListQuery(sessionId: string, params?, options?)` - Fetch
+  integration plan list
+- `useIntegrationPlanQuery(sessionId: string, planId: string, options?)` - Fetch
+  single integration plan
 - `useInitiateIntegrationMutation()` - Initiate integration mutation
 
 ### useProgress
@@ -605,18 +656,22 @@ Hook for integration operations.
 Hook for progress tracking.
 
 **Exports:**
-- `useProgressQuery(sessionId: string | null, options?)` - Fetch progress metrics
-- `useProgressMetricsQuery(sessionId: string | null, options?)` - Fetch detailed progress metrics
+
+- `useProgressQuery(sessionId: string | null, options?)` - Fetch progress
+  metrics
+- `useProgressMetricsQuery(sessionId: string | null, options?)` - Fetch detailed
+  progress metrics
 
 **Usage:**
+
 ```tsx
 import { useProgressQuery } from '@/lib/hooks/journal-research'
 
 function ProgressDisplay({ sessionId }: { sessionId: string }) {
   const { data: progress } = useProgressQuery(sessionId, {
-    refetchInterval: 5000 // Auto-refresh every 5 seconds
+    refetchInterval: 5000, // Auto-refresh every 5 seconds
   })
-  
+
   return (
     <div>
       <div>Overall Progress: {progress?.overallProgress}%</div>
@@ -633,15 +688,18 @@ function ProgressDisplay({ sessionId }: { sessionId: string }) {
 Hook for WebSocket connections.
 
 **Exports:**
-- `useProgressWebSocket(sessionId: string, options?)` - Connect to progress WebSocket stream
+
+- `useProgressWebSocket(sessionId: string, options?)` - Connect to progress
+  WebSocket stream
 
 **Usage:**
+
 ```tsx
 import { useProgressWebSocket } from '@/lib/hooks/journal-research'
 
 function RealTimeProgress({ sessionId }: { sessionId: string }) {
   const { data: progressUpdate, isConnected } = useProgressWebSocket(sessionId)
-  
+
   return (
     <div>
       {isConnected ? (
@@ -663,35 +721,37 @@ function RealTimeProgress({ sessionId }: { sessionId: string }) {
 Zustand store for session state management.
 
 **State:**
+
 ```typescript
 interface SessionStoreState {
-  selectedSessionId: string | null;
-  filters: SessionFilters;
-  isCreateDrawerOpen: boolean;
-  
+  selectedSessionId: string | null
+  filters: SessionFilters
+  isCreateDrawerOpen: boolean
+
   // Actions
-  setSelectedSessionId: (sessionId: string | null) => void;
-  setFilters: (filters: Partial<SessionFilters>) => void;
-  openCreateDrawer: () => void;
-  closeCreateDrawer: () => void;
+  setSelectedSessionId: (sessionId: string | null) => void
+  setFilters: (filters: Partial<SessionFilters>) => void
+  openCreateDrawer: () => void
+  closeCreateDrawer: () => void
 }
 ```
 
 **Usage:**
+
 ```tsx
 import { useJournalSessionStore } from '@/lib/stores/journal-research'
 
 function SessionSelector() {
   const selectedSessionId = useJournalSessionStore(
-    (state) => state.selectedSessionId
+    (state) => state.selectedSessionId,
   )
   const setSelectedSessionId = useJournalSessionStore(
-    (state) => state.setSelectedSessionId
+    (state) => state.setSelectedSessionId,
   )
-  
+
   return (
-    <select 
-      value={selectedSessionId ?? ''} 
+    <select
+      value={selectedSessionId ?? ''}
       onChange={(e) => setSelectedSessionId(e.target.value || null)}
     >
       {/* options */}
@@ -707,20 +767,21 @@ function SessionSelector() {
 Zustand store for discovery state management.
 
 **State:**
+
 ```typescript
 interface DiscoveryStoreState {
-  selectedSourceId: string | null;
-  highlightSourceId: string | null;
-  filters: DiscoveryFilters;
-  
+  selectedSourceId: string | null
+  highlightSourceId: string | null
+  filters: DiscoveryFilters
+
   // Actions
-  setSelectedSourceId: (sourceId: string | null) => void;
-  setHighlightSourceId: (sourceId: string | null) => void;
-  toggleSourceType: (sourceType: string) => void;
-  toggleKeyword: (keyword: string) => void;
-  toggleOpenAccess: () => void;
-  setSort: (sortBy: string, sortDirection?: 'asc' | 'desc') => void;
-  resetFilters: () => void;
+  setSelectedSourceId: (sourceId: string | null) => void
+  setHighlightSourceId: (sourceId: string | null) => void
+  toggleSourceType: (sourceType: string) => void
+  toggleKeyword: (keyword: string) => void
+  toggleOpenAccess: () => void
+  setSort: (sortBy: string, sortDirection?: 'asc' | 'desc') => void
+  resetFilters: () => void
 }
 ```
 
@@ -731,21 +792,22 @@ interface DiscoveryStoreState {
 Zustand store for evaluation state management.
 
 **State:**
+
 ```typescript
 interface EvaluationStoreState {
-  selectedEvaluationId: string | null;
-  editingEvaluationId: string | null;
-  filters: EvaluationFilters;
-  isBulkEditMode: boolean;
-  
+  selectedEvaluationId: string | null
+  editingEvaluationId: string | null
+  filters: EvaluationFilters
+  isBulkEditMode: boolean
+
   // Actions
-  setSelectedEvaluationId: (evaluationId: string | null) => void;
-  setEditingEvaluationId: (evaluationId: string | null) => void;
-  togglePriorityTier: (tier: string) => void;
-  setScoreRange: (min: number | null, max: number | null) => void;
-  setSort: (sortBy: string, sortDirection?: 'asc' | 'desc') => void;
-  toggleBulkEditMode: () => void;
-  resetFilters: () => void;
+  setSelectedEvaluationId: (evaluationId: string | null) => void
+  setEditingEvaluationId: (evaluationId: string | null) => void
+  togglePriorityTier: (tier: string) => void
+  setScoreRange: (min: number | null, max: number | null) => void
+  setSort: (sortBy: string, sortDirection?: 'asc' | 'desc') => void
+  toggleBulkEditMode: () => void
+  resetFilters: () => void
 }
 ```
 
@@ -756,15 +818,16 @@ interface EvaluationStoreState {
 Zustand store for acquisition state management.
 
 **State:**
+
 ```typescript
 interface AcquisitionStoreState {
-  selectedAcquisitionId: string | null;
-  filters: AcquisitionFilters;
-  
+  selectedAcquisitionId: string | null
+  filters: AcquisitionFilters
+
   // Actions
-  setSelectedAcquisitionId: (acquisitionId: string | null) => void;
-  toggleStatus: (status: AcquisitionStatus) => void;
-  resetFilters: () => void;
+  setSelectedAcquisitionId: (acquisitionId: string | null) => void
+  toggleStatus: (status: AcquisitionStatus) => void
+  resetFilters: () => void
 }
 ```
 
@@ -775,14 +838,15 @@ interface AcquisitionStoreState {
 Zustand store for integration state management.
 
 **State:**
+
 ```typescript
 interface IntegrationStoreState {
-  selectedPlanId: string | null;
-  filters: IntegrationFilters;
-  
+  selectedPlanId: string | null
+  filters: IntegrationFilters
+
   // Actions
-  setSelectedPlanId: (planId: string | null) => void;
-  resetFilters: () => void;
+  setSelectedPlanId: (planId: string | null) => void
+  resetFilters: () => void
 }
 ```
 
@@ -798,15 +862,13 @@ import { useJournalSessionStore } from '@/lib/stores/journal-research'
 function JournalResearchPage() {
   const createSession = useCreateSessionMutation()
   const openCreateDrawer = useJournalSessionStore(
-    (state) => state.openCreateDrawer
+    (state) => state.openCreateDrawer,
   )
-  
+
   return (
     <div>
       <Dashboard />
-      <button onClick={openCreateDrawer}>
-        Create New Session
-      </button>
+      <button onClick={openCreateDrawer}>Create New Session</button>
     </div>
   )
 }
@@ -816,18 +878,18 @@ function JournalResearchPage() {
 
 ```tsx
 import { SessionList, SessionForm } from '@/components/journal-research'
-import { 
-  useSessionListQuery, 
-  useCreateSessionMutation 
+import {
+  useSessionListQuery,
+  useCreateSessionMutation,
 } from '@/lib/hooks/journal-research'
 
 function SessionsPage() {
   const { data: sessions } = useSessionListQuery({ page: 1, pageSize: 20 })
   const createSession = useCreateSessionMutation()
-  
+
   return (
     <div>
-      <SessionList 
+      <SessionList
         sessions={sessions?.items}
         onSessionClick={(id) => navigate(`/sessions/${id}`)}
       />
@@ -849,12 +911,12 @@ import { useProgressWebSocket } from '@/lib/hooks/journal-research'
 
 function SessionProgress({ sessionId }: { sessionId: string }) {
   const { data: progressUpdate, isConnected } = useProgressWebSocket(sessionId)
-  
+
   return (
     <div>
       <div>Connection: {isConnected ? 'Connected' : 'Disconnected'}</div>
       {progressUpdate && (
-        <ProgressTracker 
+        <ProgressTracker
           sessionId={sessionId}
           progress={progressUpdate.progress}
         />
@@ -866,18 +928,24 @@ function SessionProgress({ sessionId }: { sessionId: string }) {
 
 ## Best Practices
 
-1. **Always use hooks for data fetching** - Don't fetch data directly in components
-2. **Use stores for UI state** - Use Zustand stores for component state that needs to be shared
-3. **Handle loading and error states** - Always check `isLoading` and `error` from queries
-4. **Use React Query's caching** - Leverage React Query's built-in caching for better performance
-5. **Implement optimistic updates** - Use mutation callbacks for optimistic UI updates
-6. **Type safety** - Always use TypeScript types from `@/lib/api/journal-research/types`
+1. **Always use hooks for data fetching** - Don't fetch data directly in
+   components
+2. **Use stores for UI state** - Use Zustand stores for component state that
+   needs to be shared
+3. **Handle loading and error states** - Always check `isLoading` and `error`
+   from queries
+4. **Use React Query's caching** - Leverage React Query's built-in caching for
+   better performance
+5. **Implement optimistic updates** - Use mutation callbacks for optimistic UI
+   updates
+6. **Type safety** - Always use TypeScript types from
+   `@/lib/api/journal-research/types`
 
 ## Type Definitions
 
 All TypeScript types are exported from:
+
 - `@/lib/api/journal-research/types` - API types
 - Component prop types are defined in each component file
 
 **Last Updated**: January 2025
-

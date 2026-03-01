@@ -2,13 +2,17 @@
 
 ## Overview
 
-This document provides a comprehensive guide for migrating from better-auth to Auth0 authentication system. The migration includes user data transfer, implementation of authentication services, role-based access control, social authentication, and security features.
+This document provides a comprehensive guide for migrating from better-auth to
+Auth0 authentication system. The migration includes user data transfer,
+implementation of authentication services, role-based access control, social
+authentication, and security features.
 
 ## Migration Steps
 
 ### 1. Pre-Migration Preparation
 
 #### Environment Setup
+
 - Ensure all Auth0 environment variables are configured:
   - AUTH0_DOMAIN
   - AUTH0_CLIENT_ID
@@ -18,12 +22,14 @@ This document provides a comprehensive guide for migrating from better-auth to A
   - AUTH0_MANAGEMENT_CLIENT_SECRET
 
 #### Dependencies Installation
+
 - Install required Auth0 SDKs:
   ```bash
   pnpm add auth0
   ```
 
 #### Backup Current System
+
 - Backup MongoDB user data
 - Backup current authentication configuration
 - Document current user roles and permissions
@@ -31,6 +37,7 @@ This document provides a comprehensive guide for migrating from better-auth to A
 ### 2. User Data Migration
 
 #### MongoDB User Transfer
+
 Run the MongoDB user migration script to transfer existing users to Auth0:
 
 ```bash
@@ -38,6 +45,7 @@ node scripts/migrate-users-to-auth0.js
 ```
 
 This script will:
+
 - Connect to MongoDB database
 - Retrieve all existing users
 - Create corresponding users in Auth0
@@ -45,119 +53,137 @@ This script will:
 - Preserve user metadata and preferences
 
 #### Role Mapping
-| MongoDB Role | Auth0 Role | Permissions |
-|--------------|------------|-------------|
-| admin | admin | Full system access |
-| therapist | therapist | Patient management, session records |
-| patient | patient | Personal health records, appointments |
-| researcher | researcher | Analytics, research data |
-| support | support | User support, basic administration |
-| guest | guest | Limited public access |
+
+| MongoDB Role | Auth0 Role | Permissions                           |
+| ------------ | ---------- | ------------------------------------- |
+| admin        | admin      | Full system access                    |
+| therapist    | therapist  | Patient management, session records   |
+| patient      | patient    | Personal health records, appointments |
+| researcher   | researcher | Analytics, research data              |
+| support      | support    | User support, basic administration    |
+| guest        | guest      | Limited public access                 |
 
 ### 3. Service Implementation
 
 #### Auth0 Service Layer
-The new authentication service (`src/services/auth0.service.ts`) replaces the MongoDB-based authentication:
+
+The new authentication service (`src/services/auth0.service.ts`) replaces the
+MongoDB-based authentication:
 
 ```typescript
-import { Auth0UserService } from './auth0.service';
+import { Auth0UserService } from './auth0.service'
 
-const authService = new Auth0UserService();
+const authService = new Auth0UserService()
 
 // Sign in
-const result = await authService.signIn(email, password);
+const result = await authService.signIn(email, password)
 
 // Create user
-const newUser = await authService.createUser(email, password, role);
+const newUser = await authService.createUser(email, password, role)
 
 // Get user by ID
-const user = await authService.getUserById(userId);
+const user = await authService.getUserById(userId)
 ```
 
 #### JWT Token Handling
+
 JWT tokens are now managed through Auth0:
 
 ```typescript
-import * as auth0JwtService from '../lib/auth/auth0-jwt-service';
+import * as auth0JwtService from '../lib/auth/auth0-jwt-service'
 
 // Validate token
-const validationResult = await auth0JwtService.validateToken(token, tokenType);
+const validationResult = await auth0JwtService.validateToken(token, tokenType)
 
 // Refresh token
-const refreshedTokens = await auth0JwtService.refreshAccessToken(refreshToken, context);
+const refreshedTokens = await auth0JwtService.refreshAccessToken(
+  refreshToken,
+  context,
+)
 
 // Revoke token
-await auth0JwtService.revokeToken(token, reason);
+await auth0JwtService.revokeToken(token, reason)
 ```
 
 #### Role-Based Access Control
+
 RBAC is implemented using Auth0 roles and permissions:
 
 ```typescript
-import * as auth0RbacService from '../lib/auth/auth0-rbac-service';
+import * as auth0RbacService from '../lib/auth/auth0-rbac-service'
 
 // Assign role to user
-await auth0RbacService.assignRoleToUser(userId, roleName);
+await auth0RbacService.assignRoleToUser(userId, roleName)
 
 // Check user permissions
-const hasPermission = await auth0RbacService.userHasPermission(userId, permission);
+const hasPermission = await auth0RbacService.userHasPermission(
+  userId,
+  permission,
+)
 
 // Get user roles
-const roles = await auth0RbacService.getUserRoles(userId);
+const roles = await auth0RbacService.getUserRoles(userId)
 ```
 
 #### Social Authentication
+
 Google OAuth integration is implemented:
 
 ```typescript
-import { Auth0SocialAuthService } from '../lib/auth/auth0-social-auth-service';
+import { Auth0SocialAuthService } from '../lib/auth/auth0-social-auth-service'
 
-const socialAuthService = new Auth0SocialAuthService();
+const socialAuthService = new Auth0SocialAuthService()
 
 // Generate authorization URL
-const authUrl = socialAuthService.getGoogleAuthorizationUrl(redirectUri, state);
+const authUrl = socialAuthService.getGoogleAuthorizationUrl(redirectUri, state)
 
 // Exchange code for tokens
-const tokens = await socialAuthService.exchangeCodeForTokens(code, redirectUri);
+const tokens = await socialAuthService.exchangeCodeForTokens(code, redirectUri)
 
 // Complete authentication flow
-const result = await socialAuthService.authenticate(code, redirectUri);
+const result = await socialAuthService.authenticate(code, redirectUri)
 ```
 
 ### 4. Middleware Updates
 
 #### Authentication Middleware
+
 Updated middleware uses Auth0 JWT validation:
 
 ```typescript
 // src/middleware/auth.middleware.ts
-import { authenticateRequest } from '../middleware/auth.middleware';
+import { authenticateRequest } from '../middleware/auth.middleware'
 
-app.use('/api/*', authenticateRequest);
+app.use('/api/*', authenticateRequest)
 ```
 
 #### Role-Based Access Middleware
+
 Middleware for checking user roles and permissions:
 
 ```typescript
 // src/middleware/rbac.middleware.ts
-import { requireRole, requirePermission } from '../middleware/rbac.middleware';
+import { requireRole, requirePermission } from '../middleware/rbac.middleware'
 
-app.get('/admin/*', requireRole('admin'));
-app.post('/api/patients/*', requirePermission('write:patients'));
+app.get('/admin/*', requireRole('admin'))
+app.post('/api/patients/*', requirePermission('write:patients'))
 ```
 
 ### 5. Testing and Validation
 
 #### Unit Tests
+
 Comprehensive unit tests have been created for all Auth0 services:
+
 - Auth0 User Service tests
 - Auth0 JWT Service tests
 - Auth0 RBAC Service tests
 - Auth0 Social Auth Service tests
 
 #### Integration Tests
+
 Integration tests verify complete authentication workflows:
+
 - Email/password authentication flow
 - Social authentication flow
 - JWT token validation and refresh
@@ -165,7 +191,9 @@ Integration tests verify complete authentication workflows:
 - Security features and logging
 
 #### Manual Testing
+
 Manual testing should verify:
+
 - User sign in with existing credentials
 - User registration
 - Password reset flow
@@ -177,7 +205,9 @@ Manual testing should verify:
 ## Rollback Plan
 
 ### When to Rollback
+
 Rollback should be considered if:
+
 - Critical authentication failures occur
 - User data migration issues are detected
 - Security vulnerabilities are identified
@@ -187,18 +217,21 @@ Rollback should be considered if:
 ### Rollback Steps
 
 #### 1. Immediate Response
+
 1. Disable new Auth0 authentication endpoints
 2. Re-enable better-auth authentication endpoints
 3. Redirect authentication requests to backup system
 4. Notify system administrators and stakeholders
 
 #### 2. Data Rollback
+
 1. Restore MongoDB backup if user data was corrupted
 2. Revert any user role changes made during migration
 3. Restore original authentication configuration
 4. Validate data integrity
 
 #### 3. Service Rollback
+
 1. Revert to better-auth service implementations:
    ```bash
    git checkout HEAD~1 -- src/services/auth.service.ts
@@ -216,12 +249,14 @@ Rollback should be considered if:
    ```
 
 #### 4. Configuration Rollback
+
 1. Remove Auth0 environment variables
 2. Restore better-auth configuration
 3. Update application configuration files
 4. Restart application services
 
 #### 5. Validation
+
 1. Verify authentication functionality with better-auth
 2. Test user sign in with original credentials
 3. Validate role-based access control
@@ -229,7 +264,9 @@ Rollback should be considered if:
 5. Monitor system performance and stability
 
 ### Rollback Testing
+
 Regular rollback testing should be performed:
+
 - Monthly rollback drills
 - Validation of backup restoration procedures
 - Testing of service reversion processes
@@ -238,6 +275,7 @@ Regular rollback testing should be performed:
 ## Monitoring and Maintenance
 
 ### Post-Migration Monitoring
+
 - Monitor authentication success/failure rates
 - Track security event logs
 - Monitor token validation and refresh activities
@@ -245,6 +283,7 @@ Regular rollback testing should be performed:
 - Monitor system performance metrics
 
 ### Maintenance Tasks
+
 - Regular review of user roles and permissions
 - Periodic audit of authentication logs
 - Update of Auth0 SDKs and dependencies
@@ -256,34 +295,42 @@ Regular rollback testing should be performed:
 ### Common Issues
 
 #### Authentication Failures
+
 - Verify Auth0 environment variables are correctly set
 - Check Auth0 tenant configuration
 - Validate client credentials
 - Review Auth0 logs for error details
 
 #### User Migration Issues
+
 - Check MongoDB connection settings
 - Verify user data format compatibility
 - Review role mapping configuration
 - Validate migrated user accounts
 
 #### Token Validation Problems
+
 - Check token signing configuration
 - Verify audience and issuer settings
 - Review token expiration policies
 - Validate refresh token handling
 
 #### RBAC Issues
+
 - Confirm role definitions in Auth0
 - Verify permission assignments
 - Check role hierarchy configuration
 - Review user role assignments
 
 ### Support Contacts
+
 - Auth0 Support: https://support.auth0.com/
 - System Administrator: [Contact Information]
 - Development Team: [Contact Information]
 
 ## Conclusion
 
-This migration guide provides a comprehensive roadmap for transitioning from better-auth to Auth0. By following these steps, you can ensure a smooth migration with minimal disruption to users while gaining the enhanced security and scalability features of Auth0.
+This migration guide provides a comprehensive roadmap for transitioning from
+better-auth to Auth0. By following these steps, you can ensure a smooth
+migration with minimal disruption to users while gaining the enhanced security
+and scalability features of Auth0.

@@ -22,9 +22,12 @@ Point these A records to `20.242.241.80`:
 
 ## Overview
 
-This document outlines all variables and secrets that must be configured in Azure DevOps **Variable Groups** (accessible via Pipelines → Library → Variable Groups) or **Pipeline Variables** (Pipelines → Edit Pipeline → Variables).
+This document outlines all variables and secrets that must be configured in
+Azure DevOps **Variable Groups** (accessible via Pipelines → Library → Variable
+Groups) or **Pipeline Variables** (Pipelines → Edit Pipeline → Variables).
 
-**⚠️ CRITICAL: These should be configured in the Azure DevOps web interface, NOT hardcoded in the pipeline YAML file.**
+**⚠️ CRITICAL: These should be configured in the Azure DevOps web interface, NOT
+hardcoded in the pipeline YAML file.**
 
 ## How to Configure Variables in Azure DevOps
 
@@ -36,7 +39,8 @@ This document outlines all variables and secrets that must be configured in Azur
 4. Add variables with these settings:
    - **Value**: Enter the variable value
    - **Keep this value secret**: ✅ Check this for secrets
-   - **Allow access to all pipelines**: ✅ Check this or scope to specific pipelines
+   - **Allow access to all pipelines**: ✅ Check this or scope to specific
+     pipelines
 5. Save the variable group
 6. Reference in pipeline YAML:
 
@@ -72,7 +76,9 @@ This document outlines all variables and secrets that must be configured in Azur
 | -------------------- | ----------------------- | ------- | -------------------------------------------------- |
 | `SYSTEM_ACCESSTOKEN` | `$(System.AccessToken)` | ✅ Yes  | Azure DevOps access token (automatically provided) |
 
-**Note**: `SYSTEM_ACCESSTOKEN` is automatically available in Azure Pipelines when `persistCredentials: true` is set in checkout. You don't need to manually configure this, but the pipeline needs permission to access it.
+**Note**: `SYSTEM_ACCESSTOKEN` is automatically available in Azure Pipelines
+when `persistCredentials: true` is set in checkout. You don't need to manually
+configure this, but the pipeline needs permission to access it.
 
 ### Azure Configuration Variables
 
@@ -118,7 +124,8 @@ This document outlines all variables and secrets that must be configured in Azur
 
 ### OVH AI Training Variables (Optional)
 
-These variables are required for the OVH AI Training stage. Add them if using OVH for model training.
+These variables are required for the OVH AI Training stage. Add them if using
+OVH for model training.
 
 | Variable Name         | Value              | Secret? | Description                                      |
 | --------------------- | ------------------ | ------- | ------------------------------------------------ |
@@ -134,7 +141,8 @@ az pipelines run --name "your-pipeline" --parameters TRIGGER_AI_TRAINING=true
 
 **OVH Setup:**
 
-1. Create an OVH AI Platform user at [OVH Control Panel](https://us.ovhcloud.com/)
+1. Create an OVH AI Platform user at
+   [OVH Control Panel](https://us.ovhcloud.com/)
 2. Assign roles: `AI Training Operator` and `ObjectStore operator`
 3. Generate an application token
 4. Add the token to Azure DevOps variable group as `OVH_AI_TOKEN`
@@ -151,7 +159,8 @@ For the Schedule Posts pipeline to work, you need to:
 1. **Grant repository permissions**:
    - Go to **Project Settings** → **Repositories** → Select your repository
    - Go to **Security** tab
-   - Find **Project Collection Build Service** or **\[Your Project\] Build Service**
+   - Find **Project Collection Build Service** or **\[Your Project\] Build
+     Service**
    - Grant **Contribute** permission ✅
 
 2. **Enable OAuth token access**:
@@ -231,7 +240,8 @@ After configuring variables:
 
 1. ✅ **Never commit secrets** to the repository
 2. ✅ **Use Variable Groups** for reusable secrets across pipelines
-3. ✅ **Mark secrets as secret** in Azure DevOps UI (they won't be visible in logs)
+3. ✅ **Mark secrets as secret** in Azure DevOps UI (they won't be visible in
+   logs)
 4. ✅ **Use pipeline-specific variables** for environment-specific values
 5. ✅ **Rotate secrets regularly** in production
 6. ✅ **Limit access** to variable groups using Azure DevOps security groups

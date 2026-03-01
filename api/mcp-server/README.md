@@ -2,7 +2,11 @@
 
 ## Overview
 
-The Journal Dataset Research MCP Server provides a Model Context Protocol (MCP) interface for AI agents to interact with the journal dataset research system. The server exposes research operations through tools, resources, and prompts, enabling AI agents to discover, evaluate, acquire, and integrate research datasets.
+The Journal Dataset Research MCP Server provides a Model Context Protocol (MCP)
+interface for AI agents to interact with the journal dataset research system.
+The server exposes research operations through tools, resources, and prompts,
+enabling AI agents to discover, evaluate, acquire, and integrate research
+datasets.
 
 **Version**: 0.1.0  
 **Protocol Version**: 2024-11-05  
@@ -22,7 +26,11 @@ The Journal Dataset Research MCP Server provides a Model Context Protocol (MCP) 
 
 ## Architecture
 
-The MCP server is built on top of the JSON-RPC 2.0 protocol and follows the Model Context Protocol specification. It integrates with the journal dataset research system through the `CommandHandlerService`, which provides access to research orchestration, discovery, evaluation, acquisition, and integration services.
+The MCP server is built on top of the JSON-RPC 2.0 protocol and follows the
+Model Context Protocol specification. It integrates with the journal dataset
+research system through the `CommandHandlerService`, which provides access to
+research orchestration, discovery, evaluation, acquisition, and integration
+services.
 
 ### Components
 
@@ -41,14 +49,16 @@ The MCP server is built on top of the JSON-RPC 2.0 protocol and follows the Mode
 3. **Authentication**: Request is authenticated (if enabled)
 4. **Rate Limiting**: Rate limits are checked (if enabled)
 5. **Authorization**: User permissions are verified
-6. **Route Request**: Request is routed to appropriate handler (tools/resources/prompts)
+6. **Route Request**: Request is routed to appropriate handler
+   (tools/resources/prompts)
 7. **Execute**: Tool/resource/prompt is executed
 8. **Output Sanitization**: Response is sanitized
 9. **Format Response**: Response is formatted as JSON-RPC 2.0
 
 ## Protocol
 
-The server implements the Model Context Protocol (MCP) over JSON-RPC 2.0. All requests and responses follow the JSON-RPC 2.0 specification.
+The server implements the Model Context Protocol (MCP) over JSON-RPC 2.0. All
+requests and responses follow the JSON-RPC 2.0 specification.
 
 ### Request Format
 
@@ -70,6 +80,7 @@ The server implements the Model Context Protocol (MCP) over JSON-RPC 2.0. All re
 ### Response Format
 
 **Success Response:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -86,6 +97,7 @@ The server implements the Model Context Protocol (MCP) over JSON-RPC 2.0. All re
 ```
 
 **Error Response:**
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -125,7 +137,8 @@ The server implements the Model Context Protocol (MCP) over JSON-RPC 2.0. All re
 
 ## Authentication & Authorization
 
-The server supports multiple authentication methods and role-based access control (RBAC).
+The server supports multiple authentication methods and role-based access
+control (RBAC).
 
 ### Authentication Methods
 
@@ -152,7 +165,8 @@ MCP_AUTH_JWT_ALGORITHM=HS256
 
 ### Permissions
 
-Permissions are checked before tool execution, resource access, and prompt rendering. The authorization handler verifies:
+Permissions are checked before tool execution, resource access, and prompt
+rendering. The authorization handler verifies:
 
 - User role has required permissions
 - Resource access is allowed for the user
@@ -182,7 +196,8 @@ Permissions are checked before tool execution, resource access, and prompt rende
 
 ## Tools
 
-Tools are the primary interface for executing research operations. Each tool represents a specific action that can be performed on the research system.
+Tools are the primary interface for executing research operations. Each tool
+represents a specific action that can be performed on the research system.
 
 ### Tool Categories
 
@@ -195,7 +210,8 @@ Tools are the primary interface for executing research operations. Each tool rep
 
 ### Tool Execution
 
-Tools are executed asynchronously and may return progress updates for long-running operations. The server supports:
+Tools are executed asynchronously and may return progress updates for
+long-running operations. The server supports:
 
 - **Synchronous Execution**: Immediate results for quick operations
 - **Asynchronous Execution**: Progress updates for long-running operations
@@ -218,7 +234,8 @@ For detailed tool documentation, see [Tools Documentation](./tools.md).
 
 ## Resources
 
-Resources provide read-only access to research data and progress information. Resources are accessed via URIs and return structured data.
+Resources provide read-only access to research data and progress information.
+Resources are accessed via URIs and return structured data.
 
 ### Resource Categories
 
@@ -231,6 +248,7 @@ Resources provide read-only access to research data and progress information. Re
 Resources use a URI scheme: `research://{category}/{type}/{identifier}`
 
 Examples:
+
 - `research://progress/metrics/{session_id}`
 - `research://progress/history/{session_id}`
 - `research://session/state/{session_id}`
@@ -251,11 +269,14 @@ Resources are accessed via the `resources/read` method:
 }
 ```
 
-For detailed resource documentation, see [Resources Documentation](./resources.md).
+For detailed resource documentation, see
+[Resources Documentation](./resources.md).
 
 ## Prompts
 
-Prompts provide workflow guidance and instructions for using the research system. Prompts are rendered with parameters to generate contextual instructions.
+Prompts provide workflow guidance and instructions for using the research
+system. Prompts are rendered with parameters to generate contextual
+instructions.
 
 ### Prompt Categories
 
@@ -288,7 +309,8 @@ For detailed prompt documentation, see [Prompts Documentation](./prompts.md).
 
 ## Error Handling
 
-The server provides comprehensive error handling with detailed error codes and messages.
+The server provides comprehensive error handling with detailed error codes and
+messages.
 
 ### Error Codes
 
@@ -339,7 +361,8 @@ The server implements error recovery mechanisms:
 
 ## Rate Limiting
 
-Rate limiting is configurable and can be enabled to prevent abuse and ensure fair resource usage.
+Rate limiting is configurable and can be enabled to prevent abuse and ensure
+fair resource usage.
 
 ### Configuration
 
@@ -379,7 +402,8 @@ When rate limit is exceeded, the server returns:
 
 ## Progress Streaming
 
-Long-running operations provide progress updates through the progress streaming system.
+Long-running operations provide progress updates through the progress streaming
+system.
 
 ### Progress Updates
 
@@ -418,7 +442,9 @@ The server implements multiple security measures:
 
 ## Configuration
 
-The server is configured via environment variables. See [Deployment Configuration](../../guides/technical-guides/deployment/mcp-server-deployment.md) for details.
+The server is configured via environment variables. See
+[Deployment Configuration](../../guides/technical-guides/deployment/mcp-server-deployment.md)
+for details.
 
 ## Examples
 
@@ -427,4 +453,3 @@ See the [Examples](./examples.md) document for complete usage examples.
 ## Support
 
 For issues, questions, or contributions, please see the project repository.
-

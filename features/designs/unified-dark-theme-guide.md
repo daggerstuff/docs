@@ -1,6 +1,8 @@
 # Unified Dark Theme - Comprehensive Design System
 
-A sophisticated dark theme CSS framework that combines the best elements from brutalist precision, minimalist purity, corporate sleekness, enterprise brevity, and Antfu elegance.
+A sophisticated dark theme CSS framework that combines the best elements from
+brutalist precision, minimalist purity, corporate sleekness, enterprise brevity,
+and Antfu elegance.
 
 ## 🎯 Design Philosophy
 
@@ -8,7 +10,8 @@ This design system synthesizes five distinct aesthetic approaches:
 
 - **Brutalist Precision** (`astromaxx.com`) - Raw, bold, structural elements
 - **Minimalist Purity** (`litos.com`) - Clean, uncluttered, essential
-- **Corporate Sleekness** (`dato-multilaunch.vercel.app`) - Professional, polished, trustworthy
+- **Corporate Sleekness** (`dato-multilaunch.vercel.app`) - Professional,
+  polished, trustworthy
 - **Enterprise Brevity** (`one.ie`) - Efficient, functional, purposeful
 - **Antfu Elegance** (`antfu.me`) - Refined, sophisticated, harmonious
 
@@ -539,7 +542,8 @@ import '@pixelated/unified-dark-theme/unified-dark-theme-comprehensive.css';
 
 1. **astromaxx.com** - Brutalist precision with bold typography
 2. **litos.com** - Minimalist purity with clean layouts
-3. **dato-multilaunch.vercel.app** - Corporate sleekness with professional polish
+3. **dato-multilaunch.vercel.app** - Corporate sleekness with professional
+   polish
 4. **one.ie** - Enterprise brevity with efficient design
 5. **antfu.me** - Elegant refinement with sophisticated details
 

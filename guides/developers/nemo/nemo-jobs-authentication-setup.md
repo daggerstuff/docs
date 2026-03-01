@@ -2,11 +2,15 @@
 
 ## Issue
 
-The jobs-controller requires Docker registry authentication to pull images for job execution. Currently, jobs fail with a 401 Unauthorized error because the Docker-in-Docker service doesn't have access to NGC registry credentials.
+The jobs-controller requires Docker registry authentication to pull images for
+job execution. Currently, jobs fail with a 401 Unauthorized error because the
+Docker-in-Docker service doesn't have access to NGC registry credentials.
 
 ## Solution
 
-The jobs-controller needs the `NIM_API_KEY` environment variable to authenticate to the NVIDIA container registry. This key should be the same as your `NVIDIA_API_KEY` from build.nvidia.com.
+The jobs-controller needs the `NIM_API_KEY` environment variable to authenticate
+to the NVIDIA container registry. This key should be the same as your
+`NVIDIA_API_KEY` from build.nvidia.com.
 
 ## Setup Steps
 
@@ -45,29 +49,37 @@ You should **not** see 401 Unauthorized errors.
 
 ## Alternative: Manual Docker Login in Container
 
-If the above doesn't work, you may need to manually configure Docker authentication within the Docker-in-Docker service. However, this is more complex and may require custom configuration.
+If the above doesn't work, you may need to manually configure Docker
+authentication within the Docker-in-Docker service. However, this is more
+complex and may require custom configuration.
 
 ## Note
 
-- The preview API (≤10 samples) works without job execution and doesn't require this setup
-- For larger datasets (>10 samples), jobs are required, which need proper authentication
-- The `NIM_API_KEY` must be the same as your `NVIDIA_API_KEY` from build.nvidia.com
+- The preview API (≤10 samples) works without job execution and doesn't require
+  this setup
+- For larger datasets (>10 samples), jobs are required, which need proper
+  authentication
+- The `NIM_API_KEY` must be the same as your `NVIDIA_API_KEY` from
+  build.nvidia.com
 
 ## Troubleshooting
 
 If authentication still fails:
 
 1. **Verify API key is correct:**
+
    ```bash
    echo $NIM_API_KEY | docker login nvcr.io -u '$oauthtoken' --password-stdin
    ```
 
 2. **Check jobs-controller environment:**
+
    ```bash
    docker compose exec jobs-controller env | grep NIM
    ```
 
 3. **Check Docker service logs:**
+
    ```bash
    docker compose logs docker --tail 20
    ```
@@ -76,4 +88,3 @@ If authentication still fails:
    ```bash
    docker compose restart
    ```
-

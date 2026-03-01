@@ -2,7 +2,9 @@
 
 ## Overview
 
-This guide covers the deployment of the enhanced bias detection system, including real-time analysis, IEEE Xplore integration, advanced training scenarios, and automated memory updates.
+This guide covers the deployment of the enhanced bias detection system,
+including real-time analysis, IEEE Xplore integration, advanced training
+scenarios, and automated memory updates.
 
 ## Prerequisites
 
@@ -196,7 +198,7 @@ services:
       - REDIS_URL=${REDIS_URL}
       - IEEE_API_KEY=${IEEE_API_KEY}
     ports:
-      - "8001:8000"
+      - '8001:8000'
     volumes:
       - ./logs:/app/logs
     depends_on:
@@ -210,7 +212,7 @@ services:
       - TRAINING_DATABASE_URL=${TRAINING_DATABASE_URL}
       - REDIS_URL=${REDIS_URL}
     ports:
-      - "8002:8000"
+      - '8002:8000'
     volumes:
       - ./logs:/app/logs
     depends_on:
@@ -224,7 +226,7 @@ services:
       - MEMORY_DATABASE_URL=${MEMORY_DATABASE_URL}
       - REDIS_URL=${REDIS_URL}
     ports:
-      - "8003:8000"
+      - '8003:8000'
     volumes:
       - ./logs:/app/logs
     depends_on:
@@ -241,7 +243,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - '5432:5432'
     restart: unless-stopped
 
   redis:
@@ -249,14 +251,14 @@ services:
     volumes:
       - redis_data:/data
     ports:
-      - "6379:6379"
+      - '6379:6379'
     restart: unless-stopped
 
   nginx:
     image: nginx:alpine
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./ssl:/etc/nginx/ssl
@@ -346,7 +348,7 @@ data:
       ieee_integration:
         rate_limit: 10
         max_retries: 3
-  
+
   training.yaml: |
     training:
       cultural_competency:
@@ -355,7 +357,7 @@ data:
       trauma_informed_care:
         trauma_types: ["acute", "chronic", "complex"]
         sensitivity_level: "high"
-  
+
   memory.yaml: |
     memory:
       update_threshold: 0.1
@@ -376,11 +378,11 @@ metadata:
   namespace: pixelated-empathy
 type: Opaque
 stringData:
-  database-url: "postgresql://user:password@postgres:5432/pixelated"
-  redis-url: "redis://redis:6379/0"
-  ieee-api-key: "your_ieee_api_key"
-  sentry-dsn: "your_sentry_dsn"
-  secret-key: "your_secret_key"
+  database-url: 'postgresql://user:password@postgres:5432/pixelated'
+  redis-url: 'redis://redis:6379/0'
+  ieee-api-key: 'your_ieee_api_key'
+  sentry-dsn: 'your_sentry_dsn'
+  secret-key: 'your_secret_key'
 ```
 
 #### 4.4 Bias Detection Deployment
@@ -403,56 +405,56 @@ spec:
         app: bias-detection
     spec:
       containers:
-      - name: bias-detection
-        image: pixelated-empathy/bias-detection:latest
-        ports:
-        - containerPort: 8000
-        env:
-        - name: DATABASE_URL
-          valueFrom:
-            secretKeyRef:
-              name: pixelated-secrets
-              key: database-url
-        - name: REDIS_URL
-          valueFrom:
-            secretKeyRef:
-              name: pixelated-secrets
-              key: redis-url
-        - name: IEEE_API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: pixelated-secrets
-              key: ieee-api-key
-        volumeMounts:
-        - name: config
-          mountPath: /app/config
-        - name: logs
-          mountPath: /app/logs
-        resources:
-          requests:
-            memory: "512Mi"
-            cpu: "250m"
-          limits:
-            memory: "1Gi"
-            cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: 8000
-          initialDelaySeconds: 5
-          periodSeconds: 5
+        - name: bias-detection
+          image: pixelated-empathy/bias-detection:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: pixelated-secrets
+                  key: database-url
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: pixelated-secrets
+                  key: redis-url
+            - name: IEEE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: pixelated-secrets
+                  key: ieee-api-key
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+            - name: logs
+              mountPath: /app/logs
+          resources:
+            requests:
+              memory: '512Mi'
+              cpu: '250m'
+            limits:
+              memory: '1Gi'
+              cpu: '500m'
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5
       volumes:
-      - name: config
-        configMap:
-          name: pixelated-config
-      - name: logs
-        emptyDir: {}
+        - name: config
+          configMap:
+            name: pixelated-config
+        - name: logs
+          emptyDir: {}
 ```
 
 #### 4.5 Service Configuration
@@ -468,9 +470,9 @@ spec:
   selector:
     app: bias-detection
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8000
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
   type: ClusterIP
 ```
 
@@ -491,18 +493,18 @@ spec:
   minReplicas: 3
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
 ```
 
 ### Step 5: Monitoring and Observability
@@ -516,28 +518,29 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-- job_name: 'bias-detection'
-  static_configs:
-  - targets: ['bias-detection:8000']
-  metrics_path: /metrics
-  scrape_interval: 10s
+  - job_name: 'bias-detection'
+    static_configs:
+      - targets: ['bias-detection:8000']
+    metrics_path: /metrics
+    scrape_interval: 10s
 
-- job_name: 'training-service'
-  static_configs:
-  - targets: ['training-service:8000']
-  metrics_path: /metrics
-  scrape_interval: 10s
+  - job_name: 'training-service'
+    static_configs:
+      - targets: ['training-service:8000']
+    metrics_path: /metrics
+    scrape_interval: 10s
 
-- job_name: 'memory-service'
-  static_configs:
-  - targets: ['memory-service:8000']
-  metrics_path: /metrics
-  scrape_interval: 10s
+  - job_name: 'memory-service'
+    static_configs:
+      - targets: ['memory-service:8000']
+    metrics_path: /metrics
+    scrape_interval: 10s
 ```
 
 #### 5.2 Grafana Dashboards
 
 Create dashboards for:
+
 - Bias detection accuracy
 - Processing latency
 - Memory usage
@@ -549,34 +552,36 @@ Create dashboards for:
 ```yaml
 # monitoring/alerts.yaml
 groups:
-- name: bias-detection-alerts
-  rules:
-  - alert: HighBiasDetectionLatency
-    expr: histogram_quantile(0.95, rate(bias_detection_duration_seconds_bucket[5m])) > 2
-    for: 5m
-    labels:
-      severity: warning
-    annotations:
-      summary: "High bias detection latency"
-      description: "95th percentile latency is above 2 seconds"
+  - name: bias-detection-alerts
+    rules:
+      - alert: HighBiasDetectionLatency
+        expr:
+          histogram_quantile(0.95,
+          rate(bias_detection_duration_seconds_bucket[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'High bias detection latency'
+          description: '95th percentile latency is above 2 seconds'
 
-  - alert: HighErrorRate
-    expr: rate(bias_detection_errors_total[5m]) > 0.05
-    for: 5m
-    labels:
-      severity: critical
-    annotations:
-      summary: "High error rate in bias detection"
-      description: "Error rate is above 5%"
+      - alert: HighErrorRate
+        expr: rate(bias_detection_errors_total[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'High error rate in bias detection'
+          description: 'Error rate is above 5%'
 
-  - alert: MemoryUsageHigh
-    expr: process_resident_memory_bytes / 1024 / 1024 > 512
-    for: 5m
-    labels:
-      severity: warning
-    annotations:
-      summary: "High memory usage"
-      description: "Memory usage is above 512MB"
+      - alert: MemoryUsageHigh
+        expr: process_resident_memory_bytes / 1024 / 1024 > 512
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'High memory usage'
+          description: 'Memory usage is above 512MB'
 ```
 
 ### Step 6: Security Configuration
@@ -595,37 +600,37 @@ spec:
     matchLabels:
       app: bias-detection
   policyTypes:
-  - Ingress
-  - Egress
+    - Ingress
+    - Egress
   ingress:
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          name: pixelated-empathy
-    ports:
-    - protocol: TCP
-      port: 8000
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: pixelated-empathy
+      ports:
+        - protocol: TCP
+          port: 8000
   egress:
-  - to:
-    - namespaceSelector:
-        matchLabels:
-          name: pixelated-empathy
-  - to:
-    - namespaceSelector: {}
-      podSelector:
-        matchLabels:
-          app: postgres
-    ports:
-    - protocol: TCP
-      port: 5432
-  - to:
-    - namespaceSelector: {}
-      podSelector:
-        matchLabels:
-          app: redis
-    ports:
-    - protocol: TCP
-      port: 6379
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: pixelated-empathy
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              app: postgres
+      ports:
+        - protocol: TCP
+          port: 5432
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              app: redis
+      ports:
+        - protocol: TCP
+          port: 6379
 ```
 
 #### 6.2 RBAC Configuration
@@ -644,12 +649,12 @@ metadata:
   name: pixelated-role
   namespace: pixelated-empathy
 rules:
-- apiGroups: [""]
-  resources: ["pods", "services", "configmaps", "secrets"]
-  verbs: ["get", "list", "watch"]
-- apiGroups: ["apps"]
-  resources: ["deployments"]
-  verbs: ["get", "list", "watch", "update", "patch"]
+  - apiGroups: ['']
+    resources: ['pods', 'services', 'configmaps', 'secrets']
+    verbs: ['get', 'list', 'watch']
+  - apiGroups: ['apps']
+    resources: ['deployments']
+    verbs: ['get', 'list', 'watch', 'update', 'patch']
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -657,9 +662,9 @@ metadata:
   name: pixelated-role-binding
   namespace: pixelated-empathy
 subjects:
-- kind: ServiceAccount
-  name: pixelated-service-account
-  namespace: pixelated-empathy
+  - kind: ServiceAccount
+    name: pixelated-service-account
+    namespace: pixelated-empathy
 roleRef:
   kind: Role
   name: pixelated-role
@@ -864,4 +869,6 @@ psql pixelated_memory_store < backup_memory_store_YYYYMMDD_HHMMSS.sql
 
 ## Conclusion
 
-This deployment guide provides comprehensive instructions for deploying the enhanced bias detection system. Follow the steps carefully and monitor the system regularly to ensure optimal performance and reliability.
+This deployment guide provides comprehensive instructions for deploying the
+enhanced bias detection system. Follow the steps carefully and monitor the
+system regularly to ensure optimal performance and reliability.

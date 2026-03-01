@@ -1,24 +1,27 @@
 ---
 title: 'Real-Time Bias Detection'
-description: 'Multi-layered bias detection system with 92%+ accuracy and <100ms latency that identifies cultural, gender, racial, and socioeconomic bias in therapeutic conversations.'
+description:
+  'Multi-layered bias detection system with 92%+ accuracy and <100ms latency
+  that identifies cultural, gender, racial, and socioeconomic bias in
+  therapeutic conversations.'
 ---
 
 Unconscious bias is one of the most persistent threats to equitable mental
 health care. Pixelated Empathy's Bias Detection System continuously monitors
 therapeutic conversations for bias signals — surfacing patterns that even
-experienced clinicians miss — and provides actionable correction
-recommendations in real time.
+experienced clinicians miss — and provides actionable correction recommendations
+in real time.
 
 <CardGroup cols={3}>
-  <Card title="92%+ Accuracy" icon="bullseye">
+  <Card title='92%+ Accuracy' icon='bullseye'>
     Validated across 200+ cultural patterns with multi-layered analysis for
     high-confidence detection.
   </Card>
-  <Card title="<100ms Latency" icon="bolt">
+  <Card title='<100ms Latency' icon='bolt'>
     Streaming analysis delivers real-time alerts during live conversations
     without noticeable delay.
   </Card>
-  <Card title="200+ Cultural Patterns" icon="earth-americas">
+  <Card title='200+ Cultural Patterns' icon='earth-americas'>
     Comprehensive coverage of bias patterns across demographics, cultures, and
     intersectional identities.
   </Card>
@@ -260,32 +263,32 @@ The system includes built-in alert rules that automatically trigger based on
 analysis results:
 
 - **High bias score** (>0.7) — Alerts therapist supervisor and ethics committee
-- **Critical bias score** (>0.9) — Immediate intervention with chief
-  supervisor, ethics committee, and system admin notification
+- **Critical bias score** (>0.9) — Immediate intervention with chief supervisor,
+  ethics committee, and system admin notification
 - **Demographic disparity** — Flags significant bias disparities across
   demographic groups
 - **Low confidence + elevated score** — Alerts when bias detection confidence is
-  low but scores are elevated, indicating uncertain but potentially
-  significant bias
+  low but scores are elevated, indicating uncertain but potentially significant
+  bias
 
 ### Escalation protocol
 
 Unacknowledged alerts automatically escalate:
 
 <Steps>
-  <Step title="Initial alert">
+  <Step title='Initial alert'>
     Alert is generated and displayed in real time. Notification sent via
     configured channels (email, Slack, webhook).
   </Step>
-  <Step title="Acknowledgment window">
+  <Step title='Acknowledgment window'>
     The alert remains active for a configurable period (default: 5 minutes for
     critical, 15 minutes for high).
   </Step>
-  <Step title="Auto-escalation">
+  <Step title='Auto-escalation'>
     If not acknowledged, the alert escalates to the next tier of recipients with
     an `[ESCALATED]` flag.
   </Step>
-  <Step title="Resolution">
+  <Step title='Resolution'>
     Acknowledged alerts are tracked for resolution. The system monitors whether
     corrective action is taken.
   </Step>
@@ -293,7 +296,8 @@ Unacknowledged alerts automatically escalate:
 
 ## Streaming analysis
 
-For live training sessions, the Bias Detection Engine operates in streaming mode:
+For live training sessions, the Bias Detection Engine operates in streaming
+mode:
 
 ```typescript
 // Real-time bias analysis during a training session
@@ -347,19 +351,19 @@ Beyond individual session analysis, the system identifies bias patterns across
 multiple sessions:
 
 <CardGroup cols={2}>
-  <Card title="Trend detection" icon="chart-line">
+  <Card title='Trend detection' icon='chart-line'>
     Tracks bias scores over time to identify improving or worsening patterns in
     a therapist's practice.
   </Card>
-  <Card title="Demographic breakdown" icon="users">
+  <Card title='Demographic breakdown' icon='users'>
     Analyzes whether bias scores vary based on client demographics — revealing
     blind spots with specific populations.
   </Card>
-  <Card title="Intervention effectiveness" icon="chart-mixed">
+  <Card title='Intervention effectiveness' icon='chart-mixed'>
     Measures whether bias correction recommendations lead to measurable
     improvement in subsequent sessions.
   </Card>
-  <Card title="Comparative benchmarking" icon="scale-balanced">
+  <Card title='Comparative benchmarking' icon='scale-balanced'>
     Compares individual bias patterns against anonymized cohort data to
     contextualize performance.
   </Card>
@@ -387,17 +391,17 @@ The Bias Detection Dashboard provides a comprehensive view of bias analytics for
 both individual therapists and supervisors:
 
 <Tabs>
-  <Tab title="Real-time monitoring">
+  <Tab title='Real-time monitoring'>
     - Live bias score feed across active training sessions - Active alert queue
     with acknowledgment controls - System health indicators for all analysis
     layers - Performance metrics (response time, error rate, throughput)
   </Tab>
-  <Tab title="Historical analytics">
+  <Tab title='Historical analytics'>
     - Bias score trends over configurable time ranges - Demographic disparity
     analysis - Alert distribution by level and category - Intervention
     effectiveness tracking
   </Tab>
-  <Tab title="Reporting">
+  <Tab title='Reporting'>
     - Automated bias analysis reports with executive summaries - Demographic
     breakdown and intersectional analysis - Temporal trend analysis with
     seasonal patterns - Compliance-ready exports in JSON format
@@ -407,23 +411,23 @@ both individual therapists and supervisors:
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="API Reference" icon="code" href="/api-reference/bias-analysis">
+  <Card title='API Reference' icon='code' href='/api-reference/bias-analysis'>
     Integrate bias detection into your workflow with the Bias Analysis API.
   </Card>
-  <Card title="Empathy Gym" icon="dumbbell" href="/product/empathy-gym">
+  <Card title='Empathy Gym' icon='dumbbell' href='/product/empathy-gym'>
     See how bias detection integrates with real-time training sessions.
   </Card>
   <Card
-    title="Ethics & Compliance"
-    icon="scale-balanced"
-    href="/compliance/ethics"
+    title='Ethics & Compliance'
+    icon='scale-balanced'
+    href='/compliance/ethics'
   >
     Learn about our ethical framework for bias detection in mental health AI.
   </Card>
   <Card
-    title="Understanding Feedback"
-    icon="chart-line"
-    href="/guides/therapists/understanding-feedback"
+    title='Understanding Feedback'
+    icon='chart-line'
+    href='/guides/therapists/understanding-feedback'
   >
     Learn how to interpret and act on bias detection feedback.
   </Card>

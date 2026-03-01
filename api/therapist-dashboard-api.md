@@ -2,7 +2,11 @@
 
 ## Overview
 
-The Therapist Dashboard API provides RESTful endpoints for managing therapist session progress tracking, analytics data storage, and performance metrics collection. Built with enterprise-grade security and scalability in mind, the API supports real-time progress monitoring and comprehensive analytics for therapist training sessions.
+The Therapist Dashboard API provides RESTful endpoints for managing therapist
+session progress tracking, analytics data storage, and performance metrics
+collection. Built with enterprise-grade security and scalability in mind, the
+API supports real-time progress monitoring and comprehensive analytics for
+therapist training sessions.
 
 ## Base URL
 
@@ -12,7 +16,9 @@ The Therapist Dashboard API provides RESTful endpoints for managing therapist se
 
 ## Authentication
 
-All API endpoints require JWT-based authentication with valid therapist credentials. Requests must include an `Authorization` header with a valid bearer token.
+All API endpoints require JWT-based authentication with valid therapist
+credentials. Requests must include an `Authorization` header with a valid bearer
+token.
 
 ```http
 Authorization: Bearer <jwt-token>
@@ -21,6 +27,7 @@ Authorization: Bearer <jwt-token>
 ## Rate Limiting
 
 API endpoints are rate-limited to prevent abuse and ensure fair usage:
+
 - **100 requests per minute** for authenticated users
 - **1000 requests per hour** for authenticated users
 - Excessive requests will return `429 Too Many Requests`
@@ -55,9 +62,11 @@ All API endpoints follow consistent error response format:
 ### Progress Metrics (`/api/session/progress`)
 
 #### POST `/api/session/progress`
+
 **Store session progress metrics and evaluation feedback**
 
 **Request Body:**
+
 ```json
 {
   "sessionId": "string",
@@ -81,6 +90,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -89,19 +99,23 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Progress metrics stored successfully
 - `400 Bad Request` - Missing required fields
 - `404 Not Found` - Session not found
 - `500 Internal Server Error` - Database error
 
 #### GET `/api/session/progress`
+
 **Retrieve session progress data and metrics**
 
 **Query Parameters:**
+
 - `sessionId` (required) - Session ID to retrieve
 - `includeFeedback` (optional) - Include evaluation feedback in response
 
 **Response:**
+
 ```json
 {
   "sessionId": "string",
@@ -130,6 +144,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Progress data retrieved successfully
 - `400 Bad Request` - Missing sessionId parameter
 - `404 Not Found` - Session not found
@@ -138,9 +153,11 @@ All API endpoints follow consistent error response format:
 ### Progress Snapshots (`/api/session/snapshots`)
 
 #### POST `/api/session/snapshots`
+
 **Store session progress snapshots and milestone data**
 
 **Request Body:**
+
 ```json
 {
   "sessionId": "string",
@@ -154,6 +171,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -162,18 +180,22 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Snapshots stored successfully
 - `400 Bad Request` - Missing required fields
 - `404 Not Found` - Session not found
 - `500 Internal Server Error` - Database error
 
 #### GET `/api/session/snapshots`
+
 **Retrieve session progress snapshots**
 
 **Query Parameters:**
+
 - `sessionId` (required) - Session ID to retrieve snapshots for
 
 **Response:**
+
 ```json
 {
   "sessionId": "string",
@@ -195,6 +217,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Snapshots retrieved successfully
 - `400 Bad Request` - Missing sessionId parameter
 - `404 Not Found` - Session not found
@@ -203,9 +226,11 @@ All API endpoints follow consistent error response format:
 ### Skill Scores (`/api/session/skills`)
 
 #### POST `/api/session/skills`
+
 **Store session skill scores and development data**
 
 **Request Body:**
+
 ```json
 {
   "sessionId": "string",
@@ -218,6 +243,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -227,19 +253,23 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Skill scores stored successfully
 - `400 Bad Request` - Missing required fields
 - `404 Not Found` - Session not found
 - `500 Internal Server Error` - Database error
 
 #### GET `/api/session/skills`
+
 **Retrieve therapist skill development data**
 
 **Query Parameters:**
+
 - `sessionId` (optional) - Specific session ID
 - `therapistId` (optional) - Specific therapist ID
 
 **Response:**
+
 ```json
 {
   "sessionId": "string",
@@ -258,6 +288,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Skill data retrieved successfully
 - `400 Bad Request` - Missing sessionId or therapistId parameter
 - `404 Not Found` - Session or therapist not found
@@ -266,9 +297,11 @@ All API endpoints follow consistent error response format:
 ### Analytics Data (`/api/session/analytics`)
 
 #### POST `/api/session/analytics`
+
 **Store session analytics data**
 
 **Request Body:**
+
 ```json
 {
   "sessionId": "string",
@@ -320,6 +353,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -328,19 +362,23 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Analytics data stored successfully
 - `400 Bad Request` - Missing required fields
 - `404 Not Found` - Session not found
 - `500 Internal Server Error` - Database error
 
 #### GET `/api/session/analytics`
+
 **Retrieve session analytics data**
 
 **Query Parameters:**
+
 - `sessionId` (required) - Session ID to retrieve analytics for
 - `timeRange` (optional) - Time range filter (7d, 30d, 90d, 1y)
 
 **Response:**
+
 ```json
 {
   "sessionId": "string",
@@ -392,6 +430,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Analytics data retrieved successfully
 - `400 Bad Request` - Missing sessionId parameter
 - `404 Not Found` - Session not found
@@ -400,9 +439,11 @@ All API endpoints follow consistent error response format:
 ### Session Comparison (`/api/session/comparison`)
 
 #### POST `/api/session/comparison`
+
 **Store session comparison analysis data**
 
 **Request Body:**
+
 ```json
 {
   "therapistId": "string",
@@ -418,6 +459,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -428,19 +470,23 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `201 Created` - Comparison data stored successfully
 - `400 Bad Request` - Missing required fields
 - `500 Internal Server Error` - Database error
 
 #### GET `/api/session/comparison`
+
 **Retrieve session comparison analysis data**
 
 **Query Parameters:**
+
 - `therapistId` (optional) - Filter by therapist ID
 - `sessionId` (optional) - Specific session ID
 - `timeRange` (optional) - Time range filter (7d, 30d, 90d, 1y)
 
 **Response:**
+
 ```json
 {
   "therapistId": "string",
@@ -467,6 +513,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Comparison data retrieved successfully
 - `400 Bad Request` - Missing therapistId or sessionId parameter
 - `500 Internal Server Error` - Database error
@@ -474,9 +521,11 @@ All API endpoints follow consistent error response format:
 ### Evaluation Feedback (`/api/evaluation`)
 
 #### POST `/api/evaluation`
+
 **Store evaluation feedback data**
 
 **Request Body:**
+
 ```json
 {
   "sessionId": "string",
@@ -488,6 +537,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -496,17 +546,21 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `201 Created` - Evaluation feedback stored successfully
 - `400 Bad Request` - Missing required fields
 - `500 Internal Server Error` - Database error
 
 #### GET `/api/evaluation`
+
 **Retrieve evaluation feedback data**
 
 **Query Parameters:**
+
 - `sessionId` (required) - Session ID to retrieve feedback for
 
 **Response:**
+
 ```json
 {
   "sessionId": "string",
@@ -524,6 +578,7 @@ All API endpoints follow consistent error response format:
 ```
 
 **Status Codes:**
+
 - `200 OK` - Evaluation feedback retrieved successfully
 - `400 Bad Request` - Missing sessionId parameter
 - `404 Not Found` - Session not found
@@ -532,67 +587,73 @@ All API endpoints follow consistent error response format:
 ## Data Models
 
 ### Session Progress Metrics
+
 ```typescript
 interface SessionProgressMetrics {
-  totalMessages: number;
-  therapistMessages: number;
-  clientMessages: number;
-  sessionDuration: number; // in seconds
-  activeTime: number; // in seconds
-  skillScores: Record<string, number>; // skill name -> score (0-100)
-  responseTime: number; // average response time in seconds
-  conversationFlow: number; // conversation quality score (0-100)
-  milestonesReached: string[]; // milestone identifiers
-  lastMilestoneTime?: string; // ISO timestamp
+  totalMessages: number
+  therapistMessages: number
+  clientMessages: number
+  sessionDuration: number // in seconds
+  activeTime: number // in seconds
+  skillScores: Record<string, number> // skill name -> score (0-100)
+  responseTime: number // average response time in seconds
+  conversationFlow: number // conversation quality score (0-100)
+  milestonesReached: string[] // milestone identifiers
+  lastMilestoneTime?: string // ISO timestamp
 }
 ```
 
 ### Therapist Session
+
 ```typescript
 interface TherapistSession {
-  id: string;
-  clientId: string;
-  therapistId: string;
-  startTime: string; // ISO timestamp
-  endTime?: string; // ISO timestamp
-  status: 'active' | 'paused' | 'completed' | 'cancelled';
-  progress: number; // 0-100
-  progressSnapshots?: Array<{ timestamp: string; value: number }>;
-  analyticsData?: AnalyticsChartData;
-  sessionMetrics?: SessionData[];
-  progressMetrics?: SessionProgressMetrics;
+  id: string
+  clientId: string
+  therapistId: string
+  startTime: string // ISO timestamp
+  endTime?: string // ISO timestamp
+  status: 'active' | 'paused' | 'completed' | 'cancelled'
+  progress: number // 0-100
+  progressSnapshots?: Array<{ timestamp: string; value: number }>
+  analyticsData?: AnalyticsChartData
+  sessionMetrics?: SessionData[]
+  progressMetrics?: SessionProgressMetrics
 }
 ```
 
 ### Analytics Chart Data
+
 ```typescript
 interface TherapistAnalyticsChartData {
-  sessionMetrics: TherapistSessionData[];
-  skillProgress: TherapistSkillProgressData[];
-  summaryStats: TherapistMetricSummary[];
-  progressSnapshots?: Array<{ timestamp: string; value: number }>;
+  sessionMetrics: TherapistSessionData[]
+  skillProgress: TherapistSkillProgressData[]
+  summaryStats: TherapistMetricSummary[]
+  progressSnapshots?: Array<{ timestamp: string; value: number }>
   comparativeData?: {
-    currentSession: TherapistSessionData;
-    previousSession?: TherapistSessionData;
-    trend: 'improving' | 'declining' | 'stable';
-  };
+    currentSession: TherapistSessionData
+    previousSession?: TherapistSessionData
+    trend: 'improving' | 'declining' | 'stable'
+  }
 }
 ```
 
 ## Security Considerations
 
 ### Data Encryption
+
 - All data is encrypted at rest using AES-256 encryption
 - All data is encrypted in transit using TLS 1.3
 - Sensitive fields are hashed using bcrypt with salt
 
 ### Input Validation
+
 - All API inputs are validated using Zod schemas
 - SQL injection prevention through parameterized queries
 - XSS prevention through input sanitization
 - CSRF protection through token validation
 
 ### Access Control
+
 - Role-based access control (RBAC) implementation
 - Session-based authentication with JWT tokens
 - Permission validation for each API endpoint
@@ -601,18 +662,21 @@ interface TherapistAnalyticsChartData {
 ## Performance Optimization
 
 ### Database Indexing
+
 - Primary key indexing on session IDs
 - Composite indexing on therapist ID and timestamp
 - Full-text search indexing for feedback data
 - Spatial indexing for geographic data
 
 ### Caching Strategy
+
 - Redis caching for frequently accessed session data
 - In-memory caching for analytics data
 - CDN caching for static assets
 - HTTP caching headers for API responses
 
 ### Query Optimization
+
 - Efficient SQL query construction
 - Database connection pooling
 - Query result pagination
@@ -621,18 +685,21 @@ interface TherapistAnalyticsChartData {
 ## Monitoring and Logging
 
 ### Application Logging
+
 - Structured JSON logging for all API requests
 - Error logging with stack traces
 - Performance monitoring with timing data
 - Security event logging with audit trails
 
 ### Metrics Collection
+
 - API request/response time monitoring
 - Database query performance tracking
 - System resource utilization monitoring
 - User activity and engagement tracking
 
 ### Alerting System
+
 - Real-time alerting for system errors
 - Performance degradation notifications
 - Security incident alerts
@@ -641,18 +708,21 @@ interface TherapistAnalyticsChartData {
 ## Testing and Quality Assurance
 
 ### API Testing
+
 - Unit tests for all endpoint handlers
 - Integration tests for database operations
 - Load testing with realistic traffic patterns
 - Security testing with penetration testing tools
 
 ### Data Validation
+
 - Schema validation for all API inputs
 - Data integrity checks for database operations
 - Cross-field validation for business rules
 - Data migration testing for schema changes
 
 ### Performance Testing
+
 - Load testing with concurrent users
 - Stress testing with peak traffic scenarios
 - Soak testing for long-running stability
@@ -661,18 +731,21 @@ interface TherapistAnalyticsChartData {
 ## Deployment and Operations
 
 ### CI/CD Pipeline
+
 - Automated testing on every code commit
 - Staging environment deployment for QA
 - Production deployment with rollback capability
 - Blue-green deployment strategy for zero downtime
 
 ### Infrastructure
+
 - Containerized deployment with Docker
 - Kubernetes orchestration for scaling
 - Load balancing with NGINX
 - Database replication for high availability
 
 ### Backup and Recovery
+
 - Daily database backups with retention policy
 - Point-in-time recovery for data restoration
 - Cross-region backup replication
@@ -681,18 +754,21 @@ interface TherapistAnalyticsChartData {
 ## Support and Maintenance
 
 ### Documentation
+
 - Comprehensive API documentation with examples
 - Developer guides for integration
 - Troubleshooting guides for common issues
 - Release notes for version updates
 
 ### Incident Response
+
 - 24/7 monitoring and alerting
 - Escalation procedures for critical issues
 - Post-mortem analysis for incidents
 - Continuous improvement of reliability
 
 ### Version Management
+
 - Semantic versioning for API releases
 - Backward compatibility guarantees
 - Deprecation notices for legacy features

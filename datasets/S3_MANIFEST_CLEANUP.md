@@ -1,17 +1,22 @@
 # S3 Manifest Cleanup Plan
 
 ## Overview
-This document outlines the cleanup of deprecated manifests in favor of the new unified Release 0 manifest.
+
+This document outlines the cleanup of deprecated manifests in favor of the new
+unified Release 0 manifest.
 
 ## New Unified Manifest
+
 - **Location**: `docs/datasets/RELEASE_0_UNIFIED_MANIFEST.json` (local repo)
-- **S3 Upload Target**: `s3://pixel-data/releases/v2026-01-07/RELEASE_0_UNIFIED_MANIFEST.json`
+- **S3 Upload Target**:
+  `s3://pixel-data/releases/v2026-01-07/RELEASE_0_UNIFIED_MANIFEST.json`
 - **Status**: ✅ Created
 - **Format**: Comprehensive Release 0 inventory with all dataset families
 
 ## Deprecated S3 Manifests (To Be Deleted)
 
 ### 1. FINAL_TRAINING_DATA_MANIFEST.json
+
 ```bash
 # Location
 s3://pixel-data/datasets/consolidated/FINAL_TRAINING_DATA_MANIFEST.json
@@ -30,6 +35,7 @@ aws s3 rm \
 ```
 
 ### 2. MANIFEST.json
+
 ```bash
 # Location
 s3://pixel-data/datasets/consolidated/MANIFEST.json
@@ -48,6 +54,7 @@ aws s3 rm \
 ```
 
 ### 3. MASTER_STAGE_MANIFEST.json
+
 ```bash
 # Location
 s3://pixel-data/datasets/consolidated/final/MASTER_STAGE_MANIFEST.json
@@ -68,7 +75,7 @@ aws s3 rm \
 ## Deleted Local Manifests (Already Removed)
 
 1. ✅ `ai/training_ready/data/s3_manifest.json` - Deleted
-2. ✅ `ai/training_ready/data/final_dataset/manifest.json` - Deleted  
+2. ✅ `ai/training_ready/data/final_dataset/manifest.json` - Deleted
 3. ✅ `ai/training_ready/docs/manifest.json` - Deleted
 
 ## Retained Manifests (Not Deprecated)
@@ -76,8 +83,10 @@ aws s3 rm \
 The following manifests serve different purposes and are **NOT deleted**:
 
 - `public/manifest.json` - Web app manifest
-- `ai/training_ready/data/contract_definitions/manifest_schema.json` - Schema definition
-- `ai/orchestrator/targets/production/deployment_package/package_manifest.json` - Deployment package
+- `ai/training_ready/data/contract_definitions/manifest_schema.json` - Schema
+  definition
+- `ai/orchestrator/targets/production/deployment_package/package_manifest.json` -
+  Deployment package
 - `ai/data/training_policy_manifest.json` - Training policy config
 - `.vercel/output/static/manifest.json` - Vercel build artifact
 - `dist/client/manifest.json` - Build artifact
@@ -115,7 +124,8 @@ If issues arise, the deprecated S3 manifests have these ETags for restoration:
 ## Notes
 
 - New unified manifest provides complete Release 0 coverage
-- All dataset families inventoried (priority, professional_therapeutic, cot_reasoning, edge_cases, voice)
+- All dataset families inventoried (priority, professional_therapeutic,
+  cot_reasoning, edge_cases, voice)
 - Ready for training pipeline integration
 - Includes provenance, size, and quality metadata
 - Documents readiness gates and next actions

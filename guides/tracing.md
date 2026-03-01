@@ -2,14 +2,20 @@
 
 ## Overview
 
-Pixelated Empathy uses OpenTelemetry for distributed tracing, enabling end-to-end request tracking across all microservices. This helps identify performance bottlenecks, debug issues, and understand system behavior.
+Pixelated Empathy uses OpenTelemetry for distributed tracing, enabling
+end-to-end request tracking across all microservices. This helps identify
+performance bottlenecks, debug issues, and understand system behavior.
 
 ## Features
 
-- **Automatic Instrumentation**: HTTP requests, database operations, and external API calls are automatically traced
-- **Manual Instrumentation**: Utilities for adding custom spans to business logic
-- **Trace Context Propagation**: Trace IDs are propagated across service boundaries
-- **Performance Monitoring**: Track latency, errors, and throughput across services
+- **Automatic Instrumentation**: HTTP requests, database operations, and
+  external API calls are automatically traced
+- **Manual Instrumentation**: Utilities for adding custom spans to business
+  logic
+- **Trace Context Propagation**: Trace IDs are propagated across service
+  boundaries
+- **Performance Monitoring**: Track latency, errors, and throughput across
+  services
 - **HIPAA-Compliant**: All tracing data respects privacy requirements
 
 ## Configuration
@@ -62,7 +68,7 @@ import { withSpan, addSpanAttributes, markSpanError } from '@/lib/tracing'
 const result = await withSpan('process-payment', async (span) => {
   span.setAttribute('payment.amount', amount)
   span.setAttribute('payment.currency', 'USD')
-  
+
   try {
     return await processPayment(amount)
   } catch (error) {
@@ -89,7 +95,7 @@ const users = await withDatabaseSpan(
   {
     'db.query.type': 'select',
     'db.query.table': 'users',
-  }
+  },
 )
 
 // AI service call with tracing
@@ -105,14 +111,18 @@ const response = await withAIServiceSpan(
   {
     'ai.tokens.input': inputTokens,
     'ai.tokens.output': outputTokens,
-  }
+  },
 )
 ```
 
 ### Accessing Trace Information
 
 ```typescript
-import { getCurrentTraceId, getCurrentSpanId, getTraceContext } from '@/lib/tracing'
+import {
+  getCurrentTraceId,
+  getCurrentSpanId,
+  getTraceContext,
+} from '@/lib/tracing'
 
 // Get current trace ID (useful for logging correlation)
 const traceId = getCurrentTraceId()
@@ -133,7 +143,8 @@ Trace context is automatically propagated via HTTP headers:
 - **x-trace-id**: Custom header with trace ID
 - **x-span-id**: Custom header with current span ID
 
-When making HTTP requests to other services, the trace context is automatically included, enabling distributed tracing across service boundaries.
+When making HTTP requests to other services, the trace context is automatically
+included, enabling distributed tracing across service boundaries.
 
 ## Viewing Traces
 
@@ -141,7 +152,8 @@ When making HTTP requests to other services, the trace context is automatically 
 
 For local development, you can use:
 
-1. **Console Exporter**: Set `TRACING_EXPORTER_TYPE=console` to see traces in logs
+1. **Console Exporter**: Set `TRACING_EXPORTER_TYPE=console` to see traces in
+   logs
 2. **Jaeger**: Run Jaeger locally and set `TRACING_EXPORTER_TYPE=jaeger`
 3. **OTLP Collector**: Run an OTLP collector and point to it
 
@@ -156,12 +168,17 @@ In production, traces are typically sent to:
 
 ## Best Practices
 
-1. **Use Descriptive Span Names**: Use clear, hierarchical names like `db.query.users`, `ai.completion.gpt4`
-2. **Add Relevant Attributes**: Include context that helps debugging (user IDs, operation types, etc.)
+1. **Use Descriptive Span Names**: Use clear, hierarchical names like
+   `db.query.users`, `ai.completion.gpt4`
+2. **Add Relevant Attributes**: Include context that helps debugging (user IDs,
+   operation types, etc.)
 3. **Handle Errors Properly**: Always mark spans as errors when exceptions occur
-4. **Avoid High Cardinality**: Don't add attributes with unique values (like timestamps) as they create too many unique spans
-5. **Respect Sampling**: In high-traffic scenarios, use sampling to reduce overhead
-6. **HIPAA Compliance**: Never include PHI (Protected Health Information) in span attributes
+4. **Avoid High Cardinality**: Don't add attributes with unique values (like
+   timestamps) as they create too many unique spans
+5. **Respect Sampling**: In high-traffic scenarios, use sampling to reduce
+   overhead
+6. **HIPAA Compliance**: Never include PHI (Protected Health Information) in
+   span attributes
 
 ## Performance Considerations
 

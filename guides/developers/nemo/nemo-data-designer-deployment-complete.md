@@ -39,7 +39,8 @@ NEMO_DATA_DESIGNER_BASE_URL=http://212.2.244.60:8080
 
 ### Service Access
 
-The service is accessible through the Envoy gateway on port 8080, which routes to the Data Designer service internally.
+The service is accessible through the Envoy gateway on port 8080, which routes
+to the Data Designer service internally.
 
 ## Verification
 
@@ -97,7 +98,8 @@ ssh vivi@212.2.244.60 'cd ~/nemo-microservices/nemo-microservices-quickstart_v25
 
 ## Firewall Configuration
 
-If you cannot access the service from outside the server, ensure port 8080 is open:
+If you cannot access the service from outside the server, ensure port 8080 is
+open:
 
 ```bash
 # On the remote server
@@ -110,19 +112,22 @@ sudo firewall-cmd --reload
 ## Next Steps
 
 1. **Test the service:**
+
    ```bash
    uv run python ai/data_designer/test_setup.py
    ```
 
 2. **Generate a test dataset:**
+
    ```bash
    uv run python ai/data_designer/examples.py
    ```
 
 3. **Integrate with your application:**
+
    ```python
    from ai.data_designer import NeMoDataDesignerService
-   
+
    service = NeMoDataDesignerService()
    result = service.generate_therapeutic_dataset(num_samples=100)
    ```
@@ -132,11 +137,13 @@ sudo firewall-cmd --reload
 ### Service Not Accessible
 
 1. Check if services are running:
+
    ```bash
    ssh vivi@212.2.244.60 'cd ~/nemo-microservices/nemo-microservices-quickstart_v25.10 && docker compose ps'
    ```
 
 2. Check logs for errors:
+
    ```bash
    ssh vivi@212.2.244.60 'cd ~/nemo-microservices/nemo-microservices-quickstart_v25.10 && docker compose logs data-designer --tail=50'
    ```
@@ -150,17 +157,19 @@ sudo firewall-cmd --reload
 
 - Increase timeout in `.env`: `NEMO_DATA_DESIGNER_TIMEOUT=600`
 - Check network connectivity
-- Verify service is responding: `ssh vivi@212.2.244.60 'curl http://localhost:8080/health'`
+- Verify service is responding:
+  `ssh vivi@212.2.244.60 'curl http://localhost:8080/health'`
 
 ## Deployment Information
 
 - **Deployment Date**: 2025-11-07
 - **Quickstart Version**: 25.10
-- **Deployment Path**: `~/nemo-microservices/nemo-microservices-quickstart_v25.10`
+- **Deployment Path**:
+  `~/nemo-microservices/nemo-microservices-quickstart_v25.10`
 - **Method**: Docker Compose with data-designer profile
 - **NGC CLI**: Used via uv at `~/.local/bin/uv`
 
 ## Success! 🎉
 
-NeMo Data Designer is now deployed and ready to use. You can start generating synthetic datasets for your Pixelated Empathy platform.
-
+NeMo Data Designer is now deployed and ready to use. You can start generating
+synthetic datasets for your Pixelated Empathy platform.

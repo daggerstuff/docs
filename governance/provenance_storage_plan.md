@@ -10,13 +10,16 @@
 
 ## Overview
 
-This document outlines the storage strategy for provenance metadata in the Dataset Expansion project. Provenance metadata must be stored in a way that ensures integrity, traceability, and efficient querying for audit purposes.
+This document outlines the storage strategy for provenance metadata in the
+Dataset Expansion project. Provenance metadata must be stored in a way that
+ensures integrity, traceability, and efficient querying for audit purposes.
 
 ## Storage Architecture
 
 ### Multi-Layer Storage Approach
 
-We use a **multi-layer storage approach** to ensure redundancy, performance, and compliance:
+We use a **multi-layer storage approach** to ensure redundancy, performance, and
+compliance:
 
 1. **Primary Storage**: PostgreSQL database (via Supabase)
 2. **Secondary Storage**: JSON files in S3 (for audit trail and backup)
@@ -37,13 +40,13 @@ CREATE TABLE dataset_provenance (
     provenance_id VARCHAR(36) PRIMARY KEY,
     dataset_id VARCHAR(100) NOT NULL UNIQUE,
     dataset_name VARCHAR(255) NOT NULL,
-    
+
     -- Source information (JSONB for flexibility)
     source_info JSONB NOT NULL,
-    
+
     -- License information (JSONB)
     license_info JSONB NOT NULL,
-    
+
     -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     acquired_at TIMESTAMPTZ,
@@ -51,22 +54,22 @@ CREATE TABLE dataset_provenance (
     validated_at TIMESTAMPTZ,
     published_at TIMESTAMPTZ,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    
+
     -- Processing lineage (JSONB)
     processing_lineage JSONB NOT NULL,
-    
+
     -- Storage information (JSONB)
     storage_info JSONB NOT NULL,
-    
+
     -- Audit information (JSONB)
     audit_info JSONB DEFAULT '{}',
-    
+
     -- Additional metadata (JSONB)
     metadata JSONB DEFAULT '{}',
-    
+
     -- Full provenance document (JSONB, denormalized for convenience)
     provenance_document JSONB NOT NULL,
-    
+
     -- Constraints
     CONSTRAINT valid_provenance_json CHECK (provenance_document IS NOT NULL),
     CONSTRAINT valid_source_info CHECK (source_info->>'source_id' IS NOT NULL),
@@ -105,7 +108,7 @@ CREATE TABLE provenance_audit_log (
     old_value JSONB,
     new_value JSONB,
     change_reason TEXT,
-    
+
     FOREIGN KEY (provenance_id) REFERENCES dataset_provenance(provenance_id) ON DELETE CASCADE
 );
 
@@ -126,6 +129,7 @@ CREATE INDEX idx_audit_log_action ON provenance_audit_log(action);
 **Path Pattern**: `provenance/{dataset_id}/{version}/provenance.json`
 
 **Example**:
+
 ```
 s3://pixelated-datasets/provenance/priority_1_FINAL/v1.0.0/provenance.json
 s3://pixelated-datasets/provenance/priority_1_FINAL/v1.0.0/audit_report_2025-12-18.json
@@ -151,26 +155,31 @@ S3 versioning enabled on the provenance bucket to maintain immutable history.
 **Purpose**: Fast full-text search and complex queries
 
 **Mapping**:
+
 ```json
 {
   "mappings": {
     "properties": {
-      "provenance_id": {"type": "keyword"},
-      "dataset_id": {"type": "keyword"},
-      "dataset_name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
-      "source.source_name": {"type": "text"},
-      "source.source_type": {"type": "keyword"},
-      "license.license_type": {"type": "keyword"},
-      "timestamps.created_at": {"type": "date"},
-      "metadata.quality_tier": {"type": "keyword"},
-      "processing_lineage.processing_stages": {"type": "nested"},
-      "storage.storage_path": {"type": "keyword"}
+      "provenance_id": { "type": "keyword" },
+      "dataset_id": { "type": "keyword" },
+      "dataset_name": {
+        "type": "text",
+        "fields": { "keyword": { "type": "keyword" } }
+      },
+      "source.source_name": { "type": "text" },
+      "source.source_type": { "type": "keyword" },
+      "license.license_type": { "type": "keyword" },
+      "timestamps.created_at": { "type": "date" },
+      "metadata.quality_tier": { "type": "keyword" },
+      "processing_lineage.processing_stages": { "type": "nested" },
+      "storage.storage_path": { "type": "keyword" }
     }
   }
 }
 ```
 
-**Sync Strategy**: 
+**Sync Strategy**:
+
 - Real-time sync via database triggers OR
 - Periodic batch sync (every 5 minutes)
 
@@ -193,7 +202,8 @@ S3 versioning enabled on the provenance bucket to maintain immutable history.
 2. **Fetch Current**: Retrieve existing provenance from database
 3. **Merge/Update**: Update provenance document
 4. **Database Write**: Update `dataset_provenance` table
-5. **Audit Log**: Insert into `provenance_audit_log` (action: 'updated', includes old_value and new_value)
+5. **Audit Log**: Insert into `provenance_audit_log` (action: 'updated',
+   includes old_value and new_value)
 6. **S3 Write**: Upload updated provenance JSON (new version)
 7. **Index Update**: Update Elasticsearch document
 
@@ -210,8 +220,10 @@ S3 versioning enabled on the provenance bucket to maintain immutable history.
 
 ### Retention Policy
 
-- **Database**: Retain all provenance records indefinitely (no automatic deletion)
-- **S3**: Retain all versions indefinitely (with lifecycle policies for cost optimization)
+- **Database**: Retain all provenance records indefinitely (no automatic
+  deletion)
+- **S3**: Retain all versions indefinitely (with lifecycle policies for cost
+  optimization)
 - **Audit Log**: Retain for minimum 7 years (compliance requirement)
 
 ### Backup Strategy
@@ -228,7 +240,8 @@ S3 versioning enabled on the provenance bucket to maintain immutable history.
 
 ### Performance Optimization
 
-1. **Partitioning**: Consider partitioning `provenance_audit_log` by date for large tables
+1. **Partitioning**: Consider partitioning `provenance_audit_log` by date for
+   large tables
 2. **Archiving**: Archive old audit logs (>2 years) to cold storage
 3. **Caching**: Cache frequently accessed provenance data in Redis
 
@@ -237,30 +250,35 @@ S3 versioning enabled on the provenance bucket to maintain immutable history.
 ## Implementation Phases
 
 ### Phase 1: Core Database Schema (Week 1)
+
 - Create `dataset_provenance` table
 - Create `provenance_audit_log` table
 - Implement basic CRUD operations
 - **Deliverable**: Working database schema
 
 ### Phase 2: File Storage Integration (Week 1-2)
+
 - Set up S3 bucket structure
 - Implement S3 upload/download functions
 - Implement versioning
 - **Deliverable**: Provenance files stored in S3
 
 ### Phase 3: Service Layer (Week 2)
+
 - Build Provenance Service API
 - Implement validation against schema
 - Implement audit logging
 - **Deliverable**: Complete provenance service
 
 ### Phase 4: Integration (Week 2-3)
+
 - Integrate with dataset processing pipeline
 - Add provenance generation to ingestion workflows
 - Add provenance updates to processing stages
 - **Deliverable**: End-to-end provenance tracking
 
 ### Phase 5: Query & Reporting (Week 3)
+
 - Build query API
 - Implement audit report generation
 - Add Elasticsearch integration (optional)
@@ -292,7 +310,8 @@ For existing datasets without provenance metadata:
 
 ### GDPR Considerations
 
-- Right to deletion: Provenance can be anonymized but not fully deleted (audit requirement)
+- Right to deletion: Provenance can be anonymized but not fully deleted (audit
+  requirement)
 - Data portability: Provenance must be exportable
 - Processing records: Provenance serves as processing record
 
@@ -320,8 +339,10 @@ For existing datasets without provenance metadata:
 ## Future Enhancements
 
 1. **Distributed Tracing**: Link provenance to distributed processing traces
-2. **Blockchain Integration**: Immutable provenance records (future consideration)
-3. **Automated Compliance Checking**: Automated checks against license and compliance requirements
+2. **Blockchain Integration**: Immutable provenance records (future
+   consideration)
+3. **Automated Compliance Checking**: Automated checks against license and
+   compliance requirements
 4. **Provenance Visualization**: Visual lineage graphs for datasets
 
 ---
@@ -329,4 +350,3 @@ For existing datasets without provenance metadata:
 **Last Updated**: 2025-12-18  
 **Owner**: Data Governance Team  
 **Review Schedule**: Quarterly
-

@@ -2,9 +2,12 @@
 
 ## Overview
 
-This document provides a comprehensive guide to running training jobs in the Pixelated Empathy AI project. It covers the complete workflow from preparing training manifests to model promotion and cost management.
+This document provides a comprehensive guide to running training jobs in the
+Pixelated Empathy AI project. It covers the complete workflow from preparing
+training manifests to model promotion and cost management.
 
 ## Table of Contents
+
 - [Quick Start](#quick-start)
 - [Training Manifests](#training-manifests)
 - [Dataset Preparation](#dataset-preparation)
@@ -18,6 +21,7 @@ This document provides a comprehensive guide to running training jobs in the Pix
 ## Quick Start
 
 ### Prerequisites
+
 - Python 3.8+
 - PyTorch with CUDA support (for GPU training)
 - Required Python packages (see `requirements.txt`)
@@ -25,6 +29,7 @@ This document provides a comprehensive guide to running training jobs in the Pix
 - Weights & Biases (optional) API key for logging
 
 ### Basic Training Command
+
 ```bash
 # Using Python directly
 python -m ai.dataset_pipeline.training_runner --manifest path/to/manifest.json
@@ -35,7 +40,9 @@ python -m ai.dataset_pipeline.training_runner --manifest path/to/manifest.json -
 
 ## Training Manifests
 
-Training manifests define the complete configuration for a training run. They include dataset references, hyperparameters, compute requirements, and other settings.
+Training manifests define the complete configuration for a training run. They
+include dataset references, hyperparameters, compute requirements, and other
+settings.
 
 ### Creating a Manifest
 
@@ -75,20 +82,20 @@ manifest.save_to_file("training_manifest.json")
 
 ### Manifest Structure
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `manifest_id` | string | Unique identifier for this manifest |
-| `name` | string | Human-readable name for the training run |
-| `description` | string | Description of the training run |
-| `dataset` | DatasetReference | Reference to the training dataset |
-| `hyperparameters` | Hyperparameters | Training hyperparameters configuration |
-| `framework` | string | Training framework (e.g., transformers, lightning) |
-| `compute_target` | string | Target compute platform (cpu, gpu_single, gpu_multi, cloud_gpu) |
-| `seed` | int | Random seed for reproducibility |
-| `safety_metrics` | SafetyMetrics | Configuration for safety metrics |
-| `resources` | ResourceRequirements | Resource requirements and budget |
-| `output_dir` | string | Directory for saving outputs |
-| `log_dir` | string | Directory for saving logs |
+| Field             | Type                 | Description                                                     |
+| ----------------- | -------------------- | --------------------------------------------------------------- |
+| `manifest_id`     | string               | Unique identifier for this manifest                             |
+| `name`            | string               | Human-readable name for the training run                        |
+| `description`     | string               | Description of the training run                                 |
+| `dataset`         | DatasetReference     | Reference to the training dataset                               |
+| `hyperparameters` | Hyperparameters      | Training hyperparameters configuration                          |
+| `framework`       | string               | Training framework (e.g., transformers, lightning)              |
+| `compute_target`  | string               | Target compute platform (cpu, gpu_single, gpu_multi, cloud_gpu) |
+| `seed`            | int                  | Random seed for reproducibility                                 |
+| `safety_metrics`  | SafetyMetrics        | Configuration for safety metrics                                |
+| `resources`       | ResourceRequirements | Resource requirements and budget                                |
+| `output_dir`      | string               | Directory for saving outputs                                    |
+| `log_dir`         | string               | Directory for saving logs                                       |
 
 ## Dataset Preparation
 
@@ -108,6 +115,7 @@ Training datasets should be in JSON format with the following structure:
 ```
 
 ### Dataset Requirements
+
 - Each conversation should be a single text field with role indicators
 - Text should be clean and appropriately formatted
 - Conversations should be relevant to therapeutic contexts
@@ -116,6 +124,7 @@ Training datasets should be in JSON format with the following structure:
 ## Running Training Jobs
 
 ### Local Training
+
 ```bash
 # Run training with default settings
 python -c "
@@ -125,6 +134,7 @@ run_training_from_manifest('path/to/manifest.json')
 ```
 
 ### Containerized Training
+
 ```bash
 # Run training in container
 python -c "
@@ -134,6 +144,7 @@ run_training_from_manifest('path/to/manifest.json', use_container=True)
 ```
 
 ### Resource Management
+
 Training jobs can be run with resource limits and monitoring:
 
 ```python
@@ -155,12 +166,14 @@ budget_limits = BudgetLimits(
 After training, models are evaluated using comprehensive metrics:
 
 ### Standard Metrics
+
 - **Perplexity**: Language model quality
 - **Safety Score**: Measure of safe outputs
 - **Fairness Score**: Measure of fair representation
 - **Therapeutic Quality**: Measure of therapeutic appropriateness
 
 ### Evaluation Process
+
 ```python
 from ai.dataset_pipeline.evaluation_system import ComprehensiveEvaluator
 
@@ -184,19 +197,23 @@ print(report)
 Models are promoted through automated evaluation gates between stages:
 
 ### Promotion Stages
+
 1. **Training** → **Staging**: Basic safety and quality checks
 2. **Staging** → **Production**: Comprehensive evaluation and approval
 
 ### Promotion Gates
+
 Each promotion stage has specific requirements:
 
 **Staging Requirements:**
+
 - Safety Score ≥ 0.8
 - Toxicity Ratio ≤ 10%
 - Minimum Fairness Score ≥ 0.5
 - Therapeutic Quality Score ≥ 0.6
 
 **Production Requirements:**
+
 - Safety Score ≥ 0.9
 - Toxicity Ratio ≤ 5%
 - Crisis Content Ratio ≤ 15%
@@ -205,6 +222,7 @@ Each promotion stage has specific requirements:
 - Perplexity ≤ 50.0
 
 ### Promotion Process
+
 ```python
 from ai.dataset_pipeline.evaluation_gates import create_model_promotion_manager
 
@@ -222,7 +240,7 @@ can_promote = manager.can_promote_to_staging(
 if can_promote:
     can_promote_to_prod = manager.can_promote_to_production(
         model_id="therapy_model_v1",
-        model_version="1.0.0", 
+        model_version="1.0.0",
         metrics=evaluation_results.custom_metrics
     )
 ```
@@ -230,6 +248,7 @@ if can_promote:
 ## Cost Management
 
 ### Budget Configuration
+
 ```python
 from ai.dataset_pipeline.resource_accounting import BudgetLimits
 
@@ -243,6 +262,7 @@ budget = BudgetLimits(
 ```
 
 ### Monitoring During Training
+
 ```python
 from ai.dataset_pipeline.resource_accounting import ResourceManager
 
@@ -262,6 +282,7 @@ rm.stop_run_monitoring("run_123")
 ## CI/CD Integration
 
 ### Smoke Tests
+
 For CI/CD pipelines, use fast smoke tests:
 
 ```bash
@@ -270,36 +291,38 @@ python -m ai.dataset_pipeline.ci_smoke_tests
 ```
 
 ### GitHub Actions Example
+
 ```yaml
 name: Training Pipeline CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.8'
-    - name: Install dependencies
-      run: |
-        pip install torch
-        pip install -r requirements.txt
-    - name: Run smoke tests
-      run: |
-        python -m ai.dataset_pipeline.ci_smoke_tests
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          pip install torch
+          pip install -r requirements.txt
+      - name: Run smoke tests
+        run: |
+          python -m ai.dataset_pipeline.ci_smoke_tests
 ```
 
 ## Samples
 
 ### Sample Training Manifest
+
 ```json
 {
   "manifest_id": "manifest_therapy_model_123",
@@ -314,7 +337,7 @@ jobs:
   },
   "hyperparameters": {
     "num_train_epochs": 3,
-    "learning_rate": 2e-05,
+    "learning_rate": 2e-5,
     "per_device_train_batch_size": 4,
     "gradient_accumulation_steps": 8,
     "warmup_steps": 500,
@@ -346,6 +369,7 @@ jobs:
 ```
 
 ### Sample Dataset
+
 ```json
 {
   "conversations": [
@@ -360,6 +384,7 @@ jobs:
 ```
 
 ### Example Training Script
+
 ```python
 from ai.dataset_pipeline.training_manifest import create_default_manifest
 from ai.dataset_pipeline.training_runner import TrainingRunner
@@ -371,30 +396,30 @@ def train_model():
         dataset_path="./training_data.json",
         dataset_version="1.0.0"
     )
-    
+
     # Customize hyperparameters
     manifest.hyperparameters.num_train_epochs = 3
     manifest.hyperparameters.learning_rate = 2e-5
-    
+
     # Set up resource limits
     budget_limits = BudgetLimits(
         max_cost_usd=100.0,
         max_runtime_hours=24.0
     )
-    
+
     # Setup resource monitoring
     from ai.dataset_pipeline.resource_accounting import ResourceManager
     rm = ResourceManager()
     rm.start_run_monitoring("training_run_123", budget_limits)
-    
+
     # Run training
     runner = TrainingRunner(manifest)
     result = runner.run_training()
-    
+
     # Generate cost report
     report = rm.get_run_report("training_run_123")
     print(f"Training completed. Cost: ${report.cost_estimation.estimated_cost_usd}")
-    
+
     return result
 
 if __name__ == "__main__":
@@ -404,18 +429,21 @@ if __name__ == "__main__":
 ## Best Practices
 
 ### For Safety-Critical Models
+
 - Always test safety metrics before deployment
 - Use more conservative hyperparameters (lower learning rates)
 - Implement comprehensive evaluation metrics
 - Set strict promotion gates
 
 ### For Cost Optimization
+
 - Start with small hyperparameter sweeps
 - Use gradient accumulation to maximize batch sizes
 - Enable mixed precision training (bf16)
 - Monitor resource usage continuously
 
 ### For Reproducibility
+
 - Always fix random seeds
 - Record dataset version and commit hash
 - Save complete training manifests
@@ -424,12 +452,14 @@ if __name__ == "__main__":
 ## Troubleshooting
 
 ### Common Issues
+
 - **Out of Memory**: Reduce batch size or enable gradient checkpointing
 - **Slow Training**: Check if CUDA is properly configured
 - **Poor Convergence**: Adjust learning rate or number of epochs
 - **Model Safety Issues**: Review safety metrics and adjust thresholds
 
 ### Monitoring Commands
+
 ```bash
 # Check running processes
 nvidia-smi
@@ -444,6 +474,9 @@ tail -f logs/training.log
 ## Additional Resources
 
 - [Labeling Guide](labeling.md) - For preparing training data
-- [Evaluation Metrics Documentation](evaluation_metrics.md) - For understanding metrics
-- [Hyperparameter Tuning Guide](hyperparameter_tuning.md) - For optimization strategies
-- [Security Guidelines](security.md) - For security considerations with sensitive data
+- [Evaluation Metrics Documentation](evaluation_metrics.md) - For understanding
+  metrics
+- [Hyperparameter Tuning Guide](hyperparameter_tuning.md) - For optimization
+  strategies
+- [Security Guidelines](security.md) - For security considerations with
+  sensitive data

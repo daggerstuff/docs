@@ -2,15 +2,22 @@
 
 ## Overview
 
-Welcome to the Pixelated Empathy Therapist Dashboard! This comprehensive guide will help you navigate and utilize all features of the therapist dashboard and progress tracking system. The dashboard is designed to provide real-time insights into session progress, track therapeutic skill development, and analyze performance metrics.
+Welcome to the Pixelated Empathy Therapist Dashboard! This comprehensive guide
+will help you navigate and utilize all features of the therapist dashboard and
+progress tracking system. The dashboard is designed to provide real-time
+insights into session progress, track therapeutic skill development, and analyze
+performance metrics.
 
 ## Getting Started
 
 ### Accessing the Dashboard
 
-1. **Login**: Navigate to your institution's Pixelated Empathy portal and log in with your credentials
-2. **Navigation**: Click on the "Therapist Dashboard" link in the main navigation menu
-3. **Initial Setup**: The dashboard will automatically load your recent session data and analytics
+1. **Login**: Navigate to your institution's Pixelated Empathy portal and log in
+   with your credentials
+2. **Navigation**: Click on the "Therapist Dashboard" link in the main
+   navigation menu
+3. **Initial Setup**: The dashboard will automatically load your recent session
+   data and analytics
 
 ### Dashboard Layout
 
@@ -32,17 +39,20 @@ The therapist dashboard is organized into four main sections:
 
 ### Controlling Active Sessions
 
-**Pause Session**: 
+**Pause Session**:
+
 - Click the "Pause Session" button to temporarily halt session tracking
 - Progress metrics will be preserved
 - Session timer will pause
 
 **Resume Session**:
+
 - Click the "Resume Session" button to continue a paused session
 - Progress tracking will resume from the paused state
 - Session timer will continue
 
 **End Session**:
+
 - Click the "End Session" button to complete the session
 - Final progress metrics will be calculated and saved
 - Session data will be archived for analytics
@@ -61,17 +71,20 @@ The therapist dashboard is organized into four main sections:
 The **Progress Tracking Widgets** section provides real-time updates on:
 
 **Session Overview**:
+
 - Session ID and client information
 - Current status and duration
 - Overall progress percentage (0-100%)
 
 **Skill Development**:
+
 - Active Listening score (0-100)
 - Empathy rating (0-100)
 - Questioning effectiveness (0-100)
 - Reflection quality (0-100)
 
 **Session Metrics**:
+
 - Total messages exchanged
 - Therapist vs. client message ratio
 - Average response time
@@ -80,6 +93,7 @@ The **Progress Tracking Widgets** section provides real-time updates on:
 ### Progress Bar Visualization
 
 The main progress bar shows overall session completion:
+
 - **0-25%**: Session initiation phase
 - **25-50%**: Exploration and assessment phase
 - **50-75%**: Intervention and practice phase
@@ -88,6 +102,7 @@ The main progress bar shows overall session completion:
 ### Milestone Tracking
 
 Key therapeutic milestones are automatically tracked:
+
 - **Introduction**: Session opening and rapport building
 - **Exploration**: Deep diving into client concerns
 - **Intervention**: Active therapeutic techniques applied
@@ -98,6 +113,7 @@ Key therapeutic milestones are automatically tracked:
 ### Session Progress Timeline
 
 The **Session Progress Timeline** chart shows:
+
 - Historical session progress trends
 - Daily progress snapshots
 - Comparative session performance
@@ -106,6 +122,7 @@ The **Session Progress Timeline** chart shows:
 ### Skill Development Radar
 
 The **Skill Development Radar** chart displays:
+
 - Current skill proficiency levels
 - Skill improvement over time
 - Comparative skill strengths/weaknesses
@@ -114,6 +131,7 @@ The **Skill Development Radar** chart displays:
 ### Session Comparison Views
 
 Compare current sessions with historical data:
+
 - Progress improvement/decline trends
 - Skill score changes over time
 - Session duration variations
@@ -122,6 +140,7 @@ Compare current sessions with historical data:
 ### Skill Practice Timeline
 
 Track skill development over multiple sessions:
+
 - Practice frequency for each skill
 - Average improvement rates
 - Peak performance periods
@@ -132,18 +151,21 @@ Track skill development over multiple sessions:
 ### Key Performance Indicators (KPIs)
 
 **Session Effectiveness**:
+
 - Overall progress completion rate
 - Average session duration
 - Client engagement levels
 - Therapeutic intervention success
 
 **Skill Proficiency**:
+
 - Active Listening effectiveness
 - Empathy demonstration quality
 - Questioning technique mastery
 - Reflection accuracy
 
 **Communication Quality**:
+
 - Response time consistency
 - Message exchange balance
 - Conversation flow maintenance
@@ -152,6 +174,7 @@ Track skill development over multiple sessions:
 ### Progress Snapshots
 
 Automatic progress snapshots are taken every 15 minutes:
+
 - Timestamped progress measurements
 - Skill score captures
 - Milestone achievement recording
@@ -160,6 +183,7 @@ Automatic progress snapshots are taken every 15 minutes:
 ### Comparative Analysis
 
 Compare performance across different time periods:
+
 - Week-over-week progress
 - Month-over-month skill development
 - Quarter-over-quarter improvement
@@ -170,6 +194,7 @@ Compare performance across different time periods:
 ### Keyboard Navigation
 
 All dashboard features are fully accessible via keyboard:
+
 - **Tab**: Navigate between interactive elements
 - **Enter/Space**: Activate buttons and controls
 - **Arrow Keys**: Navigate within complex components
@@ -178,6 +203,7 @@ All dashboard features are fully accessible via keyboard:
 ### Screen Reader Support
 
 The dashboard is optimized for screen readers:
+
 - Descriptive ARIA labels for all elements
 - Proper heading hierarchy (H1-H6)
 - Live region announcements for updates
@@ -186,6 +212,7 @@ The dashboard is optimized for screen readers:
 ### High Contrast Mode
 
 Enable high contrast for better visibility:
+
 - Settings → Accessibility → High Contrast
 - Enhanced color contrast ratios
 - Larger text options
@@ -194,6 +221,7 @@ Enable high contrast for better visibility:
 ### Zoom Support
 
 The dashboard supports browser zoom up to 400%:
+
 - Responsive layout adjustments
 - Text scaling preservation
 - Component reflow optimization
@@ -204,6 +232,7 @@ The dashboard supports browser zoom up to 400%:
 ### Dashboard Layout
 
 Personalize your dashboard view:
+
 - Drag-and-drop widget reordering
 - Show/hide specific metrics
 - Resize chart containers
@@ -212,6 +241,7 @@ Personalize your dashboard view:
 ### Notification Settings
 
 Configure alert preferences:
+
 - Progress milestone notifications
 - Skill improvement alerts
 - Session completion reminders
@@ -220,6 +250,7 @@ Configure alert preferences:
 ### Data Export
 
 Export analytics data in multiple formats:
+
 - **CSV**: Raw data for spreadsheet analysis
 - **PDF**: Professional reports for supervisors
 - **JSON**: Structured data for integration
@@ -228,6 +259,7 @@ Export analytics data in multiple formats:
 ### Report Generation
 
 Generate automated performance reports:
+
 - Weekly progress summaries
 - Monthly skill development reports
 - Quarterly performance reviews
@@ -238,18 +270,21 @@ Generate automated performance reports:
 ### Common Issues
 
 **Dashboard Not Loading**:
+
 1. Refresh the page (Ctrl+F5 or Cmd+Shift+R)
 2. Clear browser cache and cookies
 3. Check internet connection
 4. Contact IT support if issue persists
 
 **Progress Tracking Inaccurate**:
+
 1. Verify session controls are functioning
 2. Check microphone/audio settings
 3. Restart the session if needed
 4. Report persistent issues to support
 
 **Charts Not Displaying**:
+
 1. Ensure JavaScript is enabled
 2. Try a different browser
 3. Check browser console for errors
@@ -258,12 +293,14 @@ Generate automated performance reports:
 ### Browser Compatibility
 
 **Supported Browsers**:
+
 - Google Chrome (latest version)
 - Mozilla Firefox (latest version)
 - Microsoft Edge (latest version)
 - Safari (latest version)
 
 **Mobile Support**:
+
 - iOS Safari (iOS 14+)
 - Android Chrome (Android 10+)
 - Responsive design for all screen sizes
@@ -271,12 +308,14 @@ Generate automated performance reports:
 ### Performance Optimization
 
 **Slow Dashboard Loading**:
+
 1. Close unnecessary browser tabs
 2. Clear browser cache
 3. Disable browser extensions
 4. Use wired connection when possible
 
 **Chart Rendering Issues**:
+
 1. Reduce data visualization complexity
 2. Limit date range selections
 3. Use pagination for large datasets
@@ -287,6 +326,7 @@ Generate automated performance reports:
 ### Data Protection
 
 All therapist and client data is protected:
+
 - End-to-end encryption for all communications
 - Secure storage with regular backups
 - Role-based access control
@@ -295,6 +335,7 @@ All therapist and client data is protected:
 ### Privacy Compliance
 
 The dashboard complies with healthcare privacy standards:
+
 - HIPAA compliance for US institutions
 - GDPR compliance for EU institutions
 - PIPEDA compliance for Canadian institutions
@@ -303,6 +344,7 @@ The dashboard complies with healthcare privacy standards:
 ### Session Security
 
 Secure session management features:
+
 - Automatic logout after 30 minutes of inactivity
 - Two-factor authentication support
 - Session encryption with rotating keys
@@ -313,6 +355,7 @@ Secure session management features:
 ### Help Documentation
 
 Access comprehensive help resources:
+
 - Contextual help icons throughout the dashboard
 - Video tutorials for key features
 - FAQ section for common questions
@@ -321,6 +364,7 @@ Access comprehensive help resources:
 ### Contact Support
 
 Get help when you need it:
+
 - **Email**: support@pixelatedempathy.com
 - **Phone**: 1-800-THERAPY (US only)
 - **Live Chat**: Available during business hours
@@ -329,6 +373,7 @@ Get help when you need it:
 ### Training Resources
 
 Enhance your dashboard skills:
+
 - Online training courses
 - Certification programs
 - Peer mentoring sessions
@@ -337,6 +382,7 @@ Enhance your dashboard skills:
 ### Community Forums
 
 Connect with other therapists:
+
 - Best practices sharing
 - Feature request discussions
 - Troubleshooting collaboration
@@ -347,12 +393,14 @@ Connect with other therapists:
 ### Session Management
 
 **Optimal Session Length**:
+
 - 45-60 minutes for individual sessions
 - 90 minutes for group sessions
 - Regular breaks for intensive work
 - Client comfort monitoring
 
 **Progress Tracking Tips**:
+
 - Take manual snapshots for significant moments
 - Note milestone achievements promptly
 - Document skill development observations
@@ -361,12 +409,14 @@ Connect with other therapists:
 ### Data Interpretation
 
 **Understanding Metrics**:
+
 - Focus on trends over single data points
 - Consider external factors affecting performance
 - Compare against personal baselines
 - Look for consistent improvement patterns
 
 **Setting Goals**:
+
 - Establish realistic skill development targets
 - Create milestone-based progress plans
 - Set regular review intervals
@@ -375,12 +425,14 @@ Connect with other therapists:
 ### Performance Optimization
 
 **Maximizing Dashboard Benefits**:
+
 - Regular daily dashboard reviews
 - Weekly analytics report generation
 - Monthly goal setting and review
 - Quarterly performance assessments
 
 **Continuous Improvement**:
+
 - Participate in peer feedback sessions
 - Attend training workshops
 - Implement new techniques learned
@@ -391,6 +443,7 @@ Connect with other therapists:
 ### Custom Metrics
 
 Create personalized tracking metrics:
+
 - Institution-specific skill categories
 - Custom milestone definitions
 - Personalized progress indicators
@@ -399,6 +452,7 @@ Create personalized tracking metrics:
 ### Integration Capabilities
 
 Connect with external systems:
+
 - Electronic Health Records (EHR) integration
 - Learning Management Systems (LMS)
 - Research data collection platforms
@@ -407,6 +461,7 @@ Connect with external systems:
 ### API Access
 
 Programmatic access to dashboard data:
+
 - RESTful API for custom applications
 - Real-time data streaming options
 - Batch data export capabilities
@@ -415,6 +470,7 @@ Programmatic access to dashboard data:
 ### Reporting Automation
 
 Schedule automated report generation:
+
 - Daily progress summaries
 - Weekly performance reports
 - Monthly skill development updates
@@ -422,7 +478,8 @@ Schedule automated report generation:
 
 ## Glossary of Terms
 
-**Active Listening**: The practice of fully concentrating on, understanding, responding to, and remembering what a client is saying.
+**Active Listening**: The practice of fully concentrating on, understanding,
+responding to, and remembering what a client is saying.
 
 **Empathy**: The ability to understand and share the feelings of another person.
 
@@ -430,7 +487,8 @@ Schedule automated report generation:
 
 **Progress Snapshot**: A timestamped record of session metrics and skill scores.
 
-**Skill Score**: A numerical rating (0-100) representing proficiency in a specific therapeutic skill.
+**Skill Score**: A numerical rating (0-100) representing proficiency in a
+specific therapeutic skill.
 
 **Therapeutic Flow**: The natural progression and rhythm of a therapy session.
 
@@ -438,23 +496,28 @@ Schedule automated report generation:
 
 ### How often is progress data updated?
 
-Progress data is updated in real-time during sessions, with automatic snapshots taken every 15 minutes.
+Progress data is updated in real-time during sessions, with automatic snapshots
+taken every 15 minutes.
 
 ### Can I customize which metrics are displayed?
 
-Yes, you can personalize your dashboard layout and choose which metrics to display through the settings menu.
+Yes, you can personalize your dashboard layout and choose which metrics to
+display through the settings menu.
 
 ### How is client privacy protected?
 
-All client data is encrypted and stored securely, with access limited to authorized personnel only.
+All client data is encrypted and stored securely, with access limited to
+authorized personnel only.
 
 ### What happens if I lose internet connection during a session?
 
-The dashboard automatically saves progress locally and syncs when connectivity is restored.
+The dashboard automatically saves progress locally and syncs when connectivity
+is restored.
 
 ### How can I export my session data?
 
-Use the data export feature to download reports in CSV, PDF, JSON, or PNG formats.
+Use the data export feature to download reports in CSV, PDF, JSON, or PNG
+formats.
 
 ### Is the dashboard accessible on mobile devices?
 
@@ -462,16 +525,20 @@ Yes, the dashboard is fully responsive and works on tablets and smartphones.
 
 ### How do I get training on using the dashboard?
 
-Online training resources, video tutorials, and certification programs are available through the help center.
+Online training resources, video tutorials, and certification programs are
+available through the help center.
 
 ### Who can I contact for technical support?
 
-Email support@pixelatedempathy.com or use the live chat feature during business hours.
+Email support@pixelatedempathy.com or use the live chat feature during business
+hours.
 
 ## Release Notes
 
 ### Version 1.0.0 (Current)
+
 **Initial Release Features**:
+
 - Complete therapist dashboard implementation
 - Real-time progress tracking
 - Comprehensive analytics visualization
@@ -479,6 +546,7 @@ Email support@pixelatedempathy.com or use the live chat feature during business 
 - Enterprise-grade security features
 
 **Planned Future Enhancements**:
+
 - AI-powered performance insights
 - Predictive analytics for skill development
 - Advanced reporting and customization
@@ -490,20 +558,25 @@ Email support@pixelatedempathy.com or use the live chat feature during business 
 We value your input for improving the therapist dashboard:
 
 **Feature Requests**:
+
 - Submit ideas through the feedback portal
 - Vote on community suggestions
 - Participate in beta testing programs
 
 **Bug Reporting**:
+
 - Use the in-app bug reporter
 - Include detailed reproduction steps
 - Attach screenshots when helpful
 - Priority handling for critical issues
 
 **User Experience Improvements**:
+
 - Share usability feedback
 - Suggest workflow optimizations
 - Recommend interface enhancements
 - Participate in user research studies
 
-Thank you for using the Pixelated Empathy Therapist Dashboard. We're committed to helping you provide the best possible therapeutic care through innovative technology and data-driven insights.
+Thank you for using the Pixelated Empathy Therapist Dashboard. We're committed
+to helping you provide the best possible therapeutic care through innovative
+technology and data-driven insights.

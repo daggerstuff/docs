@@ -2,18 +2,24 @@
 
 ## Overview
 
-This guide provides step-by-step instructions for testing the complete Journal Research Pipeline workflow across all three interfaces (Web Frontend, MCP Server, and CLI).
+This guide provides step-by-step instructions for testing the complete Journal
+Research Pipeline workflow across all three interfaces (Web Frontend, MCP
+Server, and CLI).
 
 ## Prerequisites
 
 1. **All services running**:
-   - API Server: `uv run python -m ai.journal_dataset_research.api.server` (port 8000)
+   - API Server: `uv run python -m ai.journal_dataset_research.api.server`
+     (port 8000)
    - Frontend: `pnpm dev` (port 4321)
-   - MCP Server (optional): `uv run python -m ai.journal_dataset_research.mcp.server` (port 8001)
+   - MCP Server (optional):
+     `uv run python -m ai.journal_dataset_research.mcp.server` (port 8001)
 
 2. **Environment variables set**:
-   - `SESSION_STORAGE_PATH` (optional, defaults to `ai/journal_dataset_research/sessions`)
-   - `PUBLIC_JOURNAL_RESEARCH_API_URL` (optional, defaults to `http://localhost:8000/api/journal-research`)
+   - `SESSION_STORAGE_PATH` (optional, defaults to
+     `ai/journal_dataset_research/sessions`)
+   - `PUBLIC_JOURNAL_RESEARCH_API_URL` (optional, defaults to
+     `http://localhost:8000/api/journal-research`)
 
 3. **Authentication** (if enabled):
    - Valid JWT token or API key
@@ -115,8 +121,8 @@ This guide provides step-by-step instructions for testing the complete Journal R
    ```json
    {
      "target_sources": ["pubmed", "doaj"],
-     "search_keywords": {"therapeutic": ["therapy", "counseling"]},
-     "weekly_targets": {"sources_identified": 10}
+     "search_keywords": { "therapeutic": ["therapy", "counseling"] },
+     "weekly_targets": { "sources_identified": 10 }
    }
    ```
 2. Verify:
@@ -153,6 +159,7 @@ uv run python -m ai.journal_dataset_research.cli.entry_point search \
 ```
 
 Verify:
+
 - Session created
 - Session file saved to storage path
 - Session appears in web frontend and MCP server
@@ -165,6 +172,7 @@ uv run python -m ai.journal_dataset_research.cli.entry_point status \
 ```
 
 Verify:
+
 - Status displays correctly
 - Progress metrics shown
 - Matches other interfaces
@@ -286,4 +294,3 @@ All tests pass when:
 
 **Last Updated**: January 2025  
 **Tested With**: Python 3.11+, Node.js 24+, Astro 5.x, React 19.x
-

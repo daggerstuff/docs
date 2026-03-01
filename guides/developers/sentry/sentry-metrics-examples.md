@@ -1,10 +1,12 @@
 # Sentry Metrics Usage Examples
 
-Sentry Metrics are already configured and enabled in this project. This document provides quick examples for using metrics in both client and server code.
+Sentry Metrics are already configured and enabled in this project. This document
+provides quick examples for using metrics in both client and server code.
 
 ## Configuration Status
 
-✅ **Metrics are enabled** in both `sentry.client.config.js` and `sentry.server.config.js`  
+✅ **Metrics are enabled** in both `sentry.client.config.js` and
+`sentry.server.config.js`  
 ✅ **SDK Version**: `@sentry/astro@^10.29.2` (requires >= 10.29.2)  
 ✅ **DSN**: Configured and matches Sentry project  
 ✅ **Utilities**: Available in `src/lib/sentry/utils.ts`
@@ -170,7 +172,8 @@ Both include:
 
 ## Environment Variables
 
-- `SENTRY_ENABLE_METRICS`: Set to `'false'` to disable metrics (default: enabled)
+- `SENTRY_ENABLE_METRICS`: Set to `'false'` to disable metrics (default:
+  enabled)
 - `SENTRY_DSN`: Sentry DSN (already configured)
 - `SENTRY_RELEASE`: Release version (set in CI/CD)
 

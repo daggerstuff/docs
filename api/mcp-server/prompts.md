@@ -1,6 +1,7 @@
 ## MCP Server Prompts Documentation
 
-This document provides comprehensive documentation for all prompts available in the Journal Dataset Research MCP Server.
+This document provides comprehensive documentation for all prompts available in
+the Journal Dataset Research MCP Server.
 
 ## Table of Contents
 
@@ -15,7 +16,9 @@ This document provides comprehensive documentation for all prompts available in 
 
 ## Overview
 
-Prompts provide workflow guidance and instructions for using the research system. Prompts are rendered with parameters to generate contextual instructions that guide AI agents through research workflows.
+Prompts provide workflow guidance and instructions for using the research
+system. Prompts are rendered with parameters to generate contextual instructions
+that guide AI agents through research workflows.
 
 ### Prompt Rendering
 
@@ -71,14 +74,20 @@ Prompts are rendered with parameters to generate contextual instructions:
 
 **Name**: `discover_sources_workflow`
 
-**Description**: Guide for discovering dataset sources from academic repositories. This prompt provides step-by-step instructions for using the discovery workflow to find relevant datasets.
+**Description**: Guide for discovering dataset sources from academic
+repositories. This prompt provides step-by-step instructions for using the
+discovery workflow to find relevant datasets.
 
 **Arguments**:
+
 - `session_id` (string, required): The research session ID
-- `keywords` (array, required): List of search keywords (e.g., `["therapy", "counseling", "mental health"]`)
-- `sources` (array, required): List of target sources to search (e.g., `["pubmed", "doaj", "dryad"]`)
+- `keywords` (array, required): List of search keywords (e.g.,
+  `["therapy", "counseling", "mental health"]`)
+- `sources` (array, required): List of target sources to search (e.g.,
+  `["pubmed", "doaj", "dryad"]`)
 
 **Example**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -96,6 +105,7 @@ Prompts are rendered with parameters to generate contextual instructions:
 ```
 
 **Rendered Content**: The prompt provides:
+
 - Overview of the discovery workflow
 - Step-by-step instructions for preparing discovery parameters
 - Instructions for executing the `discover_sources` tool
@@ -105,6 +115,7 @@ Prompts are rendered with parameters to generate contextual instructions:
 - Example usage
 
 **Key Sections**:
+
 1. **Overview**: Introduction to source discovery
 2. **Step 1**: Prepare discovery parameters
 3. **Step 2**: Execute discovery
@@ -120,13 +131,18 @@ Prompts are rendered with parameters to generate contextual instructions:
 
 **Name**: `evaluate_sources_workflow`
 
-**Description**: Guide for evaluating dataset sources across multiple quality dimensions. This prompt provides step-by-step instructions for using the evaluation workflow to assess dataset quality and prioritize sources.
+**Description**: Guide for evaluating dataset sources across multiple quality
+dimensions. This prompt provides step-by-step instructions for using the
+evaluation workflow to assess dataset quality and prioritize sources.
 
 **Arguments**:
+
 - `session_id` (string, required): The research session ID
-- `source_ids` (array, optional): Optional list of specific source IDs to evaluate. If not provided, all sources in the session will be evaluated.
+- `source_ids` (array, optional): Optional list of specific source IDs to
+  evaluate. If not provided, all sources in the session will be evaluated.
 
 **Example**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -143,8 +159,10 @@ Prompts are rendered with parameters to generate contextual instructions:
 ```
 
 **Rendered Content**: The prompt provides:
+
 - Overview of the evaluation workflow
-- Explanation of evaluation dimensions (therapeutic relevance, data structure quality, training integration potential, ethical accessibility)
+- Explanation of evaluation dimensions (therapeutic relevance, data structure
+  quality, training integration potential, ethical accessibility)
 - Scoring system and priority tiers
 - Step-by-step instructions for preparing evaluation parameters
 - Instructions for executing the `evaluate_sources` tool
@@ -154,6 +172,7 @@ Prompts are rendered with parameters to generate contextual instructions:
 - Example usage
 
 **Key Sections**:
+
 1. **Overview**: Introduction to dataset evaluation
 2. **Evaluation Dimensions**: Four quality dimensions with weights
 3. **Scoring System**: Scoring methodology and priority tiers
@@ -171,13 +190,19 @@ Prompts are rendered with parameters to generate contextual instructions:
 
 **Name**: `acquire_datasets_workflow`
 
-**Description**: Guide for acquiring datasets from identified sources. This prompt provides step-by-step instructions for using the acquisition workflow to download and store datasets.
+**Description**: Guide for acquiring datasets from identified sources. This
+prompt provides step-by-step instructions for using the acquisition workflow to
+download and store datasets.
 
 **Arguments**:
+
 - `session_id` (string, required): The research session ID
-- `source_ids` (array, optional): Optional list of specific source IDs to acquire. If not provided, all evaluated sources in the session will be acquired.
+- `source_ids` (array, optional): Optional list of specific source IDs to
+  acquire. If not provided, all evaluated sources in the session will be
+  acquired.
 
 **Example**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -194,9 +219,12 @@ Prompts are rendered with parameters to generate contextual instructions:
 ```
 
 **Rendered Content**: The prompt provides:
+
 - Overview of the acquisition workflow
-- Explanation of the acquisition process (access method determination, access request submission, dataset download, storage and validation)
-- Access methods (direct download, API access, access request, collaboration, registration)
+- Explanation of the acquisition process (access method determination, access
+  request submission, dataset download, storage and validation)
+- Access methods (direct download, API access, access request, collaboration,
+  registration)
 - Step-by-step instructions for preparing acquisition parameters
 - Instructions for executing the `acquire_datasets` tool
 - Guidance on reviewing acquisition results
@@ -206,6 +234,7 @@ Prompts are rendered with parameters to generate contextual instructions:
 - Example usage
 
 **Key Sections**:
+
 1. **Overview**: Introduction to dataset acquisition
 2. **Acquisition Process**: Four-step process explanation
 3. **Access Methods**: Different access methods available
@@ -215,7 +244,8 @@ Prompts are rendered with parameters to generate contextual instructions:
 7. **Step 4**: Monitor acquisition progress
 8. **Step 5**: Handle failed acquisitions
 9. **Step 6**: Next steps
-10. **Best Practices**: Prioritization, batch processing, error handling, storage management
+10. **Best Practices**: Prioritization, batch processing, error handling,
+    storage management
 
 ---
 
@@ -223,14 +253,21 @@ Prompts are rendered with parameters to generate contextual instructions:
 
 **Name**: `create_integration_plans_workflow`
 
-**Description**: Guide for creating integration plans for acquired datasets. This prompt provides step-by-step instructions for using the integration planning workflow to prepare datasets for training pipeline integration.
+**Description**: Guide for creating integration plans for acquired datasets.
+This prompt provides step-by-step instructions for using the integration
+planning workflow to prepare datasets for training pipeline integration.
 
 **Arguments**:
+
 - `session_id` (string, required): The research session ID
-- `source_ids` (array, optional): Optional list of specific source IDs to create integration plans for. If not provided, all acquired datasets in the session will be used.
-- `target_format` (string, optional): Target format for integration (chatml or conversation_record). Default: `"chatml"`
+- `source_ids` (array, optional): Optional list of specific source IDs to create
+  integration plans for. If not provided, all acquired datasets in the session
+  will be used.
+- `target_format` (string, optional): Target format for integration (chatml or
+  conversation_record). Default: `"chatml"`
 
 **Example**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -248,8 +285,11 @@ Prompts are rendered with parameters to generate contextual instructions:
 ```
 
 **Rendered Content**: The prompt provides:
+
 - Overview of the integration planning workflow
-- Explanation of the integration planning process (dataset structure analysis, schema mapping, transformation specification, complexity estimation, preprocessing script generation)
+- Explanation of the integration planning process (dataset structure analysis,
+  schema mapping, transformation specification, complexity estimation,
+  preprocessing script generation)
 - Target formats (ChatML format, ConversationRecord format)
 - Complexity levels (low, medium, high)
 - Step-by-step instructions for preparing integration parameters
@@ -260,6 +300,7 @@ Prompts are rendered with parameters to generate contextual instructions:
 - Example usage
 
 **Key Sections**:
+
 1. **Overview**: Introduction to integration planning
 2. **Integration Planning Process**: Five-step process explanation
 3. **Target Formats**: ChatML and ConversationRecord formats
@@ -270,7 +311,8 @@ Prompts are rendered with parameters to generate contextual instructions:
 8. **Step 4**: Review individual plans
 9. **Step 5**: Generate preprocessing scripts
 10. **Step 6**: Next steps
-11. **Best Practices**: Format selection, complexity assessment, batch planning, script generation
+11. **Best Practices**: Format selection, complexity assessment, batch planning,
+    script generation
 
 ---
 
@@ -290,6 +332,7 @@ List all available prompts:
 ```
 
 **Response**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -370,6 +413,7 @@ Get a rendered prompt:
 ```
 
 **Parameters**:
+
 - `name` (string, required): Prompt name
 - `arguments` (object, required): Prompt arguments
 
@@ -381,7 +425,8 @@ Get a rendered prompt:
 
 ### Error Codes
 
-- `INVALID_PARAMS` (-32602): Missing required parameters or invalid parameter types
+- `INVALID_PARAMS` (-32602): Missing required parameters or invalid parameter
+  types
 - `RESOURCE_NOT_FOUND` (-32010): Prompt not found
 - `INTERNAL_ERROR` (-32603): Internal server error
 
@@ -496,4 +541,3 @@ Get a rendered prompt:
 ---
 
 For more information, see the [API Documentation](./README.md).
-

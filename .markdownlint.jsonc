@@ -22,12 +22,12 @@
       "Note",
       "Tabs",
       "Tab",
-      "Frame"
-    ]
+      "Frame",
+    ],
   },
   "MD036": false,
   "MD040": false,
   "MD041": false,
   "MD046": { "style": "fenced" },
-  "MD049": { "style": "asterisk" }
+  "MD049": { "style": "asterisk" },
 }

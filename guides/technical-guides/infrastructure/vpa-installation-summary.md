@@ -44,9 +44,12 @@ helm install vpa fairwinds-stable/vpa --namespace vpa-system --create-namespace
 ### Resource Configuration
 
 VPA components are configured with:
-- **Recommender:** 100m CPU, 256Mi memory requests; 500m CPU, 512Mi memory limits
+
+- **Recommender:** 100m CPU, 256Mi memory requests; 500m CPU, 512Mi memory
+  limits
 - **Updater:** 100m CPU, 256Mi memory requests; 500m CPU, 512Mi memory limits
-- **Admission Controller:** 100m CPU, 128Mi memory requests; 200m CPU, 256Mi memory limits
+- **Admission Controller:** 100m CPU, 128Mi memory requests; 200m CPU, 256Mi
+  memory limits
 
 ---
 
@@ -122,9 +125,11 @@ metoro         metoro-exporter-vpa           Off                           2s
 
 ### Recommendations
 
-**Status:** Recommendations will appear after VPA collects usage data (usually 24-48 hours)
+**Status:** Recommendations will appear after VPA collects usage data (usually
+24-48 hours)
 
 VPA needs time to:
+
 1. Collect resource usage metrics
 2. Analyze historical usage patterns
 3. Generate recommendations based on actual usage
@@ -290,16 +295,16 @@ spec:
     kind: Deployment
     name: cert-manager
   updatePolicy:
-    updateMode: "Initial"  # Changed from "Off" to "Initial"
+    updateMode: 'Initial' # Changed from "Off" to "Initial"
   resourcePolicy:
     containerPolicies:
-    - containerName: cert-manager-controller
-      minAllowed:
-        cpu: 50m
-        memory: 64Mi
-      maxAllowed:
-        cpu: 500m
-        memory: 512Mi
+      - containerName: cert-manager-controller
+        minAllowed:
+          cpu: 50m
+          memory: 64Mi
+        maxAllowed:
+          cpu: 500m
+          memory: 512Mi
 ```
 
 ---
@@ -309,16 +314,19 @@ spec:
 ### VPA Not Providing Recommendations
 
 1. **Check Metrics Server:**
+
    ```bash
    kubectl get deployment metrics-server -n kube-system
    ```
 
 2. **Check VPA Recommender:**
+
    ```bash
    kubectl logs -n vpa-system deployment/vpa-recommender
    ```
 
 3. **Check Pod Metrics:**
+
    ```bash
    kubectl top pods --all-namespaces
    ```
@@ -330,11 +338,13 @@ spec:
 ### VPA Components Not Running
 
 1. **Check Pod Status:**
+
    ```bash
    kubectl get pods -n vpa-system
    ```
 
 2. **Check Pod Logs:**
+
    ```bash
    kubectl logs -n vpa-system <pod-name>
    ```
@@ -386,13 +396,15 @@ spec:
 
 ## References
 
-- **VPA Documentation:** [Kubernetes Autoscaler VPA](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler)
-- **Fairwinds VPA Chart:** [FairwindsOps VPA Chart](https://github.com/FairwindsOps/charts/tree/master/stable/vpa)
-- **VPA Best Practices:** [VPA README](https://github.com/kubernetes/autoscaler/blob/master/vertical-pod-autoscaler/README.md)
+- **VPA Documentation:**
+  [Kubernetes Autoscaler VPA](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler)
+- **Fairwinds VPA Chart:**
+  [FairwindsOps VPA Chart](https://github.com/FairwindsOps/charts/tree/master/stable/vpa)
+- **VPA Best Practices:**
+  [VPA README](https://github.com/kubernetes/autoscaler/blob/master/vertical-pod-autoscaler/README.md)
 
 ---
 
 **Installation Date:** 2025-11-09  
 **Next Review:** 2025-11-11 (check for recommendations)  
 **Status:** ✅ Installed and configured in 'Off' mode
-

@@ -8,13 +8,16 @@
 
 ## Executive Summary
 
-VPA has been collecting usage data and providing recommendations. This report analyzes current resource requests, VPA recommendations, and actual usage to identify optimization opportunities.
+VPA has been collecting usage data and providing recommendations. This report
+analyzes current resource requests, VPA recommendations, and actual usage to
+identify optimization opportunities.
 
 ### Key Findings
 
 1. **Cert-Manager pods** need memory increase (64Mi → 100Mi)
 2. **Metoro Exporter** resources are well-aligned with recommendations
-3. **Actual usage** is significantly lower than requests, indicating potential for further optimization
+3. **Actual usage** is significantly lower than requests, indicating potential
+   for further optimization
 4. **VPA constraints** (minAllowed) are preventing more aggressive optimization
 
 ---
@@ -24,60 +27,75 @@ VPA has been collecting usage data and providing recommendations. This report an
 ### 1. Cert-Manager Controller
 
 **Current Configuration:**
+
 - CPU Request: 50m
 - Memory Request: 64Mi
 - CPU Limit: 200m
 - Memory Limit: 128Mi
 
 **Actual Usage:**
+
 - CPU: 1-2m (2-4% of request)
 - Memory: 55Mi (86% of request)
 
 **VPA Recommendations:**
+
 - Target CPU: 50m (matches current)
 - Target Memory: 100Mi (56% increase needed)
 - Uncapped CPU: 15m (70% lower than current)
 - Uncapped Memory: 100Mi
 
 **Analysis:**
+
 - ✅ CPU request matches VPA recommendation (constrained by minAllowed: 50m)
 - ⚠️ Memory request is below VPA recommendation
-- 📊 Actual CPU usage (1-2m) is much lower than request (50m), but VPA recommends 50m due to minAllowed constraint
-- 📊 Actual memory usage (55Mi) is close to request (64Mi), but VPA recommends 100Mi for safety margin
+- 📊 Actual CPU usage (1-2m) is much lower than request (50m), but VPA
+  recommends 50m due to minAllowed constraint
+- 📊 Actual memory usage (55Mi) is close to request (64Mi), but VPA recommends
+  100Mi for safety margin
 
 **Recommendation:**
+
 1. **Increase memory request to 100Mi** (matches VPA target)
 2. **Keep CPU at 50m** (matches VPA target, respects minAllowed)
-3. **Consider reducing minAllowed CPU to 15m** if you want more aggressive optimization (requires VPA config update)
+3. **Consider reducing minAllowed CPU to 15m** if you want more aggressive
+   optimization (requires VPA config update)
 
 ---
 
 ### 2. Cert-Manager CA Injector
 
 **Current Configuration:**
+
 - CPU Request: 50m
 - Memory Request: 64Mi
 - CPU Limit: 200m
 - Memory Limit: 128Mi
 
 **Actual Usage:**
+
 - CPU: 2m (4% of request)
 - Memory: 31Mi (48% of request)
 
 **VPA Recommendations:**
+
 - Target CPU: 50m (matches current)
 - Target Memory: 100Mi (56% increase needed)
 - Uncapped CPU: 15m (70% lower than current)
 - Uncapped Memory: 100Mi
 
 **Analysis:**
+
 - ✅ CPU request matches VPA recommendation
 - ⚠️ Memory request is below VPA recommendation
 - 📊 Actual CPU usage (2m) is much lower than request
-- 📊 Actual memory usage (31Mi) is well below request (64Mi) and recommendation (100Mi)
+- 📊 Actual memory usage (31Mi) is well below request (64Mi) and recommendation
+  (100Mi)
 
 **Recommendation:**
-1. **Increase memory request to 100Mi** (matches VPA target, provides safety margin)
+
+1. **Increase memory request to 100Mi** (matches VPA target, provides safety
+   margin)
 2. **Keep CPU at 50m** (matches VPA target)
 
 ---
@@ -85,28 +103,33 @@ VPA has been collecting usage data and providing recommendations. This report an
 ### 3. Cert-Manager Webhook
 
 **Current Configuration:**
+
 - CPU Request: 50m
 - Memory Request: 64Mi
 - CPU Limit: 200m
 - Memory Limit: 128Mi
 
 **Actual Usage:**
+
 - CPU: 1m (2% of request)
 - Memory: 31Mi (48% of request)
 
 **VPA Recommendations:**
+
 - Target CPU: 50m (matches current)
 - Target Memory: 100Mi (56% increase needed)
 - Uncapped CPU: 15m (70% lower than current)
 - Uncapped Memory: 100Mi
 
 **Analysis:**
+
 - ✅ CPU request matches VPA recommendation
 - ⚠️ Memory request is below VPA recommendation
 - 📊 Actual CPU usage (1m) is very low
 - 📊 Actual memory usage (31Mi) is well below request
 
 **Recommendation:**
+
 1. **Increase memory request to 100Mi** (matches VPA target)
 2. **Keep CPU at 50m** (matches VPA target)
 
@@ -115,28 +138,33 @@ VPA has been collecting usage data and providing recommendations. This report an
 ### 4. Metoro Exporter
 
 **Current Configuration:**
+
 - CPU Request: 50m
 - Memory Request: 128Mi
 - CPU Limit: 200m
 - Memory Limit: 512Mi
 
 **Actual Usage:**
+
 - CPU: 8m (16% of request)
 - Memory: 100Mi (78% of request)
 
 **VPA Recommendations:**
+
 - Target CPU: 50m (matches current)
 - Target Memory: 128Mi (matches current)
 - Uncapped CPU: 23m (54% lower than current)
 - Uncapped Memory: 120Mi (6% lower than current)
 
 **Analysis:**
+
 - ✅ CPU request matches VPA recommendation
 - ✅ Memory request matches VPA recommendation
 - 📊 Actual CPU usage (8m) is lower than request but higher than uncapped (23m)
 - 📊 Actual memory usage (100Mi) is close to request (128Mi) and recommendation
 
 **Recommendation:**
+
 1. **Keep current resources** (already optimized)
 2. **Consider monitoring** for potential future optimization opportunities
 
@@ -148,18 +176,22 @@ VPA has been collecting usage data and providing recommendations. This report an
 
 #### 1. Increase Cert-Manager Memory Requests
 
-**Action:** Update Cert-Manager deployments to use 100Mi memory requests (from 64Mi)
+**Action:** Update Cert-Manager deployments to use 100Mi memory requests (from
+64Mi)
 
 **Impact:**
+
 - Better safety margin for memory usage
 - Aligns with VPA recommendations
 - Low risk (memory is not currently constrained)
 
 **Estimated Resource Impact:**
+
 - Memory: +108Mi total (36Mi per pod × 3 pods)
 - CPU: No change
 
 **Implementation:**
+
 ```bash
 # Update cert-manager controller
 kubectl patch deployment cert-manager -n cert-manager --type='json' -p='[
@@ -193,30 +225,35 @@ kubectl patch deployment cert-manager-webhook -n cert-manager --type='json' -p='
 
 #### 2. Reduce VPA minAllowed CPU Constraints
 
-**Action:** Update VPA configurations to allow lower CPU requests (reduce minAllowed from 50m to 15m)
+**Action:** Update VPA configurations to allow lower CPU requests (reduce
+minAllowed from 50m to 15m)
 
 **Impact:**
+
 - Potential CPU savings: 105m total (35m per pod × 3 pods)
 - More aggressive optimization
 - Higher risk (need to monitor for CPU spikes)
 
 **Considerations:**
+
 - Cert-Manager is critical infrastructure
 - CPU spikes may occur during certificate operations
 - Need to monitor closely after changes
 
-**Implementation:**
-Update VPA configurations in `manifests/vpa/` to reduce minAllowed CPU:
+**Implementation:** Update VPA configurations in `manifests/vpa/` to reduce
+minAllowed CPU:
+
 ```yaml
 resourcePolicy:
   containerPolicies:
-  - containerName: cert-manager-controller
-    minAllowed:
-      cpu: 15m  # Reduced from 50m
-      memory: 64Mi
+    - containerName: cert-manager-controller
+      minAllowed:
+        cpu: 15m # Reduced from 50m
+        memory: 64Mi
 ```
 
-Then enable VPA in 'Initial' mode to apply recommendations automatically to new pods.
+Then enable VPA in 'Initial' mode to apply recommendations automatically to new
+pods.
 
 ---
 
@@ -224,33 +261,33 @@ Then enable VPA in 'Initial' mode to apply recommendations automatically to new 
 
 ### Current State
 
-| Workload | CPU Request | Memory Request | CPU Usage | Memory Usage |
-|----------|-------------|----------------|-----------|--------------|
-| cert-manager | 50m | 64Mi | 1-2m | 55Mi |
-| cert-manager-cainjector | 50m | 64Mi | 2m | 31Mi |
-| cert-manager-webhook | 50m | 64Mi | 1m | 31Mi |
-| metoro-exporter | 50m | 128Mi | 8m | 100Mi |
-| **Total** | **200m** | **320Mi** | **12-13m** | **217Mi** |
+| Workload                | CPU Request | Memory Request | CPU Usage  | Memory Usage |
+| ----------------------- | ----------- | -------------- | ---------- | ------------ |
+| cert-manager            | 50m         | 64Mi           | 1-2m       | 55Mi         |
+| cert-manager-cainjector | 50m         | 64Mi           | 2m         | 31Mi         |
+| cert-manager-webhook    | 50m         | 64Mi           | 1m         | 31Mi         |
+| metoro-exporter         | 50m         | 128Mi          | 8m         | 100Mi        |
+| **Total**               | **200m**    | **320Mi**      | **12-13m** | **217Mi**    |
 
 ### After Optimization (Immediate)
 
-| Workload | CPU Request | Memory Request | Change |
-|----------|-------------|----------------|--------|
-| cert-manager | 50m | 100Mi | +36Mi |
-| cert-manager-cainjector | 50m | 100Mi | +36Mi |
-| cert-manager-webhook | 50m | 100Mi | +36Mi |
-| metoro-exporter | 50m | 128Mi | No change |
-| **Total** | **200m** | **428Mi** | **+108Mi** |
+| Workload                | CPU Request | Memory Request | Change     |
+| ----------------------- | ----------- | -------------- | ---------- |
+| cert-manager            | 50m         | 100Mi          | +36Mi      |
+| cert-manager-cainjector | 50m         | 100Mi          | +36Mi      |
+| cert-manager-webhook    | 50m         | 100Mi          | +36Mi      |
+| metoro-exporter         | 50m         | 128Mi          | No change  |
+| **Total**               | **200m**    | **428Mi**      | **+108Mi** |
 
 ### Potential Future Optimization (If minAllowed Reduced)
 
-| Workload | CPU Request | Memory Request | CPU Savings |
-|----------|-------------|----------------|-------------|
-| cert-manager | 15m | 100Mi | -35m |
-| cert-manager-cainjector | 15m | 100Mi | -35m |
-| cert-manager-webhook | 15m | 100Mi | -35m |
-| metoro-exporter | 23m | 128Mi | -27m |
-| **Total** | **68m** | **428Mi** | **-132m** |
+| Workload                | CPU Request | Memory Request | CPU Savings |
+| ----------------------- | ----------- | -------------- | ----------- |
+| cert-manager            | 15m         | 100Mi          | -35m        |
+| cert-manager-cainjector | 15m         | 100Mi          | -35m        |
+| cert-manager-webhook    | 15m         | 100Mi          | -35m        |
+| metoro-exporter         | 23m         | 128Mi          | -27m        |
+| **Total**               | **68m**     | **428Mi**      | **-132m**   |
 
 ---
 
@@ -261,11 +298,13 @@ Then enable VPA in 'Initial' mode to apply recommendations automatically to new 
 **Risk Level:** 🟢 **Low**
 
 **Risks:**
+
 - Minimal risk (memory is not currently constrained)
 - Provides better safety margin
 - Aligns with VPA recommendations
 
 **Mitigation:**
+
 - Monitor memory usage after changes
 - Verify no OOM kills occur
 - Rollback plan available
@@ -275,11 +314,13 @@ Then enable VPA in 'Initial' mode to apply recommendations automatically to new 
 **Risk Level:** 🟡 **Medium**
 
 **Risks:**
+
 - CPU spikes during certificate operations
 - Potential performance degradation
 - Need careful monitoring
 
 **Mitigation:**
+
 - Start with VPA in 'Initial' mode (only affects new pods)
 - Monitor for 1-2 weeks before enabling 'Auto' mode
 - Have rollback plan ready
@@ -390,7 +431,8 @@ Then enable VPA in 'Initial' mode to apply recommendations automatically to new 
 ### Optimization Opportunities
 
 1. **Immediate:** Increase Cert-Manager memory to 100Mi (low risk)
-2. **Future:** Consider reducing CPU requests if VPA minAllowed is adjusted (medium risk)
+2. **Future:** Consider reducing CPU requests if VPA minAllowed is adjusted
+   (medium risk)
 3. **Ongoing:** Monitor VPA recommendations and apply as needed
 
 ### Expected Benefits
@@ -416,4 +458,3 @@ Then enable VPA in 'Initial' mode to apply recommendations automatically to new 
 **Report Generated:** 2025-11-09  
 **Next Review:** 2025-11-16 (1 week after implementation)  
 **Status:** ✅ Ready for implementation
-

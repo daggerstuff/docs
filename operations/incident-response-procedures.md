@@ -1,6 +1,7 @@
 ---
 title: 'Incident Response Procedures'
-description: 'Comprehensive incident response procedures for Pixelated Empathy launch'
+description:
+  'Comprehensive incident response procedures for Pixelated Empathy launch'
 pubDate: '2025-01-01'
 author: 'Pixelated Empathy Team'
 draft: false
@@ -15,94 +16,104 @@ toc: true
 
 ## Overview
 
-This document outlines comprehensive incident response procedures for Pixelated Empathy during the beta launch period. It covers incident classification, response teams, escalation procedures, and resolution workflows.
+This document outlines comprehensive incident response procedures for Pixelated
+Empathy during the beta launch period. It covers incident classification,
+response teams, escalation procedures, and resolution workflows.
 
 ## Incident Classification
 
 ### Severity Levels
 
 #### **P0 - Critical**
+
 **Definition**: Service completely unavailable or safety-critical issue
 
 **Examples**:
+
 - Complete service outage
 - Data breach affecting PHI
 - Crisis escalation system failure
 - Security breach or unauthorized access
 - Complete database failure
 
-**Response Time**: Immediate (< 15 minutes)
-**Target Resolution**: < 2 hours
+**Response Time**: Immediate (< 15 minutes) **Target Resolution**: < 2 hours
 
 #### **P1 - High**
+
 **Definition**: Major service degradation or significant user impact
 
 **Examples**:
+
 - 50%+ of users affected
 - Response time >5 seconds
 - Error rate >5%
 - Database performance degradation
 - Critical feature unavailable
 
-**Response Time**: < 30 minutes
-**Target Resolution**: < 4 hours
+**Response Time**: < 30 minutes **Target Resolution**: < 4 hours
 
 #### **P2 - Medium**
+
 **Definition**: Moderate service impact affecting some users
 
 **Examples**:
+
 - 10-50% of users affected
 - Response time 2-5 seconds
 - Error rate 1-5%
 - Non-critical feature unavailable
 - Performance degradation
 
-**Response Time**: < 2 hours
-**Target Resolution**: < 24 hours
+**Response Time**: < 2 hours **Target Resolution**: < 24 hours
 
 #### **P3 - Low**
+
 **Definition**: Minor issue with limited impact
 
 **Examples**:
+
 - <10% of users affected
 - Cosmetic issues
 - Minor performance impact
 - Non-critical feature bugs
 
-**Response Time**: < 8 hours (business hours)
-**Target Resolution**: < 72 hours
+**Response Time**: < 8 hours (business hours) **Target Resolution**: < 72 hours
 
 ### Safety Severity Levels
 
 #### **Safety-Critical**
+
 **Definition**: Issues affecting user safety or crisis response
 
 **Examples**:
+
 - Crisis detection system failure
 - False negative crisis detections
 - Escalation system failures
 - Emergency contact system failure
 
-**Response Time**: Immediate (< 5 minutes)
-**Target Resolution**: < 1 hour
+**Response Time**: Immediate (< 5 minutes) **Target Resolution**: < 1 hour
 
 #### **Safety-High**
+
 **Definition**: Issues potentially affecting safety
 
 **Examples**:
+
 - Crisis detection accuracy concerns
 - Referral system issues
 - Safety monitoring gaps
 
-**Response Time**: < 15 minutes
-**Target Resolution**: < 4 hours
+**Response Time**: < 15 minutes **Target Resolution**: < 4 hours
 
 ## Incident Response Team
 
 ### Core Team Roles
 
 #### **Incident Commander**
+
 **Responsibilities**:
+
 - Overall incident coordination
 - Decision making authority
 - Resource allocation
@@ -112,7 +123,9 @@ This document outlines comprehensive incident response procedures for Pixelated 
 **On-Call**: 24/7 during launch period
 
 #### **Technical Lead**
+
 **Responsibilities**:
+
 - Technical investigation
 - Root cause analysis
 - Solution implementation
@@ -121,7 +134,9 @@ This document outlines comprehensive incident response procedures for Pixelated 
 **Contact**: tech-lead@pixelatedempathy.com
 
 #### **Security Officer**
+
 **Responsibilities**:
+
 - Security incident assessment
 - Breach investigation
 - Compliance notification
@@ -130,7 +145,9 @@ This document outlines comprehensive incident response procedures for Pixelated 
 **Contact**: security@pixelatedempathy.com
 
 #### **Clinical Safety Officer**
+
 **Responsibilities**:
+
 - Safety incident assessment
 - Clinical impact evaluation
 - Professional referral coordination
@@ -139,7 +156,9 @@ This document outlines comprehensive incident response procedures for Pixelated 
 **Contact**: safety@pixelatedempathy.com
 
 #### **Communications Lead**
+
 **Responsibilities**:
+
 - User communications
 - Status updates
 - Public relations (if needed)
@@ -165,6 +184,7 @@ This document outlines comprehensive incident response procedures for Pixelated 
 ### Detection and Reporting
 
 #### Automated Detection
+
 - Monitoring alerts (Prometheus/Alertmanager)
 - Error rate thresholds
 - Performance degradation detection
@@ -172,12 +192,14 @@ This document outlines comprehensive incident response procedures for Pixelated 
 - Safety system alerts
 
 #### Manual Reporting
+
 - User reports (support tickets)
 - Staff observations
 - Third-party reports
 - Customer support escalations
 
 **Reporting Channels**:
+
 - **P0/P1**: Direct call/Slack/SMS to on-call
 - **P2/P3**: Support ticket system
 - **Security**: security@pixelatedempathy.com
@@ -206,6 +228,7 @@ This document outlines comprehensive incident response procedures for Pixelated 
    - Team communication started
 
 #### Communication Checklist
+
 - [ ] Incident ticket created
 - [ ] Team notified via Slack/email
 - [ ] Status page updated (if public-facing)
@@ -235,6 +258,7 @@ This document outlines comprehensive incident response procedures for Pixelated 
    - Safety impact reviewed
 
 #### Documentation
+
 - Incident timeline
 - Root cause findings
 - Impact assessment
@@ -295,6 +319,7 @@ This document outlines comprehensive incident response procedures for Pixelated 
 ### Escalation Paths
 
 #### Technical Escalation
+
 ```
 Level 1: On-Call Engineer
   ? (if unresolved in 15 min)
@@ -304,6 +329,7 @@ Level 3: Engineering Manager / CTO
 ```
 
 #### Safety Escalation
+
 ```
 Level 1: Clinical Safety Officer
   ? (immediate for critical)
@@ -313,6 +339,7 @@ Level 3: Emergency Services (if needed)
 ```
 
 #### Security Escalation
+
 ```
 Level 1: Security Officer
   ? (immediate for breach)
@@ -324,6 +351,7 @@ Level 3: Legal Counsel + Insurance
 ### Escalation Triggers
 
 **Immediate Escalation Required**:
+
 - P0 incidents
 - Safety-critical incidents
 - Data breaches
@@ -331,6 +359,7 @@ Level 3: Legal Counsel + Insurance
 - Legal/regulatory issues
 
 **Management Notification**:
+
 - P1 incidents lasting >1 hour
 - P2 incidents affecting >25% of users
 - Any incident requiring external resources
@@ -341,12 +370,14 @@ Level 3: Legal Counsel + Insurance
 ### Internal Communication
 
 #### Slack Channels
+
 - **#incidents**: All incident communications
 - **#incidents-critical**: P0/P1 incidents only
 - **#safety-alerts**: Safety-related incidents
 - **#security-alerts**: Security incidents
 
 #### Communication Frequency
+
 - **P0**: Updates every 15 minutes
 - **P1**: Updates every 30 minutes
 - **P2**: Updates every 2 hours
@@ -355,17 +386,20 @@ Level 3: Legal Counsel + Insurance
 ### External Communication
 
 #### User Communications
+
 - **Status Page**: Updates for service issues
 - **In-App Notifications**: For affected users
 - **Email**: For critical incidents affecting user data
 - **Support Tickets**: Individual user responses
 
 #### Stakeholder Communications
+
 - **Investors**: For significant incidents (P0)
 - **Partners**: If service integration affected
 - **Regulatory**: As required (HIPAA breaches, etc.)
 
 #### Public Communications
+
 - **Blog Post**: For significant incidents with user impact
 - **Social Media**: If public awareness needed
 - **Press Release**: For major incidents (rare)
@@ -375,12 +409,14 @@ Level 3: Legal Counsel + Insurance
 ### Rollback Decision Criteria
 
 **Automatic Rollback Triggers**:
+
 - Error rate >10% for >5 minutes
 - Response time >10 seconds for >5 minutes
 - Safety system failure
 - Complete service outage
 
 **Manual Rollback Considerations**:
+
 - User complaints increasing
 - Performance degradation
 - Feature bugs affecting core functionality
@@ -416,11 +452,13 @@ Level 3: Legal Counsel + Insurance
 ### Incident Response Testing
 
 #### Regular Testing Schedule
+
 - **Monthly**: Tabletop exercises
 - **Quarterly**: Full incident simulation
 - **Annually**: External audit
 
 #### Test Scenarios
+
 - Service outage simulation
 - Data breach simulation
 - Crisis system failure simulation
@@ -430,8 +468,8 @@ Level 3: Legal Counsel + Insurance
 
 ### Incident Tracking
 
-**Tool**: [Issue Tracking System]
-**Required Fields**:
+**Tool**: [Issue Tracking System] **Required Fields**:
+
 - Incident ID
 - Severity level
 - Detection time
@@ -443,6 +481,7 @@ Level 3: Legal Counsel + Insurance
 ### Incident Reports
 
 **Template Includes**:
+
 - Executive summary
 - Timeline
 - Root cause analysis
@@ -469,4 +508,5 @@ Level 3: Legal Counsel + Insurance
 
 ---
 
-**This document is reviewed quarterly and updated based on incident learnings and process improvements.**
+**This document is reviewed quarterly and updated based on incident learnings
+and process improvements.**

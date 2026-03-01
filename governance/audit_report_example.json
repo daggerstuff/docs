@@ -23,7 +23,7 @@
       "compliant_datasets": 12,
       "non_compliant_datasets": 2,
       "needs_review": 1,
-      "overall_compliance_rate": 0.80,
+      "overall_compliance_rate": 0.8,
       "critical_issues": 1,
       "high_priority_issues": 3,
       "medium_priority_issues": 5,
@@ -195,7 +195,7 @@
         "synthetic": {
           "total": 2,
           "compliant": 1,
-          "compliance_rate": 0.50
+          "compliance_rate": 0.5
         },
         "contracted": {
           "total": 1,
@@ -222,7 +222,7 @@
         "reddit": {
           "total": 2,
           "compliant": 1,
-          "compliance_rate": 0.50
+          "compliance_rate": 0.5
         },
         "synthetic": {
           "total": 1,
@@ -324,4 +324,3 @@
     }
   }
 }
-

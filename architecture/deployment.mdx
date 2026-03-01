@@ -1,44 +1,53 @@
 ---
-title: "Deployment Architecture"
-description: "How Pixelated Empathy is deployed — from local development with Docker Compose to production Kubernetes clusters with Helm charts, CI/CD pipelines, monitoring, and multi-region scaling."
+title: 'Deployment Architecture'
+description:
+  'How Pixelated Empathy is deployed — from local development with Docker
+  Compose to production Kubernetes clusters with Helm charts, CI/CD pipelines,
+  monitoring, and multi-region scaling.'
 ---
 
 ## Deployment overview
 
-Pixelated Empathy supports three deployment tiers, each optimized for its use case. The same containerized services run across all tiers — only the orchestration, scaling, and networking layers differ.
+Pixelated Empathy supports three deployment tiers, each optimized for its use
+case. The same containerized services run across all tiers — only the
+orchestration, scaling, and networking layers differ.
 
 <CardGroup cols={3}>
   <Card title="Development" icon="laptop-code">
     **Docker Compose**
 
     Local development with hot reloading, GPU passthrough for AI services, and Caddy for automatic HTTPS. Optimized for developer productivity.
+
   </Card>
   <Card title="Staging" icon="flask-vial">
     **Docker Compose (Production)**
 
     Production-like environment with multiple replicas, Nginx reverse proxy, monitoring stack, and resource limits. Used for integration testing and QA.
+
   </Card>
   <Card title="Production" icon="server">
     **Kubernetes + Helm**
 
     Auto-scaling, multi-region deployment with Helm charts, Ingress controllers, cert-manager, and full observability. Designed for enterprise workloads.
+
   </Card>
 </CardGroup>
 
 ## Development environment
 
-The development environment uses Docker Compose to orchestrate five services with a single command.
+The development environment uses Docker Compose to orchestrate five services
+with a single command.
 
 ### Service architecture
 
 ```yaml
 # docker/docker-compose.yml — Development Services
 services:
-  app:            # Astro 5 + React frontend (Node.js)
-  caddy:          # Reverse proxy with automatic HTTPS
-  mcp-server:     # Memory server (FastAPI, port 5003)
-  ollama:         # Local LLM inference (GPU-accelerated)
-  ai-service:     # AI pipeline services (GPU-accelerated)
+  app: # Astro 5 + React frontend (Node.js)
+  caddy: # Reverse proxy with automatic HTTPS
+  mcp-server: # Memory server (FastAPI, port 5003)
+  ollama: # Local LLM inference (GPU-accelerated)
+  ai-service: # AI pipeline services (GPU-accelerated)
 ```
 
 <Tabs>
@@ -65,6 +74,7 @@ services:
     pnpm install
     pnpm dev          # Starts Astro dev server with hot reloading
     ```
+
   </Tab>
   <Tab title="AI Services (GPU)">
     Both the AI service and Ollama require GPU access for model inference:
@@ -113,6 +123,7 @@ services:
     <Tip>
       Ollama is configured with `OLLAMA_KEEP_ALIVE=24h` to keep models loaded in GPU memory, eliminating cold-start latency during development sessions.
     </Tip>
+
   </Tab>
   <Tab title="MCP Memory Server">
     The memory server runs independently with its own environment:
@@ -135,6 +146,7 @@ services:
     <Note>
       The MCP server port is mapped to `127.0.0.1:54321` externally (localhost only) to prevent accidental exposure. Internal services access it via the Docker network on port `5003`.
     </Note>
+
   </Tab>
   <Tab title="Reverse Proxy">
     Caddy provides automatic HTTPS with Let's Encrypt certificates:
@@ -153,6 +165,7 @@ services:
         - OLLAMA_API_KEY=${OLLAMA_API_KEY}
         - OLLAMA_REMOTE_URL=http://ollama:11434
     ```
+
   </Tab>
 </Tabs>
 
@@ -175,24 +188,28 @@ docker compose down
 ```
 
 <Warning>
-  GPU-accelerated services (`ai-service` and `ollama`) require the **NVIDIA Container Toolkit** installed on the host. Without it, these services will fail to start. For CPU-only development, comment out the `deploy.resources.reservations` blocks.
+  GPU-accelerated services (`ai-service` and `ollama`) require the **NVIDIA
+  Container Toolkit** installed on the host. Without it, these services will
+  fail to start. For CPU-only development, comment out the
+  `deploy.resources.reservations` blocks.
 </Warning>
 
 ## Production environment (Docker Compose)
 
-The production Docker Compose configuration adds database services, monitoring, multi-replica deployment, and resource constraints.
+The production Docker Compose configuration adds database services, monitoring,
+multi-replica deployment, and resource constraints.
 
 ### Service architecture
 
 ```yaml
 # docker/docker-compose.prod.yml — Production Services
 services:
-  postgres:       # PostgreSQL 15 (primary database)
-  redis:          # Redis 7 (cache + sessions)
-  app:            # Application (2 replicas, resource-limited)
-  nginx:          # Nginx reverse proxy with SSL
-  prometheus:     # Metrics collection
-  grafana:        # Monitoring dashboards
+  postgres: # PostgreSQL 15 (primary database)
+  redis: # Redis 7 (cache + sessions)
+  app: # Application (2 replicas, resource-limited)
+  nginx: # Nginx reverse proxy with SSL
+  prometheus: # Metrics collection
+  grafana: # Monitoring dashboards
 ```
 
 <Tabs>
@@ -233,6 +250,7 @@ services:
         resources:
           limits:   { memory: 1G, cpus: '0.5' }
     ```
+
   </Tab>
   <Tab title="Application (Multi-Replica)">
     The application runs with **2 replicas** behind a load balancer with automatic restart on failure:
@@ -269,6 +287,7 @@ services:
           delay: 5s
           max_attempts: 3
     ```
+
   </Tab>
   <Tab title="Monitoring Stack">
     Prometheus scrapes metrics from all services, and Grafana provides dashboards:
@@ -303,12 +322,14 @@ services:
       depends_on:
         - prometheus
     ```
+
   </Tab>
 </Tabs>
 
 ## Kubernetes deployment (Helm)
 
-For enterprise and high-availability deployments, Pixelated Empathy ships with Helm charts that deploy to any Kubernetes cluster.
+For enterprise and high-availability deployments, Pixelated Empathy ships with
+Helm charts that deploy to any Kubernetes cluster.
 
 ### Helm chart structure
 
@@ -334,12 +355,12 @@ ai/infrastructure/helm/pixelated-empathy/
 
 The Helm chart bundles all infrastructure dependencies as sub-charts:
 
-| Dependency | Version | Repository | Condition |
-|---|---|---|---|
-| PostgreSQL | 12.1.9 | Bitnami | `postgresql.enabled` |
-| Redis | 17.3.7 | Bitnami | `redis.enabled` |
+| Dependency | Version | Repository           | Condition                       |
+| ---------- | ------- | -------------------- | ------------------------------- |
+| PostgreSQL | 12.1.9  | Bitnami              | `postgresql.enabled`            |
+| Redis      | 17.3.7  | Bitnami              | `redis.enabled`                 |
 | Prometheus | 15.18.0 | prometheus-community | `monitoring.prometheus.enabled` |
-| Grafana | 6.50.7 | grafana | `monitoring.grafana.enabled` |
+| Grafana    | 6.50.7  | grafana              | `monitoring.grafana.enabled`    |
 
 ### Key configuration values
 
@@ -358,6 +379,7 @@ The Helm chart bundles all infrastructure dependencies as sub-charts:
     ```
 
     The Horizontal Pod Autoscaler (HPA) scales between 3 and 10 replicas based on CPU and memory utilization, ensuring the platform handles traffic spikes during peak training hours.
+
   </Tab>
   <Tab title="Resources">
     ```yaml
@@ -389,6 +411,7 @@ The Helm chart bundles all infrastructure dependencies as sub-charts:
     <Warning>
       The production Helm chart enforces **non-root execution**, read-only filesystem, and drops all Linux capabilities. These constraints are non-negotiable for HIPAA compliance.
     </Warning>
+
   </Tab>
   <Tab title="Ingress & TLS">
     ```yaml
@@ -411,6 +434,7 @@ The Helm chart bundles all infrastructure dependencies as sub-charts:
     ```
 
     TLS certificates are automatically provisioned and renewed by **cert-manager** using Let's Encrypt.
+
   </Tab>
   <Tab title="High Availability">
     ```yaml
@@ -437,6 +461,7 @@ The Helm chart bundles all infrastructure dependencies as sub-charts:
       timeoutSeconds: 5
       failureThreshold: 3
     ```
+
   </Tab>
 </Tabs>
 
@@ -474,30 +499,36 @@ helm upgrade --install pixelated-empathy \
 # Automated daily backups to S3
 backup:
   enabled: true
-  schedule: "0 2 * * *"        # 2:00 AM UTC daily
-  retention: "30d"              # 30-day retention
+  schedule: '0 2 * * *' # 2:00 AM UTC daily
+  retention: '30d' # 30-day retention
   storage:
-    type: "s3"
-    bucket: "pixelated-empathy-backups"
-    region: "us-west-2"
+    type: 's3'
+    bucket: 'pixelated-empathy-backups'
+    region: 'us-west-2'
 ```
 
 ## Cloudflare Workers (Edge)
 
-Static assets and edge logic are deployed to Cloudflare Workers for global low-latency delivery.
+Static assets and edge logic are deployed to Cloudflare Workers for global
+low-latency delivery.
 
 <CardGroup cols={2}>
-  <Card title="Edge Caching" icon="bolt">
-    Static assets (JS bundles, CSS, images, fonts) are served from Cloudflare's edge network — 300+ locations worldwide. Cache-Control headers ensure optimal TTLs for versioned assets.
+  <Card title='Edge Caching' icon='bolt'>
+    Static assets (JS bundles, CSS, images, fonts) are served from Cloudflare's
+    edge network — 300+ locations worldwide. Cache-Control headers ensure
+    optimal TTLs for versioned assets.
   </Card>
-  <Card title="Edge Routing" icon="route">
-    Cloudflare Workers handle request routing, geo-based redirects, and security headers at the edge before requests reach the origin servers. This reduces origin load and improves TTFB globally.
+  <Card title='Edge Routing' icon='route'>
+    Cloudflare Workers handle request routing, geo-based redirects, and security
+    headers at the edge before requests reach the origin servers. This reduces
+    origin load and improves TTFB globally.
   </Card>
 </CardGroup>
 
 ## CI/CD pipeline
 
-The CI/CD pipeline runs on **GitLab CI/CD** with eight stages that enforce code quality, security, and deployment safety.
+The CI/CD pipeline runs on **GitLab CI/CD** with eight stages that enforce code
+quality, security, and deployment safety.
 
 ```
 ┌───────────┐   ┌────────┐   ┌────────────┐   ┌───────────┐   ┌──────────┐
@@ -529,6 +560,7 @@ The CI/CD pipeline runs on **GitLab CI/CD** with eight stages that enforce code 
     | `validate:dependencies` | `pnpm install --frozen-lockfile` + `pnpm audit` | **Blocking** — pipeline stops |
     | `validate:lint` | Biome linting (`pnpm lint:ci`) | Non-blocking (allow failure) |
     | `validate:typecheck` | Astro check + TypeScript (`tsc --noEmit`) with 8GB heap | Non-blocking (allow failure) |
+
   </Accordion>
   <Accordion title="Stage 2: Test" icon="vial">
     | Job | Purpose | Artifacts |
@@ -544,6 +576,7 @@ The CI/CD pipeline runs on **GitLab CI/CD** with eight stages that enforce code 
     |---|---|
     | `terraform:validate` | `terraform fmt -check` + `terraform validate` |
     | `terraform:plan` | Generate execution plan with environment-specific tfvars |
+
   </Accordion>
   <Accordion title="Stage 4: Build" icon="hammer">
     Docker images are built and pushed to registries:
@@ -560,6 +593,7 @@ The CI/CD pipeline runs on **GitLab CI/CD** with eight stages that enforce code 
       -t ${IMAGE_NAME}:${CI_COMMIT_SHORT_SHA} \
       -t ${IMAGE_NAME}:latest .
     ```
+
   </Accordion>
   <Accordion title="Stage 5: Security" icon="shield">
     Container images are scanned with **Trivy** for vulnerabilities:
@@ -571,6 +605,7 @@ The CI/CD pipeline runs on **GitLab CI/CD** with eight stages that enforce code 
     # HIGH vulnerabilities are reported as warnings
     trivy image --severity HIGH --exit-code 0 ${IMAGE_NAME}:${SHA}
     ```
+
   </Accordion>
   <Accordion title="Stage 6–8: Deploy, Health Check, Cleanup" icon="rocket">
     Deployment to GKE clusters with rolling updates:
@@ -582,6 +617,7 @@ The CI/CD pipeline runs on **GitLab CI/CD** with eight stages that enforce code 
     <Note>
       GKE deployment is currently **paused** pending billing configuration. The pipeline stages are defined but disabled — re-enable by uncommenting the `deploy:staging` and `health-check` jobs in `.gitlab-ci.yml`.
     </Note>
+
   </Accordion>
 </AccordionGroup>
 
@@ -598,6 +634,7 @@ The monitoring stack provides full observability across all deployment tiers.
     - Service health metrics (up/down, latency, error rates)
     - Application metrics (session count, response times, memory usage)
     - Infrastructure metrics (CPU, memory, disk, network)
+
   </Card>
   <Card title="Grafana" icon="chart-pie">
     **Visualization & Dashboards**
@@ -607,6 +644,7 @@ The monitoring stack provides full observability across all deployment tiers.
     - Training analytics (active sessions, empathy scores, crisis events)
     - AI performance (inference latency, model accuracy, memory operations)
     - Infrastructure (Kubernetes pod status, node health, storage)
+
   </Card>
   <Card title="Sentry" icon="bug">
     **Error Tracking**
@@ -616,6 +654,7 @@ The monitoring stack provides full observability across all deployment tiers.
     - Automatic release tracking tied to Git commits
     - Performance monitoring (transaction tracing)
     - User context for debugging session-specific issues
+
   </Card>
   <Card title="Structured Logging" icon="file-lines">
     **Log Aggregation**
@@ -625,12 +664,14 @@ The monitoring stack provides full observability across all deployment tiers.
     - Custom request logger with audit trail
     - Python `logging` module with structured formatters
     - Build-safe logger for SSR-compatible logging
+
   </Card>
 </CardGroup>
 
 ### Health checks
 
-Every service exposes a `/health` endpoint that returns service status and dependency connectivity:
+Every service exposes a `/health` endpoint that returns service status and
+dependency connectivity:
 
 ```json
 {
@@ -671,6 +712,7 @@ Every service exposes a `/health` endpoint that returns service status and depen
     MEMORY_SERVER_PORT=5003
     NEXT_PUBLIC_MEMORY_API_URL=http://localhost:5003
     ```
+
   </Tab>
   <Tab title="Staging (.env.staging)">
     ```bash
@@ -692,6 +734,7 @@ Every service exposes a `/health` endpoint that returns service status and depen
     SENDGRID_API_KEY=${SENDGRID_API_KEY}
     FROM_EMAIL=noreply@staging.pixelatedempathy.com
     ```
+
   </Tab>
   <Tab title="Production (.env.production)">
     ```bash
@@ -724,16 +767,21 @@ Every service exposes a `/health` endpoint that returns service status and depen
     SENTRY_DSN=${SENTRY_DSN}
     GRAFANA_PASSWORD=${GRAFANA_PASSWORD}
     ```
+
   </Tab>
 </Tabs>
 
 <Warning>
-  **Never commit secrets to the repository.** All sensitive values are injected via CI/CD pipeline variables (GitLab CI/CD → Settings → CI/CD → Variables) or Kubernetes Secrets. The `.env.example` file documents required variables without values.
+  **Never commit secrets to the repository.** All sensitive values are injected
+  via CI/CD pipeline variables (GitLab CI/CD → Settings → CI/CD → Variables) or
+  Kubernetes Secrets. The `.env.example` file documents required variables
+  without values.
 </Warning>
 
 ## Infrastructure as code (Terraform)
 
-Infrastructure provisioning is managed with Terraform, supporting multi-cloud deployment:
+Infrastructure provisioning is managed with Terraform, supporting multi-cloud
+deployment:
 
 ```
 terraform/
@@ -749,40 +797,43 @@ terraform/
 ```
 
 <Info>
-  Terraform state is stored remotely using GitLab's managed Terraform state backend (`TF_HTTP_PASSWORD`). The `terraform:plan` CI job generates execution plans on merge requests, enabling infrastructure review before apply.
+  Terraform state is stored remotely using GitLab's managed Terraform state
+  backend (`TF_HTTP_PASSWORD`). The `terraform:plan` CI job generates execution
+  plans on merge requests, enabling infrastructure review before apply.
 </Info>
 
 ## Deployment checklist
 
 <AccordionGroup>
-  <Accordion title="Pre-deployment" icon="clipboard-check">
-    - [ ] All CI/CD pipeline stages pass (validate, test, build, security)
-    - [ ] Trivy security scan reports no CRITICAL vulnerabilities
-    - [ ] Database migrations are backward-compatible
-    - [ ] Environment variables are configured in target environment
-    - [ ] Helm values are reviewed for the target environment
-    - [ ] Backup verification completed (last 24h backup is restorable)
+  <Accordion title='Pre-deployment' icon='clipboard-check'>
+    - [ ] All CI/CD pipeline stages pass (validate, test, build, security) - [ ]
+    Trivy security scan reports no CRITICAL vulnerabilities - [ ] Database
+    migrations are backward-compatible - [ ] Environment variables are
+    configured in target environment - [ ] Helm values are reviewed for the
+    target environment - [ ] Backup verification completed (last 24h backup is
+    restorable)
   </Accordion>
-  <Accordion title="Deployment" icon="rocket">
-    - [ ] Deploy to staging first and verify health checks
-    - [ ] Run integration test suite against staging
-    - [ ] Verify memory system connectivity (MCP Server → Mem0 → Gemini)
-    - [ ] Verify WebSocket connectivity for training sessions
-    - [ ] Check Grafana dashboards for anomalies
-    - [ ] Deploy to production with rolling update strategy
+  <Accordion title='Deployment' icon='rocket'>
+    - [ ] Deploy to staging first and verify health checks - [ ] Run integration
+    test suite against staging - [ ] Verify memory system connectivity (MCP
+    Server → Mem0 → Gemini) - [ ] Verify WebSocket connectivity for training
+    sessions - [ ] Check Grafana dashboards for anomalies - [ ] Deploy to
+    production with rolling update strategy
   </Accordion>
-  <Accordion title="Post-deployment" icon="magnifying-glass">
-    - [ ] Verify `/health` endpoint returns healthy status
-    - [ ] Confirm all Kubernetes pods are in Running state
-    - [ ] Check Sentry for new error patterns
-    - [ ] Verify Prometheus metrics are flowing
-    - [ ] Run smoke test (create session, send message, verify response)
-    - [ ] Monitor error rates for 30 minutes post-deploy
+  <Accordion title='Post-deployment' icon='magnifying-glass'>
+    - [ ] Verify `/health` endpoint returns healthy status - [ ] Confirm all
+    Kubernetes pods are in Running state - [ ] Check Sentry for new error
+    patterns - [ ] Verify Prometheus metrics are flowing - [ ] Run smoke test
+    (create session, send message, verify response) - [ ] Monitor error rates
+    for 30 minutes post-deploy
   </Accordion>
 </AccordionGroup>
 
 ---
 
 <Info>
-  **Back to:** Return to the [System Architecture Overview](/architecture/overview) for the full platform context, or explore [Data Flow & Integration Points](/architecture/data-flow) to understand how data moves through the deployed services.
+  **Back to:** Return to the [System Architecture
+  Overview](/architecture/overview) for the full platform context, or explore
+  [Data Flow & Integration Points](/architecture/data-flow) to understand how
+  data moves through the deployed services.
 </Info>

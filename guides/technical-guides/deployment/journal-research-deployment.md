@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide covers deployment of the Journal Research system, including both the FastAPI backend server and the Astro frontend application.
+This guide covers deployment of the Journal Research system, including both the
+FastAPI backend server and the Astro frontend application.
 
 ## Table of Contents
 

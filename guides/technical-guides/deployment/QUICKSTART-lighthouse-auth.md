@@ -2,7 +2,9 @@
 
 ## Authentication Method
 
-**Pixelated Empathy uses Auth0** for authentication with OAuth (Google) and email/password support. Since Auth0 uses an OAuth flow (not a simple REST API), you'll need to extract cookies from your browser after logging in.
+**Pixelated Empathy uses Auth0** for authentication with OAuth (Google) and
+email/password support. Since Auth0 uses an OAuth flow (not a simple REST API),
+you'll need to extract cookies from your browser after logging in.
 
 ## 📋 Step-by-Step Instructions
 
@@ -47,6 +49,7 @@ auth-token=<YOUR_AUTH_TOKEN_VALUE>; refresh-token=<YOUR_REFRESH_TOKEN_VALUE>
 ```
 
 **Example:**
+
 ```text
 auth-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjM0NTY3ODkwIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c; refresh-token=v1.MRjTvIk8RqnN...
 ```
@@ -70,6 +73,7 @@ gh workflow run monitoring.yml
 ```
 
 Check the workflow logs for:
+
 - ✅ "Set LHCI extraHeaders for authenticated pages"
 - ✅ Successful Lighthouse runs on `/dashboard?perf=1`
 
@@ -77,13 +81,15 @@ Check the workflow logs for:
 
 Update the `LH_AUTH_COOKIE` secret when:
 
-- **Tokens expire** (typically 7 days for `auth-token`, 30 days for `refresh-token`)
+- **Tokens expire** (typically 7 days for `auth-token`, 30 days for
+  `refresh-token`)
 - **Password changes** (if using email/password auth)
 - **Monitoring tests fail** with 401/403 errors
 
 ## 🔐 Security Best Practices
 
-✅ **Use a dedicated test account**: Create a "monitoring@pixelatedempathy.com" user  
+✅ **Use a dedicated test account**: Create a "monitoring@pixelatedempathy.com"
+user  
 ✅ **Minimal permissions**: Give this account only "user" role (not admin)  
 ✅ **Set a calendar reminder**: Update tokens monthly  
 ✅ **Monitor usage**: Check GitHub Actions logs regularly
@@ -92,7 +98,8 @@ Update the `LH_AUTH_COOKIE` secret when:
 
 ### Issue: Can't find `auth-token` cookie
 
-**Solution**: 
+**Solution**:
+
 - Make sure you're logged in successfully
 - Check that you're looking at the correct domain
 - Try logging out and back in
@@ -100,6 +107,7 @@ Update the `LH_AUTH_COOKIE` secret when:
 ### Issue: Lighthouse tests fail with 403
 
 **Solution**:
+
 - Verify the cookie string format is correct
 - Check that tokens haven't expired
 - Ensure the test account has access to `/dashboard`
@@ -107,6 +115,7 @@ Update the `LH_AUTH_COOKIE` secret when:
 ### Issue: Cookies expire too quickly
 
 **Solution**:
+
 - Use the `refresh-token` in addition to `auth-token`
 - Consider increasing session duration in `src/config/auth.config.ts`
 
@@ -122,4 +131,3 @@ With `LH_AUTH_COOKIE` configured, Lighthouse will test:
 
 **Need more details?** See the comprehensive guide:  
 [docs/guides/technical-guides/deployment/lighthouse-auth-setup.md](./lighthouse-auth-setup.md)
-

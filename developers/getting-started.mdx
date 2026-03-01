@@ -8,10 +8,9 @@ description: 'From zero to running in under ten minutes.'
 Before you start, make sure you have:
 
 - **Node.js** 18+ (we recommend 20 LTS)
-- **pnpm** — our package manager for JavaScript/TypeScript
-  (*never* use npm or yarn)
-- **uv** — our package manager for Python (*never* use pip
-  or conda)
+- **pnpm** — our package manager for JavaScript/TypeScript (_never_ use npm or
+  yarn)
+- **uv** — our package manager for Python (_never_ use pip or conda)
 - **Docker** — for running the full service stack
 - **Git** — obviously
 
@@ -47,16 +46,14 @@ uv install
 pnpm dev
 ````
 
-That gets you the frontend running at
-`http://localhost:4321`.
+That gets you the frontend running at `http://localhost:4321`.
 
   </Step>
 </Steps>
 
 ## Running Everything
 
-The full Pixelated Empathy stack includes multiple services.
-To start them all:
+The full Pixelated Empathy stack includes multiple services. To start them all:
 
 ```bash
 pnpm dev:all-services
@@ -69,8 +66,7 @@ This spins up:
 - **Worker** — Background processing
 - **WebSocket Server** — Real-time conversation updates
 
-Alternatively, use Docker Compose for a production-like
-environment:
+Alternatively, use Docker Compose for a production-like environment:
 
 ```bash
 pnpm docker:up
@@ -110,14 +106,14 @@ pixelated/
     | `pnpm docker:down`      | Stop Docker services       |
   </Tab>
 
-<Tab title="Quality Checks">
+<Tab title='Quality Checks'>
   | Command | What It Does | | :------------------ | :------------------------ |
   | `pnpm lint` | Run the linter | | `pnpm typecheck` | TypeScript type checking
   | | `pnpm check:all` | Lint + Typecheck + Format | | `pnpm security:scan`|
   Deep security audit |
 </Tab>
 
-<Tab title="Testing">
+<Tab title='Testing'>
   | Command | What It Does | | :------------------ | :------------------------ |
   | `pnpm test` | Unit tests | | `pnpm test:all` | Full test suite | | `pnpm
   e2e` | E2E tests (Playwright) | | `pnpm test:security`| Security-specific
@@ -179,21 +175,21 @@ Available aliases:
 Once you're running locally:
 
 <Steps>
-  <Step title="Read the Contributing Guide">
+  <Step title='Read the Contributing Guide'>
     Review the [Contributing Guide](/developers/contributing) for conventions
     and expectations.
   </Step>
-  <Step title="Pick Your Work">
+  <Step title='Pick Your Work'>
     Choose an issue or feature to work on from the issue tracker.
   </Step>
-  <Step title="Branch from Main">
+  <Step title='Branch from Main'>
     ```bash git checkout -b feature/your-feature-name ```
   </Step>
-  <Step title="Make Your Changes">
+  <Step title='Make Your Changes'>
     Follow code conventions and run quality checks as you go.
   </Step>
-  <Step title="Verify Quality">```bash pnpm check:all pnpm test:all ```</Step>
-  <Step title="Submit a PR">
+  <Step title='Verify Quality'>```bash pnpm check:all pnpm test:all ```</Step>
+  <Step title='Submit a PR'>
     Push your branch and open a pull request with context for reviewers.
   </Step>
 </Steps>
@@ -201,16 +197,16 @@ Once you're running locally:
 ## Next Steps
 
 <CardGroup cols={3}>
-  <Card title="Architecture" icon="sitemap" href="/developers/architecture">
+  <Card title='Architecture' icon='sitemap' href='/developers/architecture'>
     Understanding how the pieces fit.
   </Card>
-  <Card title="API Reference" icon="code" href="/developers/api-reference">
+  <Card title='API Reference' icon='code' href='/developers/api-reference'>
     Working with our APIs.
   </Card>
   <Card
-    title="Contributing"
-    icon="code-pull-request"
-    href="/developers/contributing"
+    title='Contributing'
+    icon='code-pull-request'
+    href='/developers/contributing'
   >
     How to contribute effectively.
   </Card>

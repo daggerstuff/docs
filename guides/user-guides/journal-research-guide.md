@@ -2,13 +2,18 @@
 
 ## Overview
 
-The Journal Research system is a comprehensive, integrated platform for managing journal dataset research operations. The system consists of three interfaces that work together:
+The Journal Research system is a comprehensive, integrated platform for managing
+journal dataset research operations. The system consists of three interfaces
+that work together:
 
 - **Web Frontend**: User-friendly web interface (this guide focuses on this)
 - **MCP Server**: AI agent interface via Model Context Protocol
 - **CLI Interface**: Command-line access for automation
 
-All three interfaces access the same backend research engine and share the same session data. This guide focuses on the web interface. For information about the complete system architecture, see the [Journal Research Pipeline Documentation](../../development/journal-research/journal-research-pipeline.md).
+All three interfaces access the same backend research engine and share the same
+session data. This guide focuses on the web interface. For information about the
+complete system architecture, see the
+[Journal Research Pipeline Documentation](../../development/journal-research/journal-research-pipeline.md).
 
 ## Table of Contents
 
@@ -43,7 +48,8 @@ All three interfaces access the same backend research engine and share the same 
    - Fill in the session details:
      - **Target Sources**: Select data sources (e.g., PubMed, DOAJ)
      - **Search Keywords**: Define keywords organized by category
-     - **Weekly Targets**: Set goals for sources identified, datasets evaluated, etc.
+     - **Weekly Targets**: Set goals for sources identified, datasets evaluated,
+       etc.
    - Click "Create Session"
 
 ## Features
@@ -51,17 +57,21 @@ All three interfaces access the same backend research engine and share the same 
 ### Session Management
 
 #### Creating Sessions
+
 - Sessions organize your research work
-- Each session tracks progress through discovery, evaluation, acquisition, and integration phases
+- Each session tracks progress through discovery, evaluation, acquisition, and
+  integration phases
 - Sessions can be edited or deleted (with appropriate permissions)
 
 #### Session List
+
 - View all your sessions in a paginated list
 - Filter by phase (discovery, evaluation, acquisition, integration)
 - Search by session ID, sources, or keywords
 - Sort by date or progress
 
 #### Session Details
+
 - View comprehensive session information
 - Monitor progress metrics
 - Navigate between phases
@@ -70,6 +80,7 @@ All three interfaces access the same backend research engine and share the same 
 ### Source Discovery
 
 #### Initiating Discovery
+
 1. Navigate to the Discovery page
 2. Select a session (or create a new one)
 3. Configure discovery parameters:
@@ -79,6 +90,7 @@ All three interfaces access the same backend research engine and share the same 
 4. Click "Start Discovery"
 
 #### Monitoring Discovery
+
 - View discovered sources in real-time
 - Filter sources by:
   - Source type (journal article, dataset, etc.)
@@ -88,6 +100,7 @@ All three interfaces access the same backend research engine and share the same 
 - Click on a source to view details
 
 #### Source Details
+
 - View full source information:
   - Title, authors, publication date
   - Abstract and keywords
@@ -98,6 +111,7 @@ All three interfaces access the same backend research engine and share the same 
 ### Source Evaluation
 
 #### Initiating Evaluation
+
 1. Navigate to the Evaluation page
 2. Select sources to evaluate (from discovered sources)
 3. Configure evaluation criteria:
@@ -106,6 +120,7 @@ All three interfaces access the same backend research engine and share the same 
 4. Click "Start Evaluation"
 
 #### Viewing Evaluations
+
 - See evaluation results with quality and relevance scores
 - Filter by:
   - Priority tier
@@ -114,6 +129,7 @@ All three interfaces access the same backend research engine and share the same 
 - View evaluation details and recommendations
 
 #### Manual Evaluation Override
+
 - Edit evaluations manually if needed
 - Update scores and recommendations
 - Add notes and comments
@@ -121,6 +137,7 @@ All three interfaces access the same backend research engine and share the same 
 ### Dataset Acquisition
 
 #### Initiating Acquisition
+
 1. Navigate to the Acquisition page
 2. Select evaluated sources to acquire
 3. Configure acquisition:
@@ -129,12 +146,14 @@ All three interfaces access the same backend research engine and share the same 
 4. Click "Start Acquisition"
 
 #### Monitoring Acquisition
+
 - Track acquisition progress in real-time
 - View status: pending, in_progress, completed, failed
 - See storage location and file size
 - Filter by status
 
 #### Approval Workflow
+
 - Review acquisitions before finalizing
 - Approve or reject acquisitions
 - Update acquisition status manually if needed
@@ -142,6 +161,7 @@ All three interfaces access the same backend research engine and share the same 
 ### Integration Planning
 
 #### Creating Integration Plans
+
 1. Navigate to the Integration page
 2. Select acquisitions to include in the plan
 3. Configure integration:
@@ -150,6 +170,7 @@ All three interfaces access the same backend research engine and share the same 
 4. Click "Create Integration Plan"
 
 #### Viewing Integration Plans
+
 - See preprocessing steps and scripts
 - View schema mappings
 - Monitor plan execution status
@@ -158,12 +179,14 @@ All three interfaces access the same backend research engine and share the same 
 ### Progress Tracking
 
 #### Dashboard Progress
+
 - View overall progress for selected session
 - See phase-by-phase progress breakdown
 - Compare actual metrics vs targets
 - Real-time updates via WebSocket
 
 #### Progress Charts
+
 - Visualize progress over time
 - See metrics trends
 - Identify bottlenecks
@@ -172,6 +195,7 @@ All three interfaces access the same backend research engine and share the same 
 ### Report Generation
 
 #### Generating Reports
+
 1. Navigate to the Reports page
 2. Select a session
 3. Configure report:
@@ -182,6 +206,7 @@ All three interfaces access the same backend research engine and share the same 
 4. Click "Generate Report"
 
 #### Viewing Reports
+
 - View generated reports in the browser
 - Download reports in selected format
 - Print reports
@@ -234,18 +259,22 @@ All three interfaces access the same backend research engine and share the same 
 
 #### "Session not found" Error
 
-**Problem**: Trying to access a session that doesn't exist or you don't have permission to view.
+**Problem**: Trying to access a session that doesn't exist or you don't have
+permission to view.
 
 **Solution**:
+
 - Verify the session ID is correct
 - Check that you have `sessions:read` permission
 - Ensure you're logged in with the correct account
 
 #### Discovery Not Starting
 
-**Problem**: Discovery operation doesn't start or shows "pending" status indefinitely.
+**Problem**: Discovery operation doesn't start or shows "pending" status
+indefinitely.
 
 **Solution**:
+
 - Check that you have `discovery:create` permission
 - Verify session ID is valid
 - Check network connection
@@ -257,6 +286,7 @@ All three interfaces access the same backend research engine and share the same 
 **Problem**: Progress metrics don't update in real-time.
 
 **Solution**:
+
 - Check WebSocket connection status (should show "Connected")
 - Verify session ID is correct
 - Try refreshing the page
@@ -268,6 +298,7 @@ All three interfaces access the same backend research engine and share the same 
 **Problem**: Evaluation completes but scores are missing.
 
 **Solution**:
+
 - Check evaluation status (should be "completed")
 - Verify source was properly evaluated
 - Try refreshing the evaluation list
@@ -279,6 +310,7 @@ All three interfaces access the same backend research engine and share the same 
 **Problem**: Acquisition operation fails with error.
 
 **Solution**:
+
 - Check acquisition status and error message
 - Verify source is available and accessible
 - Check storage location permissions
@@ -290,6 +322,7 @@ All three interfaces access the same backend research engine and share the same 
 **Problem**: Report generation fails or times out.
 
 **Solution**:
+
 - Check report status
 - Try generating a smaller report (fewer sections)
 - Ensure session has data to report on
@@ -301,6 +334,7 @@ All three interfaces access the same backend research engine and share the same 
 #### Slow Page Loading
 
 **Solutions**:
+
 - Clear browser cache
 - Check network connection
 - Reduce number of items per page
@@ -310,6 +344,7 @@ All three interfaces access the same backend research engine and share the same 
 #### Real-time Updates Lagging
 
 **Solutions**:
+
 - Check WebSocket connection
 - Reduce number of active sessions
 - Close unused browser tabs
@@ -319,11 +354,13 @@ All three interfaces access the same backend research engine and share the same 
 ### Browser Compatibility
 
 **Supported Browsers**:
+
 - Chrome/Edge (latest 2 versions)
 - Firefox (latest 2 versions)
 - Safari (latest 2 versions)
 
 **Required Features**:
+
 - JavaScript enabled
 - WebSocket support
 - LocalStorage enabled
@@ -333,96 +370,99 @@ All three interfaces access the same backend research engine and share the same 
 
 ### General Questions
 
-**Q: How many sessions can I create?**
-A: There's no hard limit, but performance may degrade with very large numbers. Consider archiving old sessions.
+**Q: How many sessions can I create?** A: There's no hard limit, but performance
+may degrade with very large numbers. Consider archiving old sessions.
 
-**Q: Can I share sessions with other users?**
-A: Session access is controlled by permissions. Contact your administrator to grant access to other users.
+**Q: Can I share sessions with other users?** A: Session access is controlled by
+permissions. Contact your administrator to grant access to other users.
 
-**Q: How long are sessions stored?**
-A: Sessions are stored indefinitely unless manually deleted. Check with your administrator for retention policies.
+**Q: How long are sessions stored?** A: Sessions are stored indefinitely unless
+manually deleted. Check with your administrator for retention policies.
 
-**Q: Can I export session data?**
-A: Yes, use the report generation feature to export session data in various formats.
+**Q: Can I export session data?** A: Yes, use the report generation feature to
+export session data in various formats.
 
 ### Discovery Questions
 
-**Q: How many sources can I discover per session?**
-A: There's no hard limit, but very large discovery operations may take longer. Use the `max_results` parameter to limit results.
+**Q: How many sources can I discover per session?** A: There's no hard limit,
+but very large discovery operations may take longer. Use the `max_results`
+parameter to limit results.
 
-**Q: Can I discover from multiple sources simultaneously?**
-A: Yes, select multiple sources when initiating discovery.
+**Q: Can I discover from multiple sources simultaneously?** A: Yes, select
+multiple sources when initiating discovery.
 
-**Q: How often are sources updated?**
-A: Discovery results are cached. New discovery operations fetch fresh data.
+**Q: How often are sources updated?** A: Discovery results are cached. New
+discovery operations fetch fresh data.
 
 ### Evaluation Questions
 
-**Q: What do quality and relevance scores mean?**
-A: Both scores range from 0-1:
+**Q: What do quality and relevance scores mean?** A: Both scores range from 0-1:
+
 - **Quality**: Dataset quality, documentation, license clarity
 - **Relevance**: How well the dataset matches your research goals
 
-**Q: Can I change evaluation scores?**
-A: Yes, use the manual evaluation override feature to edit scores and recommendations.
+**Q: Can I change evaluation scores?** A: Yes, use the manual evaluation
+override feature to edit scores and recommendations.
 
-**Q: What does "recommendation" mean?**
-A: Recommendations suggest whether to acquire a source:
+**Q: What does "recommendation" mean?** A: Recommendations suggest whether to
+acquire a source:
+
 - **Acquire**: High quality and relevance, recommended for acquisition
 - **Review**: Needs manual review before decision
 - **Reject**: Low quality or relevance, not recommended
 
 ### Acquisition Questions
 
-**Q: Where are datasets stored?**
-A: Datasets are stored in the configured storage location (e.g., S3 bucket). Check acquisition details for exact location.
+**Q: Where are datasets stored?** A: Datasets are stored in the configured
+storage location (e.g., S3 bucket). Check acquisition details for exact
+location.
 
-**Q: Can I download datasets directly?**
-A: Yes, if the source provides direct download links. Otherwise, datasets are acquired through the configured method.
+**Q: Can I download datasets directly?** A: Yes, if the source provides direct
+download links. Otherwise, datasets are acquired through the configured method.
 
-**Q: What happens if acquisition fails?**
-A: Failed acquisitions show error details. You can retry or update the acquisition configuration.
+**Q: What happens if acquisition fails?** A: Failed acquisitions show error
+details. You can retry or update the acquisition configuration.
 
 ### Integration Questions
 
-**Q: Can I modify integration plans?**
-A: Integration plans can be regenerated with different parameters. Preprocessing scripts can be customized.
+**Q: Can I modify integration plans?** A: Integration plans can be regenerated
+with different parameters. Preprocessing scripts can be customized.
 
-**Q: How do I use preprocessing scripts?**
-A: Download the script and run it on your acquired datasets. Scripts are provided in Python format.
+**Q: How do I use preprocessing scripts?** A: Download the script and run it on
+your acquired datasets. Scripts are provided in Python format.
 
-**Q: Can I create multiple integration plans per session?**
-A: Yes, you can create multiple integration plans with different configurations.
+**Q: Can I create multiple integration plans per session?** A: Yes, you can
+create multiple integration plans with different configurations.
 
 ### Progress Questions
 
-**Q: How is progress calculated?**
-A: Progress is calculated based on completed phases and metrics compared to targets. Overall progress is a weighted average.
+**Q: How is progress calculated?** A: Progress is calculated based on completed
+phases and metrics compared to targets. Overall progress is a weighted average.
 
-**Q: Why doesn't progress match my expectations?**
-A: Progress calculation considers all phases. Check individual phase progress and metrics for details.
+**Q: Why doesn't progress match my expectations?** A: Progress calculation
+considers all phases. Check individual phase progress and metrics for details.
 
-**Q: Can I set custom targets?**
-A: Yes, set weekly targets when creating or updating a session.
+**Q: Can I set custom targets?** A: Yes, set weekly targets when creating or
+updating a session.
 
 ### Report Questions
 
-**Q: What report formats are available?**
-A: PDF, HTML, and JSON formats are supported.
+**Q: What report formats are available?** A: PDF, HTML, and JSON formats are
+supported.
 
-**Q: Can I customize report content?**
-A: Yes, select which sections to include when generating reports.
+**Q: Can I customize report content?** A: Yes, select which sections to include
+when generating reports.
 
-**Q: How long do reports take to generate?**
-A: Report generation time depends on session size and selected sections. Typically 30 seconds to 2 minutes.
+**Q: How long do reports take to generate?** A: Report generation time depends
+on session size and selected sections. Typically 30 seconds to 2 minutes.
 
 ## Support
 
 For additional support:
+
 - Check the API documentation for technical details
 - Review component documentation for UI customization
 - Contact your administrator for permission issues
 - Submit a support ticket for bugs or feature requests
 
 **Last Updated**: January 2025
-
