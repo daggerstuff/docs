@@ -7,7 +7,7 @@ provides quick examples for using metrics in both client and server code.
 
 ✅ **Metrics are enabled** in both `sentry.client.config.js` and
 `sentry.server.config.js`  
-✅ **SDK Version**: `@sentry/astro@^10.29.2` (requires >= 10.29.2)  
+✅ **SDK Version**: `@sentry/astro@^10.32.1` (requires >= 10.32.1)  
 ✅ **DSN**: Configured and matches Sentry project  
 ✅ **Utilities**: Available in `src/lib/sentry/utils.ts`
 
