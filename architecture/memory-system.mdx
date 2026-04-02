@@ -500,7 +500,8 @@ mcpMemoryManager.addConversationContext(userId, context, sessionId)
 
 <Tip>
   The `MCPMemoryClient` communicates with the MCP Server over HTTP. The server
-  URL is configured via `NEXT_PUBLIC_MEMORY_API_URL` (default:
+  Public/browser memory traffic should flow through app/backend routes. Do not
+  expose the internal memory service URL to frontend clients.
   `http://localhost:5003`). In production, this is routed through the internal
   Docker/Kubernetes network.
 </Tip>
@@ -532,7 +533,7 @@ interface MemoryEntry {
 | `GEMINI_API_KEY`             | Yes      | —                       | Google Gemini API for PII filtering and generation    |
 | `HINDSIGHT_API_KEY`               | No       | —                       | Hindsight Platform API (cloud). If absent, uses local Hindsight |
 | `MEMORY_SERVER_PORT`         | No       | `5003`                  | MCP Memory Server listen port                         |
-| `NEXT_PUBLIC_MEMORY_API_URL` | No       | `http://localhost:5003` | Frontend client base URL                              |
+| `NEXT_PUBLIC_USE_LOCAL_MEMORY` | No       | `false`                 | Force browser hooks to use in-memory dev fallback instead of backend routes |
 
 ---
 

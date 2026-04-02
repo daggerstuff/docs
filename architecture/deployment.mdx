@@ -789,7 +789,8 @@ dependency connectivity:
 
     # Memory
     MEMORY_SERVER_PORT=5003
-    NEXT_PUBLIC_MEMORY_API_URL=<http://localhost:5003>
+    # Public clients no longer talk to the internal memory service directly.
+    # Use app/backend memory routes instead of exposing port 5003.
 
     ```
 
