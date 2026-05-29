@@ -36,20 +36,25 @@ You need to create a Slack App and obtain the following credentials:
 After installation, you'll need to collect:
 
 ### Bot Token
+
 - On the **OAuth & Permissions** page
 - Copy the **Bot User OAuth Token** (starts with `xoxb-`)
 
-### Team ID  
+### Team ID
+
 - On the **Basic Information** page under **App Credentials**
 - Copy the **Team ID** (starts with `T`)
 
 ### Channel IDs
+
 To get channel IDs:
+
 1. Open Slack and go to a channel
 2. Copy the channel ID from the URL or use Slack's API
 3. Example: `C1234567890`
 
 Alternatively, you can use the **List Conversations API**:
+
 ```bash
 curl -H "Authorization: Bearer YOUR_BOT_TOKEN" \
   "https://slack.com/api/conversations.list"
@@ -70,7 +75,8 @@ export SLACK_CHANNEL_IDS="C01234567,C76543210"
 
 ## Step 5: Configure Zed
 
-The `.mcp.json` file is already configured. You just need to load your environment variables.
+The `.mcp.json` file is already configured. You just need to load your
+environment variables.
 
 ### Option A: Source before starting Zed
 
@@ -95,6 +101,7 @@ fi
 ### Option C: Use Zed's settings (alternative)
 
 If you prefer, you can configure it directly in Zed settings:
+
 ```json
 {
   "context_servers": {
@@ -109,7 +116,8 @@ If you prefer, you can configure it directly in Zed settings:
 }
 ```
 
-**⚠️ Warning**: Option C exposes credentials in plain text in settings. Option A/B with environment variables is more secure.
+**⚠️ Warning**: Option C exposes credentials in plain text in settings. Option
+A/B with environment variables is more secure.
 
 ## Step 6: Verify Setup
 
@@ -118,6 +126,7 @@ Test the connection by asking Zed/Claude:
 > "Send a test message to Slack channel [channel name]"
 
 Or check if the MCP server is available:
+
 - Look for "Slack" in your available tools
 - Try searching for Slack channels or messages
 
@@ -135,15 +144,18 @@ Once connected, the Slack MCP server enables:
 
 ### Bot can't find channels
 
-Ensure your bot has been added to the channels it needs to access. The bot needs to be a member of channels to read their content.
+Ensure your bot has been added to the channels it needs to access. The bot needs
+to be a member of channels to read their content.
 
 ### OAuth token errors
 
-Verify your token starts with `xoxb-` and hasn't expired. You may need to reinstall the app.
+Verify your token starts with `xoxb-` and hasn't expired. You may need to
+reinstall the app.
 
 ### Permission denied errors
 
-Check that all required scopes are added in **OAuth & Permissions** and the app was reinstalled after adding new scopes.
+Check that all required scopes are added in **OAuth & Permissions** and the app
+was reinstalled after adding new scopes.
 
 ## Security Notes
 
