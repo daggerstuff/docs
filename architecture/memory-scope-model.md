@@ -12,22 +12,22 @@ contract between public API consumers and the internal memory service.
 
 ## Scope Dimensions
 
-| Dimension     | Type     | Example        | Server-Derived | Description                            |
-|---------------|----------|----------------|----------------|----------------------------------------|
-| `userId`      | required | `auth0\|abc123` | Yes            | The authenticated user's unique ID     |
-| `accountId`   | optional | `acc_xyz`      | Yes            | Billing account / organization account |
-| `workspaceId` | optional | `ws_42`        | Yes            | Workspace or team within an account    |
+| Dimension     | Type     | Example          | Server-Derived  | Description                            |
+|---------------|----------|------------------|-----------------|----------------------------------------|
+| `userId`      | required | `auth0\|abc123`  | Yes             | The authenticated user's unique ID     |
+| `accountId`   | optional | `acc_xyz`        | Yes             | Billing account / organization account |
+| `workspaceId` | optional | `ws_42`          | Yes             | Workspace or team within an account    |
 
 The following dimensions exist in the internal memory service but are
 **not exposed** to public API consumers — they are internal-only:
 
-| Dimension   | Internal Only | Description                                   |
-|-------------|---------------|-----------------------------------------------|
-| `orgId`     | Yes           | Organization scope for multi-tenant Foresight |
-| `projectId` | Yes           | Project-level scope                           |
-| `sessionId` | Yes           | Agent session scope                           |
-| `agentId`   | Yes           | AI agent identity                             |
-| `runId`     | Yes           | Execution run scope                           |
+| Dimension    | Internal Only | Description                                   |
+|--------------|---------------|-----------------------------------------------|
+| `orgId`      | Yes           | Organization scope for multi-tenant Foresight |
+| `projectId`  | Yes           | Project-level scope                           |
+| `sessionId`  | Yes           | Agent session scope                           |
+| `agentId`    | Yes           | AI agent identity                             |
+| `runId`      | Yes           | Execution run scope                           |
 
 ## Derivation Rules
 
