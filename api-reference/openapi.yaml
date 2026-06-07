@@ -51,8 +51,7 @@ paths:
   /search:
     get:
       summary: Search Content
-      description:
-        Search across blog posts, documentation, and research articles.
+      description: Search across blog posts, documentation, and research articles.
       operationId: searchContent
       tags: [Content]
       parameters:
@@ -236,8 +235,7 @@ paths:
               properties:
                 content:
                   type: string
-                  example:
-                    'Today I practiced deep breathing exercises and felt calmer.'
+                  example: 'Today I practiced deep breathing exercises and felt calmer.'
                 metadata:
                   type: object
                   example:
@@ -437,8 +435,7 @@ paths:
               properties:
                 content:
                   type: string
-                  example:
-                    'Today I practiced deep breathing exercises and felt calmer.'
+                  example: 'Today I practiced deep breathing exercises and felt calmer.'
                 metadata:
                   type: object
                   example:

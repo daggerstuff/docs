@@ -11,22 +11,22 @@ between public API consumers and the internal memory service.
 
 ## Scope Dimensions
 
-| Dimension     | Type     | Example         | Server-Derived | Description                            |
-| ------------- | -------- | --------------- | -------------- | -------------------------------------- |
-| `userId`      | required | `auth0\|abc123` | Yes            | The authenticated user's unique ID     |
-| `accountId`   | optional | `acc_xyz`       | Yes            | Billing account / organization account |
-| `workspaceId` | optional | `ws_42`         | Yes            | Workspace or team within an account    |
+| Dimension | Type | Example | Server-Derived | Description |
+| --- | --- | --- | --- | --- |
+| `userId` | required | `auth0\|abc123` | Yes | The authenticated user's unique ID |
+| `accountId` | optional | `acc_xyz` | Yes | Billing account / organization account |
+| `workspaceId` | optional | `ws_42` | Yes | Workspace or team within an account |
 
 The following dimensions exist in the internal memory service but are **not
 exposed** to public API consumers — they are internal-only:
 
-| Dimension   | Internal Only | Description                                   |
-| ----------- | ------------- | --------------------------------------------- |
-| `orgId`     | Yes           | Organization scope for multi-tenant Foresight |
-| `projectId` | Yes           | Project-level scope                           |
-| `sessionId` | Yes           | Agent session scope                           |
-| `agentId`   | Yes           | AI agent identity                             |
-| `runId`     | Yes           | Execution run scope                           |
+| Dimension | Internal Only | Description |
+| --- | --- | --- |
+| `orgId` | Yes | Organization scope for multi-tenant Foresight |
+| `projectId` | Yes | Project-level scope |
+| `sessionId` | Yes | Agent session scope |
+| `agentId` | Yes | AI agent identity |
+| `runId` | Yes | Execution run scope |
 
 ## Derivation Rules
 
@@ -59,14 +59,14 @@ Scope = {
 
 The scope model guarantees the following isolations:
 
-| Scenario        | userId | accountId | Workspace | Isolation                          |
-| --------------- | ------ | --------- | --------- | ---------------------------------- |
-| Consumer user A | user-a | —         | —         | No collision — diff userId         |
-| Consumer user B | user-b | —         | —         | No collision with user A           |
-| Same account    | user-a | acc-1     | —         | Sees shared memories via accountId |
-| Diff accounts   | user-a | acc-1     | —         | No collision — diff accountId      |
-| Same workspace  | user-a | acc-1     | ws-1      | Sees workspace-shared memories     |
-| Diff workspaces | user-a | acc-1     | ws-1      | No collision — diff workspaceId    |
+| Scenario | userId | accountId | Workspace | Isolation |
+| --- | --- | --- | --- | --- |
+| Consumer user A | user-a | — | — | No collision — diff userId |
+| Consumer user B | user-b | — | — | No collision with user A |
+| Same account | user-a | acc-1 | — | Sees shared memories via accountId |
+| Diff accounts | user-a | acc-1 | — | No collision — diff accountId |
+| Same workspace | user-a | acc-1 | ws-1 | Sees workspace-shared memories |
+| Diff workspaces | user-a | acc-1 | ws-1 | No collision — diff workspaceId |
 
 ## Public API Contract
 
@@ -123,13 +123,13 @@ If a new scope dimension needs to be added (e.g., `integrationId` or `appId`):
 
 ## Key Files
 
-| File                                               | Purpose                                        |
-| -------------------------------------------------- | ---------------------------------------------- |
-| `src/lib/auth/index.ts`                            | JWT token validation and user extraction       |
-| `src/lib/auth/types.ts`                            | User and auth type definitions                 |
-| `src/lib/server/internal-memory-service-client.ts` | Internal scope input type and service client   |
-| `src/lib/server/internal-memory-scope.ts`          | Scope payload/query serialization              |
-| `src/lib/services/product-memory-gateway.ts`       | Public product gateway with scope projection   |
-| `src/pages/api/memory/_shared.ts`                  | Route helpers and `toMemoryScope()` derivation |
-| `src/pages/api/memory/*.ts`                        | Individual API route handlers                  |
-| `ai/api/mcp_server/memory_scope.py`                | Python-side scope model for MCP tools          |
+| File | Purpose |
+| --- | --- |
+| `src/lib/auth/index.ts` | JWT token validation and user extraction |
+| `src/lib/auth/types.ts` | User and auth type definitions |
+| `src/lib/server/internal-memory-service-client.ts` | Internal scope input type and service client |
+| `src/lib/server/internal-memory-scope.ts` | Scope payload/query serialization |
+| `src/lib/services/product-memory-gateway.ts` | Public product gateway with scope projection |
+| `src/pages/api/memory/_shared.ts` | Route helpers and `toMemoryScope()` derivation |
+| `src/pages/api/memory/*.ts` | Individual API route handlers |
+| `ai/api/mcp_server/memory_scope.py` | Python-side scope model for MCP tools |
