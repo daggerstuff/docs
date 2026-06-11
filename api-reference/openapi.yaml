@@ -475,8 +475,11 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
   /memory/stats:
     get:
-      summary: Get Memory Statistics
-      description: Get statistics about the authenticated user's memories.
+      summary: Get Memory Statistics (LEGACY)
+      description: |
+        **Legacy endpoint** — not part of the v1 public contract. Will be
+        deprecated once the v1 memory surface stabilises. See
+        `docs/api/memory-v1-contract.md`.
       operationId: getMemoryStats
       tags: [Memory]
       responses:
@@ -508,6 +511,179 @@ paths:
                           challenge: 13
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
+  /v1/memory:
+    get:
+      summary: List memories (v1)
+      description: |
+        Canonical v1 public memory API. Returns only the fields the public
+        contract promises — see `docs/api/memory-v1-contract.md` and
+        `src/lib/memory/contract/v1.ts`.
+
+        Identity (`userId`, `accountId`, `workspaceId`, `tenantId`) is
+        resolved server-side from the caller's session; it is NEVER
+        accepted as a query parameter.
+      operationId: v1ListMemories
+      tags: [Memory v1]
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, default: 10, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0, minimum: 0 }
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: tags
+          in: query
+          description: Repeatable. Filter by tag (logical AND).
+          schema:
+            type: array
+            items: { type: string }
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: Memories listed successfully
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1ListMemoriesResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+    post:
+      summary: Create a memory (v1)
+      description: |
+        Canonical v1 public memory API. Identity fields are derived from
+        the caller's session and are rejected if supplied. Strict
+        validation — unknown fields return 400.
+      operationId: v1CreateMemory
+      tags: [Memory v1]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/V1CreateMemoryRequest' }
+      responses:
+        '201':
+          description: Memory created
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1CreateMemoryResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+  /v1/memory/{memoryId}:
+    parameters:
+      - name: memoryId
+        in: path
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      summary: Get a memory by id (v1)
+      operationId: v1GetMemory
+      tags: [Memory v1]
+      responses:
+        '200':
+          description: Memory retrieved
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1GetMemoryResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '404': { $ref: '#/components/responses/V1NotFound' }
+    patch:
+      summary: Update a memory (v1)
+      description: Full content replacement with optional metadata.
+      operationId: v1UpdateMemory
+      tags: [Memory v1]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/V1UpdateMemoryRequest' }
+      responses:
+        '200':
+          description: Memory updated
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1UpdateMemoryResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '404': { $ref: '#/components/responses/V1NotFound' }
+    delete:
+      summary: Delete a memory (v1)
+      operationId: v1DeleteMemory
+      tags: [Memory v1]
+      responses:
+        '200':
+          description: Memory deleted
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1DeleteMemoryResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '404': { $ref: '#/components/responses/V1NotFound' }
+  /v1/memory/search:
+    get:
+      summary: Search memories (v1, query string)
+      operationId: v1SearchMemoriesGet
+      tags: [Memory v1]
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema: { type: string, minLength: 1, maxLength: 1000 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 10, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0, minimum: 0 }
+      responses:
+        '200':
+          description: Search results
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1SearchMemoriesResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+    post:
+      summary: Search memories (v1, JSON body)
+      operationId: v1SearchMemoriesPost
+      tags: [Memory v1]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/V1SearchMemoryRequest' }
+      responses:
+        '200':
+          description: Search results
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1SearchMemoriesResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
   /developer/api-keys:
     get:
       summary: List API Keys
@@ -786,6 +962,153 @@ components:
         error: { type: string }
         message: { type: string }
         code: { type: string }
+    V1Error:
+      type: object
+      required: [error, message]
+      properties:
+        error:
+          type: string
+          description: |
+            Stable machine-readable code. One of:
+            `bad_request`, `validation_failed`, `unauthorized`,
+            `forbidden`, `not_found`, `conflict`, `payload_too_large`,
+            `rate_limited`, `internal_error`, `upstream_unavailable`,
+            `upstream_timeout`.
+          example: not_found
+        message:
+          type: string
+          description: Human-readable message. Safe to display to end users.
+          example: The requested memory was not found.
+    V1MemoryScope:
+      type: string
+      enum: [session, arc, trait, fact]
+    V1RetentionPolicy:
+      type: string
+      enum: [ephemeral, short_term, long_term, permanent]
+    V1Pagination:
+      type: object
+      required: [limit, offset, total]
+      properties:
+        limit: { type: integer, minimum: 1, maximum: 100 }
+        offset: { type: integer, minimum: 0 }
+        total: { type: integer, minimum: 0 }
+    V1PublicMemory:
+      type: object
+      description: |
+        The public v1 memory record. This is a strict subset of the
+        internal `UnifiedMemory` type — internal fields (e.g. `vectorId`,
+        `emotionalContext`, `empathyMetrics`, `bankId`, `sourceService`)
+        are deliberately omitted.
+      additionalProperties: false
+      required:
+        - id
+        - content
+        - scope
+        - retention
+        - category
+        - tags
+        - version
+        - importance
+        - createdAt
+        - updatedAt
+      properties:
+        id: { type: string, format: uuid }
+        content: { type: string, minLength: 1, maxLength: 64000 }
+        scope: { $ref: '#/components/schemas/V1MemoryScope' }
+        retention: { $ref: '#/components/schemas/V1RetentionPolicy' }
+        category: { type: string, minLength: 1, maxLength: 64 }
+        tags:
+          type: array
+          maxItems: 64
+          items: { type: string, minLength: 1, maxLength: 64 }
+        version: { type: integer, minimum: 0 }
+        importance: { type: number, minimum: 0, maximum: 1 }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time, nullable: true }
+    V1CreateMemoryRequest:
+      type: object
+      additionalProperties: false
+      required: [content]
+      properties:
+        content: { type: string, minLength: 1, maxLength: 64000 }
+        scope: { $ref: '#/components/schemas/V1MemoryScope' }
+        retention: { $ref: '#/components/schemas/V1RetentionPolicy' }
+        category: { type: string, minLength: 1, maxLength: 64 }
+        tags:
+          type: array
+          maxItems: 64
+          items: { type: string, minLength: 1, maxLength: 64 }
+        importance: { type: number, minimum: 0, maximum: 1 }
+    V1UpdateMemoryRequest:
+      type: object
+      additionalProperties: false
+      required: [content]
+      properties:
+        content: { type: string, minLength: 1, maxLength: 64000 }
+        scope: { $ref: '#/components/schemas/V1MemoryScope' }
+        retention: { $ref: '#/components/schemas/V1RetentionPolicy' }
+        category: { type: string, minLength: 1, maxLength: 64 }
+        tags:
+          type: array
+          maxItems: 64
+          items: { type: string, minLength: 1, maxLength: 64 }
+        importance: { type: number, minimum: 0, maximum: 1 }
+    V1SearchMemoryRequest:
+      type: object
+      additionalProperties: false
+      required: [query]
+      properties:
+        query: { type: string, minLength: 1, maxLength: 1000 }
+        limit: { type: integer, minimum: 1, maximum: 100, default: 10 }
+        offset: { type: integer, minimum: 0, default: 0 }
+    V1ListMemoriesResponse:
+      type: object
+      additionalProperties: false
+      required: [data, pagination]
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/V1PublicMemory' }
+        pagination: { $ref: '#/components/schemas/V1Pagination' }
+    V1CreateMemoryResponse:
+      type: object
+      additionalProperties: false
+      required: [data]
+      properties:
+        data: { $ref: '#/components/schemas/V1PublicMemory' }
+    V1GetMemoryResponse:
+      type: object
+      additionalProperties: false
+      required: [data]
+      properties:
+        data: { $ref: '#/components/schemas/V1PublicMemory' }
+    V1UpdateMemoryResponse:
+      type: object
+      additionalProperties: false
+      required: [data]
+      properties:
+        data: { $ref: '#/components/schemas/V1PublicMemory' }
+    V1DeleteMemoryResponse:
+      type: object
+      additionalProperties: false
+      required: [data]
+      properties:
+        data:
+          type: object
+          additionalProperties: false
+          required: [id]
+          properties:
+            id: { type: string, format: uuid }
+    V1SearchMemoriesResponse:
+      type: object
+      additionalProperties: false
+      required: [data, query, pagination]
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/V1PublicMemory' }
+        query: { type: string }
+        pagination: { $ref: '#/components/schemas/V1Pagination' }
   responses:
     BadRequest:
       description: Invalid request parameters or body
@@ -807,6 +1130,25 @@ components:
       content:
         application/json:
           schema: { $ref: '#/components/schemas/Error' }
+    V1BadRequest:
+      description: |
+        The request was invalid. The stable `error` code is one of
+        `bad_request` (malformed body) or `validation_failed` (failed the
+        Zod schema). Consumers should switch on `error`, not on
+        `message`.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/V1Error' }
+    V1Unauthorized:
+      description: Authentication is required.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/V1Error' }
+    V1NotFound:
+      description: The requested memory was not found or is not visible to the caller.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/V1Error' }
 tags:
   - name: User
     description: User profile and management
@@ -819,6 +1161,14 @@ tags:
   - name: Bias Analysis
     description: Bias detection and analysis
   - name: Memory
-    description: Memory and session management
+    description: |
+      Legacy memory surface (action-named routes such as `/memory/add`,
+      `/memory/list`). Not part of the canonical public contract — use
+      the `Memory v1` tag for new integrations.
+  - name: Memory v1
+    description: |
+      Canonical v1 public memory API. See
+      `docs/api/memory-v1-contract.md` and the Zod schemas at
+      `src/lib/memory/contract/v1.ts` for the authoritative contract.
   - name: Developer API Keys
     description: API key management for developers
