@@ -1,10 +1,11 @@
 # Memory API Documentation
 
-**Version:** 1.0.0
-**Base URL:** `/api/memory`
-**Authentication:** Bearer Token (JWT)
+**Version:** 1.0.0 **Base URL:** `/api/memory` **Authentication:** Bearer Token
+(JWT)
 
-The Memory API provides a unified interface for storing, retrieving, and managing therapeutic conversation memories with rich metadata and emotional context.
+The Memory API provides a unified interface for storing, retrieving, and
+managing therapeutic conversation memories with rich metadata and emotional
+context.
 
 ## Table of Contents
 
@@ -26,7 +27,8 @@ The Memory API provides a unified interface for storing, retrieving, and managin
 
 ## Authentication
 
-All API requests require authentication using a Bearer Token in the Authorization header:
+All API requests require authentication using a Bearer Token in the
+Authorization header:
 
 ```http
 Authorization: Bearer YOUR_JWT_TOKEN

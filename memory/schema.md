@@ -4,11 +4,11 @@ Canonical memory block schema for the Pixelated Empathy therapeutic AI system.
 
 ## Files
 
-| File | Language | Purpose |
-| --- | --- | --- |
-| `src/types/memory.ts` | TypeScript | Primary interface definition |
-| `ai/memory/schema.py` | Python | Pydantic dataclass mirror |
-| `ai/memory/schema.json` | JSON Schema | Validation schema |
+| File                    | Language    | Purpose                      |
+| ----------------------- | ----------- | ---------------------------- |
+| `src/types/memory.ts`   | TypeScript  | Primary interface definition |
+| `ai/memory/schema.py`   | Python      | Pydantic dataclass mirror    |
+| `ai/memory/schema.json` | JSON Schema | Validation schema            |
 
 ## Core Types
 
@@ -39,13 +39,13 @@ importance = α·recency + β·relevance + γ·emotional_weight + δ·actionabil
 
 Default weights (configurable via env):
 
-| Param | Default | Description |
-| --- | --- | --- |
-| α (alpha) | 0.25 | Recency weight |
-| β (beta) | 0.25 | Relevance weight |
-| γ (gamma) | 0.30 | Emotional weight |
-| δ (delta) | 0.20 | Actionability weight |
-| τ (tau) | 7 days | Exponential decay time constant |
+| Param     | Default | Description                     |
+| --------- | ------- | ------------------------------- |
+| α (alpha) | 0.25    | Recency weight                  |
+| β (beta)  | 0.25    | Relevance weight                |
+| γ (gamma) | 0.30    | Emotional weight                |
+| δ (delta) | 0.20    | Actionability weight            |
+| τ (tau)   | 7 days  | Exponential decay time constant |
 
 ## Emotional Categories
 
