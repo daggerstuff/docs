@@ -16,9 +16,9 @@ info:
     email: api-support@pixelatedempathy.com
     url: https://pixelatedempathy.com/support
 servers:
-  - url: 'https://api.pixelatedempathy.com/api/v1'
+  - url: 'https://api.pixelatedempathy.com'
     description: Production API server
-  - url: 'https://staging-api.pixelatedempathy.com/api/v1'
+  - url: 'https://staging-api.pixelatedempathy.com'
     description: Staging API server
 security:
   - ApiKeyAuth: []
@@ -147,7 +147,7 @@ paths:
                   preferences: { $ref: '#/components/schemas/UserPreferences' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-  /bias-analysis/analyze:
+  /api/bias-analysis/analyze:
     post:
       summary: Analyze Bias
       description: Perform bias analysis on clinical text.
@@ -166,7 +166,7 @@ paths:
               schema: { $ref: '#/components/schemas/BiasAnalysisResult' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-  /memory:
+  /api/memory:
     get:
       summary: List Memories
       description:
@@ -262,7 +262,7 @@ paths:
                     $ref: '#/components/schemas/ProductMemoryRecord'
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-  /memory/search:
+  /api/memory/search:
     get:
       summary: Search Memories
       description: Search memories by query string.
@@ -389,7 +389,7 @@ paths:
                         example: 'therapist'
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-  /memory/{memoryId}:
+  /api/memory/{memoryId}:
     get:
       summary: Get Memory
       description: Get a specific memory by ID.
@@ -476,7 +476,7 @@ paths:
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '404': { $ref: '#/components/responses/NotFound' }
-  /memory/stats:
+  /api/memory/stats:
     get:
       summary: Get Memory Statistics (LEGACY)
       description: |
@@ -514,7 +514,7 @@ paths:
                           challenge: 13
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-  /v1/memory:
+  /api/v1/memory:
     get:
       summary: List memories (v1)
       description: |
@@ -580,7 +580,7 @@ paths:
               schema: { $ref: '#/components/schemas/V1CreateMemoryResponse' }
         '400': { $ref: '#/components/responses/V1BadRequest' }
         '401': { $ref: '#/components/responses/V1Unauthorized' }
-  /v1/memory/{memoryId}:
+  /api/v1/memory/{memoryId}:
     parameters:
       - name: memoryId
         in: path
@@ -640,7 +640,7 @@ paths:
         '400': { $ref: '#/components/responses/V1BadRequest' }
         '401': { $ref: '#/components/responses/V1Unauthorized' }
         '404': { $ref: '#/components/responses/V1NotFound' }
-  /v1/memory/search:
+  /api/v1/memory/search:
     get:
       summary: Search memories (v1, query string)
       operationId: v1SearchMemoriesGet
@@ -687,7 +687,7 @@ paths:
               schema: { $ref: '#/components/schemas/V1SearchMemoriesResponse' }
         '400': { $ref: '#/components/responses/V1BadRequest' }
         '401': { $ref: '#/components/responses/V1Unauthorized' }
-  /developer/api-keys:
+  /api/developer/api-keys:
     get:
       summary: List API Keys
       description: List all API keys for the authenticated user.
@@ -723,7 +723,7 @@ paths:
               schema: { $ref: '#/components/schemas/CreateApiKeyResponse' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-  /developer/api-keys/{keyId}:
+  /api/developer/api-keys/{keyId}:
     delete:
       summary: Revoke API Key
       description: Revoke an existing API key.
@@ -736,6 +736,218 @@ paths:
           schema: { type: string }
       responses:
         '204': { description: API key revoked }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/training/jobs:
+    get:
+      summary: List training jobs
+      description: |
+        List all fine-tuning jobs, optionally filtered by backend or status.
+        Requires authentication (any role).
+      operationId: listTrainingJobs
+      tags: [Training]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: backend
+          in: query
+          description: Filter by backend type
+          schema:
+            type: string
+            enum: [openai, huggingface, local, dry-run]
+        - name: status
+          in: query
+          description: Filter by job status
+          schema:
+            type: string
+            enum: [queued, running, succeeded, failed, cancelled]
+      responses:
+        '200':
+          description: Jobs listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  jobs:
+                    type: array
+                    items: { $ref: '#/components/schemas/FineTuningJob' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      summary: Submit training job
+      description: |
+        Submit a new fine-tuning job. Requires admin or therapist role.
+        Supports OpenAI, HuggingFace, Local, and Dry-run backends.
+      operationId: submitTrainingJob
+      tags: [Training]
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SubmitTrainingJobRequest' }
+      responses:
+        '201':
+          description: Job submitted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  job: { $ref: '#/components/schemas/FineTuningJob' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /api/training/jobs/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+        description: Job ID
+    get:
+      summary: Get training job
+      description: Get a specific training job by ID. Requires authentication.
+      operationId: getTrainingJob
+      tags: [Training]
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Job retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  job: { $ref: '#/components/schemas/FineTuningJob' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      summary: Cancel training job
+      description: Cancel a running training job. Requires admin or therapist role.
+      operationId: cancelTrainingJob
+      tags: [Training]
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Job cancelled successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  job: { $ref: '#/components/schemas/FineTuningJob' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/training/sessions:
+    get:
+      summary: List training sessions
+      description: |
+        List all training sessions, optionally filtered by status or trainee.
+        Requires authentication (any role).
+      operationId: listTrainingSessions
+      tags: [Training]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, paused, ended]
+        - name: traineeId
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: Sessions listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  sessions:
+                    type: array
+                    items: { $ref: '#/components/schemas/TrainingSession' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      summary: Create training session
+      description: Create a new training session. Requires admin or therapist role.
+      operationId: createTrainingSession
+      tags: [Training]
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CreateTrainingSessionRequest' }
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  session: { $ref: '#/components/schemas/TrainingSession' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /api/training/sessions/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+        description: Session ID
+    get:
+      summary: Get training session
+      description: Get a specific training session by ID. Requires authentication.
+      operationId: getTrainingSession
+      tags: [Training]
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Session retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  session: { $ref: '#/components/schemas/TrainingSession' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      summary: End training session
+      description: End a training session. Requires admin or therapist role.
+      operationId: endTrainingSession
+      tags: [Training]
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Session ended successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  session: { $ref: '#/components/schemas/TrainingSession' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
         '404': { $ref: '#/components/responses/NotFound' }
   /admin/users:
     get:
@@ -1112,6 +1324,130 @@ components:
           items: { $ref: '#/components/schemas/V1PublicMemory' }
         query: { type: string }
         pagination: { $ref: '#/components/schemas/V1Pagination' }
+    FineTuningJob:
+      type: object
+      properties:
+        id: { type: string, example: 'job-1718200000000-abc123' }
+        model: { type: string, example: 'gpt-4o-mini-2024-07-18' }
+        backend:
+          type: string
+          enum: [openai, huggingface, local, dry-run]
+          example: openai
+        status:
+          type: string
+          enum: [queued, running, succeeded, failed, cancelled]
+          example: running
+        progress:
+          type: number
+          minimum: 0
+          maximum: 100
+          example: 45
+          description: 'Training progress percentage (0-100)'
+        nEpochs: { type: integer, example: 3 }
+        batchSize: { type: integer, example: 4, nullable: true }
+        learningRateMultiplier: { type: number, example: 1.0, nullable: true }
+        suffix: { type: string, nullable: true }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time, nullable: true }
+    SubmitTrainingJobRequest:
+      type: object
+      required: [model, backend]
+      properties:
+        model:
+          type: string
+          description: 'Base model to fine-tune'
+          example: 'gpt-4o-mini-2024-07-18'
+        backend:
+          type: string
+          enum: [openai, huggingface, local, dry-run]
+          example: openai
+        nEpochs:
+          type: integer
+          default: 3
+          minimum: 1
+          maximum: 100
+        batchSize:
+          type: integer
+          minimum: 1
+        learningRateMultiplier:
+          type: number
+          minimum: 0.01
+          maximum: 10
+        suffix:
+          type: string
+          description: 'Suffix for the fine-tuned model name'
+        openaiDatasetPath:
+          type: string
+          description: 'Path to dataset for OpenAI backend'
+        huggingfaceDatasetPath:
+          type: string
+          description: 'Path to dataset for HuggingFace backend'
+        hfRepoId:
+          type: string
+          description: 'HuggingFace repository ID (e.g. username/model-name)'
+        hfFramework:
+          type: string
+          enum: [autotrain, trl, unsloth]
+          description: 'HuggingFace training framework'
+        localScript:
+          type: string
+          description: 'Path to local training script for Local backend'
+        localGpuDevice:
+          type: integer
+          description: 'GPU device ID for Local backend'
+    TrainingSession:
+      type: object
+      properties:
+        id: { type: string, example: 'sess-1718200000000-xyz789' }
+        clientProfile: { $ref: '#/components/schemas/ClientProfile' }
+        difficultyLevel:
+          type: integer
+          minimum: 1
+          maximum: 5
+          example: 3
+        status:
+          type: string
+          enum: [active, paused, ended]
+          example: active
+        traineeId: { type: string, format: uuid, nullable: true }
+        supervisorId: { type: string, format: uuid, nullable: true }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time, nullable: true }
+    ClientProfile:
+      type: object
+      required: [name, presentingProblem]
+      properties:
+        name: { type: string, example: 'Alex' }
+        age: { type: integer, example: 34, minimum: 0, maximum: 120 }
+        gender: { type: string, example: 'non-binary' }
+        personalityType: { type: string, example: 'INTJ' }
+        presentingProblem:
+          type: string
+          example: 'Moderate social anxiety in workplace settings'
+        triggers:
+          type: array
+          items: { type: string }
+          example: ['team meetings', 'performance reviews']
+        strengths:
+          type: array
+          items: { type: string }
+          example: ['self-awareness', 'willingness to engage']
+    CreateTrainingSessionRequest:
+      type: object
+      required: [clientProfile]
+      properties:
+        clientProfile: { $ref: '#/components/schemas/ClientProfile' }
+        difficultyLevel:
+          type: integer
+          default: 1
+          minimum: 1
+          maximum: 5
+        traineeId:
+          type: string
+          format: uuid
+        supervisorId:
+          type: string
+          format: uuid
   responses:
     BadRequest:
       description: Invalid request parameters or body
@@ -1176,3 +1512,11 @@ tags:
       `src/lib/memory/contract/v1.ts` for the authoritative contract.
   - name: Developer API Keys
     description: API key management for developers
+  - name: Training
+    description: |
+      Clinical training pipeline — fine-tuning job management and
+      training session lifecycle. All endpoints require JWT
+      authentication (Bearer token). Mutating endpoints
+      (POST / DELETE) require admin or therapist role.
+
+      See `training_pipeline_improvements.md` for architecture details.
