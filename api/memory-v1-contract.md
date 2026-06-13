@@ -1,6 +1,6 @@
 # Public Memory API — Canonical v1 Contract (PIX-1908)
 
-> Status: **Implemented (Sprint 3)** Owner: Chad Contract version: `1.0.0`
+> Status: **Implemented (Sprint 3) — Contract tests + OpenAPI added (PIX-3904)** Owner: Chad Contract version: `1.0.0`
 > Source of truth: `src/lib/memory/contract/v1.ts`
 
 ## 1. Background
