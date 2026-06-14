@@ -828,7 +828,8 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       summary: Cancel training job
-      description: Cancel a running training job. Requires admin or therapist role.
+      description:
+        Cancel a running training job. Requires admin or therapist role.
       operationId: cancelTrainingJob
       tags: [Training]
       security:
@@ -880,7 +881,8 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
     post:
       summary: Create training session
-      description: Create a new training session. Requires admin or therapist role.
+      description:
+        Create a new training session. Requires admin or therapist role.
       operationId: createTrainingSession
       tags: [Training]
       security:
@@ -889,7 +891,8 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/CreateTrainingSessionRequest' }
+            schema:
+              { $ref: '#/components/schemas/CreateTrainingSessionRequest' }
       responses:
         '201':
           description: Session created successfully
@@ -912,7 +915,8 @@ paths:
         description: Session ID
     get:
       summary: Get training session
-      description: Get a specific training session by ID. Requires authentication.
+      description:
+        Get a specific training session by ID. Requires authentication.
       operationId: getTrainingSession
       tags: [Training]
       security:

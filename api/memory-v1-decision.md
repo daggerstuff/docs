@@ -11,8 +11,10 @@
 
 The Memory API could be exposed in two ways:
 
-1. **Developer platform** — API keys, explicit scope declarations, public SDK rollout
-2. **Product-only** — Session-derived auth, internal use first, developer access deferred
+1. **Developer platform** — API keys, explicit scope declarations, public SDK
+   rollout
+2. **Product-only** — Session-derived auth, internal use first, developer access
+   deferred
 
 This choice affects:
 
@@ -29,9 +31,12 @@ The decision needs to be documented because it constrains:
 
 ## Decision
 
-The v1 Memory API is **product-only**. Developer platform exposure is deferred to a future contract version.
+The v1 Memory API is **product-only**. Developer platform exposure is deferred
+to a future contract version.
 
-The public contract (`/api/v1/memory/*`) is the narrowest safe surface that satisfies existing product use cases. External developers cannot access the memory API via API keys in v1.
+The public contract (`/api/v1/memory/*`) is the narrowest safe surface that
+satisfies existing product use cases. External developers cannot access the
+memory API via API keys in v1.
 
 ## Rationale
 
@@ -39,15 +44,22 @@ Three factors drove this decision (see contract doc §6 for full discussion):
 
 1. **No internal Hindsight/MCP route shapes may leak into the public contract**
 
-   The action-named internal routes (`/memory/add`, `/memory/list`, etc.) and Hindsight/MCP terminology are implementation details. Exposing them would lock us into a route shape that doesn't match the gateway implementation.
+   The action-named internal routes (`/memory/add`, `/memory/list`, etc.) and
+   Hindsight/MCP terminology are implementation details. Exposing them would
+   lock us into a route shape that doesn't match the gateway implementation.
 
 2. **Auth and tenancy are still stabilizing**
 
-   The `ProductMemoryGateway` derives scope from the caller's session, not from developer API keys with explicit account/workspace context. Until that surface is ratified (PIX-226, PIX-227), there is no safe developer-platform contract to expose.
+   The `ProductMemoryGateway` derives scope from the caller's session, not from
+   developer API keys with explicit account/workspace context. Until that
+   surface is ratified (PIX-226, PIX-227), there is no safe developer-platform
+   contract to expose.
 
 3. **Privacy-sensitive fields need product review**
 
-   Fields like `emotionalContext` and `empathyMetrics` contain Plutchik/VAD emotional metadata and therapeutic quality scores. These require product review before external developer exposure.
+   Fields like `emotionalContext` and `empathyMetrics` contain Plutchik/VAD
+   emotional metadata and therapeutic quality scores. These require product
+   review before external developer exposure.
 
 ## Consequences
 
@@ -71,11 +83,16 @@ Three factors drove this decision (see contract doc §6 for full discussion):
 
 ## References
 
-- [Memory API v1 Contract](./memory-v1-contract.md) — Full specification, §6 for detailed rationale
-- [`src/lib/memory/contract/v1.ts`](../../src/lib/memory/contract/v1.ts) — Zod schemas (source of truth)
+- [Memory API v1 Contract](./memory-v1-contract.md) — Full specification, §6 for
+  detailed rationale
+- [`src/lib/memory/contract/v1.ts`](../../src/lib/memory/contract/v1.ts) — Zod
+  schemas (source of truth)
 - [`src/pages/api/v1/memory/*`](../../src/pages/api/v1/memory/) — Route handlers
-- [Error Contract](./memory-v1-contract.md#7-error-contract) — Status codes and error codes
-- [PIX-231](https://linear.app/pixelated/issue/PIX-231) — Developer API and SDK rollout
+- [Error Contract](./memory-v1-contract.md#7-error-contract) — Status codes and
+  error codes
+- [PIX-231](https://linear.app/pixelated/issue/PIX-231) — Developer API and SDK
+  rollout
 - [PIX-226](https://linear.app/pixelated/issue/PIX-226) — Auth stabilization
 - [PIX-227](https://linear.app/pixelated/issue/PIX-227) — Tenancy stabilization
-- [PIX-230](https://linear.app/pixelated/issue/PIX-230) — Legacy route deprecation
+- [PIX-230](https://linear.app/pixelated/issue/PIX-230) — Legacy route
+  deprecation

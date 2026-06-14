@@ -2,7 +2,9 @@ openapi: 3.1.0
 info:
   title: Pixelated Empathy Memory API
   version: 1.0.0
-  description: Public Memory API for Pixelated Empathy. See docs/api/memory-v1-contract.md for the full contract specification.
+  description:
+    Public Memory API for Pixelated Empathy. See docs/api/memory-v1-contract.md
+    for the full contract specification.
 servers:
   - url: https://api.pixelatedempathy.com
     description: Production
@@ -11,7 +13,8 @@ paths:
     get:
       operationId: listMemories
       summary: List memories
-      description: Retrieve a paginated list of memories for the authenticated user.
+      description:
+        Retrieve a paginated list of memories for the authenticated user.
       tags:
         - Memory
       parameters:
@@ -46,7 +49,7 @@ paths:
               type: string
           required: false
       responses:
-        "200":
+        '200':
           description: Paginated list of memories.
           headers:
             X-Memory-Contract-Version:
@@ -56,37 +59,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListMemoriesResponse"
-        "400":
+                $ref: '#/components/schemas/ListMemoriesResponse'
+        '400':
           description: Bad request.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "401":
+                $ref: '#/components/schemas/MemoryApiError'
+        '401':
           description: Unauthorized.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "403":
+                $ref: '#/components/schemas/MemoryApiError'
+        '403':
           description: Forbidden.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "429":
+                $ref: '#/components/schemas/MemoryApiError'
+        '429':
           description: Rate limited.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "500":
+                $ref: '#/components/schemas/MemoryApiError'
+        '500':
           description: Internal server error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
+                $ref: '#/components/schemas/MemoryApiError'
     post:
       operationId: createMemory
       summary: Create a memory
@@ -98,9 +101,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateMemoryRequest"
+              $ref: '#/components/schemas/CreateMemoryRequest'
       responses:
-        "201":
+        '201':
           description: Memory created successfully.
           headers:
             X-Memory-Contract-Version:
@@ -110,49 +113,49 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateMemoryResponse"
-        "400":
+                $ref: '#/components/schemas/CreateMemoryResponse'
+        '400':
           description: Bad request / validation failed.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "401":
+                $ref: '#/components/schemas/MemoryApiError'
+        '401':
           description: Unauthorized.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "403":
+                $ref: '#/components/schemas/MemoryApiError'
+        '403':
           description: Forbidden.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "409":
+                $ref: '#/components/schemas/MemoryApiError'
+        '409':
           description: Conflict.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "413":
+                $ref: '#/components/schemas/MemoryApiError'
+        '413':
           description: Payload too large.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "429":
+                $ref: '#/components/schemas/MemoryApiError'
+        '429':
           description: Rate limited.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "500":
+                $ref: '#/components/schemas/MemoryApiError'
+        '500':
           description: Internal server error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
+                $ref: '#/components/schemas/MemoryApiError'
   /api/v1/memory/{memoryId}:
     get:
       operationId: getMemory
@@ -170,7 +173,7 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: Memory record.
           headers:
             X-Memory-Contract-Version:
@@ -180,43 +183,43 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetMemoryResponse"
-        "400":
+                $ref: '#/components/schemas/GetMemoryResponse'
+        '400':
           description: Bad request.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "401":
+                $ref: '#/components/schemas/MemoryApiError'
+        '401':
           description: Unauthorized.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "403":
+                $ref: '#/components/schemas/MemoryApiError'
+        '403':
           description: Forbidden.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "404":
+                $ref: '#/components/schemas/MemoryApiError'
+        '404':
           description: Memory not found.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "429":
+                $ref: '#/components/schemas/MemoryApiError'
+        '429':
           description: Rate limited.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "500":
+                $ref: '#/components/schemas/MemoryApiError'
+        '500':
           description: Internal server error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
+                $ref: '#/components/schemas/MemoryApiError'
     patch:
       operationId: updateMemory
       summary: Update a memory
@@ -230,9 +233,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateMemoryRequest"
+              $ref: '#/components/schemas/UpdateMemoryRequest'
       responses:
-        "200":
+        '200':
           description: Memory updated successfully.
           headers:
             X-Memory-Contract-Version:
@@ -242,55 +245,55 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateMemoryResponse"
-        "400":
+                $ref: '#/components/schemas/UpdateMemoryResponse'
+        '400':
           description: Bad request / validation failed.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "401":
+                $ref: '#/components/schemas/MemoryApiError'
+        '401':
           description: Unauthorized.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "403":
+                $ref: '#/components/schemas/MemoryApiError'
+        '403':
           description: Forbidden.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "404":
+                $ref: '#/components/schemas/MemoryApiError'
+        '404':
           description: Memory not found.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "409":
+                $ref: '#/components/schemas/MemoryApiError'
+        '409':
           description: Conflict.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "413":
+                $ref: '#/components/schemas/MemoryApiError'
+        '413':
           description: Payload too large.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "429":
+                $ref: '#/components/schemas/MemoryApiError'
+        '429':
           description: Rate limited.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "500":
+                $ref: '#/components/schemas/MemoryApiError'
+        '500':
           description: Internal server error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
+                $ref: '#/components/schemas/MemoryApiError'
     delete:
       operationId: deleteMemory
       summary: Delete a memory
@@ -300,7 +303,7 @@ paths:
       parameters:
         - *a1
       responses:
-        "200":
+        '200':
           description: Memory deleted successfully.
           headers:
             X-Memory-Contract-Version:
@@ -310,43 +313,43 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DeleteMemoryResponse"
-        "400":
+                $ref: '#/components/schemas/DeleteMemoryResponse'
+        '400':
           description: Bad request.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "401":
+                $ref: '#/components/schemas/MemoryApiError'
+        '401':
           description: Unauthorized.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "403":
+                $ref: '#/components/schemas/MemoryApiError'
+        '403':
           description: Forbidden.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "404":
+                $ref: '#/components/schemas/MemoryApiError'
+        '404':
           description: Memory not found.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "429":
+                $ref: '#/components/schemas/MemoryApiError'
+        '429':
           description: Rate limited.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "500":
+                $ref: '#/components/schemas/MemoryApiError'
+        '500':
           description: Internal server error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
+                $ref: '#/components/schemas/MemoryApiError'
   /api/v1/memory/search:
     get:
       operationId: searchMemoriesGet
@@ -379,7 +382,7 @@ paths:
             type: integer
             minimum: 0
       responses:
-        "200":
+        '200':
           description: Search results.
           headers:
             X-Memory-Contract-Version:
@@ -389,37 +392,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SearchMemoriesResponse"
-        "400":
+                $ref: '#/components/schemas/SearchMemoriesResponse'
+        '400':
           description: Bad request.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "401":
+                $ref: '#/components/schemas/MemoryApiError'
+        '401':
           description: Unauthorized.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "403":
+                $ref: '#/components/schemas/MemoryApiError'
+        '403':
           description: Forbidden.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "429":
+                $ref: '#/components/schemas/MemoryApiError'
+        '429':
           description: Rate limited.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "500":
+                $ref: '#/components/schemas/MemoryApiError'
+        '500':
           description: Internal server error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
+                $ref: '#/components/schemas/MemoryApiError'
     post:
       operationId: searchMemoriesPost
       summary: Search memories (JSON body)
@@ -431,9 +434,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SearchMemoriesRequest"
+              $ref: '#/components/schemas/SearchMemoriesRequest'
       responses:
-        "200":
+        '200':
           description: Search results.
           headers:
             X-Memory-Contract-Version:
@@ -443,43 +446,43 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SearchMemoriesResponse"
-        "400":
+                $ref: '#/components/schemas/SearchMemoriesResponse'
+        '400':
           description: Bad request / validation failed.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "401":
+                $ref: '#/components/schemas/MemoryApiError'
+        '401':
           description: Unauthorized.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "403":
+                $ref: '#/components/schemas/MemoryApiError'
+        '403':
           description: Forbidden.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "413":
+                $ref: '#/components/schemas/MemoryApiError'
+        '413':
           description: Payload too large.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "429":
+                $ref: '#/components/schemas/MemoryApiError'
+        '429':
           description: Rate limited.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "500":
+                $ref: '#/components/schemas/MemoryApiError'
+        '500':
           description: Internal server error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
+                $ref: '#/components/schemas/MemoryApiError'
 components:
   securitySchemes:
     SessionCookie:
@@ -530,11 +533,12 @@ components:
           description: User identifier.
           minLength: 1
         scope:
-          $ref: "#/components/schemas/MemoryApiScope"
+          $ref: '#/components/schemas/MemoryApiScope'
         role:
-          $ref: "#/components/schemas/MemoryApiRole"
+          $ref: '#/components/schemas/MemoryApiRole'
       additionalProperties: false
-      description: Identity and scope envelope resolved from the authenticated session.
+      description:
+        Identity and scope envelope resolved from the authenticated session.
     PublicMemory:
       type: object
       properties:
@@ -548,9 +552,9 @@ components:
           minLength: 1
           maxLength: 64000
         scope:
-          $ref: "#/components/schemas/MemoryScope"
+          $ref: '#/components/schemas/MemoryScope'
         retention:
-          $ref: "#/components/schemas/RetentionPolicy"
+          $ref: '#/components/schemas/RetentionPolicy'
         category:
           type: string
           description: Free-form category for filtering.
@@ -583,7 +587,9 @@ components:
           nullable: true
           description: ISO 8601 — when this memory was last mutated.
       additionalProperties: false
-      description: A public memory record — strict subset of the internal UnifiedMemory type.
+      description:
+        A public memory record — strict subset of the internal UnifiedMemory
+        type.
     Pagination:
       type: object
       properties:
@@ -629,7 +635,7 @@ components:
           description: Human-readable error message.
           minLength: 1
         code:
-          $ref: "#/components/schemas/MemoryApiErrorCode"
+          $ref: '#/components/schemas/MemoryApiErrorCode'
           description: Canonical error code.
         details:
           type: object
@@ -649,9 +655,9 @@ components:
           minLength: 1
           maxLength: 64000
         scope:
-          $ref: "#/components/schemas/MemoryScope"
+          $ref: '#/components/schemas/MemoryScope'
         retention:
-          $ref: "#/components/schemas/RetentionPolicy"
+          $ref: '#/components/schemas/RetentionPolicy'
         category:
           type: string
           description: Free-form category.
@@ -683,9 +689,9 @@ components:
           minLength: 1
           maxLength: 64000
         scope:
-          $ref: "#/components/schemas/MemoryScope"
+          $ref: '#/components/schemas/MemoryScope'
         retention:
-          $ref: "#/components/schemas/RetentionPolicy"
+          $ref: '#/components/schemas/RetentionPolicy'
         category:
           type: string
           description: Free-form category.
@@ -733,27 +739,27 @@ components:
       type: object
       properties:
         data:
-          $ref: "#/components/schemas/PublicMemory"
+          $ref: '#/components/schemas/PublicMemory'
         identity:
-          $ref: "#/components/schemas/IdentityScope"
+          $ref: '#/components/schemas/IdentityScope'
       additionalProperties: false
       description: Response for creating a memory.
     GetMemoryResponse:
       type: object
       properties:
         data:
-          $ref: "#/components/schemas/PublicMemory"
+          $ref: '#/components/schemas/PublicMemory'
         identity:
-          $ref: "#/components/schemas/IdentityScope"
+          $ref: '#/components/schemas/IdentityScope'
       additionalProperties: false
       description: Response for getting a memory.
     UpdateMemoryResponse:
       type: object
       properties:
         data:
-          $ref: "#/components/schemas/PublicMemory"
+          $ref: '#/components/schemas/PublicMemory'
         identity:
-          $ref: "#/components/schemas/IdentityScope"
+          $ref: '#/components/schemas/IdentityScope'
       additionalProperties: false
       description: Response for updating a memory.
     DeleteMemoryResponse:
@@ -769,7 +775,7 @@ components:
               description: UUID of the deleted memory.
           additionalProperties: false
         identity:
-          $ref: "#/components/schemas/IdentityScope"
+          $ref: '#/components/schemas/IdentityScope'
       additionalProperties: false
       description: Response for deleting a memory.
     ListMemoriesResponse:
@@ -779,11 +785,11 @@ components:
           type: array
           description: Array of memory records.
           items:
-            $ref: "#/components/schemas/PublicMemory"
+            $ref: '#/components/schemas/PublicMemory'
         pagination:
-          $ref: "#/components/schemas/Pagination"
+          $ref: '#/components/schemas/Pagination'
         identity:
-          $ref: "#/components/schemas/IdentityScope"
+          $ref: '#/components/schemas/IdentityScope'
       additionalProperties: false
       description: Response for listing memories.
     SearchMemoriesResponse:
@@ -793,14 +799,14 @@ components:
           type: array
           description: Array of matching memory records.
           items:
-            $ref: "#/components/schemas/PublicMemory"
+            $ref: '#/components/schemas/PublicMemory'
         query:
           type: string
           description: The search query that produced these results.
         pagination:
-          $ref: "#/components/schemas/Pagination"
+          $ref: '#/components/schemas/Pagination'
         identity:
-          $ref: "#/components/schemas/IdentityScope"
+          $ref: '#/components/schemas/IdentityScope'
       additionalProperties: false
       description: Response for searching memories.
 security:
