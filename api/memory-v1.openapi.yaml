@@ -89,7 +89,23 @@ paths:
           content:
             application/json:
               schema:
+<<<<<<< HEAD
                 $ref: '#/components/schemas/MemoryApiError'
+=======
+                $ref: "#/components/schemas/MemoryApiError"
+        "502": &a1
+          description: Upstream unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MemoryApiError"
+        "504": &a2
+          description: Upstream timeout.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MemoryApiError"
+>>>>>>> 46201db73a6a81ea369b71789944dd7597fbd36d
     post:
       operationId: createMemory
       summary: Create a memory
@@ -155,7 +171,13 @@ paths:
           content:
             application/json:
               schema:
+<<<<<<< HEAD
                 $ref: '#/components/schemas/MemoryApiError'
+=======
+                $ref: "#/components/schemas/MemoryApiError"
+        "502": *a1
+        "504": *a2
+>>>>>>> 46201db73a6a81ea369b71789944dd7597fbd36d
   /api/v1/memory/{memoryId}:
     get:
       operationId: getMemory
@@ -164,7 +186,7 @@ paths:
       tags:
         - Memory
       parameters:
-        - &a1
+        - &a3
           name: memoryId
           in: path
           required: true
@@ -227,7 +249,7 @@ paths:
       tags:
         - Memory
       parameters:
-        - *a1
+        - *a3
       requestBody:
         required: true
         content:
@@ -301,7 +323,7 @@ paths:
       tags:
         - Memory
       parameters:
-        - *a1
+        - *a3
       responses:
         '200':
           description: Memory deleted successfully.
