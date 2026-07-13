@@ -3,3 +3,6 @@ AGENTS.md
 audits/
 epics/
 maestro/
+
+# OMC runtime session data
+.omc/
