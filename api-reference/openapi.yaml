@@ -5,11 +5,35 @@ info:
     The Pixelated Empathy API provides programmatic access to the platform's core features,
     including user profiles, mental health analytics, bias detection, and memory management.
 
-    ### Authentication
+    ### Authentication (Dual Mode)
 
     Most endpoints require authentication using either a **JWT (Bearer Token)** or an **API Key**.
     - For browser-based applications, use the JWT provided by Auth0.
     - For server-side integrations, use an API Key in the `X-API-Key` header.
+
+    Three authentication strategies are available:
+    | Strategy | Use Case | Header |
+    |---|---|---|
+    | `jwtOnly` | Browser sessions, user-facing requests | `Authorization: Bearer <token>` |
+    | `apiKeyOnly` | Server-to-server, background jobs | `X-API-Key: <key>` |
+    | `either` | Any authenticated caller | Both accepted |
+
+    ### Scope-Based Access Control
+
+    API keys are bound to **scopes** that control which endpoints they can access:
+
+    | Scope | Access |
+    |---|---|
+    | `read` | GET on API resources |
+    | `write` | POST, PUT, PATCH on API resources |
+    | `admin` | Administrative endpoints |
+    | `memory:read` | Memory read operations |
+    | `memory:write` | Memory write operations |
+    | `developer:manage` | API key management |
+    | `analytics:read` | Analytics and reporting |
+
+    Routes are organised into **families** that define default authentication and scope behaviour:
+    `public`, `user`, `developer`, `admin`, `system`.
   version: '1.0.0'
   contact:
     name: Pixelated API Support
@@ -48,11 +72,154 @@ paths:
           content:
             application/json:
               schema: { $ref: '#/components/schemas/VersionInfo' }
+  /api/auth/login:
+    get:
+      summary: Initiate Auth0 Login
+      description: |
+        Redirects the browser to Auth0's hosted login page. After successful
+        authentication Auth0 redirects back to `/api/auth/callback`.
+      operationId: authLogin
+      tags: [Authentication]
+      responses:
+        '302':
+          description: Redirect to Auth0 Universal Login page
+        '500':
+          description: Auth0 configuration missing
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /api/auth/callback:
+    get:
+      summary: Auth0 OAuth Callback
+      description: |
+        OAuth 2.0 authorization-code exchange. Exchanges the `code` query
+        param for Auth0 tokens, resolves the Auth0 `sub` to an internal
+        platform UUID via `resolveIdentity()`, and returns tokens + UUID.
+      operationId: authCallback
+      tags: [Authentication]
+      parameters:
+        - name: code
+          in: query
+          required: true
+          schema: { type: string }
+          description: Authorization code from Auth0 redirect
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  userId:
+                    {
+                      type: string,
+                      format: uuid,
+                      description: Internal platform UUID,
+                    }
+                  isNewUser: { type: boolean }
+                  accessToken: { type: string }
+                  refreshToken: { type: string, nullable: true }
+                  tokenType: { type: string, example: Bearer }
+                  expiresIn: { type: integer }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '502':
+          description: Token exchange or userinfo request failed
+  /api/auth/logout:
+    post:
+      summary: Log Out
+      description: |
+        Returns the Auth0 logout URL. The client must redirect the browser
+        to this URL to terminate the Auth0 session.
+      operationId: authLogout
+      tags: [Authentication]
+      requestBody:
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200':
+          description: Logout URL generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  logoutUrl: { type: string, format: uri }
+        '500':
+          description: Auth0 configuration missing
+  /api/auth/me:
+    get:
+      summary: Get Current User
+      description: |
+        Returns the authenticated user's profile from the current session.
+        The `id` field is the **internal platform UUID**, never the Auth0 `sub`.
+        Requires a valid JWT or API key.
+      operationId: authMe
+      tags: [Authentication]
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Current user profile
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  user:
+                    type: object
+                    properties:
+                      id: { type: string, format: uuid }
+                      email: { type: string, format: email }
+                      name: { type: string }
+                      picture: { type: string, format: uri }
+                      emailVerified: { type: boolean }
+                      role: { type: string }
+                      roles: { type: array, items: { type: string } }
+                      permissions: { type: array, items: { type: string } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /api/auth/refresh:
+    post:
+      summary: Refresh Access Token
+      description: |
+        Exchanges a valid Auth0 refresh token for a new access token.
+        The sub→UUID mapping is already cached, so no re-resolution occurs.
+      operationId: authRefresh
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refreshToken]
+              properties:
+                refreshToken:
+                  type: string
+                  description: Auth0 refresh token obtained during login
+      responses:
+        '200':
+          description: Tokens refreshed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  accessToken: { type: string }
+                  refreshToken: { type: string, nullable: true }
+                  tokenType: { type: string, example: Bearer }
+                  expiresIn: { type: integer }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
   /search:
     get:
       summary: Search Content
-      description:
-        Search across blog posts, documentation, and research articles.
+      description: Search across blog posts, documentation, and research articles.
       operationId: searchContent
       tags: [Content]
       parameters:
@@ -236,8 +403,7 @@ paths:
               properties:
                 content:
                   type: string
-                  example:
-                    'Today I practiced deep breathing exercises and felt calmer.'
+                  example: 'Today I practiced deep breathing exercises and felt calmer.'
                 metadata:
                   type: object
                   example:
@@ -437,8 +603,7 @@ paths:
               properties:
                 content:
                   type: string
-                  example:
-                    'Today I practiced deep breathing exercises and felt calmer.'
+                  example: 'Today I practiced deep breathing exercises and felt calmer.'
                 metadata:
                   type: object
                   example:
@@ -737,6 +902,44 @@ paths:
       responses:
         '204': { description: API key revoked }
         '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      summary: Rotate API Key
+      description: |
+        Revokes the existing API key and issues a new one in a single
+        atomic transaction. The new key inherits all scopes and settings
+        from the old key. Returns the new `plain_key` exactly once.
+      operationId: rotateApiKey
+      tags: [Developer API Keys]
+      parameters:
+        - name: keyId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: API key rotated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  key:
+                    type: object
+                    properties:
+                      id: { type: string }
+                      plain_key:
+                        {
+                          type: string,
+                          description: 'New key value — shown only once',
+                        }
+                      name: { type: string }
+                      created: { type: string, format: date-time }
+                      expires:
+                        { type: string, format: date-time, nullable: true }
+                      scopes: { type: array, items: { type: string } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
   /api/training/jobs:
     get:
       summary: List training jobs
@@ -828,8 +1031,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       summary: Cancel training job
-      description:
-        Cancel a running training job. Requires admin or therapist role.
+      description: Cancel a running training job. Requires admin or therapist role.
       operationId: cancelTrainingJob
       tags: [Training]
       security:
@@ -881,8 +1083,7 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
     post:
       summary: Create training session
-      description:
-        Create a new training session. Requires admin or therapist role.
+      description: Create a new training session. Requires admin or therapist role.
       operationId: createTrainingSession
       tags: [Training]
       security:
@@ -915,8 +1116,7 @@ paths:
         description: Session ID
     get:
       summary: Get training session
-      description:
-        Get a specific training session by ID. Requires authentication.
+      description: Get a specific training session by ID. Requires authentication.
       operationId: getTrainingSession
       tags: [Training]
       security:
@@ -1488,8 +1688,7 @@ components:
         application/json:
           schema: { $ref: '#/components/schemas/V1Error' }
     V1NotFound:
-      description:
-        The requested memory was not found or is not visible to the caller.
+      description: The requested memory was not found or is not visible to the caller.
       content:
         application/json:
           schema: { $ref: '#/components/schemas/V1Error' }
@@ -1500,6 +1699,8 @@ tags:
     description: Content search and discovery
   - name: Admin
     description: Platform administration
+  - name: Authentication
+    description: Auth0 OAuth 2.0 login, logout, token refresh, and session lookup
   - name: System
     description: System health and status
   - name: Bias Analysis
