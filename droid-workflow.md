@@ -1,18 +1,19 @@
 # Droid Workflow Playbook (Repo)
 
 > Repo-level supplement to the global Factory Missions README at
-> `~/.factory/missions/README.md`. Lives here so you don't have to leave
-> the repo to recall the recovery moves.
+> `~/.factory/missions/README.md`. Lives here so you don't have to leave the
+> repo to recall the recovery moves.
 
 ## Quick Start
 
-| Scope                                  | Workflow              |
-| -------------------------------------- | --------------------- |
-| Single feature, well-scoped            | `/spec` or Shift+Tab  |
-| Multi-feature, ≥5 files, refactor      | `/missions`           |
-| Routine fix                            | direct edit           |
+| Scope                             | Workflow             |
+| --------------------------------- | -------------------- |
+| Single feature, well-scoped       | `/spec` or Shift+Tab |
+| Multi-feature, ≥5 files, refactor | `/missions`          |
+| Routine fix                       | direct edit          |
 
 Templates:
+
 - `IMPLEMENTATION_PLAN.template.md` — copy to a scoped filename.
 - `.factory/rules/droid-workflow.md` — repo-specific rules.
 
@@ -34,11 +35,10 @@ Templates:
 
 ```markdown
 ### Phase N — <name>
-**Goal**: ...
-**Changes**: <file paths>
-**Verify**: <one concrete command>
-**Rollback**: <feature flag or git revert>
-**Status**: [ ] not started · [ ] in progress · [ ] complete
+
+**Goal**: ... **Changes**: <file paths> **Verify**: <one concrete command>
+**Rollback**: <feature flag or git revert> **Status**: [ ] not started · [ ] in
+progress · [ ] complete
 ```
 
 ## Mission Recovery (shortcuts)

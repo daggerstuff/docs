@@ -89,23 +89,19 @@ paths:
           content:
             application/json:
               schema:
-<<<<<<< HEAD
                 $ref: '#/components/schemas/MemoryApiError'
-=======
-                $ref: "#/components/schemas/MemoryApiError"
-        "502": &a1
+        '502':
           description: Upstream unavailable.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
-        "504": &a2
+                $ref: '#/components/schemas/MemoryApiError'
+        '504':
           description: Upstream timeout.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MemoryApiError"
->>>>>>> 46201db73a6a81ea369b71789944dd7597fbd36d
+                $ref: '#/components/schemas/MemoryApiError'
     post:
       operationId: createMemory
       summary: Create a memory
@@ -171,13 +167,19 @@ paths:
           content:
             application/json:
               schema:
-<<<<<<< HEAD
                 $ref: '#/components/schemas/MemoryApiError'
-=======
-                $ref: "#/components/schemas/MemoryApiError"
-        "502": *a1
-        "504": *a2
->>>>>>> 46201db73a6a81ea369b71789944dd7597fbd36d
+        '502':
+          description: Upstream unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryApiError'
+        '504':
+          description: Upstream timeout.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryApiError'
   /api/v1/memory/{memoryId}:
     get:
       operationId: getMemory
