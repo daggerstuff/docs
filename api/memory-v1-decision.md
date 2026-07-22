@@ -52,7 +52,7 @@ Three factors drove this decision (see contract doc §6 for full discussion):
 
    The `ProductMemoryGateway` derives scope from the caller's session, not from
    developer API keys with explicit account/workspace context. Until that
-   surface is ratified (PIX-226, PIX-227), there is no safe developer-platform
+   surface is ratified (PIX-3925, PIX-227), there is no safe developer-platform
    contract to expose.
 
 3. **Privacy-sensitive fields need product review**
@@ -92,7 +92,8 @@ Three factors drove this decision (see contract doc §6 for full discussion):
   error codes
 - [PIX-231](https://linear.app/pixelated/issue/PIX-231) — Developer API and SDK
   rollout
-- [PIX-226](https://linear.app/pixelated/issue/PIX-226) — Auth stabilization
+- [PIX-3925](https://linear.app/pixelated/issue/PIX-3925) — Dual-mode auth and
+  API key infrastructure
 - [PIX-227](https://linear.app/pixelated/issue/PIX-227) — Tenancy stabilization
 - [PIX-230](https://linear.app/pixelated/issue/PIX-230) — Legacy route
   deprecation

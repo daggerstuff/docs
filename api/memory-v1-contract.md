@@ -132,7 +132,7 @@ Rationale:
 2. **Auth and tenancy are still stabilizing.** The current
    `ProductMemoryGateway` derives scope from the caller's session, not from a
    developer API key + explicit account/workspace context. Until that surface is
-   ratified (see PIX-226, PIX-227), there is no safe developer-platform contract
+   ratified (see PIX-3925, PIX-227), there is no safe developer-platform contract
    to expose.
 3. **Privacy-sensitive fields (emotional context, empathy metrics) need a
    product review** before they can be advertised to external developers. That

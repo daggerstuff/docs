@@ -940,6 +940,222 @@ paths:
                       scopes: { type: array, items: { type: string } }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '404': { $ref: '#/components/responses/NotFound' }
+  /api/v1/developer/memory:
+    get:
+      summary: List memories (Developer API)
+      description: |
+        Developer memory API — API key access. Returns only `PublicMemory`
+        fields (no `emotionalContext` or `empathyMetrics`).
+
+        Required scope: `memory:read`
+
+        Identity is resolved server-side from the API key's `user_id`; it
+        is NEVER accepted as a query parameter.
+      operationId: devListMemories
+      tags: [Developer Memory]
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, default: 10, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0, minimum: 0 }
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: tags
+          in: query
+          description: Repeatable. Filter by tag (logical AND).
+          schema:
+            type: array
+            items: { type: string }
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: Memories listed successfully
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1ListMemoriesResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+    post:
+      summary: Create a memory (Developer API)
+      description: |
+        Developer memory API — API key access. Identity fields are derived
+        from the API key's `user_id` and are rejected if supplied. Strict
+        validation — unknown fields return 400.
+
+        Required scope: `memory:write`
+      operationId: devCreateMemory
+      tags: [Developer Memory]
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/V1CreateMemoryRequest' }
+      responses:
+        '201':
+          description: Memory created
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1CreateMemoryResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /api/v1/developer/memory/search:
+    get:
+      summary: Search memories (Developer API, query string)
+      description: |
+        Developer memory API — API key access.
+
+        Required scope: `memory:read`
+      operationId: devSearchMemoriesGet
+      tags: [Developer Memory]
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema: { type: string, minLength: 1, maxLength: 1000 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 10, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0, minimum: 0 }
+      responses:
+        '200':
+          description: Search results
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1SearchMemoriesResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+    post:
+      summary: Search memories (Developer API, JSON body)
+      description: |
+        Developer memory API — API key access.
+
+        Required scope: `memory:read`
+      operationId: devSearchMemoriesPost
+      tags: [Developer Memory]
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/V1SearchMemoryRequest' }
+      responses:
+        '200':
+          description: Search results
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1SearchMemoriesResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /api/v1/developer/memory/{memoryId}:
+    parameters:
+      - name: memoryId
+        in: path
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      summary: Get a memory by id (Developer API)
+      description: |
+        Developer memory API — API key access.
+
+        Required scope: `memory:read`
+      operationId: devGetMemory
+      tags: [Developer Memory]
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Memory retrieved
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1GetMemoryResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/V1NotFound' }
+    patch:
+      summary: Update a memory (Developer API)
+      description: |
+        Developer memory API — API key access. Full content replacement with
+        optional metadata.
+
+        Required scope: `memory:write`
+      operationId: devUpdateMemory
+      tags: [Developer Memory]
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/V1UpdateMemoryRequest' }
+      responses:
+        '200':
+          description: Memory updated
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1UpdateMemoryResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/V1NotFound' }
+    delete:
+      summary: Delete a memory (Developer API)
+      description: |
+        Developer memory API — API key access.
+
+        Required scope: `memory:write`
+      operationId: devDeleteMemory
+      tags: [Developer Memory]
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Memory deleted
+          headers:
+            X-Memory-Contract-Version:
+              schema: { type: string, example: '1.0.0' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/V1DeleteMemoryResponse' }
+        '400': { $ref: '#/components/responses/V1BadRequest' }
+        '401': { $ref: '#/components/responses/V1Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/V1NotFound' }
   /api/training/jobs:
     get:
       summary: List training jobs
@@ -1717,6 +1933,13 @@ tags:
       `src/lib/memory/contract/v1.ts` for the authoritative contract.
   - name: Developer API Keys
     description: API key management for developers
+  - name: Developer Memory
+    description: |
+      Developer memory API — API key access to the memory surface via
+      `/api/v1/developer/memory/*`. Requires `memory:read` and/or
+      `memory:write` scopes. Returns `PublicMemory` payloads only (no
+      `emotionalContext` or `empathyMetrics`). See ADR
+      `docs/architecture/developer-memory-api-v2.md`.
   - name: Training
     description: |
       Clinical training pipeline — fine-tuning job management and
