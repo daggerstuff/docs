@@ -83,16 +83,34 @@ Tier 3 — fix in next maintenance window:
 
 ---
 
-## 4. pnpm audit (JS/TS deps)
+## 4. pnpm audit (JS/TS deps) — CORRECTED 2026-07-29
 
-| Severity | Count | Notable |
-|----------|------:|---------|
-| Critical | 0 | — |
-| High | 3 | `@babel/core` (via `@tarquinen/opencode-dcp` → `@opencode-ai/plugin` → `@opentui/solid` → `@babel/preset-typescript` → `@babel/core`); 24 paths. Run `pnpm why @babel/core` to enumerate. |
-| Moderate | 1 | (see `pnpm audit` raw output for CVE) |
-| Low | 1 | (see `pnpm audit` raw output for CVE) |
+> **Correction:** Initial Sprint Notes / S3 draft incorrectly attributed all 3
+> HIGH findings to `@babel/core` transitive via `@tarquinen/opencode-dcp`.
+> Actual `pnpm audit --json` output for 2026-07-29:
 
-**Action:** Run `pnpm why @babel/core` to identify root cause and update `@tarquinen/opencode-dcp` (or whichever dependency pins the vulnerable `@babel/core`).
+| Severity | Count | Package(s) | Notes |
+|----------|------:|------------|-------|
+| Critical | 0 | — | — |
+| High | 3 | `sharp`, `react-router`, `brace-expansion` | **NOT @babel/core** (see below) |
+| Moderate | 1 | `@hono/node-server` | (CVE GHSA-1124006) |
+| Low | 1 | `@babel/core` (GHSA-1123528, arbitrary file read via sourceMappingURL) | Affected range ≤7.29.0; fixed in ≥7.29.1. **Remediated by PIX-4162** via `pnpm.overrides` → `@babel/core: ^7.29.7` (lockfile regenerated 2026-07-29, audit count dropped 5 → 3). |
+
+**Original ticket PIX-4162 was based on a misread.** The `@babel/core`
+finding is LOW severity, not HIGH. Re-baselined HIGH distribution:
+
+- `sharp` 0.34.5 → 0.35.0 (CVE GHSA-1124066) — *image processing; build-time risk*
+- `react-router` 7.18.2 → 8.3.0 (CVE GHSA-1124282) — *major bump; migration planning*
+- `brace-expansion` 1.1.16 → 5.0.8 (CVE GHSA-1124334) — *glob expansion; already in `resolutions` at 5.0.6 but pin not applied — needs investigation*
+
+**Action items per corrected findings:**
+
+1. `@babel/core` LOW — **DONE** via PIX-4162 (`pnpm.overrides`).
+2. `sharp` HIGH — bump in next maintenance window (build-time, lower runtime impact).
+3. `react-router` HIGH — bump to v8 in S8 (major migration; plan separately).
+4. `brace-expansion` HIGH — investigate why existing `resolutions: 5.0.6` pin
+   did not apply; possibly stale lockfile or wrong field name.
+5. `@hono/node-server` MODERATE — bump in Tier 2 remediation batch.
 
 ---
 
