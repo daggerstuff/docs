@@ -65,7 +65,7 @@ Vendored `.venv/` is excluded from remediation scope (out-of-tree dependencies c
 | **brace-expansion** | 2 | 5.0.8 | Build-time glob expansion |
 | **pyasn1** | 2 | 0.6.4 | Crypto |
 | cryptography | 1 | 48.0.1 | Crypto |
-| pyjwt | 1 | 2.13.0 | **JWT validation — directly relevant to threat model §5** |
+| pyjwt | 1 | 2.13.0 | **JWT validation — directly relevant to threat model §5**. **Resolution path:** downstream of `mcp>=1.28.1` bump (Tier 2); `mcp==1.27.0` is the only consumer in the vendored `_vllm_runtime/uv.lock`. All 4 production `uv.lock` files (`uv.lock`, `ai/uv.lock`, `foresight/uv.lock`, `src/lib/ai/bias-detection/python-service/uv.lock`) already at `pyjwt 2.13.0`. Trivy finds `pyjwt 2.12.1` only inside the local `.venv/.../art/_vllm_runtime/uv.lock` (gitignored upstream wheel). See PIX-4159. |
 | httplib2 | 1 | 0.32.0 | Python HTTP |
 | react-router | 1 | 8.3.0 | Frontend |
 | sharp | 1 | 0.35.0 | Image processing |
@@ -248,3 +248,4 @@ Inputs S4 needs:
 | 2026-07-29 | Chad | Categorized 2585 gitleaks findings into actionable buckets |
 | 2026-07-29 | Chad | Identified 5 actionable source findings + 14 actionable infra findings |
 | 2026-07-29 | Chad | Corrected HIGH double-count: all 3 pnpm audit HIGHs (sharp/react-router/brace-expansion) are inside Trivy's 42 — unique actionable HIGH = 42, not 45 |
+| 2026-07-29 | Chad | Traced pyjwt 2.12.1 to mcp 1.27.0 transitive dep; production lockfiles already at 2.13.0; remediation resolves via mcp>=1.28.1 bump (PIX-4159 follow-up) |
