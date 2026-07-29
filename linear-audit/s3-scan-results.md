@@ -21,7 +21,16 @@
 | pnpm audit | JS/TS dependencies (root lockfile) | 0 | **3** | **1** | **1** | — |
 | gitleaks (history scan) | full git history | — | — | — | — | — |
 
-**Total actionable Critical: 1, High: 45** (1 Trivy critical + 42 Trivy high + 3 pnpm high — minus any double-count).
+**Total actionable Critical: 1, High: 42** (Trivy fs is the authoritative
+count; all 3 `pnpm audit` HIGH findings — `sharp`, `react-router`,
+`brace-expansion` — are a subset of the 42 Trivy HIGH findings and already
+included in the root `pnpm-lock.yaml` target scan).
+
+**Verification (2026-07-29):** Trivy fs raw scan counted 1 CRITICAL + 42 HIGH
+across 9 affected targets. `pnpm audit --json` reported 3 HIGH
+(`sharp`, `react-router`, `brace-expansion`) — all 3 are also reported by
+Trivy against `pnpm-lock.yaml` at the root. No double-count in the unique
+total.
 
 Vendored `.venv/` is excluded from remediation scope (out-of-tree dependencies controlled by Python packaging). See §6.
 
@@ -39,7 +48,7 @@ Vendored `.venv/` is excluded from remediation scope (out-of-tree dependencies c
 
 ---
 
-## 3. HIGH (45 total)
+## 3. HIGH (42 total — Trivy fs is authoritative)
 
 ### 3.1 By package (root JS/TS + AI services)
 
@@ -238,3 +247,4 @@ Inputs S4 needs:
 | 2026-07-29 | Chad | Re-baselined all numbers; superseded Sprint Notes claim of "0 high" |
 | 2026-07-29 | Chad | Categorized 2585 gitleaks findings into actionable buckets |
 | 2026-07-29 | Chad | Identified 5 actionable source findings + 14 actionable infra findings |
+| 2026-07-29 | Chad | Corrected HIGH double-count: all 3 pnpm audit HIGHs (sharp/react-router/brace-expansion) are inside Trivy's 42 — unique actionable HIGH = 42, not 45 |
