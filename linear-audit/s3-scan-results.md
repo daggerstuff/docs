@@ -59,7 +59,7 @@ Vendored `.venv/` is excluded from remediation scope (out-of-tree dependencies c
 | **vllm** | 4 | 0.24.0 | See §2 |
 | **postcss** | 4 | 8.5.18 | Build-time only — low runtime impact |
 | **mcp** | 3 | 1.28.1 | AI agent context — verify scope |
-| **python-multipart** | 2 | 0.0.30 | Form parsing — relevant to API endpoints |
+| **python-multipart** | 2 | 0.0.30 | Form parsing — relevant to API endpoints. **Resolution path:** downstream of `mcp>=1.28.1` bump (Tier 2); `mcp==1.27.0` is the only consumer in the vendored `_vllm_runtime/uv.lock`. All 3 production `uv.lock` files (`uv.lock`, `ai/uv.lock`, `foresight/uv.lock`) already at `python-multipart 0.0.32`. No direct `import multipart` anywhere in tracked Python source. Trivy finds `python-multipart 0.0.24` only inside the local `.venv/.../art/_vllm_runtime/uv.lock` (gitignored upstream wheel). See PIX-4160. |
 | **starlette** | 2 | 1.3.1 | FastAPI/uvicorn stack |
 | **urllib3** | 2 | 2.7.0 | HTTP client |
 | **brace-expansion** | 2 | 5.0.8 | Build-time glob expansion |
@@ -249,3 +249,4 @@ Inputs S4 needs:
 | 2026-07-29 | Chad | Identified 5 actionable source findings + 14 actionable infra findings |
 | 2026-07-29 | Chad | Corrected HIGH double-count: all 3 pnpm audit HIGHs (sharp/react-router/brace-expansion) are inside Trivy's 42 — unique actionable HIGH = 42, not 45 |
 | 2026-07-29 | Chad | Traced pyjwt 2.12.1 to mcp 1.27.0 transitive dep; production lockfiles already at 2.13.0; remediation resolves via mcp>=1.28.1 bump (PIX-4159 follow-up) |
+| 2026-07-29 | Chad | Same scope finding for python-multipart 0.0.24 — downstream of mcp 1.27.0 in vendored lock; production lockfiles at 0.0.32; closes via mcp bump (PIX-4160 follow-up) |
