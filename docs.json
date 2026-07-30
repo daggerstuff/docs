@@ -101,10 +101,7 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": [
-              "api-reference/introduction",
-              "api-reference/authentication"
-            ]
+            "pages": ["api-reference/introduction", "api-reference/authentication"]
           },
           {
             "group": "Endpoints",
@@ -130,10 +127,7 @@
           },
           {
             "group": "Deployment",
-            "pages": [
-              "deployment/advanced_deployment_strategy",
-              "deployment/nemo_data_designer"
-            ]
+            "pages": ["deployment/advanced_deployment_strategy", "deployment/nemo_data_designer"]
           },
           {
             "group": "Procedures",
@@ -145,10 +139,7 @@
           },
           {
             "group": "Training Infrastructure",
-            "pages": [
-              "operations/foundation-model-training-setup",
-              "operations/ovh-ollama"
-            ]
+            "pages": ["operations/foundation-model-training-setup", "operations/ovh-ollama"]
           }
         ]
       },
@@ -211,9 +202,25 @@
             "pages": [
               "enterprise/overview",
               "enterprise/pricing",
+              "enterprise/sla-contract-terms",
               "enterprise/case-studies",
               "enterprise/partnerships"
             ]
+          },
+          {
+            "group": "Runbooks",
+            "pages": [
+              "enterprise/runbooks/slo-definitions",
+              "enterprise/runbooks/dr-rto-rpo-targets",
+              "enterprise/runbooks/infra-disaster-recovery",
+              "enterprise/runbooks/sla-breach-response",
+              "enterprise/runbooks/resilience-testing",
+              "enterprise/runbooks/backup-restore-testing"
+            ]
+          },
+          {
+            "group": "Vendor Management",
+            "pages": ["enterprise/vendor-inventory", "enterprise/vendor-security-reviews"]
           }
         ]
       },
@@ -247,10 +254,7 @@
           },
           {
             "group": "Analytics",
-            "pages": [
-              "features/analytics/README",
-              "features/analytics/analytics-charts-production"
-            ]
+            "pages": ["features/analytics/README", "features/analytics/analytics-charts-production"]
           }
         ]
       },
@@ -306,11 +310,7 @@
           },
           {
             "group": "Audits",
-            "pages": [
-              "audits/Phase-2-Audit",
-              "audits/Phase-3-Audit",
-              "audits/Phase-4-Audit"
-            ]
+            "pages": ["audits/Phase-2-Audit", "audits/Phase-3-Audit", "audits/Phase-4-Audit"]
           }
         ]
       }
