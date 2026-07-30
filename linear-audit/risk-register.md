@@ -81,13 +81,13 @@ Source: `docs/linear-audit/s3-scan-results.md`
 | R-S3-04 | **High** | vllm | <0.24.0 | ≥0.24.0 | Open | AI/ML | Multiple CVEs |
 | R-S3-05 | **High** | postcss | <8.5.18 | ≥8.5.18 | Open | Platform | Build-time |
 | R-S3-06 | **High** | mcp | <1.28.1 | ≥1.28.1 | Open | AI/ML | |
-| R-S3-07 | **High** | python-multipart | <0.0.30 | ≥0.0.30 | **In Progress** | Platform | PIX-4160 / pixelated#5102 |
-| R-S3-08 | **High** | starlette | <1.3.1 | ≥1.3.1 | **In Progress** | Platform | pixelated#5102 |
+| R-S3-07 | **High** | python-multipart | <0.0.30 | ≥0.0.30 | **Mitigated** | Platform | PIX-4160 / pixelated#5102 |
+| R-S3-08 | **High** | starlette | <1.3.1 | ≥1.3.1 | **Mitigated** | Platform | pixelated#5102 |
 | R-S3-09 | **High** | urllib3 | <2.7.0 | ≥2.7.0 | Open | Platform | |
 | R-S3-10 | **High** | brace-expansion | <5.0.8 | ≥5.0.8 | Open | Platform | PIX-4162 follow-up |
 | R-S3-11 | **High** | pyasn1 | <0.6.4 | ≥0.6.4 | Open | Platform | |
 | R-S3-12 | **High** | cryptography | <48.0.1 | ≥48.0.1 | Open | Platform | |
-| R-S3-13 | **High** | pyjwt | <2.13.0 | ≥2.13.0 | **In Progress** | Platform | PIX-4159 / pixelated#5102 |
+| R-S3-13 | **High** | pyjwt | <2.13.0 | ≥2.13.0 | **Mitigated** | Platform | PIX-4159 / pixelated#5102 |
 | R-S3-14 | **High** | httplib2 | <0.32.0 | ≥0.32.0 | Open | Platform | |
 | R-S3-15 | **High** | react-router | <8.3.0 | ≥8.3.0 | Open | Platform | Major migration |
 | R-S3-16 | **High** | sharp | <0.35.0 | ≥0.35.0 | Open | Platform | Build-time |
@@ -139,9 +139,9 @@ Any risk marked `Accepted` or `Transferred` must include:
 ### Before Vendor Engagement (S3 → S4)
 
 1. **Tier 1 remediation** (must complete):
-   - [ ] R-S3-13 pyjwt → 2.13.0 (PIX-4159) — PR opened, pending merge
-   - [ ] R-S3-07 python-multipart → 0.0.30 (PIX-4160) — PR opened, pending merge
-   - [ ] R-S3-08 starlette → 1.3.1 — PR opened, pending merge
+   - [x] R-S3-13 pyjwt → 2.13.0 (PIX-4159) — merged
+   - [x] R-S3-07 python-multipart → 0.0.30 (PIX-4160) — merged
+   - [x] R-S3-08 starlette → 1.3.1 — merged
 
 2. **Vendor prep**:
    - [ ] Finalize vendor selection (PIX-4135)
@@ -168,4 +168,5 @@ Any risk marked `Accepted` or `Transferred` must include:
 |------|--------|--------|
 | 2026-07-30 | Chad | Initial risk register consolidating S2 threat model and S3 scan findings |
 | 2026-07-30 | Chad | Aligned threat-model risk IDs to STRIDE identifiers (R-TM-S1..E4) |
-| 2026-07-30 | Chad | Marked R-S3-07, R-S3-08, R-S3-13 as In Progress after Tier 1 remediation PRs opened (to be updated to Mitigated on merge) |
+| 2026-07-30 | Chad | Marked R-S3-07, R-S3-08, R-S3-13 as In Progress after Tier 1 remediation PRs opened (to be updated to Mitigated on merge)
+| 2026-07-30 | Chad | Marked R-S3-07, R-S3-08, R-S3-13 as Mitigated after PRs merged (ai#490, docs#4, pixelated#5102) |
