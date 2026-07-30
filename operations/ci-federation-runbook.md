@@ -8,13 +8,12 @@
 
 ## 1. Overview
 
-This runbook documents the CI federation gates, their locations, owners, break/fix procedures, and escalation paths. The Pixelated CI model federates across three providers:
+This runbook documents the CI federation gates, their locations, owners, break/fix procedures, and escalation paths. The Pixelated CI model federates across two providers:
 
 | Provider                 | Domain                                           | Deploy Authority  |
 | ------------------------ | ------------------------------------------------ | ----------------- |
 | **GitHub Actions**       | Application CI, security scanning, AI validation | Civo K3s (deploy) |
-| **Bitbucket Pipelines**  | AI module validation, governance checks          | AKS (Azure)       |
-| **Azure Pipelines**      | Production AKS deploy gate                       | AKS (Azure)       |
+| **Bitbucket Pipelines**  | AI module validation, governance checks          | —                 |
 | **Readiness Aggregator** | Cross-provider release readiness summary         | Local/devops      |
 
 ---
@@ -147,7 +146,7 @@ This runbook documents the CI federation gates, their locations, owners, break/f
 | **Owner**              | DevOps / Chad                                                                            |
 | **Schema**             | `config/release-readiness-schema.json`                                                   |
 | **Validation lanes**   | Lint, typecheck, unit tests, format check                                                |
-| **Provider pipelines** | GitHub Actions, GitLab CI, Bitbucket Pipelines (requires credentials)                    |
+| **Provider pipelines** | GitHub Actions, Bitbucket Pipelines (requires credentials)                               |
 | **Gate strength**      | ⚪ MANUAL (pre-deployment advisory gate)                                                 |
 | **Break/fix**          | Check Python dependencies → verify provider API tokens → run with `--dry-run` to isolate |
 | **Escalation**         | DevOps lead for aggregator logic errors                                                  |
@@ -165,15 +164,6 @@ This runbook documents the CI federation gates, their locations, owners, break/f
 | AI validation        | `ai-validation.yml`              | ⚪ Informational |
 | Migration validation | `migration-validation.yml`       | ✅               |
 | Deploy               | `deploy-civo.yml` (push to main) | ✅ Final gate    |
-
-### 3.2 Production (AKS)
-
-| Step                 | Provider                          | Blocks?           |
-| -------------------- | --------------------------------- | ----------------- |
-| AI validation        | Bitbucket Pipelines               | ✅                |
-| Security scan        | GitHub `security.yml`             | ✅                |
-| Readiness aggregator | Manual (`aggregate-readiness.py`) | ⚪ Manual         |
-| Deploy               | Azure Pipelines                   | ✅ (Azure DevOps) |
 
 ---
 
@@ -254,14 +244,13 @@ This runbook documents the CI federation gates, their locations, owners, break/f
 
 ## 6. Key Secrets & Configuration
 
-| Secret                                                        | Used By                        | Managed In                                |
-| ------------------------------------------------------------- | ------------------------------ | ----------------------------------------- |
-| `GITHUB_TOKEN`                                                | All GitHub workflows           | Auto-injected by GitHub                   |
-| `AI_VALIDATION_SECRET`                                        | `ai-validation.yml`            | GitHub Secrets                            |
-| `APP_URL`                                                     | `ai-validation.yml`            | GitHub Secrets                            |
-| `SONAR_TOKEN`                                                 | SonarCloud steps               | GitHub Secrets (CI) + Bitbucket variables |
-| `AI_VALIDATION_SECRET`                                        | AI validation webhook          | GitHub Secrets                            |
-| `AZURE_*` (client ID, secret, tenant, subscription, AKS, ACR) | Deploy steps, Bitbucket deploy | Bitbucket deployment variables            |
+| Secret                 | Used By               | Managed In                                |
+| ---------------------- | --------------------- | ----------------------------------------- |
+| `GITHUB_TOKEN`         | All GitHub workflows  | Auto-injected by GitHub                   |
+| `AI_VALIDATION_SECRET` | `ai-validation.yml`   | GitHub Secrets                            |
+| `APP_URL`              | `ai-validation.yml`   | GitHub Secrets                            |
+| `SONAR_TOKEN`          | SonarCloud steps      | GitHub Secrets (CI) + Bitbucket variables |
+| `AI_VALIDATION_SECRET` | AI validation webhook | GitHub Secrets                            |
 
 ---
 

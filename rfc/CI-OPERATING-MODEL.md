@@ -11,7 +11,7 @@
 
 ## 1. Executive Summary
 
-This RFC defines the federated CI operating model for Pixelated Empathy. The model distributes validation across three providers — GitHub Actions, Bitbucket Pipelines, and Azure Pipelines — while establishing **Azure Pipelines as the sole deploy authority** for production. Each pipeline capability has a single designated owner. Build artifact lineage is enforced via provenance validation at every promotion hop.
+This RFC defines the federated CI operating model for Pixelated Empathy. The model distributes validation across two providers — **GitHub Actions** and **Bitbucket Pipelines** — with staging as the deploy target. Each pipeline capability has a single designated owner.
 
 ---
 
@@ -31,20 +31,19 @@ A federated model with clear authority boundaries eliminates these issues.
 
 ## 3. Provider Authority Matrix
 
-| Capability                                       | Owner      | Primary Provider    | Deploy Authority?        |
-| ------------------------------------------------ | ---------- | ------------------- | ------------------------ |
-| Application CI (lint, test, build)               | DevOps     | GitHub Actions      | No                       |
-| Security scanning (CodeQL, Trivy, Checkov, SBOM) | Security   | GitHub Actions      | No                       |
-| Bias detection                                   | AI Team    | GitHub Actions      | No                       |
-| AI model validation                              | AI Team    | GitHub Actions      | No                       |
-| AI module validation (governance, data, models)  | AI Team    | Bitbucket Pipelines | No                       |
-| DB migration validation                          | Backend    | GitHub Actions      | No                       |
-| OpenAPI validation                               | API        | GitHub Actions      | No                       |
-| Browser/Playwright E2E                           | Frontend   | GitHub Actions      | No                       |
-| Performance (Lighthouse)                         | Frontend   | GitHub Actions      | No                       |
-| Staging deploy (Civo K3s)                        | DevOps     | GitHub Actions      | No                       |
-| Readiness aggregation                            | DevOps     | Manual/CLI          | Advisory                 |
-| **Production deploy (AKS)**                      | **DevOps** | **Azure Pipelines** | **YES — sole authority** |
+| Capability                                       | Owner    | Primary Provider    | Deploy Authority? |
+| ------------------------------------------------ | -------- | ------------------- | ----------------- |
+| Application CI (lint, test, build)               | DevOps   | GitHub Actions      | No                |
+| Security scanning (CodeQL, Trivy, Checkov, SBOM) | Security | GitHub Actions      | No                |
+| Bias detection                                   | AI Team  | GitHub Actions      | No                |
+| AI model validation                              | AI Team  | GitHub Actions      | No                |
+| AI module validation (governance, data, models)  | AI Team  | Bitbucket Pipelines | No                |
+| DB migration validation                          | Backend  | GitHub Actions      | No                |
+| OpenAPI validation                               | API      | GitHub Actions      | No                |
+| Browser/Playwright E2E                           | Frontend | GitHub Actions      | No                |
+| Performance (Lighthouse)                         | Frontend | GitHub Actions      | No                |
+| Staging deploy (Civo K3s)                        | DevOps   | GitHub Actions      | No                |
+| Readiness aggregation                            | DevOps   | Manual/CLI          | Advisory          |
 
 ---
 
@@ -59,27 +58,18 @@ Each pipeline capability listed above has exactly one designated owner (team). N
 - Triaging false positives
 - Responding to failures within SLA
 
-### Rule 2: Azure Pipelines Is the Sole Deploy Authority
-
-No GitHub Actions workflow or Bitbucket pipeline may push to the production AKS cluster. Azure Pipelines is the only trusted deployer. This ensures:
-
-- Centralized audit trail for all production promotions
-- Consistent rollout/rollback procedures
-- Single point of gating for compliance
-
-### Rule 3: Build Artifact Provenance
+### Rule 2: Build Artifact Provenance
 
 Every promotion hop must verify artifact provenance:
 
 1. **Commit → Build**: Build artifacts are tagged with the source commit SHA
 2. **Build → Stage**: Staging deploy uses the same SHA-tagged artifact
-3. **Stage → Production**: Azure Pipelines validates the SHA matches the staging artifact before promoting
 
-### Rule 4: Validation Gates Before Deploy
+### Rule 3: Validation Gates Before Deploy
 
 No deploy proceeds unless all required gates in the matrix above pass for the target commit. The readiness aggregator (`scripts/devops/aggregate-readiness.py`) provides a pre-deploy summary.
 
-### Rule 5: Path-Based Triggers
+### Rule 4: Path-Based Triggers
 
 Each provider runs only jobs relevant to the changed paths:
 
@@ -90,7 +80,6 @@ Each provider runs only jobs relevant to the changed paths:
 | GitHub Actions      | `db/**`                                                | `migration-validation.yml` |
 | GitHub Actions      | `docs/api*/**`                                         | `openapi-validation.yml`   |
 | Bitbucket Pipelines | `ai/**`, `scripts/governance/**`                       | AI validation, governance  |
-| Azure Pipelines     | Any (tagged release)                                   | Production deploy          |
 
 ---
 
@@ -113,16 +102,13 @@ Each provider runs only jobs relevant to the changed paths:
 ┌─────────────────────────────────────────────────────────────────┐
 │                    Readiness Aggregator (optional)                │
 │  python3 scripts/devops/aggregate-readiness.py                   │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                  Azure Pipelines (Sole Deploy Authority)          │
-│  • Validates artifact SHA                                        │
-│  • Checks required gates passed                                  │
-│  • Executes production rollout to AKS                            │
-│  • Reports deployment status                                     │
 └─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+                 ┌───────────────────────┐
+                 │  Staging Deploy        │
+                 │  (Civo K3s via GH)     │
+                 └───────────────────────┘
 ```
 
 ---
@@ -137,31 +123,6 @@ graph LR
     B --> C[Docker Image: pixelatedempathy/api:{SHA}]
     B --> D[SBOM: sbom.cyclonedx.json]
     C --> E[Push to ACR / Civo Registry]
-```
-
-### 6.2 Promotion Stage
-
-```mermaid
-graph LR
-    A[Staging Deploy] --> B[Verified SHA]
-    B --> C[Azure Pipeline Trigger]
-    C --> D[SHA Validation: staging == production?]
-    D -->|Match| E[Production Rollout]
-    D -->|Mismatch| F[Block with Error]
-```
-
-### 6.3 Provenance Verification
-
-Azure Pipelines must verify before production deploy:
-
-```
-Expected SHA = $(cat .last-staging-sha)
-Actual SHA   = $(git rev-parse HEAD)
-
-if [ "$Expected SHA" != "$Actual SHA" ]; then
-  echo "Artifact provenance mismatch — blocking deploy"
-  exit 1
-fi
 ```
 
 ---
@@ -202,34 +163,20 @@ fi
 | GitHub Actions      | `.github/workflows/*.yml` (29 workflows)       | GitHub-hosted runners              |
 | Bitbucket Pipelines | `bitbucket-pipelines.yml` (root, consolidated) | Bitbucket-hosted runners           |
 | Bitbucket Pipelines | `ai/bitbucket-pipelines.yml` (AI submodule)    | Bitbucket-hosted runners (ai repo) |
-| Azure Pipelines     | Azure DevOps project (external)                | Azure-hosted agents                |
 
 ---
 
-## 9. Rollback Procedure
+## 8. Future Considerations
 
-1. **Trigger rollback** via Azure Pipelines manual approval gate
-2. **Select previous known-good artifact** by SHA from ACR
-3. **Verify artifact provenance** — SHA must match a previously-staged deployment
-4. **Execute rollback** — Azure Pipelines deploys the selected artifact to AKS
-5. **Verify** — Check deployment status and health endpoints
-6. **Post-mortem** — Root cause analysis within 48h
-
----
-
-## 10. Future Considerations
-
-| Topic                                                 | Timeline    | Owner            |
-| ----------------------------------------------------- | ----------- | ---------------- |
-| Wire readiness aggregator into Azure pre-deploy stage | Next sprint | DevOps           |
-| Upgrade `ci.yml` from SOFT to HARD gates              | Next sprint | DevOps           |
-| Run dry-run promotion tests on staging                | Next sprint | DevOps           |
-| Establish weekly CI operations review                 | Next sprint | DevOps / AI Team |
-| Automate readiness aggregator as a pre-deploy check   | Q3 2026     | DevOps           |
+| Topic                                               | Timeline    | Owner            |
+| --------------------------------------------------- | ----------- | ---------------- |
+| Upgrade `ci.yml` from SOFT to HARD gates            | Next sprint | DevOps           |
+| Establish weekly CI operations review               | Next sprint | DevOps / AI Team |
+| Automate readiness aggregator as a pre-deploy check | Q3 2026     | DevOps           |
 
 ---
 
-## 11. References
+## 9. References
 
 - [CI Federation Runbook](../operations/ci-federation-runbook.md)
 - [Readiness Aggregator](../../scripts/devops/aggregate-readiness.py)
