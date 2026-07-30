@@ -169,6 +169,8 @@ Dependencies were identified by scanning `package.json`, `pnpm-lock.yaml` (resol
 | Sentry leak of error context | Sentry | High | Low | Filter sensitive fields before sending |
 | PostgreSQL data loss | PostgreSQL | Critical | Low | Automated backups, replication, DR plan |
 | Third-party API deprecation | OpenAI, HuggingFace, E2B | Medium | Medium | Abstract behind provider interface |
+| No external pentest coverage | Platform (all services) | Critical | High | Annual external pentest per [penetration-testing-assessment.md](penetration-testing-assessment.md); first engagement target Q1 2027 |
+| No independent security assessment of PHI handling | Platform (therapy, storage) | Critical | Medium | White-box pentest bi-annually; SOC 2 Type II audit |
 
 ---
 
