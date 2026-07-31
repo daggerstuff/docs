@@ -23,7 +23,7 @@ Services whose failure directly impacts patient safety, PHI integrity, or core t
 |---------|-------------|--------------|
 | PostgreSQL | Primary relational database (user accounts, therapy sessions, clinical records) | Storage volume |
 | Therapy Session WebSocket | Real-time therapy chat between patient and AI | Backend, OpenAI, PostgreSQL |
-| Auth Service | Authentication, authorization, JWT management | PostgreSQL, Redis |
+| Auth Service | Authentication, authorization, JWT management | PostgreSQL (Primary); Redis (cache, Postgres fallback if unavailable) |
 | OpenAI API Integration | AI model inference for therapy responses | OpenAI API (external) |
 | MongoDB (if used) | Document store for clinical notes | Storage volume |
 
@@ -33,7 +33,7 @@ Services whose degradation impacts user experience or data integrity but does no
 
 | Service | Description | Dependencies |
 |---------|-------------|--------------|
-| API Backend (FastAPI/Express) | REST API serving frontend and mobile clients | PostgreSQL, Redis |
+| API Backend (FastAPI/Express) | REST API serving frontend and mobile clients | PostgreSQL (Primary); Redis (cache) |
 | Redis | Caching, session store, Celery broker | — |
 | AI Inference Pipeline | Emotional analysis, bias detection, model serving | PyTorch, GPU resources |
 | Message Queue (Celery) | Async task processing (analytics, notifications) | Redis |
@@ -164,7 +164,7 @@ Non-critical tooling with no customer-facing impact.
 | Single service crash | Degraded functionality | Restart container/pod | < 30 min |
 | Database corruption | Data loss, app errors | Restore from backup | < 2 hr |
 | Entire region failure | Complete outage | Failover to secondary region | < 4 hr |
-| Ransomware / security incident | Data compromisation | Isolate, restore from clean backup | < 24 hr |
+| Ransomware / security incident | Data compromise | Isolate, restore from clean backup | < 24 hr |
 | Third-party API (OpenAI) outage | AI features unavailable | Fallback to local model | < 1 hr |
 | Cloud provider outage | Infrastructure unavailable | DR site / multi-cloud failover | < 8 hr |
 
