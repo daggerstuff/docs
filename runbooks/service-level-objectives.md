@@ -167,7 +167,7 @@ histogram_quantile(0.95,
 **Error budget remaining:**
 ```promql
 (
-  1 - (sum(rate(http_requests_total{status=~"5.."}[30d])) / sum(rate(http_requests_total[30d])))
+  (1 - (sum(rate(http_requests_total{status=~"5.."}[30d])) / sum(rate(http_requests_total[30d]))))
   /
   (1 - 0.999)  # Replace 0.999 with target SLO as decimal
 ) * 100
