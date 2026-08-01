@@ -2,10 +2,10 @@
 
 | Metadata      | Value      |
 | ------------- | ---------- |
-| **Status**    | DRAFT      |
+| **Status**    | APPROVED   |
 | **Author**    | Chad       |
 | **Date**      | 2026-07-30 |
-| **Approvers** | TBD        |
+| **Approved**  | 2026-08-01 |
 
 ---
 
