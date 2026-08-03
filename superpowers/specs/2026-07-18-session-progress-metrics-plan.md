@@ -15,7 +15,7 @@ This plan outlines the step-by-step phases to execute the approved design spec f
 
 **Verify**: `pnpm vitest run src/tests/api/session/progress-api.test.ts` passes.
 **Rollback**: `git checkout src/pages/api/session/progress.ts src/pages/api/session/analytics.ts src/pages/api/session/skills.ts`
-**Status**: [ ] not started · [ ] in progress · [ ] complete
+**Status**: [ ] not started · [ ] in progress · [x] complete
 
 ---
 
@@ -29,7 +29,7 @@ This plan outlines the step-by-step phases to execute the approved design spec f
 
 **Verify**: `pnpm vitest run src/tests/api/session/defense-api.test.ts` passes.
 **Rollback**: `rm src/pages/api/defense.ts src/tests/api/session/defense-api.test.ts`
-**Status**: [ ] not started · [ ] in progress · [ ] complete
+**Status**: [ ] not started · [ ] in progress · [x] complete
 
 ---
 
@@ -47,7 +47,7 @@ This plan outlines the step-by-step phases to execute the approved design spec f
 
 **Verify**: `pnpm typecheck` compiles clean for modified files.
 **Rollback**: Revert `SessionTimeline.tsx` and delete the other React components.
-**Status**: [ ] not started · [ ] in progress · [ ] complete
+**Status**: [ ] not started · [ ] in progress · [x] complete
 
 ---
 
@@ -61,4 +61,4 @@ This plan outlines the step-by-step phases to execute the approved design spec f
 
 **Verify**: `pnpm build` completes successfully.
 **Rollback**: `git checkout src/pages/dashboard/enhanced.astro` and delete `session-progress.astro`.
-**Status**: [ ] not started · [ ] in progress · [ ] complete
+**Status**: [ ] not started · [ ] in progress · [x] complete
