@@ -6,3 +6,5 @@ maestro/
 
 # OMC runtime session data
 .omc/
+**/.git_ignore/**
+**/.git_disabled/**
