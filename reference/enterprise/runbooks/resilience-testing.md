@@ -120,6 +120,8 @@ kubectl label namespace pixelated-empathy chaos-mesh.org/inject=enabled
 All experiment manifests are located at `k8s/chaos/` and bundled via
 `k8s/chaos/kustomization.yaml`.
 
+**Registered experiments**: `pod-kill`, `network-latency`, `network-partition`, `http-chaos`, `postgres`, `foresight-mcp`
+
 ### 3.1 Pod Failure Scenario
 
 **Objective**: Validate Kubernetes self-healing, HPA scale-up, probe behavior,
@@ -376,47 +378,15 @@ Production chaos experiments are **prohibited** until:
 
 ### 6.1 GitHub Actions Integration
 
-Add chaos experiments to CI pipeline as a post-deploy validation step:
+Chaos experiments are integrated into CI as a post-deploy validation step
+(see `.github/workflows/chaos-validation.yml`):
 
-```yaml
-# .github/workflows/chaos-validation.yml (planned)
-name: Chaos Validation (Staging)
-on:
-  workflow_dispatch:
-    inputs:
-      scenario:
-        description: 'Experiment scenario'
-        required: true
-        type: choice
-        options:
-          - pod-kill
-          - network-latency
-          - network-partition
-          - http-chaos
-          - all
-jobs:
-  chaos-experiment:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/staging'
-    steps:
-      - uses: actions/checkout@v4
-      - name: Configure kubectl
-        run: |
-          echo "${{ secrets.CIVO_KUBECONFIG }}" > kubeconfig
-          export KUBECONFIG=$PWD/kubeconfig
-      - name: Run chaos experiment
-        run: |
-          kubectl apply -f k8s/chaos/${{ inputs.scenario }}-experiment.yaml
-          sleep 300  # Wait 5 min
-      - name: Collect results
-        run: |
-          # Query Prometheus for SLO metrics during experiment
-          # Upload results to GitHub artifacts
-      - name: Cleanup
-        if: always()
-        run: |
-          kubectl delete -f k8s/chaos/${{ inputs.scenario }}-experiment.yaml
-```
+- **Trigger**: Manual dispatch + weekly cron (Monday 10:00 UTC)
+- **Environment**: Staging (`staging` branch only)
+- **Scenarios**: `pod-kill`, `network-latency`, `network-partition`, `http-chaos`, `postgres`, `foresight-mcp`, `all`
+- **Duration**: Configurable (default 300s)
+- **Report**: Auto-generated to `.agent/internal/chaos-results/` and uploaded as artifact
+- **Cleanup**: Automatic on failure (deletes all chaos resources)
 
 ### 6.2 Pre-Merge Gate (Future)
 
