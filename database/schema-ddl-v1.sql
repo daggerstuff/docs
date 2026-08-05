@@ -333,10 +333,28 @@ CREATE TABLE pe.metering_events (
     event_timestamp     TIMESTAMPTZ NOT NULL,               -- When the event actually happened
     ingested_at         TIMESTAMPTZ NOT NULL DEFAULT NOW(), -- When we recorded it
     -- Staleness guard: events older than 24h are rejected by application
-    CONSTRAINT chk_event_freshness CHECK (ingested_at - event_timestamp < INTERVAL '24 hours')
+    CONSTRAINT chk_event_freshness CHECK (event_timestamp <= ingested_at AND ingested_at - event_timestamp < INTERVAL '24 hours')
 );
 
 CREATE INDEX idx_metering_institution ON pe.metering_events(institution_id, event_timestamp);
+
+-- IMMUTABILITY ENFORCEMENT: Prevent UPDATE or DELETE on metering_events
+CREATE OR REPLACE FUNCTION pe.prevent_metering_mutation()
+RETURNS TRIGGER AS $$
+BEGIN
+    RAISE EXCEPTION 'Metering events are immutable: UPDATE and DELETE are prohibited';
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_prevent_metering_update
+    BEFORE UPDATE ON pe.metering_events
+    FOR EACH ROW
+    EXECUTE FUNCTION pe.prevent_metering_mutation();
+
+CREATE TRIGGER trg_prevent_metering_delete
+    BEFORE DELETE ON pe.metering_events
+    FOR EACH ROW
+    EXECUTE FUNCTION pe.prevent_metering_mutation();
 CREATE INDEX idx_metering_type ON pe.metering_events(event_type, event_timestamp);
 
 -- 6b. Metering Daily Rollups (pre-aggregated for billing)
@@ -417,6 +435,9 @@ DECLARE
     last_hash VARCHAR(64);
     row_content TEXT;
 BEGIN
+    -- Serialize chain-head selection to prevent hash chain forking
+    PERFORM pg_advisory_xact_lock(hashtext('pe.audit_chain_head'));
+
     -- Get the hash of the last row
     SELECT row_hash INTO last_hash
     FROM pe.audit_log
@@ -435,7 +456,7 @@ BEGIN
                    COALESCE(NEW.ip_address::text, '') || '|' ||
                    COALESCE(NEW.user_agent, '') || '|' ||
                    COALESCE(last_hash, '') || '|' ||
-                   COALESCE(NOW()::text, '');
+                   COALESCE(NEW.created_at::text, '');
 
     NEW.row_hash := encode(
         digest(row_content, 'sha256'),
@@ -543,6 +564,7 @@ ALTER TABLE pe.metering_daily_rollups ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pe.billing_periods ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pe.audit_log ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pe.phi_guard_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE pe.phi_guard_allowlist ENABLE ROW LEVEL SECURITY;
 
 -- 9d. RLS policies — tenant isolation
 
@@ -558,24 +580,44 @@ CREATE POLICY tenant_isolation_institutions ON pe.institutions
 DO $$
 DECLARE
     tbl text;
+    tenant_col text;
 BEGIN
-    FOR tbl IN
-        SELECT unnest(ARRAY[
-            'institution_settings', 'users', 'api_keys', 'scenarios',
-            'simulation_sessions', 'simulation_messages', 'persona_definitions',
-            'persona_instances', 'metering_events', 'metering_daily_rollups',
-            'billing_periods', 'audit_log', 'phi_guard_events'
-        ])
+    FOR tbl, tenant_col IN
+        SELECT * FROM unnest(ARRAY[
+            ('institution_settings', 'institution_id'),
+            ('users', 'institution_id'),
+            ('api_keys', 'institution_id'),
+            ('scenarios', 'institution_id'),
+            ('simulation_sessions', 'institution_id'),
+            ('simulation_messages', 'institution_id'),
+            ('persona_definitions', 'institution_id'),
+            ('persona_instances', 'institution_id'),
+            ('metering_events', 'institution_id'),
+            ('metering_daily_rollups', 'institution_id'),
+            ('billing_periods', 'institution_id'),
+            ('audit_log', 'tenant_id'),
+            ('phi_guard_events', 'institution_id'),
+            ('phi_guard_allowlist', 'institution_id')
+        ]::text[])
     LOOP
         EXECUTE format(
             'CREATE POLICY tenant_isolation_%s ON pe.%I FOR ALL USING (
-                pe.is_super_admin() OR institution_id = pe.current_tenant_id()
+                pe.is_super_admin() OR %I = pe.current_tenant_id()
             )',
-            tbl, tbl
+            tbl, tbl, tenant_col
         );
     END LOOP;
 END;
 $$ LANGUAGE plpgsql;
+
+-- Persona definitions: allow tenant users to read global personas
+CREATE POLICY persona_global_read ON pe.persona_definitions
+    FOR SELECT
+    USING (
+        pe.is_super_admin()
+        OR institution_id = pe.current_tenant_id()
+        OR (institution_id IS NULL AND is_global = TRUE)
+    );
 
 -- Users table: different policy — users can see their own row always
 ALTER TABLE pe.users DISABLE ROW LEVEL SECURITY;
@@ -633,6 +675,8 @@ BEGIN
     PERFORM set_config('app.user_role', p_user_role::text, TRUE);
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
+REVOKE ALL ON FUNCTION pe.set_session_context(UUID, UUID, pe.user_role) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION pe.set_session_context(UUID, UUID, pe.user_role) TO pe_app_role;
 
 -- 11b. Audit helper (called by application code)
 CREATE OR REPLACE FUNCTION pe.log_audit_event(
@@ -696,6 +740,14 @@ BEGIN
     RETURN v_event_id;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
+REVOKE ALL ON FUNCTION pe.ingest_metering_event(
+    UUID, pe.metering_event_type, VARCHAR, UUID, UUID,
+    DECIMAL, VARCHAR, JSONB, VARCHAR, TIMESTAMPTZ
+) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION pe.ingest_metering_event(
+    UUID, pe.metering_event_type, VARCHAR, UUID, UUID,
+    DECIMAL, VARCHAR, JSONB, VARCHAR, TIMESTAMPTZ
+) TO pe_app_role;
 
 -- ============================================================================
 -- 12. SEED DATA — Global System Personas

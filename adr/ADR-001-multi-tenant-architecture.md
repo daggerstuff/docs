@@ -91,7 +91,7 @@ Pixelated Empathy is a B2B SaaS clinical simulation platform serving healthcare 
 
 ### Guard Layers
 1. **Schema-level enforcement**: No PHI-specific columns (SSN, DOB, diagnosis codes) in schema design. Character set validation on all text fields.
-2. **Input sanitization middleware**: Regex patterns strip common PHI patterns (email, phone, SSN, MRN) before storage. Rejects with 400 if PHI detected.
+2. **Input sanitization middleware**: Regex patterns strip common PHI patterns (email, phone, SSN, MRN) from **simulation content and free-text fields** (messages, scenario descriptions, persona prompts) before storage. Rejects with 400 if PHI detected. Structured identity fields encrypted per Decision 4 (email_ciphertext, display_name) are explicitly exempt from this middleware.
 3. **Output scan on API responses**: Response middleware scans for residual PHI patterns post-render.
 4. **Audit trail**: Any detection event is logged with timestamp, endpoint, tenant, and action taken.
 5. **Pre-commit CI check**: Automated scanner in CI pipeline flags any DDL or code containing PHI field patterns.
