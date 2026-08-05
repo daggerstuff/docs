@@ -11,38 +11,14 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
+        "tab": "Getting Started",
         "groups": [
           {
-            "group": "Getting Started",
-            "pages": ["index", "quickstart", "concepts", "manifesto"]
-          },
-          {
-            "group": "The Platform",
+            "group": "Tutorials",
             "pages": [
-              "product/empathy-gym",
-              "product/bias-detection",
-              "product/crisis-detection",
-              "product/emotional-intelligence",
-              "product/training-scenarios"
-            ]
-          },
-          {
-            "group": "Architecture",
-            "pages": [
-              "architecture/overview",
-              "architecture/data-flow",
-              "architecture/memory-system",
-              "architecture/deployment"
-            ]
-          },
-          {
-            "group": "Compliance & Security",
-            "pages": [
-              "compliance/hipaa",
-              "compliance/security",
-              "compliance/ethics",
-              "compliance/data-privacy"
+              "getting-started/therapist-first-session",
+              "getting-started/supervisor-onboarding",
+              "getting-started/developer-setup"
             ]
           }
         ]
@@ -53,18 +29,9 @@
           {
             "group": "For Therapists",
             "pages": [
-              "guides/therapists/getting-started",
+              "guides/therapists/response-style",
               "guides/therapists/empathy-gym-guide",
-              "guides/therapists/understanding-feedback",
-              "guides/therapists/response-style"
-            ]
-          },
-          {
-            "group": "For Developers",
-            "pages": [
-              "guides/developers/setup",
-              "guides/developers/conventions",
-              "guides/developers/contributing"
+              "guides/therapists/understanding-feedback"
             ]
           },
           {
@@ -76,185 +43,10 @@
             ]
           },
           {
-            "group": "Technical Guides",
+            "group": "For Developers",
             "pages": [
-              "guides/technical-guides/README",
-              "guides/technical-guides/enhanced-bias-detection-integration"
+              "guides/developers/offline-sync"
             ]
-          },
-          {
-            "group": "Training",
-            "pages": ["guides/training/PIXEL-MODEL-TRAINING-HUB"]
-          },
-          {
-            "group": "User Guides",
-            "pages": [
-              "guides/user-guides/README",
-              "guides/user-guides/journal-research-guide",
-              "guides/user-guides/therapist-dashboard-guide"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": ["api-reference/introduction", "api-reference/authentication"]
-          },
-          {
-            "group": "Endpoints",
-            "pages": [
-              "api-reference/bias-analysis",
-              "api-reference/session-management",
-              "api-reference/analytics"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Operations",
-        "groups": [
-          {
-            "group": "Infrastructure",
-            "pages": [
-              "operations/README",
-              "operations/infrastructure-README",
-              "operations/serving",
-              "operations/ingestion"
-            ]
-          },
-          {
-            "group": "Deployment",
-            "pages": ["deployment/advanced_deployment_strategy", "deployment/nemo_data_designer"]
-          },
-          {
-            "group": "Procedures",
-            "pages": [
-              "operations/incident-response-procedures",
-              "operations/rollback-procedures",
-              "operations/launch-readiness-summary"
-            ]
-          },
-          {
-            "group": "Training Infrastructure",
-            "pages": ["operations/foundation-model-training-setup", "operations/ovh-ollama"]
-          }
-        ]
-      },
-      {
-        "tab": "Knowledge",
-        "groups": [
-          {
-            "group": "Emotional Intelligence",
-            "pages": [
-              "knowledge/index",
-              "knowledge/emotional-cartography",
-              "knowledge/plutchiks-wheel-explained",
-              "knowledge/empathy-in-practice"
-            ]
-          },
-          {
-            "group": "Therapeutic Practice",
-            "pages": [
-              "knowledge/therapeutic-dialogue",
-              "knowledge/cultural-empathy",
-              "knowledge/the-power-of-silence",
-              "knowledge/when-someone-is-in-crisis"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Research",
-        "groups": [
-          {
-            "group": "Our Approach",
-            "pages": [
-              "research/our-approach",
-              "research/ethical-ai-framework",
-              "research/bias-detection"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Platform",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": [
-              "platform/overview",
-              "platform/empathy-gym",
-              "platform/emotional-intelligence-engine",
-              "platform/crisis-detection",
-              "platform/privacy-and-trust"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Enterprise",
-        "groups": [
-          {
-            "group": "For Organizations",
-            "pages": [
-              "enterprise/overview",
-              "enterprise/pricing",
-              "enterprise/sla-contract-terms",
-              "enterprise/case-studies",
-              "enterprise/partnerships"
-            ]
-          },
-          {
-            "group": "Runbooks",
-            "pages": [
-              "enterprise/runbooks/slo-definitions",
-              "enterprise/runbooks/dr-rto-rpo-targets",
-              "enterprise/runbooks/infra-disaster-recovery",
-              "enterprise/runbooks/sla-breach-response",
-              "enterprise/runbooks/resilience-testing",
-              "enterprise/runbooks/backup-restore-testing"
-            ]
-          },
-          {
-            "group": "Vendor Management",
-            "pages": ["enterprise/vendor-inventory", "enterprise/vendor-security-reviews"]
-          }
-        ]
-      },
-      {
-        "tab": "Developers",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "developers/getting-started",
-              "developers/architecture",
-              "developers/api-reference",
-              "developers/contributing"
-            ]
-          },
-          {
-            "group": "Development",
-            "pages": ["development/README"]
-          },
-          {
-            "group": "Features",
-            "pages": ["features/README", "features/eval-gating"]
-          },
-          {
-            "group": "Design System",
-            "pages": [
-              "features/designs/README",
-              "features/designs/design-system",
-              "features/designs/design-system-improvements"
-            ]
-          },
-          {
-            "group": "Analytics",
-            "pages": ["features/analytics/README", "features/analytics/analytics-charts-production"]
           }
         ]
       },
@@ -262,55 +54,114 @@
         "tab": "Reference",
         "groups": [
           {
-            "group": "Standards",
+            "group": "API",
             "pages": [
-              "reference/README",
-              "reference/rules-system",
-              "reference/standardization",
-              "reference/task-list"
+              "reference/api/introduction",
+              "reference/api/authentication",
+              "reference/api/session-management",
+              "reference/api/bias-analysis",
+              "reference/api/analytics"
             ]
           },
           {
-            "group": "Architectures",
+            "group": "Architecture",
             "pages": [
-              "reference/architectures/README",
-              "reference/architectures/plan",
-              "reference/architectures/property",
-              "reference/architectures/tasks"
+              "reference/architecture/auth-boundaries",
+              "reference/architecture/memory-scope-model",
+              "reference/architecture/agents-pipeline",
+              "reference/architecture/graphql-federation-layer",
+              "reference/architecture/developer-memory-api-v2"
+            ]
+          },
+          {
+            "group": "Compliance",
+            "pages": [
+              "reference/compliance/hipaa",
+              "reference/compliance/data-privacy",
+              "reference/compliance/security",
+              "reference/compliance/ethics"
+            ]
+          },
+          {
+            "group": "Enterprise",
+            "pages": [
+              "reference/enterprise/overview",
+              "reference/enterprise/pricing",
+              "reference/enterprise/sla-contract-terms",
+              "reference/enterprise/case-studies",
+              "reference/enterprise/partnerships",
+              "reference/enterprise/vendor-inventory",
+              "reference/enterprise/vendor-security-reviews",
+              "reference/enterprise/hipaa-compliance-gap-assessment",
+              "reference/enterprise/hipaa-risk-analysis",
+              "reference/enterprise/hipaa-training-program",
+              "reference/enterprise/hipaa-officer-designations",
+              "reference/enterprise/soc2-readiness-gap-assessment",
+              "reference/enterprise/baa-template"
+            ]
+          },
+          {
+            "group": "Enterprise Policies",
+            "pages": [
+              "reference/enterprise/policies/incident-response-plan",
+              "reference/enterprise/policies/change-management-policy",
+              "reference/enterprise/policies/access-control-procedure",
+              "reference/enterprise/policies/information-security-policy",
+              "reference/enterprise/policies/deficiency-tracking-procedure"
+            ]
+          },
+          {
+            "group": "Enterprise Runbooks",
+            "pages": [
+              "reference/enterprise/runbooks/slo-definitions",
+              "reference/enterprise/runbooks/dr-rto-rpo-targets",
+              "reference/enterprise/runbooks/infra-disaster-recovery",
+              "reference/enterprise/runbooks/sla-breach-response",
+              "reference/enterprise/runbooks/resilience-testing",
+              "reference/enterprise/runbooks/backup-restore-testing"
             ]
           }
         ]
       },
       {
-        "tab": "Resources",
+        "tab": "Concepts",
         "groups": [
           {
-            "group": "Datasets",
+            "group": "Foundations",
             "pages": [
-              "datasets/mental-health-datasets-expansion-repo-map",
-              "datasets/RELEASE_0_DEPLOYMENT_COMPLETE",
-              "datasets/RELEASE_0_INVENTORY_SUMMARY"
+              "concepts/index",
+              "concepts/platform-overview",
+              "concepts/empathy-gym",
+              "concepts/emotional-intelligence",
+              "concepts/bias-detection",
+              "concepts/crisis-detection",
+              "concepts/privacy-and-trust",
+              "concepts/clinical-validity"
             ]
           },
           {
-            "group": "Governance",
-            "pages": ["governance/provenance_storage_plan"]
-          },
-          {
-            "group": "Migration",
+            "group": "Frameworks",
             "pages": [
-              "migration/auth0-migration-guide",
-              "migration/auth0-implementation-summary",
-              "migration/auth0-complete-implementation-summary"
+              "concepts/ears-framework",
+              "concepts/emotion-model",
+              "concepts/personality-model",
+              "concepts/therapeutic-alliance",
+              "concepts/crisis-signals",
+              "concepts/bias-types"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Products",
+        "groups": [
           {
-            "group": "Security",
-            "pages": ["security/safety", "security/credential-files-security"]
-          },
-          {
-            "group": "Audits",
-            "pages": ["audits/Phase-2-Audit", "audits/Phase-3-Audit", "audits/Phase-4-Audit"]
+            "group": "Overview",
+            "pages": [
+              "products/pixelated/overview",
+              "products/ai/overview",
+              "products/foresight/overview"
+            ]
           }
         ]
       }
@@ -319,7 +170,7 @@
       "anchors": [
         {
           "anchor": "GitHub",
-          "href": "https://github.com/pixelatedempathy",
+          "href": "https://github.com/daggerstuff",
           "icon": "github"
         },
         {
@@ -350,7 +201,7 @@
   "footer": {
     "socials": {
       "x": "https://x.com/pixelatedempathy",
-      "github": "https://github.com/pixelatedempathy",
+      "github": "https://github.com/daggerstuff",
       "linkedin": "https://linkedin.com/company/pixelated-empathy"
     }
   }
