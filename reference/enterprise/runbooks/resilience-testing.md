@@ -1,6 +1,8 @@
 ---
 title: Resilience Testing & Chaos Engineering
-description: Chaos engineering scenarios, experiment manifests, test schedule, and safety guardrails for validating platform fault tolerance in staging
+description:
+  Chaos engineering scenarios, experiment manifests, test schedule, and safety
+  guardrails for validating platform fault tolerance in staging
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -19,18 +21,28 @@ Chaos Mesh · Network Chaos · Pod Failure · Resource Exhaustion · HTTP Chaos
 
 ## 1. Purpose & Scope
 
-This runbook defines chaos engineering practices and resilience testing scenarios for the Pixelated Empathy platform. It covers Chaos Mesh experiment definitions, execution schedule, safety guardrails, result documentation, and CI/CD integration.
+This runbook defines chaos engineering practices and resilience testing
+scenarios for the Pixelated Empathy platform. It covers Chaos Mesh experiment
+definitions, execution schedule, safety guardrails, result documentation, and
+CI/CD integration.
 
-**Scope**: Staging environment experiments targeting Kubernetes workloads in the `pixelated-empathy` namespace. Production experiments require explicit approval (see §6.5).
+**Scope**: Staging environment experiments targeting Kubernetes workloads in the
+`pixelated-empathy` namespace. Production experiments require explicit approval
+(see §6.5).
 
 **Related runbooks**:
 
-- [SLO Definitions](./slo-definitions.md) — SLO targets these experiments validate
-- [SLO Burn Rate Alerts](../../monitoring/slo-burn-rate-alerts.yml) — alerts expected to fire during experiments
-- [SLA Breach Response](./sla-breach-response.md) — response procedure if experiment breaches SLA
-- [Infrastructure Disaster Recovery](./infra-disaster-recovery.md) — DR procedures validated by chaos experiments
+- [SLO Definitions](./slo-definitions.md) — SLO targets these experiments
+  validate
+- [SLO Burn Rate Alerts](../../monitoring/slo-burn-rate-alerts.yml) — alerts
+  expected to fire during experiments
+- [SLA Breach Response](./sla-breach-response.md) — response procedure if
+  experiment breaches SLA
+- [Infrastructure Disaster Recovery](./infra-disaster-recovery.md) — DR
+  procedures validated by chaos experiments
 
-**Parent epic**: [PIX-4128](https://linear.app/pixelated/issue/PIX-4128) — Chaos Engineering & Resilience Testing
+**Parent epic**: [PIX-4128](https://linear.app/pixelated/issue/PIX-4128) — Chaos
+Engineering & Resilience Testing
 
 ---
 
@@ -105,11 +117,13 @@ kubectl label namespace pixelated-empathy chaos-mesh.org/inject=enabled
 
 ## 3. Experiment Scenarios
 
-All experiment manifests are located at `k8s/chaos/` and bundled via `k8s/chaos/kustomization.yaml`.
+All experiment manifests are located at `k8s/chaos/` and bundled via
+`k8s/chaos/kustomization.yaml`.
 
 ### 3.1 Pod Failure Scenario
 
-**Objective**: Validate Kubernetes self-healing, HPA scale-up, probe behavior, and zero-downtime recovery when API pods are killed.
+**Objective**: Validate Kubernetes self-healing, HPA scale-up, probe behavior,
+and zero-downtime recovery when API pods are killed.
 
 | Parameter       | Value                                                   |
 | --------------- | ------------------------------------------------------- |
@@ -133,12 +147,14 @@ All experiment manifests are located at `k8s/chaos/` and bundled via `k8s/chaos/
 1. Deploy experiments: `kubectl apply -k k8s/chaos/pod-kill-experiment.yaml`
 2. Monitor pod status: `kubectl get pods -n pixelated-empathy -w`
 3. Check Prometheus: `up{job="pixelated-app"}` remains 1
-4. Verify no 5xx errors: `rate(http_requests_total{job="pixelated-app",status=~"5.."}[5m])`
+4. Verify no 5xx errors:
+   `rate(http_requests_total{job="pixelated-app",status=~"5.."}[5m])`
 5. Record results in §7 template
 
 ### 3.2 Network Latency Scenario
 
-**Objective**: Validate latency SLO compliance (p95 ≤ 500ms) under degraded network conditions and client-side timeout handling.
+**Objective**: Validate latency SLO compliance (p95 ≤ 500ms) under degraded
+network conditions and client-side timeout handling.
 
 | Parameter       | Value                                                    |
 | --------------- | -------------------------------------------------------- |
@@ -167,7 +183,9 @@ All experiment manifests are located at `k8s/chaos/` and bundled via `k8s/chaos/
 
 ### 3.3 Network Partition Scenario
 
-**Objective**: Simulate complete network outage / DNS failure between services. Validates circuit breaker activation, fallback behavior, and `RedisDown` / `ApplicationDown` alert triggering.
+**Objective**: Simulate complete network outage / DNS failure between services.
+Validates circuit breaker activation, fallback behavior, and `RedisDown` /
+`ApplicationDown` alert triggering.
 
 | Parameter       | Value                                         |
 | --------------- | --------------------------------------------- |
@@ -198,7 +216,9 @@ All experiment manifests are located at `k8s/chaos/` and bundled via `k8s/chaos/
 
 ### 3.4 API Backend Failure Scenario
 
-**Objective**: Simulate API backend failures via HTTP request aborts and response delays. Tests liveness probe failure, 5xx error rate alerting, and SLO burn rate alerts.
+**Objective**: Simulate API backend failures via HTTP request aborts and
+response delays. Tests liveness probe failure, 5xx error rate alerting, and SLO
+burn rate alerts.
 
 | Parameter       | Value                                               |
 | --------------- | --------------------------------------------------- |
@@ -228,7 +248,8 @@ All experiment manifests are located at `k8s/chaos/` and bundled via `k8s/chaos/
 
 ### 3.5 Resource Exhaustion Scenario
 
-**Objective**: Simulate CPU and memory pressure to validate HPA scaling, OOM handling, and resource alerts.
+**Objective**: Simulate CPU and memory pressure to validate HPA scaling, OOM
+handling, and resource alerts.
 
 | Parameter       | Value                                                        |
 | --------------- | ------------------------------------------------------------ |
@@ -273,9 +294,11 @@ All experiment manifests are located at `k8s/chaos/` and bundled via `k8s/chaos/
 
 First Friday of each month, 14:00-17:00 UTC:
 
-1. **Combined scenario**: Run all 4 experiment categories simultaneously for 30 min
+1. **Combined scenario**: Run all 4 experiment categories simultaneously for 30
+   min
 2. **Failover test**: Trigger blue-green slot switch during chaos
-3. **DR drill**: Execute one scenario from [DR runbook](./infra-disaster-recovery.md) §8
+3. **DR drill**: Execute one scenario from
+   [DR runbook](./infra-disaster-recovery.md) §8
 4. **Postmortem**: Review results, update experiments, adjust SLO thresholds
 
 ### 4.3 Quarterly Review
@@ -285,7 +308,8 @@ Each quarter:
 - Review all experiment results from §7 logs
 - Update experiment parameters based on findings
 - Add new scenarios for newly discovered failure modes
-- Re-evaluate SLO thresholds (per [SLO runbook](./slo-definitions.md) §7 governance)
+- Re-evaluate SLO thresholds (per [SLO runbook](./slo-definitions.md) §7
+  governance)
 - Validate Chaos Mesh version and upgrade if needed
 
 ---
@@ -309,7 +333,8 @@ Each quarter:
 **STOP immediately if any of the following occur**:
 
 1. **Data corruption detected** — Redis/postgres checksums fail
-2. **Alert fires in production** — Even if staging experiment, check for cross-cluster contamination
+2. **Alert fires in production** — Even if staging experiment, check for
+   cross-cluster contamination
 3. **HPA maxed out** — All replicas exhausted, cannot scale further
 4. **Pod restart loop** — CrashLoopBackOff persists > 5m
 5. **Dashboard shows cascading failures** — Other services affected unexpectedly
@@ -432,21 +457,21 @@ spec:
 
 ## 7. Results Documentation Template
 
-Each experiment run must be documented using this template. Store results in `.agent/internal/chaos-results/YYYY-MM-DD-<scenario>.md`.
+Each experiment run must be documented using this template. Store results in
+`.agent/internal/chaos-results/YYYY-MM-DD-<scenario>.md`.
 
 ```markdown
 # Chaos Experiment Report
 
-**Date**: YYYY-MM-DD
-**Scenario**: [pod-kill | network-latency | network-partition | http-chaos | resource-exhaustion]
-**Experiment file**: k8s/chaos/<file>.yaml
-**Environment**: staging
-**Operator**: [name]
+**Date**: YYYY-MM-DD **Scenario**: [pod-kill | network-latency |
+network-partition | http-chaos | resource-exhaustion] **Experiment file**:
+k8s/chaos/<file>.yaml **Environment**: staging **Operator**: [name]
 **Duration**: [actual duration]
 
 ## 7.1 Hypothesis
 
-[What we expect to happen — e.g., "Pod restarts complete within 60s, no 5xx errors"]
+[What we expect to happen — e.g., "Pod restarts complete within 60s, no 5xx
+errors"]
 
 ## 7.2 Observed Results
 
@@ -567,9 +592,12 @@ Each experiment run must be documented using this template. Store results in `.a
 
 ### Internal Documentation
 
-- [SLO Definitions](./slo-definitions.md) — SLO targets validated by these experiments
-- [SLA Breach Response](./sla-breach-response.md) — Response if experiment causes SLA breach
-- [Infrastructure Disaster Recovery](./infra-disaster-recovery.md) — DR procedures tested during game day
+- [SLO Definitions](./slo-definitions.md) — SLO targets validated by these
+  experiments
+- [SLA Breach Response](./sla-breach-response.md) — Response if experiment
+  causes SLA breach
+- [Infrastructure Disaster Recovery](./infra-disaster-recovery.md) — DR
+  procedures tested during game day
 - [DR RTO/RPO Targets](./dr-rto-rpo-targets.md) — Recovery targets to validate
 
 ### Experiment Manifests
@@ -583,12 +611,15 @@ Each experiment run must be documented using this template. Store results in `.a
 ### Monitoring Configuration
 
 - `monitoring/slo-burn-rate-alerts.yml` — SLO burn rate alerts expected to fire
-- `monitoring/alert_rules.yml` — Platform alerts (HighErrorRate, HighResponseTime, etc.)
-- `monitoring/dashboards/slo-monitoring-dashboard.json` — SLO dashboard for real-time monitoring
+- `monitoring/alert_rules.yml` — Platform alerts (HighErrorRate,
+  HighResponseTime, etc.)
+- `monitoring/dashboards/slo-monitoring-dashboard.json` — SLO dashboard for
+  real-time monitoring
 
 ### Kubernetes Configuration
 
-- `k8s/base/deployment-blue.yaml` — Target deployment (labels: app=pixelated-empathy-api, slot=blue)
+- `k8s/base/deployment-blue.yaml` — Target deployment (labels:
+  app=pixelated-empathy-api, slot=blue)
 - `k8s/base/service.yaml` — Service routing (port 80 → 5001)
 - `k8s/base/hpa.yaml` — HPA config (currently min=1 max=1 — see gap CE-2.2)
 
@@ -602,5 +633,7 @@ Each experiment run must be documented using this template. Store results in `.a
 ### Linear & GitHub
 
 - [PIX-4149](https://linear.app/pixelated/issue/PIX-4149) — This ticket
-- [PIX-4128](https://linear.app/pixelated/issue/PIX-4128) — Parent epic: Chaos Engineering & Resilience Testing
-- [GitHub #5084](https://github.com/daggerstuff/pixelated/issues/5084) — PR branch
+- [PIX-4128](https://linear.app/pixelated/issue/PIX-4128) — Parent epic: Chaos
+  Engineering & Resilience Testing
+- [GitHub #5084](https://github.com/daggerstuff/pixelated/issues/5084) — PR
+  branch

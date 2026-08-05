@@ -44,9 +44,7 @@
           },
           {
             "group": "For Developers",
-            "pages": [
-              "guides/developers/offline-sync"
-            ]
+            "pages": ["guides/developers/offline-sync"]
           }
         ]
       },

@@ -3,16 +3,18 @@
 - **Status**: Accepted
 - **Date**: 2026-07-22
 - **Linear**: PIX-3928, PIX-4064, PIX-4065, PIX-4066
-- **Depends on**: PIX-3925 (dual-mode auth), PIX-3926 (AI processing microservice)
+- **Depends on**: PIX-3925 (dual-mode auth), PIX-3926 (AI processing
+  microservice)
 
 ## 1. Context
 
 PIX-3928 requires a GraphQL API layer for the Pixelated Empathy platform. The
-platform currently exposes REST API routes under `/api/` and `/api/v1/`.
-GraphQL provides a unified query interface for clients needing nested data
-(e.g., session → emotions → metadata) in a single round trip.
+platform currently exposes REST API routes under `/api/` and `/api/v1/`. GraphQL
+provides a unified query interface for clients needing nested data (e.g.,
+session → emotions → metadata) in a single round trip.
 
-ADR-0001 (`src/content-store/docs/architecture/decisions/0001-core-architecture.md`)
+ADR-0001
+(`src/content-store/docs/architecture/decisions/0001-core-architecture.md`)
 mentioned "GraphQL API with federation" but it was never executed. This ADR
 delivers the initial implementation.
 
@@ -68,10 +70,9 @@ schema is consumed directly by graphql-yoga.
   manual `requireAuth(context)` as defense-in-depth
 - **Route config**: Added to `ROUTE_CONFIGS` in `src/lib/auth/route-config.ts`
   with `strategy: "either"`, `family: "public"`, `requiredScopes: []`
-- **Scope checking**: `@auth(scope: "admin")` directive on
-  `anonymizedMetrics` field — admin role bypasses, API-key users checked
-  against `keyRecord.scopes[]`, JWT users without scopes pass non-admin
-  scope checks
+- **Scope checking**: `@auth(scope: "admin")` directive on `anonymizedMetrics`
+  field — admin role bypasses, API-key users checked against
+  `keyRecord.scopes[]`, JWT users without scopes pass non-admin scope checks
 
 ### Security: Depth & Complexity Limits
 
@@ -109,8 +110,8 @@ module realms. Mitigations:
    `graphql()` / `validate()` — avoids `assertSchema()` instanceof check
 2. **Complexity rule uses `Symbol.toStringTag`** instead of `isListType` /
    `getNullableType` (which use `instanceof` internally)
-3. **Depth test uses `buildSchema` + `validate`** from the same `graphql`
-   import (avoids cross-package instanceof hazard with @graphql-tools/schema)
+3. **Depth test uses `buildSchema` + `validate`** from the same `graphql` import
+   (avoids cross-package instanceof hazard with @graphql-tools/schema)
 4. **graphql downgraded to v16** from v17 (graphql-yoga v5 peerDep is
    `^15.2.0 || ^16.0.0`)
 
@@ -140,12 +141,12 @@ module realms. Mitigations:
 
 ### Files Modified
 
-| File                           | Change                                                                                                                                                                                              |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src/lib/auth/route-config.ts` | Added `/api/graphql` route config + developer memory route configs (strategy: either, family: public/developer)                                                                                     |
-| `src/lib/auth/index.ts`        | Extended `getCurrentUser` + `validateApiKeyAndGetUser` to return `scopes[]` for directive scope checking (PIX-4065)                                                                                 |
-| `config/vitest.config.ts`      | Added graphql packages to `optimizeDeps.include`, added test files to `baseNodeTestGlobs`                                                                                                           |
-| `package.json`                 | Added graphql, graphql-yoga, graphql-ws, graphql-depth-limit, graphql-query-complexity, @graphql-tools/schema, @graphql-tools/utils, graphql-request, @graphql-codegen/* + `codegen:graphql` script |
+| File                           | Change                                                                                                                                                                                               |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/lib/auth/route-config.ts` | Added `/api/graphql` route config + developer memory route configs (strategy: either, family: public/developer)                                                                                      |
+| `src/lib/auth/index.ts`        | Extended `getCurrentUser` + `validateApiKeyAndGetUser` to return `scopes[]` for directive scope checking (PIX-4065)                                                                                  |
+| `config/vitest.config.ts`      | Added graphql packages to `optimizeDeps.include`, added test files to `baseNodeTestGlobs`                                                                                                            |
+| `package.json`                 | Added graphql, graphql-yoga, graphql-ws, graphql-depth-limit, graphql-query-complexity, @graphql-tools/schema, @graphql-tools/utils, graphql-request, @graphql-codegen/\* + `codegen:graphql` script |
 
 ### Schema Definition (SDL Summary)
 
@@ -392,9 +393,10 @@ type Subscription {
 - Unified query interface for nested data (session → emotions → metadata)
 - Real-time subscriptions via Redis pub/sub with in-memory fallback
 - Persisted query allowlist for production (only approved queries accepted)
-- AnonymizedMetrics wired to AnonymizationService with k-anonymity and consent gating
-- Strong security: depth + complexity limits, auth gating, introspection off
-  in production
+- AnonymizedMetrics wired to AnonymizationService with k-anonymity and consent
+  gating
+- Strong security: depth + complexity limits, auth gating, introspection off in
+  production
 - Clear ownership boundaries ready for future federation split
 - Minimal new dependencies (graphql-yoga is lightweight)
 
@@ -411,8 +413,8 @@ type Subscription {
 ### Neutral
 
 - graphql downgraded from v17 to v16 for graphql-yoga v5 compatibility
-- Schema is modular monolithic, not federated — can split later without
-  breaking changes
+- Schema is modular monolithic, not federated — can split later without breaking
+  changes
 
 ## 6. Future Work
 
@@ -434,11 +436,14 @@ type Subscription {
 - ✅ Auth gating on all resolvers
 - ✅ Subscriptions wired to Redis pub/sub with in-memory fallback
 - ✅ Persisted queries enabled in production (query allowlist)
-- ✅ AnonymizedMetrics wired to AnonymizationService (k-anonymity=5, consent gating)
+- ✅ AnonymizedMetrics wired to AnonymizationService (k-anonymity=5, consent
+  gating)
 - ✅ `@auth(scope)` and `@requireRole(role)` directives functional (PIX-4065)
 - ✅ `@auth(scope: "admin")` on `anonymizedMetrics` enforces scope-based authz
-- ✅ graphql-codegen produces typed SDK client from SDL + operation documents (PIX-4066)
-- ✅ Generated SDK client usable in Node and browser via `graphql-request` (PIX-4066)
+- ✅ graphql-codegen produces typed SDK client from SDL + operation documents
+  (PIX-4066)
+- ✅ Generated SDK client usable in Node and browser via `graphql-request`
+  (PIX-4066)
 - ✅ SDK documentation auto-generated at `src/lib/graphql/README.md` (PIX-4066)
 
 ## 8. References
@@ -449,7 +454,8 @@ type Subscription {
 - PIX-4066: GraphQL Code Generation & SDK Client
 - PIX-3925: Dual-mode auth and API key infrastructure
 - PIX-3926: AI Processing Microservice Isolation
-- ADR-0001: Core Architecture (`src/content-store/docs/architecture/decisions/0001-core-architecture.md`)
+- ADR-0001: Core Architecture
+  (`src/content-store/docs/architecture/decisions/0001-core-architecture.md`)
 - `docs/architecture/auth-boundaries.md`: Dual-mode auth design
 - `src/lib/graphql/`: Implementation directory
 - `src/lib/db/ai/repository.ts`: AIRepository data access layer

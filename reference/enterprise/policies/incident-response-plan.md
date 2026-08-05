@@ -1,6 +1,9 @@
 ---
 title: Incident Response Plan
-description: Pixelated Empathy's incident response plan covering detection, containment, eradication, recovery, notification, and post-incident review. SOC2 CC7 and HIPAA Breach Notification Rule compliance.
+description:
+  Pixelated Empathy's incident response plan covering detection, containment,
+  eradication, recovery, notification, and post-incident review. SOC2 CC7 and
+  HIPAA Breach Notification Rule compliance.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -31,24 +34,24 @@ information systems, customer data, or PHI.
 
 ## 2. Incident Severity Levels
 
-| Severity | Definition | Response Time | Notification |
-|----------|------------|---------------|--------------|
-| **P0 — Critical** | Active PHI breach, data exfiltration, ransomware, complete service outage | Immediate (24/7) | CSO + Leadership + Customers (if PHI) + HHS (if breach) |
-| **P1 — High** | Confirmed unauthorized access, vulnerability exploitation, partial service degradation | 1 hour | CSO + Security Team + affected system owner |
-| **P2 — Medium** | Suspicious activity, potential vulnerability, minor service disruption | 4 hours | Security Team + affected system owner |
-| **P3 — Low** | Policy violation, minor configuration issue, informational alert | 24 hours (business) | Security Team |
+| Severity          | Definition                                                                             | Response Time       | Notification                                            |
+| ----------------- | -------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------- |
+| **P0 — Critical** | Active PHI breach, data exfiltration, ransomware, complete service outage              | Immediate (24/7)    | CSO + Leadership + Customers (if PHI) + HHS (if breach) |
+| **P1 — High**     | Confirmed unauthorized access, vulnerability exploitation, partial service degradation | 1 hour              | CSO + Security Team + affected system owner             |
+| **P2 — Medium**   | Suspicious activity, potential vulnerability, minor service disruption                 | 4 hours             | Security Team + affected system owner                   |
+| **P3 — Low**      | Policy violation, minor configuration issue, informational alert                       | 24 hours (business) | Security Team                                           |
 
 ---
 
 ## 3. Incident Response Team
 
-| Role | Primary | Backup | Responsibility |
-|------|---------|--------|----------------|
-| **Incident Commander** | CSO (Chad) | Engineering Lead | Overall coordination, decision authority, external communication |
-| **Technical Lead** | Security Engineering Lead | Senior Engineer | Technical investigation, containment, eradication |
-| **Communications Lead** | CSO | TBD | Customer notification, media handling, regulatory reporting |
-| **Legal Counsel** | TBD | TBD | Legal guidance, BAA obligations, breach determination |
-| **Scribe** | Rotating | Rotating | Timeline documentation, evidence preservation |
+| Role                    | Primary                   | Backup           | Responsibility                                                   |
+| ----------------------- | ------------------------- | ---------------- | ---------------------------------------------------------------- |
+| **Incident Commander**  | CSO (Chad)                | Engineering Lead | Overall coordination, decision authority, external communication |
+| **Technical Lead**      | Security Engineering Lead | Senior Engineer  | Technical investigation, containment, eradication                |
+| **Communications Lead** | CSO                       | TBD              | Customer notification, media handling, regulatory reporting      |
+| **Legal Counsel**       | TBD                       | TBD              | Legal guidance, BAA obligations, breach determination            |
+| **Scribe**              | Rotating                  | Rotating         | Timeline documentation, evidence preservation                    |
 
 The Incident Commander may delegate authority but retains ultimate
 responsibility for incident resolution.
@@ -64,12 +67,12 @@ identifies a potential security incident.
 
 **Actions**:
 
-1. **Report immediately** via `security-incidents@pixelatedempathy.com` or
-   Slack `#security-incidents` channel.
-2. **Do not investigate** unless you are a member of the security team.
-   Preserve evidence by not modifying the affected system.
-3. **Document initial observations**: what was observed, when, affected
-   systems, and any actions already taken.
+1. **Report immediately** via `security-incidents@pixelatedempathy.com` or Slack
+   `#security-incidents` channel.
+2. **Do not investigate** unless you are a member of the security team. Preserve
+   evidence by not modifying the affected system.
+3. **Document initial observations**: what was observed, when, affected systems,
+   and any actions already taken.
 4. **Security team triages** within 1 hour (P0/P1) or 4 hours (P2/P3).
 
 **Automated Detection**:
@@ -98,7 +101,8 @@ identifies a potential security incident.
 
 Apply the 4-factor risk assessment per 45 CFR §164.402:
 
-1. Nature and extent of PHI involved (types of identifiers, likelihood of re-identification).
+1. Nature and extent of PHI involved (types of identifiers, likelihood of
+   re-identification).
 2. Unauthorized person who used the PHI or to whom the disclosure was made.
 3. Whether the PHI was actually acquired or viewed.
 4. Extent to which the risk to the PHI has been mitigated.
@@ -164,8 +168,8 @@ If the incident constitutes a breach, activate Phase 6 (Notification).
 
 **Customer impact**:
 
-- If customer-facing services were affected, coordinate with Communications
-  Lead on customer notification.
+- If customer-facing services were affected, coordinate with Communications Lead
+  on customer notification.
 - Verify SLA commitments and calculate service credits if applicable.
 
 ### Phase 6: Notification (Breach Incidents Only)
@@ -174,12 +178,12 @@ If the incident constitutes a breach, activate Phase 6 (Notification).
 
 **HIPAA Breach Notification Requirements**:
 
-| Notification Target | Timeline | Content | Responsible |
-|--------------------|----------|---------|-------------|
-| **Individuals** (affected customers) | 60 days from discovery | Description of breach, types of PHI, steps individuals should take, contact information | Communications Lead |
-| **HHS Secretary** | 60 days from discovery | Breach report form, number of individuals affected | Legal Counsel |
-| **Media** (if >500 individuals in a state) | 60 days from discovery | Press release, prominent media outlets in affected state(s) | Communications Lead |
-| **Business Associates** (if we are the BA) | Per BAA terms (typically 72 hours) | Notification to covered entity | CSO |
+| Notification Target                        | Timeline                           | Content                                                                                 | Responsible         |
+| ------------------------------------------ | ---------------------------------- | --------------------------------------------------------------------------------------- | ------------------- |
+| **Individuals** (affected customers)       | 60 days from discovery             | Description of breach, types of PHI, steps individuals should take, contact information | Communications Lead |
+| **HHS Secretary**                          | 60 days from discovery             | Breach report form, number of individuals affected                                      | Legal Counsel       |
+| **Media** (if >500 individuals in a state) | 60 days from discovery             | Press release, prominent media outlets in affected state(s)                             | Communications Lead |
+| **Business Associates** (if we are the BA) | Per BAA terms (typically 72 hours) | Notification to covered entity                                                          | CSO                 |
 
 **Notification templates** are maintained in `docs/enterprise/templates/`.
 
@@ -216,29 +220,35 @@ state laws for each breach.
 # Incident Report: [INCIDENT-ID]
 
 ## Summary
+
 - **Date**: [date]
 - **Severity**: P0/P1/P2/P3
 - **Duration**: [start to resolution]
 - **Impact**: [systems affected, customers impacted, data exposed]
 
 ## Timeline
+
 [chronological log of events]
 
 ## Root Cause
+
 [technical root cause analysis]
 
 ## Response Assessment
+
 - Detection time: [time from incident start to detection]
 - Containment time: [time from detection to containment]
 - Eradication time: [time from containment to eradication]
 - Recovery time: [time from eradication to full recovery]
 
 ## Lessons Learned
+
 [what went well, what needs improvement]
 
 ## Remediation Actions
+
 | Action | Owner | Due Date | Status |
-|--------|-------|----------|--------|
+| ------ | ----- | -------- | ------ |
 ```
 
 ---
@@ -276,8 +286,8 @@ requirement) or as required by legal hold.
 - Malware samples (quarantined).
 
 **Chain of custody**: All evidence must be logged with collector name, date,
-time, and storage location. Evidence must be stored in a secure, access-controlled
-location.
+time, and storage location. Evidence must be stored in a secure,
+access-controlled location.
 
 ---
 
@@ -288,7 +298,8 @@ location.
 If the incident involves criminal activity (theft, fraud, unauthorized access):
 
 1. **Do not contact law enforcement** without Legal Counsel approval.
-2. **Preserve** all evidence (do not modify affected systems beyond containment).
+2. **Preserve** all evidence (do not modify affected systems beyond
+   containment).
 3. **Coordinate** with Legal Counsel on law enforcement engagement.
 4. **Document** all law enforcement interactions.
 
@@ -324,12 +335,11 @@ If the incident may trigger cyber insurance coverage:
 
 ## 9. Change Log
 
-| Date | Author | Change |
-|------|--------|--------|
+| Date       | Author   | Change                                                                                          |
+| ---------- | -------- | ----------------------------------------------------------------------------------------------- |
 | 2026-08-01 | Sisyphus | Initial incident response plan for SOC2 CC7 and HIPAA Breach Notification compliance (PIX-4156) |
 
 ---
 
-_Document owner: Chief Security Officer_
-_Review cadence: Annual (or after any P0/P1 incident)_
-_Next review: 2027-08-01_
+_Document owner: Chief Security Officer_ _Review cadence: Annual (or after any
+P0/P1 incident)_ _Next review: 2027-08-01_

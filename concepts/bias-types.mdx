@@ -1,11 +1,15 @@
 ---
 title: 'Bias Types'
-description: 'The demographic bias categories detected by Pixelated Empathy, severity scoring, and the fairness metrics used to ensure equitable care.'
+description:
+  'The demographic bias categories detected by Pixelated Empathy, severity
+  scoring, and the fairness metrics used to ensure equitable care.'
 ---
 
 ## Bias Detection
 
-The bias detection system analyses therapeutic sessions for patterns of demographic bias that may compromise equitable care. Bias is categorised across multiple dimensions and scored by severity.
+The bias detection system analyses therapeutic sessions for patterns of
+demographic bias that may compromise equitable care. Bias is categorised across
+multiple dimensions and scored by severity.
 
 ### Bias Categories
 
@@ -17,33 +21,31 @@ The bias detection system analyses therapeutic sessions for patterns of demograp
     - Using gendered language patterns (e.g., "hysterical," "overreacting" disproportionately applied to women; "stoic," "unemotional" applied to men)
   </Accordion>
 
-  <Accordion title="Age bias" icon="calendar">
-    Assumptions based on age group:
-    - Dismissing younger clients as "naive" or "inexperienced"
-    - Patronising older clients or assuming cognitive decline
-    - Applying generational stereotypes ("entitled millennial," "out-of-touch boomer")
-  </Accordion>
+<Accordion title="Age bias" icon="calendar">
+  Assumptions based on age group: - Dismissing younger clients as "naive" or
+  "inexperienced" - Patronising older clients or assuming cognitive decline -
+  Applying generational stereotypes ("entitled millennial," "out-of-touch
+  boomer")
+</Accordion>
 
-  <Accordion title="Ethnic and racial bias" icon="globe">
-    Cultural insensitivity or racial stereotyping:
-    - Backhanded compliments ("You're so articulate" applied to non-white clients)
-    - Exoticising language ("foreign," "exotic," "different")
-    - Failing to account for cultural context in clinical interpretation
-  </Accordion>
+<Accordion title="Ethnic and racial bias" icon="globe">
+  Cultural insensitivity or racial stereotyping: - Backhanded compliments
+  ("You're so articulate" applied to non-white clients) - Exoticising language
+  ("foreign," "exotic," "different") - Failing to account for cultural context
+  in clinical interpretation
+</Accordion>
 
-  <Accordion title="Socioeconomic bias" icon="building">
-    Class-based assumptions:
-    - Assuming access to resources (transportation, insurance, stable housing)
-    - Recommending interventions that require financial privilege
-    - Dismissing environmental stressors as personal failings
-  </Accordion>
+<Accordion title="Socioeconomic bias" icon="building">
+  Class-based assumptions: - Assuming access to resources (transportation,
+  insurance, stable housing) - Recommending interventions that require financial
+  privilege - Dismissing environmental stressors as personal failings
+</Accordion>
 
-  <Accordion title="LGBTQ+ bias" icon="rainbow">
-    Heteronormative or cisnormative assumptions:
-    - Assuming heterosexual relationships
-    - Misgendering or using incorrect pronouns
-    - Pathologising sexual orientation or gender identity
-  </Accordion>
+<Accordion title="LGBTQ+ bias" icon="rainbow">
+  Heteronormative or cisnormative assumptions: - Assuming heterosexual
+  relationships - Misgendering or using incorrect pronouns - Pathologising
+  sexual orientation or gender identity
+</Accordion>
 
   <Accordion title="Religious and spiritual bias" icon="hands-praying">
     Assumptions about faith or spiritual practice:
@@ -69,12 +71,18 @@ The bias detection system analyses therapeutic sessions for patterns of demograp
 
 ## Fairness Metrics
 
-Beyond individual bias indicators, the platform computes three aggregate fairness metrics:
+Beyond individual bias indicators, the platform computes three aggregate
+fairness metrics:
 
-- **Demographic parity** (`1.0 - bias_score`) — Are all demographic groups receiving equal quality of care?
-- **Equalised odds** — Are clinical outcomes being predicted equally across groups?
-- **Treatment equality** — Are therapeutic interventions being applied equitably regardless of demographics?
+- **Demographic parity** (`1.0 - bias_score`) — Are all demographic groups
+  receiving equal quality of care?
+- **Equalised odds** — Are clinical outcomes being predicted equally across
+  groups?
+- **Treatment equality** — Are therapeutic interventions being applied equitably
+  regardless of demographics?
 
 <Tip>
-  Bias detection is not about punishment — it's about awareness. Even experienced therapists carry implicit biases. The platform helps you identify patterns you may not be conscious of, so you can deliver more equitable care.
+  Bias detection is not about punishment — it's about awareness. Even
+  experienced therapists carry implicit biases. The platform helps you identify
+  patterns you may not be conscious of, so you can deliver more equitable care.
 </Tip>

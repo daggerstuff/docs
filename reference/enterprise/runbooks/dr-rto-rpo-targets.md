@@ -1,6 +1,9 @@
 ---
 title: Disaster Recovery — RTO & RPO Targets
-description: Recovery Time Objective and Recovery Point Objective targets for all Pixelated Empathy critical services, aligned with backup infrastructure and DR procedures.
+description:
+  Recovery Time Objective and Recovery Point Objective targets for all Pixelated
+  Empathy critical services, aligned with backup infrastructure and DR
+  procedures.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -19,13 +22,20 @@ _DR-1: Define RTO/RPO targets for all critical services_
 
 ## 1. Purpose & Scope
 
-This runbook defines **Recovery Time Objectives (RTO)** and **Recovery Point Objectives (RPO)** for every production service in the Pixelated Empathy platform. It classifies services by criticality tier, maps each service to its backup mechanism, and documents the DR procedures that achieve these targets.
+This runbook defines **Recovery Time Objectives (RTO)** and **Recovery Point
+Objectives (RPO)** for every production service in the Pixelated Empathy
+platform. It classifies services by criticality tier, maps each service to its
+backup mechanism, and documents the DR procedures that achieve these targets.
 
-**Scope**: All customer-facing and infrastructure services deployed in the Pixelated Empathy production environment, including the core web application, AI cognitive engine, databases, caching layer, reverse proxy, memory service, and model storage.
+**Scope**: All customer-facing and infrastructure services deployed in the
+Pixelated Empathy production environment, including the core web application, AI
+cognitive engine, databases, caching layer, reverse proxy, memory service, and
+model storage.
 
 **Related documents**:
 
-- [SLO Definitions](./slo-definitions.md) — service-level objectives for uptime, latency, throughput
+- [SLO Definitions](./slo-definitions.md) — service-level objectives for uptime,
+  latency, throughput
 - `scripts/backup/disaster-recovery.sh` — existing DR automation script
 - `scripts/backup/backup-system.sh` — full system backup script
 - `scripts/backup/backup-schedule.cron` — cron backup schedule
@@ -34,7 +44,9 @@ This runbook defines **Recovery Time Objectives (RTO)** and **Recovery Point Obj
 
 ## 2. Criticality Tier Definitions
 
-Services are classified into four tiers based on business impact and patient safety considerations. Pixelated Empathy is a HIPAA-compliant clinical AI platform — patient-facing services receive the highest criticality.
+Services are classified into four tiers based on business impact and patient
+safety considerations. Pixelated Empathy is a HIPAA-compliant clinical AI
+platform — patient-facing services receive the highest criticality.
 
 | Tier       | Label             | Description                                                                                                     | RTO Target     | RPO Target       |
 | ---------- | ----------------- | --------------------------------------------------------------------------------------------------------------- | -------------- | ---------------- |
@@ -45,10 +57,14 @@ Services are classified into four tiers based on business impact and patient saf
 
 ### Tier Classification Criteria
 
-- **Patient Safety**: Does disruption create risk to patients or clinicians relying on the platform?
-- **Revenue Impact**: Does disruption directly cause revenue loss or contract breach?
-- **Data Integrity**: Does disruption risk permanent data loss of clinical or user data?
-- **Recoverability**: How quickly can the service be restored using existing backup infrastructure?
+- **Patient Safety**: Does disruption create risk to patients or clinicians
+  relying on the platform?
+- **Revenue Impact**: Does disruption directly cause revenue loss or contract
+  breach?
+- **Data Integrity**: Does disruption risk permanent data loss of clinical or
+  user data?
+- **Recoverability**: How quickly can the service be restored using existing
+  backup infrastructure?
 
 ---
 
@@ -84,7 +100,10 @@ Patient Request → Caddy (T2) → Pixelated App (T1) → PostgreSQL (T1)
                                          ↰ NeMo Models (T3)
 ```
 
-**Key insight**: Tier 1 services depend on Tier 2 infrastructure (Caddy, Redis, Vector Store). Tier 2 recovery must complete within the Tier 1 RTO window for full restoration. In practice, stateless Tier 2 services (Caddy) recover in minutes via config re-deployment.
+**Key insight**: Tier 1 services depend on Tier 2 infrastructure (Caddy, Redis,
+Vector Store). Tier 2 recovery must complete within the Tier 1 RTO window for
+full restoration. In practice, stateless Tier 2 services (Caddy) recover in
+minutes via config re-deployment.
 
 ---
 
@@ -120,7 +139,10 @@ Patient Request → Caddy (T2) → Pixelated App (T1) → PostgreSQL (T1)
 | DR automation                | `scripts/backup/disaster-recovery.sh`                                           | On-demand                   | RTO_TARGET=4h     | Tier 2: 4h    | ✅ Meets Tier 2        |
 | NeMo model recovery          | `scripts/devops/nemo-recovery.sh`                                               | On-demand                   | Bandwidth-limited | Tier 3: 24h   | ✅ Meets Tier 3        |
 
-**Note**: The existing `disaster-recovery.sh` script has `RTO_TARGET=14400` (4 hours) and `RPO_TARGET=3600` (1 hour), which aligns with Tier 2/3 targets. Tier 1 RTO/RPO requires additional infrastructure (streaming replication, hot standby) — see Section 7.
+**Note**: The existing `disaster-recovery.sh` script has `RTO_TARGET=14400` (4
+hours) and `RPO_TARGET=3600` (1 hour), which aligns with Tier 2/3 targets. Tier
+1 RTO/RPO requires additional infrastructure (streaming replication, hot
+standby) — see Section 7.
 
 ---
 
@@ -129,7 +151,9 @@ Patient Request → Caddy (T2) → Pixelated App (T1) → PostgreSQL (T1)
 ### 5.1 PostgreSQL (Tier 1)
 
 - **Backup method**: WAL archiving + daily base backup
-- **Scripts**: `docker/postgres/backup/backup.sh`, `docker/postgres/backup/restore.sh`, `ai/docker/postgres/backup/archive_wal.sh`
+- **Scripts**: `docker/postgres/backup/backup.sh`,
+  `docker/postgres/backup/restore.sh`,
+  `ai/docker/postgres/backup/archive_wal.sh`
 - **Recovery type**: Point-in-time recovery (PITR)
 - **RPO achieved**: < 5 minutes (WAL streaming)
 - **RTO achieved**: < 1 hour (restore from base + WAL replay)
@@ -143,7 +167,8 @@ Patient Request → Caddy (T2) → Pixelated App (T1) → PostgreSQL (T1)
 - **Recovery**: Restore from RDB snapshot, AOF replay for recent writes
 - **RPO achieved**: < 15 minutes (AOF fsync every 15s)
 - **RTO achieved**: < 4 hours (RDB restore + restart)
-- **Note**: Redis data is cache/session — reconstructible from PostgreSQL if needed
+- **Note**: Redis data is cache/session — reconstructible from PostgreSQL if
+  needed
 
 ### 5.3 Pixelated App (Tier 1)
 
@@ -154,10 +179,12 @@ Patient Request → Caddy (T2) → Pixelated App (T1) → PostgreSQL (T1)
 
 ### 5.4 Pixelated AI (Tier 1)
 
-- **Backup method**: Model artifacts (NeMo) backed up separately; inference state in PostgreSQL
+- **Backup method**: Model artifacts (NeMo) backed up separately; inference
+  state in PostgreSQL
 - **Recovery**: Redeploy container + restore model artifacts + restore DB
 - **RTO achieved**: < 1 hour (container redeploy + model restore)
-- **RPO achieved**: Inherits PostgreSQL RPO for state; NeMo models have Tier 3 RPO
+- **RPO achieved**: Inherits PostgreSQL RPO for state; NeMo models have Tier 3
+  RPO
 
 ### 5.5 Caddy (Tier 2)
 
@@ -175,7 +202,8 @@ Patient Request → Caddy (T2) → Pixelated App (T1) → PostgreSQL (T1)
 
 ### 5.7 Vector Store (Tier 2)
 
-- **Backup method**: Embeddings reconstructible from source data (PostgreSQL + model)
+- **Backup method**: Embeddings reconstructible from source data (PostgreSQL +
+  model)
 - **Recovery**: Re-index from source
 - **RTO achieved**: < 4 hours (re-index is I/O-bound)
 - **RPO achieved**: N/A (reconstructible)
@@ -196,7 +224,8 @@ Patient Request → Caddy (T2) → Pixelated App (T1) → PostgreSQL (T1)
 
 ### 5.10 Observability Stack (Tier 4)
 
-- **Grafana**: Config in Git; dashboards re-deployable from `monitoring/dashboards/`
+- **Grafana**: Config in Git; dashboards re-deployable from
+  `monitoring/dashboards/`
 - **Prometheus**: 200h retention; historical data loss acceptable in DR
 - **Alertmanager**: Config in Git; re-deployable
 - **Exporters**: Stateless; re-deploy with container stack
@@ -207,7 +236,8 @@ Patient Request → Caddy (T2) → Pixelated App (T1) → PostgreSQL (T1)
 
 ### 6.1 Disaster Recovery Execution
 
-The existing `scripts/backup/disaster-recovery.sh` script supports three recovery types:
+The existing `scripts/backup/disaster-recovery.sh` script supports three
+recovery types:
 
 ```bash
 # Database-only recovery
@@ -231,7 +261,8 @@ The existing `scripts/backup/disaster-recovery.sh` script supports three recover
 #### Tier 1 Recovery (< 1 hour RTO)
 
 1. **Detect** (0-5 min): Alertmanager triggers PagerDuty for Tier 1 service
-2. **Acknowledge** (0-5 min): On-call engineer acknowledges, opens incident channel
+2. **Acknowledge** (0-5 min): On-call engineer acknowledges, opens incident
+   channel
 3. **Assess** (5-15 min): Identify failure scope (DB, app, or AI)
 4. **Execute recovery** (15-45 min):
    - PostgreSQL: Restore from latest base + WAL replay via `restore.sh`
@@ -355,7 +386,8 @@ scripts/backup/verify-backups.sh --full
 
 ### 9.1 BCP Overview
 
-In the event of a disaster that renders the primary production environment unrecoverable, the following business continuity procedures apply:
+In the event of a disaster that renders the primary production environment
+unrecoverable, the following business continuity procedures apply:
 
 ### 9.2 BCP Tiers
 
@@ -393,7 +425,8 @@ In the event of a disaster that renders the primary production environment unrec
 
 ## 10. RTO/RPO Compliance Dashboard
 
-The following Prometheus queries track RTO/RPO compliance. These align with the SLO monitoring infrastructure from the SLO runbook:
+The following Prometheus queries track RTO/RPO compliance. These align with the
+SLO monitoring infrastructure from the SLO runbook:
 
 ### 10.1 Backup Age Monitoring
 
@@ -418,7 +451,8 @@ histogram_quantile(0.95, dr_recovery_duration_seconds_bucket{tier="1"})
 dr_drill_success_total / dr_drill_total
 ```
 
-> **Note**: These metrics require instrumentation not yet present in the monitoring stack. See Gap Analysis (Section 7) for remediation items.
+> **Note**: These metrics require instrumentation not yet present in the
+> monitoring stack. See Gap Analysis (Section 7) for remediation items.
 
 ---
 
@@ -487,5 +521,7 @@ RTO/RPO target changes require:
 
 ### Linear Tickets
 
-- [PIX-4132](https://linear.app/pixelated/issue/PIX-4132) — DR-1: Define RTO/RPO Targets
-- [PIX-4125](https://linear.app/pixelated/issue/PIX-4125) — Parent: Disaster Recovery & Business Continuity
+- [PIX-4132](https://linear.app/pixelated/issue/PIX-4132) — DR-1: Define RTO/RPO
+  Targets
+- [PIX-4125](https://linear.app/pixelated/issue/PIX-4125) — Parent: Disaster
+  Recovery & Business Continuity

@@ -1,6 +1,9 @@
 ---
 title: SLA Contract Terms
-description: Customer-facing Service Level Agreement terms for Pixelated Empathy platform subscriptions, including uptime guarantees, service credits, breach notification commitments, and support response times.
+description:
+  Customer-facing Service Level Agreement terms for Pixelated Empathy platform
+  subscriptions, including uptime guarantees, service credits, breach
+  notification commitments, and support response times.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -11,7 +14,8 @@ description: Customer-facing Service Level Agreement terms for Pixelated Empathy
 
 **Pixelated Empathy Platform — Service Level Agreement**
 
-Version 1.0 · Effective Date: _[to be set upon first enterprise contract execution]_
+Version 1.0 · Effective Date: _[to be set upon first enterprise contract
+execution]_
 
 </div>
 
@@ -49,18 +53,18 @@ determines which SLA commitments apply, as set forth in Section 4.
 
 ### 2.1 Modification of SLA Terms
 
-Provider may modify these SLA Terms upon thirty (30) days' written notice to
-the Customer. Any modification that reduces the Uptime commitment, increases
-the response time for support, or reduces Service Credits for the Customer's
+Provider may modify these SLA Terms upon thirty (30) days' written notice to the
+Customer. Any modification that reduces the Uptime commitment, increases the
+response time for support, or reduces Service Credits for the Customer's
 then-current Subscription Plan shall not take effect until the Customer's next
-renewal term, unless the Customer consents in writing. Provider may increase
-SLA commitments at any time without prior notice.
+renewal term, unless the Customer consents in writing. Provider may increase SLA
+commitments at any time without prior notice.
 
 ### 2.2 Precedence
 
 Where these SLA Terms reference an operational runbook or internal procedure
-document (e.g., the SLO Definitions Runbook, SLA Breach Response Runbook),
-those documents describe internal processes and do not create Customer-facing
+document (e.g., the SLO Definitions Runbook, SLA Breach Response Runbook), those
+documents describe internal processes and do not create Customer-facing
 obligations beyond those stated in these SLA Terms.
 
 ---
@@ -79,9 +83,9 @@ measured independently for each service from the Provider's edge proxy.
 | **Cache Layer**          | The Redis cache for session and transient data             | Cache read/write operations                       |
 | **Memory Service**       | The Foresight MCP memory service for cross-session context | Memory read/write operations via MCP protocol     |
 
-Services not listed above (e.g., monitoring dashboards, administrative
-consoles, API documentation sites) are provided on a best-effort basis and are
-not covered by Uptime or Latency commitments.
+Services not listed above (e.g., monitoring dashboards, administrative consoles,
+API documentation sites) are provided on a best-effort basis and are not covered
+by Uptime or Latency commitments.
 
 ---
 
@@ -100,8 +104,8 @@ Services:
 | **Enterprise+ HIPAA** | 99.95%             | 99.95%            |
 
 Uptime is measured per the methodology in Section 7. A Billing Month is
-considered in compliance if the measured Uptime meets or exceeds the
-applicable percentage.
+considered in compliance if the measured Uptime meets or exceeds the applicable
+percentage.
 
 ### 4.2 Latency Commitment
 
@@ -116,9 +120,9 @@ Provider commits to the following 95th percentile response time for successful
 | **Enterprise+ HIPAA** | 500 ms                | 2,000 ms           |
 
 Latency is measured at the Provider's edge proxy over the Billing Month for
-requests that return HTTP 2xx status codes. The AI Inference latency
-commitment applies to documented synchronous inference endpoints only;
-asynchronous batch processing is excluded.
+requests that return HTTP 2xx status codes. The AI Inference latency commitment
+applies to documented synchronous inference endpoints only; asynchronous batch
+processing is excluded.
 
 ### 4.3 Support Response Time Commitment
 
@@ -139,8 +143,8 @@ requests submitted through the designated support channel:
 
 - **Critical**: The Platform is inaccessible, or a core feature is
   non-functional for the Customer's end users.
-- **Non-critical**: The Platform is accessible but a feature is degraded, or
-  the Customer has a question or configuration request.
+- **Non-critical**: The Platform is accessible but a feature is degraded, or the
+  Customer has a question or configuration request.
 
 ### 4.4 Breach Notification Commitment
 
@@ -155,17 +159,16 @@ Provider commits to the following breach notification timelines:
 | **Enterprise+ HIPAA** | Confirmed or suspected PHI breach (per BAA) | Per BAA terms         | Per BAA notification procedure                |
 
 "Breach" for notification purposes means (a) a confirmed security incident
-involving unauthorized access to Customer Data, or (b) an SLA breach as
-defined in Section 5. The notification deadline is measured from the time
-Provider confirms the breach, not from the time the incident began.
+involving unauthorized access to Customer Data, or (b) an SLA breach as defined
+in Section 5. The notification deadline is measured from the time Provider
+confirms the breach, not from the time the incident began.
 
 ### 4.5 Data Processing Addendum (HIPAA Tier Only)
 
 For Enterprise+ HIPAA customers, the following additional commitments apply:
 
 1. **BAA execution**: A Business Associate Agreement is executed prior to
-   processing any PHI and remains in effect for the duration of data
-   processing.
+   processing any PHI and remains in effect for the duration of data processing.
 2. **Data residency**: PHI is stored and processed in Provider infrastructure
    located in the United States. No PHI is transferred to or processed in
    jurisdictions outside the United States.
@@ -176,9 +179,9 @@ For Enterprise+ HIPAA customers, the following additional commitments apply:
    controls, and reviewed quarterly.
 5. **Audit logging**: All access to PHI is logged and retained for a minimum of
    six (6) years per 45 CFR § 164.316(b)(2).
-6. **Breach notification**: Provider follows the breach notification
-   timelines specified in the BAA, which shall not exceed the timelines
-   required by 45 CFR §§ 164.410–414.
+6. **Breach notification**: Provider follows the breach notification timelines
+   specified in the BAA, which shall not exceed the timelines required by 45 CFR
+   §§ 164.410–414.
 
 ---
 
@@ -188,9 +191,9 @@ For Enterprise+ HIPAA customers, the following additional commitments apply:
 
 Service Credits are available to Pro, Enterprise, and Enterprise+ HIPAA
 customers only. Free-tier customers are not entitled to Service Credits. A
-Service Credit is a percentage of the monthly Subscription fee for the
-affected Service, applied as a credit to the Customer's next invoice. Service
-Credits are not refunds and are not payable in cash.
+Service Credit is a percentage of the monthly Subscription fee for the affected
+Service, applied as a credit to the Customer's next invoice. Service Credits are
+not refunds and are not payable in cash.
 
 ### 5.2 Credit Calculation
 
@@ -205,16 +208,15 @@ commitment, the Customer is entitled to the following Service Credit:
 | Below 95.0%             | 100%       | 100%              | 100% + written incident review + escalation to VP Eng |
 
 If the measured Latency for a Billing Month exceeds the applicable SLA
-commitment, the Customer is entitled to a Service Credit of 10% of the
-monthly Subscription fee for the affected Service. Latency and Uptime credits
-are not stacked; the Customer receives the higher of the two applicable
-credits.
+commitment, the Customer is entitled to a Service Credit of 10% of the monthly
+Subscription fee for the affected Service. Latency and Uptime credits are not
+stacked; the Customer receives the higher of the two applicable credits.
 
 ### 5.3 Claim Procedure
 
 To receive a Service Credit, the Customer must submit a claim to
-`support@pixelatedempathy.com` within thirty (30) days of the end of the
-Billing Month in which the SLA breach occurred. The claim must include:
+`support@pixelatedempathy.com` within thirty (30) days of the end of the Billing
+Month in which the SLA breach occurred. The claim must include:
 
 1. The Customer's account name and Subscription Plan.
 2. The affected Service(s).
@@ -224,22 +226,22 @@ Billing Month in which the SLA breach occurred. The claim must include:
 
 Provider will validate the claim against its monitoring data within ten (10)
 business days. If Provider confirms the breach, the Service Credit will be
-applied to the Customer's next invoice. If Provider disputes the claim,
-Provider will provide a written explanation referencing its monitoring data.
+applied to the Customer's next invoice. If Provider disputes the claim, Provider
+will provide a written explanation referencing its monitoring data.
 
 ### 5.4 Maximum Credits
 
 The aggregate Service Credits payable to a Customer in any Billing Month shall
 not exceed one hundred percent (100%) of the monthly Subscription fee. Service
-Credits are the Customer's sole and exclusive remedy for SLA breaches, and
-are in lieu of any other claim for damages or equitable relief arising from
+Credits are the Customer's sole and exclusive remedy for SLA breaches, and are
+in lieu of any other claim for damages or equitable relief arising from
 unavailability of the Platform, except as provided in the MSA.
 
 ### 5.5 Written Incident Review (Enterprise+ HIPAA)
 
 For Enterprise+ HIPAA customers, any SLA breach entitles the Customer to a
-written incident review document, delivered to the Customer's compliance
-contact within five (5) business days, containing:
+written incident review document, delivered to the Customer's compliance contact
+within five (5) business days, containing:
 
 1. Incident summary and root cause analysis.
 2. Timeline of events (detection, mitigation, resolution).
@@ -256,26 +258,25 @@ Customer to Service Credits:
 
 ### 6.1 Customer-Side Issues
 
-- Failures of the Customer's network, internet service provider, or
-  equipment.
+- Failures of the Customer's network, internet service provider, or equipment.
 - Customer misconfiguration, including but not limited to: incorrect API
-  credentials, malformed requests, invalid authentication tokens, or use of
-  the Platform outside documented specifications.
+  credentials, malformed requests, invalid authentication tokens, or use of the
+  Platform outside documented specifications.
 - Rate-limit responses (HTTP 429) returned when the Customer exceeds their
   plan's request quota or concurrent session limit.
-- Customer failure to maintain compatibility with documented API versions
-  after a deprecation notice period has expired.
+- Customer failure to maintain compatibility with documented API versions after
+  a deprecation notice period has expired.
 
 ### 6.2 Scheduled Maintenance
 
-- Scheduled maintenance announced at least seventy-two (72) hours in advance
-  via the Customer's notification channel (email or status page).
-- Maintenance is limited to a maximum of two (2) hours per month for
-  Enterprise and Enterprise+ HIPAA plans, and four (4) hours per month for
-  Pro plans. Maintenance beyond these limits counts as Downtime.
-- Emergency security patches may be applied with six (6) hours' notice and
-  do not count toward the monthly maintenance limit; emergency patches
-  exceeding thirty (30) minutes of Platform unavailability count as Downtime.
+- Scheduled maintenance announced at least seventy-two (72) hours in advance via
+  the Customer's notification channel (email or status page).
+- Maintenance is limited to a maximum of two (2) hours per month for Enterprise
+  and Enterprise+ HIPAA plans, and four (4) hours per month for Pro plans.
+  Maintenance beyond these limits counts as Downtime.
+- Emergency security patches may be applied with six (6) hours' notice and do
+  not count toward the monthly maintenance limit; emergency patches exceeding
+  thirty (30) minutes of Platform unavailability count as Downtime.
 
 ### 6.3 Force Majeure
 
@@ -289,14 +290,13 @@ Customer to Service Credits:
 ### 6.4 Third-Party Dependencies
 
 - Failures of third-party services that the Customer has integrated with the
-  Platform, where the failure originates in the third-party service and not
-  in Provider-operated infrastructure. This includes but is not limited to:
-  the Customer's identity provider, payment processor, or external API
-  integrations.
+  Platform, where the failure originates in the third-party service and not in
+  Provider-operated infrastructure. This includes but is not limited to: the
+  Customer's identity provider, payment processor, or external API integrations.
 - This exclusion does not apply to Provider-selected dependencies that are
   integral to the Platform's core functionality (e.g., Provider's primary
-  database, cache). Provider remains responsible for the availability of its
-  own infrastructure dependencies.
+  database, cache). Provider remains responsible for the availability of its own
+  infrastructure dependencies.
 
 ### 6.5 Beta and Pre-GA Features
 
@@ -306,8 +306,8 @@ Customer to Service Credits:
 ### 6.6 Customer-Initiated Downtime
 
 - Downtime caused by Customer-initiated actions, including but not limited to:
-  account suspension for non-payment, Customer-requested data migration,
-  or Customer-initiated API rate limit increases that temporarily degrade
+  account suspension for non-payment, Customer-requested data migration, or
+  Customer-initiated API rate limit increases that temporarily degrade
   performance.
 
 ---
@@ -322,8 +322,8 @@ Uptime is calculated as follows:
 Uptime % = ((Total Minutes in Billing Month - Downtime Minutes) / Total Minutes in Billing Month) × 100
 ```
 
-**Total Minutes** is the total number of minutes in the Billing Month,
-minus excluded Maintenance Window minutes (per Section 6.2).
+**Total Minutes** is the total number of minutes in the Billing Month, minus
+excluded Maintenance Window minutes (per Section 6.2).
 
 **Downtime Minutes** is the sum of all minutes during which the Platform was
 inaccessible to the Customer due to Provider-confirmed incidents. Downtime is
@@ -342,32 +342,30 @@ Latency is measured at the 95th percentile of successful (HTTP 2xx) response
 times for requests to the documented Platform API, recorded at the Provider's
 edge proxy (Caddy) over the Billing Month. Requests that return 4xx or 5xx
 responses are excluded from the latency calculation. The 95th percentile is
-calculated from the full population of requests in the Billing Month, not
-from a sample.
+calculated from the full population of requests in the Billing Month, not from a
+sample.
 
 ### 7.3 Error Rate Measurement
 
-Error Rate is the percentage of HTTP 5xx responses returned by the Platform
-API relative to total requests, measured at the edge proxy over the Billing
-Month. HTTP 4xx responses (client errors) are not counted as errors for SLA
-purposes.
+Error Rate is the percentage of HTTP 5xx responses returned by the Platform API
+relative to total requests, measured at the edge proxy over the Billing Month.
+HTTP 4xx responses (client errors) are not counted as errors for SLA purposes.
 
 ### 7.4 Monitoring Data Authority
 
 Provider's monitoring data (Prometheus metrics recorded at the edge proxy) is
-the authoritative source for SLA measurement. Customer-provided monitoring
-data may be used to support a Service Credit claim but does not override
-Provider's monitoring data unless Provider's monitoring was itself
-non-operational during the disputed period, in which case the Customer's data
-is used and the disputed period counts as Downtime.
+the authoritative source for SLA measurement. Customer-provided monitoring data
+may be used to support a Service Credit claim but does not override Provider's
+monitoring data unless Provider's monitoring was itself non-operational during
+the disputed period, in which case the Customer's data is used and the disputed
+period counts as Downtime.
 
 ### 7.5 Data Availability
 
-Provider retains monitoring data for a minimum of ninety (90) days.
-Monitoring data older than ninety (90) days may be aggregated and is not
-available for individual request-level inspection. Service Credit claims
-must be submitted within thirty (30) days of the Billing Month end, per
-Section 5.3.
+Provider retains monitoring data for a minimum of ninety (90) days. Monitoring
+data older than ninety (90) days may be aggregated and is not available for
+individual request-level inspection. Service Credit claims must be submitted
+within thirty (30) days of the Billing Month end, per Section 5.3.
 
 ---
 
@@ -390,28 +388,27 @@ Customers may escalate incidents as follows:
    designated channel, including the affected Service, a description of the
    impact, and a severity assessment (Critical or Non-critical).
 2. **Response confirmation**: Provider acknowledges the request within the
-   response time commitment in Section 4.3 and confirms or adjusts the
-   severity.
+   response time commitment in Section 4.3 and confirms or adjusts the severity.
 3. **Escalation path**:
    - If the response time commitment is not met, the Customer may escalate to
      `escalations@pixelatedempathy.com`.
    - If an incident remains unresolved beyond the mitigation target (Critical:
      30 minutes; Non-critical: 2 business hours), the Customer may request
      escalation to the Provider's Director of Engineering.
-   - For Enterprise+ HIPAA customers, unresolved Critical incidents beyond
-     1 hour may be escalated to the Provider's VP of Engineering directly.
+   - For Enterprise+ HIPAA customers, unresolved Critical incidents beyond 1
+     hour may be escalated to the Provider's VP of Engineering directly.
 
 ### 8.3 Status Page
 
-Provider maintains a public status page at `status.pixelatedempathy.com`
-(or a Customer-specific status page for Enterprise+ HIPAA customers) showing
-real-time and historical Platform availability. Customer-initiated status
-page subscriptions (email, SMS, Slack) are available at no charge.
+Provider maintains a public status page at `status.pixelatedempathy.com` (or a
+Customer-specific status page for Enterprise+ HIPAA customers) showing real-time
+and historical Platform availability. Customer-initiated status page
+subscriptions (email, SMS, Slack) are available at no charge.
 
 ### 8.4 Proactive Notification
 
-Provider will proactively notify Customers of incidents that may affect
-SLA compliance as follows:
+Provider will proactively notify Customers of incidents that may affect SLA
+compliance as follows:
 
 | Severity                         | Notification Target                      | Method                               |
 | -------------------------------- | ---------------------------------------- | ------------------------------------ |
@@ -441,70 +438,67 @@ provided in the MSA.
 ### 9.3 No Consequential Damages
 
 In no event shall Provider be liable for any indirect, incidental,
-consequential, special, or punitive damages, or for any lost profits or
-revenue, arising from or related to the SLA or the Platform's availability,
-even if Provider has been advised of the possibility of such damages. This
-limitation is subject to any conflicting provision in the MSA.
+consequential, special, or punitive damages, or for any lost profits or revenue,
+arising from or related to the SLA or the Platform's availability, even if
+Provider has been advised of the possibility of such damages. This limitation is
+subject to any conflicting provision in the MSA.
 
 ### 9.4 Credit Cap
 
-The aggregate Service Credits payable in any Billing Month shall not exceed
-100% of the monthly Subscription fee. Service Credits do not carry over
-between Billing Months and are not refundable or transferable.
+The aggregate Service Credits payable in any Billing Month shall not exceed 100%
+of the monthly Subscription fee. Service Credits do not carry over between
+Billing Months and are not refundable or transferable.
 
 ---
 
 ## 10. HIPAA Addendum
 
-This Section 10 applies only to Enterprise+ HIPAA customers and supplements
-(not replaces) the BAA executed between Provider and Customer.
+This Section 10 applies only to Enterprise+ HIPAA customers and supplements (not
+replaces) the BAA executed between Provider and Customer.
 
 ### 10.1 PHI Safeguards
 
 Provider implements the following safeguards for Customer PHI:
 
-1. **Administrative**: Workforce HIPAA training (annual), designated privacy
-   and security officers, access review (quarterly), incident response plan.
-2. **Physical**: Datacenter access controls managed by cloud provider
-   (SOC 2 Type II certified facilities), no on-premises PHI storage.
+1. **Administrative**: Workforce HIPAA training (annual), designated privacy and
+   security officers, access review (quarterly), incident response plan.
+2. **Physical**: Datacenter access controls managed by cloud provider (SOC 2
+   Type II certified facilities), no on-premises PHI storage.
 3. **Technical**: AES-256 at-rest encryption, TLS 1.2+ in-transit encryption,
    role-based access control, audit logging (6-year retention), network
-   segmentation, automated vulnerability scanning, annual penetration
-   testing.
+   segmentation, automated vulnerability scanning, annual penetration testing.
 
 ### 10.2 Subcontractors
 
 Provider uses subcontractors who may access PHI. A current list of
-subcontractors with PHI access is maintained in the Provider's HIPAA
-compliance documentation and provided to the Customer upon request. All
-subcontractors have executed BAAs with Provider as required by 45 CFR
-§ 164.308(b)(2).
+subcontractors with PHI access is maintained in the Provider's HIPAA compliance
+documentation and provided to the Customer upon request. All subcontractors have
+executed BAAs with Provider as required by 45 CFR § 164.308(b)(2).
 
 ### 10.3 Breach Notification (HIPAA)
 
-In the event of a confirmed or suspected breach of unsecured PHI, Provider
-will notify the Customer in accordance with the BAA and 45 CFR § 164.410.
-The notification deadline shall not exceed sixty (60) days from discovery of
-the breach, consistent with the HHS Breach Notification Rule. Provider will
-provide the Customer with all information reasonably necessary for the
-Customer to comply with its own breach notification obligations under
-45 CFR § 164.404.
+In the event of a confirmed or suspected breach of unsecured PHI, Provider will
+notify the Customer in accordance with the BAA and 45 CFR § 164.410. The
+notification deadline shall not exceed sixty (60) days from discovery of the
+breach, consistent with the HHS Breach Notification Rule. Provider will provide
+the Customer with all information reasonably necessary for the Customer to
+comply with its own breach notification obligations under 45 CFR § 164.404.
 
 ### 10.4 Audit Rights
 
 The Customer has the right, upon thirty (30) days' written notice and no more
-than once per calendar year, to audit Provider's compliance with these SLA
-Terms and the BAA, at the Customer's expense. The audit will be conducted
-during business hours and will not unreasonably interfere with Provider's
-operations. The Customer may use a third-party auditor provided the auditor
-has executed a confidentiality agreement with Provider.
+than once per calendar year, to audit Provider's compliance with these SLA Terms
+and the BAA, at the Customer's expense. The audit will be conducted during
+business hours and will not unreasonably interfere with Provider's operations.
+The Customer may use a third-party auditor provided the auditor has executed a
+confidentiality agreement with Provider.
 
 ### 10.5 Termination and Data Return
 
-Upon termination of the Subscription, Provider will return or destroy all
-PHI in accordance with 45 CFR § 164.500(d)(2) and the BAA. Data return is
-completed within thirty (30) days of termination, and a certificate of
-destruction is provided within sixty (60) days.
+Upon termination of the Subscription, Provider will return or destroy all PHI in
+accordance with 45 CFR § 164.500(d)(2) and the BAA. Data return is completed
+within thirty (30) days of termination, and a certificate of destruction is
+provided within sixty (60) days.
 
 ---
 
@@ -531,7 +525,8 @@ destruction is provided within sixty (60) days.
 
 - **Internal documents**:
   - SLO Definitions Runbook — `docs/enterprise/runbooks/slo-definitions.md`
-  - SLA Breach Response Runbook — `docs/enterprise/runbooks/sla-breach-response.md`
+  - SLA Breach Response Runbook —
+    `docs/enterprise/runbooks/sla-breach-response.md`
   - DR RTO/RPO Targets — `docs/enterprise/runbooks/dr-rto-rpo-targets.md`
   - Vendor Inventory — `docs/enterprise/vendor-inventory.md`
   - HIPAA Compliance — `docs/compliance/hipaa.mdx`
@@ -552,7 +547,7 @@ destruction is provided within sixty (60) days.
 
 ---
 
-_These SLA Terms are provided for informational purposes as a draft.
-The final executed SLA Terms are incorporated into the Customer's Master
-Service Agreement and may differ. For questions regarding these terms,
-contact `legal@pixelatedempathy.com`._
+_These SLA Terms are provided for informational purposes as a draft. The final
+executed SLA Terms are incorporated into the Customer's Master Service Agreement
+and may differ. For questions regarding these terms, contact
+`legal@pixelatedempathy.com`._

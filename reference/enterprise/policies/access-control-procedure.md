@@ -1,6 +1,9 @@
 ---
 title: Access Control Procedure
-description: Pixelated Empathy's access control procedure covering user provisioning, access review, role management, offboarding, and system decommissioning. SOC2 CC6 compliance.
+description:
+  Pixelated Empathy's access control procedure covering user provisioning,
+  access review, role management, offboarding, and system decommissioning. SOC2
+  CC6 compliance.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -23,8 +26,8 @@ This procedure defines Pixelated Empathy's controls for managing logical access
 to information systems, customer data, and PHI. It satisfies SOC2 CC6 (Logical
 and Physical Access Controls) and HIPAA Security Rule §164.312(a) requirements.
 
-This procedure applies to all workforce members, contractors, vendors, and
-third parties who require access to Pixelated Empathy systems or data.
+This procedure applies to all workforce members, contractors, vendors, and third
+parties who require access to Pixelated Empathy systems or data.
 
 ---
 
@@ -32,15 +35,14 @@ third parties who require access to Pixelated Empathy systems or data.
 
 ### 2.1 Least Privilege
 
-All access is granted at the minimum level required to perform job
-functions. Access beyond minimum privilege requires documented justification
-and manager approval.
+All access is granted at the minimum level required to perform job functions.
+Access beyond minimum privilege requires documented justification and manager
+approval.
 
 ### 2.2 Need-to-Know
 
 Access to sensitive data (PHI, customer data, security configurations) is
-granted only to individuals who require the data to perform their job
-functions.
+granted only to individuals who require the data to perform their job functions.
 
 ### 2.3 Separation of Duties
 
@@ -53,8 +55,8 @@ Critical operations require dual approval. No single individual may:
 
 ### 2.4 Default Deny
 
-All access is denied by default. Access must be explicitly granted through
-the provisioning process (Section 4).
+All access is denied by default. Access must be explicitly granted through the
+provisioning process (Section 4).
 
 ---
 
@@ -62,28 +64,28 @@ the provisioning process (Section 4).
 
 ### 3.1 Role Definitions
 
-| Role | Scope | Access | Approval |
-|------|-------|--------|----------|
-| **Public** | Unauthenticated users | Public pages only | None |
-| **Authenticated User** | Registered customers | Own tenant data, own profile | Self-registration + email verification |
-| **Tenant Admin** | Customer tenant administrators | Tenant configuration, user management within tenant | Customer organization admin |
-| **Platform User** | Pixelated workforce members (standard) | Non-production systems, documentation, internal tools | Manager + IT |
-| **Platform Admin** | Pixelated workforce members (elevated) | Production systems, customer data (limited), configuration | Manager + CSO |
-| **Security Admin** | Security team members | Security tools, audit logs, incident data, all systems (read) | CSO |
-| **Super Admin** | CSO + designated backup | Full system access, emergency break-glass | CSO + CEO |
+| Role                   | Scope                                  | Access                                                        | Approval                               |
+| ---------------------- | -------------------------------------- | ------------------------------------------------------------- | -------------------------------------- |
+| **Public**             | Unauthenticated users                  | Public pages only                                             | None                                   |
+| **Authenticated User** | Registered customers                   | Own tenant data, own profile                                  | Self-registration + email verification |
+| **Tenant Admin**       | Customer tenant administrators         | Tenant configuration, user management within tenant           | Customer organization admin            |
+| **Platform User**      | Pixelated workforce members (standard) | Non-production systems, documentation, internal tools         | Manager + IT                           |
+| **Platform Admin**     | Pixelated workforce members (elevated) | Production systems, customer data (limited), configuration    | Manager + CSO                          |
+| **Security Admin**     | Security team members                  | Security tools, audit logs, incident data, all systems (read) | CSO                                    |
+| **Super Admin**        | CSO + designated backup                | Full system access, emergency break-glass                     | CSO + CEO                              |
 
 ### 3.2 RBAC Scopes (Application Level)
 
 The Pixelated Empathy application enforces the following scopes:
 
-| Scope | Permissions | Granted To |
-|-------|-------------|------------|
-| `read` | Read-only access to tenant data | All authenticated users |
-| `write` | Create, update, delete tenant data | Tenant admins, platform admins |
-| `admin` | Full tenant management, user provisioning | Tenant admins only |
-| `platform:read` | Read access to platform-wide data | Platform users and above |
-| `platform:write` | Write access to platform-wide data | Platform admins only |
-| `security:audit` | Access to audit logs and security tools | Security admins only |
+| Scope            | Permissions                               | Granted To                     |
+| ---------------- | ----------------------------------------- | ------------------------------ |
+| `read`           | Read-only access to tenant data           | All authenticated users        |
+| `write`          | Create, update, delete tenant data        | Tenant admins, platform admins |
+| `admin`          | Full tenant management, user provisioning | Tenant admins only             |
+| `platform:read`  | Read access to platform-wide data         | Platform users and above       |
+| `platform:write` | Write access to platform-wide data        | Platform admins only           |
+| `security:audit` | Access to audit logs and security tools   | Security admins only           |
 
 ---
 
@@ -91,16 +93,17 @@ The Pixelated Empathy application enforces the following scopes:
 
 ### 4.1 New Workforce Member Onboarding
 
-**Requestor**: Hiring manager.
-**Approver**: IT (for standard access) or CSO (for elevated access).
+**Requestor**: Hiring manager. **Approver**: IT (for standard access) or CSO
+(for elevated access).
 
 **Procedure**:
 
 1. Hiring manager submits access request via Linear (template: New Hire Access).
-2. Request includes: role, required access levels, systems needed, justification.
+2. Request includes: role, required access levels, systems needed,
+   justification.
 3. IT reviews and approves (standard) or CSO approves (elevated).
-4. IT provisions access in Auth0 (identity), GitHub (code), Linear (project management),
-   and system-specific tools.
+4. IT provisions access in Auth0 (identity), GitHub (code), Linear (project
+   management), and system-specific tools.
 5. IT confirms provisioning and notifies hiring manager.
 6. New hire completes security awareness training (Section 4 of Information
    Security Policy) before accessing production systems.
@@ -111,13 +114,14 @@ access within 5 business days (requires additional approval).
 
 ### 4.2 Access Change (Role Modification)
 
-**Requestor**: Employee's manager.
-**Approver**: IT (for lateral moves) or CSO (for privilege elevation).
+**Requestor**: Employee's manager. **Approver**: IT (for lateral moves) or CSO
+(for privilege elevation).
 
 **Procedure**:
 
 1. Manager submits access change request via Linear (template: Access Change).
-2. Request includes: current access, requested access, justification, effective date.
+2. Request includes: current access, requested access, justification, effective
+   date.
 3. IT reviews and approves (lateral) or CSO approves (elevation).
 4. IT modifies access in Auth0 and system-specific tools.
 5. IT confirms modification and notifies manager.
@@ -128,13 +132,14 @@ business days.
 
 ### 4.3 Temporary Access
 
-**Requestor**: Any workforce member.
-**Approver**: System owner + CSO.
+**Requestor**: Any workforce member. **Approver**: System owner + CSO.
 
 **Procedure**:
 
-1. Requestor submits temporary access request via Linear (template: Temporary Access).
-2. Request includes: system, access level, justification, duration (max 30 days).
+1. Requestor submits temporary access request via Linear (template: Temporary
+   Access).
+2. Request includes: system, access level, justification, duration (max 30
+   days).
 3. System owner and CSO approve.
 4. IT provisions time-limited access (auto-expiration configured).
 5. IT confirms and notifies requestor.
@@ -148,13 +153,13 @@ business days.
 
 ### 5.1 Quarterly Access Review
 
-**Frequency**: Quarterly (January, April, July, October).
-**Owner**: Security Engineering Lead.
-**Reviewer**: System owners and managers.
+**Frequency**: Quarterly (January, April, July, October). **Owner**: Security
+Engineering Lead. **Reviewer**: System owners and managers.
 
 **Procedure**:
 
-1. Security team generates access report from Auth0 (all users, roles, last login).
+1. Security team generates access report from Auth0 (all users, roles, last
+   login).
 2. Report distributed to system owners and managers.
 3. Reviewers verify each user's access is still required and appropriate.
 4. Reviewers flag:
@@ -171,13 +176,13 @@ business days.
 
 ### 5.2 Annual Privileged Access Review
 
-**Frequency**: Annually (Q1).
-**Owner**: CSO.
-**Reviewer**: CSO + Security Engineering Lead.
+**Frequency**: Annually (Q1). **Owner**: CSO. **Reviewer**: CSO + Security
+Engineering Lead.
 
 **Procedure**:
 
-1. Generate report of all privileged accounts (Platform Admin, Security Admin, Super Admin).
+1. Generate report of all privileged accounts (Platform Admin, Security Admin,
+   Super Admin).
 2. CSO reviews each privileged account for:
    - Business justification.
    - Appropriate scope (no excessive privileges).
@@ -193,8 +198,7 @@ business days.
 
 ### 6.1 Voluntary Termination (Resignation)
 
-**Trigger**: Employee submits resignation.
-**Owner**: HR + IT.
+**Trigger**: Employee submits resignation. **Owner**: HR + IT.
 
 **Procedure**:
 
@@ -215,8 +219,7 @@ business days.
 
 ### 6.2 Involuntary Termination
 
-**Trigger**: Employee is terminated.
-**Owner**: HR + IT + Security.
+**Trigger**: Employee is terminated. **Owner**: HR + IT + Security.
 
 **Procedure**:
 
@@ -237,8 +240,7 @@ business days.
 
 ### 6.3 Contractor/Vendor Termination
 
-**Trigger**: Contract ends or is terminated.
-**Owner**: Contract manager + IT.
+**Trigger**: Contract ends or is terminated. **Owner**: Contract manager + IT.
 
 **Procedure**:
 
@@ -371,12 +373,11 @@ Anomalies trigger P2/P3 security incidents per the Incident Response Plan.
 
 ## 12. Change Log
 
-| Date | Author | Change |
-|------|--------|--------|
+| Date       | Author   | Change                                                              |
+| ---------- | -------- | ------------------------------------------------------------------- |
 | 2026-08-01 | Sisyphus | Initial access control procedure for SOC2 CC6 compliance (PIX-4156) |
 
 ---
 
-_Document owner: Chief Security Officer_
-_Review cadence: Annual (or after any access-related incident)_
-_Next review: 2027-08-01_
+_Document owner: Chief Security Officer_ _Review cadence: Annual (or after any
+access-related incident)_ _Next review: 2027-08-01_

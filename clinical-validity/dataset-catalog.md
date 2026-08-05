@@ -1,8 +1,10 @@
 # Clinical AI Dataset Research Catalog
 
 > **Date**: 2026-08-04  
-> **Scope**: Datasets for clinical AI training — pathology detection, longitudinal therapy, adversarial benchmarking  
-> **Ethics**: Published/consented research datasets only. No scraping private clinical forums or unconsented accounts.
+> **Scope**: Datasets for clinical AI training — pathology detection,
+> longitudinal therapy, adversarial benchmarking  
+> **Ethics**: Published/consented research datasets only. No scraping private
+> clinical forums or unconsented accounts.
 
 ---
 
@@ -397,8 +399,10 @@ PsyDial (privacy-preserving reconstruction → FHE pipeline)
 - **BBRD**: CC BY-NC (non-commercial use only)
 - **DMTCorpus**: Synthetic — no real patient data
 - **PsyDial**: Privacy-preserving RMRR — client utterances masked/reconstructed
-- **Access-limited sources** (NIMH, ABCD, OpenNeuro): Require institutional approval
-- **Compliance skill**: `health-data-dpia` installed for GDPR Art. 9 / HIPAA compliance checking
+- **Access-limited sources** (NIMH, ABCD, OpenNeuro): Require institutional
+  approval
+- **Compliance skill**: `health-data-dpia` installed for GDPR Art. 9 / HIPAA
+  compliance checking
 
 ---
 
@@ -413,4 +417,5 @@ PsyDial (privacy-preserving reconstruction → FHE pipeline)
 
 ---
 
-_Research conducted 2026-08-04. 25 datasets/sources across 3 domains. Findings stored in Foresight memory (b19414b17c87f6e3)._
+_Research conducted 2026-08-04. 25 datasets/sources across 3 domains. Findings
+stored in Foresight memory (b19414b17c87f6e3)._

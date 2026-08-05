@@ -1,6 +1,8 @@
 ---
 title: Infrastructure Disaster Recovery
-description: Complete infrastructure disaster recovery procedures for Kubernetes clusters, cloud regions, DNS, and CI/CD pipelines
+description:
+  Complete infrastructure disaster recovery procedures for Kubernetes clusters,
+  cloud regions, DNS, and CI/CD pipelines
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -19,21 +21,31 @@ Kubernetes · Cloud Region · DNS · CI/CD Pipeline
 
 ## 1. Purpose & Scope
 
-This runbook documents infrastructure-level disaster recovery procedures for the Pixelated Empathy platform, covering Kubernetes cluster recovery, cloud region failover, DNS failover, and CI/CD pipeline recovery.
+This runbook documents infrastructure-level disaster recovery procedures for the
+Pixelated Empathy platform, covering Kubernetes cluster recovery, cloud region
+failover, DNS failover, and CI/CD pipeline recovery.
 
-**Scope**: Infrastructure components — compute orchestration (Kubernetes), network routing (DNS, load balancers), deployment automation (CI/CD pipelines), and cloud region failover.
+**Scope**: Infrastructure components — compute orchestration (Kubernetes),
+network routing (DNS, load balancers), deployment automation (CI/CD pipelines),
+and cloud region failover.
 
-**Out of scope**: Application-level data recovery (PostgreSQL, Redis, Foresight MCP) — covered in [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md). SLA breach response — covered in [SLA Breach Response](./sla-breach-response.md).
+**Out of scope**: Application-level data recovery (PostgreSQL, Redis, Foresight
+MCP) — covered in [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md). SLA breach
+response — covered in [SLA Breach Response](./sla-breach-response.md).
 
 **Related documents**:
 
-- [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md) — service tiers, RTO/RPO targets, backup strategy, BCP
-- [SLA Breach Response](./sla-breach-response.md) — incident response, escalation, communication
-- [SLO Definitions](./slo-definitions.md) — service-level objectives and error budgets
+- [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md) — service tiers, RTO/RPO
+  targets, backup strategy, BCP
+- [SLA Breach Response](./sla-breach-response.md) — incident response,
+  escalation, communication
+- [SLO Definitions](./slo-definitions.md) — service-level objectives and error
+  budgets
 
 **Target audience**: Platform engineers, SREs, on-call engineers, DevOps leads.
 
-**Review cadence**: Quarterly (aligned with DR drill schedule in [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md#11-disaster-recovery-drill-schedule)).
+**Review cadence**: Quarterly (aligned with DR drill schedule in
+[DR: RTO/RPO Targets](./dr-rto-rpo-targets.md#11-disaster-recovery-drill-schedule)).
 
 ---
 
@@ -58,33 +70,48 @@ This runbook documents infrastructure-level disaster recovery procedures for the
 - **Distribution**: Civo K3s
 - **Namespace**: `pixelated-empathy`
 - **Deployments**:
-  - `pixelated-empathy` (blue + green slots, container port 5001, health `/health`)
+  - `pixelated-empathy` (blue + green slots, container port 5001, health
+    `/health`)
   - `redis` (in-cluster cache, network policy restricted)
   - `session-agent`, `qa-agent`, `pipeline-agent` (AI agent deployments)
-- **Service routing**: `slot: blue` selector on service → routes to active deployment
+- **Service routing**: `slot: blue` selector on service → routes to active
+  deployment
 - **Autoscaling**: HPA on pixelated-empathy deployment
 - **Ingress**: GCE class, managed TLS certificate, host `pixelatedempathy.com`
-- **Kustomize overlays**: `base/` (16 resources), `civo/` overlay, `staging/` and `production/` overlays
+- **Kustomize overlays**: `base/` (16 resources), `civo/` overlay, `staging/`
+  and `production/` overlays
 
 ### 2.3 CI/CD Pipeline Details
 
 - **Platform**: GitHub Actions (27 workflows)
 - **Primary deploy workflow**: `deploy-civo.yml`
-  - Builds Docker images for 4 services (api, session-agent, qa-agent, pipeline-agent)
+  - Builds Docker images for 4 services (api, session-agent, qa-agent,
+    pipeline-agent)
   - Pushes to Docker Hub (`pixelatedempathy/*`)
   - Deploys to Civo K3s via `kubectl` + `kustomize`
   - Blue slot = active deployment target
-  - Post-deploy: rollout status check + smoke test via `scripts/deploy/verify-deployment.sh`
-- **Other critical workflows**: `ci.yml` (lint/test/build), `monitoring.yml`, `security-scanning.yml`, `codeql.yml`, `playwright.yml`, `sdk-generation.yml`
+  - Post-deploy: rollout status check + smoke test via
+    `scripts/deploy/verify-deployment.sh`
+- **Other critical workflows**: `ci.yml` (lint/test/build), `monitoring.yml`,
+  `security-scanning.yml`, `codeql.yml`, `playwright.yml`, `sdk-generation.yml`
 
 ### 2.4 Multi-Region Failover Capabilities
 
 The platform has automated multi-region failover orchestration code:
 
-- **`src/lib/deployment/multi-region/AutomatedFailoverOrchestrator.ts`**: Integrates Route53 health checks, SNS notifications, SQS queues, Lambda triggers, and CloudWatch alarms. Manages `FailoverState` (healthy → failing_over → degraded), emits `FailoverEvent` and `FailoverNotification` types. Includes circuit breakers and CDN config updates.
-- **`ai/deployment/production_deployer.py`**: Blue-green canary deployment with rollback capability. Traffic shifting: 5% → 25% → 50% → 100% with health checks at each stage. SQLite deployment records for audit trail.
+- **`src/lib/deployment/multi-region/AutomatedFailoverOrchestrator.ts`**:
+  Integrates Route53 health checks, SNS notifications, SQS queues, Lambda
+  triggers, and CloudWatch alarms. Manages `FailoverState` (healthy →
+  failing_over → degraded), emits `FailoverEvent` and `FailoverNotification`
+  types. Includes circuit breakers and CDN config updates.
+- **`ai/deployment/production_deployer.py`**: Blue-green canary deployment with
+  rollback capability. Traffic shifting: 5% → 25% → 50% → 100% with health
+  checks at each stage. SQLite deployment records for audit trail.
 
-> **Note**: Multi-region failover orchestration code exists but is not yet deployed to production. Current production runs on a single Civo region (LON1). This runbook covers both current single-region recovery and future multi-region failover procedures.
+> **Note**: Multi-region failover orchestration code exists but is not yet
+> deployed to production. Current production runs on a single Civo region
+> (LON1). This runbook covers both current single-region recovery and future
+> multi-region failover procedures.
 
 ---
 
@@ -92,8 +119,8 @@ The platform has automated multi-region failover orchestration code:
 
 ### 3.1 Scenario: Cluster Node Failure
 
-**RTO**: 30 minutes (Tier 1 service: pixelated-app)
-**Trigger**: Node NotReady for >5 minutes, or pod eviction storms.
+**RTO**: 30 minutes (Tier 1 service: pixelated-app) **Trigger**: Node NotReady
+for >5 minutes, or pod eviction storms.
 
 #### Recovery Steps
 
@@ -136,14 +163,16 @@ The platform has automated multi-region failover orchestration code:
    bash scripts/deploy/verify-deployment.sh
    ```
 
-6. **Post-recovery**: Uncordon if node recovered, or remove permanently failed node from cluster.
+6. **Post-recovery**: Uncordon if node recovered, or remove permanently failed
+   node from cluster.
 
 ### 3.2 Scenario: Control Plane Failure
 
-**RTO**: 1 hour (Tier 1)
-**Trigger**: `kubectl` commands fail, API server unreachable, etcd quorum loss.
+**RTO**: 1 hour (Tier 1) **Trigger**: `kubectl` commands fail, API server
+unreachable, etcd quorum loss.
 
-Civo K3s is a managed Kubernetes service — control plane is managed by Civo. Control plane failures are Civo's responsibility.
+Civo K3s is a managed Kubernetes service — control plane is managed by Civo.
+Control plane failures are Civo's responsibility.
 
 #### Recovery Steps
 
@@ -181,7 +210,9 @@ Civo K3s is a managed Kubernetes service — control plane is managed by Civo. C
 **RTO**: 4 hours (Tier 2 — infra rebuild, app data recovered from backups)
 **Trigger**: Complete cluster loss, corrupted etcd, irrecoverable control plane.
 
-> **Note**: Civo K3s manages etcd internally. Full etcd restore on managed K3s requires cluster recreation. Application state is recovered from backups per [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md#6-backup-and-recovery-strategy).
+> **Note**: Civo K3s manages etcd internally. Full etcd restore on managed K3s
+> requires cluster recreation. Application state is recovered from backups per
+> [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md#6-backup-and-recovery-strategy).
 
 #### Recovery Steps
 
@@ -240,7 +271,8 @@ Civo K3s is a managed Kubernetes service — control plane is managed by Civo. C
    kubectl apply -f k8s/base/ingress.yaml
    ```
 
-5. **Restore application data** (from [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md)):
+5. **Restore application data** (from
+   [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md)):
 
    ```bash
    # PostgreSQL restore (WAL + PITR)
@@ -278,13 +310,19 @@ Civo K3s is a managed Kubernetes service — control plane is managed by Civo. C
 
 ### 4.1 Current State: Single Region (Civo LON1)
 
-Production currently runs on a single Civo region (LON1). No automated multi-region failover is active. Region failure requires manual cluster rebuild in an alternate region (see [Section 3.3](#33-scenario-etcd-data-loss-complete-cluster-rebuild)).
+Production currently runs on a single Civo region (LON1). No automated
+multi-region failover is active. Region failure requires manual cluster rebuild
+in an alternate region (see
+[Section 3.3](#33-scenario-etcd-data-loss-complete-cluster-rebuild)).
 
-**Manual region failover RTO**: 4 hours (Tier 2 — includes cluster rebuild + data restore).
+**Manual region failover RTO**: 4 hours (Tier 2 — includes cluster rebuild +
+data restore).
 
 ### 4.2 Future State: Multi-Region Active-Active
 
-The `AutomatedFailoverOrchestrator` (in `src/lib/deployment/multi-region/`) is designed for multi-region active-active with automated health-check-driven failover:
+The `AutomatedFailoverOrchestrator` (in `src/lib/deployment/multi-region/`) is
+designed for multi-region active-active with automated health-check-driven
+failover:
 
 | Component        | Role                                                            |
 | ---------------- | --------------------------------------------------------------- |
@@ -303,8 +341,10 @@ The `AutomatedFailoverOrchestrator` (in `src/lib/deployment/multi-region/`) is d
    - Updates Route53 weighted records (shift 100% traffic to healthy region).
    - Updates Cloudflare CDN config (origin pool to healthy region).
    - Publishes `FailoverEvent` to SNS.
-   - State transitions: `healthy` → `failing_over` → `degraded` (if recovery) or `healthy` (if full recovery).
-3. **Circuit breaker** prevents failback for configurable cooldown period (default: 15 minutes).
+   - State transitions: `healthy` → `failing_over` → `degraded` (if recovery) or
+     `healthy` (if full recovery).
+3. **Circuit breaker** prevents failback for configurable cooldown period
+   (default: 15 minutes).
 4. **Notification** sent via SNS to on-call (PagerDuty + Slack).
 
 #### Manual Failover Trigger (When Deployed)
@@ -321,11 +361,14 @@ node dist/lib/deployment/multi-region/failover-cli.js trigger \
 
 Cloudflare provides DNS-level failover independent of Route53:
 
-1. **Health check**: Cloudflare monitors origin health (HTTP check to `/health`).
+1. **Health check**: Cloudflare monitors origin health (HTTP check to
+   `/health`).
 2. **Failover pool**: Configure Cloudflare Load Balancer with origin pool:
    - Primary origin: `pixelatedempathy.com` → Civo LON1 LB IP
    - Secondary origin: failover region LB IP (when available)
-3. **Failover behavior**: Cloudflare automatically routes to secondary origin when primary fails health check for 3 consecutive checks (default 90 seconds).
+3. **Failover behavior**: Cloudflare automatically routes to secondary origin
+   when primary fails health check for 3 consecutive checks (default 90
+   seconds).
 
 **Cloudflare Load Balancer configuration** (to be set up):
 
@@ -409,7 +452,8 @@ load_balancer:
 
 ### 5.2 Route53 Health Checks (Failover Health Monitoring)
 
-Route53 is used by the `AutomatedFailoverOrchestrator` for health-check-driven failover (when multi-region is deployed).
+Route53 is used by the `AutomatedFailoverOrchestrator` for health-check-driven
+failover (when multi-region is deployed).
 
 #### Route53 Configuration
 
@@ -458,8 +502,8 @@ aws route53 change-resource-record-sets \
 
 ### 6.1 Scenario: GitHub Actions Outage
 
-**RTO**: 4 hours (Tier 3 — development operations)
-**Trigger**: GitHub Actions unavailable, workflow runs failing for >30 minutes.
+**RTO**: 4 hours (Tier 3 — development operations) **Trigger**: GitHub Actions
+unavailable, workflow runs failing for >30 minutes.
 
 #### Recovery Steps
 
@@ -493,12 +537,13 @@ aws route53 change-resource-record-sets \
        app=pixelatedempathy/api:emergency -n pixelated-empathy
      ```
 
-4. **Post-recovery**: Resume normal CI/CD pipeline. Reconcile any manual changes with Git history.
+4. **Post-recovery**: Resume normal CI/CD pipeline. Reconcile any manual changes
+   with Git history.
 
 ### 6.2 Scenario: Docker Hub Outage
 
-**RTO**: 2 hours (Tier 2 — deployment blocked)
-**Trigger**: Docker Hub pull/push failing, `kubectl rollout status` shows `ImagePullBackOff`.
+**RTO**: 2 hours (Tier 2 — deployment blocked) **Trigger**: Docker Hub pull/push
+failing, `kubectl rollout status` shows `ImagePullBackOff`.
 
 #### Recovery Steps
 
@@ -560,10 +605,11 @@ ls scripts/deploy/      # verify deploy scripts present
 
 ### 7.1 Scenario: Full Civo LON1 Region Outage
 
-**RTO**: 4 hours (Tier 2 — full region rebuild)
-**Trigger**: Civo status page reports LON1 region outage, all nodes unreachable, `kubectl` commands fail.
+**RTO**: 4 hours (Tier 2 — full region rebuild) **Trigger**: Civo status page
+reports LON1 region outage, all nodes unreachable, `kubectl` commands fail.
 
-> This is the worst-case infrastructure scenario. Follow this runbook end-to-end.
+> This is the worst-case infrastructure scenario. Follow this runbook
+> end-to-end.
 
 #### Phase 1: Detection & Assessment (0–15 minutes)
 
@@ -579,7 +625,8 @@ ls scripts/deploy/      # verify deploy scripts present
    ```
 
 2. **Declare incident**: Open incident in incident management system.
-   - Severity: **Emergency** (per [SLA Breach Response](./sla-breach-response.md#3-severity-classification))
+   - Severity: **Emergency** (per
+     [SLA Breach Response](./sla-breach-response.md#3-severity-classification))
    - Notify: PagerDuty (emergency), Slack `#incidents`, status page
 
 3. **Assess blast radius**:
@@ -616,7 +663,8 @@ ls scripts/deploy/      # verify deploy scripts present
    civo kubernetes config pixelated-cluster-dr --save
    ```
 
-7. **Apply K8s manifests** (see [Section 3.3, steps 3–4](#33-scenario-etcd-data-loss-complete-cluster-rebuild)).
+7. **Apply K8s manifests** (see
+   [Section 3.3, steps 3–4](#33-scenario-etcd-data-loss-complete-cluster-rebuild)).
 
 8. **Restore application data**:
 
@@ -692,13 +740,17 @@ ls scripts/deploy/      # verify deploy scripts present
     ```
 
 13. **Update status page**: Mark incident as resolved.
-14. **Notify stakeholders**: Customer email (Enterprise+ within 24h per BAA, Enterprise within 48h, Pro within 7d — per [SLA Contract Terms](../sla-contract-terms.md)).
-15. **Schedule postmortem**: Within 48h (per [SLA Breach Response](./sla-breach-response.md#8-postmortem-process)).
+14. **Notify stakeholders**: Customer email (Enterprise+ within 24h per BAA,
+    Enterprise within 48h, Pro within 7d — per
+    [SLA Contract Terms](../sla-contract-terms.md)).
+15. **Schedule postmortem**: Within 48h (per
+    [SLA Breach Response](./sla-breach-response.md#8-postmortem-process)).
 
 #### Phase 6: Post-Recovery (24–72 hours)
 
 16. **Monitor for 24h** before declaring full stability.
-17. **Postmortem** within 48h (per [SLA Breach Response](./sla-breach-response.md#8-postmortem-process)).
+17. **Postmortem** within 48h (per
+    [SLA Breach Response](./sla-breach-response.md#8-postmortem-process)).
 18. **Update DR runbook** with lessons learned.
 19. **Evaluate permanent migration** to alternate region or multi-region setup.
 
@@ -708,7 +760,9 @@ ls scripts/deploy/      # verify deploy scripts present
 
 ### 8.1 Objective
 
-Validate the complete region outage recovery procedure in a staging environment before production failure. Tests cover: cluster rebuild, data restore, DNS cutover, and application validation.
+Validate the complete region outage recovery procedure in a staging environment
+before production failure. Tests cover: cluster rebuild, data restore, DNS
+cutover, and application validation.
 
 ### 8.2 Test Schedule
 
@@ -719,11 +773,13 @@ Validate the complete region outage recovery procedure in a staging environment 
 | Q3      | CI/CD pipeline recovery (simulate GitHub outage) | 2 hours  | Manual deploy succeeds                |
 | Q4      | Multi-region failover (when available)           | 2 hours  | Automated failover triggers correctly |
 
-> Aligned with quarterly DR drill schedule in [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md#11-disaster-recovery-drill-schedule).
+> Aligned with quarterly DR drill schedule in
+> [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md#11-disaster-recovery-drill-schedule).
 
 ### 8.3 Test Procedure: Kubernetes Cluster Rebuild (Q1)
 
-**Prerequisites**: Staging cluster operational, backups available in S3, test window scheduled (off-hours).
+**Prerequisites**: Staging cluster operational, backups available in S3, test
+window scheduled (off-hours).
 
 #### Steps
 
@@ -740,7 +796,8 @@ Validate the complete region outage recovery procedure in a staging environment 
    civo kubernetes delete pixelated-staging --yes
    ```
 
-3. **Execute recovery procedure** (follow [Section 3.3](#33-scenario-etcd-data-loss-complete-cluster-rebuild)):
+3. **Execute recovery procedure** (follow
+   [Section 3.3](#33-scenario-etcd-data-loss-complete-cluster-rebuild)):
    - Provision new cluster
    - Apply K8s manifests
    - Restore data from staging backups
@@ -772,10 +829,12 @@ Validate the complete region outage recovery procedure in a staging environment 
 ### 8.4 Test Procedure: DNS Failover (Q2)
 
 1. **Provision secondary staging cluster** in alternate region.
-2. **Configure Cloudflare Load Balancer** with both staging clusters in origin pool.
+2. **Configure Cloudflare Load Balancer** with both staging clusters in origin
+   pool.
 3. **Simulate primary failure**: Scale primary deployment to 0 replicas.
 4. **Verify Cloudflare failover**: DNS routes to secondary within 90 seconds.
-5. **Simulate recovery**: Scale primary back up. Verify DNS reverts (after cooldown).
+5. **Simulate recovery**: Scale primary back up. Verify DNS reverts (after
+   cooldown).
 6. **Document results**: Failover time, recovery time, any edge cases.
 
 ---
@@ -831,7 +890,8 @@ Deploy synthetic checks to detect region-wide outages:
 | VP Engineering     | Executive escalation | Approve region migration decisions    |
 | Compliance lead    | HIPAA/SLA oversight  | Ensure breach notification compliance |
 
-> See [SLA Breach Response](./sla-breach-response.md#2-roles--responsibilities) for full incident role definitions.
+> See [SLA Breach Response](./sla-breach-response.md#2-roles--responsibilities)
+> for full incident role definitions.
 
 ---
 
@@ -879,21 +939,32 @@ Deploy synthetic checks to detect region-wide outages:
 
 ### Internal Documents
 
-- [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md) — service tiers, RTO/RPO, backup strategy, BCP
-- [SLA Breach Response](./sla-breach-response.md) — incident response, escalation, comms templates
-- [SLO Definitions](./slo-definitions.md) — service-level objectives, error budgets
-- [SLA Contract Terms](../sla-contract-terms.md) — customer SLA commitments, service credits
-- [Vendor Inventory](../vendor-inventory.md) — third-party vendors, data access levels
+- [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md) — service tiers, RTO/RPO,
+  backup strategy, BCP
+- [SLA Breach Response](./sla-breach-response.md) — incident response,
+  escalation, comms templates
+- [SLO Definitions](./slo-definitions.md) — service-level objectives, error
+  budgets
+- [SLA Contract Terms](../sla-contract-terms.md) — customer SLA commitments,
+  service credits
+- [Vendor Inventory](../vendor-inventory.md) — third-party vendors, data access
+  levels
 
 ### Infrastructure Files
 
-- `k8s/` — Kubernetes manifests (27 YAML files: base, civo overlay, staging/production overlays)
-- `k8s/base/` — base K8s resources (namespace, deployments, services, ingress, HPA, secrets)
+- `k8s/` — Kubernetes manifests (27 YAML files: base, civo overlay,
+  staging/production overlays)
+- `k8s/base/` — base K8s resources (namespace, deployments, services, ingress,
+  HPA, secrets)
 - `.github/workflows/` — CI/CD workflows (27 files including `deploy-civo.yml`)
-- `src/lib/deployment/multi-region/AutomatedFailoverOrchestrator.ts` — multi-region failover orchestration
-- `ai/deployment/production_deployer.py` — blue-green canary deployer with rollback
-- `scripts/deploy/` — deploy scripts (20 files including `verify-deployment.sh`, `rollout-civo.sh`)
-- `scripts/backup/` — backup scripts (`disaster-recovery.sh`, `backup-system.sh`, `rclone-nightly-backup.sh`, `verify-backups.sh`)
+- `src/lib/deployment/multi-region/AutomatedFailoverOrchestrator.ts` —
+  multi-region failover orchestration
+- `ai/deployment/production_deployer.py` — blue-green canary deployer with
+  rollback
+- `scripts/deploy/` — deploy scripts (20 files including `verify-deployment.sh`,
+  `rollout-civo.sh`)
+- `scripts/backup/` — backup scripts (`disaster-recovery.sh`,
+  `backup-system.sh`, `rclone-nightly-backup.sh`, `verify-backups.sh`)
 - `docker/postgres/backup/` — PostgreSQL backup/restore scripts (WAL + PITR)
 - `monitoring/` — Prometheus, Grafana, Alertmanager configuration
 
@@ -903,10 +974,14 @@ Deploy synthetic checks to detect region-wide outages:
 - [Cloudflare Status](https://www.cloudflarestatus.com) — Cloudflare status page
 - [Docker Hub Status](https://status.docker.com) — Docker Hub status page
 - [GitHub Status](https://www.githubstatus.com) — GitHub status page
-- [Civo Kubernetes Documentation](https://www.civo.com/docs/kubernetes) — Civo K3s docs
-- [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/) — Cloudflare LB docs
-- [AWS Route53 Health Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html) — Route53 failover docs
-- [Kubernetes Disaster Recovery](https://kubernetes.io/docs/tasks/administer-cluster/recover-cluster/) — K8s cluster recovery
+- [Civo Kubernetes Documentation](https://www.civo.com/docs/kubernetes) — Civo
+  K3s docs
+- [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/)
+  — Cloudflare LB docs
+- [AWS Route53 Health Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
+  — Route53 failover docs
+- [Kubernetes Disaster Recovery](https://kubernetes.io/docs/tasks/administer-cluster/recover-cluster/)
+  — K8s cluster recovery
 - [External Secrets Operator](https://external-secrets.io/) — ESO documentation
 
 ### Linear & GitHub

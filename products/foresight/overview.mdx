@@ -5,12 +5,18 @@ description: 'The persistent memory system that gives Pixelated Empathy\'s AI ag
 
 ## What Is Foresight?
 
-**Foresight** is the persistent memory system for Pixelated Empathy's AI agents. It provides continuity across sessions — remembering therapeutic patterns, client interactions, agent context, and learned preferences.
+**Foresight** is the persistent memory system for Pixelated Empathy's AI agents.
+It provides continuity across sessions — remembering therapeutic patterns,
+client interactions, agent context, and learned preferences.
 
-Foresight is **PostgreSQL-only** and operates as an **MCP (Model Context Protocol) server**, a **CLI** with 20+ commands, a **TUI** built with Textual, and a **Python SDK**. It is open source under the MIT licence and available as a PyPI package.
+Foresight is **PostgreSQL-only** and operates as an **MCP (Model Context
+Protocol) server**, a **CLI** with 20+ commands, a **TUI** built with Textual,
+and a **Python SDK**. It is open source under the MIT licence and available as a
+PyPI package.
 
 <Info>
-  **Repository:** [github.com/daggerstuff/foresight](https://github.com/daggerstuff/foresight)
+  **Repository:**
+  [github.com/daggerstuff/foresight](https://github.com/daggerstuff/foresight)
   **Licence:** MIT | **PyPI:** `pip install foresight`
 </Info>
 
@@ -20,29 +26,32 @@ Foresight is **PostgreSQL-only** and operates as an **MCP (Model Context Protoco
 
 ### Persistent Memory
 
-Foresight stores memories across agent sessions with configurable retention policies:
+Foresight stores memories across agent sessions with configurable retention
+policies:
 
 - **Ephemeral** — Short-lived, session-scoped
 - **Short-term** — Recent context, hours to days
 - **Long-term** — Durable knowledge, weeks to months
 - **Permanent** — Never expires
 
-Memories are categorised (fact, preference, pattern, decision, event) and can be searched with hybrid retrieval combining semantic vector search and keyword BM25 ranking.
+Memories are categorised (fact, preference, pattern, decision, event) and can be
+searched with hybrid retrieval combining semantic vector search and keyword BM25
+ranking.
 
 ### Context Blocks
 
 Structured context blocks persist guidance and configuration across sessions:
 
-| Block                | Purpose                                           |
-| -------------------- | ------------------------------------------------- |
-| `core_directives`    | Agent identity and fundamental operating rules    |
-| `guidance`           | Task-specific guidance and behavioural rules      |
-| `pending_items`      | Outstanding tasks and reminders                    |
-| `project_context`    | Project-specific context and decisions            |
-| `session_patterns`   | Learned session behaviour patterns                |
-| `user_preferences`  | User interaction style preferences                |
-| `self_improvement`   | Self-identified improvement targets               |
-| `tool_guidelines`    | Tool usage guidelines and constraints             |
+| Block              | Purpose                                        |
+| ------------------ | ---------------------------------------------- |
+| `core_directives`  | Agent identity and fundamental operating rules |
+| `guidance`         | Task-specific guidance and behavioural rules   |
+| `pending_items`    | Outstanding tasks and reminders                |
+| `project_context`  | Project-specific context and decisions         |
+| `session_patterns` | Learned session behaviour patterns             |
+| `user_preferences` | User interaction style preferences             |
+| `self_improvement` | Self-identified improvement targets            |
+| `tool_guidelines`  | Tool usage guidelines and constraints          |
 
 ### Curation Runs
 
@@ -62,16 +71,16 @@ Asynchronous curation jobs that process and organise memories:
 
 Foresight runs as an MCP server, exposing tools that AI agents can call:
 
-| Tool                          | Description                                   |
-| ----------------------------- | --------------------------------------------- |
-| `manage_memories`             | Store, update, delete, or archive memories    |
-| `search_memories`             | Hybrid search (semantic + keyword)            |
-| `manage_context_blocks`       | Read, update, or clear context blocks          |
-| `process_session_transcript`  | Extract memories from session transcripts      |
-| `manage_curation_runs`        | Start, monitor, or cancel curation jobs        |
-| `inject_context`              | Surface relevant context for current task      |
-| `query_memories_temporal`     | Query by time window and trend                 |
-| `get_system_status`           | System health, memory statistics, trends      |
+| Tool                         | Description                                |
+| ---------------------------- | ------------------------------------------ |
+| `manage_memories`            | Store, update, delete, or archive memories |
+| `search_memories`            | Hybrid search (semantic + keyword)         |
+| `manage_context_blocks`      | Read, update, or clear context blocks      |
+| `process_session_transcript` | Extract memories from session transcripts  |
+| `manage_curation_runs`       | Start, monitor, or cancel curation jobs    |
+| `inject_context`             | Surface relevant context for current task  |
+| `query_memories_temporal`    | Query by time window and trend             |
+| `get_system_status`          | System health, memory statistics, trends   |
 
 ### CLI
 
@@ -79,11 +88,13 @@ Foresight runs as an MCP server, exposing tools that AI agents can call:
 
 ### TUI
 
-A Textual-based terminal user interface for interactive memory browsing and management.
+A Textual-based terminal user interface for interactive memory browsing and
+management.
 
 ### Python SDK
 
-Programmatic access to all Foresight capabilities for integration into Python applications.
+Programmatic access to all Foresight capabilities for integration into Python
+applications.
 
 ---
 
@@ -117,10 +128,17 @@ Programmatic access to all Foresight capabilities for integration into Python ap
 
 ## How It Connects
 
-Foresight provides persistent memory for both the **Pixelated** platform and the **AI Engine**. The platform stores session context, therapeutic patterns, and agent state in Foresight. The AI Engine uses Foresight to maintain continuity across training sessions and to surface relevant context during inference.
+Foresight provides persistent memory for both the **Pixelated** platform and the
+**AI Engine**. The platform stores session context, therapeutic patterns, and
+agent state in Foresight. The AI Engine uses Foresight to maintain continuity
+across training sessions and to surface relevant context during inference.
 
 <CardGroup cols={2}>
-  <Card title="Pixelated Platform" icon="cube" href="/products/pixelated/overview">
+  <Card
+    title="Pixelated Platform"
+    icon="cube"
+    href="/products/pixelated/overview"
+  >
     Stores session context and agent state in Foresight.
   </Card>
   <Card title="AI Engine" icon="brain" href="/products/ai/overview">

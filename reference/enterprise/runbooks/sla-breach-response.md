@@ -1,6 +1,8 @@
 ---
 title: SLA Breach Response Procedure
-description: Comprehensive escalation paths, communication templates, remediation process, and on-call training for SLA breach response at Pixelated Empathy
+description:
+  Comprehensive escalation paths, communication templates, remediation process,
+  and on-call training for SLA breach response at Pixelated Empathy
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -12,8 +14,8 @@ description: Comprehensive escalation paths, communication templates, remediatio
 **Enterprise Readiness Program — SLA-4**
 
 Comprehensive incident response for SLA/SLO breaches: escalation paths,
-communication templates, remediation workflow, postmortem process, and
-on-call training program.
+communication templates, remediation workflow, postmortem process, and on-call
+training program.
 
 </div>
 
@@ -21,9 +23,9 @@ on-call training program.
 
 ## 1. Purpose & Scope
 
-This runbook defines the **end-to-end response procedure** when a
-Service-Level Objective (SLO) or Service-Level Agreement (SLA) is breached
-or at imminent risk. It covers:
+This runbook defines the **end-to-end response procedure** when a Service-Level
+Objective (SLO) or Service-Level Agreement (SLA) is breached or at imminent
+risk. It covers:
 
 - **Detection** through automated alerting and manual escalation
 - **Escalation paths** from on-call engineer to executive leadership
@@ -47,18 +49,18 @@ or at imminent risk. It covers:
 | node-exporter | 99.5%      | Internal monitoring          |
 | Foresight MCP | 99.9%      | Enterprise+ (memory service) |
 
-**Out of scope**: Development/staging environment incidents, internal
-tooling outages, scheduled maintenance (covered separately).
+**Out of scope**: Development/staging environment incidents, internal tooling
+outages, scheduled maintenance (covered separately).
 
 **Related documents**:
 
 - [SLO Definitions & Error Budgets](./slo-definitions.md) — SLO targets, SLA
   commitments, error budget policy
-- [SLO Monitoring & Burn Rate Alerts](../../../monitoring/slo-recording-rules.yml) —
-  Prometheus recording rules and multi-window burn-rate alerts
+- [SLO Monitoring & Burn Rate Alerts](../../../monitoring/slo-recording-rules.yml)
+  — Prometheus recording rules and multi-window burn-rate alerts
 - [DR RTO/RPO Targets](./dr-rto-rpo-targets.md) — Disaster recovery targets
-- [Vendor Inventory](../vendor-inventory.md) — Third-party vendor SLAs and
-  BAA requirements
+- [Vendor Inventory](../vendor-inventory.md) — Third-party vendor SLAs and BAA
+  requirements
 
 ---
 
@@ -77,9 +79,11 @@ tooling outages, scheduled maintenance (covered separately).
 
 ### 2.2 On-Call Rotation
 
-- **Primary on-call**: 1 engineer, 1-week rotation (Mon 10:00 UTC → Mon 10:00 UTC)
+- **Primary on-call**: 1 engineer, 1-week rotation (Mon 10:00 UTC → Mon 10:00
+  UTC)
 - **Secondary on-call**: 1 engineer, same rotation, escalation backup
-- **Schedule**: Managed in PagerDuty (rotation schedule `pixelated-empathy-primary`)
+- **Schedule**: Managed in PagerDuty (rotation schedule
+  `pixelated-empathy-primary`)
 - **Handoff**: Monday 10:00 UTC standup (15 min). Outgoing on-call briefs
   incoming on: open incidents, error budget status, watch items.
 - **Follow-the-sun**: Currently single-region (UTC). Future: AMER/EMEA/APAC
@@ -128,8 +132,8 @@ If the breach involves **PHI availability, integrity, or confidentiality**:
   - **< 500 individuals**: Notify HHS within 60 days of discovery, annual log.
   - **≥ 500 individuals**: Notify HHS within 60 days, notify affected
     individuals within 60 days, notify media if > 500 in same state.
-- **HIPAA Incident (non-reportable)**: PHI availability temporarily impacted
-  but no unauthorized access. Document internally; notify customer compliance
+- **HIPAA Incident (non-reportable)**: PHI availability temporarily impacted but
+  no unauthorized access. Document internally; notify customer compliance
   contact per BAA terms.
 
 ---
@@ -179,9 +183,10 @@ VP Engineering (L3) — approve breach credits, exec brief
 If automated alerts are **not firing** but a service degradation is observed:
 
 1. Engineer observes degradation (dashboard, customer report, log anomaly).
-2. Verify the issue is real (check Prometheus query, Grafana dashboard,
-   recent deploys).
-3. Page on-call via PagerDuty manually: `pd trigger --service pixelated-empathy-primary --description "<brief>"`.
+2. Verify the issue is real (check Prometheus query, Grafana dashboard, recent
+   deploys).
+3. Page on-call via PagerDuty manually:
+   `pd trigger --service pixelated-empathy-primary --description "<brief>"`.
 4. If PagerDuty is down, call on-call engineer directly (phone numbers in
    `#on-call` Slack channel pinned message).
 5. If on-call is unreachable after 5 min, escalate to secondary on-call.
@@ -197,10 +202,10 @@ When a customer reports an issue:
    - Enterprise: 1 hour 24/7
    - Enterprise+ HIPAA: 1 hour 24/7 + dedicated SE
 2. **Triage**: Determine if it's an SLA-relevant issue or customer-side.
-3. **Link**: If SLA-relevant, create a Linear issue tagged `incident` and
-   link to the customer's account in the CRM.
-4. **Communicate**: Provide updates at the cadence matching the customer's
-   tier (see Section 6).
+3. **Link**: If SLA-relevant, create a Linear issue tagged `incident` and link
+   to the customer's account in the CRM.
+4. **Communicate**: Provide updates at the cadence matching the customer's tier
+   (see Section 6).
 
 ---
 
@@ -275,12 +280,11 @@ SLA-4.2). All updates posted here first, then cross-posted to Twitter
 ```markdown
 ## [INVESTIGATING] {{ Service Name }} degradation
 
-**Time**: {{ timestamp UTC }}
-**Severity**: {{ warning | critical | emergency }}
+**Time**: {{ timestamp UTC }} **Severity**: {{ warning | critical | emergency }}
 **Impact**: {{ affected feature(s) / customer experience }}
 
-We are investigating reports of {{ issue description }}. Our on-call team
-has been paged and is assessing the situation.
+We are investigating reports of {{ issue description }}. Our on-call team has
+been paged and is assessing the situation.
 
 **Next update**: Within 15 minutes (critical) / 30 minutes (warning).
 ```
@@ -290,9 +294,8 @@ has been paged and is assessing the situation.
 ```markdown
 ## [IDENTIFIED] {{ Service Name }} degradation
 
-**Time**: {{ timestamp UTC }}
-**Severity**: {{ severity }}
-**Impact**: {{ affected feature(s) }}
+**Time**: {{ timestamp UTC }} **Severity**: {{ severity }} **Impact**:
+{{ affected feature(s) }}
 
 We have identified the cause: {{ brief root cause }}. We are applying
 {{ mitigation action }}. Estimated resolution: {{ ETA or "unknown" }}.
@@ -305,16 +308,13 @@ We have identified the cause: {{ brief root cause }}. We are applying
 ```markdown
 ## [RESOLVED] {{ Service Name }} degradation
 
-**Time**: {{ timestamp UTC }}
-**Duration**: {{ start - end }}
-**Severity**: {{ severity }}
-**Impact**: {{ affected feature(s) }}
+**Time**: {{ timestamp UTC }} **Duration**: {{ start - end }} **Severity**:
+{{ severity }} **Impact**: {{ affected feature(s) }}
 
-The issue has been resolved. {{ brief resolution description }}. All
-services are operating normally.
+The issue has been resolved. {{ brief resolution description }}. All services
+are operating normally.
 
-A postmortem will be published within {{ 48h | 24h }} at
-{{ postmortem URL }}.
+A postmortem will be published within {{ 48h | 24h }} at {{ postmortem URL }}.
 ```
 
 **Template — Maintenance (scheduled)**:
@@ -322,12 +322,12 @@ A postmortem will be published within {{ 48h | 24h }} at
 ```markdown
 ## [SCHEDULED] {{ Service }} maintenance
 
-**Window**: {{ start UTC }} – {{ end UTC }}
-**Impact**: {{ brief downtime / degraded performance expected }}
+**Window**: {{ start UTC }} – {{ end UTC }} **Impact**:
+{{ brief downtime / degraded performance expected }}
 
-Scheduled maintenance is planned for {{ purpose }}. This window was
-announced ≥ 72h in advance per our SLA terms. Service may be intermittently
-unavailable during this window.
+Scheduled maintenance is planned for {{ purpose }}. This window was announced ≥
+72h in advance per our SLA terms. Service may be intermittently unavailable
+during this window.
 ```
 
 ### 6.2 Customer Email Templates
@@ -496,8 +496,8 @@ If the breach involves PHI (Tier D or HIPAA Breach):
    - **< 500 individuals**: Log in annual breach report (due March 1).
    - **≥ 500 individuals**: Notify HHS Secretary within 60 days via
      [HHS Breach Portal](https://ocrportal.hhs.gov/ocr/breach/wizard_breach.jsf).
-     Notify affected individuals within 60 days. Notify media if > 500
-     residents in same state.
+     Notify affected individuals within 60 days. Notify media if > 500 residents
+     in same state.
 
 4. **Documentation**: All HIPAA breach communications logged in
    `docs/compliance/breach-log/` (to be created — follow-up SLA-4.3).
@@ -525,8 +525,8 @@ If the breach involves PHI (Tier D or HIPAA Breach):
 
 When no service-specific runbook exists, follow this general order:
 
-1. **Check recent deploys** — `git log --oneline -20` in affected service
-   repo. If a deploy in the last 2h correlates with the issue, **roll back**:
+1. **Check recent deploys** — `git log --oneline -20` in affected service repo.
+   If a deploy in the last 2h correlates with the issue, **roll back**:
    - App: `pnpm run deploy:rollback` (or revert + redeploy)
    - AI: Revert container image: `kubectl rollout undo deployment/pixelated-ai`
    - Infra: revert Terraform apply or Helm rollback
@@ -540,8 +540,8 @@ When no service-specific runbook exists, follow this general order:
    - Redis: switch to replica if available
    - App: traffic to healthy pods via Caddy health checks
 
-4. **Circuit break**: if a downstream dependency is causing cascading
-   failures, enable circuit breaker to shed load:
+4. **Circuit break**: if a downstream dependency is causing cascading failures,
+   enable circuit breaker to shed load:
    - AI service: disable non-critical inference paths, keep health endpoint
    - Vector store: fall back to cached embeddings
    - External API: timeout + fallback to cached response
@@ -586,12 +586,9 @@ Each customer-facing service needs a dedicated runbook with:
 ```markdown
 # Postmortem: {{ INC-XXXX }} — {{ title }}
 
-**Date**: {{ resolution date }}
-**Severity**: {{ critical | emergency }}
-**Duration**: {{ start → end (UTC) }}
-**Services affected**: {{ list }}
-**Incident Commander**: {{ name }}
-**Scribe**: {{ name }}
+**Date**: {{ resolution date }} **Severity**: {{ critical | emergency }}
+**Duration**: {{ start → end (UTC) }} **Services affected**: {{ list }}
+**Incident Commander**: {{ name }} **Scribe**: {{ name }}
 
 ## Summary
 
@@ -657,23 +654,23 @@ Each customer-facing service needs a dedicated runbook with:
 
 - **Focus on systems, not people.** The goal is to improve the system, not
   assign blame.
-- **Assume good intent.** Everyone made decisions with the information
-  available at the time.
+- **Assume good intent.** Everyone made decisions with the information available
+  at the time.
 - **Identify systemic gaps.** Why did the system allow this to happen? What
   guardrails were missing?
-- **Action items must be specific and tracked.** Every action item has an
-  owner, due date, and priority. Track in Linear with `postmortem` label.
+- **Action items must be specific and tracked.** Every action item has an owner,
+  due date, and priority. Track in Linear with `postmortem` label.
 - **Share widely.** Postmortems are published internally (Google Doc +
   `#postmortems` Slack). Customer-facing summaries posted to status page.
 
 ### 8.4 Postmortem Review
 
-- **Internal review**: IC walks through postmortem at next engineering
-  all-hands (weekly Thursday).
-- **Action item tracking**: Scribe owns the action item tracker. Weekly
-  check-in until all P0/P1 items are closed.
-- **Trend analysis**: Quarterly review of all postmortems to identify
-  recurring patterns (see Section 12).
+- **Internal review**: IC walks through postmortem at next engineering all-hands
+  (weekly Thursday).
+- **Action item tracking**: Scribe owns the action item tracker. Weekly check-in
+  until all P0/P1 items are closed.
+- **Trend analysis**: Quarterly review of all postmortems to identify recurring
+  patterns (see Section 12).
 
 ---
 
@@ -721,8 +718,8 @@ If a customer experiences **3+ SLA breaches in a single billing month**:
 
 1. VP Engineering reviews account for systemic issues.
 2. CTO briefed on pattern.
-3. Customer offered: contract renegotiation, dedicated SE, or service
-   credit cap waiver (per contract terms).
+3. Customer offered: contract renegotiation, dedicated SE, or service credit cap
+   waiver (per contract terms).
 4. Root cause analysis across all breaches to identify common pattern.
 
 ---
@@ -749,7 +746,8 @@ Before going on-call, engineer must complete:
 - [ ] Review all Grafana dashboards (SLO, overview, performance, safety)
 - [ ] Know PagerDuty escalation chain (primary → secondary → manager)
 - [ ] Know Slack channels: #on-call, #incidents, #alerts, #alerts-critical
-- [ ] Have access to: K8s cluster, Prometheus, Grafana, Alertmanager, Caddy admin
+- [ ] Have access to: K8s cluster, Prometheus, Grafana, Alertmanager, Caddy
+      admin
 - [ ] Practice: trigger a test alert in staging and walk through response
 - [ ] Review last 3 postmortems for lessons learned
 
@@ -766,11 +764,11 @@ Before going on-call, engineer must complete:
 
 1. **Plan** (2 weeks prior): Define scenario, success criteria, observers.
 2. **Pre-brief** (1 day prior): Confirm participants, review runbooks.
-3. **Execute** (drill day): Simulate failure in staging, walk through
-   response. Observers score against checklist.
+3. **Execute** (drill day): Simulate failure in staging, walk through response.
+   Observers score against checklist.
 4. **Debrief** (immediately after): What worked, what didn't, action items.
-5. **Document**: Drill report filed in `docs/enterprise/runbooks/drills/`
-   (to be created — follow-up SLA-4.10).
+5. **Document**: Drill report filed in `docs/enterprise/runbooks/drills/` (to be
+   created — follow-up SLA-4.10).
 
 ### 10.4 Alert Tuning Feedback Loop
 
@@ -779,8 +777,8 @@ On-call engineers own alert quality. After each rotation:
 1. **Review** all alerts that fired during the shift.
 2. **Flag** noisy alerts (fired but no action needed) → create Linear issue
    tagged `alert-tuning` to adjust threshold or add inhibition rule.
-3. **Flag** missing alerts (issue observed but no alert fired) → create
-   Linear issue tagged `alert-gap` to add new alert rule.
+3. **Flag** missing alerts (issue observed but no alert fired) → create Linear
+   issue tagged `alert-gap` to add new alert rule.
 4. **Submit** alert tuning report to `#on-call` Slack channel weekly.
 
 ---
@@ -816,8 +814,8 @@ Each quarter, the IC rotation lead presents to engineering:
 3. **Postmortem action items**: closure rate, overdue items, recurring patterns.
 4. **Alert health**: false positive rate, noisy alerts tuned, gaps filled.
 5. **Drill results**: Q1-Q4 drill outcomes, readiness score.
-6. **Recommendations**: SLO target adjustments (RFC required), runbook
-   updates, training improvements.
+6. **Recommendations**: SLO target adjustments (RFC required), runbook updates,
+   training improvements.
 
 ---
 
@@ -868,7 +866,8 @@ Each quarter, the IC rotation lead presents to engineering:
 ### Internal Documents
 
 - [SLO Definitions & Error Budgets](./slo-definitions.md) — PIX-4144
-- [SLO Monitoring & Burn Rate Alerts](../../../monitoring/slo-recording-rules.yml) — PIX-4145
+- [SLO Monitoring & Burn Rate Alerts](../../../monitoring/slo-recording-rules.yml)
+  — PIX-4145
 - [DR RTO/RPO Targets](./dr-rto-rpo-targets.md) — PIX-4132
 - [Vendor Inventory](../vendor-inventory.md) — PIX-4151
 - [HIPAA Compliance](../../compliance/hipaa.mdx)

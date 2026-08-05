@@ -5,7 +5,10 @@ description: 'How Pixelated Empathy models emotions using Plutchik\'s Wheel, emo
 
 ## Plutchik's Wheel of Emotions
 
-Pixelated Empathy uses **Robert Plutchik's Wheel of Emotions** as its primary emotional taxonomy. This model provides a structured, dimensional approach to classifying the complex emotional states that arise in therapeutic conversations.
+Pixelated Empathy uses **Robert Plutchik's Wheel of Emotions** as its primary
+emotional taxonomy. This model provides a structured, dimensional approach to
+classifying the complex emotional states that arise in therapeutic
+conversations.
 
 ### The Eight Primary Emotions
 
@@ -13,22 +16,28 @@ Plutchik identified eight primary emotions arranged in opposing pairs:
 
 <CardGroup cols={2}>
   <Card title="Joy ↔ Sadness" icon="face-smile">
-    **Joy** ranges from serenity (low intensity) through joy (moderate) to ecstasy (high intensity). **Sadness** ranges from pensiveness through sadness to grief.
+    **Joy** ranges from serenity (low intensity) through joy (moderate) to
+    ecstasy (high intensity). **Sadness** ranges from pensiveness through
+    sadness to grief.
   </Card>
   <Card title="Trust ↔ Disgust" icon="handshake">
-    **Trust** ranges from acceptance through trust to admiration. **Disgust** ranges from boredom through disgust to loathing.
+    **Trust** ranges from acceptance through trust to admiration. **Disgust**
+    ranges from boredom through disgust to loathing.
   </Card>
   <Card title="Fear ↔ Anger" icon="shield">
-    **Fear** ranges from apprehension through fear to terror. **Anger** ranges from annoyance through anger to rage.
+    **Fear** ranges from apprehension through fear to terror. **Anger** ranges
+    from annoyance through anger to rage.
   </Card>
   <Card title="Surprise ↔ Anticipation" icon="bolt">
-    **Surprise** ranges from distraction through surprise to amazement. **Anticipation** ranges from interest through anticipation to vigilance.
+    **Surprise** ranges from distraction through surprise to amazement.
+    **Anticipation** ranges from interest through anticipation to vigilance.
   </Card>
 </CardGroup>
 
 ### Intensity Levels
 
-Each primary emotion exists at three intensity levels, moving from mild to extreme:
+Each primary emotion exists at three intensity levels, moving from mild to
+extreme:
 
 ```text text
 Low Intensity          Medium Intensity       High Intensity
@@ -47,7 +56,9 @@ Interest           →   Anticipation       →   Vigilance
 
 ## Emotional Dyads
 
-When two primary emotions co-occur, they form a **dyad** — a complex emotional state. Pixelated Empathy's Emotional Cartography engine identifies three types of dyads:
+When two primary emotions co-occur, they form a **dyad** — a complex emotional
+state. Pixelated Empathy's Emotional Cartography engine identifies three types
+of dyads:
 
 <AccordionGroup>
   <Accordion title="Primary dyads (adjacent emotions)" icon="circle-nodes">
@@ -100,14 +111,18 @@ When two primary emotions co-occur, they form a **dyad** — a complex emotional
 </AccordionGroup>
 
 <Info>
-  **Why this matters for therapists:** Recognising that a client is experiencing "despair" (Fear + Sadness) rather than simple sadness changes the therapeutic approach. Dyad identification helps you target interventions more precisely and demonstrates advanced emotional literacy in your feedback reports.
+  **Why this matters for therapists:** Recognising that a client is experiencing
+  "despair" (Fear + Sadness) rather than simple sadness changes the therapeutic
+  approach. Dyad identification helps you target interventions more precisely
+  and demonstrates advanced emotional literacy in your feedback reports.
 </Info>
 
 ---
 
 ## Emotion Scoring
 
-All emotional measurements in Pixelated Empathy use a **normalised 0.0 to 1.0 scale** for consistency across the platform.
+All emotional measurements in Pixelated Empathy use a **normalised 0.0 to 1.0
+scale** for consistency across the platform.
 
 ### Core Dimensions
 
@@ -120,7 +135,10 @@ Every detected emotional state is characterised by three dimensions:
 | **Arousal**   | `0.0` – `1.0`  | The energy level. `0.0` = calm/lethargic, `1.0` = high energy/panic.                           |
 
 <Warning>
-  **Valence is not the same as arousal.** A client can experience high-arousal positive emotion (excitement, `valence: 0.8, arousal: 0.9`) or low-arousal negative emotion (sadness, `valence: -0.6, arousal: 0.2`). Both dimensions are clinically meaningful.
+  **Valence is not the same as arousal.** A client can experience high-arousal
+  positive emotion (excitement, `valence: 0.8, arousal: 0.9`) or low-arousal
+  negative emotion (sadness, `valence: -0.6, arousal: 0.2`). Both dimensions are
+  clinically meaningful.
 </Warning>
 
 ### Scoring Example
@@ -140,11 +158,13 @@ Here's how a client statement might be scored:
 }
 ```
 
-The `confidence` field (`0.0`–`1.0`) indicates how certain the model is in its classification. Scores below `0.7` are flagged for human review in annotation pipelines.
+The `confidence` field (`0.0`–`1.0`) indicates how certain the model is in its
+classification. Scores below `0.7` are flagged for human review in annotation
+pipelines.
 
 ### Therapeutic Response Scoring
 
-The platform also scores the *therapist's* responses:
+The platform also scores the _therapist's_ responses:
 
 | Metric                | Scale         | Description                                            |
 | --------------------- | ------------- | ------------------------------------------------------ |

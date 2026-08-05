@@ -1,6 +1,8 @@
 ---
 title: Business Associate Agreement (BAA) Template
-description: HIPAA-compliant Business Associate Agreement template for Pixelated Empathy engagements with covered entities and subcontractors.
+description:
+  HIPAA-compliant Business Associate Agreement template for Pixelated Empathy
+  engagements with covered entities and subcontractors.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -19,27 +21,21 @@ Version 1.0 · Effective Date: _[To be set upon execution]_
 
 ## 1. Agreement Overview
 
-This Business Associate Agreement ("Agreement" or "BAA") is entered into by
-and between:
+This Business Associate Agreement ("Agreement" or "BAA") is entered into by and
+between:
 
-**Covered Entity:**
-[Covered Entity Name]
-[Address]
-[Contact Information]
+**Covered Entity:** [Covered Entity Name] [Address] [Contact Information]
 
-**Business Associate:**
-Pixelated Empathy, Inc.
-[Address]
-[Contact Information]
+**Business Associate:** Pixelated Empathy, Inc. [Address] [Contact Information]
 
 **Effective Date:** [Date]
 
 **Purpose:** This Agreement supplements and incorporates the Master Service
 Agreement ("MSA") between the parties dated [Date] (the "Underlying Agreement").
-This Agreement establishes the terms under which Business Associate will
-perform functions or activities on behalf of Covered Entity that involve the
-use or disclosure of Protected Health Information ("PHI") as defined by the
-Health Insurance Portability and Accountability Act of 1996 ("HIPAA").
+This Agreement establishes the terms under which Business Associate will perform
+functions or activities on behalf of Covered Entity that involve the use or
+disclosure of Protected Health Information ("PHI") as defined by the Health
+Insurance Portability and Accountability Act of 1996 ("HIPAA").
 
 ---
 
@@ -64,7 +60,8 @@ with system operations in an information system, as defined by 45 CFR §164.304.
 
 **"Minimum Necessary"** means the standard that requires Business Associate to
 make reasonable efforts to limit PHI to the minimum necessary to accomplish the
-intended purpose of the use, disclosure, or request, as defined by 45 CFR §164.502(b).
+intended purpose of the use, disclosure, or request, as defined by 45 CFR
+§164.502(b).
 
 **"Subcontractor"** means a person or entity to whom Business Associate
 delegates a function, activity, or service, other than a workforce member of
@@ -80,11 +77,16 @@ Business Associate may use or disclose PHI only to:
 
 (a) Perform functions or activities specified in the Underlying Agreement,
 including but not limited to:
-- [List specific services, e.g., "AI-powered emotional analysis for clinical training"]
-- [List specific functions, e.g., "Storage and processing of clinical session data"]
-- [List specific activities, e.g., "Generation of training reports and analytics"]
+
+- [List specific services, e.g., "AI-powered emotional analysis for clinical
+  training"]
+- [List specific functions, e.g., "Storage and processing of clinical session
+  data"]
+- [List specific activities, e.g., "Generation of training reports and
+  analytics"]
 
 (b) Perform management and administrative functions, including:
+
 - Data backup and disaster recovery.
 - System maintenance and monitoring.
 - Security incident response.
@@ -97,9 +99,9 @@ within 2 business days of receiving any legal request for PHI.
 
 Business Associate shall NOT use or disclose PHI to:
 
-(a) Create de-identified information or limited data sets for its own use or
-the use of third parties, except as expressly authorized in writing by
-Covered Entity.
+(a) Create de-identified information or limited data sets for its own use or the
+use of third parties, except as expressly authorized in writing by Covered
+Entity.
 
 (b) Contact individuals for marketing purposes or to promote Business
 Associate's products or services.
@@ -121,8 +123,8 @@ Business Associate shall:
 Agreement or as required by law.
 
 (b) Use appropriate administrative, technical, and physical safeguards to
-protect the confidentiality, integrity, and availability of ePHI, as required
-by the HIPAA Security Rule (45 CFR Part 164, Subpart C).
+protect the confidentiality, integrity, and availability of ePHI, as required by
+the HIPAA Security Rule (45 CFR Part 164, Subpart C).
 
 (c) Report to Covered Entity any Security Incident or Breach of which it becomes
 aware, including any Breach of Unsecured PHI, within **seventy-two (72) hours**
@@ -150,6 +152,7 @@ Business Associate shall comply with the HIPAA Security Rule (45 CFR Part 164,
 Subpart C) by implementing:
 
 **Administrative Safeguards (§164.308):**
+
 - Security management process (risk analysis, risk management, sanctions).
 - Assigned security responsibility (designated security official).
 - Workforce security (authorization, supervision, termination procedures).
@@ -160,19 +163,21 @@ Subpart C) by implementing:
 - Evaluation (periodic security assessments).
 
 **Physical Safeguards (§164.310):**
+
 - Facility access controls (contingency operations, facility security plan).
 - Workstation use (proper functions, physical attributes).
 - Workstation security (physical safeguards for workstations).
-- Device and media controls (disposal, media re-use, accountability, data
-  backup and storage).
+- Device and media controls (disposal, media re-use, accountability, data backup
+  and storage).
 
 **Technical Safeguards (§164.312):**
+
 - Access control (unique user identification, emergency access procedure,
   automatic logoff, encryption and decryption).
-- Audit controls (hardware, software, and procedural mechanisms to record
-  and examine activity).
-- Integrity (policies and procedures to protect ePHI from improper alteration
-  or destruction).
+- Audit controls (hardware, software, and procedural mechanisms to record and
+  examine activity).
+- Integrity (policies and procedures to protect ePHI from improper alteration or
+  destruction).
 - Person or entity authentication (mechanisms to confirm identity).
 - Transmission security (integrity controls, encryption).
 
@@ -184,6 +189,7 @@ Business Associate shall:
 (72) hours** of discovering the Breach.
 
 (b) Provide Covered Entity with the following information regarding the Breach:
+
 - Description of the Breach, including the nature of the PHI involved.
 - Identification of the individuals whose PHI was breached.
 - Date of the Breach and date of discovery.
@@ -194,16 +200,16 @@ Business Associate shall:
 individuals, HHS, and media (if required) within 60 days of discovery, as
 required by 45 CFR §§164.404-414.
 
-(d) Document all Breaches and maintain Breach documentation for **six (6) years**
-from the date of discovery.
+(d) Document all Breaches and maintain Breach documentation for **six (6)
+years** from the date of discovery.
 
 ### 4.4 Individual Rights
 
 Business Associate shall:
 
-(a) Make PHI available to individuals in accordance with 45 CFR §164.524
-(right to access) within **thirty (30) days** of receiving a request from
-Covered Entity.
+(a) Make PHI available to individuals in accordance with 45 CFR §164.524 (right
+to access) within **thirty (30) days** of receiving a request from Covered
+Entity.
 
 (b) Amend PHI in accordance with 45 CFR §164.526 (right to amend) within
 **thirty (30) days** of receiving a request from Covered Entity.
@@ -211,11 +217,11 @@ Covered Entity.
 (c) Provide an accounting of disclosures in accordance with 45 CFR §164.528
 within **sixty (60) days** of receiving a request from Covered Entity.
 
-(d) Comply with any restrictions on uses and disclosures agreed to by
-Covered Entity in accordance with 45 CFR §164.522.
+(d) Comply with any restrictions on uses and disclosures agreed to by Covered
+Entity in accordance with 45 CFR §164.522.
 
-(e) Comply with requests for confidential communications in accordance with
-45 CFR §164.522(b).
+(e) Comply with requests for confidential communications in accordance with 45
+CFR §164.522(b).
 
 ### 4.5 Minimum Necessary
 
@@ -227,11 +233,11 @@ the intended purpose of the use, disclosure, or request.
 (b) Develop and implement policies and procedures that limit the use and
 disclosure of PHI to the minimum necessary.
 
-(c) Identify persons or classes of persons who need access to PHI to carry
-out their duties.
+(c) Identify persons or classes of persons who need access to PHI to carry out
+their duties.
 
-(d) For each such person or class, identify the category or categories of PHI
-to which access is needed.
+(d) For each such person or class, identify the category or categories of PHI to
+which access is needed.
 
 (e) Review requests for PHI on an individual basis to limit the disclosure to
 the minimum necessary.
@@ -242,8 +248,8 @@ the minimum necessary.
 
 Covered Entity shall:
 
-(a) Provide Business Associate with the PHI necessary for Business Associate
-to perform its obligations under this Agreement.
+(a) Provide Business Associate with the PHI necessary for Business Associate to
+perform its obligations under this Agreement.
 
 (b) Notify Business Associate of any limitation(s) in its notice of privacy
 practices to the use or disclosure of PHI by Business Associate, if any.
@@ -251,8 +257,8 @@ practices to the use or disclosure of PHI by Business Associate, if any.
 (c) Provide Business Associate with any updates to its privacy practices that
 would affect the uses or disclosures of PHI by Business Associate.
 
-(d) Notify Business Associate of any changes in the privacy of PHI that
-Business Associate must make to comply with the Privacy Rule.
+(d) Notify Business Associate of any changes in the privacy of PHI that Business
+Associate must make to comply with the Privacy Rule.
 
 (e) Ensure that Business Associate complies with this Agreement and take
 reasonable steps to cure any Breach or non-compliance.
@@ -260,8 +266,8 @@ reasonable steps to cure any Breach or non-compliance.
 (f) Provide individuals with access to PHI in accordance with 45 CFR §164.524,
 including PHI held by Business Associate.
 
-(g) Provide individuals with the opportunity to amend PHI in accordance with
-45 CFR §164.526, including PHI held by Business Associate.
+(g) Provide individuals with the opportunity to amend PHI in accordance with 45
+CFR §164.526, including PHI held by Business Associate.
 
 ---
 
@@ -273,17 +279,18 @@ Business Associate shall:
 
 (a) Ensure that any Subcontractor that creates, receives, maintains, or
 transmits ePHI on behalf of Business Associate agrees in writing to:
+
 - The same terms and conditions that apply to Business Associate under this
   Agreement.
 - The requirements of the HIPAA Privacy Rule and Security Rule.
 - The requirement to report Security Incidents and Breaches to Business
   Associate within 72 hours.
 
-(b) Execute a written BAA with each Subcontractor before disclosing PHI to
-the Subcontractor.
+(b) Execute a written BAA with each Subcontractor before disclosing PHI to the
+Subcontractor.
 
-(c) Maintain a list of all Subcontractors that have access to PHI and make
-the list available to Covered Entity upon request.
+(c) Maintain a list of all Subcontractors that have access to PHI and make the
+list available to Covered Entity upon request.
 
 (d) Monitor Subcontractor compliance with BAA terms and take corrective action
 if necessary.
@@ -305,15 +312,14 @@ compliance with this Agreement:
 
 (a) Upon reasonable notice (at least 30 days prior written notice).
 
-(b) No more than once per calendar year, unless a Breach has occurred or
-Covered Entity has a reasonable belief that Business Associate is not in
-compliance.
+(b) No more than once per calendar year, unless a Breach has occurred or Covered
+Entity has a reasonable belief that Business Associate is not in compliance.
 
 (c) During normal business hours and in a manner that does not unreasonably
 disrupt Business Associate's operations.
 
-(d) At Covered Entity's expense, unless the audit reveals a material Breach
-or non-compliance, in which case Business Associate shall bear the cost.
+(d) At Covered Entity's expense, unless the audit reveals a material Breach or
+non-compliance, in which case Business Associate shall bear the cost.
 
 ### 7.2 Business Associate Audit Obligations
 
@@ -322,13 +328,13 @@ Business Associate shall:
 (a) Make its policies, procedures, and records relating to PHI available for
 audit.
 
-(b) Provide access to facilities, systems, and personnel as reasonably
-requested for audit purposes.
+(b) Provide access to facilities, systems, and personnel as reasonably requested
+for audit purposes.
 
 (c) Cooperate with auditors and provide truthful and complete information.
 
-(d) Remediate any material deficiencies identified in audit reports within
-90 days (or such longer period as Covered Entity may approve in writing).
+(d) Remediate any material deficiencies identified in audit reports within 90
+days (or such longer period as Covered Entity may approve in writing).
 
 ---
 
@@ -347,11 +353,10 @@ Section 10.
 
 ### 8.2 Termination
 
-Covered Entity may terminate this Agreement immediately upon written notice
-if:
+Covered Entity may terminate this Agreement immediately upon written notice if:
 
-(a) Business Associate breaches a material term of this Agreement and fails
-to cure the breach within 30 days of receiving written notice.
+(a) Business Associate breaches a material term of this Agreement and fails to
+cure the breach within 30 days of receiving written notice.
 
 (b) Business Associate experiences a Breach that Covered Entity reasonably
 believes poses a significant risk to the security or privacy of PHI.
@@ -361,11 +366,10 @@ related to PHI.
 
 (d) Business Associate files for bankruptcy or becomes insolvent.
 
-Business Associate may terminate this Agreement upon 90 days written notice
-if:
+Business Associate may terminate this Agreement upon 90 days written notice if:
 
-(a) Covered Entity breaches a material term of this Agreement and fails to
-cure the breach within 30 days of receiving written notice.
+(a) Covered Entity breaches a material term of this Agreement and fails to cure
+the breach within 30 days of receiving written notice.
 
 ### 8.3 Effect of Termination
 
@@ -377,8 +381,8 @@ Section 10.
 (b) Business Associate shall provide written certification of PHI destruction
 within 30 days of termination.
 
-(c) Business Associate shall continue to protect PHI in its possession until
-it is returned or destroyed.
+(c) Business Associate shall continue to protect PHI in its possession until it
+is returned or destroyed.
 
 (d) Business Associate shall remain liable for any Breaches or violations of
 this Agreement that occurred prior to termination.
@@ -392,7 +396,8 @@ this Agreement that occurred prior to termination.
 This Agreement is governed by and shall be construed in accordance with:
 
 - The Health Insurance Portability and Accountability Act of 1996 (HIPAA).
-- The Health Information Technology for Economic and Clinical Health Act (HITECH).
+- The Health Information Technology for Economic and Clinical Health Act
+  (HITECH).
 - 45 CFR Part 160 (General Administrative Requirements).
 - 45 CFR Part 164 Subparts C and E (Security and Privacy Rules).
 - Applicable state laws governing PHI privacy and security.
@@ -411,9 +416,9 @@ regard to its conflict of laws principles.
 ### 9.4 Dispute Resolution
 
 Any dispute arising out of or relating to this Agreement shall be resolved
-through good faith negotiations between the parties. If negotiations fail,
-the dispute shall be resolved by binding arbitration in [City, State] in
-accordance with the rules of the American Arbitration Association.
+through good faith negotiations between the parties. If negotiations fail, the
+dispute shall be resolved by binding arbitration in [City, State] in accordance
+with the rules of the American Arbitration Association.
 
 ### 9.5 Entire Agreement
 
@@ -423,8 +428,8 @@ supersedes all prior agreements, understandings, and negotiations.
 
 ### 9.6 Counterparts
 
-This Agreement may be executed in counterparts, each of which shall be deemed
-an original, and all of which together shall constitute one and the same
+This Agreement may be executed in counterparts, each of which shall be deemed an
+original, and all of which together shall constitute one and the same
 instrument. Electronic signatures shall be deemed valid and binding.
 
 ---
@@ -436,8 +441,8 @@ instrument. Electronic signatures shall be deemed valid and binding.
 Upon termination of this Agreement, Business Associate shall, at Covered
 Entity's direction, either:
 
-(a) Return all PHI to Covered Entity in a secure, encrypted format within
-30 days of termination; or
+(a) Return all PHI to Covered Entity in a secure, encrypted format within 30
+days of termination; or
 
 (b) Destroy all PHI in its possession, including all copies, backups, and
 derivatives, within 30 days of termination.
@@ -466,8 +471,8 @@ archives for up to six (6) years following termination, provided that:
 
 (a) The PHI remains encrypted and secure.
 
-(b) The PHI is not accessed except as required by law or to respond to a
-legal request.
+(b) The PHI is not accessed except as required by law or to respond to a legal
+request.
 
 (c) The PHI is destroyed upon expiration of the six-year retention period.
 
@@ -479,38 +484,32 @@ legal request.
 
 [Covered Entity Name]
 
-Signature: ___________________________
-Name: _______________________________
-Title: ______________________________
-Date: _______________________________
+Signature: ___________________________ Name: _______________________________
+Title: ______________________________ Date: _______________________________
 
 **BUSINESS ASSOCIATE:**
 
 Pixelated Empathy, Inc.
 
-Signature: ___________________________
-Name: _______________________________
-Title: ______________________________
-Date: _______________________________
+Signature: ___________________________ Name: _______________________________
+Title: ______________________________ Date: _______________________________
 
 ---
 
 ## 12. Exhibits
 
-**Exhibit A: Description of PHI**
-[List the categories of PHI that Business Associate will create, receive,
-maintain, or transmit on behalf of Covered Entity.]
+**Exhibit A: Description of PHI** [List the categories of PHI that Business
+Associate will create, receive, maintain, or transmit on behalf of Covered
+Entity.]
 
-**Exhibit B: Permitted Uses and Disclosures**
-[List the specific functions, activities, and services that Business Associate
-will perform using PHI.]
+**Exhibit B: Permitted Uses and Disclosures** [List the specific functions,
+activities, and services that Business Associate will perform using PHI.]
 
-**Exhibit C: Subcontractor List**
-[List all Subcontractors that will have access to PHI, including their names,
-contact information, and the services they will perform.]
+**Exhibit C: Subcontractor List** [List all Subcontractors that will have access
+to PHI, including their names, contact information, and the services they will
+perform.]
 
 ---
 
-_Document owner: HIPAA Privacy Officer_
-_Review cadence: Annual (or when HIPAA regulations change)_
-_Next review: 2027-08-01_
+_Document owner: HIPAA Privacy Officer_ _Review cadence: Annual (or when HIPAA
+regulations change)_ _Next review: 2027-08-01_

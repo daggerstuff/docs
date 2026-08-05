@@ -1,6 +1,9 @@
 ---
 title: HIPAA Training Program
-description: Comprehensive HIPAA training program for Pixelated Empathy workforce members, covering Privacy Rule, Security Rule, breach notification, and individual rights.
+description:
+  Comprehensive HIPAA training program for Pixelated Empathy workforce members,
+  covering Privacy Rule, Security Rule, breach notification, and individual
+  rights.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -25,11 +28,13 @@ Accountability Act (HIPAA) and the Health Information Technology for Economic
 and Clinical Health (HITECH) Act.
 
 **Scope:**
+
 - All employees, contractors, consultants, and volunteers.
 - All workforce members with access to protected health information (PHI).
 - All workforce members who create, receive, maintain, or transmit PHI.
 
 **Compliance:**
+
 - HIPAA Privacy Rule training requirement (45 CFR §164.530(b)).
 - HIPAA Security Rule training requirement (45 CFR §164.308(a)(5)).
 - HITECH Act training requirements.
@@ -40,12 +45,11 @@ and Clinical Health (HITECH) Act.
 
 ### 2.1 Onboarding Training (New Hires)
 
-**Timing:** Within 14 days of start date.
-**Duration:** 2 hours.
-**Delivery:** Online module + quiz.
-**Passing Score:** 80%.
+**Timing:** Within 14 days of start date. **Duration:** 2 hours. **Delivery:**
+Online module + quiz. **Passing Score:** 80%.
 
 **Content:**
+
 - Introduction to HIPAA and HITECH.
 - What is PHI? (identifiers, examples, special cases).
 - Privacy Rule: use and disclosure of PHI.
@@ -57,6 +61,7 @@ and Clinical Health (HITECH) Act.
 - Sanctions for non-compliance.
 
 **Completion:**
+
 - Training completion recorded in HR system.
 - Certificate of completion issued.
 - Access to PHI systems not granted until training is complete.
@@ -64,11 +69,11 @@ and Clinical Health (HITECH) Act.
 ### 2.2 Annual Refresher Training (All Workforce)
 
 **Timing:** Annually (within 30 days of anniversary of onboarding training).
-**Duration:** 1 hour.
-**Delivery:** Online module + quiz.
-**Passing Score:** 80%.
+**Duration:** 1 hour. **Delivery:** Online module + quiz. **Passing Score:**
+80%.
 
 **Content:**
+
 - Review of key HIPAA concepts.
 - Updates to HIPAA regulations (if any).
 - Updates to Pixelated Empathy policies.
@@ -78,6 +83,7 @@ and Clinical Health (HITECH) Act.
 - Refresher on breach notification.
 
 **Completion:**
+
 - Training completion recorded in HR system.
 - Certificate of completion issued.
 - Failure to complete annual training results in suspension of PHI access.
@@ -86,13 +92,12 @@ and Clinical Health (HITECH) Act.
 
 #### 2.3.1 PHI Access Training (Clinical Staff, Support Staff)
 
-**Audience:** Workforce members with direct access to PHI.
-**Timing:** Within 14 days of PHI access grant, then annually.
-**Duration:** 1.5 hours.
-**Delivery:** Online module + scenario-based exercises.
-**Passing Score:** 85%.
+**Audience:** Workforce members with direct access to PHI. **Timing:** Within 14
+days of PHI access grant, then annually. **Duration:** 1.5 hours. **Delivery:**
+Online module + scenario-based exercises. **Passing Score:** 85%.
 
 **Content:**
+
 - Minimum necessary standard (what PHI is needed for your role?).
 - Proper use of PHI (treatment, payment, operations).
 - Prohibited uses and disclosures.
@@ -104,17 +109,18 @@ and Clinical Health (HITECH) Act.
 
 #### 2.3.2 Security Training (IT, DevOps, Security Team)
 
-**Audience:** Workforce members with administrative access to systems containing PHI.
-**Timing:** Within 14 days of administrative access grant, then annually.
-**Duration:** 2 hours.
-**Delivery:** Online module + hands-on exercises.
+**Audience:** Workforce members with administrative access to systems containing
+PHI. **Timing:** Within 14 days of administrative access grant, then annually.
+**Duration:** 2 hours. **Delivery:** Online module + hands-on exercises.
 **Passing Score:** 85%.
 
 **Content:**
+
 - HIPAA Security Rule requirements.
 - Administrative safeguards (risk analysis, workforce security, training).
 - Physical safeguards (facility access, workstation security, device controls).
-- Technical safeguards (access control, audit controls, integrity, authentication, transmission security).
+- Technical safeguards (access control, audit controls, integrity,
+  authentication, transmission security).
 - Encryption standards and key management.
 - Audit logging and monitoring.
 - Incident response procedures.
@@ -124,13 +130,12 @@ and Clinical Health (HITECH) Act.
 
 #### 2.3.3 Leadership Training (Executives, Managers)
 
-**Audience:** Workforce members in leadership or management roles.
-**Timing:** Within 30 days of promotion to leadership role, then annually.
-**Duration:** 1 hour.
-**Delivery:** Online module + discussion.
-**Passing Score:** 80%.
+**Audience:** Workforce members in leadership or management roles. **Timing:**
+Within 30 days of promotion to leadership role, then annually. **Duration:** 1
+hour. **Delivery:** Online module + discussion. **Passing Score:** 80%.
 
 **Content:**
+
 - HIPAA overview and organizational responsibilities.
 - Leadership role in compliance culture.
 - Risk management and resource allocation.
@@ -141,13 +146,12 @@ and Clinical Health (HITECH) Act.
 
 #### 2.3.4 Business Associate Training (Vendor Management)
 
-**Audience:** Workforce members who manage vendor relationships.
-**Timing:** Within 14 days of vendor management responsibility, then annually.
-**Duration:** 1 hour.
-**Delivery:** Online module.
-**Passing Score:** 80%.
+**Audience:** Workforce members who manage vendor relationships. **Timing:**
+Within 14 days of vendor management responsibility, then annually. **Duration:**
+1 hour. **Delivery:** Online module. **Passing Score:** 80%.
 
 **Content:**
+
 - Business Associate Agreement (BAA) requirements.
 - Vendor due diligence and risk assessment.
 - Monitoring vendor compliance.
@@ -162,12 +166,14 @@ and Clinical Health (HITECH) Act.
 ### 3.1 Training Modules
 
 **Module 1: HIPAA Fundamentals**
+
 - What is HIPAA? (history, purpose, structure).
 - Key definitions (PHI, ePHI, Covered Entity, Business Associate).
 - HIPAA rules overview (Privacy, Security, Breach Notification, Enforcement).
 - Penalties for non-compliance (civil, criminal).
 
 **Module 2: Privacy Rule**
+
 - Use and disclosure of PHI (TPO, authorization, exceptions).
 - Minimum necessary standard.
 - Patient rights (access, amendment, accounting, restrictions).
@@ -176,12 +182,16 @@ and Clinical Health (HITECH) Act.
 - Marketing and sale of PHI.
 
 **Module 3: Security Rule**
-- Administrative safeguards (risk analysis, workforce security, training, incident response).
+
+- Administrative safeguards (risk analysis, workforce security, training,
+  incident response).
 - Physical safeguards (facility access, workstation security, device controls).
-- Technical safeguards (access control, audit controls, integrity, authentication, transmission security).
+- Technical safeguards (access control, audit controls, integrity,
+  authentication, transmission security).
 - Organizational requirements (BAAs, policies, documentation).
 
 **Module 4: Breach Notification**
+
 - What is a Breach? (definition, exceptions).
 - Breach risk assessment (4-factor test).
 - Notification requirements (individuals, HHS, media).
@@ -190,6 +200,7 @@ and Clinical Health (HITECH) Act.
 - Documentation requirements.
 
 **Module 5: Pixelated Empathy Policies**
+
 - Information Security Policy.
 - Access Control Procedure.
 - Incident Response Plan.
@@ -198,6 +209,7 @@ and Clinical Health (HITECH) Act.
 - Sanctions Policy.
 
 **Module 6: Reporting and Compliance**
+
 - How to report a privacy or security incident.
 - Who to contact (HIPAA Privacy Officer, Security Officer).
 - Whistleblower protections.
@@ -207,17 +219,20 @@ and Clinical Health (HITECH) Act.
 ### 3.2 Training Aids
 
 **Quick Reference Guides:**
+
 - "What is PHI?" one-page guide.
 - "Minimum Necessary" checklist.
 - "Breach Response" flowchart.
 - "Incident Reporting" contact card.
 
 **Videos:**
+
 - 5-minute overview of HIPAA requirements.
 - 10-minute walkthrough of Pixelated Empathy policies.
 - 15-minute scenario-based training (privacy incidents).
 
 **Interactive Exercises:**
+
 - PHI identification quiz (is this PHI?).
 - Minimum necessary scenario (what PHI should you access?).
 - Breach assessment exercise (is this a Breach?).
@@ -231,6 +246,7 @@ and Clinical Health (HITECH) Act.
 
 **Platform:** [To be selected, e.g., KnowBe4, Proofpoint, or custom LMS].
 **Features:**
+
 - Self-paced learning.
 - Progress tracking.
 - Quiz and assessment.
@@ -238,21 +254,22 @@ and Clinical Health (HITECH) Act.
 - Reporting and analytics.
 
 **Access:**
+
 - All workforce members receive login credentials.
 - Training assigned automatically based on role.
 - Reminders sent for incomplete training.
 
 ### 4.2 In-Person Training (Optional)
 
-**When:** For new hires who prefer in-person learning, or for role-specific training.
-**Who:** Conducted by HIPAA Privacy Officer or Security Officer.
-**Duration:** Same as online training.
-**Documentation:** Attendance sheet, quiz completion, certificate.
+**When:** For new hires who prefer in-person learning, or for role-specific
+training. **Who:** Conducted by HIPAA Privacy Officer or Security Officer.
+**Duration:** Same as online training. **Documentation:** Attendance sheet, quiz
+completion, certificate.
 
 ### 4.3 Microlearning
 
-**Format:** Short (2-5 minute) training modules delivered monthly.
-**Topics:**
+**Format:** Short (2-5 minute) training modules delivered monthly. **Topics:**
+
 - Privacy tips.
 - Security best practices.
 - Recent incidents (anonymized).
@@ -266,8 +283,8 @@ and Clinical Health (HITECH) Act.
 
 ### 5.1 Completion Tracking
 
-**System:** HR system or LMS.
-**Data Captured:**
+**System:** HR system or LMS. **Data Captured:**
+
 - Employee name and ID.
 - Training module completed.
 - Date of completion.
@@ -276,6 +293,7 @@ and Clinical Health (HITECH) Act.
 - Expiration date (for annual refresher).
 
 **Reports:**
+
 - Monthly: Training completion rate by department.
 - Quarterly: Training completion rate by role.
 - Annually: Overall training compliance.
@@ -283,24 +301,27 @@ and Clinical Health (HITECH) Act.
 ### 5.2 Non-Completion Handling
 
 **Onboarding Training:**
+
 - If not completed within 14 days: access to PHI systems suspended.
 - If not completed within 30 days: escalation to manager and HR.
 - If not completed within 45 days: escalation to HIPAA Privacy Officer.
 
 **Annual Refresher:**
+
 - If not completed within 30 days of due date: reminder sent.
 - If not completed within 60 days: access to PHI systems suspended.
 - If not completed within 90 days: escalation to manager and HR.
 
 **Role-Specific Training:**
+
 - If not completed within 14 days of role change: PHI access suspended.
 - If not completed within 30 days: escalation to manager.
 
 ### 5.3 Record Retention
 
-**Retention Period:** 6 years from date of training completion (HIPAA requirement).
-**Storage:** Secure, access-controlled location (HR system or LMS).
-**Backup:** Regular backups per disaster recovery plan.
+**Retention Period:** 6 years from date of training completion (HIPAA
+requirement). **Storage:** Secure, access-controlled location (HR system or
+LMS). **Backup:** Regular backups per disaster recovery plan.
 
 ---
 
@@ -309,22 +330,24 @@ and Clinical Health (HITECH) Act.
 ### 6.1 Assessment
 
 **Quiz:** All training modules include a quiz with a passing score of 80-85%.
-**Scenario-Based Exercises:** Role-specific training includes practical exercises.
-**Knowledge Checks:** Microlearning modules include quick knowledge checks.
+**Scenario-Based Exercises:** Role-specific training includes practical
+exercises. **Knowledge Checks:** Microlearning modules include quick knowledge
+checks.
 
 ### 6.2 Metrics
 
 **Completion Rate:** Target 100% (all workforce complete required training).
-**Quiz Scores:** Target average >90%.
-**Incident Rate:** Track privacy/security incidents before and after training.
-**Audit Findings:** Track HIPAA audit findings related to training.
+**Quiz Scores:** Target average >90%. **Incident Rate:** Track privacy/security
+incidents before and after training. **Audit Findings:** Track HIPAA audit
+findings related to training.
 
 ### 6.3 Continuous Improvement
 
 **Feedback:** Collect feedback after each training module (survey).
-**Analysis:** Review feedback and quiz results to identify areas for improvement.
-**Updates:** Update training content annually or when regulations/policies change.
-**Benchmarking:** Compare training program to industry best practices.
+**Analysis:** Review feedback and quiz results to identify areas for
+improvement. **Updates:** Update training content annually or when
+regulations/policies change. **Benchmarking:** Compare training program to
+industry best practices.
 
 ---
 
@@ -332,29 +355,30 @@ and Clinical Health (HITECH) Act.
 
 ### 7.1 Contractors and Temporary Workers
 
-**Requirement:** Must complete HIPAA training before accessing PHI.
-**Timing:** Within 14 days of start date (or before PHI access, whichever is earlier).
-**Duration:** Same as employee training.
-**Tracking:** Tracked by vendor management team.
+**Requirement:** Must complete HIPAA training before accessing PHI. **Timing:**
+Within 14 days of start date (or before PHI access, whichever is earlier).
+**Duration:** Same as employee training. **Tracking:** Tracked by vendor
+management team.
 
 ### 7.2 Volunteers and Interns
 
-**Requirement:** Must complete HIPAA training before accessing PHI.
-**Timing:** Within 14 days of start date (or before PHI access, whichever is earlier).
-**Duration:** Same as employee training.
-**Tracking:** Tracked by volunteer/intern coordinator.
+**Requirement:** Must complete HIPAA training before accessing PHI. **Timing:**
+Within 14 days of start date (or before PHI access, whichever is earlier).
+**Duration:** Same as employee training. **Tracking:** Tracked by
+volunteer/intern coordinator.
 
 ### 7.3 International Workforce
 
-**Requirement:** Must complete HIPAA training (HIPAA applies to all workforce, regardless of location).
-**Language:** Training available in English; translations as needed.
-**Time Zone:** Self-paced online training accommodates all time zones.
+**Requirement:** Must complete HIPAA training (HIPAA applies to all workforce,
+regardless of location). **Language:** Training available in English;
+translations as needed. **Time Zone:** Self-paced online training accommodates
+all time zones.
 
 ### 7.4 Workforce Members with Disabilities
 
 **Accommodation:** Training platform compliant with WCAG 2.1 AA.
-**Alternatives:** Alternative formats available (audio, large print, screen reader compatible).
-**Contact:** HR for accommodation requests.
+**Alternatives:** Alternative formats available (audio, large print, screen
+reader compatible). **Contact:** HR for accommodation requests.
 
 ---
 
@@ -402,27 +426,26 @@ and Clinical Health (HITECH) Act.
 
 ### 9.1 Annual Training Schedule
 
-| Month | Training Activity | Audience |
-|-------|-------------------|----------|
-| January | Annual refresher training assigned | All workforce |
-| February | Reminder: complete annual training | All workforce |
-| March | Deadline: annual training complete | All workforce |
-| April | Role-specific training (if needed) | PHI access roles |
-| May | Microlearning: privacy tips | All workforce |
-| June | Microlearning: security best practices | All workforce |
-| July | Mid-year training compliance report | Managers, HR |
-| August | Microlearning: incident response | All workforce |
-| September | Microlearning: breach notification | All workforce |
-| October | Role-specific training (if needed) | PHI access roles |
-| November | Training program review and updates | HIPAA Officers |
-| December | Annual training metrics report | Leadership |
+| Month     | Training Activity                      | Audience         |
+| --------- | -------------------------------------- | ---------------- |
+| January   | Annual refresher training assigned     | All workforce    |
+| February  | Reminder: complete annual training     | All workforce    |
+| March     | Deadline: annual training complete     | All workforce    |
+| April     | Role-specific training (if needed)     | PHI access roles |
+| May       | Microlearning: privacy tips            | All workforce    |
+| June      | Microlearning: security best practices | All workforce    |
+| July      | Mid-year training compliance report    | Managers, HR     |
+| August    | Microlearning: incident response       | All workforce    |
+| September | Microlearning: breach notification     | All workforce    |
+| October   | Role-specific training (if needed)     | PHI access roles |
+| November  | Training program review and updates    | HIPAA Officers   |
+| December  | Annual training metrics report         | Leadership       |
 
 ### 9.2 New Hire Training Schedule
 
-**Day 1-7:** Training assigned, onboarding module available.
-**Day 8-14:** Complete onboarding training (2 hours).
-**Day 15:** PHI access granted (if training complete).
-**Day 30:** Role-specific training assigned (if applicable).
+**Day 1-7:** Training assigned, onboarding module available. **Day 8-14:**
+Complete onboarding training (2 hours). **Day 15:** PHI access granted (if
+training complete). **Day 30:** Role-specific training assigned (if applicable).
 **Day 45:** Role-specific training complete (if applicable).
 
 ---
@@ -439,12 +462,11 @@ and Clinical Health (HITECH) Act.
 
 ## 11. Change Log
 
-| Date | Author | Change |
-|------|--------|--------|
+| Date       | Author   | Change                                                |
+| ---------- | -------- | ----------------------------------------------------- |
 | 2026-08-01 | Sisyphus | Initial HIPAA training program (PIX-4155 remediation) |
 
 ---
 
-_Document owner: HIPAA Privacy Officer_
-_Review cadence: Annual_
-_Next review: 2027-08-01_
+_Document owner: HIPAA Privacy Officer_ _Review cadence: Annual_ _Next review:
+2027-08-01_

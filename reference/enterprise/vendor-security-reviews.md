@@ -1,6 +1,9 @@
 ---
 title: Vendor Security Reviews
-description: Vendor security review process and initial Tier 1 reviews for Critical-risk vendors in the Pixelated Empathy vendor ecosystem, including BAA status, certifications, data access levels, and risk assessments.
+description:
+  Vendor security review process and initial Tier 1 reviews for Critical-risk
+  vendors in the Pixelated Empathy vendor ecosystem, including BAA status,
+  certifications, data access levels, and risk assessments.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 MD049 -->
@@ -19,13 +22,13 @@ _Pixelated Empathy Enterprise Readiness Program_
 
 ## 1. Purpose & Scope
 
-This document defines the vendor security review process and records the
-initial Tier 1 security reviews for all Critical-risk vendors identified in
-the [Third-Party Vendor & Dependency Inventory](./vendor-inventory.md).
+This document defines the vendor security review process and records the initial
+Tier 1 security reviews for all Critical-risk vendors identified in the
+[Third-Party Vendor & Dependency Inventory](./vendor-inventory.md).
 
 **In scope**: All vendors with Critical or High risk classification (see
-vendor-inventory.md Section 3) that process, store, or transmit
-customer or platform data.
+vendor-inventory.md Section 3) that process, store, or transmit customer or
+platform data.
 
 **Out of scope**: Low-risk open-source libraries (covered by automated
 dependency vulnerability scanning — see vendor-inventory.md Section 15),
@@ -82,9 +85,8 @@ Each completed review is stored at:
 .agent/internal/vendor-reviews/<vendor-name>-YYYY-QQ.md
 ```
 
-Reviews include: reviewer name, date, risk rating change (if any),
-findings, action items with owners and due dates, and a pass/fail/watch
-decision.
+Reviews include: reviewer name, date, risk rating change (if any), findings,
+action items with owners and due dates, and a pass/fail/watch decision.
 
 ### 2.5 Escalation Criteria
 
@@ -97,23 +99,22 @@ A vendor review results in **fail** if any of the following are true:
 5. SLA performance below contracted threshold for 2 consecutive quarters
 6. Exit/deletion procedure cannot be verified
 
-A **watch** designation means: concerns identified but not blocking,
-re-review in 30 days. A **pass** means: all checklist items satisfied,
-no blocking concerns.
+A **watch** designation means: concerns identified but not blocking, re-review
+in 30 days. A **pass** means: all checklist items satisfied, no blocking
+concerns.
 
 ---
 
 ## 3. Tier 1 Vendor Reviews — Initial Assessment
 
-The following 11 vendors are classified as Critical risk in
-vendor-inventory.md. These initial reviews were conducted as part of
-PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
+The following 11 vendors are classified as Critical risk in vendor-inventory.md.
+These initial reviews were conducted as part of PIX-4129 to establish a
+baseline. Each will be re-reviewed quarterly.
 
-> **Note**: These are documentation-only baseline reviews based on vendor
-> public documentation, SDK capabilities, and contractual terms available
-> at time of writing. No vendor-side penetration testing or audit was
-> performed. Follow-up action items (VRA-4.x) track items requiring
-> verification with the vendor.
+> **Note**: These are documentation-only baseline reviews based on vendor public
+> documentation, SDK capabilities, and contractual terms available at time of
+> writing. No vendor-side penetration testing or audit was performed. Follow-up
+> action items (VRA-4.x) track items requiring verification with the vendor.
 
 ### 3.1 OpenAI
 
@@ -134,16 +135,17 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 **Findings**:
 
-- OpenAI is HIPAA-eligible and offers zero-retention API mode, but BAA
-  must be executed before any PHI is sent.
-- Zero-retention mode must be explicitly enabled; default mode retains
-  prompts for 30 days (as of 2026-07).
+- OpenAI is HIPAA-eligible and offers zero-retention API mode, but BAA must be
+  executed before any PHI is sent.
+- Zero-retention mode must be explicitly enabled; default mode retains prompts
+  for 30 days (as of 2026-07).
 - SOC2 Type II and ISO 27001 certifications current.
 
 **Action items**:
 
 - VRA-4.1: Execute BAA with OpenAI (P0, Compliance, due 30 days)
-- VRA-4.2: Verify zero-retention API mode is enabled org-wide (P0, Engineering, due 14 days)
+- VRA-4.2: Verify zero-retention API mode is enabled org-wide (P0, Engineering,
+  due 14 days)
 
 ### 3.2 Anthropic
 
@@ -164,8 +166,8 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 **Findings**:
 
-- Anthropic's API usage policy states customer data is not used for training
-  by default, reducing risk even without zero-retention mode.
+- Anthropic's API usage policy states customer data is not used for training by
+  default, reducing risk even without zero-retention mode.
 - HIPAA-eligible with BAA available.
 - SOC2 Type II and ISO 27001 current.
 
@@ -192,8 +194,8 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 **Findings**:
 
-- Google Cloud has the broadest certification set (FedRAMP High, ISO 27018
-  for cloud privacy).
+- Google Cloud has the broadest certification set (FedRAMP High, ISO 27018 for
+  cloud privacy).
 - CMEK available for encryption key control.
 - Data residency configurable — ensure US/EU region matches HIPAA requirements.
 
@@ -221,16 +223,17 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 **Findings**:
 
-- Current Auth0 tenant is on a Developer plan — HIPAA BAA requires
-  Enterprise tier upgrade.
-- Sept 2023 Okta support case breach affected 1Password and others; Auth0
-  itself was not directly impacted but Okta parent company incident warrants
+- Current Auth0 tenant is on a Developer plan — HIPAA BAA requires Enterprise
+  tier upgrade.
+- Sept 2023 Okta support case breach affected 1Password and others; Auth0 itself
+  was not directly impacted but Okta parent company incident warrants
   monitoring.
 - MFA available but not enforced by default.
 
 **Action items**:
 
-- VRA-4.6: Upgrade to Auth0 Enterprise tier + execute BAA (P0, Compliance, due 30 days)
+- VRA-4.6: Upgrade to Auth0 Enterprise tier + execute BAA (P0, Compliance, due
+  30 days)
 - VRA-4.7: Enforce MFA for all admin accounts (P1, Engineering, due 14 days)
 
 ### 3.5 AWS (S3 / KMS / EKS / RDS)
@@ -253,14 +256,15 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 **Findings**:
 
 - AWS has the most comprehensive certification portfolio.
-- S3 buckets must have: server-side encryption (KMS), versioning enabled,
-  public access block, and bucket policy restricting to authorized roles.
+- S3 buckets must have: server-side encryption (KMS), versioning enabled, public
+  access block, and bucket policy restricting to authorized roles.
 - KMS keys should have rotation enabled (annual).
 
 **Action items**:
 
 - VRA-4.8: Execute BAA with AWS (P0, Compliance, due 30 days)
-- VRA-4.9: Verify S3 bucket policies + KMS key rotation (P1, Engineering, due 30 days)
+- VRA-4.9: Verify S3 bucket policies + KMS key rotation (P1, Engineering, due 30
+  days)
 
 ### 3.6 Cloudflare
 
@@ -283,16 +287,18 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 - Cloudflare Workers run at the edge — if PHI is processed but not persisted,
   BAA may not be legally required. Legal counsel should confirm.
-- Workers AI inference runs at the edge; prompt payloads are not persisted
-  by default.
+- Workers AI inference runs at the edge; prompt payloads are not persisted by
+  default.
 - Turnstile (CAPTCHA alternative) does not process PHI.
 - R2 objects can contain PHI — ensure encryption at rest (default AES-128).
 - High uptime SLA (99.99% Workers).
 
 **Action items**:
 
-- VRA-4.10: Legal counsel opinion on edge-only PHI + BAA necessity (P1, Compliance, due 60 days)
-- VRA-4.11: Ensure R2 buckets w/ PHI use customer-managed keys if available (P2, Engineering)
+- VRA-4.10: Legal counsel opinion on edge-only PHI + BAA necessity (P1,
+  Compliance, due 60 days)
+- VRA-4.11: Ensure R2 buckets w/ PHI use customer-managed keys if available (P2,
+  Engineering)
 
 ### 3.7 MongoDB Atlas
 
@@ -321,7 +327,8 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 **Action items**:
 
 - VRA-4.12: Execute BAA with MongoDB Atlas (P0, Compliance, due 30 days)
-- VRA-4.13: Verify cluster tier is M30+ for HIPAA compliance (P1, Engineering, due 14 days)
+- VRA-4.13: Verify cluster tier is M30+ for HIPAA compliance (P1, Engineering,
+  due 14 days)
 
 ### 3.8 Sentry
 
@@ -343,16 +350,18 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 **Findings**:
 
-- Sentry receives error data from @sentry/* SDKs. Stack traces and
-  breadcrumbs may contain PHI (e.g., user IDs, session content).
+- Sentry receives error data from @sentry/* SDKs. Stack traces and breadcrumbs
+  may contain PHI (e.g., user IDs, session content).
 - Server-side data scrubbing must be configured to strip PHI before storage.
 - @sentry/toolbar (Spotlight) is dev-only and should be disabled in production.
 
 **Action items**:
 
 - VRA-4.14: Execute BAA with Sentry (conditional) (P1, Compliance, due 60 days)
-- VRA-4.15: Configure Sentry server-side data scrubbing for PHI patterns (P1, Engineering, due 14 days)
-- VRA-4.16: Audit Sentry breadcrumbs for PHI leakage (P1, Engineering, due 30 days)
+- VRA-4.15: Configure Sentry server-side data scrubbing for PHI patterns (P1,
+  Engineering, due 14 days)
+- VRA-4.16: Audit Sentry breadcrumbs for PHI leakage (P1, Engineering, due 30
+  days)
 
 ### 3.9 Vercel
 
@@ -373,16 +382,17 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 **Findings**:
 
-- Vercel Analytics and Speed Insights collect pseudonymized, aggregated
-  metrics (page views, Core Web Vitals). No request bodies or user content.
-- If SSR is deployed to Vercel, response data passes through Vercel's edge
-  but is not persisted. Confirm deployment model.
-- Currently, the primary deployment is via Docker/Hetzner; Vercel is
-  used for Analytics/Speed Insights SDK only.
+- Vercel Analytics and Speed Insights collect pseudonymized, aggregated metrics
+  (page views, Core Web Vitals). No request bodies or user content.
+- If SSR is deployed to Vercel, response data passes through Vercel's edge but
+  is not persisted. Confirm deployment model.
+- Currently, the primary deployment is via Docker/Hetzner; Vercel is used for
+  Analytics/Speed Insights SDK only.
 
 **Action items**:
 
-- VRA-4.17: Confirm Vercel is not receiving PHI via SSR (P2, Engineering, due 60 days)
+- VRA-4.17: Confirm Vercel is not receiving PHI via SSR (P2, Engineering, due 60
+  days)
 
 ### 3.10 Twilio
 
@@ -406,13 +416,14 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 - Twilio is HIPAA-eligible via "Twilio for Healthcare" tier which includes BAA.
 - Current usage: Verify (2FA) and potentially SMS notifications.
-- If SMS is used to send clinical information (appointment reminders, etc.),
-  BAA is required.
+- If SMS is used to send clinical information (appointment reminders, etc.), BAA
+  is required.
 - Verify (2FA) sends OTP codes — not PHI, but phone numbers are PII.
 
 **Action items**:
 
-- VRA-4.18: Determine if SMS messages contain PHI; if yes, execute BAA via Twilio for Healthcare (P1, Compliance, due 60 days)
+- VRA-4.18: Determine if SMS messages contain PHI; if yes, execute BAA via
+  Twilio for Healthcare (P1, Compliance, due 60 days)
 
 ### 3.11 Resend
 
@@ -441,7 +452,8 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 **Action items**:
 
-- VRA-4.19: Determine if emails contain PHI; if yes, upgrade to Enterprise + execute BAA (P1, Compliance, due 60 days)
+- VRA-4.19: Determine if emails contain PHI; if yes, upgrade to Enterprise +
+  execute BAA (P1, Compliance, due 60 days)
 
 ---
 
@@ -461,8 +473,8 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 | Twilio        | High     | Conditional  | No           | Watch              | VRA-4.18             |
 | Resend        | High     | Conditional  | No           | Watch              | VRA-4.19             |
 
-**Summary**: 8 vendors require BAA execution (P0/P1), 2 are conditional
-(need PHI content determination), 1 passed unconditionally (Vercel).
+**Summary**: 8 vendors require BAA execution (P0/P1), 2 are conditional (need
+PHI content determination), 1 passed unconditionally (Vercel).
 
 ---
 
@@ -525,10 +537,13 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 ## 8. References
 
-- **Linear**: [PIX-4129](https://linear.app/pixelated/issue/PIX-4129) — Vendor Risk Assessment
-- **Related ticket**: [PIX-4151](https://linear.app/pixelated/issue/PIX-4151) — VRA-1: Inventory All Third-Party Dependencies
+- **Linear**: [PIX-4129](https://linear.app/pixelated/issue/PIX-4129) — Vendor
+  Risk Assessment
+- **Related ticket**: [PIX-4151](https://linear.app/pixelated/issue/PIX-4151) —
+  VRA-1: Inventory All Third-Party Dependencies
 - **Related docs**:
-  - [Third-Party Vendor & Dependency Inventory](./vendor-inventory.md) — full vendor list, data access levels, risk framework
+  - [Third-Party Vendor & Dependency Inventory](./vendor-inventory.md) — full
+    vendor list, data access levels, risk framework
   - [SLO Definitions Runbook](./runbooks/slo-definitions.md)
   - [DR RTO/RPO Targets Runbook](./runbooks/dr-rto-rpo-targets.md)
   - [HIPAA Compliance](../compliance/hipaa.mdx)
@@ -541,5 +556,4 @@ PIX-4129 to establish a baseline. Each will be re-reviewed quarterly.
 
 ---
 
-_Document maintained by: Security + Compliance_
-_Last updated: 2026-07-30_
+_Document maintained by: Security + Compliance_ _Last updated: 2026-07-30_

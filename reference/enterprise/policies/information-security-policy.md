@@ -1,6 +1,9 @@
 ---
 title: Information Security Policy
-description: Pixelated Empathy's information security policy covering ethics, acceptable use, confidentiality, security governance, and workforce responsibilities. SOC2 CC1 compliance.
+description:
+  Pixelated Empathy's information security policy covering ethics, acceptable
+  use, confidentiality, security governance, and workforce responsibilities.
+  SOC2 CC1 compliance.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -26,8 +29,8 @@ required for SOC2 Trust Services Criteria CC1 (Control Environment) and HIPAA
 Security Rule §164.308(a).
 
 This policy applies to all workforce members (employees, contractors,
-consultants, and agents) and all information assets owned, processed, or
-managed by Pixelated Empathy.
+consultants, and agents) and all information assets owned, processed, or managed
+by Pixelated Empathy.
 
 ---
 
@@ -75,15 +78,15 @@ legitimate business purposes. Prohibited activities include:
 
 ### 3.1 Roles and Responsibilities
 
-| Role | Owner | Responsibility |
-|------|-------|----------------|
+| Role                             | Owner          | Responsibility                                                                         |
+| -------------------------------- | -------------- | -------------------------------------------------------------------------------------- |
 | **Chief Security Officer (CSO)** | Chad (interim) | Overall security strategy, policy approval, risk acceptance authority, board reporting |
-| **HIPAA Security Officer** | Chad (interim) | HIPAA compliance, PHI risk analysis, BAA management, breach notification |
-| **HIPAA Privacy Officer** | Chad (interim) | Privacy policy, consent management, individual rights procedures, NPP |
-| **Security Engineering Lead** | Chad (interim) | Security tooling, vulnerability management, incident response, pen test coordination |
-| **Engineering Lead** | TBD | Secure development practices, code review standards, deployment security |
-| **Compliance Lead** | TBD | SOC2/HIPAA audit preparation, evidence collection, control monitoring |
-| **All Workforce Members** | Everyone | Follow this policy, report incidents, complete security training |
+| **HIPAA Security Officer**       | Chad (interim) | HIPAA compliance, PHI risk analysis, BAA management, breach notification               |
+| **HIPAA Privacy Officer**        | Chad (interim) | Privacy policy, consent management, individual rights procedures, NPP                  |
+| **Security Engineering Lead**    | Chad (interim) | Security tooling, vulnerability management, incident response, pen test coordination   |
+| **Engineering Lead**             | TBD            | Secure development practices, code review standards, deployment security               |
+| **Compliance Lead**              | TBD            | SOC2/HIPAA audit preparation, evidence collection, control monitoring                  |
+| **All Workforce Members**        | Everyone       | Follow this policy, report incidents, complete security training                       |
 
 ### 3.2 Security Oversight
 
@@ -108,8 +111,8 @@ control. Critical operations require dual approval:
 
 ### 4.1 Onboarding Training
 
-All new workforce members must complete security awareness training within
-14 days of start date. Training covers:
+All new workforce members must complete security awareness training within 14
+days of start date. Training covers:
 
 - This Information Security Policy.
 - Data classification and handling requirements.
@@ -118,13 +121,13 @@ All new workforce members must complete security awareness training within
 - Acceptable use of information systems.
 - Password management and MFA requirements.
 
-Training completion is recorded and tracked. Access to production systems is
-not granted until training is complete.
+Training completion is recorded and tracked. Access to production systems is not
+granted until training is complete.
 
 ### 4.2 Annual Refresher Training
 
-All workforce members must complete annual security refresher training.
-Training covers:
+All workforce members must complete annual security refresher training. Training
+covers:
 
 - Policy updates from the prior year.
 - Lessons learned from security incidents (anonymized).
@@ -137,8 +140,10 @@ Training covers:
 Workforce members with elevated access (admin, security, DevOps) must complete
 additional role-specific training:
 
-- **Administrators**: Privileged access management, least privilege, audit logging.
-- **Security team**: Incident response procedures, forensic investigation, vulnerability management.
+- **Administrators**: Privileged access management, least privilege, audit
+  logging.
+- **Security team**: Incident response procedures, forensic investigation,
+  vulnerability management.
 - **DevOps**: Infrastructure security, secrets management, deployment security.
 - **AI/ML team**: PHI handling in model training, FHE usage, data minimization.
 
@@ -158,26 +163,30 @@ additional role-specific training:
 
 Security performance is incorporated into workforce member evaluations:
 
-- **All members**: Incident reporting timeliness, training completion, policy compliance.
-- **Engineering**: Secure coding practices, code review security feedback, vulnerability remediation SLA adherence.
-- **DevOps**: Patch management SLA adherence, infrastructure security posture, secrets rotation.
-- **Security team**: Incident response time, vulnerability discovery rate, audit finding remediation.
+- **All members**: Incident reporting timeliness, training completion, policy
+  compliance.
+- **Engineering**: Secure coding practices, code review security feedback,
+  vulnerability remediation SLA adherence.
+- **DevOps**: Patch management SLA adherence, infrastructure security posture,
+  secrets rotation.
+- **Security team**: Incident response time, vulnerability discovery rate, audit
+  finding remediation.
 
 ### 5.2 Sanctions Policy
 
-Violations of this policy may result in disciplinary action, up to and
-including termination of employment or contract. The severity of sanctions
-is proportional to the violation:
+Violations of this policy may result in disciplinary action, up to and including
+termination of employment or contract. The severity of sanctions is proportional
+to the violation:
 
-| Violation Severity | Examples | Sanction |
-|--------------------|----------|----------|
-| **Minor** | Late training completion, minor policy deviation | Verbal warning + remediation plan |
-| **Moderate** | Sharing credentials, bypassing security controls, failure to report incident | Written warning + mandatory retraining |
-| **Serious** | Unauthorized PHI access, willful policy violation, security negligence | Suspension + formal investigation |
-| **Critical** | Intentional data theft, malicious activity, fraud | Immediate termination + legal action |
+| Violation Severity | Examples                                                                     | Sanction                               |
+| ------------------ | ---------------------------------------------------------------------------- | -------------------------------------- |
+| **Minor**          | Late training completion, minor policy deviation                             | Verbal warning + remediation plan      |
+| **Moderate**       | Sharing credentials, bypassing security controls, failure to report incident | Written warning + mandatory retraining |
+| **Serious**        | Unauthorized PHI access, willful policy violation, security negligence       | Suspension + formal investigation      |
+| **Critical**       | Intentional data theft, malicious activity, fraud                            | Immediate termination + legal action   |
 
-All sanctions are documented and retained for 3 years. Repeated minor
-violations escalate to the next severity level.
+All sanctions are documented and retained for 3 years. Repeated minor violations
+escalate to the next severity level.
 
 ### 5.3 Whistleblower Protection
 
@@ -201,27 +210,29 @@ could result in:
 
 Pixelated Empathy maintains a **moderate risk appetite** for:
 
-- Development and experimentation risks (contained in non-production environments).
+- Development and experimentation risks (contained in non-production
+  environments).
 - Innovation in security tooling and techniques.
-- Acceptable vulnerability remediation timelines per the vulnerability response SLA.
+- Acceptable vulnerability remediation timelines per the vulnerability response
+  SLA.
 
 ### 6.2 Risk Tolerance Levels
 
-| Risk Category | Tolerance | Escalation Trigger |
-|---------------|-----------|-------------------|
-| Critical vulnerabilities | 48-hour patch SLA | Auto-escalate to CSO if SLA missed |
-| High vulnerabilities | 7-day patch SLA | Escalate to Security Lead if SLA missed |
-| PHI exposure | Zero tolerance | Immediate incident response activation |
-| Data loss | Zero tolerance | Immediate DR activation |
-| Audit findings | 30-day remediation | Escalate to CSO if remediation delayed |
+| Risk Category            | Tolerance          | Escalation Trigger                      |
+| ------------------------ | ------------------ | --------------------------------------- |
+| Critical vulnerabilities | 48-hour patch SLA  | Auto-escalate to CSO if SLA missed      |
+| High vulnerabilities     | 7-day patch SLA    | Escalate to Security Lead if SLA missed |
+| PHI exposure             | Zero tolerance     | Immediate incident response activation  |
+| Data loss                | Zero tolerance     | Immediate DR activation                 |
+| Audit findings           | 30-day remediation | Escalate to CSO if remediation delayed  |
 
 ---
 
 ## 7. Policy Review and Updates
 
-This policy is reviewed annually by the CSO and updated as needed. Major
-changes require leadership approval. Minor clarifications may be made by the
-CSO with notification to leadership.
+This policy is reviewed annually by the CSO and updated as needed. Major changes
+require leadership approval. Minor clarifications may be made by the CSO with
+notification to leadership.
 
 All workforce members are notified of policy changes and must acknowledge
 updated policies within 14 days.
@@ -244,12 +255,11 @@ updated policies within 14 days.
 
 ## 9. Change Log
 
-| Date | Author | Change |
-|------|--------|--------|
+| Date       | Author   | Change                                                    |
+| ---------- | -------- | --------------------------------------------------------- |
 | 2026-08-01 | Sisyphus | Initial policy created for SOC2 CC1 compliance (PIX-4156) |
 
 ---
 
-_Document owner: Chief Security Officer_
-_Review cadence: Annual_
-_Next review: 2027-08-01_
+_Document owner: Chief Security Officer_ _Review cadence: Annual_ _Next review:
+2027-08-01_

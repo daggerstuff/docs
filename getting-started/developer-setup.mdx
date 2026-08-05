@@ -1,13 +1,18 @@
 ---
 title: 'Developer Setup'
-description: 'A step-by-step tutorial to clone the Pixelated Empathy platform, install dependencies, and start the development server locally.'
+description:
+  'A step-by-step tutorial to clone the Pixelated Empathy platform, install
+  dependencies, and start the development server locally.'
 ---
 
 ## What You'll Build
 
-In this tutorial, you'll set up the full Pixelated Empathy platform on your local machine — frontend, AI services, and all. By the end, you'll have a running development server and be able to run the test suite.
+In this tutorial, you'll set up the full Pixelated Empathy platform on your
+local machine — frontend, AI services, and all. By the end, you'll have a
+running development server and be able to run the test suite.
 
-**Prerequisites:** Node.js 19+, Python 3.11+, pnpm, MongoDB, Redis, Docker (optional)
+**Prerequisites:** Node.js 19+, Python 3.11+, pnpm, MongoDB, Redis, Docker
+(optional)
 
 ---
 
@@ -18,7 +23,9 @@ git clone https://github.com/daggerstuff/pixelated.git
 cd pixelated
 ```
 
-The repository contains the main platform. The AI engine is a submodule and the Foresight memory system is a separate repository — see [Products](/products/pixelated/overview) for the full ecosystem map.
+The repository contains the main platform. The AI engine is a submodule and the
+Foresight memory system is a separate repository — see
+[Products](/products/pixelated/overview) for the full ecosystem map.
 
 ---
 
@@ -36,7 +43,8 @@ pip install -r requirements.txt
 cd ..
 ```
 
-Notice that the platform uses two package managers: `pnpm` for Node/TypeScript and `pip` (or `uv`) for Python. The AI services run as a separate process.
+Notice that the platform uses two package managers: `pnpm` for Node/TypeScript
+and `pip` (or `uv`) for Python. The AI services run as a separate process.
 
 ---
 
@@ -61,9 +69,7 @@ FINE_TUNED_THERAPEUTIC_MODEL=meta-llama-3-8b-instruct
 AUTH_SECRET=your_auth_secret_here
 ```
 
-<Warning>
-  Never commit `.env` to version control.
-</Warning>
+<Warning>Never commit `.env` to version control.</Warning>
 
 ---
 
@@ -81,7 +87,9 @@ python -m uvicorn main:app --reload --port 8000
 
 The frontend will be available at `http://localhost:4321`.
 
-Notice that `pnpm dev` starts the Astro dev server with hot module replacement. The AI services run separately so you can restart them independently when working on model code.
+Notice that `pnpm dev` starts the Astro dev server with hot module replacement.
+The AI services run separately so you can restart them independently when
+working on model code.
 
 ---
 
@@ -124,17 +132,13 @@ If all tests pass, your local environment is ready for development.
     ```
   </Accordion>
 
-  <Accordion title="Key commands" icon="terminal">
-    | Command          | Description       |
-    | ---------------- | ----------------- |
-    | `pnpm dev`       | Start dev server  |
-    | `pnpm build`     | Production build  |
-    | `pnpm preview`   | Preview build     |
-    | `pnpm test`      | Vitest tests      |
-    | `pnpm test:e2e`  | Playwright E2E    |
-    | `pnpm lint`      | ESLint + Prettier |
-    | `pnpm typecheck` | TypeScript        |
-  </Accordion>
+<Accordion title="Key commands" icon="terminal">
+  | Command | Description | | ---------------- | ----------------- | | `pnpm
+  dev` | Start dev server | | `pnpm build` | Production build | | `pnpm preview`
+  | Preview build | | `pnpm test` | Vitest tests | | `pnpm test:e2e` |
+  Playwright E2E | | `pnpm lint` | ESLint + Prettier | | `pnpm typecheck` |
+  TypeScript |
+</Accordion>
 
   <Accordion title="Docker setup" icon="docker">
     ```bash
@@ -149,6 +153,7 @@ If all tests pass, your local environment is ready for development.
     docker compose exec app pnpm test
     docker compose exec ai-services python -m pytest
     ```
+
   </Accordion>
 </AccordionGroup>
 
@@ -158,12 +163,22 @@ If all tests pass, your local environment is ready for development.
 
 <CardGroup cols={2}>
   <Card title="API Reference" icon="code" href="/reference/api/introduction">
-    Full API documentation — authentication, session management, bias analysis, analytics.
+    Full API documentation — authentication, session management, bias analysis,
+    analytics.
   </Card>
-  <Card title="Architecture" icon="sitemap" href="/reference/architecture/auth-boundaries">
-    Auth boundaries, memory scope model, agents pipeline, and GraphQL federation.
+  <Card
+    title="Architecture"
+    icon="sitemap"
+    href="/reference/architecture/auth-boundaries"
+  >
+    Auth boundaries, memory scope model, agents pipeline, and GraphQL
+    federation.
   </Card>
-  <Card title="Product Overview" icon="cube" href="/products/pixelated/overview">
+  <Card
+    title="Product Overview"
+    icon="cube"
+    href="/products/pixelated/overview"
+  >
     Understand how the platform components connect.
   </Card>
   <Card title="Core Concepts" icon="brain" href="/concepts">
