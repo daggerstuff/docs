@@ -455,7 +455,7 @@ For vendors with BAA (data access level 4-5):
 | VRA-1.8  | Confirm NVIDIA NIM data handling for RL workloads             | P2       | ML Eng      | —        | Open                                                                   |
 | VRA-1.9  | Evaluate LangSmith tracing scope — disable for PHI paths      | P1       | ML Eng      | —        | Open                                                                   |
 | VRA-1.10 | Document vendor security review process (PIX-4129 criteria 4) | P2       | Security    | PIX-4129 | **Done** (see [Vendor Security Reviews](./vendor-security-reviews.md)) |
-| VRA-1.11 | Implement vendor termination audit log                        | P2       | Compliance  | PIX-4129 | **Done** (see `scripts/enterprise/vendor-termination-audit.ts`)       |
+| VRA-1.11 | Implement vendor termination audit log                        | P2       | Compliance  | PIX-4129 | **Done** (see `scripts/enterprise/vendor-termination-audit.ts`)        |
 
 ---
 
