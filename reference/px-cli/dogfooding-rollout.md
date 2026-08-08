@@ -126,15 +126,15 @@ px intake curriculum --body '{"trainee_id": "...", "step": ...}'
 
 Every agent supports these shared flags:
 
-| Flag | Description |
-|------|-------------|
-| `--body <json>` | JSON request body |
-| `--stdin` | Read JSON body from stdin |
-| `--json` | Output raw JSON response |
-| `--async` | Force async mode (returns task ID) |
-| `--sync` | Force sync mode (wait for result) |
-| `--verbose` | Show request/response details |
-| `--dry-run` | Print payload without calling agent |
+| Flag            | Description                         |
+| --------------- | ----------------------------------- |
+| `--body <json>` | JSON request body                   |
+| `--stdin`       | Read JSON body from stdin           |
+| `--json`        | Output raw JSON response            |
+| `--async`       | Force async mode (returns task ID)  |
+| `--sync`        | Force sync mode (wait for result)   |
+| `--verbose`     | Show request/response details       |
+| `--dry-run`     | Print payload without calling agent |
 
 Both short aliases and full tool names work:
 
