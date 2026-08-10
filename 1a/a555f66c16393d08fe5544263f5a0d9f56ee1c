@@ -1,0 +1,21 @@
+superpowers/specs/2026-08-10-audio-text-cross-modal-fusion.md
+  s_9a329b4966c619::t_607db9bd911b7b 1-53
+superpowers/specs/2026-08-10-synthetic-clinical-dataset-design.md
+  s_9a329b4966c619::t_4379f7164b0671 1-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "1aa555f66c16393d08fe5544263f5a0d9f56ee1c",
+  "prompts": {},
+  "sessions": {
+    "s_9a329b4966c619": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7256f454-8f72-4c5e-b773-6fadc464480f",
+        "model": "thinkingmachines/inkling"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
