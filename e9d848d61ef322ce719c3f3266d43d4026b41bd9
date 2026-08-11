@@ -1,0 +1,55 @@
+superpowers/plans/reports/task-1-review.md
+  s_5b20234c09af47::t_9f95c1261512ff 1-20
+superpowers/specs/2026-08-09-astro-palette-theme-design.md
+  s_2af412ec4072b7::t_be0e97805db60e 1-16
+superpowers/specs/2026-08-10-video-emotion-design.md
+  s_9a329b4966c619::t_e5eac428447da8 1-55
+superpowers/plans/reports/task-1-report.md
+  s_5b20234c09af47::t_b916816f83f05d 1-6
+  s_5b20234c09af47::t_295dd64e368e9b 7
+superpowers/plans/reports/task-2-report.md
+  s_5b20234c09af47::t_055beac73cf458 1-5
+superpowers/specs/2026-08-09-serverless-a-b-spec.md
+  s_5b20234c09af47::t_9f4e939b6098e9 1-37
+superpowers/plans/2026-08-09-serverless-a-b-plan.md
+  s_5b20234c09af47::t_853995d88586ac 1-65,67-525
+  s_5b20234c09af47::t_64d807ce06b1b1 66
+superpowers/plans/reports/task-3-report.md
+  s_5b20234c09af47::t_d61bbd4d469a41 1-5
+superpowers/plans/2026-08-10-video-emotion-plan.md
+  s_9a329b4966c619::t_e197b605d54e31 1-520
+superpowers/plans/2026-08-09-astro-palette-full-theme-plan.md
+  s_2af412ec4072b7::t_f2ed86944796b7 1-146
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "e9d848d61ef322ce719c3f3266d43d4026b41bd9",
+  "prompts": {},
+  "sessions": {
+    "s_2af412ec4072b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d83e08c-c367-4111-8241-402c3a266118",
+        "model": "thinkingmachines/inkling"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    },
+    "s_5b20234c09af47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d478ee3b-d9d6-460f-b8a5-621c4073cd47",
+        "model": "thinkingmachines/inkling"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    },
+    "s_9a329b4966c619": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7256f454-8f72-4c5e-b773-6fadc464480f",
+        "model": "thinkingmachines/inkling"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}

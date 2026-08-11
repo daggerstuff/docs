@@ -1,0 +1,19 @@
+superpowers/specs/2026-08-10-video-emotion-design.md
+  s_7107b1f995be50::t_dcb06313598187 1-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "45f32f96c2fec15d5a1af8d2ceebe91725727382",
+  "prompts": {},
+  "sessions": {
+    "s_7107b1f995be50": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_0142f2065ffeDFey7EQeF52goL",
+        "model": "unknown"
+      },
+      "human_author": "Chad <chad@pixelated.app>"
+    }
+  }
+}
