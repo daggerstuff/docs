@@ -135,6 +135,8 @@ Every agent supports these shared flags:
 | `--sync`        | Force sync mode (wait for result)   |
 | `--verbose`     | Show request/response details       |
 | `--dry-run`     | Print payload without calling agent |
+| `--compact`     | Single-line summary output          |
+| `--no-color`    | Disable colored output              |
 
 Both short aliases and full tool names work:
 
@@ -142,3 +144,66 @@ Both short aliases and full tool names work:
 px qa score          # short alias
 px qa score_session  # full tool name
 ```
+
+## Local Development
+
+### px serve — Local Stub Server
+
+For local development without K8s agent endpoints, start a stub server:
+
+```bash
+# Start stub server on default port 2000
+px serve
+
+# Start on custom port
+px serve --port 3000
+
+# Serve only one agent (for multi-instance testing)
+px serve --agent advisor
+```
+
+When `PX_LOCAL=1` is set in the environment, all `px` commands route to
+`http://localhost:2000` automatically. The stub server returns realistic
+mock responses for all 45 tool endpoints across 7 agents.
+
+```bash
+# Terminal 1: start stub server
+px serve
+
+# Terminal 2: use px commands (routes to localhost)
+PX_LOCAL=1 px advisor review
+PX_LOCAL=1 px advisor review --compact
+PX_LOCAL=1 px advisor review --json
+```
+
+### Git Hook Installation
+
+Install configured git hooks from `agents/px.config.json`:
+
+```bash
+# Preview hooks that would be installed (no files written)
+px hook install --preview
+
+# Install hooks (refuses to overwrite existing hooks)
+px hook install
+
+# Force overwrite existing hooks
+px hook install --force
+```
+
+Installed hooks:
+
+| Hook         | Agent    | Tool                     | Notes                          |
+| ------------ | -------- | ------------------------ | ------------------------------ |
+| `pre-commit` | content  | `audit_clinical_corpus`  | Filters to `scenarios/**`      |
+| `pre-push`   | advisor  | `review`                 | Blocks push on high-risk findings |
+| `post-merge` | pipeline | `check_pipeline_health`  | Async — posts to Slack         |
+
+### CI Integration
+
+GitHub Actions workflow at `.github/workflows/px-agents.yml`:
+
+- **PR open/sync**: runs `px advisor review` and posts findings as a PR comment
+- **Push to staging**: runs `px qa score` and uploads results as an artifact
+
+Both CI jobs use `px serve` + `PX_LOCAL=1` to run against the stub server.
