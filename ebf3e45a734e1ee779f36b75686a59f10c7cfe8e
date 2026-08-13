@@ -1,0 +1,19 @@
+reference/px-cli/dogfooding-rollout.md
+  s_538ad3a9e38e19::t_db7f8b2e4e34b0 138-139,147-209
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "ebf3e45a734e1ee779f36b75686a59f10c7cfe8e",
+  "prompts": {},
+  "sessions": {
+    "s_538ad3a9e38e19": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_014032296ffe5gt6ag3zGu3YAm",
+        "model": "unknown"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
