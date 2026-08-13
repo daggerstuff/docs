@@ -152,6 +152,22 @@ Recommendation: start with Qwen 2.5-32B or Llama 3.3-70B (best balance of open-l
 5. **Week 4**: First SFT run; validate on benchmark + domain test; check catastrophic forgetting metrics.
 6. **Month 2**: Preference alignment (DPO/ORPO) if needed; scale to multi-GPU (DeepSpeed ZeRO-3) or distributed (NVIDIA NeMo); prepare distillation pipeline if deploying small footprint.
 
+### Expansion Steps (from dataset agent, repo-anchored)
+
+7. **1A (parallel w/ Step 1)**: Build `ai/training/ingest_router.py` (web + DOCX + API parsers); wire Provenance (`provenance.py:build_provenance`).
+8. **1B**: Install deps `fasttext-langdetect`, `presidio-analyzer`, `presidio-anonymizer`, `detoxify`, `iterative-stratification`; verify `pii_scrubber.py` already uses Presidio.
+9. **2A**: Wire Stage 1 filters (lang_detect, PII, toxicity, dedup via `dedup_normalize.py:_MinHashIndex`) into `curate_pipeline.py` invocations.
+10. **2B**: LLM judge dual-model (`Qwen/Qwen2.5-72B-Instruct` + `meta-llama/Llama-3.3-70B-Instruct`); calibrate on 200-sample golden set (`ai/data/golden_judge_calib.jsonl`); Pearson `r ≥ 0.80` + Cohen `κ ≥ 0.65` gate.
+11. **3A**: Label Studio project + rubric XML; IAA script `ai/training/annotation/iaa.py` (Fleiss kappa `≥ 0.75` fair, `≥ 0.85` T1_GOLD).
+12. **4A**: SDG modules — self-instruct, back-translation (MarianMT), paraphrase; output to `ai/data/synthetic/`; stricter QC (`min_quality_score=0.80`, `max_synth_fraction=0.30`).
+13. **4B**: DVC init + remote (S3/MinIO); push first curated split.
+14. **4C**: Replace `dataset_splitter.py` hash-split with multi-axis stratified split (language + tags + difficulty + tier); run integrity gates (hash-disjoint, ratio ±2pp, domain balance ±2pp) before training.
+15. **Week 5**: Multi-node torchrun launcher; verify NCCL/IB env (`nccl-tests/all_reduce_perf`).
+16. **Month 2 wk1**: FSDP2 trial on 70B (8×H100 single node); measure throughput + memory; baseline WandB.
+17. **Month 2 wk2**: If context > 32K add CP=2; if multi-node, switch FSDP2→HSDP (`hybrid_shard_group_size=8`).
+18. **Month 2 wk3**: Megatron trial (TP=4, PP=2, CP=1) for 70B; compare throughput vs FSDP2; pick winner.
+19. **Month 3**: 405B / MoE path with `strategy=megatron` + EP if pipeline extends.
+
 ---
 
 *Startup/AWS caveat (silent lens applied)*: Lambda Labs offers $500-$1000 startup credits (AWS Activate partner offer) — activates here because it unblocks GPU access for this pipeline. RunPod provides lowest barrier to entry (no contracts, instant pods). Recommend Lambda for first reserved H100 nodes (free trial credits) → scale to CoreWeave or RunC.ai for larger clusters. Monitor cost: H100 training at $2/hr × 8 GPU = $16/hr; 3-day SFT run ≈ $1,100-1,500. Budget accordingly.
@@ -292,83 +308,193 @@ step_scheduler:
 
 ---
 
-## APPENDIX B — EXPANDED: Dataset Curation Pipeline (Ingestion → Filter → QA → Expert → Synthetic)
+## APPENDIX B — EXPANDED: Dataset Curation Pipeline (Repo-Anchored)
 
-### Ingestion Pipeline
-1. **Sources**: web (scraped HTML/Markdown), docs (PDF/Word), APIs, internal DBs.
-2. **Parsing**: `pypdf` / `PyMuPDF` for PDF; `python-docx` for DOCX; BeautifulSoup for HTML; `requests` for APIs.
-3. **License check**: filter by license (CC-BY, MIT, public domain); drop proprietary/non-redistributable content.
-4. **Initial format**: raw text → JSONL line with `source`, `date`, `license`, `raw_text`.
+Cross-references existing repo code: `ai/training/provenance.py`, `book_pdf_converter.py`, `dedup_normalize.py`, `pii_scrubber.py`, `clinical_validity_judge.py`, `curate_pipeline.py`, `dataset_splitter.py`, `sdg_pipeline.py`, `generalized_sdg_pipeline.py`, `nightmare_fuel_generator.py`, `youtube_ingestion.py`, `data_audit.py`, `multilingual_safety_checker.py`.
 
-### Automated Filtering (Stage 1 QA)
+### B.1 Ingestion Pipeline
+
+Every record carries provenance (`provenance.py:build_provenance`, `validate_license`) = SPDX license + source URL + acquisition timestamp + transformation chain.
+
+**Stage 0 ingest router** (`ai/training/ingest_router.py`, new): routes by `source_type` to extractor, emits raw JSONL shards to `ai/data/raw/<source_type>/`, 50K records/shard.
+
+**B.1.1 Web scraping** — ethical layer: `urllib.robotparser` + per-domain rate limit (1 req/2s), `Crawl-Delay` obeyed. Use `httpx` (async) + `selectolax` + `trafilatura` (10x faster than requests+BS4 at 1M+ pages). Record fetch in `provenance.metadata`.
+
+**B.1.2 Document parsing** — reuse `book_pdf_converter.py` (`_extract_pdf`, `_extract_epub`, `_chunk_text`, already ships `pypdf`, `ebooklib`, `BeautifulSoup`). Extend with DOCX (`python-docx`), HTML standalone handlers. Chunk on speaker-turn boundary (`Patient:` / `Therapist:`) for therapy content.
+
+**B.1.3 API ingestion** — `httpx` async + exponential backoff (reuse `NEMO_RETRY_DELAYS = (1, 2, 4)` pattern), `RETRYABLE_HTTP_STATUS_CODES = {429, 500, 502, 503, 504}`. YouTube transcripts via existing `youtube_ingestion.py`. Write raw to `ai/data/raw/api/<provider>/` with `provenance.source_type = "api"`.
+
+**B.1.4 Data licensing checks** — `provenance.py:ALLOWED_LICENSES` = `{"Apache-2.0", "CC-BY-4.0", "CC-BY-SA-4.0", "CC0-1.0", "MIT", "NOASSERTION"}`. `validate_license(license_id)` raises on unlisted. License-tags `NC`/`ND` flagged in `metadata["license_terms"]` as guard rails. Source manifest at `ai/data/licenses/source_manifest.yaml`.
+
+### B.2 Automated Filtering (Stage 1 QA)
+
+Deterministic, high-throughput, no LLM calls. Goal: raw-to-candidate ratio ~1.0 → ~0.3 before Stage 2.
+
+**B.2.1 Language detection** — `fasttext-langdetect` (lid.176.bin, 900KB, 170+ langs, <1ms/sample) over `langdetect` (slower, 30 langs). Cross-check with `clinical_validity_judge.py:_NON_ENGLISH_RE` ratio filter (`_NON_ENGLISH_RATIO = 0.30`) for CJK/Cyrillic/Arabic.
+
+**B.2.2 PII removal (two-layer + LLM pass)** — Layer 1: regex fast-strip. Layer 2: Presidio (`pii_scrubber.py:AnalyzerEngine + AnonymizerEngine`), entities: `EMAIL_ADDRESS`, `PHONE_NUMBER`, `US_SSN`, `CREDIT_CARD`, `MEDICAL_LICENSE`, `IP_ADDRESS`, `PERSON`, `LOCATION`, `DATE_TIME`. Layer 3: LLM pass on borderline (Presidio < 0.8 confidence) to catch indirect-reference PII.
+
+**B.2.3 Toxicity filter** — two pathways:
+| Pathway | API | Latency | Cost | Use when |
+|---|---|---|---|---|
+| Cloud | Perspective API (Google Jigsaw) | ~80ms | $/quota | remote real-time |
+| Local | `Detoxify` (4-model ensemble, PyTorch) | ~5ms on H100 | free | bulk offline |
+
+Gate: `severe_toxicity < 0.30`, `threat < 0.15`.
+
+**B.2.4 Deduplication** — fully implemented in `dedup_normalize.py`:
+| Method | Impl | When | Threshold |
+|---|---|---|---|
+| Exact | SHA-256 (`_content_hash`) | always | bit-perfect |
+| Near (small) | Jaccard (`_jaccard_similarity`) | <50K | 0.85 |
+| Near (scale) | MinHash/LSH (`_MinHashIndex`: 128 perms/16 bands/8 rows) | 50K+ | 0.85 |
+| Cross-source | SimHash 64-bit + Hamming ≤ 3 | 10M+ | complement |
+
+### B.3 LLM-as-Judge QA Pipeline (Stage 2 QA)
+
+Repo pattern: `clinical_validity_judge.py:ClinicalValidityJudge` (6-dim rubric: technique, alliance, structure, cultural, ebp, dsm5). Generalize to non-clinical.
+
+**B.3.1 Rubric design** — 5 dimensions (0.0-1.0 each): relevance, accuracy, helpfulness, style, safety. 4-bin calibration per dim. Output JSON with `quality_score`, `reject_reason`, `dim_scores`, `reasoning`.
+
+**B.3.2 Judge models** — primary: Qwen 2.5-72B (vLLM self-host, `temperature=0.1`). Secondary: LLaMA 3.3-70B. Dual-judge consistency: `|primary.quality - secondary.quality| ≤ 0.15` → accept primary.
+
+**B.3.3 Multi-turn evaluation** — score each turn independently, aggregate via recency-decay weighted mean (`0.85^k` reversed, turn_0 highest weight).
+
+**B.3.4 Consistency + calibration** — self-consistency: k=3 runs same sample, variance > 0.05 → human review. Calibration set: 200-sample golden (`ai/data/golden_judge_calib.jsonl`); release requires Pearson `r ≥ 0.80` vs golden + Cohen's kappa `κ ≥ 0.65` on accept/reject at 0.6 threshold.
+
+### B.4 Expert Annotation Workflow (Stage 3 QA)
+
+Hits 5-10% of samples: high-value edge cases, low-confidence LLM judge, entire T1_GOLD tier (mirrors `curate_pipeline.py:QualityTiers`).
+
+**B.4.1 Interface** — Label Studio (open-source, JSONL export). Per-sample view: message thread + provenance + Stage 1/2 scores + reviewer rubric. Reviewer overrides `quality_score`, adds `domain`/`difficulty`/`tags`, logs `reject_reason`.
+
+**B.4.2 Inter-annotator agreement (IAA)** — 3 annotators on T1_GOLD (single OK for T3_BRONZE). Cohen's kappa (2) / Fleiss kappa (3+). Thresholds (Landis-Koch): `κ ≥ 0.75` fair-quality release; `κ ≥ 0.85` T1_GOLD final. Below 0.40 → batch quarantined; 0.40-0.60 → annotator retraining.
+
+**B.4.3 Annotation stages**:
+- 3a: single annotator on T3_BRONZE; 5% lead spot-check.
+- 3b: dual on T2_SILVER/flagged; `κ ≥ 0.75`; disputes → 3c.
+- 3c: adjudication by senior; `annotation_stage="v3_adjudicated"`.
+- 3d: final QA gate — 5% random audit; <2% rejection → release.
+
+Schema progression: `v1` (raw) → `v2` (filtered, judged) → `v3` (human) → `v3_adjudicated` → `v3_released`.
+
+### B.5 Synthetic Data Generation
+
+Anchors: `sdg_pipeline.py` (NeMo preference + niche + hard-case), `generalized_sdg_pipeline.py` (multi-session timelines + DataFlow gate), `mental_health_instruction_dataset.py`, `nightmare_fuel_generator.py` (adversarial/safety).
+
+**B.5.1 Self-instruct** — ~200 seed instructions (`ai/data/sdg_seeds/self_instruct_seed.jsonl`); generator produces k=4 new per seed; reject length < 30 chars, ROUGE-L > 0.7 vs prior, non-supported lang, toxicity. Iterate to N=10000.
+
+**B.5.2 Back-translation** — MarianMT/NLLB-200 round-trip EN→X→EN (paraphrastic variants, prevents phrasing memorization). Apply to training input, not annotated gold.
+
+**B.5.3 Paraphrasing** — LLM paraphraser, temperature-high. Filter: ROUGE-L > 0.85 vs original = too similar; < 0.30 = meaning drift, drop.
+
+**B.5.4 Domain-specific augmentation** — edge-case templates via `nightmare_fuel_generator.py` for clinical adversarial/safety. `(topic, difficulty, modality)` → generation prompt. Outputs pass full Stage 1 + Stage 2 QA.
+
+**B.5.5 Synthetic QC (STRICTER than natural)**:
 ```python
-# Pseudo-pipeline
-from langdetect import detect
-import presidio_analyzer, presidio_anonymizer
-from perspective_api_client import analyze_toxicity
-
-# Language detection
-if detect(text) != target_lang: drop or tag
-# PII removal
-analyzer = presidio_analyzer.AnalyzerEngine()
-anonymizer = presidio_anonymizer.AnonymizerEngine()
-anonymized = anonymizer.anonymize(text=text, analyzer_results=analyzer.analyze(...))
-# Toxicity filter
-if toxicity_score > 0.7: drop; if 0.3-0.7: review; else pass
-# Deduplication (MinHash/LSH)
-# Perplexity coherence check (use base model to score; drop >2σ outliers)
+SYNTH_QC_THRESH = {
+    "min_quality_score": 0.80,       # vs 0.85 pipeline-default
+    "min_self_consistency": 0.85,    # 3-sample variance < 0.05
+    "max_synth_fraction": 0.30,      # cap in final dataset
+    "max_dup_vs_natural": 0.60,      # MinHash Jaccard to natural corpus
+    "human_spot_check_rate": 0.05,   # always spot-check synthetic
+}
 ```
+Pass EVERY gate (dedup, PII, LLM judge) + second LLM judge pass specialized for "synthetic-style artifacts" (over-formality, repetition, weird dialogue flow).
 
-### LLM-as-Judge QA (Stage 2 QA)
-- Use Qwen-72B (or LLaMA-70B) as judge with structured rubric (JSON output).
-- Rubric categories: relevance (0-1), factual accuracy (0-1), domain vocabulary (0-1), style adherence (0-1), format compliance (0-1).
-- Average score > 0.85 passes; 0.6-0.85 flagged for review; < 0.6 dropped.
-- Consistency: run judge 3× per sample, require std < 0.1 for acceptance; else manual review.
+### B.6 DVC Versioning Workflow
 
-### Expert Annotation (Stage 3 QA)
-- Interface: web-based annotation tool (label-studio or custom) with multi-label tags, quality score slider, difficulty level.
-- Inter-annotator agreement: target Cohen's kappa ≥ 0.75; Fleiss kappa for multi-annotator.
-- Final annotation fields added: `tags`, `quality_score`, `annotation_stage` (v1/v2/v3), `difficulty`, `reviewer_id`.
-
-### Synthetic Data Generation
-- **Self-instruct**: use base model to generate instruction-response pairs from seed prompts; filter through same QA pipeline.
-- **Back-translation**: translate EN → target language → back to EN; compare similarity; use as augmented samples (not replacements).
-- **Paraphrasing**: use smaller model (e.g., Mistral-7B) to paraphrase high-quality samples, increasing diversity without new content.
-- **Quality gate on synthetic**: synthetic samples must pass LLM-judge with score ≥ 0.80; if lower, regenerate or discard.
-
-### DVC Versioning Workflow
+**B.6.1 Init + remote**:
 ```bash
-# Initialize
 dvc init
-dvc remote add -d dataset_storage s3://my-bucket/datasets/
-# Track dataset
-dvc add data/dataset_v1/
-dvc push
-# Access in training
-dvc pull
-dvc checkout
-# Tag versions
-git tag -a dataset-v1.0 -m "Dataset v1: 42K samples, avg quality 0.91"
+dvc remote add -d pixelated_s3 s3://pixelated-datasets/dvc
+dvc remote modify pixelated_s3 region us-west-2
+dvc config core.checksum_jobs 8
+# MinIO alt: endpoint_url http://minio.pixelated.love:9000
 ```
-- Never commit raw data; commit `.dvc` files only.
-- Remote storage: S3 (AWS), MinIO (self-hosted), GCP bucket.
-- Dataset hash (`sha256`) stored in `.dvc` file; referenced in Git.
 
-### Stratified Split Implementation
+**B.6.2 Dataset add + push**:
+```bash
+dvc add ai/data/curated/sft_chatml/{train,val,test}.jsonl
+git add ai/data/curated/sft_chatml/*.dvc ai/data/curated/.gitignore
+git commit -m "data: dataset v1 curated sft_chatml train/val/test"
+dvc push  # uploads to S3
+git push  # uploads .dvc pointers only
+```
+
+**B.6.3 Version tags**:
+```bash
+git tag -a dataset-v1.0.0 -m "50K SFT samples; T1:T2:T3 = 100:25000:25000 balanced"
+# pin training to version: configs/2026-08-10/qwen32b-sft.yaml: dataset_version: "dataset-v1.0.0"
+# reproduce: git checkout dataset-v1.0.0 -- ai/data/curated/ && dvc pull
+```
+
+**B.6.4 Access pattern**:
 ```python
-from sklearn.model_selection import StratifiedShuffleSplit
-import pandas as pd
-
-# Multi-label stratification (domain + language)
-df['strata'] = df['domain'] + '_' + df['language']
-sss = StratifiedShuffleSplit(n_splits=1, test_size=0.10, random_state=42)
-for train_idx, test_idx in sss.split(df, df['strata']):
-    train_df = df.iloc[train_idx]
-    test_df = df.iloc[test_idx]
-# Repeat for validation split from train_df
+def load_versioned(split: str, version: str = "dataset-v1.1.0") -> list[dict]:
+    subprocess.run(["git", "checkout", version, "--", f"ai/data/curated/sft_chatml/{split}.jsonl.dvc"], check=True)
+    subprocess.run(["dvc", "pull"], check=True)
+    path = f"ai/data/curated/sft_chatml/{split}.jsonl"
+    assert _read_dvc_md5(f"{path}.dvc") == _md5_file(path), "hash mismatch"
+    return [json.loads(l) for l in open(path, encoding="utf-8")]
 ```
-- Stratify by: domain, difficulty, language, quality tier.
-- Avoid random split; preserve distribution to prevent domain bias in evaluation.
+
+**B.6.5 Reproduction chain**:
+```bash
+git clone https://github.com/vivi/pixelated.git && cd pixelated && git checkout dataset-v1.1.0
+dvc pull
+uv run python ai/training/curate_pipeline.py --input ai/data/raw/deduped/all_desloped.jsonl --output ai/data/curated
+uv run python ai/training/dataset_splitter.py ai/data/curated/sft_chatml ai/data/curated/sft_chatml_splits
+axolotl train configs/2026-08-10/qwen32b-sft.yaml
+```
+
+### B.7 Stratified Split Implementation
+
+Existing repo: hash-bucket (`dataset_splitter.py`, `curate_pipeline.py:assign_split`): `bucket = int(chash[:8], 16) % 100; <80 train; <90 val; else test`. No leakage but does NOT preserve class balance. Upgrade to true stratified.
+
+**Multi-axis targets**: `domain` (20+ subdomains from `data_audit.py:CATEGORY_KEYWORDS`), `difficulty` (easy/medium/hard), `language` (en/es/fr/pt/de per `multilingual_safety_checker.py`), `tier` (T1_GOLD/T2_SILVER/T3_BRONZE/T4_SAFETY per `curate_pipeline.py:QualityTiers`).
+
+**B.7.1 Multi-label stratification** — `iterative-stratification` library (skmultilearn) for multi-label tags:
+```python
+from iterstrat.ml_stratifiers import MultilabelStratifiedShuffleSplit
+from sklearn.preprocessing import MultiLabelBinarizer
+msss = MultilabelStratifiedShuffleSplit(n_splits=1, test_size=0.20, random_state=42)
+train_idx, rest_idx = next(msss.split(np.zeros(len(records)), MultiLabelBinarizer().fit_transform([r.get("tags", []) for r in records])))
+# second split rest → val/test (50/50)
+```
+
+**B.7.2 Domain balance** — marginal domain proportion deviates from full-dataset by < 2pp; fallback re-run with different seed.
+
+**B.7.3 Difficulty + tier** — single-label `StratifiedShuffleSplit` on `difficulty` primary, `tier` nested.
+
+**B.7.4 Language stratification** — per-language independent split then merge; avoids cross-language leakage, preserves within-language balance. Critical for Qwen (CN-heavy base).
+
+**B.7.5 Combined multi-axis** — group by language → multi-label stratify on tags (rare classes < 50 → `__OTHER__` strat-only key, preserve original tags) → check tier. Hash-split (`_hash_split`) preserved as deterministic fallback for edge cases.
+
+**B.7.6 Split integrity gates** (abort training on failure):
+```python
+def integrity_gates(splits: dict) -> dict:
+    checks = {}
+    # 1. hash-disjoint (no cross-split leakage)
+    # 2. ratio within ±2pp tolerance
+    # 3. domain/language balance ±2pp
+    return checks  # all True → release training
+```
+
+### B.8 Cross-References to Existing Repo Code
+
+| Pipeline stage | Existing impl | Status |
+|---|---|---|
+| Provenance + SPDX license gate | `provenance.py:build_provenance`, `validate_license`, `ALLOWED_LICENSES` | shipped |
+| PDF/EPUB/HTML parsing | `book_pdf_converter.py:_extract_*`, `_chunk_text` | shipped (extend DOCX) |
+| YouTube transcript API ingest | `youtube_ingestion.py` | shipped |
+| PII scrubbing (Presidio) | `pii_scrubber.py` | shipped (add LLM pass) |
+| Exact + near dedup (MinHash/LSH) | `dedup_normalize.py:_MinHashIndex`, `_jaccard_similarity` | shipped (add SimHash) |
+| LLM judge (NeMo API + rubric) | `clinical_validity_judge.py:ClinicalValidityJudge` | shipped (generalize rubric) |
+| Synthetic data gen | `sdg_pipeline.py`, `generalized_sdg_pipeline.py`, `nightmare_fuel_generator.py` | shipped (add self-instruct/back-translation/paraphrase) |
+| Cohort/data audit | `data_audit.py:CATEGORY_KEYWORDS` | shipped |
+| Curation + tier balancing | `curate_pipeline.py:QualityTiers` | shipped |
+| Hash split | `dataset_splitter.py`, `curate_pipeline.py:assign_split` | shipped (upgrade to stratified) |
 
 ---
 
