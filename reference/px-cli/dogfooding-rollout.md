@@ -193,11 +193,11 @@ px hook install --force
 
 Installed hooks:
 
-| Hook         | Agent    | Tool                     | Notes                          |
-| ------------ | -------- | ------------------------ | ------------------------------ |
-| `pre-commit` | content  | `audit_clinical_corpus`  | Filters to `scenarios/**`      |
-| `pre-push`   | advisor  | `review`                 | Blocks push on high-risk findings |
-| `post-merge` | pipeline | `check_pipeline_health`  | Async — posts to Slack         |
+| Hook         | Agent    | Tool                    | Notes                             |
+| ------------ | -------- | ----------------------- | --------------------------------- |
+| `pre-commit` | content  | `audit_clinical_corpus` | Filters to `scenarios/**`         |
+| `pre-push`   | advisor  | `review`                | Blocks push on high-risk findings |
+| `post-merge` | pipeline | `check_pipeline_health` | Async — posts to Slack            |
 
 ### CI Integration
 

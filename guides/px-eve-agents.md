@@ -12,6 +12,7 @@
 ## Eve agent (from px config)
 
 Agent: `eve`
+
 - Endpoint: `http://eve-agent.pixelated.svc.cluster.local:2000`
 - Tools: `clean_corpus`, `replace_slop`, `regenerate_record`, `evaluate_corpus_gate`
 - Async: false, Timeout: 30000ms
@@ -19,6 +20,7 @@ Agent: `eve`
 ## Why agents use px
 
 px CLI is the standardized way to:
+
 - Invoke any Eve agent (advisor, content, qa, pipeline, intake, session, eve)
 - Route requests to the correct agent endpoint
 - Get formatted, readable output
