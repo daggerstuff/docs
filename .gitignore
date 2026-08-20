@@ -8,3 +8,5 @@ maestro/
 .omc/
 **/.git_ignore/**
 **/.git_disabled/**
+# Recon research sweep output (generated)
+recon/
