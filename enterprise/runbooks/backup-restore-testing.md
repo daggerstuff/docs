@@ -161,7 +161,7 @@ archive_command = '/path/to/archive_wal.sh %p %f'
 | Compress | `gzip`                         | Reduce storage          |
 | Verify   | File size check                | Ensure non-empty backup |
 
-**Config:** `HINDSIGHT_LOCAL_DB_PATH` (source), `BACKUP_DIR=/var/backups/pixelated-memory`.
+**Config:** `FORESIGHT_LOCAL_DB_PATH` (source), `BACKUP_DIR=/var/backups/pixelated-memory`.
 **Retention:** 14 days (`MEMORY_BACKUP_RETENTION_DAYS`).
 
 **Restore** (`scripts/memory/restore-shared-memory-db.sh`, 104 lines):
@@ -476,7 +476,7 @@ echo "Latest backup: $LATEST_BACKUP"
 
 # Step 2: Create test restore location
 TEST_DB="/tmp/foresight_restore_test.db"
-cp "$HINDSIGHT_LOCAL_DB_PATH" "${TEST_DB}.pre-test.bak"
+cp "$FORESIGHT_LOCAL_DB_PATH" "${TEST_DB}.pre-test.bak"
 
 # Step 3: Run restore
 ./scripts/memory/restore-shared-memory-db.sh "$LATEST_BACKUP" \
@@ -491,7 +491,7 @@ sqlite3 "$TEST_DB" "SELECT count(*) FROM conversations;"
 sqlite3 "$TEST_DB" "SELECT * FROM memories ORDER BY created_at DESC LIMIT 5;"
 
 # Step 6: Restore original
-cp "${TEST_DB}.pre-test.bak" "$HINDSIGHT_LOCAL_DB_PATH"
+cp "${TEST_DB}.pre-test.bak" "$FORESIGHT_LOCAL_DB_PATH"
 rm -f "$TEST_DB" "${TEST_DB}.pre-test.bak"
 ```
 
