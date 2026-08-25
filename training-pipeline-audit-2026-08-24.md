@@ -41,10 +41,10 @@ reconciliation against later user preferences.
 | SHA-256 exact dedup | ✅ True | `_content_hash` uses `sha256` |
 | SimHash cross-source dedup | ❌ Missing | no SimHash anywhere; blueprint itself says "add SimHash" |
 | Presidio PII (2-layer) | ⚠️ Partial | entities differ: `CRYPTO`/`US_PASSPORT` added; `PERSON`/`LOCATION` removed |
-| PII Layer-3 LLM pass | ❌ Missing | `pii_scrubber.py` is an 83-line script, zero LLM |
+| PII Layer-3 LLM pass | ✅ Fixed | `pii_scrubber.py` now has `scrub_text()` 3-layer (regex→Presidio→LLM on <0.8 confidence) + `pii_llm_pass()` |
 | `ALLOWED_LICENSES` SPDX set | ✅ True | exact 6 licenses match |
 | ClinicalValidityJudge 6-dim rubric | ✅ True | technique/alliance/structure/cultural/ebp/dsm5 exact |
-| Judge "generalize to non-clinical" | ❌ Not done | judge still clinical-only |
+| Judge "generalize to non-clinical" | ✅ Fixed | `ClinicalValidityJudge.evaluate(..., domain="general")` adds 5-dim non-clinical rubric (relevance/accuracy/helpfulness/style/safety) |
 | QualityTiers T1–T4 | ✅ True | T1_GOLD/T2_SILVER/T3_BRONZE/T4_SAFETY + counts |
 | Hash split `% 100` bucket | ✅ True | `dataset_splitter.py:63-64` |
 | Stratified split (4-axis) | ⚠️ Half-true | exists but NOT multi-label stratified — hash-bucketing per stratum |
@@ -111,6 +111,8 @@ real catastrophic-forgetting eval (no GPU run), Axolotl Qwen/Llama config.
 - ~~`S3DatasetLoader` has only `stream_jsonl`~~ — fixed: shim now re-exports full API.
 - ~~`trl` / `flash_attn` absent~~ — fixed: both in `requirements_training.txt`.
 - ~~`self_instruct_seed.jsonl` missing~~ — fixed: 50 seeds created (below 200 target).
+- ~~PII Layer-3 LLM pass~~ — fixed: `pii_scrubber.py` `scrub_text()` + `pii_llm_pass()` (regex→Presidio→LLM on <0.8 confidence).
+- ~~Judge "generalize to non-clinical"~~ — fixed: `ClinicalValidityJudge.evaluate(..., domain="general")` 5-dim rubric.
 - Golden calib set is placeholder data — detection fixed, data still placeholder.
 - ~~`benchmark_runner.py` is CPU-mock~~ — real `lm-eval` + DiagnosisArena wired; `--mock` explicit (real path needs GPU).
 - Distributed training (App A) has no implementation — DeepSpeed ZeRO-3 (App D) done; NeMo FSDP2 remains.
