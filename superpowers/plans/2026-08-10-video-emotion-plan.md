@@ -1,18 +1,31 @@
 # Video Emotion AI Implementation Plan (2026-08-10)
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use
+> superpowers:subagent-driven-development (recommended) or
+> superpowers:executing-plans to implement this plan task-by-task. Steps use
+> checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a prototype pipeline that ingests video, extracts Action Units via OpenFace, detects microexpressions (<500ms) and deception signals, and produces audit-trail-ready clinical outputs — without using raw patient data for training.
+**Goal:** Build a prototype pipeline that ingests video, extracts Action Units
+via OpenFace, detects microexpressions (<500ms) and deception signals, and
+produces audit-trail-ready clinical outputs — without using raw patient data for
+training.
 
-**Architecture:** Single pipeline (spec §2): ingestion → OpenFace AU stream → temporal filter → fusion/deception score → clinical audit output. Open-source AU first (cost/latency); commercial vision APIs reserved for ground-truth comparison only. HIPAA gate: synthetic/de-identified data only for initial prototype.
+**Architecture:** Single pipeline (spec §2): ingestion → OpenFace AU stream →
+temporal filter → fusion/deception score → clinical audit output. Open-source AU
+first (cost/latency); commercial vision APIs reserved for ground-truth
+comparison only. HIPAA gate: synthetic/de-identified data only for initial
+prototype.
 
-**Tech Stack:** Python 3.12 (pyproject.toml), OpenFace 2.0 (Docker/container), OpenCV, NumPy, pandas, pydantic, pytest. GPU optional (NVIDIA T4/A10) for batch inference; prototype runs CPU.
+**Tech Stack:** Python 3.12 (pyproject.toml), OpenFace 2.0 (Docker/container),
+OpenCV, NumPy, pandas, pydantic, pytest. GPU optional (NVIDIA T4/A10) for batch
+inference; prototype runs CPU.
 
 ---
 
 ## Global Constraints (from spec)
 
-- No suppression (`@ts-ignore`, `# noqa`, `/* eslint-disable */`) — fix the error, don't mask it.
+- No suppression (`@ts-ignore`, `# noqa`, `/* eslint-disable */`) — fix the
+  error, don't mask it.
 - No raw patient video in training/prototype — synthetic/de-identified only.
 - Compressed / AR-1 output — no filler prose in reports/code comments.
 - Preserve clinical privacy (AGENTS.md): audit all outputs, no PII in logs.
@@ -52,11 +65,14 @@ data/synthetic/             (de-identified synthetic frames for prototype)
 
 - Create: `src/video_emotion/__init__.py`
 - Create: `src/video_emotion/types.py`
-- Modify: `pyproject.toml` (add `video-emotion` extra with `pydantic`, `numpy`, `opencv-python`, `pandas`)
+- Modify: `pyproject.toml` (add `video-emotion` extra with `pydantic`, `numpy`,
+  `opencv-python`, `pandas`)
 
 **Interfaces:**
 
-- Produces: `AUFrame` (Pydantic: timestamp_ms, au_scores: dict[int,float], face_bbox: tuple[int,int,int,int]), `EmotionEvent` (Pydantic: start_ms, end_ms, au_combo: str, deception_flag: bool, score: float)
+- Produces: `AUFrame` (Pydantic: timestamp_ms, au_scores: dict[int,float],
+  face_bbox: tuple[int,int,int,int]), `EmotionEvent` (Pydantic: start_ms,
+  end_ms, au_combo: str, deception_flag: bool, score: float)
 
 - [ ] **Step 1: Write failing type test**
 
@@ -102,7 +118,9 @@ from .types import AUFrame, EmotionEvent
 __all__ = ["AUFrame", "EmotionEvent"]
 ```
 
-Modify `pyproject.toml`: add `video-emotion = ["pydantic>=2", "numpy", "opencv-python", "pandas"]` under `[project.optional-dependencies]`.
+Modify `pyproject.toml`: add
+`video-emotion = ["pydantic>=2", "numpy", "opencv-python", "pandas"]` under
+`[project.optional-dependencies]`.
 
 - [ ] **Step 4: Run test — PASS**
 
@@ -213,7 +231,10 @@ git commit -m "feat(video-emotion): ingestion pipeline (30fps frame extraction)"
 - Consumes: `AUFrame` + image array (from ingestion)
 - Produces: `AUFrame` with `au_scores` populated (17 AUs from OpenFace)
 
-Note: OpenFace 2.0 runs via its Docker container (`docker run -v ... openface`). Prototype uses mock AU scores for synthetic data; real OpenFace call wrapped behind a flag (`use_real_openface=False` by default, `True` for production with Docker).
+Note: OpenFace 2.0 runs via its Docker container (`docker run -v ... openface`).
+Prototype uses mock AU scores for synthetic data; real OpenFace call wrapped
+behind a flag (`use_real_openface=False` by default, `True` for production with
+Docker).
 
 - [ ] **Step 1: Write failing AU extractor test**
 
@@ -260,9 +281,10 @@ def extract_au_scores(frame: AUFrame, use_real_openface: bool = False) -> AUFram
 ```markdown
 # Synthetic Dataset (data/synthetic/)
 
-All frames in this directory are synthetic/de-identified — no real patient video.
-Used for prototype AU extraction and temporal filtering only.
-Real clinical dataset: requires HIPAA-compliant de-identification + consent (see spec §6).
+All frames in this directory are synthetic/de-identified — no real patient
+video. Used for prototype AU extraction and temporal filtering only. Real
+clinical dataset: requires HIPAA-compliant de-identification + consent (see spec
+§6).
 ```
 
 - [ ] **Step 6: Commit**
@@ -286,7 +308,8 @@ git commit -m "feat(video-emotion): AU extractor with mock OpenFace + synthetic 
 - Consumes: `list[AUFrame]` (from ingestion + AU extractor)
 - Produces: `list[EmotionEvent]` (deception_flag, au_combo, score)
 
-Methods from spec §4: <500ms AU peaks; AU12 + no AU6 = forced smile; AU4 + AU15 = hurt; rapid onset/offset = deception.
+Methods from spec §4: <500ms AU peaks; AU12 + no AU6 = forced smile; AU4 + AU15
+= hurt; rapid onset/offset = deception.
 
 - [ ] **Step 1: Write failing temporal filter test**
 
@@ -347,8 +370,10 @@ git commit -m "feat(video-emotion): temporal filter (<500ms window, forced-smile
 
 **Interfaces:**
 
-- Deception layer consumes: `EmotionEvent`, produces: `EmotionEvent` (enriched with cross-modal misalignment score — placeholder for future fusion layer)
-- Audit writer produces: JSON audit file with `deception_events`, `clinical_notes` (no PII), `audit_timestamp`
+- Deception layer consumes: `EmotionEvent`, produces: `EmotionEvent` (enriched
+  with cross-modal misalignment score — placeholder for future fusion layer)
+- Audit writer produces: JSON audit file with `deception_events`,
+  `clinical_notes` (no PII), `audit_timestamp`
 
 - [ ] **Step 1: Write deception layer test**
 
@@ -490,7 +515,8 @@ git commit -m "feat(video-emotion): E2E prototype script + integration test"
 
 **Files:**
 
-- Modify: `docs/superpowers/plans/2026-08-10-video-emotion-plan.md` (this file — add verification results)
+- Modify: `docs/superpowers/plans/2026-08-10-video-emotion-plan.md` (this file —
+  add verification results)
 
 - [ ] **Step 1: Run full test suite**
 
@@ -519,7 +545,8 @@ Append to this file:
 - [x] Full test suite: `pytest tests/video_emotion/ -v` → PASS (N tests)
 - [x] No suppression comments found (grep -R `# noqa` src/ = 0)
 - [x] Synthetic/de-identified dataset only (data/synthetic/README.md present)
-- [x] Audit writer excludes PII (verified by grep for `patient_id` in audit JSON)
+- [x] Audit writer excludes PII (verified by grep for `patient_id` in audit
+      JSON)
 - [x] Compressed output verified (no filler, brief comments)
 ```
 
@@ -536,18 +563,22 @@ git commit -m "docs: video-emotion plan verified + E2E passing"
 
 Plan saved to `docs/superpowers/plans/2026-08-10-video-emotion-plan.md`.
 
-**1. Subagent-Driven (recommended)** — dispatch fresh subagent per task, review between tasks, fast iteration.
-**2. Inline Execution** — execute in this session using `executing-plans` skill, batch with checkpoints.
+**1. Subagent-Driven (recommended)** — dispatch fresh subagent per task, review
+between tasks, fast iteration. **2. Inline Execution** — execute in this session
+using `executing-plans` skill, batch with checkpoints.
 
-Choose 1 or 2. Before starting: the user must confirm the spec is approved (no revisions requested in previous turn — assume approved unless user objects).
+Choose 1 or 2. Before starting: the user must confirm the spec is approved (no
+revisions requested in previous turn — assume approved unless user objects).
 
 ---
 
 ## Verification (post-implementation)
 
 - [x] Full test suite: `uv run pytest tests/video_emotion/ -v` → PASS (27 tests)
-- [x] No suppression comments found (`grep -R '# noqa\|# type: ignore\|@ts-ignore' src/video_emotion/` = 0)
+- [x] No suppression comments found
+      (`grep -R '# noqa\|# type: ignore\|@ts-ignore' src/video_emotion/` = 0)
 - [x] Synthetic/de-identified dataset only (`data/synthetic/README.md` present)
-- [x] Audit writer excludes PII (verified by grep for `patient_id` in audit JSON — only in comment documenting absence)
+- [x] Audit writer excludes PII (verified by grep for `patient_id` in audit JSON
+      — only in comment documenting absence)
 - [x] Compressed output verified (no comments >120 chars, no filler prose)
 - [x] LSP diagnostics clean on all new files (0 errors/warnings)

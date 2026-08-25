@@ -1,11 +1,10 @@
 # 2026-Q3 Findings Report
 
-**Assessment:** Full internal security assessment — Q3 2026
-**Date range:** _TBD_
-**Environment:** Staging (primary), Production (limited, read-only)
-**Tester:** _TBD_ (owner: Chad)
-**Methodology:** OWASP Top 10, OWASP API Security Top 10, NIST SP 800-115, PTES
-**Runbook:** `docs/runbooks/penetration-testing-assessment.md`
+**Assessment:** Full internal security assessment — Q3 2026 **Date range:**
+_TBD_ **Environment:** Staging (primary), Production (limited, read-only)
+**Tester:** _TBD_ (owner: Chad) **Methodology:** OWASP Top 10, OWASP API
+Security Top 10, NIST SP 800-115, PTES **Runbook:**
+`docs/runbooks/penetration-testing-assessment.md`
 
 ---
 
@@ -15,12 +14,12 @@ _Write a 3–5 sentence summary of the assessment: headline finding counts,
 overall risk posture, and any areas needing immediate attention._
 
 | Severity | Count |
-|----------|-------|
-| Critical | 0 |
-| High | 0 |
-| Medium | 0 |
-| Low | 0 |
-| Info | 0 |
+| -------- | ----- |
+| Critical | 0     |
+| High     | 0     |
+| Medium   | 0     |
+| Low      | 0     |
+| Info     | 0     |
 
 > **Baseline note:** S3 automated scans (Trivy, Checkov, pnpm audit, pip-audit)
 > established a clean baseline (0 Critical / 0 High) on 2026-07-30. This report
@@ -30,16 +29,16 @@ overall risk posture, and any areas needing immediate attention._
 
 ## 2. Scope Executed
 
-| Asset | Tested? | Notes |
-|-------|---------|-------|
-| Web application (`pixelatedempathy.com`) | ☐ | |
-| REST API (`/api/*`) + GraphQL | ☐ | |
-| WebSocket service | ☐ | |
-| Auth flows (JWT, OAuth, sessions) | ☐ | |
-| Admin dashboard (`/admin/*`) | ☐ | |
-| Cloud / K8s config | ☐ | Read-only review |
-| CI/CD pipeline | ☐ | |
-| Supply chain (SCA) | ☐ | Weekly automated |
+| Asset                                    | Tested? | Notes            |
+| ---------------------------------------- | ------- | ---------------- |
+| Web application (`pixelatedempathy.com`) | ☐       |                  |
+| REST API (`/api/*`) + GraphQL            | ☐       |                  |
+| WebSocket service                        | ☐       |                  |
+| Auth flows (JWT, OAuth, sessions)        | ☐       |                  |
+| Admin dashboard (`/admin/*`)             | ☐       |                  |
+| Cloud / K8s config                       | ☐       | Read-only review |
+| CI/CD pipeline                           | ☐       |                  |
+| Supply chain (SCA)                       | ☐       | Weekly automated |
 
 ---
 
@@ -47,9 +46,9 @@ overall risk posture, and any areas needing immediate attention._
 
 ### 3.1 Summary Table
 
-| ID | Severity | Title | Affected Asset | CVSS | Status |
-|----|----------|-------|----------------|------|--------|
-| _SEC-FIND-001_ | _High_ | _Example finding_ | _API_ | _7.5_ | _Open / Remediated / Verified_ |
+| ID             | Severity | Title             | Affected Asset | CVSS  | Status                         |
+| -------------- | -------- | ----------------- | -------------- | ----- | ------------------------------ |
+| _SEC-FIND-001_ | _High_   | _Example finding_ | _API_          | _7.5_ | _Open / Remediated / Verified_ |
 
 ### 3.2 Detailed Findings
 
@@ -71,9 +70,9 @@ overall risk posture, and any areas needing immediate attention._
 
 ## 4. Remediation & Retest
 
-| Finding | SLA met? | Fix deployed? | Retested? | Closure date |
-|---------|----------|---------------|-----------|--------------|
-| _SEC-FIND-001_ | _Yes/No_ | _Yes/No_ | _Yes/No_ | _YYYY-MM-DD_ |
+| Finding        | SLA met? | Fix deployed? | Retested? | Closure date |
+| -------------- | -------- | ------------- | --------- | ------------ |
+| _SEC-FIND-001_ | _Yes/No_ | _Yes/No_      | _Yes/No_  | _YYYY-MM-DD_ |
 
 ---
 
@@ -88,6 +87,6 @@ overall risk posture, and any areas needing immediate attention._
 
 ## Change Log
 
-| Date | Author | Change |
-|------|--------|--------|
-| 2026-07-31 | Chad | Template created; baseline noted (0 Critical / 0 High) |
+| Date       | Author | Change                                                 |
+| ---------- | ------ | ------------------------------------------------------ |
+| 2026-07-31 | Chad   | Template created; baseline noted (0 Critical / 0 High) |

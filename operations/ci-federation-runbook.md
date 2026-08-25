@@ -1,14 +1,14 @@
 # CI Federation Operations Runbook & Escalation Map
 
-**Last updated:** 2026-07-30
-**Owner:** Chad
-**Repo:** daggerstuff/pixelated
+**Last updated:** 2026-07-30 **Owner:** Chad **Repo:** daggerstuff/pixelated
 
 ---
 
 ## 1. Overview
 
-This runbook documents the CI federation gates, their locations, owners, break/fix procedures, and escalation paths. The Pixelated CI model federates across two providers:
+This runbook documents the CI federation gates, their locations, owners,
+break/fix procedures, and escalation paths. The Pixelated CI model federates
+across two providers:
 
 | Provider                 | Domain                                           | Deploy Authority  |
 | ------------------------ | ------------------------------------------------ | ----------------- |
@@ -203,7 +203,8 @@ This runbook documents the CI federation gates, their locations, owners, break/f
 ### 5.3 AI Validation Pipeline Alert
 
 1. Check the auto-created GitHub issue from `ai-validation.yml`
-2. Navigate to the AI validation dashboard at `${APP_URL}/admin/ai/validation-pipeline`
+2. Navigate to the AI validation dashboard at
+   `${APP_URL}/admin/ai/validation-pipeline`
 3. Inspect recent pass rates and failure reasons
 4. If webhook failure: check AI service health and connectivity
 5. Re-trigger manually via `workflow_dispatch`
@@ -301,7 +302,8 @@ This runbook documents the CI federation gates, their locations, owners, break/f
 
 - Review any open CRITICAL/HIGH security alerts from the past week
 - Check CodeQL + Trivy scan results from `security.yml`
-- Verify no new supply-chain vulnerabilities in dependencies (pnpm audit / pip-audit)
+- Verify no new supply-chain vulnerabilities in dependencies (pnpm audit /
+  pip-audit)
 
 #### 4. Capacity & Cost (5 min)
 
@@ -313,7 +315,8 @@ This runbook documents the CI federation gates, their locations, owners, break/f
 
 #### 5. Backlog & Action Items (10 min)
 
-- Review open CI federation tickets in Linear (filter: `project:"CI Federation"`)
+- Review open CI federation tickets in Linear (filter:
+  `project:"CI Federation"`)
 - Review any open incidents or post-mortems
 - Check if any pipeline needs maintenance (pin updates, deprecation windows)
 - Assign next week's CI improvement tasks
@@ -323,7 +326,9 @@ This runbook documents the CI federation gates, their locations, owners, break/f
 On the first Monday of each month, extend the review to 60 minutes and cover:
 
 - Run the dashboard with `--days 30` for a broader trend analysis
-- Review deprecation timelines (e.g., `security-scanning.yml` removal after 2026-08-31)
-- Audit for job duplication drift (new workflows that may overlap with existing ones)
+- Review deprecation timelines (e.g., `security-scanning.yml` removal after
+  2026-08-31)
+- Audit for job duplication drift (new workflows that may overlap with existing
+  ones)
 - Rotate CI tokens and review secret access
 - Update this runbook if topology has changed

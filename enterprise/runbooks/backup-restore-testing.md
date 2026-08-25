@@ -1,6 +1,9 @@
 ---
 title: Backup & Restore Testing
-description: Procedures for verifying database backups, testing full restores, point-in-time recovery (PITR), retention policies, and quarterly restore drills for Pixelated Empathy.
+description:
+  Procedures for verifying database backups, testing full restores,
+  point-in-time recovery (PITR), retention policies, and quarterly restore
+  drills for Pixelated Empathy.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -21,8 +24,8 @@ _DR-2: Database backup and restore testing_
 
 This runbook defines the procedures for verifying automated database backups,
 testing full restores, validating point-in-time recovery (PITR), documenting
-retention policies, and scheduling quarterly restore drills for all
-datastores in the Pixelated Empathy platform.
+retention policies, and scheduling quarterly restore drills for all datastores
+in the Pixelated Empathy platform.
 
 **In scope:**
 
@@ -45,7 +48,8 @@ datastores in the Pixelated Empathy platform.
 **Related documents:**
 
 - [DR — RTO & RPO Targets](./dr-rto-rpo-targets.md) — Service tier definitions
-- [Infra Disaster Recovery](./infra-disaster-recovery.md) — Infrastructure-level DR
+- [Infra Disaster Recovery](./infra-disaster-recovery.md) — Infrastructure-level
+  DR
 - [SLA Breach Response](./sla-breach-response.md) — Incident response procedures
 - [SLO Definitions](./slo-definitions.md) — Service-level objectives
 
@@ -67,9 +71,9 @@ datastores in the Pixelated Empathy platform.
 | Monitoring | `tar -czf` (dashboards/, grafana/, prometheus/) | `monitoring_YYYYMMDD_HHMMSS.tar.gz` |
 
 **Upload:** rclone to `drive:pixel-data/backups/` (Google Drive remote).
-**Retention:** 30 days local + 30 days remote.
-**Notifications:** Slack webhook + email on success/failure.
-**Manifest:** JSON backup manifest written to backup root.
+**Retention:** 30 days local + 30 days remote. **Notifications:** Slack
+webhook + email on success/failure. **Manifest:** JSON backup manifest written
+to backup root.
 
 **Commands:**
 
@@ -91,7 +95,8 @@ datastores in the Pixelated Empathy platform.
 
 **Location:** `docker/postgres/backup/backup.sh` (309 lines)
 
-**Function:** Standalone PostgreSQL backup with schema, data, and WAL base backup.
+**Function:** Standalone PostgreSQL backup with schema, data, and WAL base
+backup.
 
 | Step     | Command                                | Purpose                |
 | -------- | -------------------------------------- | ---------------------- |
@@ -100,8 +105,8 @@ datastores in the Pixelated Empathy platform.
 | WAL base | `pg_basebackup`                        | Base backup for PITR   |
 
 **Config:** `DB_HOST=localhost`, `DB_PORT=5432`, `DB_USER=pixelated`.
-**Retention:** 30 days (`BACKUP_ROOT=/backups`).
-**Manifest:** `BACKUP_MANIFEST.txt` with restoration instructions.
+**Retention:** 30 days (`BACKUP_ROOT=/backups`). **Manifest:**
+`BACKUP_MANIFEST.txt` with restoration instructions.
 
 ### 2.3 PostgreSQL Restore (`docker/postgres/backup/restore.sh`)
 
@@ -161,8 +166,9 @@ archive_command = '/path/to/archive_wal.sh %p %f'
 | Compress | `gzip`                         | Reduce storage          |
 | Verify   | File size check                | Ensure non-empty backup |
 
-**Config:** `FORESIGHT_LOCAL_DB_PATH` (source), `BACKUP_DIR=/var/backups/pixelated-memory`.
-**Retention:** 14 days (`MEMORY_BACKUP_RETENTION_DAYS`).
+**Config:** `FORESIGHT_LOCAL_DB_PATH` (source),
+`BACKUP_DIR=/var/backups/pixelated-memory`. **Retention:** 14 days
+(`MEMORY_BACKUP_RETENTION_DAYS`).
 
 **Restore** (`scripts/memory/restore-shared-memory-db.sh`, 104 lines):
 
@@ -174,7 +180,8 @@ archive_command = '/path/to/archive_wal.sh %p %f'
 ./scripts/memory/restore-shared-memory-db.sh <backup_file> --force
 ```
 
-Validation: `PRAGMA integrity_check`, existing DB backed up to `.pre-restore.bak`, atomic `mv`.
+Validation: `PRAGMA integrity_check`, existing DB backed up to
+`.pre-restore.bak`, atomic `mv`.
 
 ### 2.6 Backup Verification (`verify-backups.sh`)
 
@@ -197,7 +204,8 @@ Validation: `PRAGMA integrity_check`, existing DB backed up to `.pre-restore.bak
 
 **Function:** S3-based disaster recovery.
 
-**Config:** `BACKUP_BUCKET=pixelated-empathy-backups`, `RTO_TARGET=14400s` (4h), `RPO_TARGET=3600s` (1h).
+**Config:** `BACKUP_BUCKET=pixelated-empathy-backups`, `RTO_TARGET=14400s` (4h),
+`RPO_TARGET=3600s` (1h).
 
 | Recovery Type | Steps                                                                |
 | ------------- | -------------------------------------------------------------------- |
@@ -205,7 +213,8 @@ Validation: `PRAGMA integrity_check`, existing DB backed up to `.pre-restore.bak
 | Application   | S3 download → tar extract → `kubectl apply` → rollout status         |
 | Full          | `terraform apply` → recover_database → recover_application → verify  |
 
-**Verification:** `pg_isready`, table count ≥5, `/health`, `/api/health/database`.
+**Verification:** `pg_isready`, table count ≥5, `/health`,
+`/api/health/database`.
 
 ### 2.8 Backup Schedule (`backup-schedule.cron`)
 
@@ -228,8 +237,8 @@ Validation: `PRAGMA integrity_check`, existing DB backed up to `.pre-restore.bak
 
 ### 3.1 Daily Verification (Automated)
 
-**Owner:** On-call engineer (review alerts)
-**Cadence:** Daily, reviewed via monitoring dashboard
+**Owner:** On-call engineer (review alerts) **Cadence:** Daily, reviewed via
+monitoring dashboard
 
 | Check              | Method                                                   | Expected Result | Alert                  |
 | ------------------ | -------------------------------------------------------- | --------------- | ---------------------- |
@@ -238,12 +247,12 @@ Validation: `PRAGMA integrity_check`, existing DB backed up to `.pre-restore.bak
 | Backup size stable | `backup_size_bytes > 0`                                  | Non-zero        | BackupSizeZero         |
 | No backup errors   | `increase(backup_failure_total[24h]) == 0`               | Zero failures   | BackupFailuresDetected |
 
-> **Note:** Backup metrics require a textfile collector integration (see §6 — Follow-up DR-2.1).
+> **Note:** Backup metrics require a textfile collector integration (see §6 —
+> Follow-up DR-2.1).
 
 ### 3.2 Weekly Verification (Manual Spot Check)
 
-**Owner:** SRE / DevOps engineer
-**Cadence:** Weekly (Monday)
+**Owner:** SRE / DevOps engineer **Cadence:** Weekly (Monday)
 
 ```bash
 # 1. List recent backups
@@ -267,12 +276,13 @@ cat /backups/backup_manifest_$(date +%Y%m%d).json | python3 -m json.tool
 rclone lsl drive:pixel-data/backups/ | tail -10
 ```
 
-**Documentation:** Log results in `.agent/internal/backup-verification/YYYY-Www.md`.
+**Documentation:** Log results in
+`.agent/internal/backup-verification/YYYY-Www.md`.
 
 ### 3.3 Monthly Verification (Automated + Manual Review)
 
-**Owner:** SRE Lead
-**Cadence:** Monthly (1st, automated via `verify-backups.sh`)
+**Owner:** SRE Lead **Cadence:** Monthly (1st, automated via
+`verify-backups.sh`)
 
 | Step | Script              | Verification                               |
 | ---- | ------------------- | ------------------------------------------ |
@@ -297,7 +307,8 @@ rclone lsl drive:pixel-data/backups/ | tail -10
 
 ### 4.1 PostgreSQL Full Restore Test
 
-**Objective:** Verify full database restore from backup and measure restore time.
+**Objective:** Verify full database restore from backup and measure restore
+time.
 
 **Prerequisites:**
 
@@ -524,7 +535,8 @@ rm -f "$TEST_DB" "${TEST_DB}.pre-test.bak"
 
 **Local:** `backup-system.sh cleanup` prunes files older than 30 days.
 **Remote:** `verify-backups.sh` prunes rclone remote older than 30 days.
-**Foresight:** `backup-shared-memory-db.sh` prunes local files older than 14 days.
+**Foresight:** `backup-shared-memory-db.sh` prunes local files older than 14
+days.
 
 ### 5.3 Gaps in Retention
 
@@ -557,7 +569,8 @@ node-exporter.
 | `backup_failure_total`                         | Counter | `backup_type` | Total failed backups                     |
 | `backup_verify_last_success_timestamp_seconds` | Gauge   | `backup_type` | Last successful verification             |
 
-**Backup types:** `postgresql`, `postgresql-ai`, `redis`, `foresight-memory`, `app-data`, `monitoring-data`, `mongodb-atlas`.
+**Backup types:** `postgresql`, `postgresql-ai`, `redis`, `foresight-memory`,
+`app-data`, `monitoring-data`, `mongodb-atlas`.
 
 ### 6.2 Backup Alert Rules
 
@@ -692,9 +705,8 @@ mkdir -p /var/lib/node_exporter/textfile
 
 ## Decision
 
-[ ] Drill PASSED — RTO/RPO targets met
-[ ] Drill PASSED with conditions — [conditions]
-[ ] Drill FAILED — [reason], retest required
+[ ] Drill PASSED — RTO/RPO targets met [ ] Drill PASSED with conditions —
+[conditions] [ ] Drill FAILED — [reason], retest required
 ```
 
 ---
@@ -754,7 +766,8 @@ mkdir -p /var/lib/node_exporter/textfile
 ### Internal Documentation
 
 - [DR — RTO & RPO Targets](./dr-rto-rpo-targets.md) — Service tier definitions
-- [Infra Disaster Recovery](./infra-disaster-recovery.md) — Infrastructure DR procedures
+- [Infra Disaster Recovery](./infra-disaster-recovery.md) — Infrastructure DR
+  procedures
 - [SLA Breach Response](./sla-breach-response.md) — Incident response
 - [SLO Definitions](./slo-definitions.md) — Service-level objectives
 - [Resilience Testing](./resilience-testing.md) — Chaos engineering scenarios
@@ -789,6 +802,7 @@ mkdir -p /var/lib/node_exporter/textfile
 
 ### Issue Tracking
 
-- Linear: [PIX-4133](https://linear.app/pixelated/issue/PIX-4133/dr-2-database-backup-restore-testing)
+- Linear:
+  [PIX-4133](https://linear.app/pixelated/issue/PIX-4133/dr-2-database-backup-restore-testing)
 - Parent: [PIX-4125](https://linear.app/pixelated/issue/PIX-4125) — DR epic
 - GitHub: [#5068](https://github.com/daggerstuff/pixelated/issues/5068)

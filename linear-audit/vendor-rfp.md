@@ -1,10 +1,8 @@
 # Request for Proposal — External Penetration Test
 
-**Issued by:** Pixelated Empathy
-**RFP date:** 2026-07-30
-**Response deadline:** 2026-08-15
-**Anticipated engagement start:** 2026-09-01
-**Contact:** Chad <chad@pixelatedempathy.com>
+**Issued by:** Pixelated Empathy **RFP date:** 2026-07-30 **Response deadline:**
+2026-08-15 **Anticipated engagement start:** 2026-09-01 **Contact:** Chad
+<chad@pixelatedempathy.com>
 
 ---
 
@@ -13,7 +11,8 @@
 Pixelated Empathy is seeking qualified cybersecurity vendors to conduct an
 external penetration test of our production web application, public API, and
 supporting infrastructure. This engagement is required to close an enterprise
-readiness gap (Linear PIX-4126) and satisfy customer and compliance requirements.
+readiness gap (Linear PIX-4126) and satisfy customer and compliance
+requirements.
 
 This RFP describes the scope, deliverables, evaluation criteria, and submission
 requirements. Vendors should provide a detailed proposal including methodology,
@@ -33,7 +32,8 @@ includes:
 - Database: PostgreSQL (multi-tenant)
 - Observability: Sentry, Prometheus, Grafana
 
-Detailed architecture is available in the threat model document shared under NDA.
+Detailed architecture is available in the threat model document shared under
+NDA.
 
 ---
 
@@ -90,14 +90,14 @@ The vendor will deliver:
 
 Proposals will be evaluated on:
 
-| Criterion | Weight |
-|-----------|--------|
-| Relevant healthcare / AI platform experience | 20% |
-| Methodology and depth of testing | 25% |
-| Team qualifications and certifications (OSCP, GWAPT, etc.) | 20% |
-| Timeline and availability | 15% |
-| Pricing and value | 15% |
-| References from similar engagements | 5% |
+| Criterion                                                  | Weight |
+| ---------------------------------------------------------- | ------ |
+| Relevant healthcare / AI platform experience               | 20%    |
+| Methodology and depth of testing                           | 25%    |
+| Team qualifications and certifications (OSCP, GWAPT, etc.) | 20%    |
+| Timeline and availability                                  | 15%    |
+| Pricing and value                                          | 15%    |
+| References from similar engagements                        | 5%     |
 
 ---
 
@@ -118,15 +118,15 @@ Please submit the following in PDF format to the contact listed above:
 
 ## 7. Timeline
 
-| Milestone | Date |
-|-----------|------|
-| RFP issued | 2026-07-30 |
-| Vendor Q&A deadline | 2026-08-08 |
-| Proposal deadline | 2026-08-15 |
-| Evaluation complete | 2026-08-22 |
+| Milestone                    | Date       |
+| ---------------------------- | ---------- |
+| RFP issued                   | 2026-07-30 |
+| Vendor Q&A deadline          | 2026-08-08 |
+| Proposal deadline            | 2026-08-15 |
+| Evaluation complete          | 2026-08-22 |
 | Vendor selected / MSA signed | 2026-08-22 |
-| SOW finalized | 2026-08-25 |
-| Engagement kickoff | 2026-09-01 |
+| SOW finalized                | 2026-08-25 |
+| Engagement kickoff           | 2026-09-01 |
 
 ---
 
@@ -154,6 +154,6 @@ Selected vendor must agree to:
 
 ## 10. Change Log
 
-| Date | Author | Change |
-|------|--------|--------|
-| 2026-07-30 | Chad | Initial RFP |
+| Date       | Author | Change      |
+| ---------- | ------ | ----------- |
+| 2026-07-30 | Chad   | Initial RFP |

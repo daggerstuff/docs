@@ -1,6 +1,8 @@
 ---
 title: Penetration Testing Assessment
-description: Security assessment program, pentest cadence, methodology, findings framework, and remediation tracking for the Pixelated Empathy platform
+description:
+  Security assessment program, pentest cadence, methodology, findings framework,
+  and remediation tracking for the Pixelated Empathy platform
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -21,18 +23,18 @@ remediation, and reporting for the Pixelated Empathy platform.
 
 ## 1. Purpose & Scope
 
-This runbook defines the **penetration testing program** for Pixelated
-Empathy, including assessment cadence, methodology, scope, findings
-framework, and remediation tracking.
+This runbook defines the **penetration testing program** for Pixelated Empathy,
+including assessment cadence, methodology, scope, findings framework, and
+remediation tracking.
 
-**Scope**: All production and staging infrastructure, web applications,
-APIs, AI/ML services, and third-party integrations comprising the
-Pixelated Empathy platform.
+**Scope**: All production and staging infrastructure, web applications, APIs,
+AI/ML services, and third-party integrations comprising the Pixelated Empathy
+platform.
 
 **Related documents**:
 
-- [HIPAA Risk Analysis](../hipaa-risk-analysis.md) — threat catalog and
-  risk register (pentest findings integrated here)
+- [HIPAA Risk Analysis](../hipaa-risk-analysis.md) — threat catalog and risk
+  register (pentest findings integrated here)
 - [Information Security Policy](../policies/information-security-policy.md)
 - [Incident Response Plan](../policies/incident-response-plan.md)
 - [Vendor Security Reviews](../vendor-security-reviews.md)
@@ -75,8 +77,8 @@ Enterprise Gap: Penetration Testing
 | 1.4  | Define communication channels        | Contact list         |
 | 1.5  | Schedule testing window              | Calendar invite      |
 
-**Authorization**: VP Engineering must sign the engagement letter before
-testing begins. Testing without signed authorization is prohibited.
+**Authorization**: VP Engineering must sign the engagement letter before testing
+begins. Testing without signed authorization is prohibited.
 
 ### Phase 2 — Reconnaissance & Threat Modeling (S2)
 
@@ -98,9 +100,10 @@ testing begins. Testing without signed authorization is prohibited.
 | DAST            | OWASP ZAP                             | Staging endpoints       | Weekly         |
 | IaC scan        | Checkov, tfsec                        | Terraform/K8s manifests | Per PR (CI)    |
 
-**CI integration**: Automated scans run in `.github/workflows/security-scanning.yml`
-and `.github/workflows/codeql.yml`. Results are published to GitHub Security tab
-and must be triaged within 5 business days.
+**CI integration**: Automated scans run in
+`.github/workflows/security-scanning.yml` and `.github/workflows/codeql.yml`.
+Results are published to GitHub Security tab and must be triaged within 5
+business days.
 
 ### Phase 4 — Manual Deep-Dive (S4–S6)
 
@@ -163,9 +166,9 @@ See §4 and §5 below.
 
 ### 4.2 Risk Register Integration
 
-All pentest findings are recorded in the HIPAA Risk Analysis threat
-catalog (`docs/reference/enterprise/hipaa-risk-analysis.md`) with a
-unique finding ID (format: `PT-YYYY-NNN`). Each finding links to:
+All pentest findings are recorded in the HIPAA Risk Analysis threat catalog
+(`docs/reference/enterprise/hipaa-risk-analysis.md`) with a unique finding ID
+(format: `PT-YYYY-NNN`). Each finding links to:
 
 - **Linear ticket** — for tracking remediation work
 - **GitHub PR** — for code fixes
@@ -197,8 +200,8 @@ unique finding ID (format: `PT-YYYY-NNN`). Each finding links to:
 
 ## 5. Remediation Process
 
-1. **Triage** (1 business day): Security Lead reviews finding, assigns
-   severity, creates Linear ticket
+1. **Triage** (1 business day): Security Lead reviews finding, assigns severity,
+   creates Linear ticket
 2. **Assign** (2 business days): Engineering assigns remediation owner
 3. **Fix** (per severity SLA): Engineer implements fix, creates PR
 4. **Review** (2 business days): Security Lead reviews PR, verifies fix
@@ -238,16 +241,16 @@ unique finding ID (format: `PT-YYYY-NNN`). Each finding links to:
 
 - **Linear**: [PIX-4126](https://linear.app/pixelated/issue/PIX-4126) —
   Enterprise Gap: Penetration Testing
-- **Linear**: [PIX-4135](https://linear.app/pixelated/issue/PIX-4135) —
-  S1: Pre-Engagement
-- **Linear**: [PIX-4136](https://linear.app/pixelated/issue/PIX-4136) —
-  S2: Reconnaissance & Threat Modeling
-- **OWASP Testing Guide v4.2**: https://owasp.org/www-project-web-security-testing-guide/
+- **Linear**: [PIX-4135](https://linear.app/pixelated/issue/PIX-4135) — S1:
+  Pre-Engagement
+- **Linear**: [PIX-4136](https://linear.app/pixelated/issue/PIX-4136) — S2:
+  Reconnaissance & Threat Modeling
+- **OWASP Testing Guide v4.2**:
+  https://owasp.org/www-project-web-security-testing-guide/
 - **NIST SP 800-115**: Technical Guide to Information Security Testing
 - **PCI DSS 4.0** §11.4: Penetration testing requirements
 
 ---
 
-_Document maintained by: Security Lead_
-_Last updated: 2026-08-05_
-_Review cadence: Quarterly (after each assessment)_
+_Document maintained by: Security Lead_ _Last updated: 2026-08-05_ _Review
+cadence: Quarterly (after each assessment)_

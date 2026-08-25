@@ -1,15 +1,15 @@
 # Dual-Mode Auth Boundary Design
 
-> **Part of**: Platform Maturity & Clinical Readiness (Initiative)
-> **Epic**: PIX-3925 — Dual-Mode Auth & API Key Infrastructure
-> **Status**: Design Complete — Implementation in progress
-> **Last updated**: 2026-07-15
+> **Part of**: Platform Maturity & Clinical Readiness (Initiative) **Epic**:
+> PIX-3925 — Dual-Mode Auth & API Key Infrastructure **Status**: Design Complete
+> — Implementation in progress **Last updated**: 2026-07-15
 
 ---
 
 ## 1. Architecture Overview
 
-The platform supports **two authentication modes** that can be applied per-route or per-route-family:
+The platform supports **two authentication modes** that can be applied per-route
+or per-route-family:
 
 | Mode    | Credential                  | Source                 | Primary Use Case             |
 | ------- | --------------------------- | ---------------------- | ---------------------------- |
@@ -64,7 +64,8 @@ Client Request
 
 ### 2.1 `AuthenticatedRequest`
 
-Defined in `src/lib/auth/auth0-middleware.ts:482-498`. Extends the standard `Request` with:
+Defined in `src/lib/auth/auth0-middleware.ts:482-498`. Extends the standard
+`Request` with:
 
 ```typescript
 interface AuthenticatedRequest extends Request {
@@ -106,7 +107,8 @@ interface RouteConfig {
 
 ### 2.3 API Key Model
 
-Defined in `src/lib/db/developer-api-keys.ts:10-24`, backed by `developer_api_keys` table:
+Defined in `src/lib/db/developer-api-keys.ts:10-24`, backed by
+`developer_api_keys` table:
 
 | Column                      | Type        | Notes                                         |
 | --------------------------- | ----------- | --------------------------------------------- |
@@ -157,7 +159,8 @@ Defined in `src/lib/auth/scopes.ts` and `route-config.ts:24-60`:
 
 ### 3.2 Family Defaults (for unregistered routes)
 
-Routes not explicitly listed in `ROUTE_CONFIGS` fall back to family inference based on path prefix:
+Routes not explicitly listed in `ROUTE_CONFIGS` fall back to family inference
+based on path prefix:
 
 | Inferred Family | Strategy     | Default Scopes           |
 | --------------- | ------------ | ------------------------ |
@@ -202,14 +205,17 @@ Generation: `randomBytes(32)` → base64url → `dev_` prefix → total 47 chars
 - Check `expires_at`, check rate limit window in `api_key_rate_limits` table
 - On success: update `last_used_at`, increment rate limit counter
 - On failure: update `last_failed_at`, log security event
-- After 10 consecutive failed attempts: auto-revoke key (in-memory counter, resets on success)
+- After 10 consecutive failed attempts: auto-revoke key (in-memory counter,
+  resets on success)
 
 ### 4.3 Revocation
 
 Two paths:
 
-- **User-initiated**: `DELETE /api/developer/api-keys/:id` → `revokeApiKey(id, userId)` (scoped to owner)
-- **System-initiated**: `revokeApiKeySystem(id)` (admin/internal use, no userId guard)
+- **User-initiated**: `DELETE /api/developer/api-keys/:id` →
+  `revokeApiKey(id, userId)` (scoped to owner)
+- **System-initiated**: `revokeApiKeySystem(id)` (admin/internal use, no userId
+  guard)
 
 Both set `is_active = false`.
 
@@ -244,7 +250,9 @@ The DB-based rate limit for API keys works but has drawbacks:
 - DB writes on every request add latency
 - `api_key_rate_limits` table requires periodic cleanup
 
-**Target**: Add an optional Redis-backed sliding window rate limiter that can be used at the middleware level (before `authenticateRequest`) for higher-traffic endpoints.
+**Target**: Add an optional Redis-backed sliding window rate limiter that can be
+used at the middleware level (before `authenticateRequest`) for higher-traffic
+endpoints.
 
 ---
 
@@ -266,7 +274,9 @@ The DB-based rate limit for API keys works but has drawbacks:
 
 ### 6.2 Needed (Gaps to Close)
 
-- **Rate limit on auth endpoints**: No rate limiting on `/api/auth/login` or `/api/auth/refresh` at middleware level (only key-level rate limit for API keys)
+- **Rate limit on auth endpoints**: No rate limiting on `/api/auth/login` or
+  `/api/auth/refresh` at middleware level (only key-level rate limit for API
+  keys)
 - **Key rotation endpoint**: No way to rotate a key without delete-and-recreate
 - **OpenAPI spec**: No documented contract to audit against
 
@@ -274,7 +284,8 @@ The DB-based rate limit for API keys works but has drawbacks:
 
 ## 7. SDK Integration
 
-The `@pixelated-empathy/sdk` package at `packages/pixelated-sdk/` supports dual-mode auth:
+The `@pixelated-empathy/sdk` package at `packages/pixelated-sdk/` supports
+dual-mode auth:
 
 ```typescript
 // JWT mode (user sessions)
@@ -331,4 +342,5 @@ Blocks: GraphQL federation (PIX-3928), partner integrations
 - `src/lib/db/developer-api-keys.ts` — API key manager (325 lines)
 - `src/lib/db/developer-api-keys.test.ts` — API key tests
 - `db/migrations/008_add_developer_api_keys.sql` — Schema migration
-- `db/migrations/009_add_last_failed_at_to_developer_api_keys.sql` — Schema migration
+- `db/migrations/009_add_last_failed_at_to_developer_api_keys.sql` — Schema
+  migration

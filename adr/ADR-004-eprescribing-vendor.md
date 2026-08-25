@@ -12,15 +12,14 @@ from scratch (plan risk R-EHR-EPIC-01): e-prescribing requires DEA
 certification, EPCS (Electronic Prescribing of Controlled Substances)
 compliance, state pharmacy board integrations, and controlled substance
 scheduling rules. Building in-house would require DEA registration, EPCS
-certification audits, and per-state pharmacy board integrations — none of
-which the platform has infrastructure for.
+certification audits, and per-state pharmacy board integrations — none of which
+the platform has infrastructure for.
 
-HIE integration via Carequality or DirectTrust requires certificate
-management, trust framework onboarding, and conformance testing — a product
-in itself. The plan defers both to Phase 3 and explicitly states "NOT
-custom." The existing `src/lib/ehr/` integration layer (Epic, Cerner,
-athenahealth, Allscripts FHIR clients) already demonstrates the
-integrate-don't-build pattern.
+HIE integration via Carequality or DirectTrust requires certificate management,
+trust framework onboarding, and conformance testing — a product in itself. The
+plan defers both to Phase 3 and explicitly states "NOT custom." The existing
+`src/lib/ehr/` integration layer (Epic, Cerner, athenahealth, Allscripts FHIR
+clients) already demonstrates the integrate-don't-build pattern.
 
 ## Decision 1: Vendor Integration for E-Prescribing
 
@@ -39,12 +38,12 @@ integrate-don't-build pattern.
 
 ### Implementation
 
-- `src/lib/ehr-native/integrations/` (Phase 3) implements vendor client
-  behind an `EPrescribingProvider` interface
-- Vendor selection (DoseSpot vs. DrFirst) deferred to Phase 3 kickoff; both
-  have REST APIs and support FHIR `MedicationRequest`
-- Prescriptions authored as FHIR R4 `MedicationRequest` per ADR-002;
-  vendor transmits them
+- `src/lib/ehr-native/integrations/` (Phase 3) implements vendor client behind
+  an `EPrescribingProvider` interface
+- Vendor selection (DoseSpot vs. DrFirst) deferred to Phase 3 kickoff; both have
+  REST APIs and support FHIR `MedicationRequest`
+- Prescriptions authored as FHIR R4 `MedicationRequest` per ADR-002; vendor
+  transmits them
 - BAA required with chosen vendor before any PHI flows
 - Every prescription write emits audit event (ADR-006)
 - RBAC: only `ehr:clinician` with prescriptive authority creates
@@ -52,14 +51,14 @@ integrate-don't-build pattern.
 
 ## Decision 2: Vendor Integration for HIE
 
-**Chosen**: Integrate a vendor for HIE connectivity (Carequality or
-DirectTrust) rather than direct trust framework onboarding  
+**Chosen**: Integrate a vendor for HIE connectivity (Carequality or DirectTrust)
+rather than direct trust framework onboarding  
 **Rejected**: Direct Carequality/DirectTrust onboarding; custom HIE gateway
 
 ### Rationale
 
-- Carequality and DirectTrust require CA enrollment, trust framework
-  agreements, conformance testing — multi-month onboarding per framework
+- Carequality and DirectTrust require CA enrollment, trust framework agreements,
+  conformance testing — multi-month onboarding per framework
 - A vendor (HIE aggregator) provides both via a single API, absorbing trust
   framework overhead
 - Consistent with `src/lib/ehr/` integrate-don't-build pattern
@@ -68,8 +67,8 @@ DirectTrust) rather than direct trust framework onboarding
 
 - `src/lib/ehr-native/integrations/` (Phase 3) implements HIE client behind
   `HIEProvider` interface
-- Clinical documents exchanged via FHIR R4 `DocumentReference` and `Bundle`
-  per ADR-002
+- Clinical documents exchanged via FHIR R4 `DocumentReference` and `Bundle` per
+  ADR-002
 - Vendor selection deferred to Phase 3 kickoff
 - BAA required before any PHI flows
 
@@ -86,8 +85,8 @@ controlled substance scheduling in-house
   controlled-substance-specific audit logging — vendor is certified
 - DEA scheduling (Schedule II-V) varies by state and changes with regulation;
   vendor maintains rules
-- Building this makes the platform a regulated e-prescribing entity, outside
-  the clinical AI platform scope
+- Building this makes the platform a regulated e-prescribing entity, outside the
+  clinical AI platform scope
 
 ### Implementation
 
@@ -95,16 +94,15 @@ controlled substance scheduling in-house
   `checkDrugInteractions()`, `getPharmacyDirectory()` — all delegated
 - Controlled substance flags on `MedicationRequest` route to vendor's EPCS
   workflow; we do not implement EPCS auth
-- Audit events for controlled substance prescriptions include vendor
-  transaction ID for cross-referencing (ADR-006)
+- Audit events for controlled substance prescriptions include vendor transaction
+  ID for cross-referencing (ADR-006)
 
 ## Consequences
 
 ### Positive
 
 - E-prescribing and HIE available in Phase 3 without regulatory burden
-- Vendor absorbs DEA certification, EPCS compliance, pharmacy board
-  maintenance
+- Vendor absorbs DEA certification, EPCS compliance, pharmacy board maintenance
 - Consistent with existing integrate-don't-build pattern
 - Scope creep risk (R-EHR-EPIC-01) mitigated
 
@@ -117,13 +115,13 @@ controlled substance scheduling in-house
 
 ### Mitigations
 
-- Abstract both behind interfaces (`EPrescribingProvider`, `HIEProvider`)
-  for vendor swap
+- Abstract both behind interfaces (`EPrescribingProvider`, `HIEProvider`) for
+  vendor swap
 - Timeouts on vendor calls; surface failures as "retry" with audit trail
-- Evaluate DoseSpot and DrFirst at Phase 3 kickoff on API quality, FHIR
-  support, BAA terms
-- For HIE, evaluate Carequality vs. DirectTrust connectivity needs before
-  vendor selection
+- Evaluate DoseSpot and DrFirst at Phase 3 kickoff on API quality, FHIR support,
+  BAA terms
+- For HIE, evaluate Carequality vs. DirectTrust connectivity needs before vendor
+  selection
 
 ## Related Decisions
 

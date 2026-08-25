@@ -1,6 +1,7 @@
 ---
 title: Backup & Restore Testing
-description: Procedures for verifying database backups, testing full restores,
+description:
+  Procedures for verifying database backups, testing full restores,
   point-in-time recovery (PITR), retention policies, and quarterly restore
   drills for Pixelated Empathy.
 ---

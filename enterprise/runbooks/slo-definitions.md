@@ -20,10 +20,10 @@ description:
 ## 1. Purpose & Scope
 
 This runbook defines **Service-Level Objectives (SLOs)** for every
-customer-facing service in the Pixelated Empathy platform. It documents the
-SLA commitments we make to customers by tier, the error-budget policy that
-governs feature velocity versus reliability, and the breach-notification
-procedure the on-call team must follow when an SLO is at risk.
+customer-facing service in the Pixelated Empathy platform. It documents the SLA
+commitments we make to customers by tier, the error-budget policy that governs
+feature velocity versus reliability, and the breach-notification procedure the
+on-call team must follow when an SLO is at risk.
 
 **Coverage**: six customer-facing services plus Foresight MCP (internal-facing
 but supports customer sessions).
@@ -64,7 +64,8 @@ but supports customer sessions).
 | **Emotional analysis error rate** | ≤ 0.05 errors/s             | > 0.05 errors/s for 5 min     | `rate(emotional_analysis_errors_total[5m])`                                                   |
 | **Throughput**                    | ≥ 50 inferences/s sustained | —                             | `rate(ai_inference_duration_seconds_count[5m])`                                               |
 
-**Aligned alerts**: `AIInferenceLatencyHigh` (warning), `EmotionalAnalysisError` (critical).
+**Aligned alerts**: `AIInferenceLatencyHigh` (warning), `EmotionalAnalysisError`
+(critical).
 
 ### 2.3 PostgreSQL (Primary Datastore)
 
@@ -90,8 +91,8 @@ but supports customer sessions).
 | **Memory usage**  | ≤ 80% of maxmemory | > 80% for 5 min          | `redis_memory_used_bytes / redis_memory_max_bytes`                                      |
 | **Eviction rate** | ≤ 100 keys/min     | > 100 keys/min for 5 min | `rate(redis_evicted_keys_total[5m])`                                                    |
 
-**Aligned alerts**: `MemoryUsageHigh` (warning) covers host-level; Redis-specific
-alerting to be added to `alerts/application.yml`.
+**Aligned alerts**: `MemoryUsageHigh` (warning) covers host-level;
+Redis-specific alerting to be added to `alerts/application.yml`.
 
 ### 2.5 Caddy (Reverse Proxy / Edge)
 
@@ -116,9 +117,8 @@ alerting to be added to `alerts/application.yml`.
 **Aligned alerts**: `DiskSpaceLow` (critical), `MemoryUsageHigh` (warning),
 `CPUUsageHigh` (warning).
 
-> System-level SLOs are **platform-wide**: every service inherits these
-> host guarantees. A disk or memory breach threatens all services
-> simultaneously.
+> System-level SLOs are **platform-wide**: every service inherits these host
+> guarantees. A disk or memory breach threatens all services simultaneously.
 
 ### 2.7 Foresight MCP (Memory Service)
 
@@ -142,9 +142,9 @@ alerting to be added to `alerts/application.yml`.
 
 ### 3.1 Budget Calculation
 
-An error budget is the maximum amount of unreliability a service may
-accumulate within the measurement window before feature development must
-pause in favor of reliability work.
+An error budget is the maximum amount of unreliability a service may accumulate
+within the measurement window before feature development must pause in favor of
+reliability work.
 
 | SLO Target | Monthly Error Budget | Daily Budget |
 | ---------- | -------------------- | ------------ |
@@ -191,9 +191,9 @@ groups:
 
 ### 3.4 Budget Reset
 
-Error budgets reset at the start of each calendar month. Historical
-consumption is retained in Grafana dashboard `slo-error-budget` (to be
-created) for trend analysis.
+Error budgets reset at the start of each calendar month. Historical consumption
+is retained in Grafana dashboard `slo-error-budget` (to be created) for trend
+analysis.
 
 ---
 
@@ -215,10 +215,10 @@ These are the **contractual** commitments we make to customers, derived from
 - **Uptime** is measured from the edge (Caddy) perspective, excluding
   customer-side network issues. Maintenance windows (announced ≥ 72 h in
   advance) are excluded.
-- **Latency** is measured at the 95th percentile of successful (2xx)
-  requests over the billing month.
-- **Error rate** is measured as 5xx responses as a percentage of total
-  requests at the edge.
+- **Latency** is measured at the 95th percentile of successful (2xx) requests
+  over the billing month.
+- **Error rate** is measured as 5xx responses as a percentage of total requests
+  at the edge.
 
 ### 4.2 SLA Exclusions
 
@@ -238,9 +238,9 @@ The following do not count as SLA breaches:
 
 SLO breaches are detected via two mechanisms:
 
-1. **Automated alerting** — Prometheus alert rules fire when SLO thresholds
-   are crossed. Alerts route to Alertmanager, which dispatches by severity
-   (see `alertmanager.yml`):
+1. **Automated alerting** — Prometheus alert rules fire when SLO thresholds are
+   crossed. Alerts route to Alertmanager, which dispatches by severity (see
+   `alertmanager.yml`):
    - `critical` → PagerDuty + Email, repeat every 30 min
    - `warning` → Slack + Email, repeat every 2 h
    - `emergency` → PagerDuty + Slack, repeat every 15 min
@@ -261,9 +261,10 @@ SLO breaches are detected via two mechanisms:
 1. **Acknowledge** the PagerDuty alert within the response timeline above.
 2. **Assess** scope: which services are affected, how many customers, which
    tiers.
-3. **Mitigate**: Apply the runbook for the specific service (see service-specific
-   runbooks — to be created). If no runbook exists, follow general incident
-   response: roll back recent deploys, scale horizontally, failover to standby.
+3. **Mitigate**: Apply the runbook for the specific service (see
+   service-specific runbooks — to be created). If no runbook exists, follow
+   general incident response: roll back recent deploys, scale horizontally,
+   failover to standby.
 4. **Communicate**:
    - Update the status page (`status.pixelatedempathy.com` — to be created)
    - For Enterprise/Enterprise+ customers: direct email to the account's
@@ -285,11 +286,11 @@ tier's SLA for the billing month):
 
 - **Pro**: 10% credit applied to next month's invoice.
 - **Enterprise / Enterprise+**: 25% credit applied to next month's invoice.
-- **Enterprise+ HIPAA**: Additionally, a written incident review is provided
-  to the customer's compliance team within 5 business days.
+- **Enterprise+ HIPAA**: Additionally, a written incident review is provided to
+  the customer's compliance team within 5 business days.
 
-Customers must request breach credits within 30 days of the billing period
-end by contacting `support@pixelatedempathy.com`.
+Customers must request breach credits within 30 days of the billing period end
+by contacting `support@pixelatedempathy.com`.
 
 ---
 
@@ -333,10 +334,11 @@ end by contacting `support@pixelatedempathy.com`.
 | AI EI errors   | `EmotionalAnalysisError`  | `alert_rules.yml` | critical | > 0.05 errors/s for 5m  |
 | AI latency     | `AIInferenceLatencyHigh`  | `alert_rules.yml` | warning  | avg > 2.0s for 5m       |
 
-Additional alert files (`alerts/application.yml`, `alerts/performance-alerts.yaml`,
-`alerts/safety-alerts.yaml`, `alerts/launch-alerts.yaml`) contain service-specific
-rules that supplement the core SLO alerts above. Full traceability for those
-files is a follow-up action item.
+Additional alert files (`alerts/application.yml`,
+`alerts/performance-alerts.yaml`, `alerts/safety-alerts.yaml`,
+`alerts/launch-alerts.yaml`) contain service-specific rules that supplement the
+core SLO alerts above. Full traceability for those files is a follow-up action
+item.
 
 ---
 
@@ -385,6 +387,10 @@ SLOs are not changed in response to a single incident. To change an SLO:
 - **Prometheus config**: `monitoring/prometheus.yml`
 - **Alert rules**: `monitoring/alert_rules.yml`, `monitoring/alerts/*.yml`
 - **Alertmanager config**: `monitoring/alertmanager.yml`
-- **Parent ticket**: [PIX-4127 — SLA Program](https://linear.app/pixelated/issue/PIX-4127)
-- **This ticket**: [PIX-4144 — SLO Definitions](https://linear.app/pixelated/issue/PIX-4144)
-- **Google SRE Workbook**: [Implementing SLOs](https://sre.google/workbook/implementing-slos/) (reference methodology)
+- **Parent ticket**:
+  [PIX-4127 — SLA Program](https://linear.app/pixelated/issue/PIX-4127)
+- **This ticket**:
+  [PIX-4144 — SLO Definitions](https://linear.app/pixelated/issue/PIX-4144)
+- **Google SRE Workbook**:
+  [Implementing SLOs](https://sre.google/workbook/implementing-slos/) (reference
+  methodology)

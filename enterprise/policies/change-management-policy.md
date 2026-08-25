@@ -1,6 +1,8 @@
 ---
 title: Change Management Policy
-description: Pixelated Empathy's change management policy covering change request, review, approval, implementation, and verification. SOC2 CC8 compliance.
+description:
+  Pixelated Empathy's change management policy covering change request, review,
+  approval, implementation, and verification. SOC2 CC8 compliance.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 -->
@@ -27,7 +29,8 @@ This policy applies to all changes to production systems, including:
 
 - Application code deployments.
 - Infrastructure changes (network, servers, databases, cloud resources).
-- Configuration changes (security settings, access controls, environment variables).
+- Configuration changes (security settings, access controls, environment
+  variables).
 - Third-party service integrations.
 - Emergency changes (see Section 6).
 
@@ -35,11 +38,11 @@ This policy applies to all changes to production systems, including:
 
 ## 2. Change Categories
 
-| Category | Definition | Approval | Examples |
-|----------|------------|----------|----------|
-| **Standard** | Pre-approved, low-risk, routine changes | Pre-approved (no per-change approval) | Dependency updates, documentation changes, non-production config changes |
-| **Normal** | Non-routine changes requiring review and approval | Change Advisory Board (CAB) or designated approver | Feature deployments, infrastructure changes, security config changes |
-| **Emergency** | Changes required to resolve a P0/P1 incident or security vulnerability | Incident Commander (retroactive CAB review) | Hotfixes, security patches, incident containment actions |
+| Category      | Definition                                                             | Approval                                           | Examples                                                                 |
+| ------------- | ---------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------ |
+| **Standard**  | Pre-approved, low-risk, routine changes                                | Pre-approved (no per-change approval)              | Dependency updates, documentation changes, non-production config changes |
+| **Normal**    | Non-routine changes requiring review and approval                      | Change Advisory Board (CAB) or designated approver | Feature deployments, infrastructure changes, security config changes     |
+| **Emergency** | Changes required to resolve a P0/P1 incident or security vulnerability | Incident Commander (retroactive CAB review)        | Hotfixes, security patches, incident containment actions                 |
 
 ---
 
@@ -57,13 +60,13 @@ This policy applies to all changes to production systems, including:
 
 **Standard Change List**:
 
-| Change Type | Procedure | Frequency |
-|-------------|-----------|-----------|
-| Dependency patch (non-breaking) | Dependabot PR → CI → merge | Automated |
-| Documentation update | PR → review → merge | As needed |
-| Non-production config change | PR → review → merge | As needed |
+| Change Type                           | Procedure                      | Frequency |
+| ------------------------------------- | ------------------------------ | --------- |
+| Dependency patch (non-breaking)       | Dependabot PR → CI → merge     | Automated |
+| Documentation update                  | PR → review → merge            | As needed |
+| Non-production config change          | PR → review → merge            | As needed |
 | Monitoring alert threshold adjustment | Security team approval → apply | As needed |
-| Log rotation configuration | DevOps approval → apply | Quarterly |
+| Log rotation configuration            | DevOps approval → apply        | Quarterly |
 
 ### 3.2 Normal Changes
 
@@ -80,7 +83,8 @@ This policy applies to all changes to production systems, including:
    - Testing evidence (test results, staging validation).
    - Proposed implementation window.
 
-2. **Review**: CAB reviews change request (or designated approver for low-risk changes).
+2. **Review**: CAB reviews change request (or designated approver for low-risk
+   changes).
    - Technical feasibility.
    - Risk to production systems.
    - Impact on customers.
@@ -111,7 +115,8 @@ This policy applies to all changes to production systems, including:
 
 ### 3.3 Emergency Changes
 
-**Expedited approval** — for P0/P1 incidents or critical security vulnerabilities.
+**Expedited approval** — for P0/P1 incidents or critical security
+vulnerabilities.
 
 **Procedure**:
 
@@ -155,11 +160,11 @@ This policy applies to all changes to production systems, including:
 
 ## 4. Change Testing Requirements
 
-| Change Risk | Testing Required | Evidence |
-|-------------|-----------------|----------|
-| **Low** | Unit tests pass, CI green | CI pipeline results |
-| **Medium** | Unit tests + integration tests + staging validation | CI results + staging test report |
-| **High** | Full test suite + staging validation + load test + security review | All above + load test results + security review sign-off |
+| Change Risk | Testing Required                                                   | Evidence                                                 |
+| ----------- | ------------------------------------------------------------------ | -------------------------------------------------------- |
+| **Low**     | Unit tests pass, CI green                                          | CI pipeline results                                      |
+| **Medium**  | Unit tests + integration tests + staging validation                | CI results + staging test report                         |
+| **High**    | Full test suite + staging validation + load test + security review | All above + load test results + security review sign-off |
 
 **Staging environment** must mirror production configuration (infrastructure,
 data volume, network topology) to the extent practicable.
@@ -176,30 +181,34 @@ All production deployments must pass through the CI/CD pipeline:
    security-sensitive code).
 2. **Automated tests**: Unit, integration, security scans all pass.
 3. **Staging deployment**: Change deployed to staging, validated.
-4. **Production deployment**: Change deployed to production via blue/green
-   or canary deployment.
-5. **Post-deployment verification**: Smoke tests pass, monitoring confirms
-   no degradation.
+4. **Production deployment**: Change deployed to production via blue/green or
+   canary deployment.
+5. **Post-deployment verification**: Smoke tests pass, monitoring confirms no
+   degradation.
 
 ### 5.2 Deployment Windows
 
-| Change Risk | Allowed Deployment Windows |
-|-------------|---------------------------|
-| Low | Any business hours (Mon-Fri 9 AM - 5 PM local) |
-| Medium | Business hours with on-call engineer available |
-| High | Approved maintenance window (weekend or off-peak, customer notification 48h prior) |
-| Emergency | Any time (Incident Commander authorization) |
+| Change Risk | Allowed Deployment Windows                                                         |
+| ----------- | ---------------------------------------------------------------------------------- |
+| Low         | Any business hours (Mon-Fri 9 AM - 5 PM local)                                     |
+| Medium      | Business hours with on-call engineer available                                     |
+| High        | Approved maintenance window (weekend or off-peak, customer notification 48h prior) |
+| Emergency   | Any time (Incident Commander authorization)                                        |
 
 ### 5.3 Rollback Procedures
 
 Every normal and high-risk change must have a documented rollback plan:
 
-- **Application changes**: Revert to previous version (blue/green swap or git revert).
+- **Application changes**: Revert to previous version (blue/green swap or git
+  revert).
 - **Infrastructure changes**: Terraform state rollback or manual reversion.
-- **Configuration changes**: Restore previous configuration from version control.
-- **Database changes**: Migration rollback script or database restore from backup.
+- **Configuration changes**: Restore previous configuration from version
+  control.
+- **Database changes**: Migration rollback script or database restore from
+  backup.
 
-Rollback must be tested in staging before production deployment (for high-risk changes).
+Rollback must be tested in staging before production deployment (for high-risk
+changes).
 
 ---
 
@@ -233,12 +242,12 @@ Secrets (API keys, database credentials, encryption keys) are managed via:
 
 Secret rotation:
 
-| Secret Type | Rotation Frequency | Method |
-|-------------|-------------------|--------|
-| Database credentials | 90 days | Automated rotation via secret manager |
-| API keys | 180 days | Manual rotation + deployment |
-| Encryption keys | 365 days | KMS automatic rotation |
-| Service tokens | 90 days | Manual rotation + deployment |
+| Secret Type          | Rotation Frequency | Method                                |
+| -------------------- | ------------------ | ------------------------------------- |
+| Database credentials | 90 days            | Automated rotation via secret manager |
+| API keys             | 180 days           | Manual rotation + deployment          |
+| Encryption keys      | 365 days           | KMS automatic rotation                |
+| Service tokens       | 90 days            | Manual rotation + deployment          |
 
 ---
 
@@ -287,12 +296,11 @@ The following changes are prohibited without explicit CSO approval:
 
 ## 10. Change Log
 
-| Date | Author | Change |
-|------|--------|--------|
+| Date       | Author   | Change                                                              |
+| ---------- | -------- | ------------------------------------------------------------------- |
 | 2026-08-01 | Sisyphus | Initial change management policy for SOC2 CC8 compliance (PIX-4156) |
 
 ---
 
-_Document owner: Engineering Lead_
-_Review cadence: Annual (or after any change-related incident)_
-_Next review: 2027-08-01_
+_Document owner: Engineering Lead_ _Review cadence: Annual (or after any
+change-related incident)_ _Next review: 2027-08-01_

@@ -1,17 +1,20 @@
 # RFC: CI Federation Operating Model
 
-| Metadata      | Value      |
-| ------------- | ---------- |
-| **Status**    | APPROVED   |
-| **Author**    | Chad       |
-| **Date**      | 2026-07-30 |
-| **Approved**  | 2026-08-01 |
+| Metadata     | Value      |
+| ------------ | ---------- |
+| **Status**   | APPROVED   |
+| **Author**   | Chad       |
+| **Date**     | 2026-07-30 |
+| **Approved** | 2026-08-01 |
 
 ---
 
 ## 1. Executive Summary
 
-This RFC defines the federated CI operating model for Pixelated Empathy. The model distributes validation across two providers — **GitHub Actions** and **Bitbucket Pipelines** — with staging as the deploy target. Each pipeline capability has a single designated owner.
+This RFC defines the federated CI operating model for Pixelated Empathy. The
+model distributes validation across two providers — **GitHub Actions** and
+**Bitbucket Pipelines** — with staging as the deploy target. Each pipeline
+capability has a single designated owner.
 
 ---
 
@@ -20,10 +23,13 @@ This RFC defines the federated CI operating model for Pixelated Empathy. The mod
 The current CI landscape evolved organically, resulting in:
 
 - **Duplicate jobs** across providers wasting compute and token budgets
-- **No single deploy authority** — multiple pipelines could trigger overlapping deployments
+- **No single deploy authority** — multiple pipelines could trigger overlapping
+  deployments
 - **Unclear ownership** — no documented accountability per pipeline capability
-- **No artifact lineage** — builds could be promoted without provenance verification
-- **Soft gates** — several validation steps use `continue-on-error`, making failures advisory
+- **No artifact lineage** — builds could be promoted without provenance
+  verification
+- **Soft gates** — several validation steps use `continue-on-error`, making
+  failures advisory
 
 A federated model with clear authority boundaries eliminates these issues.
 
@@ -51,7 +57,8 @@ A federated model with clear authority boundaries eliminates these issues.
 
 ### Rule 1: One Owner Per Capability
 
-Each pipeline capability listed above has exactly one designated owner (team). No other pipeline may execute the same check. Owners are responsible for:
+Each pipeline capability listed above has exactly one designated owner (team).
+No other pipeline may execute the same check. Owners are responsible for:
 
 - Maintaining their pipeline definition
 - Setting pass/fail thresholds
@@ -67,7 +74,9 @@ Every promotion hop must verify artifact provenance:
 
 ### Rule 3: Validation Gates Before Deploy
 
-No deploy proceeds unless all required gates in the matrix above pass for the target commit. The readiness aggregator (`scripts/devops/aggregate-readiness.py`) provides a pre-deploy summary.
+No deploy proceeds unless all required gates in the matrix above pass for the
+target commit. The readiness aggregator
+(`scripts/devops/aggregate-readiness.py`) provides a pre-deploy summary.
 
 ### Rule 4: Path-Based Triggers
 
@@ -152,7 +161,9 @@ graph LR
 | AI model validation              | ⚪ INFORMATIONAL | Creates GitHub issue, does not block        |
 | Lighthouse performance           | ⚪ INFORMATIONAL |                                             |
 
-> **Recommendation**: Upgrade `ci.yml` unit tests and security gate from SOFT to HARD by removing `continue-on-error: true`. This is the primary CI gate and should enforce actual quality standards.
+> **Recommendation**: Upgrade `ci.yml` unit tests and security gate from SOFT to
+> HARD by removing `continue-on-error: true`. This is the primary CI gate and
+> should enforce actual quality standards.
 
 ---
 

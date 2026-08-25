@@ -1,13 +1,14 @@
 # Idea Archival Policy & Backlog Cleanup Workflow
 
-**Last updated:** 2026-07-30
-**Owner:** Chad
+**Last updated:** 2026-07-30 **Owner:** Chad
 
 ---
 
 ## 1. Purpose
 
-Keep the Linear backlog actionable without losing recoverable context. Ideas that are not actively scheduled should be archived — not deleted — so historical context, duplicates, and prior art remain searchable.
+Keep the Linear backlog actionable without losing recoverable context. Ideas
+that are not actively scheduled should be archived — not deleted — so historical
+context, duplicates, and prior art remain searchable.
 
 ---
 
@@ -39,7 +40,8 @@ Keep the Linear backlog actionable without losing recoverable context. Ideas tha
 | Issues are complementary parts of one deliverable   | Backend + frontend tracked as separate issues but better merged |
 | One issue is strictly a subset of another           | "Add login button" is part of "Implement SSO"                   |
 
-After merging, archive the superseded issue with a comment linking the canonical one.
+After merging, archive the superseded issue with a comment linking the canonical
+one.
 
 ### Delete
 
@@ -49,7 +51,8 @@ After merging, archive the superseded issue with a comment linking the canonical
 | Test/spike issue that served its purpose        | "Investigate library X" — conclusion recorded elsewhere |
 | Accidental duplicate with no additional context | Created by automation or human error                    |
 
-**Prefer archive over delete.** Delete only when the issue has zero informational value.
+**Prefer archive over delete.** Delete only when the issue has zero
+informational value.
 
 ---
 
@@ -103,9 +106,11 @@ Archived issues can be restored at any time. Before restoring:
 
 1. Re-assess whether the spec is still current
 2. Link the archive issue in the new issue as prior art
-3. If restoring to active development, update acceptance criteria and assign to a sprint
+3. If restoring to active development, update acceptance criteria and assign to
+   a sprint
 
-Archival is not permanent deletion. It is a signal that the idea needs re-validation before work begins.
+Archival is not permanent deletion. It is a signal that the idea needs
+re-validation before work begins.
 
 ---
 

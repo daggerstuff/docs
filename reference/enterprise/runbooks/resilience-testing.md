@@ -120,7 +120,8 @@ kubectl label namespace pixelated-empathy chaos-mesh.org/inject=enabled
 All experiment manifests are located at `k8s/chaos/` and bundled via
 `k8s/chaos/kustomization.yaml`.
 
-**Registered experiments**: `pod-kill`, `network-latency`, `network-partition`, `http-chaos`, `postgres`, `foresight-mcp`
+**Registered experiments**: `pod-kill`, `network-latency`, `network-partition`,
+`http-chaos`, `postgres`, `foresight-mcp`
 
 ### 3.1 Pod Failure Scenario
 
@@ -378,14 +379,16 @@ Production chaos experiments are **prohibited** until:
 
 ### 6.1 GitHub Actions Integration
 
-Chaos experiments are integrated into CI as a post-deploy validation step
-(see `.github/workflows/chaos-validation.yml`):
+Chaos experiments are integrated into CI as a post-deploy validation step (see
+`.github/workflows/chaos-validation.yml`):
 
 - **Trigger**: Manual dispatch + weekly cron (Monday 10:00 UTC)
 - **Environment**: Staging (`staging` branch only)
-- **Scenarios**: `pod-kill`, `network-latency`, `network-partition`, `http-chaos`, `postgres`, `foresight-mcp`, `all`
+- **Scenarios**: `pod-kill`, `network-latency`, `network-partition`,
+  `http-chaos`, `postgres`, `foresight-mcp`, `all`
 - **Duration**: Configurable (default 300s)
-- **Report**: Auto-generated to `.agent/internal/chaos-results/` and uploaded as artifact
+- **Report**: Auto-generated to `.agent/internal/chaos-results/` and uploaded as
+  artifact
 - **Cleanup**: Automatic on failure (deletes all chaos resources)
 
 ### 6.2 Pre-Merge Gate (Future)

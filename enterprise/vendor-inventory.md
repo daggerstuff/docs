@@ -1,6 +1,9 @@
 ---
 title: Third-Party Vendor & Dependency Inventory
-description: Comprehensive inventory of all third-party services, libraries, vendors, and SaaS providers used by Pixelated Empathy, including data access levels, SLAs, and risk classification.
+description:
+  Comprehensive inventory of all third-party services, libraries, vendors, and
+  SaaS providers used by Pixelated Empathy, including data access levels, SLAs,
+  and risk classification.
 ---
 
 <!-- markdownlint-disable MD025 MD013 MD036 MD049 -->
@@ -36,8 +39,8 @@ service-level agreement status, criticality, and risk classification.
 - Integration and workflow platforms
 - Open-source frameworks and libraries (categorized, not enumerated)
 
-**Out of scope**: Internal-only utilities with no external network calls
-(most dev-only TypeScript/Python linters, formatters, build tools).
+**Out of scope**: Internal-only utilities with no external network calls (most
+dev-only TypeScript/Python linters, formatters, build tools).
 
 **Related documents**:
 
@@ -60,8 +63,8 @@ service-level agreement status, criticality, and risk classification.
 
 **HIPAA note**: Vendors at data access level 5 require a signed Business
 Associate Agreement (BAA). Vendors at level 4 handling clinical conversation
-content also require a BAA. See [HIPAA Compliance](../compliance/hipaa.mdx)
-for the BAA register.
+content also require a BAA. See [HIPAA Compliance](../compliance/hipaa.mdx) for
+the BAA register.
 
 ---
 
@@ -224,15 +227,15 @@ Associate Agreement (BAA). The following vendors are flagged for BAA review:
 | LangSmith (if trace PHI) | 4 — trace content        | Pending verification | Disable tracing for PHI, or BAA         |
 | Pinecone (if vector PHI) | 4 — vector content       | Pending verification | HIPAA tier if vectors encode PHI        |
 
-**BAA register owner**: Compliance lead.
-**Review cadence**: Annual, plus on-vendor-onboarding.
+**BAA register owner**: Compliance lead. **Review cadence**: Annual, plus
+on-vendor-onboarding.
 
 ---
 
 ## 14. Open-Source Frameworks & Libraries (Summary)
 
-Rather than enumerating all ~500 libraries, the major framework categories
-and their primary vendors are summarized:
+Rather than enumerating all ~500 libraries, the major framework categories and
+their primary vendors are summarized:
 
 | Category       | Primary Dependencies                                   | Vendor/Source          |
 | -------------- | ------------------------------------------------------ | ---------------------- |
@@ -251,19 +254,19 @@ and their primary vendors are summarized:
 | Web scraping   | selenium, beautifulsoup4, yt-dlp                       | Open-source            |
 | Audio/ML       | librosa, pydub, ffmpeg, openai-whisper                 | Open-source            |
 
-**License audit**: All major dependencies use MIT, Apache-2.0, or BSD
-licenses. No GPL/AGPL dependencies identified in production code paths.
-**License scan owner**: Engineering lead.
-**Review cadence**: Quarterly via automated license scanner.
+**License audit**: All major dependencies use MIT, Apache-2.0, or BSD licenses.
+No GPL/AGPL dependencies identified in production code paths. **License scan
+owner**: Engineering lead. **Review cadence**: Quarterly via automated license
+scanner.
 
 ---
 
 ## 15. Dependency Vulnerability Scanning (Implemented)
 
 Automated dependency vulnerability scanning is fully implemented in
-`.github/workflows/security-scanning.yml` and `.github/dependabot.yml`.
-The pipeline runs on every push/pull_request to `main`/`master`/`staging`
-and nightly via schedule.
+`.github/workflows/security-scanning.yml` and `.github/dependabot.yml`. The
+pipeline runs on every push/pull_request to `main`/`master`/`staging` and
+nightly via schedule.
 
 ### 15.1 Implemented Scanning Pipeline
 
@@ -284,31 +287,34 @@ and nightly via schedule.
 
 ### 15.2 Pipeline Details
 
-**Trivy FS scan** (`security-scan` job): Uses `aquasecurity/trivy-action@v0.36.0`
-with config `.github/security/trivy/trivy.yaml`. Scanners: `vuln`, `secret`,
-`misconfig`. Severity: `CRITICAL`, `HIGH`. Output: SARIF → GitHub Security tab.
-Warn-only (does not fail the pipeline).
+**Trivy FS scan** (`security-scan` job): Uses
+`aquasecurity/trivy-action@v0.36.0` with config
+`.github/security/trivy/trivy.yaml`. Scanners: `vuln`, `secret`, `misconfig`.
+Severity: `CRITICAL`, `HIGH`. Output: SARIF → GitHub Security tab. Warn-only
+(does not fail the pipeline).
 
-**pnpm audit** (`dependency-check` job): Runs `pnpm audit --json --prod
---audit-level moderate`, then enforces threshold via
-`scripts/utils/check-pnpm-audit.js --fail-on high audit-results.json`.
-**Fails the pipeline on HIGH or CRITICAL vulnerabilities.** Posts a sticky
-PR comment summarizing findings. Artifacts retained for 30 days.
+**pnpm audit** (`dependency-check` job): Runs
+`pnpm audit --json --prod --audit-level moderate`, then enforces threshold via
+`scripts/utils/check-pnpm-audit.js --fail-on high audit-results.json`. **Fails
+the pipeline on HIGH or CRITICAL vulnerabilities.** Posts a sticky PR comment
+summarizing findings. Artifacts retained for 30 days.
 
-**pip-audit** (`python-dependency-scan` job): Scans three Python dependency
-sets — `ai/requirements-voice.txt`, `src/lib/ai/bias-detection/python-service/
-requirements.txt`, `src/lib/ai/multimodal-bias-detection/python-service/`.
-Enforces threshold via `scripts/ci/check-pip-audit.js --fail-on high`.
-**Fails the pipeline on HIGH or CRITICAL vulnerabilities.**
+**pip-audit** (`python-dependency-scan` job): Scans three Python dependency sets
+— `ai/requirements-voice.txt`,
+`src/lib/ai/bias-detection/python-service/ requirements.txt`,
+`src/lib/ai/multimodal-bias-detection/python-service/`. Enforces threshold via
+`scripts/ci/check-pip-audit.js --fail-on high`. **Fails the pipeline on HIGH or
+CRITICAL vulnerabilities.**
 
 **SBOM generation** (`sbom-generation` job): `anchore/sbom-action@v0` produces
-CycloneDX JSON SBOM. Uploaded as artifact (30-day retention). Summary posted
-as sticky PR comment.
+CycloneDX JSON SBOM. Uploaded as artifact (30-day retention). Summary posted as
+sticky PR comment.
 
 **Container image scan** (`container-image-scan` job): Matrix of 9 base images
-scanned with Trivy: `node:24-bookworm-slim`, `node:24-alpine`, `python:3.13-slim`,
-`mcr.microsoft.com/playwright:v1.60.0-jammy`, `debian:bookworm-slim`,
-`nvcr.io/nvidia/pytorch:26.07-py3`, `nvidia/cuda:12.8.1-runtime-ubuntu24.04`,
+scanned with Trivy: `node:24-bookworm-slim`, `node:24-alpine`,
+`python:3.13-slim`, `mcr.microsoft.com/playwright:v1.60.0-jammy`,
+`debian:bookworm-slim`, `nvcr.io/nvidia/pytorch:26.07-py3`,
+`nvidia/cuda:12.8.1-runtime-ubuntu24.04`,
 `nvidia/cuda:12.9.2-runtime-ubuntu24.04`. Severity CRITICAL/HIGH.
 
 **Dependabot** (`.github/dependabot.yml`, 242 lines): Three ecosystems.
@@ -323,8 +329,8 @@ scanned with Trivy: `node:24-bookworm-slim`, `node:24-alpine`, `python:3.13-slim
   @cloudflare/workers-types, @aws-sdk/_, @opentelemetry/_, vue, @vue/_, jotai).
 - **pip**: daily 03:00, 10 PRs max, auto-rebase. Groups security-critical
   packages (cryptography, requests, urllib3, pyyaml, werkzeug, jinja, flask,
-  certifi, setuptools, pyopenssl, idna) separately from regular patches /
-  minor / major.
+  certifi, setuptools, pyopenssl, idna) separately from regular patches / minor
+  / major.
 
 ### 15.3 Vulnerability Response SLA
 
@@ -469,9 +475,12 @@ For vendors with BAA (data access level 4-5):
 
 ## 20. References
 
-- **Linear**: [PIX-4151](https://linear.app/pixelated/issue/PIX-4151) — VRA-1: Inventory All Third-Party Dependencies
-- **Parent**: [PIX-4129](https://linear.app/pixelated/issue/PIX-4129) — Vendor Risk Assessment
-- **GitHub**: [daggerstuff/pixelated#5086](https://github.com/daggerstuff/pixelated/pull/5086)
+- **Linear**: [PIX-4151](https://linear.app/pixelated/issue/PIX-4151) — VRA-1:
+  Inventory All Third-Party Dependencies
+- **Parent**: [PIX-4129](https://linear.app/pixelated/issue/PIX-4129) — Vendor
+  Risk Assessment
+- **GitHub**:
+  [daggerstuff/pixelated#5086](https://github.com/daggerstuff/pixelated/pull/5086)
 - **Related docs**:
   - [Vendor Security Reviews](./vendor-security-reviews.md)
   - [SLO Definitions Runbook](./runbooks/slo-definitions.md)
@@ -489,6 +498,5 @@ For vendors with BAA (data access level 4-5):
 
 ---
 
-_Document maintained by: Engineering + Compliance_
-_Last updated: 2026-07-30_
+_Document maintained by: Engineering + Compliance_ _Last updated: 2026-07-30_
 _Review cadence: Quarterly (critical vendors), Annually (all vendors)_

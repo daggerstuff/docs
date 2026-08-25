@@ -1,11 +1,11 @@
 # Quarterly Linear Workspace Audit — Pixelated Team
 
-**Audit Date:** 2026-07-30 (re-audit / final pass)
-**Audit Issue:** [PIX-4158](https://linear.app/pixelated/issue/PIX-4158/quarterly-workspace-audit-linear-hygiene-check)
-**Owner:** Chad
-**Project:** Enterprise Readiness Program
-**Team:** Pixelated (52861523-9089-49a3-8be5-4032d68cb55a)
-**Baseline:** Initial audit on 2026-07-29 (250 issues). This re-audit on 2026-07-30 fetched 537 issues and applied remediations to close all 7 acceptance criteria.
+**Audit Date:** 2026-07-30 (re-audit / final pass) **Audit Issue:**
+[PIX-4158](https://linear.app/pixelated/issue/PIX-4158/quarterly-workspace-audit-linear-hygiene-check)
+**Owner:** Chad **Project:** Enterprise Readiness Program **Team:** Pixelated
+(52861523-9089-49a3-8be5-4032d68cb55a) **Baseline:** Initial audit on 2026-07-29
+(250 issues). This re-audit on 2026-07-30 fetched 537 issues and applied
+remediations to close all 7 acceptance criteria.
 
 ## Procedure
 
@@ -20,7 +20,8 @@ Per PIX-4158 acceptance criteria, this audit:
 7. Applies remediations where possible via the Linear API,
 8. Documents findings for follow-up.
 
-Reproducible scripts (in this directory, for documentation only — see **Scripts** section):
+Reproducible scripts (in this directory, for documentation only — see
+**Scripts** section):
 
 - `fetch_issues.py` — Linear GraphQL fetcher (paginated)
 - `run_audit.py` — audit analyzer for `issues.json`
@@ -29,7 +30,10 @@ Reproducible scripts (in this directory, for documentation only — see **Script
 
 ## Snapshot — 537 Issues
 
-Fetched via `python3 docs/linear-audit/fetch_issues.py` on 2026-07-30 (537 issues across 6 pages of 100 + 1 page of 37). Baseline fetched via MCP `linear_list_issues` on 2026-07-30 covered only 250 issues; this re-audit pulls the complete workspace.
+Fetched via `python3 docs/linear-audit/fetch_issues.py` on 2026-07-30 (537
+issues across 6 pages of 100 + 1 page of 37). Baseline fetched via MCP
+`linear_list_issues` on 2026-07-30 covered only 250 issues; this re-audit pulls
+the complete workspace.
 
 ### Status distribution
 
@@ -58,13 +62,16 @@ Fetched via `python3 docs/linear-audit/fetch_issues.py` on 2026-07-30 (537 issue
 | Clinical UX & Simulation          |      8 |
 | Developer API & SDK               |      8 |
 
-**Note — 26 issues lack a project assignment.** Project hygiene follow-up, unchanged from baseline.
+**Note — 26 issues lack a project assignment.** Project hygiene follow-up,
+unchanged from baseline.
 
 ## Audit Findings
 
 ### 1. Duplicate Done-Done pairs — 34 candidates, 11 true duplicates (all already resolved), 23 false positives ✅
 
-Title-similarity scan (≥ 0.85) over the 396 Done issues surfaced 34 candidate pairs this round (up from 4 in the baseline due to the expanded issue set). Manual triage resolved all 34:
+Title-similarity scan (≥ 0.85) over the 396 Done issues surfaced 34 candidate
+pairs this round (up from 4 in the baseline due to the expanded issue set).
+Manual triage resolved all 34:
 
 **11 true duplicate pairs — all already Done on both sides:**
 
@@ -82,13 +89,20 @@ Title-similarity scan (≥ 0.85) over the 396 Done issues surfaced 34 candidate 
 | PIX-3703 ↔ PIX-479  |     1.000 | "30.0 Implement mental health evaluation suite"                                                       |
 | PIX-3829 ↔ PIX-2079 |     1.000 | "[GAP-3] Implement in-context memory injection"                                                       |
 
-Each true pair shows **both sides at Done** — they were resolved (from one side or both) during prior audit work; no further action needed. The 23 remaining candidate pairs are sibling tracking issues sharing "N.0 Checkpoint — Phase N" templates (different phase numbers, different scope) — **false positives**, not duplicates.
+Each true pair shows **both sides at Done** — they were resolved (from one side
+or both) during prior audit work; no further action needed. The 23 remaining
+candidate pairs are sibling tracking issues sharing "N.0 Checkpoint — Phase N"
+templates (different phase numbers, different scope) — **false positives**, not
+duplicates.
 
-**Verdict:** ✅ Acceptance criterion met (0 true duplicate pairs requiring cancellation).
+**Verdict:** ✅ Acceptance criterion met (0 true duplicate pairs requiring
+cancellation).
 
 ### 2. Unassigned issues — 3 found, 3 remediated ✅
 
-Three new Triage follow-up issues (dependency-remediation work surfaced by CVE resolution) were unassigned at re-audit time. All three were assigned during this audit session.
+Three new Triage follow-up issues (dependency-remediation work surfaced by CVE
+resolution) were unassigned at re-audit time. All three were assigned during
+this audit session.
 
 | Issue    | Title                   | Action                                       |
 | -------- | ----------------------- | -------------------------------------------- |
@@ -106,7 +120,10 @@ Every issue in the workspace has a non-empty description.
 
 ### 4. Estimate coverage — 75% pre-remediation → 100% post-remediation ✅
 
-Initial scan of the 537-issue workspace showed 13 active issues missing estimates (out of 52 active = 75% coverage, down from baseline 82.8% due to newly-created issues without estimates). The 13 issues were resolved during this audit session:
+Initial scan of the 537-issue workspace showed 13 active issues missing
+estimates (out of 52 active = 75% coverage, down from baseline 82.8% due to
+newly-created issues without estimates). The 13 issues were resolved during this
+audit session:
 
 | Issue    | Title                                                      | Estimate Added | Tool                            |
 | -------- | ---------------------------------------------------------- | -------------: | ------------------------------- |
@@ -130,9 +147,15 @@ Post-remediation: 52/52 active issues have estimates = **100% coverage**.
 
 ### 5. Completed issues not archived — 23 identified, 23 archived ✅
 
-Initial scan of the 537-issue workspace identified 23 issues at `statusType=completed` with `archivedAt=null` (down from baseline 34; the 11 baseline-resolved issues had been archived in earlier rounds).
+Initial scan of the 537-issue workspace identified 23 issues at
+`statusType=completed` with `archivedAt=null` (down from baseline 34; the 11
+baseline-resolved issues had been archived in earlier rounds).
 
-The MCP `linear_save_issue` tool cannot archive (it only updates workflow `state`, not `archivedAt`). Archiving was performed via the Linear GraphQL `issueArchive(id: String!)` mutation using a Python script (`/tmp/opencode/bulk_archive_v2.py`) — invoking Linear's documented mutation signature directly.
+The MCP `linear_save_issue` tool cannot archive (it only updates workflow
+`state`, not `archivedAt`). Archiving was performed via the Linear GraphQL
+`issueArchive(id: String!)` mutation using a Python script
+(`/tmp/opencode/bulk_archive_v2.py`) — invoking Linear's documented mutation
+signature directly.
 
 All 23 issues were archived successfully in a single batch:
 
@@ -144,13 +167,16 @@ PIX-345,  PIX-344,  PIX-343,  PIX-342,  PIX-341,
 PIX-337,  PIX-335,  PIX-330
 ```
 
-Each archive call returned `{"success": true, "lastSyncId": <int>}` from Linear. PIX-4037 was archived first via a direct curl test of the mutation signature; the remaining 22 were archived via the batched script.
+Each archive call returned `{"success": true, "lastSyncId": <int>}` from Linear.
+PIX-4037 was archived first via a direct curl test of the mutation signature;
+the remaining 22 were archived via the batched script.
 
 **Verdict:** ✅ Acceptance criterion met (0 completed-not-archived remaining).
 
 ### 6. Accurate project descriptions — 4 projects audited, 0 inflated claims ✅
 
-Project descriptions were reviewed against actual scope. Full details in [`project_descriptions_audit.md`](./project_descriptions_audit.md). Summary:
+Project descriptions were reviewed against actual scope. Full details in
+[`project_descriptions_audit.md`](./project_descriptions_audit.md). Summary:
 
 | Project                           | Description Status                                                                                     |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------ |
@@ -159,9 +185,14 @@ Project descriptions were reviewed against actual scope. Full details in [`proje
 | AI Research-Clinical Integration  | Borderline "state-of-the-art" modifying concrete scope (Low) — completed, deferred                     |
 | Churnmeon Reliability             | NULL description, summary only — completed, deferred (Low)                                             |
 
-No red-flag phrases (world-class, industry-leading, cutting-edge, best-in-class, revolutionary, next-generation, game-changing, unparalleled, unparalleled, premier, most comprehensive, fully automated, 100%, best, perfect, seamless, effortless, zero-touch, out of the box, synergy, leverage, paradigm shift, holistic, robust) matched across any project description.
+No red-flag phrases (world-class, industry-leading, cutting-edge, best-in-class,
+revolutionary, next-generation, game-changing, unparalleled, unparalleled,
+premier, most comprehensive, fully automated, 100%, best, perfect, seamless,
+effortless, zero-touch, out of the box, synergy, leverage, paradigm shift,
+holistic, robust) matched across any project description.
 
-**Verdict:** ✅ Acceptance criterion met (no inflated claims). Recommendations tracked in `project_descriptions_audit.md` for follow-up.
+**Verdict:** ✅ Acceptance criterion met (no inflated claims). Recommendations
+tracked in `project_descriptions_audit.md` for follow-up.
 
 ## Remediations Applied
 
@@ -171,9 +202,11 @@ No red-flag phrases (world-class, industry-leading, cutting-edge, best-in-class,
 | 2   | PIX-4166, 4165, 4164, 4158, 4131, 4130, 4129, 4128, 4127, 4126, 4125, 4037, 4031 | Added estimates (total 13) | `linear_save_issue(estimate=…)`                                                                                           |
 | 3   | 23 completed issues (PIX-330 … PIX-4037)                                         | Archived                   | Linear GraphQL `mutation Archive($id: String!) { issueArchive(id: $id) { lastSyncId success } }` via `bulk_archive_v2.py` |
 
-Total: 3 assignments + 13 estimates + 23 archives = **39 remediations applied** in this audit pass.
+Total: 3 assignments + 13 estimates + 23 archives = **39 remediations applied**
+in this audit pass.
 
-No duplicate-pair cancellations were needed (all 11 true pairs already Done on both sides; the 23 false positives are sibling tracking issues, not duplicates).
+No duplicate-pair cancellations were needed (all 11 true pairs already Done on
+both sides; the 23 false positives are sibling tracking issues, not duplicates).
 
 ## Acceptance Criteria — Final Status
 
@@ -191,9 +224,15 @@ No duplicate-pair cancellations were needed (all 11 true pairs already Done on b
 
 ## Scripts (reproducibility)
 
-The scripts in this directory (`fetch_issues.py`, `run_audit.py`, `remediate.py`) implement the procedure spec in PIX-4158. This audit pass executed `fetch_issues.py` and `run_audit.py` directly to capture the full 537-issue workspace snapshot (`issues.json` + `audit_results.json` produced). Remediations were applied via Linear MCP tools (`linear_save_issue`) and a one-off GraphQL script (`bulk_archive_v2.py`) for archives.
+The scripts in this directory (`fetch_issues.py`, `run_audit.py`,
+`remediate.py`) implement the procedure spec in PIX-4158. This audit pass
+executed `fetch_issues.py` and `run_audit.py` directly to capture the full
+537-issue workspace snapshot (`issues.json` + `audit_results.json` produced).
+Remediations were applied via Linear MCP tools (`linear_save_issue`) and a
+one-off GraphQL script (`bulk_archive_v2.py`) for archives.
 
-To run the scripts directly (requires `LINEAR_API_KEY` env var + `pip install requests`):
+To run the scripts directly (requires `LINEAR_API_KEY` env var +
+`pip install requests`):
 
 ```bash
 cd docs/linear-audit/
@@ -202,7 +241,13 @@ python3 run_audit.py       # → audit_results.json
 python3 remediate.py       # dry-run; add --apply with --default-assignee=<uuid> to mutate
 ```
 
-**Note on `remediate.py`:** its current implementation uses `issueArchive(input: { id })` and `Bearer`-prefixed authorization. Both are incorrect against the Linear API schema (`issueArchive` takes `id` directly; API keys use raw Authorization, not Bearer). Archive remediation in this audit was performed via the corrected `bulk_archive_v2.py` script (`mutation Archive($id: String!) { issueArchive(id: $id) { lastSyncId success } }`). Recommend patching `remediate.py` accordingly for future re-runs.
+**Note on `remediate.py`:** its current implementation uses
+`issueArchive(input: { id })` and `Bearer`-prefixed authorization. Both are
+incorrect against the Linear API schema (`issueArchive` takes `id` directly; API
+keys use raw Authorization, not Bearer). Archive remediation in this audit was
+performed via the corrected `bulk_archive_v2.py` script
+(`mutation Archive($id: String!) { issueArchive(id: $id) { lastSyncId success } }`).
+Recommend patching `remediate.py` accordingly for future re-runs.
 
 ## Baseline Metrics for Future Audits
 
@@ -213,11 +258,15 @@ Use these as comparison points for the next quarterly audit:
 - Estimate coverage (active): **100%** (52/52)
 - Unassigned: **0** (post-remediation)
 - Missing descriptions: **0**
-- True Done-Done duplicates: **0** (11 historical pairs all already Done on both sides)
+- True Done-Done duplicates: **0** (11 historical pairs all already Done on both
+  sides)
 - Completed-not-archived: **0** (post-remediation — 23 archived this pass)
 - Issues without a project: **26**
-- Projects flagged for description follow-up: **3** (2 NULL, 1 minor wording — see `project_descriptions_audit.md`)
+- Projects flagged for description follow-up: **3** (2 NULL, 1 minor wording —
+  see `project_descriptions_audit.md`)
 
 ---
 
-Audit completed 2026-07-30 by Chad via PIX-4158. Re-audit pass closed all 7 acceptance criteria. Scripts in `docs/linear-audit/`; raw audit data in `audit_results.json` + `issues.json`.
+Audit completed 2026-07-30 by Chad via PIX-4158. Re-audit pass closed all 7
+acceptance criteria. Scripts in `docs/linear-audit/`; raw audit data in
+`audit_results.json` + `issues.json`.

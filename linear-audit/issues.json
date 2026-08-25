@@ -146,10 +146,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "remediation",
-        "security"
-      ],
+      "labels": ["remediation", "security"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -188,10 +185,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "remediation",
-        "security"
-      ],
+      "labels": ["remediation", "security"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -230,10 +224,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "remediation",
-        "security"
-      ],
+      "labels": ["remediation", "security"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -272,10 +263,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "remediation",
-        "security"
-      ],
+      "labels": ["remediation", "security"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -314,10 +302,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "remediation",
-        "security"
-      ],
+      "labels": ["remediation", "security"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -356,11 +341,7 @@
       "slaType": "all",
       "status": "In Progress",
       "statusType": "started",
-      "labels": [
-        "remediation",
-        "type:checkpoint",
-        "maintenance"
-      ],
+      "labels": ["remediation", "type:checkpoint", "maintenance"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -1767,10 +1748,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "remediation",
-        "type:checkpoint"
-      ],
+      "labels": ["remediation", "type:checkpoint"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -1812,10 +1790,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "remediation",
-        "type:checkpoint"
-      ],
+      "labels": ["remediation", "type:checkpoint"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2025,10 +2000,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "fhe"
-      ],
+      "labels": ["safety-critical", "fhe"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2070,10 +2042,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Evaluation",
-        "platform"
-      ],
+      "labels": ["Evaluation", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2115,10 +2084,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "fhe"
-      ],
+      "labels": ["safety-critical", "fhe"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2160,11 +2126,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "database",
-        "safety-critical",
-        "platform"
-      ],
+      "labels": ["database", "safety-critical", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2206,10 +2168,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture",
-        "api"
-      ],
+      "labels": ["architecture", "api"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2251,10 +2210,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "api",
-        "ci-cd"
-      ],
+      "labels": ["api", "ci-cd"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2296,10 +2252,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "api",
-        "ci-cd"
-      ],
+      "labels": ["api", "ci-cd"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2341,10 +2294,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "observability"
-      ],
+      "labels": ["safety-critical", "observability"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2386,10 +2336,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "ci-cd"
-      ],
+      "labels": ["safety-critical", "ci-cd"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2431,10 +2378,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "ci-cd"
-      ],
+      "labels": ["safety-critical", "ci-cd"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2476,10 +2420,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "deployment",
-        "platform"
-      ],
+      "labels": ["deployment", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2521,10 +2462,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "deployment",
-        "safety-critical"
-      ],
+      "labels": ["deployment", "safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2566,10 +2504,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "deployment",
-        "Component: Infrastructure & DevOps"
-      ],
+      "labels": ["deployment", "Component: Infrastructure & DevOps"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2611,10 +2546,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "database",
-        "platform"
-      ],
+      "labels": ["database", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2656,10 +2588,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "database",
-        "observability"
-      ],
+      "labels": ["database", "observability"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2701,10 +2630,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "database",
-        "ci-cd"
-      ],
+      "labels": ["database", "ci-cd"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2746,10 +2672,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "observability",
-        "integration"
-      ],
+      "labels": ["observability", "integration"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2791,9 +2714,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "observability"
-      ],
+      "labels": ["observability"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2835,10 +2756,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "observability",
-        "platform"
-      ],
+      "labels": ["observability", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2880,11 +2798,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "secrets",
-        "safety-critical",
-        "type:cleanup"
-      ],
+      "labels": ["secrets", "safety-critical", "type:cleanup"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -2926,10 +2840,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "secrets",
-        "safety-critical"
-      ],
+      "labels": ["secrets", "safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3063,10 +2974,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "api",
-        "Component: Infrastructure & DevOps"
-      ],
+      "labels": ["api", "Component: Infrastructure & DevOps"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3108,10 +3016,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "api",
-        "safety-critical"
-      ],
+      "labels": ["api", "safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3153,10 +3058,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "api",
-        "type:execution"
-      ],
+      "labels": ["api", "type:execution"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3198,10 +3100,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "api",
-        "type:execution"
-      ],
+      "labels": ["api", "type:execution"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3243,10 +3142,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "api",
-        "platform"
-      ],
+      "labels": ["api", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3576,9 +3472,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Improvement"
-      ],
+      "labels": ["Improvement"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3617,9 +3511,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3658,9 +3550,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Bug"
-      ],
+      "labels": ["Bug"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3699,9 +3589,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Bug"
-      ],
+      "labels": ["Bug"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3740,9 +3628,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -3784,9 +3670,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4164,10 +4048,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "fhe"
-      ],
+      "labels": ["safety-critical", "fhe"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4209,9 +4090,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "fhe"
-      ],
+      "labels": ["fhe"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4253,9 +4132,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "fhe"
-      ],
+      "labels": ["fhe"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4297,9 +4174,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "integration"
-      ],
+      "labels": ["integration"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4341,9 +4216,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "integration"
-      ],
+      "labels": ["integration"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4385,9 +4258,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "integration"
-      ],
+      "labels": ["integration"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4429,9 +4300,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "operations"
-      ],
+      "labels": ["operations"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4473,9 +4342,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "operations"
-      ],
+      "labels": ["operations"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4517,9 +4384,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "operations"
-      ],
+      "labels": ["operations"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4561,10 +4426,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Evaluation",
-        "platform"
-      ],
+      "labels": ["Evaluation", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4606,10 +4468,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "platform"
-      ],
+      "labels": ["safety-critical", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4651,10 +4510,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "platform"
-      ],
+      "labels": ["safety-critical", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4696,11 +4552,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Simulation",
-        "Evaluation",
-        "platform"
-      ],
+      "labels": ["Simulation", "Evaluation", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4742,10 +4594,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Simulation",
-        "platform"
-      ],
+      "labels": ["Simulation", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4787,9 +4636,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Simulation"
-      ],
+      "labels": ["Simulation"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4831,9 +4678,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Simulation"
-      ],
+      "labels": ["Simulation"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4875,10 +4720,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Simulation",
-        "platform"
-      ],
+      "labels": ["Simulation", "platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4920,9 +4762,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "data-pipeline"
-      ],
+      "labels": ["data-pipeline"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -4964,10 +4804,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Evaluation",
-        "data-pipeline"
-      ],
+      "labels": ["Evaluation", "data-pipeline"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5009,9 +4846,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "data-pipeline"
-      ],
+      "labels": ["data-pipeline"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5053,9 +4888,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "data-pipeline"
-      ],
+      "labels": ["data-pipeline"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5097,9 +4930,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "data-pipeline"
-      ],
+      "labels": ["data-pipeline"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5141,9 +4972,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical"
-      ],
+      "labels": ["safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5185,10 +5014,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Evaluation",
-        "safety-critical"
-      ],
+      "labels": ["Evaluation", "safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5230,9 +5056,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical"
-      ],
+      "labels": ["safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5274,9 +5098,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5318,9 +5140,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5362,9 +5182,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5406,9 +5224,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5450,9 +5266,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5494,9 +5308,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5538,9 +5350,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -5867,9 +5677,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:test"
-      ],
+      "labels": ["type:test"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7177,10 +6985,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Inference",
-        "Component: Churnmeon Tool"
-      ],
+      "labels": ["Inference", "Component: Churnmeon Tool"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -7222,9 +7027,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7266,9 +7069,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7310,9 +7111,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7354,9 +7153,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7398,9 +7195,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7442,9 +7237,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7486,9 +7279,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7764,9 +7555,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7808,9 +7597,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7852,9 +7639,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7896,9 +7681,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7940,9 +7723,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -7984,9 +7765,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8028,9 +7807,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8072,9 +7849,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8116,9 +7891,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8160,9 +7933,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8204,9 +7975,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8248,9 +8017,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8292,9 +8059,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8336,9 +8101,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8380,9 +8143,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8424,9 +8185,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8468,9 +8227,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8512,9 +8269,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8556,9 +8311,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8600,9 +8353,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8644,9 +8395,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8688,9 +8437,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8732,9 +8479,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8776,9 +8521,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8820,9 +8563,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8864,9 +8605,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -8908,9 +8647,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -9889,10 +9626,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "phase-1-infra",
-        "Component: AI / ML Training Pipeline"
-      ],
+      "labels": ["phase-1-infra", "Component: AI / ML Training Pipeline"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10072,9 +9806,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Training"
-      ],
+      "labels": ["Training"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10155,10 +9887,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "operations",
-        "Component: Infrastructure & DevOps"
-      ],
+      "labels": ["operations", "Component: Infrastructure & DevOps"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10200,10 +9929,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "integration",
-        "Component: Infrastructure & DevOps"
-      ],
+      "labels": ["integration", "Component: Infrastructure & DevOps"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10245,10 +9971,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "fhe",
-        "safety-critical"
-      ],
+      "labels": ["fhe", "safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10290,10 +10013,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture",
-        "Component: Infrastructure & DevOps"
-      ],
+      "labels": ["architecture", "Component: Infrastructure & DevOps"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10335,10 +10055,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform",
-        "Component: Product & Strategy"
-      ],
+      "labels": ["platform", "Component: Product & Strategy"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10377,10 +10094,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "platform",
-        "Component: Product & Strategy"
-      ],
+      "labels": ["platform", "Component: Product & Strategy"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -10419,9 +10133,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Component: Product & Strategy"
-      ],
+      "labels": ["Component: Product & Strategy"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -10460,9 +10172,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -10504,11 +10214,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "platform",
-        "Evaluation"
-      ],
+      "labels": ["safety-critical", "platform", "Evaluation"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10550,11 +10256,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Simulation",
-        "platform",
-        "Evaluation"
-      ],
+      "labels": ["Simulation", "platform", "Evaluation"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10829,11 +10531,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Training",
-        "Paper: MedSSR",
-        "Research-Clinical-AI"
-      ],
+      "labels": ["Training", "Paper: MedSSR", "Research-Clinical-AI"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10875,11 +10573,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Evaluation",
-        "Paper: DiagnosisArena",
-        "Research-Clinical-AI"
-      ],
+      "labels": ["Evaluation", "Paper: DiagnosisArena", "Research-Clinical-AI"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -10968,11 +10662,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Paper: DeepRare",
-        "Research-Clinical-AI",
-        "architecture"
-      ],
+      "labels": ["Paper: DeepRare", "Research-Clinical-AI", "architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -11014,11 +10704,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Simulation",
-        "Paper: Patient-Psi",
-        "Research-Clinical-AI"
-      ],
+      "labels": ["Simulation", "Paper: Patient-Psi", "Research-Clinical-AI"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -12656,9 +12342,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical"
-      ],
+      "labels": ["safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -12700,9 +12384,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical"
-      ],
+      "labels": ["safety-critical"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -12828,9 +12510,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "security"
-      ],
+      "labels": ["security"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -13712,10 +13392,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -13757,10 +13434,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -13802,10 +13476,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -13847,10 +13518,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -13889,10 +13557,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -13931,10 +13596,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -13973,10 +13635,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14018,10 +13677,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14063,10 +13719,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14108,10 +13761,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14153,10 +13803,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14198,10 +13845,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14243,10 +13887,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14288,10 +13929,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14333,10 +13971,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14375,10 +14010,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14417,10 +14049,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14459,10 +14088,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14501,10 +14127,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14543,10 +14166,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14585,10 +14205,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14627,10 +14244,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14669,10 +14283,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14711,10 +14322,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14753,10 +14361,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14795,10 +14400,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14837,10 +14439,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14879,10 +14478,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14924,10 +14520,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -14966,10 +14559,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15011,10 +14601,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15056,10 +14643,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15101,10 +14685,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15146,10 +14727,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15191,10 +14769,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15236,10 +14811,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15281,10 +14853,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15326,10 +14895,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -15371,10 +14937,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16304,9 +15867,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16345,9 +15906,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16386,9 +15945,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16427,9 +15984,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16468,9 +16023,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16509,9 +16062,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16550,9 +16101,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16594,9 +16143,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16638,10 +16185,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16683,10 +16227,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16728,10 +16269,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16770,10 +16308,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -16812,10 +16347,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16854,10 +16386,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -16899,10 +16428,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16944,10 +16470,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -16986,10 +16509,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -17028,10 +16548,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -17073,10 +16590,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -17115,10 +16629,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -17157,10 +16668,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -17199,10 +16707,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -17244,10 +16749,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -17370,10 +16872,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -17415,10 +16914,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -17460,10 +16956,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -17547,10 +17040,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -17589,10 +17079,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "linear-synced",
-        "priority:none"
-      ],
+      "labels": ["linear-synced", "priority:none"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -17796,9 +17283,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -17924,9 +17409,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -17968,10 +17451,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release",
-        "operations"
-      ],
+      "labels": ["release", "operations"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18013,10 +17493,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "release",
-        "operations"
-      ],
+      "labels": ["release", "operations"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18058,9 +17535,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18102,9 +17577,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Discovery"
-      ],
+      "labels": ["Discovery"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18146,9 +17619,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18190,9 +17661,7 @@
       "slaType": "all",
       "status": "Todo",
       "statusType": "unstarted",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18234,9 +17703,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "data-pipeline"
-      ],
+      "labels": ["data-pipeline"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18278,9 +17745,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18322,9 +17787,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "data-pipeline"
-      ],
+      "labels": ["data-pipeline"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18366,9 +17829,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18410,9 +17871,7 @@
       "slaType": "all",
       "status": "Todo",
       "statusType": "unstarted",
-      "labels": [
-        "Discovery"
-      ],
+      "labels": ["Discovery"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18454,9 +17913,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18498,9 +17955,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18542,10 +17997,7 @@
       "slaType": "all",
       "status": "Todo",
       "statusType": "unstarted",
-      "labels": [
-        "CI federation",
-        "release"
-      ],
+      "labels": ["CI federation", "release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18587,9 +18039,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18631,9 +18081,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18675,9 +18123,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18719,9 +18165,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18763,9 +18207,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "architecture"
-      ],
+      "labels": ["architecture"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18807,10 +18249,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "compliance",
-        "Component: Data Governance & Compliance"
-      ],
+      "labels": ["compliance", "Component: Data Governance & Compliance"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18852,10 +18291,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "compliance",
-        "Component: Data Governance & Compliance"
-      ],
+      "labels": ["compliance", "Component: Data Governance & Compliance"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18943,10 +18379,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "compliance",
-        "Component: Data Governance & Compliance"
-      ],
+      "labels": ["compliance", "Component: Data Governance & Compliance"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -18988,9 +18421,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19032,9 +18463,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19076,9 +18505,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19120,9 +18547,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Component: Memory Architecture (Foresight)"
-      ],
+      "labels": ["Component: Memory Architecture (Foresight)"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19164,10 +18589,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "compliance",
-        "Component: Data Governance & Compliance"
-      ],
+      "labels": ["compliance", "Component: Data Governance & Compliance"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19209,9 +18631,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19253,9 +18673,7 @@
       "slaType": "all",
       "status": "Todo",
       "statusType": "unstarted",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19297,9 +18715,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "CI/CD"
-      ],
+      "labels": ["CI/CD"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19341,10 +18757,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "CI/CD",
-        "security"
-      ],
+      "labels": ["CI/CD", "security"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19386,9 +18799,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19430,9 +18841,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "release"
-      ],
+      "labels": ["release"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19474,11 +18883,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "qa",
-        "security",
-        "type:test"
-      ],
+      "labels": ["qa", "security", "type:test"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19520,10 +18925,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:checkpoint",
-        "phase-7-integration"
-      ],
+      "labels": ["type:checkpoint", "phase-7-integration"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19562,10 +18964,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:execution",
-        "phase-7-integration"
-      ],
+      "labels": ["type:execution", "phase-7-integration"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19604,10 +19003,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:checkpoint",
-        "phase-6-eval"
-      ],
+      "labels": ["type:checkpoint", "phase-6-eval"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19646,10 +19042,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:test",
-        "phase-6-eval"
-      ],
+      "labels": ["type:test", "phase-6-eval"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19688,11 +19081,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "safety-critical",
-        "type:test",
-        "phase-6-eval"
-      ],
+      "labels": ["safety-critical", "type:test", "phase-6-eval"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19731,10 +19120,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:test",
-        "phase-6-eval"
-      ],
+      "labels": ["type:test", "phase-6-eval"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19776,9 +19162,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "phase-6-eval"
-      ],
+      "labels": ["phase-6-eval"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19817,11 +19201,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "type:test",
-        "phase-5-grpo"
-      ],
+      "labels": ["safety-critical", "type:test", "phase-5-grpo"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19860,11 +19240,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "type:test",
-        "phase-5-grpo"
-      ],
+      "labels": ["safety-critical", "type:test", "phase-5-grpo"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19903,11 +19279,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "type:test",
-        "phase-5-grpo"
-      ],
+      "labels": ["safety-critical", "type:test", "phase-5-grpo"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19946,11 +19318,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "type:test",
-        "phase-5-grpo"
-      ],
+      "labels": ["safety-critical", "type:test", "phase-5-grpo"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -19989,10 +19357,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:checkpoint",
-        "phase-4-dpo"
-      ],
+      "labels": ["type:checkpoint", "phase-4-dpo"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20034,10 +19399,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:test",
-        "phase-4-dpo"
-      ],
+      "labels": ["type:test", "phase-4-dpo"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20076,10 +19438,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:test",
-        "phase-4-dpo"
-      ],
+      "labels": ["type:test", "phase-4-dpo"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20118,11 +19477,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "type:test",
-        "phase-4-dpo"
-      ],
+      "labels": ["safety-critical", "type:test", "phase-4-dpo"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20164,10 +19519,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:checkpoint",
-        "phase-3-sdg"
-      ],
+      "labels": ["type:checkpoint", "phase-3-sdg"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20206,10 +19558,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:test",
-        "phase-3-sdg"
-      ],
+      "labels": ["type:test", "phase-3-sdg"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20251,10 +19600,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:checkpoint",
-        "phase-2-data"
-      ],
+      "labels": ["type:checkpoint", "phase-2-data"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20296,9 +19642,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "phase-2-data"
-      ],
+      "labels": ["phase-2-data"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20337,10 +19681,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:test",
-        "phase-2-data"
-      ],
+      "labels": ["type:test", "phase-2-data"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20382,10 +19723,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:execution",
-        "phase-2-data"
-      ],
+      "labels": ["type:execution", "phase-2-data"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20424,10 +19762,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "type:execution",
-        "phase-2-data"
-      ],
+      "labels": ["type:execution", "phase-2-data"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20466,10 +19801,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:test",
-        "phase-2-data"
-      ],
+      "labels": ["type:test", "phase-2-data"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20508,10 +19840,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:test",
-        "phase-2-data"
-      ],
+      "labels": ["type:test", "phase-2-data"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20553,10 +19882,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:checkpoint",
-        "phase-1-infra"
-      ],
+      "labels": ["type:checkpoint", "phase-1-infra"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20595,10 +19921,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:test",
-        "phase-1-infra"
-      ],
+      "labels": ["type:test", "phase-1-infra"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20640,11 +19963,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "remediation",
-        "type:test",
-        "phase-1-infra"
-      ],
+      "labels": ["remediation", "type:test", "phase-1-infra"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -20686,11 +20005,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "safety-critical",
-        "type:test",
-        "phase-1-infra"
-      ],
+      "labels": ["safety-critical", "type:test", "phase-1-infra"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -21359,9 +20674,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "Feature"
-      ],
+      "labels": ["Feature"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -22237,9 +21550,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "Component: Product & Strategy"
-      ],
+      "labels": ["Component: Product & Strategy"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -22281,11 +21592,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "security",
-        "type:test",
-        "Component: Infrastructure & DevOps"
-      ],
+      "labels": ["security", "type:test", "Component: Infrastructure & DevOps"],
       "createdBy": null,
       "createdById": null,
       "assignee": "Chad",
@@ -22324,9 +21631,7 @@
       "slaType": "all",
       "status": "Backlog",
       "statusType": "backlog",
-      "labels": [
-        "Discovery"
-      ],
+      "labels": ["Discovery"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -22368,9 +21673,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -22409,9 +21712,7 @@
       "slaType": "all",
       "status": "Backlog",
       "statusType": "backlog",
-      "labels": [
-        "Discovery"
-      ],
+      "labels": ["Discovery"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -22450,9 +21751,7 @@
       "slaType": "all",
       "status": "Backlog",
       "statusType": "backlog",
-      "labels": [
-        "Discovery"
-      ],
+      "labels": ["Discovery"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -22491,9 +21790,7 @@
       "slaType": "all",
       "status": "Backlog",
       "statusType": "backlog",
-      "labels": [
-        "Discovery"
-      ],
+      "labels": ["Discovery"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -22532,9 +21829,7 @@
       "slaType": "all",
       "status": "Backlog",
       "statusType": "backlog",
-      "labels": [
-        "Discovery"
-      ],
+      "labels": ["Discovery"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -22622,9 +21917,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "compliance"
-      ],
+      "labels": ["compliance"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -22666,9 +21959,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "compliance"
-      ],
+      "labels": ["compliance"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -22710,9 +22001,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "compliance"
-      ],
+      "labels": ["compliance"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -22797,9 +22086,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "platform"
-      ],
+      "labels": ["platform"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": null,
@@ -22838,10 +22125,7 @@
       "slaType": "all",
       "status": "Canceled",
       "statusType": "canceled",
-      "labels": [
-        "security",
-        "type:test"
-      ],
+      "labels": ["security", "type:test"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",
@@ -22883,9 +22167,7 @@
       "slaType": "all",
       "status": "Done",
       "statusType": "completed",
-      "labels": [
-        "type:test"
-      ],
+      "labels": ["type:test"],
       "createdBy": "Chad",
       "createdById": "8f0b6612-9fd8-4930-9685-b5c07d14f0eb",
       "assignee": "Chad",

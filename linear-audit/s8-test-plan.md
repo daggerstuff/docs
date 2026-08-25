@@ -1,14 +1,19 @@
 # S8: Post-Exploitation & Lateral Movement — Test Plan
 
-**Issue:** PIX-4142  — **Status:** 🏃 In Progress  **Priority:** 🟡 High (2)  
-**Est. Effort:** 3 days  **Sprint:** Sprint 6  
-**Dependencies:** S3 (Infrastructure scans), S6 (Injection findings), S7 (Multi-tenancy)
+**Issue:** PIX-4142 — **Status:** 🏃 In Progress **Priority:** 🟡 High (2)  
+**Est. Effort:** 3 days **Sprint:** Sprint 6  
+**Dependencies:** S3 (Infrastructure scans), S6 (Injection findings), S7
+(Multi-tenancy)
 
 ---
 
 ## 1. Objective
 
-Assess the blast radius of a successful initial compromise — what can an attacker do after gaining a foothold? This test plan evaluates **privilege escalation**, **lateral movement**, **data exfiltration**, **persistence mechanisms**, **container breakout**, **cloud metadata access**, and **pivot paths**.
+Assess the blast radius of a successful initial compromise — what can an
+attacker do after gaining a foothold? This test plan evaluates **privilege
+escalation**, **lateral movement**, **data exfiltration**, **persistence
+mechanisms**, **container breakout**, **cloud metadata access**, and **pivot
+paths**.
 
 ---
 
@@ -41,14 +46,14 @@ Assess the blast radius of a successful initial compromise — what can an attac
 
 ### Auth Boundaries
 
-| Layer | Mechanism | Notes |
-|-------|-----------|-------|
-| User → Astro | Auth0 + Session tokens | JWT in httpOnly cookies |
-| Service → Service | No explicit service auth | Microservices trust network |
-| AI Service (8002) | **No authentication** | Raw HTTP server — client IP only |
-| Pixel API (8001) | `PIXEL_API_KEY` Bearer token | Single shared key |
-| Postgres | Network isolation | No auth on internal network |
-| AWS | IAM roles (pods) | Prowler found IAM privesc risk (AWS-002) |
+| Layer             | Mechanism                    | Notes                                    |
+| ----------------- | ---------------------------- | ---------------------------------------- |
+| User → Astro      | Auth0 + Session tokens       | JWT in httpOnly cookies                  |
+| Service → Service | No explicit service auth     | Microservices trust network              |
+| AI Service (8002) | **No authentication**        | Raw HTTP server — client IP only         |
+| Pixel API (8001)  | `PIXEL_API_KEY` Bearer token | Single shared key                        |
+| Postgres          | Network isolation            | No auth on internal network              |
+| AWS               | IAM roles (pods)             | Prowler found IAM privesc risk (AWS-002) |
 
 ---
 
@@ -56,9 +61,11 @@ Assess the blast radius of a successful initial compromise — what can an attac
 
 ### PE-1: Privilege Escalation (user → admin → super-admin)
 
-**Objective:** From a standard authenticated user session, attempt to elevate to admin/super-admin roles.
+**Objective:** From a standard authenticated user session, attempt to elevate to
+admin/super-admin roles.
 
 **Test Vectors:**
+
 ```http
 # Test 1: Role manipulation in JWT
 POST /api/auth/session
@@ -77,13 +84,16 @@ POST /api/auth/session/update
 {"claims": {"roles": ["super_admin"]}}
 ```
 
-**Expected:** Non-admin users get 401/403 on admin endpoints. Role claims from client are rejected.
+**Expected:** Non-admin users get 401/403 on admin endpoints. Role claims from
+client are rejected.
 
 ### PE-2: Lateral Movement Between Microservices
 
-**Objective:** From a compromised pod/container, probe internal service endpoints for unprotected access.
+**Objective:** From a compromised pod/container, probe internal service
+endpoints for unprotected access.
 
 **Test Vectors:**
+
 ```bash
 # Test 1: Probe AI service (no auth)
 curl http://ai-service:8002/health
@@ -104,13 +114,17 @@ curl http://qdrant:6333/collections
 curl http://minio:9000/
 ```
 
-**Expected:** AI service returns 200 without auth (confirmed — no auth layer). Pixel API requires API key. Celery, Qdrant, MinIO may be unprotected on internal network.
+**Expected:** AI service returns 200 without auth (confirmed — no auth layer).
+Pixel API requires API key. Celery, Qdrant, MinIO may be unprotected on internal
+network.
 
 ### PE-3: Data Exfiltration Vectors
 
-**Objective:** Assess an attacker's ability to extract sensitive data from a compromised position.
+**Objective:** Assess an attacker's ability to extract sensitive data from a
+compromised position.
 
 **Test Vectors:**
+
 ```bash
 # Test 1: Database dump (from compromised pod with DB access)
 pg_dump -h postgres-service -U pixelated -d pixelated_production > /tmp/exfil.sql
@@ -129,25 +143,36 @@ mc ls pixelated-storage/
 curl http://qdrant:6333/collections/therapy-sessions/points/export
 ```
 
-**Expected:** Database exports blocked by network policy. Export endpoint guarded by `checkExportAccess()`. Session scraping limited by rate limiting + pagination.
+**Expected:** Database exports blocked by network policy. Export endpoint
+guarded by `checkExportAccess()`. Session scraping limited by rate limiting +
+pagination.
 
 ### PE-4: Persistence Mechanisms
 
-**Objective:** Identify ways an attacker could maintain access after initial compromise.
+**Objective:** Identify ways an attacker could maintain access after initial
+compromise.
 
 **Test Vectors:**
-- **Backdoor accounts:** Can a user create additional accounts linked to the same identity?
-- **API token leakage:** Are long-lived API tokens exposed in client-side code, logs, or error responses?
-- **Webhook persistence:** Can webhooks be configured to exfiltrate data on a timer?
-- **SSH keys:** Are SSH keys or deployment keys exposed in the container or CI/CD artifacts?
 
-**Expected:** API tokens from env vars (not client-side). Webhook creation requires admin. No SSH keys in containers.
+- **Backdoor accounts:** Can a user create additional accounts linked to the
+  same identity?
+- **API token leakage:** Are long-lived API tokens exposed in client-side code,
+  logs, or error responses?
+- **Webhook persistence:** Can webhooks be configured to exfiltrate data on a
+  timer?
+- **SSH keys:** Are SSH keys or deployment keys exposed in the container or
+  CI/CD artifacts?
+
+**Expected:** API tokens from env vars (not client-side). Webhook creation
+requires admin. No SSH keys in containers.
 
 ### PE-5: Container Breakout
 
-**Objective:** From a compromised application container, attempt to escape to the host or access other containers.
+**Objective:** From a compromised application container, attempt to escape to
+the host or access other containers.
 
 **Test Vectors:**
+
 ```bash
 # Test 1: Check capabilities
 capsh --print
@@ -165,13 +190,16 @@ cat /var/run/secrets/kubernetes.io/serviceaccount/token
 ps auxf
 ```
 
-**Expected:** Containers run with restricted capabilities, no Docker socket mount, no privileged mode. K8s service account has minimal RBAC permissions.
+**Expected:** Containers run with restricted capabilities, no Docker socket
+mount, no privileged mode. K8s service account has minimal RBAC permissions.
 
 ### PE-6: Cloud Metadata Service Access (IMDS)
 
-**Objective:** From a compromised pod running on AWS, probe the instance metadata service for IAM credentials.
+**Objective:** From a compromised pod running on AWS, probe the instance
+metadata service for IAM credentials.
 
 **Test Vectors:**
+
 ```bash
 # Test 1: IMDSv1 (no-hop)
 curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
@@ -185,13 +213,16 @@ curl http://169.254.170.2/v2/metadata
 curl $AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
 ```
 
-**Expected:** IMDSv1 disabled (requires IMDSv2). Pod IAM role restricted to least-privilege. ECS metadata requires explicit mode.
+**Expected:** IMDSv1 disabled (requires IMDSv2). Pod IAM role restricted to
+least-privilege. ECS metadata requires explicit mode.
 
 ### PE-7: Pivot Paths to Internal Systems
 
-**Objective:** Map the internal network and identify pivot paths to higher-value targets.
+**Objective:** Map the internal network and identify pivot paths to higher-value
+targets.
 
 **Test Vectors:**
+
 ```bash
 # Test 1: Network scan from compromised pod
 nmap -sn 10.0.0.0/16
@@ -211,18 +242,19 @@ done
 curl https://kubernetes.default.svc/api/v1/namespaces/
 ```
 
-**Expected:** Network policies restrict inter-service communication. K8s API requires service account auth. Database ports not exposed beyond their service.
+**Expected:** Network policies restrict inter-service communication. K8s API
+requires service account auth. Database ports not exposed beyond their service.
 
 ---
 
 ## 4. Existing Findings Carried Forward
 
-| Finding | Source | Relevance to S8 | Status |
-|---------|--------|-----------------|--------|
-| AWS-001 (Bedrock logging) | S3 Prowler | Attacker could use compromised IAM to invoke models without audit | 🟡 Triaged |
-| AWS-002 (IAM privesc) | S3 Prowler | Direct attack path: compromised pod → IAM role abuse → AWS admin | 🟡 Triaged |
-| AWS-003 (CloudWatch retention) | S3 Prowler | Attacker could cover tracks by modifying log retention | 🟡 Triaged |
-| INJ-001 (Prompt injection) | S6 → Fixed | Post-exploitation: attacker could use AI service for reconnaissance | 🟢 Fixed |
+| Finding                        | Source     | Relevance to S8                                                     | Status     |
+| ------------------------------ | ---------- | ------------------------------------------------------------------- | ---------- |
+| AWS-001 (Bedrock logging)      | S3 Prowler | Attacker could use compromised IAM to invoke models without audit   | 🟡 Triaged |
+| AWS-002 (IAM privesc)          | S3 Prowler | Direct attack path: compromised pod → IAM role abuse → AWS admin    | 🟡 Triaged |
+| AWS-003 (CloudWatch retention) | S3 Prowler | Attacker could cover tracks by modifying log retention              | 🟡 Triaged |
+| INJ-001 (Prompt injection)     | S6 → Fixed | Post-exploitation: attacker could use AI service for reconnaissance | 🟢 Fixed   |
 
 ---
 
@@ -243,15 +275,15 @@ curl https://kubernetes.default.svc/api/v1/namespaces/
 
 ## 6. Risk Assessment
 
-| Area | Risk | Blast Radius | Priority |
-|------|------|------------|----------|
-| Service-to-service auth | 🔴 High — no auth on internal services | Full internal network | 🔴 High |
-| AI service exposure | 🔴 High — no auth layer on port 8002 | AI model access, data in transit | 🔴 High |
-| IAM role scope | 🟠 Medium — Prowler found privesc path | AWS account compromise | 🟠 Medium |
-| Container hardening | 🟡 Medium — depends on K8s config | Host-level access | 🟡 Medium |
-| Database network isolation | 🟢 Low — presumably network-policy gated | Data loss | 🟢 Low |
-| Export access control | 🟢 Low — ownership check enforced | Export data | 🟢 Low |
+| Area                       | Risk                                     | Blast Radius                     | Priority  |
+| -------------------------- | ---------------------------------------- | -------------------------------- | --------- |
+| Service-to-service auth    | 🔴 High — no auth on internal services   | Full internal network            | 🔴 High   |
+| AI service exposure        | 🔴 High — no auth layer on port 8002     | AI model access, data in transit | 🔴 High   |
+| IAM role scope             | 🟠 Medium — Prowler found privesc path   | AWS account compromise           | 🟠 Medium |
+| Container hardening        | 🟡 Medium — depends on K8s config        | Host-level access                | 🟡 Medium |
+| Database network isolation | 🟢 Low — presumably network-policy gated | Data loss                        | 🟢 Low    |
+| Export access control      | 🟢 Low — ownership check enforced        | Export data                      | 🟢 Low    |
 
 ---
 
-*Generated: 2026-07-29 | Executing: Sprint 6 | Owner: Security Lead*
+_Generated: 2026-07-29 | Executing: Sprint 6 | Owner: Security Lead_

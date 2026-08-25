@@ -6,31 +6,30 @@
 
 ## Context
 
-The EHR module add-on needs a canonical data model for clinical resources.
-The platform already has an outbound FHIR integration layer at
-`src/lib/ehr/` with typed clients for Epic, Cerner, athenahealth, and
-Allscripts, all speaking FHIR R4 via `src/lib/ehr/services/fhir.client.ts`.
-The existing `src/lib/ehr/types.ts` defines `FHIRResource`, `Patient`,
-`Practitioner`, and a `FHIRClient` interface — all FHIR R4 shaped.
+The EHR module add-on needs a canonical data model for clinical resources. The
+platform already has an outbound FHIR integration layer at `src/lib/ehr/` with
+typed clients for Epic, Cerner, athenahealth, and Allscripts, all speaking FHIR
+R4 via `src/lib/ehr/services/fhir.client.ts`. The existing
+`src/lib/ehr/types.ts` defines `FHIRResource`, `Patient`, `Practitioner`, and a
+`FHIRClient` interface — all FHIR R4 shaped.
 
-The architect's structural requirement (plan section 1.2) is that FHIR R4
-be the internal data model, not just the interchange format. ADR-001
-established Postgres with RLS (`tenant_id`) as the system of record and the
-hash-chain audit log. This ADR defines what shape the stored clinical data
-takes.
+The architect's structural requirement (plan section 1.2) is that FHIR R4 be the
+internal data model, not just the interchange format. ADR-001 established
+Postgres with RLS (`tenant_id`) as the system of record and the hash-chain audit
+log. This ADR defines what shape the stored clinical data takes.
 
 ## Decision 1: FHIR R4 JSONB as the Storage Format
 
 **Chosen**: All clinical resources (Patient, Encounter, Observation,
 DocumentReference, Consent, Claim, Appointment, ServiceRequest, Condition,
-AllergyIntolerance, MedicationRequest, Practitioner, PractitionerRole) stored
-as FHIR R4 JSONB in PostgreSQL  
+AllergyIntolerance, MedicationRequest, Practitioner, PractitionerRole) stored as
+FHIR R4 JSONB in PostgreSQL  
 **Rejected**: Custom proprietary data model; HL7 v2; FHIR STU3
 
 ### Rationale
 
-- FHIR R4 is the industry standard (ONC, TEFCA, USCDI v3); no translation
-  layer to external EHRs — `src/lib/ehr/` already speaks R4
+- FHIR R4 is the industry standard (ONC, TEFCA, USCDI v3); no translation layer
+  to external EHRs — `src/lib/ehr/` already speaks R4
 - HL7 v2 is pipe-delimited legacy with no existing code; STU3 is superseded
 - Custom model would double the mapping surface and create divergence
 - JSONB GIN indexes + `tsvector` give query flexibility without relational
@@ -58,8 +57,8 @@ CapabilityStatement at `/fhir/r4/metadata`
   from our own server the same way it reads from Epic/Cerner
 - CapabilityStatement required for FHIR conformance validation (gate G1.6:
   Inferno / Touchstone)
-- Proprietary REST requires a mapping for every external integration;
-  GraphQL has no FHIR conformance path
+- Proprietary REST requires a mapping for every external integration; GraphQL
+  has no FHIR conformance path
 
 ### Implementation
 
@@ -76,8 +75,8 @@ CapabilityStatement at `/fhir/r4/metadata`
 
 ### Rationale
 
-- Parse-don't-validate (existing zod convention): invalid resources never
-  enter the database
+- Parse-don't-validate (existing zod convention): invalid resources never enter
+  the database
 - Audit after persist so the event references the committed resource ID and
   version
 - Index update last so search is eventually consistent, never ahead of truth
@@ -98,27 +97,24 @@ triggers maintain a `_history` table per resource type
 
 ### Rationale
 
-- FHIR R4 requires `meta.versionId` and `meta.lastUpdated`; conformance
-  checkers validate this
-- `_history` tables give O(1) lookup of any prior version via
-  `/{id}/_history`
+- FHIR R4 requires `meta.versionId` and `meta.lastUpdated`; conformance checkers
+  validate this
+- `_history` tables give O(1) lookup of any prior version via `/{id}/_history`
 - Triggers capture prior version on UPDATE/DELETE so no version is lost
 
 ### Implementation
 
 - Every UPDATE increments `meta.versionId` and sets `meta.lastUpdated` to
   `now()`
-- BEFORE UPDATE / BEFORE DELETE triggers copy current row to
-  `{table}_history`
-- `/{id}/_history` and `/{id}/_history/{versionId}` endpoints read from
-  history tables
+- BEFORE UPDATE / BEFORE DELETE triggers copy current row to `{table}_history`
+- `/{id}/_history` and `/{id}/_history/{versionId}` endpoints read from history
+  tables
 
 ## Consequences
 
 ### Positive
 
-- Zero translation layer between storage and existing FHIR integration
-  clients
+- Zero translation layer between storage and existing FHIR integration clients
 - External EHR interoperability is native (Epic, Cerner, athenahealth,
   Allscripts)
 - FHIR R4 conformance achievable, unblocking marketplace and HIE (ADR-004)

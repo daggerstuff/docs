@@ -1,20 +1,17 @@
 # Statement of Work — External Penetration Test
 
-**Client:** Pixelated Empathy
-**Vendor:** _[To be filled after selection]_
-**SOW effective date:** _[To be filled]_
-**Engagement start:** 2026-09-01
-**Engagement end:** 2026-12-13
-**Parent:** PIX-4126 — Enterprise Gap: Penetration Testing & External Security Assessment
-**Last updated:** 2026-07-30
+**Client:** Pixelated Empathy **Vendor:** _[To be filled after selection]_ **SOW
+effective date:** _[To be filled]_ **Engagement start:** 2026-09-01 **Engagement
+end:** 2026-12-13 **Parent:** PIX-4126 — Enterprise Gap: Penetration Testing &
+External Security Assessment **Last updated:** 2026-07-30
 
 ---
 
 ## 1. Purpose
 
 This Statement of Work (SOW) defines the commercial and technical terms for an
-external penetration test of Pixelated Empathy's web application, public API, and
-supporting cloud infrastructure. It is issued under the Master Services
+external penetration test of Pixelated Empathy's web application, public API,
+and supporting cloud infrastructure. It is issued under the Master Services
 Agreement (MSA) and Non-Disclosure Agreement (NDA) executed by both parties.
 
 ---
@@ -61,14 +58,14 @@ PTES, including:
 
 ## 3. Deliverables
 
-| Deliverable | Format | Due Date |
-|-------------|--------|----------|
-| Kickoff agenda and rules of engagement | PDF | Kickoff |
-| Weekly status updates | Email / Slack | Weekly during test |
-| Draft findings report | PDF | 2026-09-29 |
-| Final findings report | PDF | 2026-12-13 |
-| Remediation tracker | Spreadsheet / CSV | With final report |
-| Re-test summary | PDF | 2026-12-13 |
+| Deliverable                            | Format            | Due Date           |
+| -------------------------------------- | ----------------- | ------------------ |
+| Kickoff agenda and rules of engagement | PDF               | Kickoff            |
+| Weekly status updates                  | Email / Slack     | Weekly during test |
+| Draft findings report                  | PDF               | 2026-09-29         |
+| Final findings report                  | PDF               | 2026-12-13         |
+| Remediation tracker                    | Spreadsheet / CSV | With final report  |
+| Re-test summary                        | PDF               | 2026-12-13         |
 
 ### 3.1 Report Contents
 
@@ -86,14 +83,14 @@ The final report will include, for each finding:
 
 ## 4. Timeline
 
-| Milestone | Target Date |
-|-----------|-------------|
-| Kickoff and scoping | 2026-09-01 |
-| Testing window | 2026-09-08 – 2026-09-22 |
-| Draft report delivered | 2026-09-29 |
-| Remediation window | 2026-09-30 – 2026-11-28 |
-| Re-test | 2026-11-29 – 2026-12-06 |
-| Final report | 2026-12-13 |
+| Milestone              | Target Date             |
+| ---------------------- | ----------------------- |
+| Kickoff and scoping    | 2026-09-01              |
+| Testing window         | 2026-09-08 – 2026-09-22 |
+| Draft report delivered | 2026-09-29              |
+| Remediation window     | 2026-09-30 – 2026-11-28 |
+| Re-test                | 2026-11-29 – 2026-12-06 |
+| Final report           | 2026-12-13              |
 
 ---
 
@@ -131,12 +128,12 @@ The final report will include, for each finding:
 
 ## 7. Pricing & Payment
 
-| Item | Amount | Notes |
-|------|--------|-------|
-| Base engagement fee | _[To be filled]_ | Includes testing, reporting, and one re-test cycle |
-| Travel expenses | _[To be filled]_ | If on-site work is required |
-| Additional re-testing | _[To be filled]_ | Optional, per diem rate |
-| Payment terms | Net 30 | Invoice upon final report delivery |
+| Item                  | Amount           | Notes                                              |
+| --------------------- | ---------------- | -------------------------------------------------- |
+| Base engagement fee   | _[To be filled]_ | Includes testing, reporting, and one re-test cycle |
+| Travel expenses       | _[To be filled]_ | If on-site work is required                        |
+| Additional re-testing | _[To be filled]_ | Optional, per diem rate                            |
+| Payment terms         | Net 30           | Invoice upon final report delivery                 |
 
 ---
 
@@ -164,6 +161,6 @@ This engagement will be considered complete when:
 
 ## 10. Change Log
 
-| Date | Author | Change |
-|------|--------|--------|
-| 2026-07-30 | Chad | Initial SOW |
+| Date       | Author | Change      |
+| ---------- | ------ | ----------- |
+| 2026-07-30 | Chad   | Initial SOW |

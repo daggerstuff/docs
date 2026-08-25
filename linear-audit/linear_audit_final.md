@@ -8,68 +8,71 @@
 
 ## Executive Summary
 
-The Linear workspace has been fully remediated, restructured, and cleaned up. All audit findings have been addressed. The workspace now contains **84 active issues** across **4 active projects** with **1 initiative** and **0 orphaned initiatives**.
+The Linear workspace has been fully remediated, restructured, and cleaned up.
+All audit findings have been addressed. The workspace now contains **84 active
+issues** across **4 active projects** with **1 initiative** and **0 orphaned
+initiatives**.
 
 ---
 
 ## State Distribution
 
-| State | Count |
-|-------|-------|
-| Done | 45 |
-| Triage | 34 |
-| Canceled | 5 |
+| State     | Count  |
+| --------- | ------ |
+| Done      | 45     |
+| Triage    | 34     |
+| Canceled  | 5      |
 | **Total** | **84** |
 
 ---
 
 ## Project Distribution
 
-| Project | Issues | Status |
-|---------|--------|--------|
-| Enterprise Readiness Program | 34 | Started |
-| (No Project — orphaned issues) | 23 | — |
-| Churnmeon Reliability | 16 | Started |
-| AI Research-Clinical Integration | 8 | Started |
-| Training Pipeline v2 — Audit Remediation | 3 | Started |
+| Project                                  | Issues | Status  |
+| ---------------------------------------- | ------ | ------- |
+| Enterprise Readiness Program             | 34     | Started |
+| (No Project — orphaned issues)           | 23     | —       |
+| Churnmeon Reliability                    | 16     | Started |
+| AI Research-Clinical Integration         | 8      | Started |
+| Training Pipeline v2 — Audit Remediation | 3      | Started |
 
 ---
 
 ## Assignee Distribution
 
-| User | Issues |
-|------|--------|
+| User | Issues        |
+| ---- | ------------- |
 | Chad | **84** (100%) |
 
 ---
 
 ## Quality Metrics
 
-| Metric | Value |
-|--------|-------|
-| With descriptions | 84/84 (100%) |
-| With estimates | 69/84 (82.1%) |
-| Unassigned | 0 |
-| Done-Done duplicates | 0 |
-| Urgent priority | 18 |
-| High priority | 43 |
-| Medium priority | 19 |
-| Low priority | 1 |
+| Metric               | Value         |
+| -------------------- | ------------- |
+| With descriptions    | 84/84 (100%)  |
+| With estimates       | 69/84 (82.1%) |
+| Unassigned           | 0             |
+| Done-Done duplicates | 0             |
+| Urgent priority      | 18            |
+| High priority        | 43            |
+| Medium priority      | 19            |
+| Low priority         | 1             |
 
 ---
 
 ## Enterprise Readiness Program (34 issues)
 
-| Parent | Sub-issues | Workstream |
-|--------|------------|------------|
-| PIX-4131 | EPIC tracking all 6 gaps | Enterprise Readiness |
-| PIX-4125 | PIX-4132 through PIX-4134 (3 sub-issues) | Disaster Recovery |
+| Parent   | Sub-issues                                   | Workstream                       |
+| -------- | -------------------------------------------- | -------------------------------- |
+| PIX-4131 | EPIC tracking all 6 gaps                     | Enterprise Readiness             |
+| PIX-4125 | PIX-4132 through PIX-4134 (3 sub-issues)     | Disaster Recovery                |
 | PIX-4126 | **PIX-4135 through PIX-4143 (9 sub-issues)** | **Penetration Testing (Urgent)** |
-| PIX-4127 | PIX-4144 through PIX-4147 (4 sub-issues) | SLA/SLO Definitions |
-| PIX-4128 | PIX-4148 through PIX-4150 (3 sub-issues) | Chaos Engineering |
-| PIX-4129 | PIX-4151 through PIX-4153 (3 sub-issues) | Vendor Risk Assessment |
-| PIX-4130 | PIX-4154 through PIX-4157 (4 sub-issues) | SOC2/HIPAA Readiness |
-| PIX-4158 | (standalone) | Quarterly Re-Audit Tracker |
+| PIX-4127 | PIX-4144 through PIX-4147 (4 sub-issues)     | SLA/SLO Definitions              |
+| PIX-4128 | PIX-4148 through PIX-4150 (3 sub-issues)     | Chaos Engineering                |
+| PIX-4129 | PIX-4151 through PIX-4153 (3 sub-issues)     | Vendor Risk Assessment           |
+| PIX-4130 | PIX-4154 through PIX-4157 (4 sub-issues)     | SOC2/HIPAA Readiness             |
+| PIX-4158 | (standalone)                                 | Quarterly Re-Audit Tracker       |
 
 ---
 
@@ -99,24 +102,26 @@ Enterprise Readiness [Initiative]
 
 ## Archived Projects (15 — trashed, restorable via `projectUnarchive`)
 
-All completed projects were archived via `projectDelete` mutation. These can be restored with `projectUnarchive` if needed. Their issues are hidden from the default query.
+All completed projects were archived via `projectDelete` mutation. These can be
+restored with `projectUnarchive` if needed. Their issues are hidden from the
+default query.
 
 ---
 
 ## Cleanup Summary
 
-| Action | Count |
-|--------|-------|
-| Duplicate Done-Done pairs resolved | 20 |
-| Descriptions added to empty issues | 4 |
-| Unassigned issues assigned | 146 |
-| Estimates added | 149 |
-| Enterprise gap issues created | 7 |
-| Sub-issues created for enterprise gaps | 26 |
-| Projects archived | 15 |
-| Duplicate initiatives deleted | 3 |
-| Orphaned initiatives deleted | 1 |
-| Issues structured into Initiative/Project | 34 |
+| Action                                    | Count |
+| ----------------------------------------- | ----- |
+| Duplicate Done-Done pairs resolved        | 20    |
+| Descriptions added to empty issues        | 4     |
+| Unassigned issues assigned                | 146   |
+| Estimates added                           | 149   |
+| Enterprise gap issues created             | 7     |
+| Sub-issues created for enterprise gaps    | 26    |
+| Projects archived                         | 15    |
+| Duplicate initiatives deleted             | 3     |
+| Orphaned initiatives deleted              | 1     |
+| Issues structured into Initiative/Project | 34    |
 
 ---
 
@@ -127,10 +132,12 @@ All completed projects were archived via `projectDelete` mutation. These can be 
 3. **0 duplicate Done-Done pairs** — all resolved
 4. **82.1% estimate coverage** — up from 44.4%
 5. **7 enterprise gap issues created** with 26 detailed sub-issues
-6. **Initial priority:** PIX-4126 (Penetration Testing) — the only **Urgent** gap
-7. **23 issues have no project** — these are legacy issues from archived projects (Bias Detection, Foresight, etc.) that were not cleaned up
+6. **Initial priority:** PIX-4126 (Penetration Testing) — the only **Urgent**
+   gap
+7. **23 issues have no project** — these are legacy issues from archived
+   projects (Bias Detection, Foresight, etc.) that were not cleaned up
 
 ---
 
-*Generated by docs/linear-audit/run_audit.py*
-*Scripts: docs/linear-audit/fetch_issues.py, docs/linear-audit/remediate.py*
+_Generated by docs/linear-audit/run_audit.py_ _Scripts:
+docs/linear-audit/fetch_issues.py, docs/linear-audit/remediate.py_

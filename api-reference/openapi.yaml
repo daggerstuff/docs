@@ -219,7 +219,8 @@ paths:
   /search:
     get:
       summary: Search Content
-      description: Search across blog posts, documentation, and research articles.
+      description:
+        Search across blog posts, documentation, and research articles.
       operationId: searchContent
       tags: [Content]
       parameters:
@@ -403,7 +404,8 @@ paths:
               properties:
                 content:
                   type: string
-                  example: 'Today I practiced deep breathing exercises and felt calmer.'
+                  example:
+                    'Today I practiced deep breathing exercises and felt calmer.'
                 metadata:
                   type: object
                   example:
@@ -603,7 +605,8 @@ paths:
               properties:
                 content:
                   type: string
-                  example: 'Today I practiced deep breathing exercises and felt calmer.'
+                  example:
+                    'Today I practiced deep breathing exercises and felt calmer.'
                 metadata:
                   type: object
                   example:
@@ -1247,7 +1250,8 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       summary: Cancel training job
-      description: Cancel a running training job. Requires admin or therapist role.
+      description:
+        Cancel a running training job. Requires admin or therapist role.
       operationId: cancelTrainingJob
       tags: [Training]
       security:
@@ -1299,7 +1303,8 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
     post:
       summary: Create training session
-      description: Create a new training session. Requires admin or therapist role.
+      description:
+        Create a new training session. Requires admin or therapist role.
       operationId: createTrainingSession
       tags: [Training]
       security:
@@ -1332,7 +1337,8 @@ paths:
         description: Session ID
     get:
       summary: Get training session
-      description: Get a specific training session by ID. Requires authentication.
+      description:
+        Get a specific training session by ID. Requires authentication.
       operationId: getTrainingSession
       tags: [Training]
       security:
@@ -1904,7 +1910,8 @@ components:
         application/json:
           schema: { $ref: '#/components/schemas/V1Error' }
     V1NotFound:
-      description: The requested memory was not found or is not visible to the caller.
+      description:
+        The requested memory was not found or is not visible to the caller.
       content:
         application/json:
           schema: { $ref: '#/components/schemas/V1Error' }
@@ -1916,7 +1923,8 @@ tags:
   - name: Admin
     description: Platform administration
   - name: Authentication
-    description: Auth0 OAuth 2.0 login, logout, token refresh, and session lookup
+    description:
+      Auth0 OAuth 2.0 login, logout, token refresh, and session lookup
   - name: System
     description: System health and status
   - name: Bias Analysis

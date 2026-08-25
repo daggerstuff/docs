@@ -13,8 +13,7 @@ captain's daily workflow, across three waves.
 
 ## Wave 1 — Advisor & Content Agents
 
-**Agents:** `advisor`, `content`
-**Duration:** 1 week minimum before Wave 2
+**Agents:** `advisor`, `content` **Duration:** 1 week minimum before Wave 2
 
 ### Activation Steps
 
@@ -47,9 +46,12 @@ captain's daily workflow, across three waves.
 
 Track the following during Wave 1:
 
-- **Advisor review quality:** Are the code review findings actionable? False positives?
-- **Content audit accuracy:** Does the clinical corpus audit catch real safety issues?
-- **Hook reliability:** Do pre-commit/pre-push hooks fail-open correctly when agents are unreachable?
+- **Advisor review quality:** Are the code review findings actionable? False
+  positives?
+- **Content audit accuracy:** Does the clinical corpus audit catch real safety
+  issues?
+- **Hook reliability:** Do pre-commit/pre-push hooks fail-open correctly when
+  agents are unreachable?
 - **Latency:** Is the agent response time acceptable for interactive use?
 
 ### Gate Criteria for Wave 2
@@ -61,8 +63,7 @@ Track the following during Wave 1:
 
 ## Wave 2 — QA & Supervisor Agents
 
-**Agents:** `qa`, `supervisor`
-**Gate:** Ops/quality work has begun
+**Agents:** `qa`, `supervisor` **Gate:** Ops/quality work has begun
 
 ### Available Commands
 
@@ -88,8 +89,8 @@ px supervisor notify --body '{"message": "..."}'
 
 ## Wave 3 — Pipeline, Session & Intake Agents
 
-**Agents:** `pipeline`, `session`, `intake`
-**Gate:** Clinical user onboarding timeline
+**Agents:** `pipeline`, `session`, `intake` **Gate:** Clinical user onboarding
+timeline
 
 ### Available Commands
 
@@ -163,8 +164,8 @@ px serve --agent advisor
 ```
 
 When `PX_LOCAL=1` is set in the environment, all `px` commands route to
-`http://localhost:2000` automatically. The stub server returns realistic
-mock responses for all 45 tool endpoints across 7 agents.
+`http://localhost:2000` automatically. The stub server returns realistic mock
+responses for all 45 tool endpoints across 7 agents.
 
 ```bash
 # Terminal 1: start stub server

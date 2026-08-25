@@ -7,14 +7,13 @@
 ## Context
 
 The platform has a production hash-chain audit log at `src/lib/audit/`. The
-`AuditLogger` class (`src/lib/audit/logger.ts`) links every event into a
-SHA-256 hash chain via an atomic cursor upsert (`chain_audit_cursor`), with
-`verifyAuditChain()` detecting any modification, deletion, or reordering.
-The `AuditEvent` interface (`src/lib/audit/events.ts`) carries `id`,
-`timestamp`, `userId`, `type`, `action`, `severity`, `resourceId`,
-`resourceType`, `metadata`, `ipAddress`, `userAgent`, `status`,
-`previousHash`, `hash`. DLP sanitization runs on metadata before
-persistence.
+`AuditLogger` class (`src/lib/audit/logger.ts`) links every event into a SHA-256
+hash chain via an atomic cursor upsert (`chain_audit_cursor`), with
+`verifyAuditChain()` detecting any modification, deletion, or reordering. The
+`AuditEvent` interface (`src/lib/audit/events.ts`) carries `id`, `timestamp`,
+`userId`, `type`, `action`, `severity`, `resourceId`, `resourceType`,
+`metadata`, `ipAddress`, `userAgent`, `status`, `previousHash`, `hash`. DLP
+sanitization runs on metadata before persistence.
 
 ADR-001 established this as the compliance foundation (Decision 6). The EHR
 module must extend this to cover all EHR write events — HIPAA requires audit
@@ -33,11 +32,11 @@ severity. A separate audit system would break the single chain of custody.
 - Single chain — `verifyAuditChain` covers EHR and non-EHR in one pass
 - Reuses `AuditLogger`, `verifyAuditChain`, DLP sanitization — no new
   infrastructure
-- Validation pipeline from ADR-002 (`validateResource() -> persist() ->
-  audit.log() -> index.update()`) ensures every write is audited with full
-  user context
-- DB trigger only misses app context (user, session); middleware only
-  misses non-HTTP writes
+- Validation pipeline from ADR-002
+  (`validateResource() -> persist() -> audit.log() -> index.update()`) ensures
+  every write is audited with full user context
+- DB trigger only misses app context (user, session); middleware only misses
+  non-HTTP writes
 
 ### Implementation
 
@@ -46,8 +45,8 @@ severity. A separate audit system would break the single chain of custody.
 - Every EHR write event includes: `resourceType`, `resourceId`, `action`
   (create/read/update/delete), `userId`, `tenant`, `timestamp`, `metadata`
   (version, changeset), `ipAddress`, `userAgent`, `sessionId`
-- Uses existing `AuditEventType` values (`CREATE`, `UPDATE`, `DELETE`,
-  `ACCESS`) from `src/lib/audit/events.ts`
+- Uses existing `AuditEventType` values (`CREATE`, `UPDATE`, `DELETE`, `ACCESS`)
+  from `src/lib/audit/events.ts`
 - DLP sanitization runs automatically — no PHI in audit logs (ADR-001)
 - `verifyAuditChain()` covers EHR events in the same chain
 
@@ -60,32 +59,31 @@ observations
 
 ### Rationale
 
-- HIPAA requires audit trails for both access (read) and modification (write)
-  of PHI
-- Read auditing detects unauthorized access (e.g., clinician reading
-  unassigned patient)
+- HIPAA requires audit trails for both access (read) and modification (write) of
+  PHI
+- Read auditing detects unauthorized access (e.g., clinician reading unassigned
+  patient)
 - All EHR resources are PHI-bearing; excluding any creates a compliance gap
 
 ### Implementation
 
-- Audit events for each resource type and action (create, read, update,
-  delete)
+- Audit events for each resource type and action (create, read, update, delete)
 - Read events: `AuditEventType.ACCESS`, `AuditSeverity.INFO`; write events:
   `CREATE` / `UPDATE` / `DELETE`, `AuditSeverity.HIGH` for deletions
 - Bridge called from validation pipeline (ADR-002) after `persist()` succeeds
 
 ## Decision 3: Consent Changes Get Double-Audit
 
-**Chosen**: Consent changes emit two audit events — one for the consent
-resource itself, and one for the clinical action it authorizes  
+**Chosen**: Consent changes emit two audit events — one for the consent resource
+itself, and one for the clinical action it authorizes  
 **Rejected**: Single audit event for consent changes
 
 ### Rationale
 
 - A consent change is both a clinical event (record changed) and an
   authorization event (enables/blocks future clinical actions)
-- If consent is revoked, the trail must show both the revocation and
-  clinical actions blocked by it
+- If consent is revoked, the trail must show both the revocation and clinical
+  actions blocked by it
 - Single-audit loses the link between consent state and governed actions
 
 ### Implementation
@@ -96,8 +94,8 @@ resource itself, and one for the clinical action it authorizes
   2. Event 2: `action: 'governance_allow'` or `'governance_deny'` (existing
      `AuditEventType.GOVERNANCE_ALLOW` / `GOVERNANCE_DENY`),
      `metadata: { clinicalAction, authorizedBy }`
-- Clinical action attempts include `consentId` in metadata; denied actions
-  get `status: 'failure'`, `AuditSeverity.HIGH`
+- Clinical action attempts include `consentId` in metadata; denied actions get
+  `status: 'failure'`, `AuditSeverity.HIGH`
 
 ## Decision 4: Chain Verification Extended to EHR Events
 
@@ -115,10 +113,10 @@ events in the same chain — no separate verification
 ### Implementation
 
 - No changes to `verifyAuditChain()` or `computeChainHash()`
-- Gate G1.5 runs `verifyChain()` in CI to confirm every EHR write produces
-  a chain-verified entry
-- Phase 3 F3.6 exports EHR audit events via `exportReceiptLedger()`,
-  filtered by `resourceType`
+- Gate G1.5 runs `verifyChain()` in CI to confirm every EHR write produces a
+  chain-verified entry
+- Phase 3 F3.6 exports EHR audit events via `exportReceiptLedger()`, filtered by
+  `resourceType`
 
 ## Consequences
 
@@ -127,8 +125,8 @@ events in the same chain — no separate verification
 - Single chain of custody for all audit events with one verification path
 - Reuses production-tested `AuditLogger`, `verifyAuditChain`, DLP sanitization
 - HIPAA audit trail requirement met (risk R-AUDIT-01 mitigated)
-- Consent double-audit links consent state to clinical actions for
-  malpractice defense
+- Consent double-audit links consent state to clinical actions for malpractice
+  defense
 - Gate G1.5 blocks ship on audit gaps — structural enforcement
 
 ### Negative
