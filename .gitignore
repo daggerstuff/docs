@@ -10,3 +10,4 @@ maestro/
 **/.git_disabled/**
 # Recon research sweep output (generated)
 recon/
+.bak

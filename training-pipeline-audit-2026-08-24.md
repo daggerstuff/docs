@@ -50,9 +50,9 @@ reconciliation against later user preferences.
 | Stratified split (4-axis) | ⚠️ Half-true | exists but NOT multi-label stratified — hash-bucketing per stratum |
 | Split integrity gates ±2pp | ✅ True | implemented |
 | IAA Fleiss/Cohen kappa, 0.75/0.85 | ✅ True | `annotation/iaa.py` exact |
-| SDG self-instruct (~200 seeds, k=4, N=10000) | ⚠️ Partial | code exists, seed `self_instruct_seed.jsonl` missing |
+| SDG self-instruct (~200 seeds, k=4, N=10000) | ⚠️ Partial | code exists; seed `self_instruct_seed.jsonl` created (50 prompts) — still ~200 target |
 | SDG back-translation / paraphrase | ✅ True | files exist |
-| Golden judge calib (200-sample) | ⚠️ Placeholder | ids `neon-consensus-0000`; warns "synthetic/placeholder" |
+| Golden judge calib (200-sample) | ⚠️ Placeholder | ids `neon-consensus-0000`; detection fixed (`calibrate_judge.py`), data still placeholder |
 | DVC init + S3/MinIO remotes | ✅ True | `ai/.dvc/config` |
 | `ingest_router.py` web/DOCX/API | ✅ True | source_type routing + python-docx |
 
@@ -63,7 +63,7 @@ reconciliation against later user preferences.
 | `docker-compose.gpu.override.yml` exists | ✅ True (repo root, not `docker/`) |
 | Axolotl config exists | ✅ True — but `base_model: LatitudeGames/Wayfarer-2-12B`, not Qwen/Llama |
 | Axolotl primary framework | ⚠️ 1 stale yaml; no `qwen32b-sft.yaml` (App C references a nonexistent file) |
-| DeepSpeed ZeRO-3 config | ❌ Not implemented — zero `deepspeed` import; JSON in App D not in repo |
+| DeepSpeed ZeRO-3 config | ✅ Now implemented — `ai/training/configs/ds_config_zero3.json` + `deepspeed` arg wired into both trainers |
 | `requirements_training.txt` pins `torch>=2.13`, `transformers>=5.14` | ⚠️ Fabricated — these versions don't exist |
 | Python 3.11 + torch 2.4.0 (§6) | ❌ contradicts requirements file |
 
@@ -71,10 +71,10 @@ reconciliation against later user preferences.
 
 | Claim | Verdict |
 |---|---|
-| QLoRA train scripts | ⚠️ Broken — `train_moe_h100.py`/`train_optimized.py` import missing modules → crash |
-| DPO trainer | ⚠️ imports `trl`; `trl` not in any requirements file |
-| GRPO trainer | ⚠️ imports `trl`, guarded `ImportError`, not in requirements |
-| Catastrophic forgetting metric | ⚠️ Mock only — `benchmark_runner.py` docstring: "CPU-mock… deterministic mocks" |
+| QLoRA train scripts | ⚠️ Mostly fixed — imports + transformers 5.x kwargs fixed; still no real GPU run |
+| DPO trainer | ⚠️ imports `trl`; `trl` now in `requirements_training.txt` |
+| GRPO trainer | ⚠️ imports `trl`, guarded `ImportError`; `trl` now in requirements |
+| Catastrophic forgetting metric | ⚠️ Partially fixed — `benchmark_runner.py` now wires real `lm-eval` + DiagnosisArena; `--mock` explicit fallback (needs GPU to run real) |
 | DeepSeek-R1 "800K curated > 10M unfiltered" | ❌ Misattributed — R1 paper uses 800K samples, no such comparison |
 | NeMo/FSDP2 App A | ⚠️ Doc-only, faithful to skill, zero code in repo |
 
@@ -92,13 +92,15 @@ reconciliation against later user preferences.
 
 **Real, working (verified):** dedup (MinHash/LSH/SHA), provenance+SPDX gate, QualityTiers,
 hash split, IAA kappa, dual-judge, stratified splitter + integrity gates, DVC remotes, ingest
-router, SDG modules, `docker-compose.gpu.override.yml`.
+router, SDG modules, `docker-compose.gpu.override.yml`, DeepSpeed ZeRO-3 config, real
+lm-eval benchmark wiring.
 
-**Stub/placeholder/broken:** MoE train scripts (missing modules), DPO/GRPO (missing `trl`),
-benchmark harness (mock), golden calib set (placeholder), SDG seed file (missing).
+**Stub/placeholder/broken:** MoE train scripts (real GPU run untested), DPO/GRPO (needs `trl`
+install), benchmark harness (real path needs GPU), golden calib set (placeholder), SDG seed file
+(50 seeds, below 200 target).
 
-**Not built / fiction:** DeepSpeed ZeRO-3, FSDP2/Megatron distributed training, real GPU run,
-real catastrophic-forgetting eval, Axolotl Qwen/Llama config.
+**Not built / fiction:** FSDP2/Megatron distributed training (NeMo App A), real GPU run,
+real catastrophic-forgetting eval (no GPU run), Axolotl Qwen/Llama config.
 
 **Contradicts preferences:** Llama 3.3/3.2 in §1, §5, §6, App C, action plan, dual-judge secondary.
 
@@ -106,10 +108,11 @@ real catastrophic-forgetting eval, Axolotl Qwen/Llama config.
 
 ## 4. Remaining gaps (not yet fixed)
 
-- `S3DatasetLoader` has only `stream_jsonl`; train scripts reference `load_json`,
-  `get_s3_dataset_path`, `load_dataset_from_s3` (never implemented).
-- `trl` / `flash_attn` absent from all requirements files.
-- `self_instruct_seed.jsonl` missing.
-- Golden calib set is placeholder data.
-- `benchmark_runner.py` is CPU-mock; no real lm-evaluation-harness wiring.
-- Distributed training (App A) has no implementation.
+- ~~`S3DatasetLoader` has only `stream_jsonl`~~ — fixed: shim now re-exports full API.
+- ~~`trl` / `flash_attn` absent~~ — fixed: both in `requirements_training.txt`.
+- ~~`self_instruct_seed.jsonl` missing~~ — fixed: 50 seeds created (below 200 target).
+- Golden calib set is placeholder data — detection fixed, data still placeholder.
+- ~~`benchmark_runner.py` is CPU-mock~~ — real `lm-eval` + DiagnosisArena wired; `--mock` explicit (real path needs GPU).
+- Distributed training (App A) has no implementation — DeepSpeed ZeRO-3 (App D) done; NeMo FSDP2 remains.
+- ~~`deepspeed` absent~~ — fixed: `deepspeed>=0.14.0` in requirements + `ds_config_zero3.json`.
+- Transformers 5.x incompatibilities (`warmup_ratio`, `evaluation_strategy`, `group_by_length`) — fixed in both trainers.
