@@ -343,9 +343,9 @@ Read a single patient by ID.
 
 **Response:** `200` with patient resource, or `404` if not found.
 
-#### PUT /patients/{id}
+#### PATCH /patients/{id}
 
-Update an existing patient. Send the full patient resource in the body.
+Partially update an existing patient. Send only the fields to update.
 
 **Response:** `200` with updated patient resource, or `404` if not found.
 
@@ -394,17 +394,11 @@ Read a single encounter by ID.
 
 **Response:** `200` with encounter resource, or `404`.
 
-#### PUT /encounters/{id}
+#### PATCH /encounters/{id}
 
-Update an existing encounter.
+Partially update an existing encounter.
 
 **Response:** `200` with updated encounter, or `404`.
-
-#### DELETE /encounters/{id}
-
-Delete an encounter.
-
-**Response:** `200` with confirmation, or `404`.
 
 ### Observations
 
@@ -445,17 +439,11 @@ Read a single observation by ID.
 
 **Response:** `200` with observation resource, or `404`.
 
-#### PUT /observations/{id}
+#### PATCH /observations/{id}
 
-Update an existing observation.
+Partially update an existing observation.
 
 **Response:** `200` with updated observation, or `404`.
-
-#### DELETE /observations/{id}
-
-Delete an observation.
-
-**Response:** `200` with confirmation, or `404`.
 
 ### Clinical Notes
 
@@ -597,7 +585,7 @@ settings, alert rules, and measure enablement.
 
 **Response:** `200` with outcome configuration.
 
-#### PUT /outcomes/config
+#### POST /outcomes/config
 
 Update the outcome configuration.
 
