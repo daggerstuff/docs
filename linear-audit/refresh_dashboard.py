@@ -14,15 +14,11 @@ import json
 import os
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
 API_KEY = os.environ.get("LINEAR_API_KEY", "")
-if not API_KEY:
-    print("ERROR: LINEAR_API_KEY environment variable must be set.", file=sys.stderr)
-    sys.exit(1)
-
 API_URL = "https://api.linear.app/graphql"
 PROJECT_ID = "29c133a2-9195-42d3-b53e-31154d47ea7d"
 CUSTOM_VIEW_URL = "https://linear.app/pixelated/view/cb20ccc27a23"
@@ -200,6 +196,10 @@ def render_detail_section(ws: dict, sub_issues: list) -> str:
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
+    if not API_KEY:
+        print("ERROR: LINEAR_API_KEY environment variable must be set.", file=sys.stderr)
+        sys.exit(1)
+
     print("=" * 60, file=sys.stderr)
     print("REFRESH DASHBOARD: Enterprise Readiness Program", file=sys.stderr)
     print("=" * 60, file=sys.stderr)
@@ -304,7 +304,7 @@ def main():
     audit_status = (audit_issue[0].get("state") or {}).get("name", "Triage") if audit_issue else "?"
 
     # 5. Generate dashboard
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    now = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
 
     # Determine if there's a status banner based on whether any work has started
     if total_done == 0 and sum(ws["in_progress_count"] for ws in ws_entries) == 0:
@@ -322,8 +322,8 @@ def main():
 
     dashboard = f"""# Enterprise Readiness Program \u2014 Dashboard
 
-**Generated:** {now}  
-**Project:** Enterprise Readiness Program  
+**Generated:** {now}
+**Project:** Enterprise Readiness Program
 **Linear View:** [\U0001f517 Workstream Dashboard]({CUSTOM_VIEW_URL})
 
 {banner}---
@@ -389,13 +389,22 @@ Next scheduled audit: **2026-10-29**
         f.write(dashboard)
 
     print(f"\n\U0001f4be Dashboard written to {DASHBOARD_PATH}", file=sys.stderr)
-    print(f"   {total_done}/{total_sub_issues} sub-issues completed ({total_done_effort}/{total_effort} pts)", file=sys.stderr)
+    completed_line = (
+        f"   {total_done}/{total_sub_issues} sub-issues completed "
+        f"({total_done_effort}/{total_effort} pts)"
+    )
+    print(completed_line, file=sys.stderr)
 
     # Summary
     print("\n=== WORKSTREAM SUMMARY ===", file=sys.stderr)
     for ws in ws_entries:
         bar = ws["progress_bar"]
-        print(f"  {ws['icon']} {ws['name']:25s} {bar:15s}  {ws['done_count']:2d}/{ws['total']:2d}  ({ws['done_effort']}/{ws['total_effort']} pts)", file=sys.stderr)
+        summary_line = (
+            f"  {ws['icon']} {ws['name']:25s} {bar:15s}  "
+            f"{ws['done_count']:2d}/{ws['total']:2d}  "
+            f"({ws['done_effort']}/{ws['total_effort']} pts)"
+        )
+        print(summary_line, file=sys.stderr)
 
 
 if __name__ == "__main__":

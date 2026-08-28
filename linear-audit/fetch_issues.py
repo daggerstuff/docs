@@ -147,7 +147,7 @@ def transform_to_flat(node: dict) -> dict:
         "priority": {"value": priority, "name": ""} if priority is not None else None,
         "estimate": {"value": estimate, "name": str(estimate)} if estimate is not None else None,
         "url": node.get("url"),
-        "gitBranchName": node.get("gitBranchName"),
+        "gitBranchName": node.get("branchName"),
         "createdAt": node.get("createdAt"),
         "updatedAt": node.get("updatedAt"),
         "archivedAt": node.get("archivedAt"),

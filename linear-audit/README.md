@@ -5,20 +5,19 @@ remediating Linear.
 
 ## Files
 
-| File              | Description                                                                                                 |
-| ----------------- | ----------------------------------------------------------------------------------------------------------- |
-| `linear_audit.md` | Full audit report — initial findings, remediation log, and follow-up comparison                             |
-| `fetch_issues.py` | Fetch all issues from Linear via GraphQL API with pagination                                                |
-| `run_audit.py`    | Comprehensive audit analysis — state distribution, duplicates, assignments, estimates, enterprise readiness |
-| `remediate.py`    | Bulk remediation script — resolve duplicates, assign issues, add descriptions, add estimates                |
+- `linear_audit.md` — Full audit report — initial findings, remediation log, and follow-up comparison
+- `fetch_issues.py` — Fetch all issues from Linear via GraphQL API with pagination (writes `issues.json`)
+- `run_audit.py` — Comprehensive audit analysis — state distribution, duplicates,
+  assignments, estimates (writes `audit_results.json`)
+- `remediate.py` — Bulk remediation script — resolve duplicates, assign issues,
+  add descriptions, archive completed issues
 
 ## How to Run a Quarterly Re-Audit
 
 ### Prerequisites
 
-- Linear API key set in `LINEAR_API_KEY` environment variable (or edit the
-  script)
-- Python 3.12+
+- Linear API key set in the `LINEAR_API_KEY` environment variable
+- Python 3.12+ (see `requirements.txt` / `requirements-dev.txt`)
 
 ### Step 1: Fetch All Issues
 
@@ -26,7 +25,7 @@ remediating Linear.
 python3 fetch_issues.py
 ```
 
-Output: `/tmp/linear_all_issues.json`
+Output: `linear-audit/issues.json`
 
 ### Step 2: Run Audit Analysis
 
@@ -34,31 +33,24 @@ Output: `/tmp/linear_all_issues.json`
 python3 run_audit.py
 ```
 
-Output: Comprehensive before/after comparison printed to stdout.
+Output: `linear-audit/audit_results.json`
 
 ### Step 3: Apply Remediations (if needed)
 
 ```bash
-python3 remediate.py
+python3 remediate.py --dry-run   # preview only (default)
+python3 remediate.py --apply     # apply changes
 ```
 
-This resolves duplicates, assigns unassigned issues, adds descriptions, and adds
-estimates.
+This resolves duplicates, assigns unassigned issues, adds descriptions, and
+archives completed-but-unarchived issues.
 
 ## Script Configuration
 
 All scripts require:
 
-- `API_KEY` — Linear API key (set in `.env` or inline)
-- `CHAD_ID` — Default assignee user ID
-- `TEAM_ID` — Pixelated team ID
-
-## Output Files
-
-- `/tmp/linear_all_issues.json` — Full issue dump (fetched)
-- `/tmp/linear_followup_issues.json` — Later snapshot (for comparison)
-- `/tmp/linear_workflow_states.json` — Workflow state definitions
-- `/tmp/linear_labels.json` — Issue label definitions
+- `LINEAR_API_KEY` — Linear API key (e.g. `lin_api_...`)
+- `LINEAR_DEFAULT_ASSIGNEE_ID` — default assignee user ID (for `remediate.py --apply`)
 
 ---
 
@@ -87,11 +79,10 @@ dashboard.md regenerated with live data
 
 ### Components
 
-| File                                         | Purpose                                                                                   |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `src/api/routes/linear-dashboard-webhook.ts` | Express route handler — verifies signature, filters by project, spawns refresh            |
-| `refresh_dashboard.py`                       | Live dashboard generator — fetches issue states, recomputes progress, writes dashboard.md |
-| `register_webhook.py`                        | CLI tool to register/unregister the webhook subscription with Linear                      |
+- `src/api/routes/linear-dashboard-webhook.ts` — Express route handler — verifies signature,
+  filters by project, spawns refresh
+- `refresh_dashboard.py` — Live dashboard generator — fetches issue states, recomputes progress, writes dashboard.md
+- `register_webhook.py` — CLI tool to register/unregister the webhook subscription with Linear
 
 ### Setup
 

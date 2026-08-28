@@ -80,8 +80,10 @@ mutation ArchiveIssue($id: ID!) {
 
 class LinearClient:
     def __init__(self, api_key: str):
+        # Linear API keys must NOT use the "Bearer" prefix — that prefix is
+        # reserved for OAuth tokens. API keys go in the raw Authorization header.
         self.headers = {
-            "Authorization": f"Bearer {api_key}",
+            "Authorization": api_key,
             "Content-Type": "application/json",
         }
 
@@ -123,7 +125,12 @@ def remediate_descriptions(client: LinearClient | None, missing: list[dict], app
     for issue in missing:
         identifier = issue["identifier"]
         title = issue["title"]
-        placeholder = f"## {title}\n\n_Description needed — auto-generated placeholder from quarterly audit remediation._\n\nThis issue was identified as missing a description during the {time.strftime('%Y-%m')} quarterly workspace audit. Please update with proper details."
+        placeholder = (
+            f"## {title}\n\n"
+            "_Description needed — auto-generated placeholder from quarterly audit remediation._\n\n"
+            f"This issue was identified as missing a description during the "
+            f"{time.strftime('%Y-%m')} quarterly workspace audit. Please update with proper details."
+        )
 
         if apply:
             if client is None:
@@ -223,8 +230,8 @@ def remediate_archiving(client: LinearClient | None, to_archive: list[dict], app
 def main():
     parser = argparse.ArgumentParser(description="Apply Linear workspace remediations")
     parser.add_argument("--input", default=str(INPUT_FILE), help="Audit results JSON")
-    parser.add_argument("--dry-run", action="store_true", default=True, help="Don't apply changes (default)")
-    parser.add_argument("--apply", action="store_true", help="Apply changes (overrides --dry-run)")
+    parser.add_argument("--dry-run", action="store_true", help="Don't apply changes")
+    parser.add_argument("--apply", action="store_true", help="Apply changes")
     parser.add_argument(
         "--default-assignee",
         default=os.environ.get("LINEAR_DEFAULT_ASSIGNEE_ID"),
@@ -232,12 +239,11 @@ def main():
     )
     args = parser.parse_args()
 
-    apply = args.apply and not args.dry_run if args.dry_run else args.apply
-    # If neither flag, default to dry-run
-    if not args.apply and not args.dry_run:
-        apply = False
-    elif args.apply:
-        apply = True
+    if args.apply and args.dry_run:
+        parser.error("--apply and --dry-run are mutually exclusive")
+
+    # Default to dry-run unless --apply is explicitly passed.
+    apply = bool(args.apply)
 
     if apply:
         api_key = os.environ.get("LINEAR_API_KEY")

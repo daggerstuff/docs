@@ -311,7 +311,7 @@ def main() -> None:
     # Print summary
     s = results["summary"]
     print(f"\n{'=' * 60}", file=sys.stderr)
-    print(f"LINEAR WORKSPACE AUDIT RESULTS (v2 MCP flat shape)", file=sys.stderr)
+    print("LINEAR WORKSPACE AUDIT RESULTS (v2 MCP flat shape)", file=sys.stderr)
     print(f"{'=' * 60}", file=sys.stderr)
     print(f"Total issues:           {s['total_issues']}", file=sys.stderr)
     print(f"Duplicate pairs:        {s['duplicates_found']}", file=sys.stderr)
@@ -323,7 +323,7 @@ def main() -> None:
     print(f"{'=' * 60}", file=sys.stderr)
 
     ac = results["acceptance_criteria_met"]
-    print(f"\nAcceptance Criteria:", file=sys.stderr)
+    print("\nAcceptance Criteria:", file=sys.stderr)
     for k, v in ac.items():
         status = "PASS" if v else "FAIL"
         print(f"  [{status}] {k}: {v}", file=sys.stderr)

@@ -17,6 +17,19 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE SCHEMA IF NOT EXISTS pe;
 
 -- ============================================================================
+-- 1b. ROLES
+-- ============================================================================
+-- Application role used by the API layer to execute SECURITY DEFINER functions.
+-- Created idempotently: CREATE ROLE does not support IF NOT EXISTS.
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'pe_app_role') THEN
+        CREATE ROLE pe_app_role;
+    END IF;
+END
+$$;
+
+-- ============================================================================
 -- 2. CUSTOM TYPES
 -- ============================================================================
 CREATE TYPE pe.user_role AS ENUM (
@@ -549,6 +562,26 @@ EXCEPTION WHEN OTHERS THEN
 END;
 $$ LANGUAGE plpgsql STABLE;
 
+-- 9b2. Helper: current user id (safe — returns NULL when unset)
+CREATE OR REPLACE FUNCTION pe.current_user_id()
+RETURNS UUID AS $$
+BEGIN
+    RETURN current_setting('app.user_id', TRUE)::UUID;
+EXCEPTION WHEN OTHERS THEN
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql STABLE;
+
+-- 9b3. Helper: current user role (safe — returns NULL when unset)
+CREATE OR REPLACE FUNCTION pe.current_user_role()
+RETURNS pe.user_role AS $$
+BEGIN
+    RETURN current_setting('app.user_role', TRUE)::pe.user_role;
+EXCEPTION WHEN OTHERS THEN
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql STABLE;
+
 -- 9c. Enable RLS on tenant-scoped tables
 ALTER TABLE pe.institutions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pe.institution_settings ENABLE ROW LEVEL SECURITY;
@@ -579,32 +612,47 @@ CREATE POLICY tenant_isolation_institutions ON pe.institutions
 -- (Applied generically; adjust per table if needed)
 DO $$
 DECLARE
-    tbl text;
-    tenant_col text;
+    tbls text[] := ARRAY[
+        'institution_settings',
+        'users',
+        'api_keys',
+        'scenarios',
+        'simulation_sessions',
+        'simulation_messages',
+        'persona_definitions',
+        'persona_instances',
+        'metering_events',
+        'metering_daily_rollups',
+        'billing_periods',
+        'audit_log',
+        'phi_guard_events',
+        'phi_guard_allowlist'
+    ];
+    tenant_cols text[] := ARRAY[
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'institution_id',
+        'tenant_id',
+        'institution_id',
+        'institution_id'
+    ];
+    i int;
 BEGIN
-    FOR tbl, tenant_col IN
-        SELECT * FROM unnest(ARRAY[
-            ('institution_settings', 'institution_id'),
-            ('users', 'institution_id'),
-            ('api_keys', 'institution_id'),
-            ('scenarios', 'institution_id'),
-            ('simulation_sessions', 'institution_id'),
-            ('simulation_messages', 'institution_id'),
-            ('persona_definitions', 'institution_id'),
-            ('persona_instances', 'institution_id'),
-            ('metering_events', 'institution_id'),
-            ('metering_daily_rollups', 'institution_id'),
-            ('billing_periods', 'institution_id'),
-            ('audit_log', 'tenant_id'),
-            ('phi_guard_events', 'institution_id'),
-            ('phi_guard_allowlist', 'institution_id')
-        ]::text[])
+    FOR i IN 1 .. array_length(tbls, 1)
     LOOP
         EXECUTE format(
             'CREATE POLICY tenant_isolation_%s ON pe.%I FOR ALL USING (
                 pe.is_super_admin() OR %I = pe.current_tenant_id()
             )',
-            tbl, tbl, tenant_col
+            tbls[i], tbls[i], tenant_cols[i]
         );
     END LOOP;
 END;
@@ -628,7 +676,7 @@ CREATE POLICY users_isolation ON pe.users
     USING (
         pe.is_super_admin()
         OR institution_id = pe.current_tenant_id()
-        OR id = current_setting('app.user_id')::UUID
+        OR id = pe.current_user_id()
     );
 
 -- ============================================================================
@@ -674,7 +722,7 @@ BEGIN
     PERFORM set_config('app.user_id', p_user_id::text, TRUE);
     PERFORM set_config('app.user_role', p_user_role::text, TRUE);
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = pe, pg_temp;
 REVOKE ALL ON FUNCTION pe.set_session_context(UUID, UUID, pe.user_role) FROM PUBLIC;
 GRANT EXECUTE ON FUNCTION pe.set_session_context(UUID, UUID, pe.user_role) TO pe_app_role;
 
@@ -697,8 +745,8 @@ BEGIN
         ip_address, user_agent
     ) VALUES (
         pe.current_tenant_id(),
-        current_setting('app.user_id')::UUID,
-        current_setting('app.user_role')::pe.user_role,
+        pe.current_user_id(),
+        pe.current_user_role(),
         p_action, p_resource_type, p_resource_id,
         p_payload, p_ip_address, p_user_agent
     )
@@ -706,7 +754,13 @@ BEGIN
 
     RETURN v_event_id;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = pe, pg_temp;
+REVOKE ALL ON FUNCTION pe.log_audit_event(
+    pe.audit_action, VARCHAR, UUID, JSONB, INET, TEXT
+) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION pe.log_audit_event(
+    pe.audit_action, VARCHAR, UUID, JSONB, INET, TEXT
+) TO pe_app_role;
 
 -- 11c. Metering event ingestion (idempotent)
 CREATE OR REPLACE FUNCTION pe.ingest_metering_event(
@@ -739,7 +793,7 @@ BEGIN
 
     RETURN v_event_id;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = pe, pg_temp;
 REVOKE ALL ON FUNCTION pe.ingest_metering_event(
     UUID, pe.metering_event_type, VARCHAR, UUID, UUID,
     DECIMAL, VARCHAR, JSONB, VARCHAR, TIMESTAMPTZ

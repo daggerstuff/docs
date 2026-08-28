@@ -11,3 +11,9 @@ maestro/
 # Recon research sweep output (generated)
 recon/
 .bak
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/

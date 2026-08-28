@@ -2,7 +2,7 @@
 
 **Issued by:** Pixelated Empathy **RFP date:** 2026-07-30 **Response deadline:**
 2026-08-15 **Anticipated engagement start:** 2026-09-01 **Contact:** Chad
-<chad@pixelatedempathy.com>
+<contact@pixelatedempathy.com>
 
 ---
 

@@ -187,7 +187,7 @@
 | Field           | Value                                                                                                                                                                                              |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **URL**         | https://github.com/LCS2-IIITD/SPARTA_WSDM2022 (HOPE_data/ folder)                                                                                                                                  |
-| **Access**      | Google Form + email to aseems@iiitd.ac.in                                                                                                                                                          |
+| **Access**      | Google Form + email to the dataset authors (see project repo)                                                                                                                                     |
 | **Size**        | 12,900 utterances, 212 counseling sessions                                                                                                                                                         |
 | **Format**      | CSV with DAC labels                                                                                                                                                                                |
 | **Labels**      | 12 Dialogue-Act Classification labels in 3 categories: speaker initiative (IRQ, YNQ, CRQ), speaker responsive (PA, NA, CD), general/mixed (ID, ACK, GC, QO, DA, OK). Dyadic (therapist + patient). |

@@ -31,10 +31,6 @@ import urllib.error
 import urllib.request
 
 API_KEY = os.environ.get("LINEAR_API_KEY", "")
-if not API_KEY:
-    print("ERROR: LINEAR_API_KEY environment variable must be set.", file=sys.stderr)
-    sys.exit(1)
-
 API_URL = "https://api.linear.app/graphql"
 
 
@@ -128,14 +124,14 @@ def register_webhook(url: str, label: str | None = None):
     webhook = data.get("webhook", {})
 
     if data.get("success") and webhook:
-        print(f"✅ Webhook registered successfully!\n")
+        print("✅ Webhook registered successfully!\n")
         print(f"  ID:       {webhook['id']}")
         print(f"  Label:    {webhook.get('label', webhook_label)}")
         print(f"  URL:      {webhook['url']}")
         print(f"  Events:   {', '.join(webhook.get('resourceTypes', []))}")
-        print(f"\n⚠️  IMPORTANT: Set this environment variable on your server:\n")
+        print("\n⚠️  IMPORTANT: Set this environment variable on your server:\n")
         print(f"  LINEAR_DASHBOARD_WEBHOOK_SECRET={secret}\n")
-        print(f"  (Keep this secret — it's used to verify webhook signatures.)")
+        print("  (Keep this secret — it's used to verify webhook signatures.)")
         return webhook["id"], secret
     else:
         print(f"❌ Failed to create webhook: {data}", file=sys.stderr)
@@ -177,11 +173,15 @@ def unregister_webhook(webhook_id: str | None = None, label: str | None = None):
     if result.get("data", {}).get("webhookDelete", {}).get("success"):
         print(f"✅ Webhook {target_id} deleted successfully.")
     else:
-        print(f"❌ Failed to delete webhook.", file=sys.stderr)
+        print("❌ Failed to delete webhook.", file=sys.stderr)
         sys.exit(1)
 
 
 def main():
+    if not API_KEY:
+        print("ERROR: LINEAR_API_KEY environment variable must be set.", file=sys.stderr)
+        sys.exit(1)
+
     parser = argparse.ArgumentParser(
         description="Register or unregister a Linear webhook for dashboard refresh.",
     )

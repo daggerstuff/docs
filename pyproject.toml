@@ -1,0 +1,15 @@
+[project]
+name = "docs-linear-audit"
+version = "0.1.0"
+description = "Linear workspace audit toolkit for the Pixelated Empathy docs repo"
+requires-python = ">=3.12"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
