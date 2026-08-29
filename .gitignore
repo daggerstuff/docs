@@ -1,8 +1,11 @@
 # Sorted alphabetically
+.coverage
 AGENTS.md
 audits/
 epics/
+linear-audit/
 maestro/
+tests/
 
 # OMC runtime session data
 .omc/
