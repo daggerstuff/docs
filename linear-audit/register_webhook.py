@@ -23,57 +23,58 @@ Usage:
 """
 
 import argparse
-import json
 import os
 import secrets
 import sys
-import urllib.error
-import urllib.request
 
-API_KEY = os.environ.get("LINEAR_API_KEY", "")
+import requests
+
 API_URL = "https://api.linear.app/graphql"
 
 
-def gql(query: str, variables: dict | None = None) -> dict | None:
+def gql(
+    query: str,
+    variables: dict | None = None,
+    api_key: str | None = None,
+    api_url: str = API_URL,
+) -> dict | None:
     """Execute a GraphQL query against the Linear API. Returns None on failure."""
+    if not api_url.startswith(("https://", "http://")):
+        raise ValueError("Invalid URL scheme: only https/http supported")
+    key = api_key or os.environ.get("LINEAR_API_KEY", "")
     payload: dict[str, object] = {"query": query}
     if variables:
         payload["variables"] = variables
 
     try:
-        req = urllib.request.Request(
-            API_URL,
-            data=json.dumps(payload).encode(),
-            headers={"Content-Type": "application/json", "Authorization": API_KEY},
+        resp = requests.post(
+            api_url,
+            json=payload,
+            headers={"Content-Type": "application/json", "Authorization": key},
+            timeout=30,
         )
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            result = json.loads(resp.read())
-            if "errors" in result:
-                print(f"  API Error: {result['errors']}", file=sys.stderr)
-                return None
-            return result
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")[:500]
-        print(f"  HTTP {e.code} error from Linear API: {body}", file=sys.stderr)
-        return None
-    except urllib.error.URLError as e:
-        print(f"  Connection error: {e.reason}", file=sys.stderr)
+        result = resp.json()
+        if "errors" in result:
+            print(f"  API Error: {result['errors']}", file=sys.stderr)
+            return None
+        return result
+    except requests.RequestException as e:
+        print(f"  Connection/HTTP error from Linear API: {e}", file=sys.stderr)
         return None
 
 
-def list_webhooks():
+def list_webhooks(api_key: str | None = None) -> list[dict]:
     """List all webhooks in the workspace."""
-    # NOTE: The Webhook type uses `label` (not `name`) and `id` for identification
-    result = gql("{ webhooks { nodes { id label url enabled resourceTypes } } }")
+    result = gql("{ webhooks { nodes { id label url enabled resourceTypes } } }", api_key=api_key)
     if not result:
         print("Failed to fetch webhooks.", file=sys.stderr)
-        sys.exit(1)
+        return []
 
     webhooks = result.get("data", {}).get("webhooks", {}).get("nodes", [])
 
     if not webhooks:
         print("No webhooks found.")
-        return
+        return []
 
     print(f"Found {len(webhooks)} webhook(s):\n")
     for w in webhooks:
@@ -83,10 +84,15 @@ def list_webhooks():
         print(f"  Active: {w['enabled']}")
         print(f"  Events: {', '.join(w.get('resourceTypes', []))}")
         print()
+    return webhooks
 
 
-def register_webhook(url: str, label: str | None = None):
-    """Register a new webhook. Auto-generates secret. Returns the webhook data + secret."""
+def register_webhook(
+    url: str,
+    label: str | None = None,
+    api_key: str | None = None,
+) -> tuple[str, str] | None:
+    """Register a new webhook. Auto-generates secret. Returns the webhook ID + secret."""
     webhook_label = label or "Enterprise Readiness Dashboard Refresh"
     secret = "whsec_" + secrets.token_hex(32)
 
@@ -115,10 +121,10 @@ def register_webhook(url: str, label: str | None = None):
         }
     }
 
-    result = gql(mutation, variables)
+    result = gql(mutation, variables, api_key=api_key)
     if not result:
         print("Failed to create webhook (API call failed).", file=sys.stderr)
-        sys.exit(1)
+        return None
 
     data = result.get("data", {}).get("webhookCreate", {})
     webhook = data.get("webhook", {})
@@ -135,50 +141,55 @@ def register_webhook(url: str, label: str | None = None):
         return webhook["id"], secret
     else:
         print(f"❌ Failed to create webhook: {data}", file=sys.stderr)
-        sys.exit(1)
+        return None
 
 
-def unregister_webhook(webhook_id: str | None = None, label: str | None = None):
+def unregister_webhook(
+    webhook_id: str | None = None,
+    label: str | None = None,
+    api_key: str | None = None,
+) -> bool:
     """Delete a webhook by ID or by label."""
     if webhook_id and label:
         print("ERROR: Provide --id OR --label, not both.", file=sys.stderr)
-        sys.exit(1)
+        return False
 
     target_id = webhook_id
 
     if label:
-        # Find webhook by label
-        result = gql("{ webhooks { nodes { id label } } }")
+        result = gql("{ webhooks { nodes { id label } } }", api_key=api_key)
         if not result:
             print("Failed to fetch webhooks.", file=sys.stderr)
-            sys.exit(1)
+            return False
         webhooks = result.get("data", {}).get("webhooks", {}).get("nodes", [])
         matches = [w for w in webhooks if w.get("label") == label]
         if not matches:
             print(f"No webhook found with label '{label}'", file=sys.stderr)
-            sys.exit(1)
+            return False
         target_id = matches[0]["id"]
         print(f"Found webhook '{label}' with ID: {target_id}")
 
     if not target_id:
         print("ERROR: Provide --id or --label to identify the webhook.", file=sys.stderr)
-        sys.exit(1)
+        return False
 
-    mutation = f'mutation {{ webhookDelete(id: "{target_id}") {{ success }} }}'
-    result = gql(mutation)
+    mutation = "mutation DeleteWebhook($id: String!) { webhookDelete(id: $id) { success } }"
+    result = gql(mutation, {"id": target_id}, api_key=api_key)
     if not result:
         print("Failed to delete webhook (API call failed).", file=sys.stderr)
-        sys.exit(1)
+        return False
 
     if result.get("data", {}).get("webhookDelete", {}).get("success"):
         print(f"✅ Webhook {target_id} deleted successfully.")
+        return True
     else:
         print("❌ Failed to delete webhook.", file=sys.stderr)
-        sys.exit(1)
+        return False
 
 
 def main():
-    if not API_KEY:
+    api_key = os.environ.get("LINEAR_API_KEY")
+    if not api_key:
         print("ERROR: LINEAR_API_KEY environment variable must be set.", file=sys.stderr)
         sys.exit(1)
 

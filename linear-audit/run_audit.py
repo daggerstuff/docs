@@ -50,10 +50,32 @@ OUTPUT_FILE = Path(__file__).parent / "audit_results.json"
 SIMILARITY_THRESHOLD = 0.85
 
 
-def load_issues(filepath: str) -> list[dict]:
+def load_issues(filepath: str | Path) -> list[dict]:
     with open(filepath) as f:
         data = json.load(f)
-    return data.get("issues", data)
+
+    if isinstance(data, dict):
+        if "issues" in data:
+            issues = data["issues"]
+            if not isinstance(issues, list):
+                raise ValueError(
+                    f"Invalid format in {filepath}: 'issues' field must be a list, got {type(issues).__name__}"
+                )
+            if "shape" in data and data["shape"] != "linear_mcp_flat_v2":
+                print(
+                    f"WARNING: issues file shape '{data['shape']}' is not 'linear_mcp_flat_v2'",
+                    file=sys.stderr,
+                )
+            return issues
+        keys_str = list(data.keys())
+        raise ValueError(
+            f"Invalid JSON format in {filepath}: expected object with 'issues' list (or array of issues), "
+            f"got keys: {keys_str}"
+        )
+    elif isinstance(data, list):
+        return data
+    else:
+        raise ValueError(f"Invalid JSON format in {filepath}: expected object or array, got {type(data).__name__}")
 
 
 def normalize_title(title: str) -> str:

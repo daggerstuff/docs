@@ -39,12 +39,15 @@ changes. The dry-run default is preserved from v1 — only the data shape
 consumed upstream changed.
 """
 
+from __future__ import annotations
+
 import argparse
 import json
 import os
 import sys
 import time
 from pathlib import Path
+from typing import Any
 
 try:
     import requests
@@ -123,8 +126,8 @@ def remediate_descriptions(client: LinearClient | None, missing: list[dict], app
     """Add placeholder descriptions to issues missing them."""
     results = []
     for issue in missing:
-        identifier = issue["identifier"]
-        title = issue["title"]
+        identifier = issue.get("identifier") or issue.get("id") or "UNKNOWN"
+        title = issue.get("title", "")
         placeholder = (
             f"## {title}\n\n"
             "_Description needed — auto-generated placeholder from quarterly audit remediation._\n\n"
@@ -136,7 +139,7 @@ def remediate_descriptions(client: LinearClient | None, missing: list[dict], app
             if client is None:
                 raise RuntimeError("client required for apply")
             print(f"  Adding description to {identifier}...", file=sys.stderr)
-            success = client.update_issue(issue["id"], {"description": placeholder})
+            success = client.update_issue(issue.get("id", identifier), {"description": placeholder})
             results.append({"identifier": identifier, "action": "add_description", "success": success})
             time.sleep(0.3)
         else:
@@ -152,12 +155,12 @@ def remediate_unassigned(
     """Assign default owner to unassigned issues."""
     results = []
     for issue in unassigned:
-        identifier = issue["identifier"]
+        identifier = issue.get("identifier") or issue.get("id") or "UNKNOWN"
         if apply:
             if client is None:
                 raise RuntimeError("client required for apply")
             print(f"  Assigning {identifier} to default owner...", file=sys.stderr)
-            success = client.update_issue(issue["id"], {"assigneeId": default_assignee_id})
+            success = client.update_issue(issue.get("id", identifier), {"assigneeId": default_assignee_id})
             results.append({"identifier": identifier, "action": "assign", "success": success})
             time.sleep(0.3)
         else:
@@ -173,34 +176,36 @@ def remediate_duplicates(client: LinearClient | None, duplicates: list[dict], ap
     for dup in duplicates:
         a = dup["issue_a"]
         b = dup["issue_b"]
+        ident_a = a.get("identifier") or a.get("id") or ""
+        ident_b = b.get("identifier") or b.get("id") or ""
         # Archive the one with the higher identifier (typically newer)
-        to_archive = b if b["identifier"] > a["identifier"] else a
+        to_archive = b if ident_b > ident_a else a
         to_keep = a if to_archive == b else b
+        arch_id = to_archive.get("identifier") or to_archive.get("id") or "UNKNOWN"
+        keep_id = to_keep.get("identifier") or to_keep.get("id") or "UNKNOWN"
 
         if apply:
             if client is None:
                 raise RuntimeError("client required for apply")
             print(
-                f"  Archiving duplicate {to_archive['identifier']} (keeping {to_keep['identifier']})...",
+                f"  Archiving duplicate {arch_id} (keeping {keep_id})...",
                 file=sys.stderr,
             )
-            success = client.archive_issue(to_archive["id"])
+            success = client.archive_issue(to_archive.get("id", arch_id))
             results.append(
                 {
-                    "archived": to_archive["identifier"],
-                    "kept": to_keep["identifier"],
+                    "archived": arch_id,
+                    "kept": keep_id,
                     "success": success,
                 }
             )
             time.sleep(0.3)
         else:
-            print(
-                f"  [DRY-RUN] Would archive {to_archive['identifier']} (keep {to_keep['identifier']})", file=sys.stderr
-            )
+            print(f"  [DRY-RUN] Would archive {arch_id} (keep {keep_id})", file=sys.stderr)
             results.append(
                 {
-                    "archived": to_archive["identifier"],
-                    "kept": to_keep["identifier"],
+                    "archived": arch_id,
+                    "kept": keep_id,
                     "success": "dry_run",
                 }
             )
@@ -212,12 +217,12 @@ def remediate_archiving(client: LinearClient | None, to_archive: list[dict], app
     """Archive completed issues that aren't archived yet."""
     results = []
     for issue in to_archive:
-        identifier = issue["identifier"]
+        identifier = issue.get("identifier") or issue.get("id") or "UNKNOWN"
         if apply:
             if client is None:
                 raise RuntimeError("client required for apply")
             print(f"  Archiving completed issue {identifier}...", file=sys.stderr)
-            success = client.archive_issue(issue["id"])
+            success = client.archive_issue(issue.get("id", identifier))
             results.append({"identifier": identifier, "action": "archive_completed", "success": success})
             time.sleep(0.3)
         else:
@@ -225,6 +230,54 @@ def remediate_archiving(client: LinearClient | None, to_archive: list[dict], app
             results.append({"identifier": identifier, "action": "archive_completed", "success": "dry_run"})
 
     return results
+
+
+def remediate_workspace(
+    audit: dict,
+    client: LinearClient | None,
+    apply: bool,
+    default_assignee: str | None = None,
+) -> dict:
+    """Execute all remediation stages across the workspace audit data."""
+    all_results: dict[str, Any] = {"mode": "apply" if apply else "dry_run", "remediations": []}
+
+    # 1. Descriptions
+    missing_desc = audit.get("missing_descriptions", [])
+    if missing_desc:
+        print(f"\n[1/4] Descriptions ({len(missing_desc)} missing)...", file=sys.stderr)
+        r = remediate_descriptions(client, missing_desc, apply)
+        all_results["remediations"].extend(r)
+
+    # 2. Unassigned
+    unassigned = audit.get("unassigned", [])
+    if unassigned:
+        if not default_assignee and apply:
+            print(
+                f"\n[2/4] Unassigned ({len(unassigned)} issues) - SKIPPED: no --default-assignee provided",
+                file=sys.stderr,
+            )
+        else:
+            print(f"\n[2/4] Unassigned ({len(unassigned)} issues)...", file=sys.stderr)
+            r = remediate_unassigned(client, unassigned, default_assignee or "", apply)
+            all_results["remediations"].extend(r)
+
+    # 3. Duplicates
+    duplicates = audit.get("duplicates", [])
+    if duplicates:
+        print(f"\n[3/4] Duplicates ({len(duplicates)} pairs)...", file=sys.stderr)
+        r = remediate_duplicates(client, duplicates, apply)
+        all_results["remediations"].extend(r)
+
+    # 4. Archiving
+    to_archive = audit.get("archived_completeness", {}).get("not_archived_list", []) or audit.get(
+        "unarchived_completed", []
+    )
+    if to_archive:
+        print(f"\n[4/4] Archive completed ({len(to_archive)} issues)...", file=sys.stderr)
+        r = remediate_archiving(client, to_archive, apply)
+        all_results["remediations"].extend(r)
+
+    return all_results
 
 
 def main():
@@ -242,8 +295,7 @@ def main():
     if args.apply and args.dry_run:
         parser.error("--apply and --dry-run are mutually exclusive")
 
-    # Default to dry-run unless --apply is explicitly passed.
-    apply = bool(args.apply)
+    apply = args.apply and not args.dry_run
 
     if apply:
         api_key = os.environ.get("LINEAR_API_KEY")
@@ -259,41 +311,7 @@ def main():
     with open(args.input) as f:
         audit = json.load(f)
 
-    all_results = {"mode": "apply" if apply else "dry_run", "remediations": []}
-
-    # 1. Descriptions
-    missing_desc = audit.get("missing_descriptions", [])
-    if missing_desc:
-        print(f"\n[1/4] Descriptions ({len(missing_desc)} missing)...", file=sys.stderr)
-        r = remediate_descriptions(client, missing_desc, apply)
-        all_results["remediations"].extend(r)
-
-    # 2. Unassigned
-    unassigned = audit.get("unassigned", [])
-    if unassigned:
-        if not args.default_assignee and apply:
-            print(
-                f"\n[2/4] Unassigned ({len(unassigned)} issues) - SKIPPED: no --default-assignee provided",
-                file=sys.stderr,
-            )
-        else:
-            print(f"\n[2/4] Unassigned ({len(unassigned)} issues)...", file=sys.stderr)
-            r = remediate_unassigned(client, unassigned, args.default_assignee, apply)
-            all_results["remediations"].extend(r)
-
-    # 3. Duplicates
-    duplicates = audit.get("duplicates", [])
-    if duplicates:
-        print(f"\n[3/4] Duplicates ({len(duplicates)} pairs)...", file=sys.stderr)
-        r = remediate_duplicates(client, duplicates, apply)
-        all_results["remediations"].extend(r)
-
-    # 4. Archiving
-    to_archive = audit.get("archived_completeness", {}).get("not_archived_list", [])
-    if to_archive:
-        print(f"\n[4/4] Archive completed ({len(to_archive)} issues)...", file=sys.stderr)
-        r = remediate_archiving(client, to_archive, apply)
-        all_results["remediations"].extend(r)
+    all_results = remediate_workspace(audit, client, apply, args.default_assignee)
 
     # Save remediation log
     log_file = Path(args.input).parent / "remediation_log.json"

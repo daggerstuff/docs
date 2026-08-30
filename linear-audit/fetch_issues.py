@@ -178,7 +178,7 @@ def transform_to_flat(node: dict) -> dict:
     }
 
 
-def fetch_all_issues(api_key: str, team_id: str, page_size: int = 50) -> list[dict]:
+def fetch_all_issues(api_key: str, team_id: str, page_size: int = 50, max_pages: int | None = 100) -> list[dict]:
     """Fetch all issues with pagination, returned as v2 flat-shape dicts."""
     # Linear API keys must NOT use the "Bearer" prefix — that prefix is
     # reserved for OAuth tokens. API keys go in the raw Authorization header
@@ -194,6 +194,10 @@ def fetch_all_issues(api_key: str, team_id: str, page_size: int = 50) -> list[di
 
     while True:
         page += 1
+        if max_pages is not None and page > max_pages:
+            print(f"Reached maximum page limit ({max_pages}), stopping pagination.", file=sys.stderr)
+            break
+
         variables = {"teamId": team_id, "first": page_size, "after": cursor}
         resp = requests.post(
             LINEAR_GRAPHQL_URL,
@@ -240,6 +244,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Fetch Linear issues for audit (v2 MCP flat shape)")
     parser.add_argument("--team", default=os.environ.get("LINEAR_TEAM_ID", DEFAULT_TEAM_ID), help="Linear team ID")
     parser.add_argument("--limit", type=int, default=50, help="Page size (default 50)")
+    parser.add_argument("--max-pages", type=int, default=100, help="Max pages to fetch (default 100)")
     parser.add_argument("--output", default=str(OUTPUT_FILE), help="Output file path")
     args = parser.parse_args()
 
@@ -248,7 +253,7 @@ def main() -> None:
         sys.exit("ERROR: LINEAR_API_KEY environment variable required")
 
     print(f"Fetching issues for team {args.team}...", file=sys.stderr)
-    issues = fetch_all_issues(api_key, args.team, args.limit)
+    issues = fetch_all_issues(api_key, args.team, page_size=args.limit, max_pages=args.max_pages)
     print(f"\nTotal issues fetched: {len(issues)}", file=sys.stderr)
 
     output_path = Path(args.output)

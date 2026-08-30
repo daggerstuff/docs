@@ -716,7 +716,9 @@
       "completed_count": 3,
       "archived_count": 3,
       "descriptions_filled": 3,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "f04d49cb-6a28-463e-9b06-3a79481fc1c6",
@@ -727,7 +729,9 @@
       "completed_count": 11,
       "archived_count": 11,
       "descriptions_filled": 11,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "ee73097d-78e0-4b53-a76b-7332fc66b3d4",
@@ -738,7 +742,9 @@
       "completed_count": 15,
       "archived_count": 15,
       "descriptions_filled": 15,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "9a80eb9a-607c-4caf-b5a6-cd3592b84a8f",
@@ -749,7 +755,9 @@
       "completed_count": 12,
       "archived_count": 12,
       "descriptions_filled": 12,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "8d44acfa-c81e-4f61-876f-070fb6c15810",
@@ -780,7 +788,9 @@
       "completed_count": 10,
       "archived_count": 10,
       "descriptions_filled": 10,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "e9605179-de93-4312-ba5f-45528fe06713",
@@ -841,7 +851,9 @@
       "completed_count": 26,
       "archived_count": 26,
       "descriptions_filled": 26,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "189cf547-5d6f-44c3-95ad-7480a1bf8534",
@@ -852,7 +864,9 @@
       "completed_count": 8,
       "archived_count": 0,
       "descriptions_filled": 8,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "0aa3ad95-f694-4633-88c9-e127865a0ba1",
@@ -923,7 +937,9 @@
       "completed_count": 2,
       "archived_count": 2,
       "descriptions_filled": 2,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     }
   ],
   "flagged_projects": [
@@ -936,7 +952,9 @@
       "completed_count": 3,
       "archived_count": 3,
       "descriptions_filled": 3,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "f04d49cb-6a28-463e-9b06-3a79481fc1c6",
@@ -947,7 +965,9 @@
       "completed_count": 11,
       "archived_count": 11,
       "descriptions_filled": 11,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "ee73097d-78e0-4b53-a76b-7332fc66b3d4",
@@ -958,7 +978,9 @@
       "completed_count": 15,
       "archived_count": 15,
       "descriptions_filled": 15,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "9a80eb9a-607c-4caf-b5a6-cd3592b84a8f",
@@ -969,7 +991,9 @@
       "completed_count": 12,
       "archived_count": 12,
       "descriptions_filled": 12,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "91bb41eb-dc9b-45f7-9418-1a200100810c",
@@ -980,7 +1004,9 @@
       "completed_count": 10,
       "archived_count": 10,
       "descriptions_filled": 10,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "80cb9c3f-78c7-4535-a673-48dc50d74941",
@@ -991,7 +1017,9 @@
       "completed_count": 26,
       "archived_count": 26,
       "descriptions_filled": 26,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "189cf547-5d6f-44c3-95ad-7480a1bf8534",
@@ -1002,7 +1030,9 @@
       "completed_count": 8,
       "archived_count": 0,
       "descriptions_filled": 8,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     },
     {
       "id": "07810eff-50bb-4518-974a-07b4938f3264",
@@ -1013,7 +1043,9 @@
       "completed_count": 2,
       "archived_count": 2,
       "descriptions_filled": 2,
-      "flags": ["all_issues_completed"]
+      "flags": [
+        "all_issues_completed"
+      ]
     }
   ],
   "archived_completeness": {

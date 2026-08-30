@@ -8,20 +8,30 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12", "3.13"]
+
     steps:
       - uses: actions/checkout@v7
 
       - uses: actions/setup-python@v7
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
+          pip install -e .
 
-      - name: Lint (ruff)
-        run: ruff check linear-audit tests
+      - name: Lint & Style Check (Ruff)
+        run: |
+          ruff check linear-audit tests
+          ruff format --check linear-audit tests
 
-      - name: Test (pytest)
-        run: pytest -q
+      - name: Security SAST Audit (Bandit)
+        run: bandit -c pyproject.toml -r linear-audit
+
+      - name: Test Suite & Data Contracts (Pytest)
+        run: pytest -v --cov=linear-audit --cov-report=term-missing
