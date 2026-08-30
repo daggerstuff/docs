@@ -310,21 +310,40 @@ exists for smoke tests; no real run captured.
 
 What actually blocks a first real training run, in order:
 
+**Status (2026-08-30):** 1-4 complete; 5-7 deferred pending GPU.
+
 1. **Fix the judge calibration set** — replace `golden_judge_calib.jsonl`
    generic content with 200 mental-health domain samples (or accept the risk).
+   ✅ **DONE** — `golden_judge_calib_v2.jsonl` (200 real AnnoMI records) wired
+   into `llm_quality_judge.py` + `calibrate_judge.py`; v1 flagged as placeholder.
 2. **Pick the real base model** — reconcile `axolotl.yaml` (`Wayfarer-2-12B`)
    vs `orpo_axolotl.yaml` (`Qwen2.5-32B`) vs legacy `Llama-2-7b` default.
    Decide one.
+   ✅ **DONE** — standardized on GLM: `zai-org/glm-5.3-flash` for
+   weights-loading contexts (axolotl configs, trainers), `@cf/zai-org/glm-5.3-flash`
+   as the served judge default; dual-judge primary remains
+   `@cf/deepseek-ai/deepseek-v4-pro-0813`. All Qwen3.8/Wayfarer/Qwen2.5
+   training references replaced (distillation teacher/student exempt).
 3. **Reconcile the splitter** — standardize on
    `dataset_splitter_stratified.py` (8-axis) and retire `dataset_splitter.py`
    hash-split to avoid the 70/15/15 vs 80/10/10 mismatch.
+   ✅ **DONE** — `dataset_splitter.py` deleted (zero importers);
+   `DEFAULT_RATIO` → `(70, 15, 15)` to match `curate_pipeline`; tests updated (49 pass).
 4. **Fix DVC** — add `ai/data/curated/.gitignore`, pin remote to the Civo
    backend actually configured, add `dvc.yaml`/`dvc.lock`.
+   ✅ **DONE** — `dvc.yaml` rewritten with ai/-relative paths + per-file outs
+   matching committed `.dvc` pointers; fabricated `dvc.lock` (placeholder md5s)
+   deleted — regenerate via `dvc repro` after pulling raw input from S3;
+   `data/curated/.gitignore` pattern order fixed (`**` before `!*/`/`!*.dvc`).
+   Remote already pinned to Civo `pixelated_s3` in `.dvc/config`.
 5. **Run one end-to-end SFT** — QLoRA on H100, `orpo_axolotl.yaml`, ~10K-50K
    curated samples, capture real `forgetting_score`.
+   ⏸ **DEFERRED** — requires H100 (RunPod ~$1.99-3.29/hr per §3); local box has no GPU.
 6. **Then** DPO/ORPO, then pruning/quantization.
+   ⏸ **DEFERRED** — gated on task 5.
 7. **Distributed training (FSDP2/Megatron) is greenfield** — do not treat it as
    existing; plan it separately after the single-GPU path is proven.
+   ⏸ **DEFERRED** — greenfield; plan separately after 5-6.
 
 ---
 
