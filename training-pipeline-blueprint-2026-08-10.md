@@ -281,28 +281,28 @@ exists for smoke tests; no real run captured.
 
 ## 8. Status Matrix — What Is Real
 
-| Capability | Module | Status |
-|---|---|---|
-| Provenance + SPDX license gate | `provenance.py` | SHIPPED |
-| Web/doc/API ingest router | `ingest_router.py` | SHIPPED (robots.txt + rate-limit + backoff real) |
-| PDF/EPUB/HTML parsing | `book_pdf_converter.py` | SHIPPED |
-| Stage 1 filters (lang/PII/toxicity/dedup) | `stage1_filters.py` | SHIPPED |
-| Exact+near dedup (MinHash/SimHash) | `dedup_normalize.py` | SHIPPED |
-| PII scrub (regex+Presidio+LLM) | `pii_scrubber.py` | SHIPPED |
-| Curation + tiering | `curate_pipeline.py` | SHIPPED |
-| Hash split | `dataset_splitter.py` | SHIPPED |
-| Stratified 8-axis split | `dataset_splitter_stratified.py` | SHIPPED |
-| Dual LLM judge | `dual_judge.py`, `llm_quality_judge.py` | SHIPPED (golden set defective) |
-| IAA (Fleiss/Cohen) | `annotation/iaa.py` | SHIPPED |
-| SDG (self-instruct/BT/paraphrase) | `sdg_*.py` | PARTIAL (mock-backed) |
-| Synthetic QC gate | `synth_qc_gate.py` | SHIPPED |
-| DVC versioning | `.dvc` pointers + remote | PARTIAL (remote/`.gitignore` mismatched) |
-| SFT | `finetune_model.py` et al | PARTIAL (no verified run) |
-| DPO / ORPO / GRPO | `dpo_trainer.py` / `orpo_trainer.py` / `grpo_trainer.py` | SHIPPED (ORPO tested) |
-| Pruning / distillation / quant | `prune_adapter.py` / `distill_model.py` / `quantize_model.py` | PARTIAL |
-| Forgetting benchmark | `benchmark_runner.py` | PARTIAL (mock) |
-| **FSDP2 / Megatron / torchrun / NCCL launcher** | — | **NOT IMPLEMENTED** |
-| **NeMo AutoModel distributed** | `ai/nemo/` (compose YAML only) | **NOT IMPLEMENTED** |
+| Capability                                      | Module                                  | Status                       |
+|-------------------------------------------------|-----------------------------------------|------------------------------|
+| Provenance + SPDX license gate                  | `provenance.py`                         | SHIPPED                      |
+| Web/doc/API ingest router                       | `ingest_router.py`                      | SHIPPED                      |
+| PDF/EPUB/HTML parsing                           | `book_pdf_converter.py`                 | SHIPPED                      |
+| Stage 1 filters (lang/PII/toxicity/dedup)       | `stage1_filters.py`                     |                              |
+| Exact+near dedup (MinHash/SimHash)              | `dedup_normalize.py`                    |                              |
+| PII scrub (regex+Presidio+LLM)                  | `pii_scrubber.py`                       |                              |
+| Curation + tiering                              | `curate_pipeline.py`                    | SHIPPED                      |
+| Hash split                                      | `dataset_splitter.py`                   |                              |
+| Stratified 8-axis split                         | `dataset_splitter_stratified.py`        |                              |
+| Dual LLM judge                                  | `dual_judge.py`, `llm_quality_judge.py` | SHIPPED                      |
+| IAA (Fleiss/Cohen)                              | `annotation/iaa.py`                     |                              |
+| SDG (self-instruct/BT/paraphrase)               | `sdg_*.py`                              | PARTIAL                      |
+| Synthetic QC gate                               | `synth_qc_gate.py`                      |                              |
+| DVC versioning                                  | `.dvc` pointers + remote                | PARTIAL (remote/`.gitignore`)|
+| SFT                                             | `finetune_model.py` et al               | PARTIAL (no verified)        |
+| DPO / ORPO / GRPO                               | `*_trainer.pu`                          | SHIPPED (ORPO tested)        |
+| Pruning / distillation / quant                  | `*.py`                                  | PARTIAL                      |
+| Forgetting benchmark                            | `benchmark_runner.py`                   | PARTIAL                      |
+| **FSDP2 / Megatron / torchrun / NCCL launcher** | —                                       | **NOT IMPLEMENTED**          |
+| **NeMo AutoModel distributed**                  | `ai/nemo/` (compose YAML only)          | **NOT IMPLEMENTED**          |
 
 ---
 
