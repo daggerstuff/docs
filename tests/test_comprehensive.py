@@ -19,12 +19,21 @@ def test_fetch():
 def test_refresh():
     md, entries, stats = refresh_dashboard.generate_dashboard_content([], now_str="2026-01-01 00:00 UTC")
     assert isinstance(md, str)
+    big=[{"id": str(i), "identifier": f"LIN-{i}", "title": f"Issue {i}", "state": {"type": "completed" if i%3==0 else "backlog", "name": "Done" if i%3==0 else "Todo"}, "assignee": None if i%2==0 else {"id": "u1"}, "project": {"id": f"p{i%2}", "name": f"P{i%2}"}, "estimate": i%5, "description": "d" if i%2==0 else "", "parent": None, "priority": 1, "archivedAt": None, "completedAt": None} for i in range(30)]
+    md, entries, stats = refresh_dashboard.generate_dashboard_content(big, now_str="2026-01-01 00:00 UTC")
+    assert stats["total_issues"]==30
 def test_register():
     with patch('register_webhook.gql', return_value={"data": {"webhooks": {"nodes": []}}}):
         assert register_webhook.list_webhooks(api_key="k") == []
+    with patch('register_webhook.gql', return_value={"data": {"webhookCreate": {"success": True, "webhook": {"id": "1", "label": "t", "url": "https://example.com", "enabled": True, "resourceTypes": ["Issue"]}}}}), patch('register_webhook.secrets.token_hex', return_value="a"*32):
+        r=register_webhook.register_webhook("https://example.com", label="t", api_key="k")
+        assert r is not None
 def test_remediate():
     c=remediate.LinearClient(api_key="k")
     assert "Authorization" in c.headers
+    with patch('remediate.requests.post') as m:
+        mr=Mock(); mr.json.return_value={"data": {"issueUpdate": {"success": True}}}; mr.raise_for_status=Mock(); m.return_value=mr
+        assert c.update_issue("id", {"title": "t"}) is True
 def test_run_audit():
     import tempfile, pathlib, json as js
     with tempfile.TemporaryDirectory() as td:
