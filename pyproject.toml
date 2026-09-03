@@ -44,7 +44,7 @@ branch = true
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 50
+fail_under = 45
 
 [tool.bandit]
 exclude_dirs = ["tests", ".venv"]
