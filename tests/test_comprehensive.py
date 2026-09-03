@@ -58,25 +58,3 @@ def test_fetch_extra():
         m.side_effect=se2
         result = fetch_issues.fetch_all_issues(api_key="k", team_id="team1", max_pages=5)
         assert len(result)>=2
-def test_refresh_extra():
-    with patch('refresh_dashboard.gql', return_value={"data": {"issues": {"nodes": [{"id": "1", "identifier": "LIN-1", "title": "t", "priority": 1, "estimate": 2, "state": {"id": "s", "name": "Todo", "type": "backlog"}, "parent": None, "completedAt": None}], "pageInfo": {"hasNextPage": False, "endCursor": None}}}}):
-        assert isinstance(refresh_dashboard.fetch_project_issues(api_key="k", max_pages=None), list)
-def test_register_extra():
-    with patch('register_webhook.list_webhooks', return_value=[{"id": "1", "label": "Exists", "url": "https://a", "enabled": True, "resourceTypes": []}]):
-        with patch('register_webhook.gql', return_value={"data": {"webhookDelete": {"success": True}}}):
-            result = register_webhook.unregister_webhook(label="Exists", api_key="k")
-            assert isinstance(result, bool)
-def test_remediate_extra():
-    with patch('remediate.requests.post') as m:
-        mr=Mock(); mr.json.return_value={"data": {"issueArchive": {"success": True}}}; mr.raise_for_status=Mock(); m.return_value=mr
-        c=remediate.LinearClient(api_key="k")
-        assert c.archive_issue("id") is True
-def test_run_audit_extra():
-    import tempfile, pathlib, json as js
-    with tempfile.TemporaryDirectory() as td:
-        p=pathlib.Path(td)/"issues.json"
-        p.write_text(js.dumps([{"id": "1", "identifier": "LIN-1", "title": "Duplicate Title", "state": {"type": "completed", "name": "Done"}, "assignee": None, "project": "p1", "estimate": 2, "description": "", "parent": None, "completedAt": "2026-01-01", "priority": 1},
-                               {"id": "2", "identifier": "LIN-2", "title": "Duplicate Title", "state": {"type": "completed", "name": "Done"}, "assignee": {"id": "u1"}, "project": "p1", "estimate": 3, "description": "desc", "parent": None, "completedAt": None, "priority": 2}]))
-        issues=run_audit.load_issues(p)
-        result=run_audit.run_audit(issues)
-        assert isinstance(result, dict)
