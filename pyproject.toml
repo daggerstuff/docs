@@ -9,6 +9,8 @@ authors = [{ name = "Pixelated Empathy Team" }]
 dependencies = [
     "requests>=2.32.0",
     "pydantic>=2.7.0",
+    "structlog>=24.1.0",
+    "sentry-sdk>=2.0.0",
 ]
 
 [project.optional-dependencies]
@@ -17,6 +19,8 @@ dev = [
     "pytest-cov>=5.0.0",
     "ruff>=0.5.0",
     "bandit>=1.7.8",
+    "mypy>=1.10.0",
+    "pip-audit>=2.7.0",
 ]
 
 [build-system]
@@ -49,3 +53,7 @@ fail_under = 85
 [tool.bandit]
 exclude_dirs = ["tests", ".venv"]
 skips = ["B101"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
