@@ -1,5 +1,6 @@
 # Sorted alphabetically
 .coverage
+.predev/
 AGENTS.md
 audits/
 epics/

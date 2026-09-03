@@ -33,5 +33,11 @@ jobs:
       - name: Security SAST Audit (Bandit)
         run: bandit -c pyproject.toml -r linear-audit
 
+      - name: Type Check (Mypy)
+        run: mypy linear-audit
+
+      - name: Dependency Audit (pip-audit)
+        run: pip-audit -r requirements.txt
+
       - name: Test Suite & Data Contracts (Pytest)
         run: pytest -v --cov=linear-audit --cov-report=term-missing
