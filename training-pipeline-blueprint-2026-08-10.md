@@ -319,8 +319,8 @@ What actually blocks a first real training run, in order:
 2. **Pick the real base model** — reconcile `axolotl.yaml` (`Wayfarer-2-12B`)
    vs `orpo_axolotl.yaml` (`Qwen2.5-32B`) vs legacy `Llama-2-7b` default.
    Decide one.
-   ✅ **DONE** — standardized on GLM: `zai-org/glm-5.3-flash` for
-   weights-loading contexts (axolotl configs, trainers), `@cf/zai-org/glm-5.3-flash`
+   ✅ **DONE** — standardized on DeepSeek: `deepseek-ai/DeepSeek-V4-Pro` for
+   weights-loading contexts (axolotl configs, trainers), `@cf/deepseek-ai/deepseek-v4-pro-0813`
    as the served judge default; dual-judge primary remains
    `@cf/deepseek-ai/deepseek-v4-pro-0813`. All Qwen3.8/Wayfarer/Qwen2.5
    training references replaced (distillation teacher/student exempt).
