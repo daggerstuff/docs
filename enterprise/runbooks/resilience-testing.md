@@ -50,7 +50,7 @@ Engineering & Resilience Testing
 
 ### 2.1 Prerequisites
 
-- Kubernetes cluster (Civo K3s `pixelated-cluster` for staging)
+- Kubernetes cluster (AWS EKS for staging)
 - `kubectl` configured with cluster access
 - Helm 3.x installed
 - Cluster-admin privileges for installation
@@ -402,7 +402,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Configure kubectl
         run: |
-          echo "${{ secrets.CIVO_KUBECONFIG }}" > kubeconfig
+          echo "${{ secrets.EKS_KUBECONFIG }}" > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
       - name: Run chaos experiment
         run: |
@@ -429,7 +429,7 @@ Once experiments are stable:
 ### 6.3 Scheduled Runs
 
 ```bash
-# Cron job (staging cluster) — add to k8s/civo/ overlay
+# Cron job (staging cluster) — add to k8s/aws/ overlay
 # Runs weekly Monday 10:00 UTC
 apiVersion: batch/v1
 kind: CronJob

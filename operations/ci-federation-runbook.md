@@ -12,7 +12,7 @@ across two providers:
 
 | Provider                 | Domain                                           | Deploy Authority  |
 | ------------------------ | ------------------------------------------------ | ----------------- |
-| **GitHub Actions**       | Application CI, security scanning, AI validation | Civo K3s (deploy) |
+| **GitHub Actions**       | Application CI, security scanning, AI validation | AWS EKS (deploy) |
 | **Bitbucket Pipelines**  | AI module validation, governance checks          | —                 |
 | **Readiness Aggregator** | Cross-provider release readiness summary         | Local/devops      |
 
@@ -155,7 +155,7 @@ across two providers:
 
 ## 3. Deployment Gates
 
-### 3.1 Staging (Civo K3s)
+### 3.1 Staging (AWS EKS)
 
 | Step                 | Workflow                         | Blocks?          |
 | -------------------- | -------------------------------- | ---------------- |
@@ -163,7 +163,7 @@ across two providers:
 | Security scan        | `security.yml`                   | ✅               |
 | AI validation        | `ai-validation.yml`              | ⚪ Informational |
 | Migration validation | `migration-validation.yml`       | ✅               |
-| Deploy               | `deploy-civo.yml` (push to main) | ✅ Final gate    |
+| Deploy               | `deploy-aws.yml` (push to main)   | ✅ Final gate    |
 
 ---
 

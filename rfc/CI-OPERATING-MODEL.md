@@ -48,7 +48,7 @@ A federated model with clear authority boundaries eliminates these issues.
 | OpenAPI validation                               | API      | GitHub Actions      | No                |
 | Browser/Playwright E2E                           | Frontend | GitHub Actions      | No                |
 | Performance (Lighthouse)                         | Frontend | GitHub Actions      | No                |
-| Staging deploy (Civo K3s)                        | DevOps   | GitHub Actions      | No                |
+| Staging deploy (AWS EKS)                        | DevOps   | GitHub Actions      | No                |
 | Readiness aggregation                            | DevOps   | Manual/CLI          | Advisory          |
 
 ---
@@ -116,7 +116,7 @@ Each provider runs only jobs relevant to the changed paths:
                               ▼
                  ┌───────────────────────┐
                  │  Staging Deploy        │
-                 │  (Civo K3s via GH)     │
+                 │  (AWS EKS via GH)      │
                  └───────────────────────┘
 ```
 
@@ -131,7 +131,7 @@ graph LR
     A[Commit SHA] --> B[GitHub Actions Build]
     B --> C[Docker Image: pixelatedempathy/api:{SHA}]
     B --> D[SBOM: sbom.cyclonedx.json]
-    C --> E[Push to ACR / Civo Registry]
+    C --> E[Push to Docker Hub / ACR]
 ```
 
 ---

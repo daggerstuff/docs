@@ -55,19 +55,19 @@ response — covered in [SLA Breach Response](./sla-breach-response.md).
 
 | Component             | Technology                                             | Location                                                       | Redundancy                            |
 | --------------------- | ------------------------------------------------------ | -------------------------------------------------------------- | ------------------------------------- |
-| Compute orchestration | Civo K3s                                               | Civo Cloud (region: LON1)                                      | Single cluster (multi-region planned) |
+| Compute orchestration | AWS EKS                                              | AWS (region: us-west-2)                                        | Single cluster (multi-region planned) |
 | Deployment strategy   | Blue/green                                             | Kubernetes namespace                                           | Blue=active, green=standby            |
 | Container registry    | Docker Hub                                             | `pixelatedempathy/{api,session-agent,qa-agent,pipeline-agent}` | Docker Hub SLA 99.9%                  |
 | CI/CD                 | GitHub Actions                                         | 27 workflows                                                   | GitHub-hosted runners (multi-region)  |
 | DNS                   | Cloudflare (primary), Route53 (failover health checks) | Global edge                                                    | Cloudflare 99.99% SLA                 |
-| Ingress               | GCE ingress controller                                 | Civo K3s                                                       | Managed certificate                   |
+| Ingress               | Traefik v3 (NLB)                                      | AWS EKS                                                        | Managed certificate                   |
 | Secrets               | External Secrets Operator + secret-store               | Kubernetes                                                     | Operator-managed rotation             |
 | Monitoring            | Prometheus + Grafana + Alertmanager                    | Docker Compose                                                 | 200h retention                        |
 
 ### 2.2 Kubernetes Cluster Details
 
-- **Cluster name**: `pixelated-cluster`
-- **Distribution**: Civo K3s
+- **Cluster name**: EKS cluster (AWS)
+- **Distribution**: Amazon EKS
 - **Namespace**: `pixelated-empathy`
 - **Deployments**:
   - `pixelated-empathy` (blue + green slots, container port 5001, health
@@ -77,18 +77,18 @@ response — covered in [SLA Breach Response](./sla-breach-response.md).
 - **Service routing**: `slot: blue` selector on service → routes to active
   deployment
 - **Autoscaling**: HPA on pixelated-empathy deployment
-- **Ingress**: GCE class, managed TLS certificate, host `pixelatedempathy.com`
-- **Kustomize overlays**: `base/` (16 resources), `civo/` overlay, `staging/`
+- **Ingress**: Traefik v3 on NLB, Cloudflare-managed TLS, host `pixelatedempathy.com`
+- **Kustomize overlays**: `base/` (16 resources), `aws/` overlay, `staging/`
   and `production/` overlays
 
 ### 2.3 CI/CD Pipeline Details
 
 - **Platform**: GitHub Actions (27 workflows)
-- **Primary deploy workflow**: `deploy-civo.yml`
+- **Primary deploy workflow**: `deploy-aws.yml`
   - Builds Docker images for 4 services (api, session-agent, qa-agent,
     pipeline-agent)
   - Pushes to Docker Hub (`pixelatedempathy/*`)
-  - Deploys to Civo K3s via `kubectl` + `kustomize`
+  - Deploys to AWS EKS via `kubectl` + `kustomize`
   - Blue slot = active deployment target
   - Post-deploy: rollout status check + smoke test via
     `scripts/deploy/verify-deployment.sh`
@@ -109,8 +109,7 @@ The platform has automated multi-region failover orchestration code:
   checks at each stage. SQLite deployment records for audit trail.
 
 > **Note**: Multi-region failover orchestration code exists but is not yet
-> deployed to production. Current production runs on a single Civo region
-> (LON1). This runbook covers both current single-region recovery and future
+> deployed to production. Current production runs on AWS EKS (us-west-2). This runbook covers both current single-region recovery and future
 > multi-region failover procedures.
 
 ---
@@ -150,9 +149,8 @@ for >5 minutes, or pod eviction storms.
 4. **If K3s auto-recovery fails, replace node**:
 
    ```bash
-   # Via Civo CLI
-   civo kubernetes node delete <node-name> --cluster pixelated-cluster
-   civo kubernetes node create --cluster pixelated-cluster --size g3.k3s.medium
+   # Via AWS CLI
+   aws eks update-nodegroup-config --cluster-name <eks-cluster> --nodegroup-name <ng> --scaling-config minSize=2,maxSize=3,desiredSize=3
    # Wait for node Ready, then verify workloads
    kubectl get nodes -w
    ```
@@ -171,20 +169,20 @@ for >5 minutes, or pod eviction storms.
 **RTO**: 1 hour (Tier 1) **Trigger**: `kubectl` commands fail, API server
 unreachable, etcd quorum loss.
 
-Civo K3s is a managed Kubernetes service — control plane is managed by Civo.
-Control plane failures are Civo's responsibility.
+Amazon EKS is a managed Kubernetes service — the control plane is managed by AWS.
+Control plane failures are AWS's responsibility.
 
 #### Recovery Steps
 
-1. **Check Civo status**:
+1. **Check EKS cluster status**:
 
    ```bash
-   civo kubernetes show pixelated-cluster
-   # Check Civo status page: https://status.civo.com
+   aws eks describe-cluster --name "$EKS_CLUSTER_NAME"
+   # Check AWS status page: https://health.aws.amazon.com
    ```
 
-2. **Escalate to Civo support** if control plane unresponsive for >15 minutes:
-   - Support: support@civo.com
+2. **Escalate to AWS support** if control plane unresponsive for >15 minutes:
+   - Support: AWS Enterprise Support
    - Priority: Production down
    - Include: cluster name, region, timestamp, error messages
 
@@ -210,7 +208,7 @@ Control plane failures are Civo's responsibility.
 **RTO**: 4 hours (Tier 2 — infra rebuild, app data recovered from backups)
 **Trigger**: Complete cluster loss, corrupted etcd, irrecoverable control plane.
 
-> **Note**: Civo K3s manages etcd internally. Full etcd restore on managed K3s
+> **Note**: EKS manages etcd internally. Full etcd restore on managed EKS
 > requires cluster recreation. Application state is recovered from backups per
 > [DR: RTO/RPO Targets](./dr-rto-rpo-targets.md#6-backup-and-recovery-strategy).
 
@@ -220,23 +218,23 @@ Control plane failures are Civo's responsibility.
 
    ```bash
    # Export current cluster config for reference
-   civo kubernetes show pixelated-cluster > /tmp/cluster-config-backup.txt
+   aws eks describe-cluster --name "$EKS_CLUSTER_NAME" > /tmp/cluster-config-backup.txt
 
    # Delete cluster (WARNING: destructive)
-   civo kubernetes delete pixelated-cluster --yes
+   aws eks delete-cluster --name "$EKS_CLUSTER_NAME"
 
    # Recreate cluster
-   civo kubernetes create pixelated-cluster \
-     --size g3.k3s.medium \
-     --nodes 3 \
-     --region LON1 \
+   aws eks create-cluster --name "$EKS_CLUSTER_NAME" \
+     --nodegroup-name default \
+     --nodegroup-type managed \
+     --region us-west-2 \
      --wait
    ```
 
 2. **Update kubeconfig**:
 
    ```bash
-   civo kubernetes config pixelated-cluster --save
+   aws eks update-kubeconfig --name "$EKS_CLUSTER_NAME"
    kubectl get nodes
    ```
 
@@ -291,7 +289,7 @@ Control plane failures are Civo's responsibility.
 6. **Deploy latest images**:
 
    ```bash
-   # Trigger deploy-civo.yml workflow or deploy manually
+   # Trigger deploy-aws.yml workflow or deploy manually
    kubectl set image deployment/pixelated-empathy \
      app=pixelatedempathy/api:latest -n pixelated-empathy
    kubectl rollout status deployment/pixelated-empathy -n pixelated-empathy
@@ -308,9 +306,9 @@ Control plane failures are Civo's responsibility.
 
 ## 4. Cloud Region Failover
 
-### 4.1 Current State: Single Region (Civo LON1)
+### 4.1 Current State: Single Region (AWS us-west-2)
 
-Production currently runs on a single Civo region (LON1). No automated
+Production currently runs on AWS EKS (us-west-2). No automated
 multi-region failover is active. Region failure requires manual cluster rebuild
 in an alternate region (see
 [Section 3.3](#33-scenario-etcd-data-loss-complete-cluster-rebuild)).
@@ -364,7 +362,7 @@ Cloudflare provides DNS-level failover independent of Route53:
 1. **Health check**: Cloudflare monitors origin health (HTTP check to
    `/health`).
 2. **Failover pool**: Configure Cloudflare Load Balancer with origin pool:
-   - Primary origin: `pixelatedempathy.com` → Civo LON1 LB IP
+   - Primary origin: `pixelatedempathy.com` → AWS NLB hostname
    - Secondary origin: failover region LB IP (when available)
 3. **Failover behavior**: Cloudflare automatically routes to secondary origin
    when primary fails health check for 3 consecutive checks (default 90
@@ -402,7 +400,7 @@ load_balancer:
 
 | Record                 | Type  | Value                    | TTL  | Proxied | Purpose             |
 | ---------------------- | ----- | ------------------------ | ---- | ------- | ------------------- |
-| `pixelatedempathy.com` | A     | Civo LB IP               | Auto | Yes     | Primary application |
+| `pixelatedempathy.com` | A     | AWS NLB hostname               | Auto | Yes     | Primary application |
 | `www`                  | CNAME | `pixelatedempathy.com`   | Auto | Yes     | WWW redirect        |
 | `api`                  | CNAME | `pixelatedempathy.com`   | Auto | Yes     | API subdomain       |
 | `_dmarc`               | TXT   | `v=DMARC1; p=reject;...` | 1h   | No      | Email auth          |
@@ -603,10 +601,10 @@ ls scripts/deploy/      # verify deploy scripts present
 
 ## 7. Complete Region Outage Recovery Runbook
 
-### 7.1 Scenario: Full Civo LON1 Region Outage
+### 7.1 Scenario: Full AWS us-west-2 Region Outage
 
-**RTO**: 4 hours (Tier 2 — full region rebuild) **Trigger**: Civo status page
-reports LON1 region outage, all nodes unreachable, `kubectl` commands fail.
+**RTO**: 4 hours (Tier 2 — full region rebuild) **Trigger**: AWS status page
+reports us-west-2 region outage, all nodes unreachable, `kubectl` commands fail.
 
 > This is the worst-case infrastructure scenario. Follow this runbook
 > end-to-end.
@@ -616,8 +614,8 @@ reports LON1 region outage, all nodes unreachable, `kubectl` commands fail.
 1. **Confirm outage**:
 
    ```bash
-   # Check Civo status
-   curl -s https://status.civo.com/api/v2/incidents.json | jq '.incidents[]'
+   # Check AWS status
+   curl -s https://health.aws.amazon.com | jq '.incidents[]'
    # Check cluster
    kubectl get nodes  # expect timeout or error
    # Check external connectivity
@@ -640,27 +638,27 @@ reports LON1 region outage, all nodes unreachable, `kubectl` commands fail.
 
    | Option                               | RTO                      | Complexity | Data Loss                |
    | ------------------------------------ | ------------------------ | ---------- | ------------------------ |
-   | Wait for Civo recovery               | Unknown (Civo-dependent) | None       | None (if etcd intact)    |
-   | Rebuild in alternate Civo region     | 4 hours                  | High       | RPO-dependent (5min–1hr) |
+   | Wait for AWS recovery                | Unknown (AWS-dependent)  | None       | None (if etcd intact)     |
+   | Rebuild in alternate AWS region      | 4 hours                  | High       | RPO-dependent (5min–1hr) |
    | Rebuild on alternate cloud (AWS EKS) | 6+ hours                 | Very High  | RPO-dependent            |
    | Deploy to staging cluster            | 2 hours                  | Medium     | None (staging data)      |
 
 5. **Decision criteria**:
-   - Civo ETA < 30 min → Wait.
-   - Civo ETA 30min–2hr → Prepare alternate region rebuild in parallel.
-   - Civo ETA > 2hr or unknown → Initiate alternate region rebuild.
+   - AWS ETA < 30 min → Wait.
+   - AWS ETA 30min–2hr → Prepare alternate region rebuild in parallel.
+   - AWS ETA > 2hr or unknown → Initiate alternate region rebuild.
 
 #### Phase 3: Alternate Region Rebuild (30 minutes–4 hours)
 
-6. **Provision new cluster** (alternate Civo region, e.g., FRA1):
+6. **Provision new cluster** (alternate AWS region):
 
    ```bash
-   civo kubernetes create pixelated-cluster-dr \
+   aws eks create-cluster --name pixelated-cluster-dr \
      --size g3.k3s.medium \
      --nodes 3 \
      --region FRA1 \
      --wait
-   civo kubernetes config pixelated-cluster-dr --save
+   aws eks update-kubeconfig --name pixelated-cluster-dr --region us-west-2
    ```
 
 7. **Apply K8s manifests** (see
@@ -705,7 +703,7 @@ reports LON1 region outage, all nodes unreachable, `kubectl` commands fail.
 
     ```bash
     # Get new cluster LB IP
-    NEW_LB_IP=$(civo kubernetes show pixelated-cluster-dr | grep "Load Balancer" | awk '{print $NF}')
+    NEW_LB_IP=$(kubectl get svc -n traefik traefik -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 
     # Update Cloudflare DNS (see [Section 5.1](#51-cloudflare-dns-primary))
     curl -X PATCH "https://api.cloudflare.com/client/v4/zones/<zone-id>/dns_records/<record-id>" \
@@ -786,14 +784,14 @@ window scheduled (off-hours).
 1. **Snapshot staging cluster** (for rollback):
 
    ```bash
-   civo kubernetes show pixelated-staging > /tmp/staging-snapshot.txt
+   aws eks describe-cluster --name pixelated-staging > /tmp/staging-snapshot.txt
    kubectl get all -n pixelated-empathy > /tmp/staging-resources.txt
    ```
 
 2. **Destroy staging cluster**:
 
    ```bash
-   civo kubernetes delete pixelated-staging --yes
+   aws eks delete-cluster --name pixelated-staging
    ```
 
 3. **Execute recovery procedure** (follow
@@ -848,7 +846,7 @@ The following alerts should be configured to detect DR-relevant conditions:
 | Alert                | Condition                                        | Severity  | Action                            |
 | -------------------- | ------------------------------------------------ | --------- | --------------------------------- |
 | ClusterNodeDown      | `up{job="kubernetes-nodes"} == 0` for 5m         | Critical  | Page on-call, assess node failure |
-| ClusterAPIDown       | `kubectl get` fails for 10m                      | Critical  | Page on-call, escalate to Civo    |
+| ClusterAPIDown       | `kubectl get` fails for 10m                      | Critical  | Page on-call, escalate to AWS    |
 | BackupFailure        | `backup_success_total` not incrementing in 26h   | Warning   | Investigate backup scripts        |
 | DNSResolutionFailure | DNS lookup for pixelatedempathy.com fails for 5m | Emergency | Page on-call, check Cloudflare    |
 | DockerHubPullFailure | `ImagePullBackOff` on any deployment for 10m     | Warning   | Check Docker Hub status           |
@@ -917,7 +915,7 @@ Deploy synthetic checks to detect region-wide outages:
 | Term                          | Definition                                                                                                                        |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | **Blue/Green deployment**     | Deployment strategy with two identical environments; one active (blue), one standby (green). Switch by updating service selector. |
-| **Civo K3s**                  | Managed lightweight Kubernetes distribution hosted on Civo Cloud.                                                                 |
+| **Amazon EKS**                | Managed Kubernetes service on AWS.                                                                                             |
 | **DNS failover**              | Automatic rerouting of DNS records from primary to secondary origin upon health check failure.                                    |
 | **etcd**                      | Distributed key-value store used as Kubernetes' backing store for all cluster data.                                               |
 | **External Secrets Operator** | Kubernetes operator that syncs secrets from external secret stores (AWS Secrets Manager, Vault) into Kubernetes secrets.          |
@@ -952,17 +950,17 @@ Deploy synthetic checks to detect region-wide outages:
 
 ### Infrastructure Files
 
-- `k8s/` — Kubernetes manifests (27 YAML files: base, civo overlay,
+- `k8s/` — Kubernetes manifests (27 YAML files: base, aws overlay,
   staging/production overlays)
 - `k8s/base/` — base K8s resources (namespace, deployments, services, ingress,
   HPA, secrets)
-- `.github/workflows/` — CI/CD workflows (27 files including `deploy-civo.yml`)
+- `.github/workflows/` — CI/CD workflows (28 files including `deploy-aws.yml`)
 - `src/lib/deployment/multi-region/AutomatedFailoverOrchestrator.ts` —
   multi-region failover orchestration
 - `ai/deployment/production_deployer.py` — blue-green canary deployer with
   rollback
 - `scripts/deploy/` — deploy scripts (20 files including `verify-deployment.sh`,
-  `rollout-civo.sh`)
+  `deploy.sh`)
 - `scripts/backup/` — backup scripts (`disaster-recovery.sh`,
   `backup-system.sh`, `rclone-nightly-backup.sh`, `verify-backups.sh`)
 - `docker/postgres/backup/` — PostgreSQL backup/restore scripts (WAL + PITR)
@@ -970,11 +968,11 @@ Deploy synthetic checks to detect region-wide outages:
 
 ### External Resources
 
-- [Civo Status](https://status.civo.com) — Civo Cloud status page
+- [AWS Status](https://health.aws.amazon.com) — AWS service health page
 - [Cloudflare Status](https://www.cloudflarestatus.com) — Cloudflare status page
 - [Docker Hub Status](https://status.docker.com) — Docker Hub status page
 - [GitHub Status](https://www.githubstatus.com) — GitHub status page
-- [Civo Kubernetes Documentation](https://www.civo.com/docs/kubernetes) — Civo
+- [AWS EKS Documentation](https://docs.aws.amazon.com/eks/) — AWS
   K3s docs
 - [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/)
   — Cloudflare LB docs
