@@ -44,7 +44,7 @@ flowchart TD
 
 ## 2. 🌟 The 4 Advanced MAS Upgrades (Inspired by Exo & Better Harness)
 
-### 1. 📊 5-Dimension Work Loop Quality & Evidence Auditor ([`loop_auditor.py`](file:///home/vivi/pixelated/tools/agent_runner/loop_auditor.py))
+### 1. 📊 5-Dimension Work Loop Quality & Evidence Auditor ([`loop_auditor.py`](../tools/agent_runner/loop_auditor.py))
 
 Evaluates the 5 essential dimensions of agent software delivery for every
 completed task:
@@ -65,7 +65,7 @@ structured Markdown evidence breakdown table directly onto Linear tickets.
 
 ---
 
-### 2. 🛡️ Pre-Flight Feedforward & Post-Flight Feedback Sensors ([`sensor_hooks.py`](file:///home/vivi/pixelated/tools/agent_runner/sensor_hooks.py))
+### 2. 🛡️ Pre-Flight Feedforward & Post-Flight Feedback Sensors ([`sensor_hooks.py`](../tools/agent_runner/sensor_hooks.py))
 
 - **Pre-Flight Hook**: Verifies toolchain binaries (`pnpm`, `uv`, `git`), agent
   executable reachability, and working tree cleanliness before agent startup.
@@ -74,7 +74,7 @@ structured Markdown evidence breakdown table directly onto Linear tickets.
 
 ---
 
-### 3. 🧬 Provenance Lineage Graph Tracker ([`lineage.py`](file:///home/vivi/pixelated/tools/agent_runner/lineage.py))
+### 3. 🧬 Provenance Lineage Graph Tracker ([`lineage.py`](../tools/agent_runner/lineage.py))
 
 Maintains an append-only provenance graph connecting:
 `Specification ➔ Linear Project ➔ Task DAG ➔ Worktree Branches ➔ Delegations ➔ Pull Requests ➔ Foresight Memories`
@@ -83,7 +83,7 @@ Maintains an append-only provenance graph connecting:
 
 ---
 
-### 4. 🧠 Self-Evolution & Friction Distillation Engine ([`self_evolution.py`](file:///home/vivi/pixelated/tools/agent_runner/self_evolution.py))
+### 4. 🧠 Self-Evolution & Friction Distillation Engine ([`self_evolution.py`](../tools/agent_runner/self_evolution.py))
 
 - Automatically diagnoses compiler errors, type mismatches, and auto-repair
   retry cycles.

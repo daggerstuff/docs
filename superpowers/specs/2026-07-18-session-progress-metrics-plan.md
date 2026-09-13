@@ -13,9 +13,9 @@ connection pools per file import.
 
 **Changes**:
 
-- [src/pages/api/session/progress.ts](file:///home/vivi/pixelated/src/pages/api/session/progress.ts)
-- [src/pages/api/session/analytics.ts](file:///home/vivi/pixelated/src/pages/api/session/analytics.ts)
-- [src/pages/api/session/skills.ts](file:///home/vivi/pixelated/src/pages/api/session/skills.ts)
+- [src/pages/api/session/progress.ts](../../../src/pages/api/session/progress.ts)
+- [src/pages/api/session/analytics.ts](../../../src/pages/api/session/analytics.ts)
+- [src/pages/api/session/skills.ts](../../../src/pages/api/session/skills.ts)
 
 **Verify**: `pnpm vitest run src/tests/api/session/progress-api.test.ts` passes.
 **Rollback**:
@@ -49,7 +49,7 @@ alignment with zero-chroma/premium design guidelines.
 
 **Changes**:
 
-- [src/components/chat/SessionTimeline.tsx](file:///home/vivi/pixelated/src/components/chat/SessionTimeline.tsx)
+- [src/components/chat/SessionTimeline.tsx](../../../src/components/chat/SessionTimeline.tsx)
 - `src/components/chat/MultiSessionProgression.tsx`
 - `src/components/chat/BeliefChangeTracker.tsx`
 - `src/components/chat/DefenseMechanismAdaptation.tsx`

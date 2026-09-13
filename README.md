@@ -113,7 +113,7 @@ The pipeline standardizes all Linear data into the **v2 Linear MCP Flat Shape**:
 
 ```bash
 # Clone and enter workspace
-cd /home/vivi/pixelated/docs
+cd docs
 
 # Install dependencies using uv
 uv pip install -e ".[dev]"
