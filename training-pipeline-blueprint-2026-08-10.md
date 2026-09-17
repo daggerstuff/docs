@@ -192,14 +192,12 @@ Real, tracked in the `ai` submodule:
 
 ```ini
 ['remote "pixelated_s3"']
-    url = s3://whitebat/dvc
-    region = nyc1
-    endpointurl = https://objectstore.nyc1.civo.com
+    url = s3://pixelated-datasets/dvc
+    region = us-west-2
 ```
 
-- **Gaps**: no `ai/data/curated/.gitignore`, no root `dvc.yaml`/`dvc.lock`, and
-  the remote is Civo object store, **not** AWS S3 us-west-2. The prior doc's
-  `s3://pixelated-datasets/dvc` + `us-west-2` block is wrong.
+- **Gaps**: no `ai/data/curated/.gitignore`, no root `dvc.yaml`/`dvc.lock`.
+  The remote is AWS S3 us-west-2 (`s3://pixelated-datasets/dvc`).
 
 ### 5.3 Quality gates (`SHIPPED`)
 
@@ -329,13 +327,13 @@ What actually blocks a first real training run, in order:
    hash-split to avoid the 70/15/15 vs 80/10/10 mismatch.
    ✅ **DONE** — `dataset_splitter.py` deleted (zero importers);
    `DEFAULT_RATIO` → `(70, 15, 15)` to match `curate_pipeline`; tests updated (49 pass).
-4. **Fix DVC** — add `ai/data/curated/.gitignore`, pin remote to the Civo
+4. **Fix DVC** — add `ai/data/curated/.gitignore`, pin remote to the AWS S3
    backend actually configured, add `dvc.yaml`/`dvc.lock`.
    ✅ **DONE** — `dvc.yaml` rewritten with ai/-relative paths + per-file outs
    matching committed `.dvc` pointers; fabricated `dvc.lock` (placeholder md5s)
    deleted — regenerate via `dvc repro` after pulling raw input from S3;
    `data/curated/.gitignore` pattern order fixed (`**` before `!*/`/`!*.dvc`).
-   Remote already pinned to Civo `pixelated_s3` in `.dvc/config`.
+   Remote already pinned to AWS S3 `pixelated_s3` in `.dvc/config`.
 5. **Run one end-to-end SFT** — QLoRA on H100, `orpo_axolotl.yaml`, ~10K-50K
    curated samples, capture real `forgetting_score`.
    ⏸ **DEFERRED** — requires H100 (RunPod ~$1.99-3.29/hr per §3); local box has no GPU.

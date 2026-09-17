@@ -182,7 +182,7 @@ assets to authorized personnel.
 | CC6.1: Logical access security         | **Strong**  | Auth0 JWT, API keys, RBAC, tenant isolation | —                                          |
 | CC6.2: User registration/authorization | **Strong**  | Auth0, scope-based permissions              | —                                          |
 | CC6.3: Remote access security          | **Partial** | Cloudflare Tunnel, oauth2-proxy             | No formal remote access policy             |
-| CC6.4: Physical access                 | **N/A**     | Cloud-hosted (Cloudflare, Civo)             | Vendor manages physical security           |
+| CC6.4: Physical access                 | **N/A**     | Cloud-hosted (Cloudflare, AWS)             | Vendor manages physical security           |
 | CC6.5: System component removal        | **Gap**     | —                                           | No decommissioning procedure               |
 | CC6.6: Access provisioning             | **Partial** | Auth0 user management                       | No formal access request/approval workflow |
 | CC6.7: Periodic access review          | **Gap**     | —                                           | No quarterly access review process         |
@@ -274,7 +274,7 @@ reduce risk from vendors and business partners.
 **Remediation:**
 
 - [ ] Complete VRA-3: Conduct Tier 1 vendor security reviews (Auth0, Cloudflare,
-      Civo, Sentry)
+      AWS, Sentry)
 - [ ] Establish ongoing vendor monitoring program (annual reviews, continuous
       monitoring)
 - [ ] Add security requirements to vendor contracts (encryption, access

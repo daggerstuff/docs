@@ -81,7 +81,7 @@ may constitute PHI when used in healthcare contexts).
 
 | Standard                                 | Status      | Evidence                              | Gap                                        |
 | ---------------------------------------- | ----------- | ------------------------------------- | ------------------------------------------ |
-| §164.310(a)(1) Facility Access Controls  | **N/A**     | Cloud-hosted                          | Vendor responsibility (Cloudflare, Civo)   |
+| §164.310(a)(1) Facility Access Controls  | **N/A**     | Cloud-hosted                          | Vendor responsibility (Cloudflare, AWS)   |
 | §164.310(b) Workstation Use              | **Gap**     | —                                     | No workstation use policy                  |
 | §164.310(c) Workstation Security         | **Gap**     | —                                     | No workstation security controls           |
 | §164.310(d)(1) Device & Media Controls   | **Gap**     | —                                     | No device/media disposal procedures        |
@@ -254,7 +254,7 @@ may constitute PHI when used in healthcare contexts).
 
 - [ ] Draft BAA template (per §164.504(e))
 - [ ] Create BAA execution process
-- [ ] Identify vendors requiring BAAs (Auth0, Cloudflare, Civo, Sentry)
+- [ ] Identify vendors requiring BAAs (Auth0, Cloudflare, AWS, Sentry)
 - [ ] Contact vendors for BAA execution
 - [ ] Create subcontractor BAA requirement
 
@@ -343,7 +343,7 @@ Before executing BAAs with covered entities, ensure:
 - [ ] HIPAA risk analysis completed
 - [ ] All P0 gaps remediated
 - [ ] BAA template reviewed by legal counsel
-- [ ] Vendor BAAs in place (Auth0, Cloudflare, Civo, Sentry)
+- [ ] Vendor BAAs in place (Auth0, Cloudflare, AWS, Sentry)
 - [ ] Breach notification procedures documented
 - [ ] HIPAA training completed for all workforce members
 - [ ] HIPAA policies approved by leadership

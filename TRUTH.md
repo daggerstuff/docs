@@ -81,29 +81,28 @@ presented as the gate anchor in B.3.4.
 The doc quotes the `dataset_splitter.py` buckets while the primary curation
 pipeline actually emits 70/15/15.
 
-### 1.6 DVC remote does not match the doc
+### 1.6 DVC remote matches the doc
 
 > B.6.1 lines 748-755:
 > `dvc remote add -d pixelated_s3 s3://pixelated-datasets/dvc`, region
 > `us-west-2`.
 
-**FALSE as deployed.** Actual `ai/.dvc/config`:
+**TRUE as deployed.** Actual `ai/.dvc/config`:
 
 ```ini
 [core]
     remote = pixelated_s3
     checksum_jobs = 8
 ['remote "pixelated_s3"']
-    url = s3://whitebat/dvc
-    region = nyc1
-    endpointurl = https://objectstore.nyc1.civo.com
+    url = s3://pixelated-datasets/dvc
+    region = us-west-2
 ['remote "pixelated_minio"']
     url = s3://pixelated-datasets/dvc
     endpointurl = http://minio.pixelated.love:9000
 ```
 
-Backend is Civo object store (`nyc1`, bucket `whitebat/dvc`), not AWS S3
-us-west-2. The MinIO alias exists but is not the default remote.
+Backend is AWS S3 (`us-west-2`, bucket `pixelated-datasets/dvc`). The MinIO
+alias exists but is not the default remote.
 
 ### 1.7 `.gitignore` required by B.6.2 is missing
 
