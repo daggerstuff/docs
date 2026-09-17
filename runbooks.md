@@ -80,7 +80,25 @@ The routing table and per-surface ownership live in that script.
 3. Sentry releases tag each deploy; use the release view to confirm which
    version is live.
 
-## 5. Suspected flaky test
+## 5. Nightly accuracy gate is red
+
+**Detection:** `Accuracy gate` (nightly ~03:50) fails. This workflow carries
+the bias- and crisis-detection ML accuracy suites — a ~15-minute benchmark
+deliberately excluded from the per-push advisory gate (same precedent as the
+load/performance excludes), so a red run means an accuracy regression shipped
+in the last 24 hours.
+
+1. Download the run's `accuracy-test-log` artifact for the failed assertions
+   and threshold deltas.
+2. Identify the window: the commits merged since the previous green accuracy
+   run. Accuracy regressions are usually a dataset/model-threshold change,
+   not a code bug — check recent commits touching `tests/bias-detection`,
+   `tests/crisis-detection`, and the crisis/bias engines under
+   `apps/web/src/lib/ai/`.
+3. Fix forward or revert; re-run the workflow (`workflow_dispatch`) to
+   confirm green before closing out.
+
+## 6. Suspected flaky test
 
 1. Note the test name and run link. Do not add retries — retries mask
    non-determinism, which the anti-suppression policy bans.
