@@ -25,7 +25,7 @@ What to do after an automatic rollback:
    head that triggered it. Open the linked CI run to find the commit.
 3. If the flip-back itself failed, manually restore the selector to the
    previous slot with `kubectl patch svc pixelated-empathy -n pixelated-empathy
-   --type merge -p '{"spec":{"selector":{"app":"pixelated-empathy","slot":"<prev>"}}}'`
+--type merge -p '{"spec":{"selector":{"app":"pixelated-empathy","slot":"<prev>"}}}'`
    and verify with the same jsonpath above, then roll back the agent
    deployments (`kubectl rollout undo deployment/<agent> -n pixelated-empathy`)
    if the run died between their rollout and the app flip.
@@ -109,3 +109,27 @@ in the last 24 hours.
 4. If it cannot be reproduced locally, re-run the exact workflow with
    `gh run rerun --failed <run-id>` and record the outcome on the linked
    PR or issue.
+
+## 7. ai strict-typing ratchet is red
+
+The quality workflow's "ai submodule strict ratchet" job pins the
+strict-mypy debt of the ai submodule's `research/` tree
+(`scripts/ci/ai-strict-baseline.json`, enforced by
+`scripts/ci/ai-strict-ratchet.mjs`).
+
+1. Read the job log. Two failure classes:
+   - `NEW <file> :: <code>` on an **existing** file, or `GREW` on an
+     existing key — the debt increased. Fix the new errors (real
+     typing repairs, no per-line ignores); never re-pin upward.
+   - `New files with strict errors` — a newly added file arrived
+     non-strict-clean. Fix it before it can be exempted; the
+     exemption never expands to new code.
+2. If errors were _removed_, bank the cleanup deliberately:
+   `node scripts/ci/ai-strict-ratchet.mjs --update`, review the
+   diff (counts must only shrink), and commit the baseline.
+3. After deleting legacy files, run `--prune` to drop them from the
+   baseline.
+4. mypy runs dependency-light (`uv run --no-project --with mypy`,
+   `--ignore-missing-imports`), so third-party imports resolve to
+   `Any`. Reproduce locally with the exact same script — do not
+   compare its numbers against a full-venv mypy run.
