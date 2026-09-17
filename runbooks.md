@@ -6,22 +6,36 @@ workflow referenced here lives in `.github/workflows/`.
 ## 1. EKS deployment failed / auto-rollback fired
 
 **Detection:** `Deploy to AWS EKS` (workflow_run, triggered by CI success on
-staging) fails; the "Roll back failed deployment" step reports a failed smoke
-test. Rollback to the previous ReplicaSet is **automatic** — the runbook here
-covers what happens after.
+staging) fails. The app deploys in stages (blue/green):
 
-1. Confirm the rollback completed: the failing workflow run shows
-   `Rollback complete.` (or the run failed during rollback — see step 3).
-2. Identify the change: the deploy deploys the image digest built from the CI
+1. The new image is rolled out on the **idle slot** (the deployment the
+   service selector is not pointing at) and must pass a pre-live `/health`
+   smoke — a failure here has zero user impact.
+2. The service selector is flipped to the staged slot, then a second smoke
+   runs through the service. On failure the selector flips **back**
+   automatically (seconds) and the agent deployments roll back.
+
+What to do after an automatic rollback:
+
+1. Confirm the rollback in the failing run: "Service selector flipped" /
+   "Rollback complete." log lines, and that the service selector points at
+   the previous slot:
+   `kubectl get svc pixelated-empathy -n pixelated-empathy -o jsonpath='{.spec.selector.slot}'`
+2. Identify the change: the deploy ships the image digest built from the CI
    head that triggered it. Open the linked CI run to find the commit.
-3. If rollback itself failed (a deployment is not healthy after
-   `kubectl rollout undo`), manually verify cluster state:
-   `kubectl rollout status deployment/<name> -n pixelated-empathy` for each of
-   `pixelated-empathy-blue`, `session-agent`, `qa-agent`, `pipeline-agent`,
-   then re-run `kubectl rollout undo` for anything still on the bad revision.
+3. If the flip-back itself failed, manually restore the selector to the
+   previous slot with `kubectl patch svc pixelated-empathy -n pixelated-empathy
+   --type merge -p '{"spec":{"selector":{"app":"pixelated-empathy","slot":"<prev>"}}}'`
+   and verify with the same jsonpath above, then roll back the agent
+   deployments (`kubectl rollout undo deployment/<agent> -n pixelated-empathy`)
+   if the run died between their rollout and the app flip.
 4. Re-run the deploy for staging only after the offending commit is fixed or
    reverted. Deploys are dispatchable manually (`workflow_dispatch`) but
    normally follow a green CI run.
+
+Note: percentage-based canary (traffic split between slots) is NOT enabled —
+Traefik's weighted routing needs the CRD provider, which is not turned on.
+Rollout is staged, not fraction-split.
 
 ## 2. Monitoring alert fired (Slack)
 
