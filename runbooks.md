@@ -133,3 +133,22 @@ strict-mypy debt of the ai submodule's `research/` tree
    `--ignore-missing-imports`), so third-party imports resolve to
    `Any`. Reproduce locally with the exact same script — do not
    compare its numbers against a full-venv mypy run.
+
+## 8. Submodule pin not fetchable ("not our ref")
+
+Multiple workflows fail at "Init submodules" with
+`pinned commit <sha> is NOT fetchable from github.com/daggerstuff/…`:
+the parent gitlink points at a submodule commit that exists locally but
+was never pushed to the GitHub mirror (usually a parallel session
+pushed the submodule to bitbucket only).
+
+1. Confirm the local submodule has the pinned commit:
+   `git submodule status` and `git -C ai rev-parse HEAD` (or `docs`).
+2. Fast-forward the mirror branch — never force-push:
+   `git -C ai push origin HEAD:staging` (docs uses `master`).
+   This is a mirror sync, not a history rewrite.
+3. Rerun the failed workflows: `gh run rerun --failed <run-id>`.
+4. Root habit to fix: every session that bumps a submodule gitlink
+   must push the submodule commit to BOTH remotes before pushing the
+   parent. The CI init-submodules.sh check cannot rescue a ref that
+   exists nowhere.
