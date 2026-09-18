@@ -152,3 +152,27 @@ pushed the submodule to bitbucket only).
    must push the submodule commit to BOTH remotes before pushing the
    parent. The CI init-submodules.sh check cannot rescue a ref that
    exists nowhere.
+
+## 9. pnpm-lock.yaml conflicts when merging a PR
+
+**Never resolve lockfile conflict markers by hand.** The lockfile is a
+pure function of the merged manifests, so the correct result is
+whatever pnpm regenerates — hand-merging produces states CI rejects and
+eats the most time of any conflict class.
+
+1. While the merge is conflicted, run one command:
+
+   `make lockfile-resolve`
+
+   (or `scripts/devops/resolve-lockfile-conflict.sh --add`). It seeds
+   the lockfile from the incoming side, regenerates it from the merged
+   package.json + pnpm-workspace.yaml via
+   `pnpm install --lockfile-only`, and stages the result. Then commit
+   the merge as usual.
+
+2. Prevention: merge `staging` into long-lived PR branches early and
+   often — most of these conflicts are just two branches churning the
+   same serialized dependency graph, and frequent merges keep the
+   churn small.
+3. If a lockfile is merely stale (not conflicted), do not hand-edit
+   it either: `pnpm install --lockfile-only` re-syncs it.
