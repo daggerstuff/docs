@@ -48,7 +48,7 @@ A federated model with clear authority boundaries eliminates these issues.
 | OpenAPI validation                               | API      | GitHub Actions      | No                |
 | Browser/Playwright E2E                           | Frontend | GitHub Actions      | No                |
 | Performance (Lighthouse)                         | Frontend | GitHub Actions      | No                |
-| Staging deploy (AWS EKS)                        | DevOps   | GitHub Actions      | No                |
+| Staging deploy (AWS EKS)                         | DevOps   | GitHub Actions      | No                |
 | Readiness aggregation                            | DevOps   | Manual/CLI          | Advisory          |
 
 ---

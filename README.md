@@ -1,6 +1,8 @@
 # Pixelated Empathy Documentation & Data Engineering Platform
 
-> Central documentation portal, enterprise compliance frameworks, and Linear workspace audit ETL data engineering pipeline for the **Pixelated Empathy** ecosystem.
+> Central documentation portal, enterprise compliance frameworks, and Linear
+> workspace audit ETL data engineering pipeline for the **Pixelated Empathy**
+> ecosystem.
 
 [![CI](https://img.shields.io/github/actions/workflow/status/daggerstuff/pixelated/ci.yml?style=flat-square&labelColor=0f0f1a)](https://github.com/daggerstuff/pixelated)
 [![Python](https://img.shields.io/badge/Python-3.12+-1a1a2e?style=flat-square&labelColor=0f0f1a&logo=python&logoColor=white)](https://python.org)
@@ -61,13 +63,13 @@ flowchart TD
 
 ## 2. 📦 Core Modules & Tooling
 
-| Module | Purpose | Primary Inputs / Outputs |
-| :--- | :--- | :--- |
-| [`linear-audit/fetch_issues.py`](linear-audit/fetch_issues.py) | Ingests issues from Linear via GraphQL, applies bounded pagination, and flattens into v2 MCP format | Inputs: `LINEAR_API_KEY`, `LINEAR_TEAM_ID`<br/>Output: `issues.json` |
-| [`linear-audit/run_audit.py`](linear-audit/run_audit.py) | Analyzes issue dataset for duplicate pairs, unassigned tasks, missing descriptions, and estimate gaps | Input: `issues.json`<br/>Output: `audit_results.json` |
-| [`linear-audit/remediate.py`](linear-audit/remediate.py) | Executes safe write-back mutations to resolve duplicates, archive completed items, and set ownership | Input: `audit_results.json`<br/>Flags: `--dry-run` (default), `--apply` |
-| [`linear-audit/refresh_dashboard.py`](linear-audit/refresh_dashboard.py) | Calculates workstream progress across enterprise epics and renders dynamic markdown tables | Inputs: Linear API / Live Data<br/>Output: `dashboard.md` |
-| [`linear-audit/register_webhook.py`](linear-audit/register_webhook.py) | Manages automated Linear webhook subscriptions for instant dashboard updates on issue updates | Commands: `register`, `list`, `unregister` |
+| Module                                                                   | Purpose                                                                                               | Primary Inputs / Outputs                                                |
+| :----------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+| [`linear-audit/fetch_issues.py`](linear-audit/fetch_issues.py)           | Ingests issues from Linear via GraphQL, applies bounded pagination, and flattens into v2 MCP format   | Inputs: `LINEAR_API_KEY`, `LINEAR_TEAM_ID`<br/>Output: `issues.json`    |
+| [`linear-audit/run_audit.py`](linear-audit/run_audit.py)                 | Analyzes issue dataset for duplicate pairs, unassigned tasks, missing descriptions, and estimate gaps | Input: `issues.json`<br/>Output: `audit_results.json`                   |
+| [`linear-audit/remediate.py`](linear-audit/remediate.py)                 | Executes safe write-back mutations to resolve duplicates, archive completed items, and set ownership  | Input: `audit_results.json`<br/>Flags: `--dry-run` (default), `--apply` |
+| [`linear-audit/refresh_dashboard.py`](linear-audit/refresh_dashboard.py) | Calculates workstream progress across enterprise epics and renders dynamic markdown tables            | Inputs: Linear API / Live Data<br/>Output: `dashboard.md`               |
+| [`linear-audit/register_webhook.py`](linear-audit/register_webhook.py)   | Manages automated Linear webhook subscriptions for instant dashboard updates on issue updates         | Commands: `register`, `list`, `unregister`                              |
 
 ---
 
@@ -100,10 +102,15 @@ The pipeline standardizes all Linear data into the **v2 Linear MCP Flat Shape**:
 ```
 
 ### Data Quality Rules
-- **Non-Empty Identifiers**: Every record must have a valid `PIX-XXX` format key.
-- **Normalized Status Types**: `statusType` strictly mapped to Linear state types (`triage`, `backlog`, `unstarted`, `started`, `completed`, `canceled`).
-- **Idempotent Ingestion**: Re-running ingestion never duplicates entries or corrupts timestamps.
-- **Contract Boundary Validation**: Invalid payloads and missing keys are rejected at ingestion rather than corrupting audit tables.
+
+- **Non-Empty Identifiers**: Every record must have a valid `PIX-XXX` format
+  key.
+- **Normalized Status Types**: `statusType` strictly mapped to Linear state
+  types (`triage`, `backlog`, `unstarted`, `started`, `completed`, `canceled`).
+- **Idempotent Ingestion**: Re-running ingestion never duplicates entries or
+  corrupts timestamps.
+- **Contract Boundary Validation**: Invalid payloads and missing keys are
+  rejected at ingestion rather than corrupting audit tables.
 
 ---
 
@@ -162,7 +169,11 @@ uv run bandit -c pyproject.toml -r linear-audit tests
 
 ## 5. 🛡️ Security & Privacy
 
-- **Raw API Key Contract**: Authorization headers use raw API keys (`Authorization: lin_api_...`) avoiding Bearer token collision.
-- **Token Redaction**: API keys and tokens are never echoed to logs, exception messages, or stdout.
-- **Read-Only Dry Run Default**: `remediate.py` defaults to dry-run mode to prevent accidental workspace mutations.
-- See [SECURITY.md](SECURITY.md) and [THREAT_MODEL.md](THREAT_MODEL.md) for full security controls.
+- **Raw API Key Contract**: Authorization headers use raw API keys
+  (`Authorization: lin_api_...`) avoiding Bearer token collision.
+- **Token Redaction**: API keys and tokens are never echoed to logs, exception
+  messages, or stdout.
+- **Read-Only Dry Run Default**: `remediate.py` defaults to dry-run mode to
+  prevent accidental workspace mutations.
+- See [SECURITY.md](SECURITY.md) and [THREAT_MODEL.md](THREAT_MODEL.md) for full
+  security controls.

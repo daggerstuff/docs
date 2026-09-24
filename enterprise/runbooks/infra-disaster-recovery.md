@@ -55,12 +55,12 @@ response — covered in [SLA Breach Response](./sla-breach-response.md).
 
 | Component             | Technology                                             | Location                                                       | Redundancy                            |
 | --------------------- | ------------------------------------------------------ | -------------------------------------------------------------- | ------------------------------------- |
-| Compute orchestration | AWS EKS                                              | AWS (region: us-west-2)                                        | Single cluster (multi-region planned) |
+| Compute orchestration | AWS EKS                                                | AWS (region: us-west-2)                                        | Single cluster (multi-region planned) |
 | Deployment strategy   | Blue/green                                             | Kubernetes namespace                                           | Blue=active, green=standby            |
 | Container registry    | Docker Hub                                             | `pixelatedempathy/{api,session-agent,qa-agent,pipeline-agent}` | Docker Hub SLA 99.9%                  |
 | CI/CD                 | GitHub Actions                                         | 27 workflows                                                   | GitHub-hosted runners (multi-region)  |
 | DNS                   | Cloudflare (primary), Route53 (failover health checks) | Global edge                                                    | Cloudflare 99.99% SLA                 |
-| Ingress               | Traefik v3 (NLB)                                      | AWS EKS                                                        | Managed certificate                   |
+| Ingress               | Traefik v3 (NLB)                                       | AWS EKS                                                        | Managed certificate                   |
 | Secrets               | External Secrets Operator + secret-store               | Kubernetes                                                     | Operator-managed rotation             |
 | Monitoring            | Prometheus + Grafana + Alertmanager                    | Docker Compose                                                 | 200h retention                        |
 
@@ -77,9 +77,10 @@ response — covered in [SLA Breach Response](./sla-breach-response.md).
 - **Service routing**: `slot: blue` selector on service → routes to active
   deployment
 - **Autoscaling**: HPA on pixelated-empathy deployment
-- **Ingress**: Traefik v3 on NLB, Cloudflare-managed TLS, host `pixelatedempathy.com`
-- **Kustomize overlays**: `base/` (16 resources), `aws/` overlay, `staging/`
-  and `production/` overlays
+- **Ingress**: Traefik v3 on NLB, Cloudflare-managed TLS, host
+  `pixelatedempathy.com`
+- **Kustomize overlays**: `base/` (16 resources), `aws/` overlay, `staging/` and
+  `production/` overlays
 
 ### 2.3 CI/CD Pipeline Details
 
@@ -109,8 +110,9 @@ The platform has automated multi-region failover orchestration code:
   checks at each stage. SQLite deployment records for audit trail.
 
 > **Note**: Multi-region failover orchestration code exists but is not yet
-> deployed to production. Current production runs on AWS EKS (us-west-2). This runbook covers both current single-region recovery and future
-> multi-region failover procedures.
+> deployed to production. Current production runs on AWS EKS (us-west-2). This
+> runbook covers both current single-region recovery and future multi-region
+> failover procedures.
 
 ---
 
@@ -169,8 +171,8 @@ for >5 minutes, or pod eviction storms.
 **RTO**: 1 hour (Tier 1) **Trigger**: `kubectl` commands fail, API server
 unreachable, etcd quorum loss.
 
-Amazon EKS is a managed Kubernetes service — the control plane is managed by AWS.
-Control plane failures are AWS's responsibility.
+Amazon EKS is a managed Kubernetes service — the control plane is managed by
+AWS. Control plane failures are AWS's responsibility.
 
 #### Recovery Steps
 
@@ -308,9 +310,9 @@ Control plane failures are AWS's responsibility.
 
 ### 4.1 Current State: Single Region (AWS us-west-2)
 
-Production currently runs on AWS EKS (us-west-2). No automated
-multi-region failover is active. Region failure requires manual cluster rebuild
-in an alternate region (see
+Production currently runs on AWS EKS (us-west-2). No automated multi-region
+failover is active. Region failure requires manual cluster rebuild in an
+alternate region (see
 [Section 3.3](#33-scenario-etcd-data-loss-complete-cluster-rebuild)).
 
 **Manual region failover RTO**: 4 hours (Tier 2 — includes cluster rebuild +
@@ -400,7 +402,7 @@ load_balancer:
 
 | Record                 | Type  | Value                    | TTL  | Proxied | Purpose             |
 | ---------------------- | ----- | ------------------------ | ---- | ------- | ------------------- |
-| `pixelatedempathy.com` | A     | AWS NLB hostname               | Auto | Yes     | Primary application |
+| `pixelatedempathy.com` | A     | AWS NLB hostname         | Auto | Yes     | Primary application |
 | `www`                  | CNAME | `pixelatedempathy.com`   | Auto | Yes     | WWW redirect        |
 | `api`                  | CNAME | `pixelatedempathy.com`   | Auto | Yes     | API subdomain       |
 | `_dmarc`               | TXT   | `v=DMARC1; p=reject;...` | 1h   | No      | Email auth          |
@@ -636,12 +638,12 @@ reports us-west-2 region outage, all nodes unreachable, `kubectl` commands fail.
 
 4. **Evaluate options**:
 
-   | Option                               | RTO                      | Complexity | Data Loss                |
-   | ------------------------------------ | ------------------------ | ---------- | ------------------------ |
-   | Wait for AWS recovery                | Unknown (AWS-dependent)  | None       | None (if etcd intact)     |
-   | Rebuild in alternate AWS region      | 4 hours                  | High       | RPO-dependent (5min–1hr) |
-   | Rebuild on alternate cloud (AWS EKS) | 6+ hours                 | Very High  | RPO-dependent            |
-   | Deploy to staging cluster            | 2 hours                  | Medium     | None (staging data)      |
+   | Option                               | RTO                     | Complexity | Data Loss                |
+   | ------------------------------------ | ----------------------- | ---------- | ------------------------ |
+   | Wait for AWS recovery                | Unknown (AWS-dependent) | None       | None (if etcd intact)    |
+   | Rebuild in alternate AWS region      | 4 hours                 | High       | RPO-dependent (5min–1hr) |
+   | Rebuild on alternate cloud (AWS EKS) | 6+ hours                | Very High  | RPO-dependent            |
+   | Deploy to staging cluster            | 2 hours                 | Medium     | None (staging data)      |
 
 5. **Decision criteria**:
    - AWS ETA < 30 min → Wait.
@@ -846,7 +848,7 @@ The following alerts should be configured to detect DR-relevant conditions:
 | Alert                | Condition                                        | Severity  | Action                            |
 | -------------------- | ------------------------------------------------ | --------- | --------------------------------- |
 | ClusterNodeDown      | `up{job="kubernetes-nodes"} == 0` for 5m         | Critical  | Page on-call, assess node failure |
-| ClusterAPIDown       | `kubectl get` fails for 10m                      | Critical  | Page on-call, escalate to AWS    |
+| ClusterAPIDown       | `kubectl get` fails for 10m                      | Critical  | Page on-call, escalate to AWS     |
 | BackupFailure        | `backup_success_total` not incrementing in 26h   | Warning   | Investigate backup scripts        |
 | DNSResolutionFailure | DNS lookup for pixelatedempathy.com fails for 5m | Emergency | Page on-call, check Cloudflare    |
 | DockerHubPullFailure | `ImagePullBackOff` on any deployment for 10m     | Warning   | Check Docker Hub status           |
@@ -915,7 +917,7 @@ Deploy synthetic checks to detect region-wide outages:
 | Term                          | Definition                                                                                                                        |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | **Blue/Green deployment**     | Deployment strategy with two identical environments; one active (blue), one standby (green). Switch by updating service selector. |
-| **Amazon EKS**                | Managed Kubernetes service on AWS.                                                                                             |
+| **Amazon EKS**                | Managed Kubernetes service on AWS.                                                                                                |
 | **DNS failover**              | Automatic rerouting of DNS records from primary to secondary origin upon health check failure.                                    |
 | **etcd**                      | Distributed key-value store used as Kubernetes' backing store for all cluster data.                                               |
 | **External Secrets Operator** | Kubernetes operator that syncs secrets from external secret stores (AWS Secrets Manager, Vault) into Kubernetes secrets.          |
@@ -972,8 +974,7 @@ Deploy synthetic checks to detect region-wide outages:
 - [Cloudflare Status](https://www.cloudflarestatus.com) — Cloudflare status page
 - [Docker Hub Status](https://status.docker.com) — Docker Hub status page
 - [GitHub Status](https://www.githubstatus.com) — GitHub status page
-- [AWS EKS Documentation](https://docs.aws.amazon.com/eks/) — AWS
-  K3s docs
+- [AWS EKS Documentation](https://docs.aws.amazon.com/eks/) — AWS K3s docs
 - [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/)
   — Cloudflare LB docs
 - [AWS Route53 Health Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)

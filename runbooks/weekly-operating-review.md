@@ -4,7 +4,8 @@
 **Duration:** 30 minutes  
 **Owner:** Platform Engineering  
 **Participants:** Platform on-call, Frontend lead, AI lead, Security lead  
-**Source:** `docs/runbooks/ci-escalation.md`, `docs/runbooks/service-level-objectives.md`
+**Source:** `docs/runbooks/ci-escalation.md`,
+`docs/runbooks/service-level-objectives.md`
 
 This runbook makes the weekly operational health review repeatable. Each week,
 the facilitator copies the template below, fills in the evidence links, and

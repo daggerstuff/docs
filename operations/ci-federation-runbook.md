@@ -10,11 +10,11 @@ This runbook documents the CI federation gates, their locations, owners,
 break/fix procedures, and escalation paths. The Pixelated CI model federates
 across two providers:
 
-| Provider                 | Domain                                           | Deploy Authority  |
-| ------------------------ | ------------------------------------------------ | ----------------- |
+| Provider                 | Domain                                           | Deploy Authority |
+| ------------------------ | ------------------------------------------------ | ---------------- |
 | **GitHub Actions**       | Application CI, security scanning, AI validation | AWS EKS (deploy) |
-| **Bitbucket Pipelines**  | AI module validation, governance checks          | —                 |
-| **Readiness Aggregator** | Cross-provider release readiness summary         | Local/devops      |
+| **Bitbucket Pipelines**  | AI module validation, governance checks          | —                |
+| **Readiness Aggregator** | Cross-provider release readiness summary         | Local/devops     |
 
 ---
 
@@ -157,13 +157,13 @@ across two providers:
 
 ### 3.1 Staging (AWS EKS)
 
-| Step                 | Workflow                         | Blocks?          |
-| -------------------- | -------------------------------- | ---------------- |
-| CI checks pass       | `ci.yml`                         | ⚠️ Soft          |
-| Security scan        | `security.yml`                   | ✅               |
-| AI validation        | `ai-validation.yml`              | ⚪ Informational |
-| Migration validation | `migration-validation.yml`       | ✅               |
-| Deploy               | `deploy-aws.yml` (push to main)   | ✅ Final gate    |
+| Step                 | Workflow                        | Blocks?          |
+| -------------------- | ------------------------------- | ---------------- |
+| CI checks pass       | `ci.yml`                        | ⚠️ Soft          |
+| Security scan        | `security.yml`                  | ✅               |
+| AI validation        | `ai-validation.yml`             | ⚪ Informational |
+| Migration validation | `migration-validation.yml`      | ✅               |
+| Deploy               | `deploy-aws.yml` (push to main) | ✅ Final gate    |
 
 ---
 

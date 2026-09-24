@@ -1,24 +1,26 @@
 # CI Escalation Runbook
 
-**Scope:** GitHub Actions checks for the Pixelated Empathy monorepo. This runbook
-is the operational companion to the branch policy and the SLA breach response
-runbook. It answers three questions after a red check: where does the check
-live, who owns the failure, and what do I fix first?
+**Scope:** GitHub Actions checks for the Pixelated Empathy monorepo. This
+runbook is the operational companion to the branch policy and the SLA breach
+response runbook. It answers three questions after a red check: where does the
+check live, who owns the failure, and what do I fix first?
 
 **Related docs:**
 
 - Branch and path policy: `.github/branch-pipeline.md`
 - Vercel policy: `.github/workflows/vercel-policy.md`
 - Shared workflow conventions: `.github/workflows/_shared-conventions.md`
-- Incident/SLA escalation: `docs/reference/enterprise/runbooks/sla-breach-response.md`
+- Incident/SLA escalation:
+  `docs/reference/enterprise/runbooks/sla-breach-response.md`
 
 ## Operating Model
 
 - `staging` is the primary integration and preview branch. `main` is production.
 - Feature and agent branches do not deploy. Use a PR to `staging` for previews.
-- EKS is the production runtime; Vercel is a frontend test center, path-filtered.
-- A failing required check blocks merge. Do not rerun a red check without reading
-  the failed step.
+- EKS is the production runtime; Vercel is a frontend test center,
+  path-filtered.
+- A failing required check blocks merge. Do not rerun a red check without
+  reading the failed step.
 
 ## Check Matrix
 
@@ -49,10 +51,11 @@ live, who owns the failure, and what do I fix first?
    - Python strict types: `bash scripts/ci/python-typecheck.sh`
    - tests: `pnpm vitest run -c config/vitest.config.ts`
    - Python tests: `uv run pytest`
-4. **Fix the source**, not the gate. No suppression comments or config downgrades.
+4. **Fix the source**, not the gate. No suppression comments or config
+   downgrades.
 5. **Verify** the same command locally, then push a focused commit.
-6. **Close the Linear/GitHub issue only after** the responsible workflow is green
-   on the new `staging` commit, or a named owner has accepted a documented
+6. **Close the Linear/GitHub issue only after** the responsible workflow is
+   green on the new `staging` commit, or a named owner has accepted a documented
    follow-up.
 
 ## Escalation Path

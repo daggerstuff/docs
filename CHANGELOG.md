@@ -2,8 +2,8 @@
 
 All notable changes to the `docs-linear-audit` toolkit are documented here.
 
-The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and versioning follows [Semantic Versioning](https://semver.org/).
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
+versioning follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
