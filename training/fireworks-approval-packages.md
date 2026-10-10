@@ -202,9 +202,11 @@ This is the pre-plan Phase 1 exit evidence: "a signed decision record naming tar
 contract, final model ID, and the privacy determination."
 
 **Grant record (2026-10-10):** GRANTED — owner instruction "do those next steps": E1 (D1) and
-E2 (D2) ratified; final model ID recorded: **GLM 5.3 Flash** (the D3 recommendation). The
-account-level access/quota check moves to the pilot log — it cannot run until the account
-suspension is cleared (pilot log §2).
+E2 (D2) ratified; initial final model ID recorded as **GLM 5.3 Flash**. **Superseding owner
+instruction (2026-10-10):** pilot target changed to Muse Glimmer 30B, model ID
+`accounts/fireworks/models/glimmer-30b`. This replaces the GLM selection; verify current
+account access/quota and model eligibility before any paid training (pilot log §2). The
+existing budget cap is unchanged pending updated model-specific pricing.
 
 | Decision | Ratify | Alternative (write in) |
 |---|---|---|
@@ -212,13 +214,15 @@ suspension is cleared (pilot log §2).
 | **E2 Ledger contract (D2):** 9-field ledger inline in assistant content; the `reasoning_content` variant is the follow-up A/B, not the pilot | ☐ | |
 | **E3 Final model (from the D3 shortlist; no Llama models):** | — | |
 
-E3 candidates (readiness §2; catalog synced 2026-10-08): **GLM 5.3 Flash** (recommended —
-the GLM family already audits part of the corpus (GLM 5.2 ×69 sessions); available on the
-serverless Training API as a no-provisioning fallback; cheapest-to-serve tier of the GLM
-family) · **Qwen 3.8 27B** (runner-up — 3–4× cheaper to train; smallest dedicated-serving
-footprint among candidates) · other shortlist: GLM 5.3 / 5.2 FP8 / 5.1, DeepSeek V4 family,
-Kimi K2.5–K3, Qwen 3-235B class, Mistral Small 24B, Ministral 3, Gemma 4, MiniMax M3,
-Nemotron.
+**Superseding E3 selection (2026-10-10): Muse Glimmer 30B** — owner-directed replacement
+for the original GLM 5.3 Flash recommendation. Fireworks model ID:
+`accounts/fireworks/models/glimmer-30b`. The earlier shortlist below is historical and its
+eligibility/pricing claims do not establish Glimmer's current eligibility or cost. Verify
+model access and managed-LoRA support before a training job.
+
+Historical D3 shortlist (catalog synced 2026-10-08): GLM 5.3 Flash, Qwen 3.8 27B, GLM 5.3 /
+5.2 FP8 / 5.1, DeepSeek V4 family, Kimi K2.5–K3, Qwen 3-235B class, Mistral Small 24B,
+Ministral 3, Gemma 4, MiniMax M3, Nemotron.
 
 **Confirm at sign-off:** ☐ account-level access/quota for the picked model ID verified ·
 ☐ privacy terms read per Package C's conditions · ☐ Package D names recorded.
@@ -289,14 +293,14 @@ readiness §2, 2026-10-10):
 | # | Item | Basis (list prices, readiness §2) | Planning estimate | Proposed cap |
 |---|---|---|---|---|
 | 1 | Format smoke test | tiny managed-LoRA run on a ≤16B-class shortlist model (e.g. Ministral 3; non-Llama), 1 epoch over a ~100-row slice (≈0.7M tokens by chars/4) at $0.50/1M training tokens | ≈ $0.35 | **$5** |
-| 2 | Pilot SFT | model picked in Package E. GLM 5.3 Flash class (>300B): $10.00/1M training tokens; payload = train 3,106,534 + val 609,606 tokens (chars ÷ 4) ≈ 3.72M | ≈ $37/epoch; 2–3 epochs ≈ $75–112 | **$150** |
+| 2 | Pilot SFT | Muse Glimmer 30B selected; model-specific managed-LoRA rate and eligibility require re-verification before job creation. Existing payload estimate: ≈3.72M tokens (chars ÷ 4) | **Pending re-estimate**; remain within the existing cap | **$150** |
 | 3 | Evaluation endpoint | tuned models serve only on dedicated deployments; $8/hr (H100/H200 class), $13 (B200), $15 (B300), $20 (GB300); ×1.5 if region-restricted | e.g. 40 GPU-hours ≈ $320 standard / ≈ $480 at 1.5× | **$480** |
 
 - **Total proposed cap: $635.** Spend is tracked against the cap in the pilot report; any
   overrun stops the pilot and returns to this gate.
-- Recorded alternative the owner may direct at Package H time: the serverless Training API
-  for GLM 5.3 Flash ($8.89/1M train + $2.96/1M prefill + $7.41/1M sample tokens) — no
-  provisioning, no idle cost (readiness §2).
+- The prior GLM 5.3 Flash serverless Training API alternative is historical and is not
+  authorized for the Glimmer pilot. Re-check applicable training routes and pricing for
+  Muse Glimmer 30B before Package H; no route is presumed available.
 - The Render Samples inspection before any paid run is free and required (Package H, step 1).
 
 ```
