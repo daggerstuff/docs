@@ -392,9 +392,9 @@ pilot SFT.
 Launched after the promo resolution (§10) dissolved the budget gate. The first attempt
 (`ida9f81a`, created 18:26 UTC) was **cancelled by owner directive before any training
 steps ran** and replaced by a wandb-instrumented run (`wwopccov`). **Status at write
-time: wwopccov PENDING.** The completed run's telemetry, render-sample capture, and
-$0.00 rated-cost verification will be appended here when `wwopccov` reaches a terminal
-state.
+time: wwopccov RUNNING** (capacity granted instantly — §11.3). The completed run's
+telemetry, render-sample capture, and $0.00 rated-cost verification will be appended
+here when `wwopccov` reaches a terminal state.
 
 ### 11.1 First attempt — `ida9f81a` (cancelled, nothing lost)
 
