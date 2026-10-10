@@ -42,7 +42,8 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
   gold `d357b8b5…`, train `281da447…`, val `6154878…`, test `35f34d09…`, manifest
   `f7e19cb6…` — the two upload candidates are byte-identical to the verified emission.
 - **Mechanism (REST, per provider docs):** `POST /v1/accounts/{account_id}/datasets`
-  (create entry; `datasetId`, `dataset: {userUploaded: {}, exampleCount}`, displayName) then
+  (create entry; `datasetId`, `dataset: {userUploaded: {}, exampleCount}` — the API rejected
+  a documented `displayName` field as unknown, so it was omitted) then
   `POST /v1/accounts/{account_id}/datasets/{dataset_id}:upload` (multipart `file`) —
   docs.fireworks.ai/api-reference/create-dataset + upload-dataset-files (single-request
   upload, ≤150 MB; largest file here is 13.4 MB). `firectl` is not installable from PyPI in
@@ -143,6 +144,39 @@ and returns to the budget gate.
   `GET /v1/accounts/linencloset/datasets` list returned exactly two datasets — both `READY`,
   `exampleCount` 418/80, `encryptionState` PLAINTEXT — with no other provider-side datasets.
   `test.jsonl`, `manifest_internal.jsonl`, and `identity.json` have not been uploaded.
+- **Content discrepancy found and corrected (2026-10-10 12:17–12:52 UTC):** the third session
+  (triggered by the owner's "we switched to the new API key") downloaded both provider
+  datasets via the signed-URL endpoint and found the wrong files: the datasets contained the
+  full curated corpus (`ai/data/curated/sft_chatml/train.jsonl`, 180,460 rows /
+  370,849,757 bytes, SHA-256 `aa7e9cd1…`; `val.jsonl`, 38,766 rows / 78,985,762 bytes,
+  SHA-256 `de1ab128…`) — not the authorized arc pilot export. The §7 metadata (`exampleCount`
+  418/80) was set at creation from the intended payload, so the earlier verification could
+  not detect this; only the download comparison could. The likely cause is a wrong source
+  path in the upload command (the curated files live at `ai/data/curated/sft_chatml/`, one
+  directory above the export). The curated corpus was never covered by the Package A
+  licensing determination (which scopes to the arc pilot payload only), so this was an
+  over-upload of ~450 MB of un-authorized content.
+  - **12:49 UTC — both datasets deleted** (`DELETE /v1/accounts/linencloset/datasets/…`,
+    HTTP 200 each; list then returned zero datasets). The wrong-content files are preserved
+    locally; nothing was lost.
+  - **12:50 UTC — both datasets recreated** with correct metadata (`exampleCount` 418/80;
+    note the API rejected a `user` field and accepted `userUploaded: {}`).
+  - **12:51 UTC — correct files uploaded** from
+    `ai/training/output/arc_corpus/export/fireworks_pilot_v1/`: train 13,417,495 bytes,
+    eval 2,626,953 bytes (HTTP 200 each).
+  - **12:52 UTC — verified:** both datasets `READY`, `exampleCount` 418/80, and a
+    download-and-hash comparison of the provider copies matched the frozen identity manifest
+    exactly (train `281da447…`, 418 rows; eval `6154878…`, 80 rows) — closing the §7
+    metadata-only gap that had hidden the wrong-content upload. `encryptionState` remains
+    `ENCRYPTION_STATE_PLAINTEXT` (accepted by the owner's ≈12:30 UTC review). `test.jsonl`
+    was not uploaded.
+  - **≈14:20 UTC — independently re-verified** by a second session (post-correction
+    housekeeping): re-downloaded both provider datasets through the signed-URL endpoint —
+    exactly two datasets on the account, both `READY` (`exampleCount` 418/80,
+    `ENCRYPTION_STATE_PLAINTEXT`), and byte-exact SHA-256 matches to the frozen manifest
+    (train 13,417,495 bytes / `281da447…` / 418 rows; eval 2,626,953 bytes / `6154878…` /
+    80 rows). The correction is confirmed by a session independent of the one that performed
+    it.
 - No secrets or clinical examples are recorded in this log.
 
 ## 8. Validation (replacement-account upload)
