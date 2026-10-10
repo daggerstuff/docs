@@ -11,8 +11,8 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 |---|---|
 | Phase 1 (packages A–E) | **complete** — grants recorded in the packages doc |
 | Package F upload | **EXECUTED on `linencloset`** — `arc-pilot-v1-train` (418) + `arc-pilot-v1-eval` (80) both `READY` (§7); train+val only; `test.jsonl` still local |
-| Package G spend | cap $635 active; **$0.00 actual** — the cancelled job `jf3tmylp` rated $0.00 (promo verified, §10); pilot SFT re-run `ida9f81a` training free under the same promo (until 10/31) |
-| Package H experiment | **step 1 (Render Samples) EXECUTED and verified** (§10); **budget gate DISSOLVED** — Glimmer SFT promo (free until 10/31, §10) verified at $0.00 rated; **step 3 pilot SFT RUNNING** (job `ida9f81a`, 2 epochs, §11) |
+| Package G spend | cap $635 active; **$0.00 actual** — the cancelled job `jf3tmylp` rated $0.00 (promo verified, §10); pilot SFT `wwopccov` training free under the same promo (until 10/31) |
+| Package H experiment | **step 1 (Render Samples) EXECUTED and verified** (§10); **budget gate DISSOLVED** — Glimmer SFT promo (free until 10/31, §10) verified at $0.00 rated; **step 3 pilot SFT RUNNING** (job `wwopccov`, 2 epochs, wandb-instrumented, §11) |
 
 ## 2. Package C conditions (recorded; console items flagged)
 
@@ -67,7 +67,8 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 | Date (UTC) | Item | Estimated | Actual | Running total |
 |---|---|---|---|---|
 | 2026-10-10 | SFT job `jf3tmylp` (step-1 attempt; cancelled at 57% of 1 epoch, §10) | $11.16/epoch (plan basis — wrong; unrolled basis ≈$102/epoch at list) | **$0.00** — rated cost verified $0 (§10 promo resolution; `usageCosts:query`, attribution COMPLETE) | $0.00 |
-| 2026-10-10 | SFT job `ida9f81a` (step-3 pilot SFT, 2 epochs, §11) | $0.00 under promo | in flight — expected $0.00 | $0.00 |
+| 2026-10-10 | SFT job `ida9f81a` (first step-3 attempt; cancelled before any steps ran, no capacity received, §11.1) | $0.00 under promo | **$0.00** — no steps ran | $0.00 |
+| 2026-10-10 | SFT job `wwopccov` (step-3 pilot SFT, 2 epochs, wandb-instrumented, §11.3) | $0.00 under promo | in flight — expected $0.00 | $0.00 |
 
 Authorized lines: smoke test ≤$5 · pilot SFT ≤$150 (target changed to Muse Glimmer 30B;
 model-specific pricing and eligibility must be re-verified before training) · evaluation
@@ -109,11 +110,13 @@ pilot's training cost is $0 through 10/31, and the step-3 pilot SFT has been re-
    verified catalog ID — §9) over `arc-pilot-v1-train` + `arc-pilot-v1-eval` as
    evaluation_dataset. Access, managed-LoRA eligibility verified (§9); cost estimate at
    creation: **$0.00 under the promo** (§10 addendum; list basis ≈$102/epoch for
-   post-promo planning). **EXECUTING 2026-10-10 18:26 UTC: job
-   `accounts/linencloset/supervisedFineTuningJobs/ida9f81a`** — 2 epochs (the plan's
+   post-promo planning). **EXECUTING 2026-10-10 18:55 UTC: job
+   `accounts/linencloset/supervisedFineTuningJobs/wwopccov`** (first attempt
+   `ida9f81a` cancelled before any steps ran — §11.1) — 2 epochs (the plan's
    mid-case; defaults-first per provider guidance — extend only if results indicate need),
    `loraRank` 8, `maxContextLength` 32768 explicit, `evalAutoCarveout` false, outputModel
-   `accounts/linencloset/models/arc-pilot-v1-therapist-sft` (§11).
+   `accounts/linencloset/models/arc-pilot-v1-therapist-sft`, wandb instrumented
+   (§11.2–§11.3).
 4. **Phase 4 evaluation preview** — untuned vs. tuned on held-out test.jsonl prompts (egress
    under Package C); catastrophic-tier behavior is unmeasurable on held-out data (all 10
    catastrophic rows are in train — export plan §5.4) and must be reported as such.
@@ -384,26 +387,70 @@ pilot SFT.
 - The job resource remains on the account in `CANCELLED` state (not deleted), available for
   support/billing queries. No LoRA model was created.
 
-## 11. Package H step 3 — pilot SFT re-run (2026-10-10, 18:26 UTC)
+## 11. Package H step 3 — pilot SFT run (2026-10-10, 18:26 UTC; superseded in-place 18:55 UTC)
 
-Launched after the promo resolution (§10) dissolved the budget gate. **Status at write time:
-RUNNING.** The completed run's telemetry, render-sample capture, and $0.00 rated-cost
-verification will be appended here when the job reaches a terminal state.
+Launched after the promo resolution (§10) dissolved the budget gate. The first attempt
+(`ida9f81a`, created 18:26 UTC) was **cancelled by owner directive before any training
+steps ran** and replaced by a wandb-instrumented run (`wwopccov`). **Status at write
+time: wwopccov PENDING.** The completed run's telemetry, render-sample capture, and
+$0.00 rated-cost verification will be appended here when `wwopccov` reaches a terminal
+state.
 
-- **Job:** `accounts/linencloset/supervisedFineTuningJobs/ida9f81a`, created 18:26:18 UTC
-  via the same REST path as §10 (REST coverage of the promo verified in §10's resolution).
+### 11.1 First attempt — `ida9f81a` (cancelled, nothing lost)
+
+- Created 18:26:18 UTC with the same REST path as §10 (REST coverage of the promo
+  verified in §10's resolution). Config identical to the current run except **no
+  `wandbConfig`**.
+- The owner asked whether wandb/checkpointing/resume were hooked in; the honest answer
+  was no wandb and no explicit checkpoint knobs (both omitted from the create body),
+  and the owner directed: stop it now and fix it all.
+- Cancelled via `POST …/ida9f81a:cancel` (18:37–18:45 UTC). **No training steps had
+  run** — the job never received capacity (pct stayed 0, metrics artifact 404,
+  nothing materialized), so nothing was lost. $0.00 under the promo; no LoRA model
+  was created by it.
+
+### 11.2 The wandb hookup (what "fix it all" meant operationally)
+
+- **Checkpointing and resume are platform-side on managed jobs** — there are no
+  create-time knobs; the platform checkpoints internally, `:resume` exists for
+  paused jobs, and the crash net under a $0 promo is simply re-running. Nothing to
+  configure, nothing was missing.
+- **wandb was the one actionable gap.** Without it, step metrics survive only
+  ~7 days provider-side; with it they persist in the account's wandb project.
+- Fireworks requires `entity` when `wandbConfig.enabled` is set (create #1 without
+  it: HTTP 400 "wandb entity is required when wandb is enabled"). The root `.env`
+  has `WANDB_API_KEY` and `WANDB_PROJECT=pixelated-empathy-kan28` but no entity, and
+  no repo call site passes one. The key's default entity was resolved via the wandb
+  SDK viewer (`wandb.apis.public.Api().viewer` — the key is valid for the core API
+  and is also documented in `.env` as the NF pipeline's W&B inference key):
+  **entity `wutang`**. Key value never printed; only lengths in evidence.
+- Both wandb vars were consumed from `.env` as-is (key + project), entity added;
+  create #2 (`wwopccov`) returned HTTP 200 with the response echoing
+  `wandbConfig: enabled true, project pixelated-empathy-kan28, entity wutang,
+  apiKey set`.
+
+### 11.3 Current run — `wwopccov` (created 18:55 UTC, PENDING)
+
+- **Job:** `accounts/linencloset/supervisedFineTuningJobs/wwopccov`, created via the
+  same REST path, this time with `wandbConfig {enabled, apiKey (from `.env`
+  `WANDB_API_KEY`), project pixelated-empathy-kan28, entity wutang}`.
 - **Config:** `baseModel accounts/fireworks/models/muse-glimmer-30b`, `dataset
   accounts/linencloset/datasets/arc-pilot-v1-train`, `evaluationDataset
   accounts/linencloset/datasets/arc-pilot-v1-eval`, `evalAutoCarveout false`,
-  `maxContextLength 32768`, `loraRank 8`, **`epochs 2`** (the plan's mid-case; defaults-first
-  per provider guidance — extend only if results indicate need), `outputModel
-  accounts/linencloset/models/arc-pilot-v1-therapist-sft` (the ID was never created by the
-  cancelled job and remains free).
-- **Cost estimate at creation: $0.00** under the promo (through 10/31; §10 resolution).
-  List-basis planning figure if the promo had not applied: ≈$204 for 2 epochs (§10).
-- **Step-order note:** step 2 (smoke test) is recorded as satisfied by `jf3tmylp` evidence
-  (§5.2) — that job already trained on the exact pilot payload + model end-to-end with
-  healthy curves and verified rendering. Flagged for owner override.
-- **Expected artifacts:** the trained LoRA model `arc-pilot-v1-therapist-sft`, final eval
-  metrics on the attached eval set, and the job's render-samples artifact (written at
-  terminal state per §10's finding).
+  `maxContextLength 32768`, `loraRank 8`, **`epochs 2`** (the plan's mid-case;
+  defaults-first per provider guidance — extend only if results indicate need),
+  `outputModel accounts/linencloset/models/arc-pilot-v1-therapist-sft` (the ID was
+  never created by the cancelled jobs and remains free).
+- **Cost: $0.00 expected** under the promo (through 10/31; §10 resolution). List-basis
+  planning figure if the promo had not applied: ≈$204 for 2 epochs (§10). The watcher
+  re-verifies via `usageCosts:query` at terminal state.
+- **Step-order note:** step 2 (smoke test) is recorded as satisfied by `jf3tmylp`
+  evidence (§5.2) — that job already trained on the exact pilot payload + model
+  end-to-end with healthy curves and verified rendering. Flagged for owner override.
+- **Expected artifacts:** the trained LoRA model `arc-pilot-v1-therapist-sft`, final
+  eval metrics on the attached eval set, the job's render-samples artifact (written
+  at terminal state per §10's finding), and a wandb run in
+  `wutang/pixelated-empathy-kan28` with the step-metric history.
+- **Watcher:** background poll (60 s interval) capturing the final job JSON, metrics,
+  render samples, and the terminal-state $0.00 `usageCosts:query` result into the
+  gitignored export dir with SHA-256s.
