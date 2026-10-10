@@ -5,12 +5,13 @@
 next steps" plus same-day confirmations; a grant record sits under each package heading).
 This document authorized nothing by itself — the grants came from the owner. Execution state:
 Phase 1 complete (A–E); F **executed** on the replacement account `linencloset` — both
-planned datasets `READY` (pilot log §7); G active — **actual spend pending invoice
-reconciliation** after the cancelled step-1 job `jf3tmylp` (est. $69–$141 depending on
-billing basis, pilot log §10); H **step 1 executed and verified, steps 2–3 blocked at the
-budget gate** (the per-epoch cost basis was wrong by ~9× — per-user-turn unrolling, pilot
-log §10; re-authorization required). Only `train.jsonl` and `val.jsonl` have left this
-environment; `test.jsonl` and all private provenance remain local.
+planned datasets `READY` (pilot log §7); G active — **actual spend $0.00** (the cancelled
+step-1 job `jf3tmylp` rated $0.00 under the account's Glimmer SFT promo — free until 10/31,
+owner-reported banner, verified via `usageCosts:query`; pilot log §10 resolution); H
+**step 1 executed and verified; step 2 satisfied by evidence; step 3 pilot SFT RUNNING**
+(job `ida9f81a`, 2 epochs, $0.00 under promo — pilot log §11). Only `train.jsonl` and
+`val.jsonl` have left this environment; `test.jsonl` and all private provenance remain
+local.
 **Companions:** [`fireworks-readiness.md`](./fireworks-readiness.md) — status register (each
 package maps to a register item or gate) · [`fireworks-export-plan.md`](./fireworks-export-plan.md)
 — payload spec, screening, splits, snapshot identity, execution record (§9) ·
@@ -336,11 +337,20 @@ on job `jf3tmylp` (loss masks, ledger, no truncation all pass); two findings sup
 grant-time premises: (1) render capture is coupled to paid training (no free pre-run
 inspection), and (2) the per-epoch token basis in budget row 2 (chars ÷ 4, ≈$11.16/epoch)
 ignored the trainer's per-user-turn unrolling — the measured basis is ≈34.1M train
-tokens/epoch (≈$102/epoch at list) plus ≈6.5M eval tokens, so 2–3 epochs ≈ $204–$366,
-over this package's $150 cap, and the ~100-row smoke slice ≈$24, over the $5 bound.
-**Steps 2 and 3 are blocked at this gate pending the owner's re-authorization** with the
-corrected numbers (pilot log §4/§10); the cancelled run's spend ($69–$141 depending on
-billing basis) awaits invoice reconciliation.
+tokens/epoch (≈$102/epoch at list) plus ≈6.5M eval tokens, so at list rates 2–3 epochs ≈
+$204–$366, over this package's $150 cap, and the ~100-row smoke slice ≈$24, over the $5
+bound.
+
+**Second status update (2026-10-10, evening — pilot log §10 promo resolution):** the owner
+reported the account dashboard promo — **"Muse Glimmer 30B SFT is free via UI and Serverless
+Training API until 10/31 ✨ No credit card required"** — verified via
+`usageCosts:query` ($0.00 rated, attribution COMPLETE, covering the cancelled run; REST-created
+managed jobs included). The budget-gate block above is therefore **dissolved for this
+account's Glimmer SFT through 10/31**: actual training spend is $0.00, the smoke-test bound
+is moot, and step 3 was re-launched as job `ida9f81a` (2 epochs, $0.00 — pilot log §11).
+The list-basis figures are retained for post-promo planning. **The only remaining
+authorized paid line is budget row 3 (evaluation endpoint)** — or $0 if Phase-4 evaluation
+runs on a local/off-platform inference point (adapter export path verified — pilot log §10).
 
 1. **Render Samples (free, required):** verify loss masks (user 0 / assistant 1), ledger
    rendering, and no truncation. Largest row ≈23.2k tokens (chars/4) vs. the 32,768-token

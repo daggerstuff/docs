@@ -181,7 +181,9 @@ The manifest is the audit trail connecting every uploaded row to its accepted-se
   across the rendered windows, so real raw tokens ≈ this profile × 4/3.57 — and the
   *processed* per-epoch volume is ≈9× the raw row total because the trainer renders
   per-user-turn unrolled datums (growing-context windows per assistant turn). Budget math
-  must use the unrolled volume (pilot log §4/§10).
+  must use the unrolled volume at **list** rates (pilot log §4/§10) — though the account's
+  Glimmer SFT promo (free until 10/31, pilot log §10 resolution) zeroes the pilot's actual
+  training cost within the promo window.
 
 ### 4.3 PII / pattern screen
 

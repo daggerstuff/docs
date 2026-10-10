@@ -11,8 +11,8 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 |---|---|
 | Phase 1 (packages A–E) | **complete** — grants recorded in the packages doc |
 | Package F upload | **EXECUTED on `linencloset`** — `arc-pilot-v1-train` (418) + `arc-pilot-v1-eval` (80) both `READY` (§7); train+val only; `test.jsonl` still local |
-| Package G spend | cap $635 active; **actual pending invoice reconciliation** — cancelled SFT job `jf3tmylp` (§10) is est. $69–$141 depending on billing basis |
-| Package H experiment | **step 1 (Render Samples) EXECUTED and verified** (§10); steps 2–3 **blocked at the budget gate** — the per-epoch cost basis was wrong by ~9× (unrolled datums, §10); re-estimate required before any further paid step |
+| Package G spend | cap $635 active; **$0.00 actual** — the cancelled job `jf3tmylp` rated $0.00 (promo verified, §10); pilot SFT re-run `ida9f81a` training free under the same promo (until 10/31) |
+| Package H experiment | **step 1 (Render Samples) EXECUTED and verified** (§10); **budget gate DISSOLVED** — Glimmer SFT promo (free until 10/31, §10) verified at $0.00 rated; **step 3 pilot SFT RUNNING** (job `ida9f81a`, 2 epochs, §11) |
 
 ## 2. Package C conditions (recorded; console items flagged)
 
@@ -66,23 +66,27 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 
 | Date (UTC) | Item | Estimated | Actual | Running total |
 |---|---|---|---|---|
-| 2026-10-10 | none — no paid operation has run | — | $0.00 | $0.00 |
-| 2026-10-10 | SFT job `jf3tmylp` (owner-approved step-1 attempt; cancelled at 57% of 1 epoch, §10) | $11.16/epoch (plan basis — wrong, see §10) | **pending invoice** — $69 (real-unrolled-token basis) to $141 (trainer-metric basis); owner reconciles on the dashboard | $69–$141 (pending) |
+| 2026-10-10 | SFT job `jf3tmylp` (step-1 attempt; cancelled at 57% of 1 epoch, §10) | $11.16/epoch (plan basis — wrong; unrolled basis ≈$102/epoch at list) | **$0.00** — rated cost verified $0 (§10 promo resolution; `usageCosts:query`, attribution COMPLETE) | $0.00 |
+| 2026-10-10 | SFT job `ida9f81a` (step-3 pilot SFT, 2 epochs, §11) | $0.00 under promo | in flight — expected $0.00 | $0.00 |
 
 Authorized lines: smoke test ≤$5 · pilot SFT ≤$150 (target changed to Muse Glimmer 30B;
 model-specific pricing and eligibility must be re-verified before training) · evaluation
 endpoint ≤$480 (≤40 GPU-hours, region-rate covered). Existing total cap remains $635. Any
 overrun stops the pilot and returns to the budget gate.
 
-**Budget-gate finding (2026-10-10, §10):** the per-epoch cost basis used for all
-authorizations ($11.16/epoch, chars÷4 over raw rows) is wrong — the trainer renders
-per-user-turn unrolled datums, ≈34.1M tokens/epoch for train (measured 3.57 chars/token on
-rendered windows), ≈$102/train-epoch at list price, plus ≈6.5M eval tokens if eval is
-billed. A 2–3-epoch pilot SFT is therefore ≈$204–$366 — over the $150 line — and the
-~100-row smoke-test slice ≈$24 — over its ≤$5 bound. **All further paid steps are blocked
-until the owner re-authorizes against corrected numbers.**
+**Budget-gate resolution (2026-10-10, evening — §10 addendum):** the gate opened earlier
+today when the unrolled-token basis (~$102/epoch at list) seemed to exceed the $150 line.
+It is now **dissolved**: the account dashboard shows a provider promo (owner-reported,
+2026-10-10) — **"Muse Glimmer 30B SFT is free via UI and Serverless Training API until
+10/31 ✨ No credit card required"** — and the platform's `usageCosts:query` API confirms the
+account-wide rated cost for 2026-10-10 is **$0.00 with COMPLETE attribution**, covering the
+47M-metric-token cancelled run. REST-created managed jobs rate $0 under the promo (the
+cancelled job was REST-created). The unrolled-volume facts in §10 remain true and matter
+for **list-price** planning (post-10/31, other models, other tiers) — under the promo the
+pilot's training cost is $0 through 10/31, and the step-3 pilot SFT has been re-launched
+(§11).
 
-## 5. Package H — step order (binding; step 1 executed 2026-10-10, steps 2–4 blocked at budget gate)
+## 5. Package H — step order (binding; step 1 executed 2026-10-10; gate dissolved by the promo — step 3 executing)
 
 1. **Render Samples** — **EXECUTED 2026-10-10 (§10): verified** — loss masks correct
    (user/system/headers 0; assistant trained exactly once per row, per-datum normalized
@@ -94,10 +98,22 @@ until the owner re-authorizes against corrected numbers.**
 2. **Format smoke test** — small managed-LoRA run on a ≤16B-class shortlist model over a
    ~100-row slice. Note: the slice dataset is additional egress (drawn from train.jsonl under
    the same Package C basis) and will be logged here before creation.
-3. **Pilot SFT** — planned target is Muse Glimmer 30B (`accounts/fireworks/models/muse-glimmer-30b`,
-   the verified catalog ID — see §9) over `arc-pilot-v1-train` + `arc-pilot-v1-eval` as
-   evaluation_dataset. Access, managed-LoRA eligibility, and pricing are verified (§9); at
-   job creation record the cost estimate against the cap, then hyperparameters and job id here.
+   **Status (2026-10-10 evening): satisfied by `jf3tmylp` evidence and not re-run** — that
+   job trained 57% of a real epoch on the exact pilot payload + target model with healthy
+   loss curves (train 0.708→0.405, eval 0.649→0.462) and verified rendering (§10), which is
+   precisely the end-to-end format validation this step existed to buy. Running a separate
+   ≤16B slice job would add egress and time for no new information, and under the promo the
+   smoke test's cost-safety rationale is moot. Flagged for the owner to override if they
+   want the original step-2 run anyway.
+3. **Pilot SFT** — target Muse Glimmer 30B (`accounts/fireworks/models/muse-glimmer-30b`,
+   verified catalog ID — §9) over `arc-pilot-v1-train` + `arc-pilot-v1-eval` as
+   evaluation_dataset. Access, managed-LoRA eligibility verified (§9); cost estimate at
+   creation: **$0.00 under the promo** (§10 addendum; list basis ≈$102/epoch for
+   post-promo planning). **EXECUTING 2026-10-10 18:26 UTC: job
+   `accounts/linencloset/supervisedFineTuningJobs/ida9f81a`** — 2 epochs (the plan's
+   mid-case; defaults-first per provider guidance — extend only if results indicate need),
+   `loraRank` 8, `maxContextLength` 32768 explicit, `evalAutoCarveout` false, outputModel
+   `accounts/linencloset/models/arc-pilot-v1-therapist-sft` (§11).
 4. **Phase 4 evaluation preview** — untuned vs. tuned on held-out test.jsonl prompts (egress
    under Package C); catastrophic-tier behavior is unmeasurable on held-out data (all 10
    catastrophic rows are in train — export plan §5.4) and must be reported as such.
@@ -238,6 +254,12 @@ and nothing was created.
   planned route. The model is not on serverless inference (`supportsServerless: false`) and
   tuned models serve only on dedicated deployments as before, so the evaluation-endpoint
   basis is unchanged ($8/hr H100/H200 class).
+  **Promo supersession (2026-10-10, owner-reported banner + verified, §10 addendum):** the
+  account dashboard shows **"Muse Glimmer 30B SFT is free via UI and Serverless Training API
+  until 10/31 ✨ No credit card required"** — the list rates above do not apply to this
+  account's Glimmer SFT through 2026-10-31. Verified: account-wide rated cost $0.00
+  (`POST /v1/accounts/{account_id}/usageCosts:query`, attribution COMPLETE) covering the
+  cancelled 47M-metric-token run.
 - **Budget fit (re-estimate; same conservative basis as the GLM estimate):** payload ≈3.72M
   tokens/epoch (train 3,106,534 + val 609,606, chars ÷ 4) × $3.00/1M ≈ **$11.16/epoch**;
   2–3 epochs ≈ **$22.32–$33.48** against the $150 pilot-SFT line — fits, and cheaper than
@@ -246,22 +268,24 @@ and nothing was created.
   **Correction (2026-10-10, §10):** this estimate is **wrong** — it counts raw row tokens and
   ignores the trainer's per-user-turn unrolling, which multiplies the processed volume to
   ≈34.1M train tokens/epoch (≈$102) plus ≈6.5M eval tokens. See §10 and the §4 budget-gate
-  finding; all further paid steps are blocked pending re-authorization.
+  resolution; the list-basis figures matter for post-promo planning, while the promo (§10
+  addendum) zeroes the actual pilot training cost through 10/31.
 
 Conclusion: all four Glimmer-dependent items (eligibility, account access, pricing, budget
 fit) are verified for the planned managed-LoRA SFT route, with the model-ID correction
-recorded above — though the budget-fit estimate itself is superseded by the §10 correction.
-Package H step 1 (Render Samples) has since been executed and verified (§10); further paid
-steps are blocked at the budget gate pending re-authorization.
+recorded above — though the budget-fit estimate itself is superseded by the §10 correction
+(list basis) and the §10 promo resolution (account basis: $0 through 10/31). Package H
+step 1 (Render Samples) has since been executed and verified (§10), and the pilot SFT is
+running (§11).
 
 ## 10. Package H step 1 — Render Samples execution (2026-10-10, 16:10–17:32 UTC)
 
 The owner's "let's render some samples" instruction, executed. **Outcome: step 1 verified —
 the training rendering is correct — but the attempt surfaced two material findings: the
 platform couples render capture to paid training (no free pre-run path exists), and the
-pilot's per-epoch cost basis was wrong by ~9× (per-user-turn unrolling). The job was
-cancelled at 57% of one epoch with the owner's explicit approval; spend is pending invoice
-reconciliation.**
+pilot's per-epoch cost basis was wrong by ~9× at list rates (per-user-turn unrolling). The
+job was cancelled at 57% of one epoch with the owner's explicit approval; its rated cost
+resolved to $0.00 under the Glimmer SFT promo (see the promo resolution below).**
 
 ### Job record
 
@@ -327,17 +351,29 @@ run and returned 200 immediately after cancellation. Structure: per-datum
   Phase-4 evaluation and any deployment must use the same chat template as training, or
   the comparison is invalid.
 
-### Cost basis correction (blocks further paid steps — see §4)
+### Cost basis correction — superseded by the promo resolution below (list-basis facts retained)
 
-Measured on the rendered windows: **3.57 chars/token** (≈ the 4 heuristic). But the
+Measured on the rendered windows: **3.57 chars/token** (≈ the 4 heuristic). The
 per-user-turn unrolling multiplies the processed volume far beyond raw row tokens:
 extrapolating the verified unrolled structure over all 418 train rows gives
-**≈34.1M tokens/epoch for train (≈$102 at $3/1M) plus ≈6.5M unrolled eval tokens** —
-against the plan's $11.16/epoch. The 57%-run sunk cost is therefore **$69 (real-unrolled
-basis) to $141 (trainer-metric basis)**; only the invoice (owner checks the dashboard —
-billing is not readable via REST) settles which basis the provider charges. Either way the
-plan's 2–3-epoch pilot ($150 line) and the ≤$5 smoke test are **blocked pending
-re-authorization** (§4).
+**≈34.1M tokens/epoch for train (≈$102 at the $3.00/1M list rate) plus ≈6.5M unrolled eval
+tokens** — against the plan's original $11.16/epoch (chars÷4) estimate. The provider's own
+pricing page confirms the unrolling is part of the billed token stream ("multi-turn
+conversations are unrolled into user, assistant, and thinking traces").
+
+**Promo resolution (2026-10-10, evening):** the gate this section opened is **dissolved**.
+The owner reported the account dashboard banner — **"Muse Glimmer 30B SFT is free via UI
+and Serverless Training API until 10/31 ✨ No credit card required"** — and it was verified
+from this environment: `POST /v1/accounts/linencloset/usageCosts:query` over the account's
+entire lifetime (created 11:13 UTC today) returned **rated subtotal $0.00, zero rows,
+attribution COMPLETE** (evaluated 18:23 UTC, 51 minutes after the job's cancellation) —
+so the 47M-metric-token run rated zero, and **REST-created managed jobs are covered** (the
+cancelled job was REST-created). This also corrects the earlier statement in this section:
+billing **is** readable via REST (`usageCosts:query` gives rated costs; `GET /billingUsage`
+gives metered quantities). The list-basis figures above remain valid for post-promo
+planning (after 10/31) and for other models/tiers; under the promo the pilot's training
+cost is $0 through 2026-10-31. §4 records the resolution; §11 records the re-launched
+pilot SFT.
 
 ### Evidence (preserved locally, gitignored export dir; no new egress)
 
@@ -347,3 +383,27 @@ re-authorization** (§4).
 - `…/sft_job_jf3tmylp_final.json` (SHA-256 `83b5eef940e5e39193ecad4bbd6264ecd614657817243226d7a15deeaed26b2b`)
 - The job resource remains on the account in `CANCELLED` state (not deleted), available for
   support/billing queries. No LoRA model was created.
+
+## 11. Package H step 3 — pilot SFT re-run (2026-10-10, 18:26 UTC)
+
+Launched after the promo resolution (§10) dissolved the budget gate. **Status at write time:
+RUNNING.** The completed run's telemetry, render-sample capture, and $0.00 rated-cost
+verification will be appended here when the job reaches a terminal state.
+
+- **Job:** `accounts/linencloset/supervisedFineTuningJobs/ida9f81a`, created 18:26:18 UTC
+  via the same REST path as §10 (REST coverage of the promo verified in §10's resolution).
+- **Config:** `baseModel accounts/fireworks/models/muse-glimmer-30b`, `dataset
+  accounts/linencloset/datasets/arc-pilot-v1-train`, `evaluationDataset
+  accounts/linencloset/datasets/arc-pilot-v1-eval`, `evalAutoCarveout false`,
+  `maxContextLength 32768`, `loraRank 8`, **`epochs 2`** (the plan's mid-case; defaults-first
+  per provider guidance — extend only if results indicate need), `outputModel
+  accounts/linencloset/models/arc-pilot-v1-therapist-sft` (the ID was never created by the
+  cancelled job and remains free).
+- **Cost estimate at creation: $0.00** under the promo (through 10/31; §10 resolution).
+  List-basis planning figure if the promo had not applied: ≈$204 for 2 epochs (§10).
+- **Step-order note:** step 2 (smoke test) is recorded as satisfied by `jf3tmylp` evidence
+  (§5.2) — that job already trained on the exact pilot payload + model end-to-end with
+  healthy curves and verified rendering. Flagged for owner override.
+- **Expected artifacts:** the trained LoRA model `arc-pilot-v1-therapist-sft`, final eval
+  metrics on the attached eval set, and the job's render-samples artifact (written at
+  terminal state per §10's finding).
