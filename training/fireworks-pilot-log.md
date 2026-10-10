@@ -11,8 +11,8 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 |---|---|
 | Phase 1 (packages A–E) | **complete** — grants recorded in the packages doc |
 | Package F upload | **EXECUTED on `linencloset`** — `arc-pilot-v1-train` (418) + `arc-pilot-v1-eval` (80) both `READY` (§7); train+val only; `test.jsonl` still local |
-| Package G spend | cap $635 active; **$0 incurred** |
-| Package H experiment | granted, not started; next is step 1 (Render Samples, provider console) |
+| Package G spend | cap $635 active; **actual pending invoice reconciliation** — cancelled SFT job `jf3tmylp` (§10) is est. $69–$141 depending on billing basis |
+| Package H experiment | **step 1 (Render Samples) EXECUTED and verified** (§10); steps 2–3 **blocked at the budget gate** — the per-epoch cost basis was wrong by ~9× (unrolled datums, §10); re-estimate required before any further paid step |
 
 ## 2. Package C conditions (recorded; console items flagged)
 
@@ -67,17 +67,30 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 | Date (UTC) | Item | Estimated | Actual | Running total |
 |---|---|---|---|---|
 | 2026-10-10 | none — no paid operation has run | — | $0.00 | $0.00 |
+| 2026-10-10 | SFT job `jf3tmylp` (owner-approved step-1 attempt; cancelled at 57% of 1 epoch, §10) | $11.16/epoch (plan basis — wrong, see §10) | **pending invoice** — $69 (real-unrolled-token basis) to $141 (trainer-metric basis); owner reconciles on the dashboard | $69–$141 (pending) |
 
 Authorized lines: smoke test ≤$5 · pilot SFT ≤$150 (target changed to Muse Glimmer 30B;
 model-specific pricing and eligibility must be re-verified before training) · evaluation
 endpoint ≤$480 (≤40 GPU-hours, region-rate covered). Existing total cap remains $635. Any
 overrun stops the pilot and returns to the budget gate.
 
-## 5. Package H — step order (binding; not started)
+**Budget-gate finding (2026-10-10, §10):** the per-epoch cost basis used for all
+authorizations ($11.16/epoch, chars÷4 over raw rows) is wrong — the trainer renders
+per-user-turn unrolled datums, ≈34.1M tokens/epoch for train (measured 3.57 chars/token on
+rendered windows), ≈$102/train-epoch at list price, plus ≈6.5M eval tokens if eval is
+billed. A 2–3-epoch pilot SFT is therefore ≈$204–$366 — over the $150 line — and the
+~100-row smoke-test slice ≈$24 — over its ≤$5 bound. **All further paid steps are blocked
+until the owner re-authorizes against corrected numbers.**
 
-1. **Render Samples** — job-details page in the provider console: verify loss masks
-   (user 0 / assistant 1), ledger rendering, no truncation; set an explicit max-context-length
-   ≥ the largest row (≈23.2k tokens by chars/4) at job creation.
+## 5. Package H — step order (binding; step 1 executed 2026-10-10, steps 2–4 blocked at budget gate)
+
+1. **Render Samples** — **EXECUTED 2026-10-10 (§10): verified** — loss masks correct
+   (user/system/headers 0; assistant trained exactly once per row, per-datum normalized
+   weights summing to 1), ledger intact (36/36 assistant spans carry the 9-key JSON leading
+   line), no truncation (max rendered datum 2,065 tokens ≤ the explicit 32,768
+   max-context-length set at creation). Operational finding: the platform couples render
+   capture to a live training job — the artifact is written only when the job reaches a
+   terminal state, and there is no free pre-run render path.
 2. **Format smoke test** — small managed-LoRA run on a ≤16B-class shortlist model over a
    ~100-row slice. Note: the slice dataset is additional egress (drawn from train.jsonl under
    the same Package C basis) and will be logged here before creation.
@@ -95,8 +108,9 @@ overrun stops the pilot and returns to the budget gate.
 - No clinical examples; all identifiers are synthetic; `test.jsonl` has not left this
   environment.
 - Nothing in this log grants anything; the first attempt is recorded as blocked — no state
-  was created at the provider in that attempt — and $0 has been spent. The successful upload
-  on the replacement account is recorded in §7.
+  was created at the provider in that attempt — and no spend arose from it. (Spend since
+  incurred is recorded in §4/§10.) The successful upload on the replacement account is
+  recorded in §7.
 
 ## 7. Package F — upload on replacement account (2026-10-10)
 
@@ -129,7 +143,8 @@ overrun stops the pilot and returns to the budget gate.
   provider-side `READY` states and `exampleCount` values verified. `test.jsonl` was not sent.
 - **Billing note:** prior account discovery reported the replacement account as `READY`; this
   log records dataset upload only and does not claim a training charge or job.
-  Current spend ledger remains $0 pending billing reconciliation.
+  At that point the spend ledger was $0 pending billing reconciliation (spend incurred
+  later is recorded in §4/§10).
 - **Scope:** the owner's explicit request to upload on the new account was applied to Package F
   only. No smoke test, training, evaluation, deployment, or additional data export was run.
 - **Important correction:** the earlier §3 sentence “No provider-side state was created” refers
@@ -228,8 +243,107 @@ and nothing was created.
   2–3 epochs ≈ **$22.32–$33.48** against the $150 pilot-SFT line — fits, and cheaper than
   the superseded GLM-class estimate (≈$37/epoch). List-price calculation, not a quote; the
   spend ledger (§4) remains $0.
+  **Correction (2026-10-10, §10):** this estimate is **wrong** — it counts raw row tokens and
+  ignores the trainer's per-user-turn unrolling, which multiplies the processed volume to
+  ≈34.1M train tokens/epoch (≈$102) plus ≈6.5M eval tokens. See §10 and the §4 budget-gate
+  finding; all further paid steps are blocked pending re-authorization.
 
 Conclusion: all four Glimmer-dependent items (eligibility, account access, pricing, budget
 fit) are verified for the planned managed-LoRA SFT route, with the model-ID correction
-recorded above. Package H step 1 (Render Samples, provider console) remains the owner's
-next step; the first paid probe is the step-2 smoke test on a ≤16B-class model.
+recorded above — though the budget-fit estimate itself is superseded by the §10 correction.
+Package H step 1 (Render Samples) has since been executed and verified (§10); further paid
+steps are blocked at the budget gate pending re-authorization.
+
+## 10. Package H step 1 — Render Samples execution (2026-10-10, 16:10–17:32 UTC)
+
+The owner's "let's render some samples" instruction, executed. **Outcome: step 1 verified —
+the training rendering is correct — but the attempt surfaced two material findings: the
+platform couples render capture to paid training (no free pre-run path exists), and the
+pilot's per-epoch cost basis was wrong by ~9× (per-user-turn unrolling). The job was
+cancelled at 57% of one epoch with the owner's explicit approval; spend is pending invoice
+reconciliation.**
+
+### Job record
+
+- **Job:** `accounts/linencloset/supervisedFineTuningJobs/jf3tmylp` — created 16:10:52 UTC
+  via `POST /v1/accounts/linencloset/supervisedFineTuningJobs`; training active ≈16:37 UTC
+  (trainer capacity assignment took ~26 min); **cancelled 17:32:37 UTC by owner decision**
+  (`POST …/jf3tmylp:cancel`, HTTP 200 — the `:cancel` action exists on the gateway but is
+  absent from the public API index); final state `JOB_STATE_CANCELLED` at 57% of 1 epoch.
+- **Config (exactly one create attempt that took effect; two earlier 400s created no
+  state):** `baseModel accounts/fireworks/models/muse-glimmer-30b`, `dataset
+  accounts/linencloset/datasets/arc-pilot-v1-train`, `evaluationDataset
+  accounts/linencloset/datasets/arc-pilot-v1-eval`, `evalAutoCarveout false`,
+  `maxContextLength 32768` (explicit, satisfying the step-1 requirement),
+  `loraRank 8` (default), `outputModel accounts/linencloset/models/arc-pilot-v1-therapist-sft`
+  (never created — job cancelled; the model ID remains free).
+- **API findings (create path):** (1) `outputModel` on the REST gateway requires the **full
+  resource name** `accounts/…/models/…` — the schema text saying a bare ID is accepted is
+  wrong; (2) **`loraRank` must be set explicitly on REST** — unset, the job defaults to
+  full-parameter SFT, which the LoRA-only-tunable Glimmer rejects ("model is not tunable
+  for supervised full-parameter fine-tuning"); (3) no undocumented render endpoint exists
+  (AIP-style `:renderSamples`/`:preview` probes are rejected as invalid IDs).
+- **Run telemetry** (metrics file, retained 7 days per provider docs; saved locally, see
+  below): 24 optimizer steps; train loss 0.7083 → 0.4051; **eval loss 0.6493 → 0.4619**
+  (perplexity 1.914 → 1.587) across a step-0 baseline eval and one mid-run eval on
+  `arc-pilot-v1-eval`. `estimatedCost` stayed null throughout; `jobProgress` counters lag
+  badly (0/0 requests while training was demonstrably live — the metrics file was the only
+  reliable signal).
+- **Trainer token accounting:** metrics `train/total_tokens` sums to **47,054,467** over 24
+  steps (~65,536 counted tokens per sample — exactly 2 × 32,768, a padded accounting whose
+  billing meaning is undocumented). At list price this would be ≈$141 for the 57% run
+  (≈$247 for a full epoch).
+
+### Render-samples verification (the step-1 goal) — ALL CHECKS PASS
+
+Artifact: `render_samples.jsonl`, 642,320 bytes, SHA-256
+`bc8fb6365c303d0c6b3077bc441ba90e8f408d2b36cebdfa5965b44247c029a0`, 20 rendered datums
+across 8 source rows (splits 0–2 each), workers 0–7. **The artifact is written only when the
+job reaches a terminal state** — the signed URL 404'd (`NoSuchKey`) for the entire 55-minute
+run and returned 200 immediately after cancellation. Structure: per-datum
+`source_jsonl_row_index`, `split_index`, `renderer: muse_glimmer`,
+`train_on_what: all_assistant_messages`, `rendered_chunks` (token spans), `token_ids`,
+`decoded_tokens`, `token_weights`.
+
+- **Loss masks: correct.** User/system/header tokens weight 0 (36/36 user spans all-zero).
+  Assistant content spans carry the trained loss — but as **per-datum normalized weights**
+  (each datum's weights sum to exactly 1.0; assistant tokens are uniform 1/n_trained, e.g.
+  0.002770083… = 1/361), not raw 1.0. The "user 0 / assistant 1" intent of step 1 is
+  satisfied by the mask structure; the platform reports the normalized form.
+- **Each assistant turn is trained exactly once.** The renderer unrolls every row into
+  growing-context datums per user turn (datum k of a row covers messages 0..2k+1; a
+  33-message row yields ~16 datums). In each datum only the newest assistant turn carries
+  loss; earlier assistant turns reappear as context with weight 0. Verified across all 20
+  datums (20 trained spans, 16 masked repeats — consistent with the design).
+- **Ledger rendering: intact — 36/36.** Every rendered assistant span's decoded leading line
+  parses as JSON with exactly the 9 contract keys (`def dx hx onset risk soma tl track tx`),
+  and the full source content appears verbatim in the decoded span (no truncation, no
+  template mangling).
+- **No truncation:** max rendered datum 2,065 tokens, far under the explicit 32,768
+  max-context-length; EOT tokens are inside the trained span (the model learns to stop).
+- **Renderer behavior findings (matter for inference/evaluation consistency):** the
+  `muse_glimmer` renderer **injects a default system prompt** ("You are a helpful AI…" —
+  the pilot rows have no system message, so this is renderer-added, not dataset content).
+  Phase-4 evaluation and any deployment must use the same chat template as training, or
+  the comparison is invalid.
+
+### Cost basis correction (blocks further paid steps — see §4)
+
+Measured on the rendered windows: **3.57 chars/token** (≈ the 4 heuristic). But the
+per-user-turn unrolling multiplies the processed volume far beyond raw row tokens:
+extrapolating the verified unrolled structure over all 418 train rows gives
+**≈34.1M tokens/epoch for train (≈$102 at $3/1M) plus ≈6.5M unrolled eval tokens** —
+against the plan's $11.16/epoch. The 57%-run sunk cost is therefore **$69 (real-unrolled
+basis) to $141 (trainer-metric basis)**; only the invoice (owner checks the dashboard —
+billing is not readable via REST) settles which basis the provider charges. Either way the
+plan's 2–3-epoch pilot ($150 line) and the ≤$5 smoke test are **blocked pending
+re-authorization** (§4).
+
+### Evidence (preserved locally, gitignored export dir; no new egress)
+
+- `ai/training/output/arc_corpus/export/fireworks_pilot_v1/render_samples_jf3tmylp.jsonl`
+  (SHA-256 `bc8fb636…`, above)
+- `…/metrics_jf3tmylp.jsonl` (SHA-256 `0f1bf5b49d53f4ac335ab498fdad49b3de9096f43f42567423f195f358cdcda8`)
+- `…/sft_job_jf3tmylp_final.json` (SHA-256 `83b5eef940e5e39193ecad4bbd6264ecd614657817243226d7a15deeaed26b2b`)
+- The job resource remains on the account in `CANCELLED` state (not deleted), available for
+  support/billing queries. No LoRA model was created.

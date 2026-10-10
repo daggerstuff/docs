@@ -105,8 +105,10 @@ The manifest is the audit trail connecting every uploaded row to its accepted-se
 - Per-example training context: the provider cuts training examples at **32,768 tokens by
   default**; `--max-context-length` raises it (their example: 65,536). The largest row here is
   ≈23.2k tokens by chars/4 (§4.2) — inside the default cutoff, but the plan still requires an
-  explicit `--max-context-length` at job creation and a Render Samples truncation check before
-  any paid run (Phase 3).
+  explicit `--max-context-length` at job creation and a Render Samples truncation check (the
+  check ran on job `jf3tmylp` — verified, no truncation; pilot log §10). **Correction
+  (2026-10-10, pilot log §10):** the truncation check cannot precede a paid run — the
+  platform writes the render artifact only when a job reaches a terminal state.
 
 ### 2.5 Phase 3 usage notes (recorded here only because they constrain the payload)
 
@@ -117,7 +119,9 @@ The manifest is the audit trail connecting every uploaded row to its accepted-se
   this environment and sits under the same privacy-approval boundary as the training upload.
   Flagged for the owner; not decided here.
 - ≈91% of message content is assistant-side, so weight masking changes what is learned more than
-  how much is processed; Render Samples verifies the masks before any spend.
+  how much is processed; Render Samples verifies the masks — **executed and verified 2026-10-10
+  on job `jf3tmylp` (pilot log §10: user/system 0, assistant trained once per row, per-datum
+  normalized weights; ledger intact; the check itself is coupled to a paid job, not free)**.
 
 ## 3. Validated inventory (2026-10-10, read-only)
 
@@ -173,6 +177,11 @@ The manifest is the audit trail connecting every uploaded row to its accepted-se
 - Slice total: 4,325,355 tokens. (Readiness §2 records ≈4.36M by chars/4 as the planning
   estimate; the precise content-only recount under this document's method is what is frozen
   here.)
+- **Measured (2026-10-10, job `jf3tmylp` render samples — pilot log §10): 3.57 chars/token**
+  across the rendered windows, so real raw tokens ≈ this profile × 4/3.57 — and the
+  *processed* per-epoch volume is ≈9× the raw row total because the trainer renders
+  per-user-turn unrolled datums (growing-context windows per assistant turn). Budget math
+  must use the unrolled volume (pilot log §4/§10).
 
 ### 4.3 PII / pattern screen
 

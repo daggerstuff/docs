@@ -5,9 +5,12 @@
 next steps" plus same-day confirmations; a grant record sits under each package heading).
 This document authorized nothing by itself — the grants came from the owner. Execution state:
 Phase 1 complete (A–E); F **executed** on the replacement account `linencloset` — both
-planned datasets `READY` (pilot log §7); G active, $0 spent; H not started (next: Render
-Samples). Only `train.jsonl` and `val.jsonl` have left this environment; `test.jsonl` and
-all private provenance remain local.
+planned datasets `READY` (pilot log §7); G active — **actual spend pending invoice
+reconciliation** after the cancelled step-1 job `jf3tmylp` (est. $69–$141 depending on
+billing basis, pilot log §10); H **step 1 executed and verified, steps 2–3 blocked at the
+budget gate** (the per-epoch cost basis was wrong by ~9× — per-user-turn unrolling, pilot
+log §10; re-authorization required). Only `train.jsonl` and `val.jsonl` have left this
+environment; `test.jsonl` and all private provenance remain local.
 **Companions:** [`fireworks-readiness.md`](./fireworks-readiness.md) — status register (each
 package maps to a register item or gate) · [`fireworks-export-plan.md`](./fireworks-export-plan.md)
 — payload spec, screening, splits, snapshot identity, execution record (§9) ·
@@ -307,6 +310,10 @@ readiness §2, 2026-10-10):
   tier and remains unauthorized for the pilot. The prior GLM serverless alternative is
   historical.
 - The Render Samples inspection before any paid run is free and required (Package H, step 1).
+  **Correction (2026-10-10, pilot log §10):** this premise was wrong — the platform couples
+  render capture to a live training job and writes the artifact only when the job reaches a
+  terminal state; there is no free pre-run render path. The step-1 verification was carried
+  out on a paid job, subsequently cancelled at the owner's direction.
 
 ```
 Decision:  ☐ APPROVED as written   ☐ APPROVED with edits (initialed above)   ☐ DENIED
@@ -323,6 +330,17 @@ order:
 order is binding. Not started: step 1 (Render Samples) operates on a created job in the
 provider console, and every step waits on the Package F retry (account suspension, pilot
 log).
+
+**Status update (2026-10-10, later — pilot log §10):** step 1 was **executed and verified**
+on job `jf3tmylp` (loss masks, ledger, no truncation all pass); two findings supersede the
+grant-time premises: (1) render capture is coupled to paid training (no free pre-run
+inspection), and (2) the per-epoch token basis in budget row 2 (chars ÷ 4, ≈$11.16/epoch)
+ignored the trainer's per-user-turn unrolling — the measured basis is ≈34.1M train
+tokens/epoch (≈$102/epoch at list) plus ≈6.5M eval tokens, so 2–3 epochs ≈ $204–$366,
+over this package's $150 cap, and the ~100-row smoke slice ≈$24, over the $5 bound.
+**Steps 2 and 3 are blocked at this gate pending the owner's re-authorization** with the
+corrected numbers (pilot log §4/§10); the cancelled run's spend ($69–$141 depending on
+billing basis) awaits invoice reconciliation.
 
 1. **Render Samples (free, required):** verify loss masks (user 0 / assistant 1), ledger
    rendering, and no truncation. Largest row ≈23.2k tokens (chars/4) vs. the 32,768-token
