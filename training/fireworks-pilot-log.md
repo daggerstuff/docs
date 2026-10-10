@@ -110,7 +110,7 @@ pilot's training cost is $0 through 10/31, and the step-3 pilot SFT has been re-
    verified catalog ID — §9) over `arc-pilot-v1-train` + `arc-pilot-v1-eval` as
    evaluation_dataset. Access, managed-LoRA eligibility verified (§9); cost estimate at
    creation: **$0.00 under the promo** (§10 addendum; list basis ≈$102/epoch for
-   post-promo planning). **EXECUTING 2026-10-10 18:55 UTC: job
+   post-promo planning). **EXECUTING 2026-10-10 18:43 UTC: job
    `accounts/linencloset/supervisedFineTuningJobs/wwopccov`** (first attempt
    `ida9f81a` cancelled before any steps ran — §11.1) — 2 epochs (the plan's
    mid-case; defaults-first per provider guidance — extend only if results indicate need),
@@ -387,7 +387,7 @@ pilot SFT.
 - The job resource remains on the account in `CANCELLED` state (not deleted), available for
   support/billing queries. No LoRA model was created.
 
-## 11. Package H step 3 — pilot SFT run (2026-10-10, 18:26 UTC; superseded in-place 18:55 UTC)
+## 11. Package H step 3 — pilot SFT run (2026-10-10, 18:26 UTC; superseded in-place 18:43 UTC)
 
 Launched after the promo resolution (§10) dissolved the budget gate. The first attempt
 (`ida9f81a`, created 18:26 UTC) was **cancelled by owner directive before any training
@@ -404,7 +404,7 @@ state.
 - The owner asked whether wandb/checkpointing/resume were hooked in; the honest answer
   was no wandb and no explicit checkpoint knobs (both omitted from the create body),
   and the owner directed: stop it now and fix it all.
-- Cancelled via `POST …/ida9f81a:cancel` (18:37–18:45 UTC). **No training steps had
+- Cancelled via `POST …/ida9f81a:cancel` (18:37–18:40 UTC). **No training steps had
   run** — the job never received capacity (pct stayed 0, metrics artifact 404,
   nothing materialized), so nothing was lost. $0.00 under the promo; no LoRA model
   was created by it.
@@ -429,11 +429,13 @@ state.
   `wandbConfig: enabled true, project pixelated-empathy-kan28, entity wutang,
   apiKey set`.
 
-### 11.3 Current run — `wwopccov` (created 18:55 UTC, PENDING)
+### 11.3 Current run — `wwopccov` (created 18:43:06 UTC; RUNNING from 18:43:06)
 
 - **Job:** `accounts/linencloset/supervisedFineTuningJobs/wwopccov`, created via the
   same REST path, this time with `wandbConfig {enabled, apiKey (from `.env`
-  `WANDB_API_KEY`), project pixelated-empathy-kan28, entity wutang}`.
+  `WANDB_API_KEY`), project pixelated-empathy-kan28, entity wutang}`. Capacity was
+  granted instantly this run (PENDING→RUNNING within ~0.5 s of creation, vs ~4 min
+  waiting for the first attempt).
 - **Config:** `baseModel accounts/fireworks/models/muse-glimmer-30b`, `dataset
   accounts/linencloset/datasets/arc-pilot-v1-train`, `evaluationDataset
   accounts/linencloset/datasets/arc-pilot-v1-eval`, `evalAutoCarveout false`,
