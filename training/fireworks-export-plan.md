@@ -32,8 +32,9 @@ screening results; nothing exported yet." This document freezes, for owner revie
 
 Decisions D1 (therapist-response SFT), D2 (inline ledger), D3 (original model shortlist), and
 D4 (seed-level grouping) are inputs from readiness §2. The later owner-directed selection of
-Muse Glimmer 30B supersedes the original GLM 5.3 Flash recommendation; confirm the selected
-model's access, training eligibility, and pricing before any job.
+Muse Glimmer 30B supersedes the original GLM 5.3 Flash recommendation; its access, training
+eligibility, and pricing are verified (2026-10-10, pilot log §9 — catalog ID
+`accounts/fireworks/models/muse-glimmer-30b`).
 The corpus itself is not frozen — any future gold change invalidates §6 and requires re-screening
 (readiness header; that is what the identity check exists to catch).
 

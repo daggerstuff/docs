@@ -204,9 +204,11 @@ contract, final model ID, and the privacy determination."
 **Grant record (2026-10-10):** GRANTED — owner instruction "do those next steps": E1 (D1) and
 E2 (D2) ratified; initial final model ID recorded as **GLM 5.3 Flash**. **Superseding owner
 instruction (2026-10-10):** pilot target changed to Muse Glimmer 30B, model ID
-`accounts/fireworks/models/glimmer-30b`. This replaces the GLM selection; verify current
-account access/quota and model eligibility before any paid training (pilot log §2). The
-existing budget cap is unchanged pending updated model-specific pricing.
+`accounts/fireworks/models/muse-glimmer-30b` (the verified catalog ID — the short
+`glimmer-30b` slug recorded with the original instruction does not resolve; pilot log §9).
+This replaces the GLM selection; account access/quota and model eligibility are verified
+(2026-10-10, pilot log §9), with job-creation access exercised at the first paid step (the
+smoke test). The budget cap is unchanged; the Glimmer re-estimate fits it (§8 row 2).
 
 | Decision | Ratify | Alternative (write in) |
 |---|---|---|
@@ -215,10 +217,11 @@ existing budget cap is unchanged pending updated model-specific pricing.
 | **E3 Final model (from the D3 shortlist; no Llama models):** | — | |
 
 **Superseding E3 selection (2026-10-10): Muse Glimmer 30B** — owner-directed replacement
-for the original GLM 5.3 Flash recommendation. Fireworks model ID:
-`accounts/fireworks/models/glimmer-30b`. The earlier shortlist below is historical and its
-eligibility/pricing claims do not establish Glimmer's current eligibility or cost. Verify
-model access and managed-LoRA support before a training job.
+for the original GLM 5.3 Flash recommendation. Fireworks model ID (verified catalog ID):
+`accounts/fireworks/models/muse-glimmer-30b`. The earlier shortlist below is historical and
+its eligibility/pricing claims do not establish Glimmer's current eligibility or cost.
+Verified 2026-10-10 (pilot log §9): managed-LoRA SFT supported at $3.00/1M training tokens
+(16.1B–80B tier); re-estimate ≈$11.16/epoch, 2–3 epochs ≈ $22–34 — fits the $150 line.
 
 Historical D3 shortlist (catalog synced 2026-10-08): GLM 5.3 Flash, Qwen 3.8 27B, GLM 5.3 /
 5.2 FP8 / 5.1, DeepSeek V4 family, Kimi K2.5–K3, Qwen 3-235B class, Mistral Small 24B,
@@ -293,14 +296,16 @@ readiness §2, 2026-10-10):
 | # | Item | Basis (list prices, readiness §2) | Planning estimate | Proposed cap |
 |---|---|---|---|---|
 | 1 | Format smoke test | tiny managed-LoRA run on a ≤16B-class shortlist model (e.g. Ministral 3; non-Llama), 1 epoch over a ~100-row slice (≈0.7M tokens by chars/4) at $0.50/1M training tokens | ≈ $0.35 | **$5** |
-| 2 | Pilot SFT | Muse Glimmer 30B selected; model-specific managed-LoRA rate and eligibility require re-verification before job creation. Existing payload estimate: ≈3.72M tokens (chars ÷ 4) | **Pending re-estimate**; remain within the existing cap | **$150** |
+| 2 | Pilot SFT | Muse Glimmer 30B verified (pilot log §9): managed-LoRA SFT supported at $3.00/1M training tokens (16.1B–80B tier, 29.8B params); payload ≈3.72M tokens (chars ÷ 4) | ≈ $11.16/epoch; 2–3 epochs ≈ **$22–34** (vs $150 cap) | **$150** |
 | 3 | Evaluation endpoint | tuned models serve only on dedicated deployments; $8/hr (H100/H200 class), $13 (B200), $15 (B300), $20 (GB300); ×1.5 if region-restricted | e.g. 40 GPU-hours ≈ $320 standard / ≈ $480 at 1.5× | **$480** |
 
 - **Total proposed cap: $635.** Spend is tracked against the cap in the pilot report; any
   overrun stops the pilot and returns to this gate.
-- The prior GLM 5.3 Flash serverless Training API alternative is historical and is not
-  authorized for the Glimmer pilot. Re-check applicable training routes and pricing for
-  Muse Glimmer 30B before Package H; no route is presumed available.
+- Routes for Muse Glimmer 30B verified 2026-10-10 (pilot log §9): managed LoRA SFT supported
+  at $3.00/1M (the planned route); a serverless Training API route is listed ($5.86/1M train
+  + $1.96/1M prefill + $4.88/1M sample) but is more expensive per training token at this
+  tier and remains unauthorized for the pilot. The prior GLM serverless alternative is
+  historical.
 - The Render Samples inspection before any paid run is free and required (Package H, step 1).
 
 ```

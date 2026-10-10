@@ -81,10 +81,10 @@ overrun stops the pilot and returns to the budget gate.
 2. **Format smoke test** — small managed-LoRA run on a ≤16B-class shortlist model over a
    ~100-row slice. Note: the slice dataset is additional egress (drawn from train.jsonl under
    the same Package C basis) and will be logged here before creation.
-3. **Pilot SFT** — planned target is Muse Glimmer 30B (`accounts/fireworks/models/glimmer-30b`)
-   over `arc-pilot-v1-train` + `arc-pilot-v1-eval` as evaluation_dataset. Before job creation,
-   verify model access, managed-LoRA eligibility, and current pricing, then record a cost
-   estimate and confirm it fits the existing cap; record hyperparameters and job id here.
+3. **Pilot SFT** — planned target is Muse Glimmer 30B (`accounts/fireworks/models/muse-glimmer-30b`,
+   the verified catalog ID — see §9) over `arc-pilot-v1-train` + `arc-pilot-v1-eval` as
+   evaluation_dataset. Access, managed-LoRA eligibility, and pricing are verified (§9); at
+   job creation record the cost estimate against the cap, then hyperparameters and job id here.
 4. **Phase 4 evaluation preview** — untuned vs. tuned on held-out test.jsonl prompts (egress
    under Package C); catastrophic-tier behavior is unmeasurable on held-out data (all 10
    catastrophic rows are in train — export plan §5.4) and must be reported as such.
@@ -188,3 +188,48 @@ overrun stops the pilot and returns to the budget gate.
 - Upload artifacts match frozen local SHA-256 identity; test split remains local.
 - No paid job was submitted.
 - `git diff --check` passed after this update.
+
+## 9. Glimmer target verification (2026-10-10, ≈15:45–16:00 UTC)
+
+Re-verification of the Glimmer-dependent Package E/H items after the owner's same-day model
+switch. Method: authenticated Fireworks REST (the `.env` key; read-only GETs; key read from
+the environment only, never printed) against the `linencloset` account, plus the provider's
+current pricing page (fireworks.ai/pricing, fetched 2026-10-10). No paid operation was run
+and nothing was created.
+
+- **Model identity (corrected):** the catalog entry is
+  `accounts/fireworks/models/muse-glimmer-30b` (authenticated
+  `GET /v1/accounts/fireworks/models`, 200 entries, exactly one Glimmer). The short
+  `glimmer-30b` slug recorded alongside the owner instruction does not resolve (singular GET
+  returns 404). All pilot docs now record the verified catalog ID. Entry facts: state
+  `READY`, `public: true`, dense 29,776,626,688-parameter model (16.1B–80B pricing tier),
+  Apache 2.0, `trainingContextLength` 131,072.
+- **Managed-LoRA eligibility: verified.** The entry reports `supervisedLoraTunable: true`,
+  `supportsLora: true`, `useTrainingV2: true` — managed SFT is the pilot's route. RL is not
+  supported (`rlTunable`/`rlLoraTunable` false); managed DPO availability is not asserted
+  anywhere and is out of pilot scope. Training context 131,072 comfortably exceeds the
+  largest payload row (≈23.2k tokens by chars/4) — no truncation risk for the pilot;
+  Render Samples (step 1) still inspects per-row rendering before any paid run.
+- **Account access/quota: verified to the extent possible without spending.**
+  `GET /v1/accounts/linencloset` returns `READY`/`UNSUSPENDED` (state unchanged since the
+  12:26/12:33 checks); monthly spend notification thresholds are configured at
+  $100 / $1,000 / $10,000; the account key lists the public model entry. Actual
+  job-creation authorization can only be exercised by the first paid step (the Package H
+  smoke test) — that boundary is by design, not a gap in this check.
+- **Pricing (current list, fireworks.ai/pricing):** managed LoRA SFT for the 16.1B–80B tier
+  is $3.00/1M training tokens. A serverless Training API route is also listed for Muse
+  Glimmer 30B (128K context; $5.86/1M train, $1.96/1M prefill, $4.88/1M sample) — more
+  expensive per training token than managed at this tier, so managed LoRA remains the
+  planned route. The model is not on serverless inference (`supportsServerless: false`) and
+  tuned models serve only on dedicated deployments as before, so the evaluation-endpoint
+  basis is unchanged ($8/hr H100/H200 class).
+- **Budget fit (re-estimate; same conservative basis as the GLM estimate):** payload ≈3.72M
+  tokens/epoch (train 3,106,534 + val 609,606, chars ÷ 4) × $3.00/1M ≈ **$11.16/epoch**;
+  2–3 epochs ≈ **$22.32–$33.48** against the $150 pilot-SFT line — fits, and cheaper than
+  the superseded GLM-class estimate (≈$37/epoch). List-price calculation, not a quote; the
+  spend ledger (§4) remains $0.
+
+Conclusion: all four Glimmer-dependent items (eligibility, account access, pricing, budget
+fit) are verified for the planned managed-LoRA SFT route, with the model-ID correction
+recorded above. Package H step 1 (Render Samples, provider console) remains the owner's
+next step; the first paid probe is the step-2 smoke test on a ≤16B-class model.
