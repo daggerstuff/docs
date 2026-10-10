@@ -388,10 +388,10 @@ still requires the Phase 1 determinations and the separate upload gate.
   4–6 determined/approved, item 13 named (the owner as experiment owner and sole clinical
   reviewer for now), D1–D3 ratified, final model GLM 5.3 Flash. Phase 1 is complete.
 - **Later gates — granted 2026-10-10, each recorded separately:** upload/provisioning
-  authorized (Package F — first attempt blocked by the suspended provider account, see
-  [`fireworks-pilot-log.md`](./fireworks-pilot-log.md)); budget cap $635 active, $0 spent
-  (Package G); experiment granted with step-order binding (Package H). **Release (Phase 4)
-  remains un-granted.**
+  **executed** on the replacement account `linencloset` (Package F — pilot log §7: both
+  planned datasets `READY`, 418/80, `encryptionState` PLAINTEXT); budget cap $635 active, $0
+  spent (Package G); experiment granted with step-order binding (Package H — next: Render
+  Samples). **Release (Phase 4) remains un-granted.**
 - For review, not action: the 35 empty-`hx` turns (§4.1) surfaced during execution and ship as
   a documented deviation; the execution record (§9) is the complete evidence.
 

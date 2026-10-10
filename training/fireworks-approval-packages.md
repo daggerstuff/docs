@@ -4,9 +4,10 @@
 **Status:** all eight packages were GRANTED 2026-10-10 by the owner's instructions ("do those
 next steps" plus same-day confirmations; a grant record sits under each package heading).
 This document authorized nothing by itself — the grants came from the owner. Execution state:
-Phase 1 complete (A–E); F granted but its first execution attempt was blocked by the provider
-account state (suspended, HTTP 412 — pilot log); G active, $0 spent; H not started. Nothing
-has left this environment.
+Phase 1 complete (A–E); F **executed** on the replacement account `linencloset` — both
+planned datasets `READY` (pilot log §7); G active, $0 spent; H not started (next: Render
+Samples). Only `train.jsonl` and `val.jsonl` have left this environment; `test.jsonl` and
+all private provenance remain local.
 **Companions:** [`fireworks-readiness.md`](./fireworks-readiness.md) — status register (each
 package maps to a register item or gate) · [`fireworks-export-plan.md`](./fireworks-export-plan.md)
 — payload spec, screening, splits, snapshot identity, execution record (§9) ·
@@ -126,9 +127,10 @@ Date (UTC): ______________   Notes: ____________________________________________
 
 **Grant record (2026-10-10):** GRANTED — owner instruction "do those next steps". The
 conditions are recorded in [`fireworks-pilot-log.md`](./fireworks-pilot-log.md) §2;
-account-level items (ZDR applicability, data-residency setting, DPA version) are flagged for
-console confirmation before the upload retry — no provider-side state exists yet (the
-account is suspended; §7 execution note).
+account-level items (ZDR applicability, data-residency setting, DPA version) were resolved
+2026-10-10: the owner confirmed the replacement account `linencloset` carries the same
+standard specifications (no ZDR/CMEK — `encryptionState` PLAINTEXT stamped per dataset),
+and the executed upload is recorded in the pilot log §7.
 
 **Egress this approval covers (the only egress requested anywhere in this pilot):**
 
@@ -234,11 +236,13 @@ Date (UTC): ______________   Notes: ____________________________________________
 **Maps to:** readiness §4 gate 2 (provider-side state) · **Requires:** A, B, C, D, E.
 
 **Grant record + execution (2026-10-10):** GRANTED — owner instruction "do those next steps",
-with A–E satisfied. **Execution BLOCKED by provider account state:** the authenticated
-discovery call returned HTTP 412 — account `screamingparrot` is suspended (spending limit or
-unpaid invoices; fireworks.ai/account/billing). No dataset entries or files were created; no
-data left this environment. Retry path and exact invocations:
-[`fireworks-pilot-log.md`](./fireworks-pilot-log.md) §3.
+with A–E satisfied. **Executed on the replacement account `linencloset`:** the first attempt
+had been blocked on the original account (HTTP 412, billing; replaced by the owner the same
+day). Both planned datasets were created and uploaded — `arc-pilot-v1-train` (418) and
+`arc-pilot-v1-eval` (80, attaches as the job's `evaluation_dataset` at Package H step 3) —
+verified `READY` with `encryptionState` PLAINTEXT and independently re-verified 12:33 UTC:
+[`fireworks-pilot-log.md`](./fireworks-pilot-log.md) §7. Nothing else was created; no data
+beyond train+val left this environment.
 
 **What will be created at the provider — and nothing else:**
 
@@ -276,8 +280,8 @@ this pilot only. One signature covers the sequence below; no spend may occur bef
 package is signed.
 
 **Grant record (2026-10-10):** GRANTED — owner confirmation "Confirm $635". Cap active;
-spend ledger in the pilot log; **$0 incurred** — no paid operation has run (the provider
-account is suspended).
+spend ledger in the pilot log; **$0 incurred** — no paid operation has run (dataset upload
+and storage only; no training or evaluation job exists).
 
 Proposed caps (editable; list-price planning estimates, not quotes — unit prices verified in
 readiness §2, 2026-10-10):
