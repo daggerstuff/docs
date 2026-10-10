@@ -9,7 +9,7 @@ planned datasets `READY` (pilot log §7); G active — **actual spend $0.00** (t
 step-1 job `jf3tmylp` rated $0.00 under the account's Glimmer SFT promo — free until 10/31,
 owner-reported banner, verified via `usageCosts:query`; pilot log §10 resolution); H
 **step 1 executed and verified; step 2 satisfied by evidence; step 3 pilot SFT RUNNING**
-(job `wwopccov`, 2 epochs, wandb-instrumented, $0.00 under promo — pilot log §11). Only `train.jsonl` and
+(job `wwopccov`, 2 epochs, wandb-instrumented, $0.00 — COMPLETED, eval loss 0.649→0.430, LoRA model READY; pilot log §11.4). Only `train.jsonl` and
 `val.jsonl` have left this environment; `test.jsonl` and all private provenance remain
 local.
 **Companions:** [`fireworks-readiness.md`](./fireworks-readiness.md) — status register (each
@@ -347,7 +347,7 @@ Training API until 10/31 ✨ No credit card required"** — verified via
 `usageCosts:query` ($0.00 rated, attribution COMPLETE, covering the cancelled run; REST-created
 managed jobs included). The budget-gate block above is therefore **dissolved for this
 account's Glimmer SFT through 10/31**: actual training spend is $0.00, the smoke-test bound
-is moot, and step 3 is running as job `wwopccov` (2 epochs, wandb-instrumented, $0.00 — pilot log §11; first attempt `ida9f81a` cancelled pre-steps for the wandb hookup, §11.1).
+is moot, and step 3 COMPLETED as job `wwopccov` (2 epochs, wandb-instrumented, $0.00, eval loss 0.649→0.430, LoRA model READY — pilot log §11.4; first attempt `ida9f81a` cancelled pre-steps for the wandb hookup, §11.1).
 The list-basis figures are retained for post-promo planning. **The only remaining
 authorized paid line is budget row 3 (evaluation endpoint)** — or $0 if Phase-4 evaluation
 runs on a local/off-platform inference point (adapter export path verified — pilot log §10).

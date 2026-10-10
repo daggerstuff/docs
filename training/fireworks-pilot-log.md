@@ -11,8 +11,8 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 |---|---|
 | Phase 1 (packages A–E) | **complete** — grants recorded in the packages doc |
 | Package F upload | **EXECUTED on `linencloset`** — `arc-pilot-v1-train` (418) + `arc-pilot-v1-eval` (80) both `READY` (§7); train+val only; `test.jsonl` still local |
-| Package G spend | cap $635 active; **$0.00 actual** — the cancelled job `jf3tmylp` rated $0.00 (promo verified, §10); pilot SFT `wwopccov` training free under the same promo (until 10/31) |
-| Package H experiment | **step 1 (Render Samples) EXECUTED and verified** (§10); **budget gate DISSOLVED** — Glimmer SFT promo (free until 10/31, §10) verified at $0.00 rated; **step 3 pilot SFT RUNNING** (job `wwopccov`, 2 epochs, wandb-instrumented, §11) |
+| Package G spend | cap $635 active; **$0.00 actual** — all three SFT jobs (`jf3tmylp`, `ida9f81a`, `wwopccov`) rated $0.00 (promo verified at completion via `usageCosts:query`, §11.4) |
+| Package H experiment | **step 1 (Render Samples) EXECUTED and verified** (§10); **budget gate DISSOLVED** — Glimmer SFT promo (free until 10/31, §10); **step 3 pilot SFT COMPLETED** — job `wwopccov`, 2 epochs, eval loss 0.649→**0.430**, LoRA model `arc-pilot-v1-therapist-sft` READY, $0.00 (§11.4) |
 
 ## 2. Package C conditions (recorded; console items flagged)
 
@@ -68,7 +68,7 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 |---|---|---|---|---|
 | 2026-10-10 | SFT job `jf3tmylp` (step-1 attempt; cancelled at 57% of 1 epoch, §10) | $11.16/epoch (plan basis — wrong; unrolled basis ≈$102/epoch at list) | **$0.00** — rated cost verified $0 (§10 promo resolution; `usageCosts:query`, attribution COMPLETE) | $0.00 |
 | 2026-10-10 | SFT job `ida9f81a` (first step-3 attempt; cancelled before any steps ran, no capacity received, §11.1) | $0.00 under promo | **$0.00** — no steps ran | $0.00 |
-| 2026-10-10 | SFT job `wwopccov` (step-3 pilot SFT, 2 epochs, wandb-instrumented, §11.3) | $0.00 under promo | in flight — expected $0.00 | $0.00 |
+| 2026-10-10 | SFT job `wwopccov` (step-3 pilot SFT, 2 epochs, wandb-instrumented, §11.3–11.4) | $0.00 under promo | **$0.00** — verified at completion (`usageCosts:query`: 0 USD, zero rows, attribution COMPLETE) | $0.00 |
 
 Authorized lines: smoke test ≤$5 · pilot SFT ≤$150 (target changed to Muse Glimmer 30B;
 model-specific pricing and eligibility must be re-verified before training) · evaluation
@@ -110,13 +110,13 @@ pilot's training cost is $0 through 10/31, and the step-3 pilot SFT has been re-
    verified catalog ID — §9) over `arc-pilot-v1-train` + `arc-pilot-v1-eval` as
    evaluation_dataset. Access, managed-LoRA eligibility verified (§9); cost estimate at
    creation: **$0.00 under the promo** (§10 addendum; list basis ≈$102/epoch for
-   post-promo planning). **EXECUTING 2026-10-10 18:43 UTC: job
+   post-promo planning). **COMPLETED 2026-10-10: job
    `accounts/linencloset/supervisedFineTuningJobs/wwopccov`** (first attempt
    `ida9f81a` cancelled before any steps ran — §11.1) — 2 epochs (the plan's
-   mid-case; defaults-first per provider guidance — extend only if results indicate need),
-   `loraRank` 8, `maxContextLength` 32768 explicit, `evalAutoCarveout` false, outputModel
-   `accounts/linencloset/models/arc-pilot-v1-therapist-sft`, wandb instrumented
-   (§11.2–§11.3).
+   mid-case), `loraRank` 8, `maxContextLength` 32768 explicit, `evalAutoCarveout`
+   false, outputModel `accounts/linencloset/models/arc-pilot-v1-therapist-sft`
+   (READY), wandb instrumented. Eval loss 0.649→**0.430** (ppl 1.914→**1.537**),
+   no overfit at 2 epochs; $0.00 verified (§11.4).
 4. **Phase 4 evaluation preview** — untuned vs. tuned on held-out test.jsonl prompts (egress
    under Package C); catastrophic-tier behavior is unmeasurable on held-out data (all 10
    catastrophic rows are in train — export plan §5.4) and must be reported as such.
@@ -391,10 +391,9 @@ pilot SFT.
 
 Launched after the promo resolution (§10) dissolved the budget gate. The first attempt
 (`ida9f81a`, created 18:26 UTC) was **cancelled by owner directive before any training
-steps ran** and replaced by a wandb-instrumented run (`wwopccov`). **Status at write
-time: wwopccov RUNNING** (capacity granted instantly — §11.3). The completed run's
-telemetry, render-sample capture, and $0.00 rated-cost verification will be appended
-here when `wwopccov` reaches a terminal state.
+steps ran** and replaced by a wandb-instrumented run (`wwopccov`). **Status: `wwopccov`
+COMPLETED 20:08:06 UTC** — final telemetry, verification, and $0.00 rated-cost record
+in §11.4 below.
 
 ### 11.1 First attempt — `ida9f81a` (cancelled, nothing lost)
 
@@ -456,3 +455,44 @@ here when `wwopccov` reaches a terminal state.
 - **Watcher:** background poll (60 s interval) capturing the final job JSON, metrics,
   render samples, and the terminal-state $0.00 `usageCosts:query` result into the
   gitignored export dir with SHA-256s.
+
+### 11.4 COMPLETED — `wwopccov` final telemetry (20:08:06 UTC; run time ≈ 85 min)
+
+**Outcome: JOB_STATE_COMPLETED, 2 epochs, $0.00 rated.** The trained LoRA model
+`accounts/linencloset/models/arc-pilot-v1-therapist-sft` is **READY** (verified via
+GET). The wandb run `wwopccov` (entity `wutang`, project `pixelated-empathy-kan28`)
+shows state **finished** with the full step history streamed (created 18:43:28 UTC).
+
+- **Curves (28 optimizer steps — 14/epoch; eval at steps 0/14/28):**
+  - train loss 0.7083 → **0.3706** (final train ppl 1.449)
+  - eval loss 0.6493 → 0.4617 (end of epoch 1) → **0.4298** (end of epoch 2)
+  - eval ppl 1.914 → 1.587 → **1.537**
+  - Epoch 2 continued improving (0.4617 → 0.4298): no overfit signal at 2 epochs;
+    the curve suggests room for further epochs if a later decision wants them
+    (still free under the promo until 10/31).
+  - Cross-check: the epoch-1 eval loss (0.4617) matches the cancelled `jf3tmylp`'s
+    final eval loss (0.462 at 57% of 1 epoch) — consistent data + config.
+- **Metric tokens:** 53,153,680 train metric tokens total ≈ the padded-per-row basis
+  (418 rows × 65,536 padded tokens × 2 epochs ≈ 54.8M; §10's 2× `maxContextLength`
+  finding). The provider's per-step token counts are consistent across both jobs
+  (≈1.9M tokens/step); cross-job pct denominators are not comparable.
+- **Render-sample artifact (20 datums across 8 source rows — the same per-user-turn
+  unrolling as §10):** renderer `muse_glimmer`, `train_on_what all_assistant_messages`;
+  every datum's loss weights sum to exactly **1.0000** (normalized), user/system-side
+  chunks masked to 0; max datum 2,065 tokens of the 32,768 limit (no truncation).
+  8 distinct source rows rendered as 20 datums (rows 133/206/231/289/310/352/386/415).
+- **Cost: $0.00 verified at completion** via `POST /v1/accounts/linencloset/usageCosts:query`
+  (`start_time 2026-10-10T00:00:00Z`, `end_time 2026-10-11T00:00:00Z`, `scope ACCOUNT`,
+  `group_by ["MODEL"]`): **subtotal 0 USD, zero rows, attribution COMPLETE** —
+  covering `jf3tmylp` + `ida9f81a` + `wwopccov`. (API shape pinned: `start_time`,
+  `end_time`, `scope` enum, non-empty `group_by` are all required.)
+- **Evidence preserved (gitignored export dir, SHA-256):**
+  - `sft_job_wwopccov_final.json` — `55d04b4e303c05c4cbf5e2f457d4e0f66824a69afcca068975f05469c86b608c`
+  - `metrics_wwopccov.jsonl` — `d59a112d3d6324befd61c27a679e06644004ba03010c192e38c1bd728afb7874`
+  - `render_samples_wwopccov.jsonl` — `bc8fb6365c303d0c6b3077bc441ba90e8f408d2b36cebdfa5965b44247c029a0`
+- **Step 3 of Package H is complete.** Remaining pilot work: Phase-4 evaluation
+  (untuned vs. tuned on held-out `test.jsonl`, §5.4), path decision pending with the
+  owner — Fireworks deployment line (≤$480 authorized) vs. off-platform local
+  inference at $0 (§11.1–11.2 findings of the export plan's feasibility notes;
+  base on HF `meta-models/Muse-Glimmer-30B`, adapter export via
+  `:getDownloadEndpoint`, chat template captured in the §10 render artifact).
