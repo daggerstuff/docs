@@ -30,8 +30,10 @@ screening results; nothing exported yet." This document freezes, for owner revie
 - the **snapshot identity method and values** (§6);
 - the **privacy profile** (§7) and the **gated execution checklist** (§8).
 
-Decisions D1 (therapist-response SFT), D2 (inline ledger), D3 (model shortlist, GLM 5.3 Flash
-recommended), and D4 (seed-level grouping) are inputs from readiness §2, not re-litigated here.
+Decisions D1 (therapist-response SFT), D2 (inline ledger), D3 (original model shortlist), and
+D4 (seed-level grouping) are inputs from readiness §2. The later owner-directed selection of
+Muse Glimmer 30B supersedes the original GLM 5.3 Flash recommendation; confirm the selected
+model's access, training eligibility, and pricing before any job.
 The corpus itself is not frozen — any future gold change invalidates §6 and requires re-screening
 (readiness header; that is what the identity check exists to catch).
 
@@ -386,7 +388,9 @@ still requires the Phase 1 determinations and the separate upload gate.
 - **Phase 1 determinations — granted 2026-10-10** (owner instruction + same-day confirmations;
   grant records in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md)): items
   4–6 determined/approved, item 13 named (the owner as experiment owner and sole clinical
-  reviewer for now), D1–D3 ratified, final model GLM 5.3 Flash. Phase 1 is complete.
+  reviewer for now), D1–D3 ratified, initial final model GLM 5.3 Flash. A later owner
+   instruction superseded that model selection with Muse Glimmer 30B; see readiness update 4
+   and approval-packages §6. Phase 1's other decisions remain unchanged.
 - **Later gates — granted 2026-10-10, each recorded separately:** upload/provisioning
   **executed** on the replacement account `linencloset` (Package F — pilot log §7: both
   planned datasets `READY`, 418/80, `encryptionState` PLAINTEXT); budget cap $635 active, $0

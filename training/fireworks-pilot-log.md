@@ -68,9 +68,10 @@ live in [`fireworks-approval-packages.md`](./fireworks-approval-packages.md).
 |---|---|---|---|---|
 | 2026-10-10 | none — no paid operation has run | — | $0.00 | $0.00 |
 
-Authorized lines: smoke test ≤$5 · pilot SFT ≤$150 (2–3 epochs, GLM 5.3 Flash class) ·
-evaluation endpoint ≤$480 (≤40 GPU-hours, region-rate covered). Any overrun stops the pilot
-and returns to the budget gate.
+Authorized lines: smoke test ≤$5 · pilot SFT ≤$150 (target changed to Muse Glimmer 30B;
+model-specific pricing and eligibility must be re-verified before training) · evaluation
+endpoint ≤$480 (≤40 GPU-hours, region-rate covered). Existing total cap remains $635. Any
+overrun stops the pilot and returns to the budget gate.
 
 ## 5. Package H — step order (binding; not started)
 
@@ -80,9 +81,10 @@ and returns to the budget gate.
 2. **Format smoke test** — small managed-LoRA run on a ≤16B-class shortlist model over a
    ~100-row slice. Note: the slice dataset is additional egress (drawn from train.jsonl under
    the same Package C basis) and will be logged here before creation.
-3. **Pilot SFT** — managed LoRA on GLM 5.3 Flash over `arc-pilot-v1-train` +
-   `arc-pilot-v1-eval` as evaluation_dataset, 2–3 epochs within the cap; hyperparameters and
-   job id recorded here.
+3. **Pilot SFT** — planned target is Muse Glimmer 30B (`accounts/fireworks/models/glimmer-30b`)
+   over `arc-pilot-v1-train` + `arc-pilot-v1-eval` as evaluation_dataset. Before job creation,
+   verify model access, managed-LoRA eligibility, and current pricing, then record a cost
+   estimate and confirm it fits the existing cap; record hyperparameters and job id here.
 4. **Phase 4 evaluation preview** — untuned vs. tuned on held-out test.jsonl prompts (egress
    under Package C); catastrophic-tier behavior is unmeasurable on held-out data (all 10
    catastrophic rows are in train — export plan §5.4) and must be reported as such.
