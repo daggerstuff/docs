@@ -948,3 +948,70 @@ adapter's actual therapy delta.
   adapter" — the adapter is downloaded and fully wired). Also noted: an Adaption
   MCP server is connected to this session but needs owner authentication via
   `/mcp` before its tools become usable.
+
+### 13.9 Run-1 A/B verdict: adapter at parity — "N/A" benign, delta nil (2026-10-11, 19:30 UTC)
+
+**The A/B ran to completion on Lightning GPU compute and settles the §13.6
+question: the augmented dataset's `"N/A"` pass-through rows did not poison the
+run-1 checkpoint — and the checkpoint adds no measurable therapy delta over the
+bare base.** 52 golden questions, both arms through the checkpoint's own chat
+template (greedy, 512 new tokens, no-thinking prefill), deterministic heuristic
+judge, `mm` strategy + bnb NF4 (faithful to the training-time quantization; the
+adapter's own `adapter_config.json` records its training base as the
+togethercomputer bnb-4bit variant, confirming the quantization match):
+
+| arm                              | empath  | safety  | reflection |
+| -------------------------------- | ------- | ------- | ---------- |
+| base (`Qwen/Qwen3.6-35B-A3B`)    | 0.8000  | 0.8596  | 0.5186     |
+| base + run-1 LoRA                | 0.7962  | 0.8851  | 0.5019     |
+| **Δ adapter−base**              | −0.0038 | +0.0255 | −0.0168    |
+
+- **Verdict 1 — no poisoning.** A poisoned adapter (literal `"N/A"` trained as a
+  target) would land at-or-below base across the board; instead empath and
+  reflection are flat within judge noise and safety is slightly up. The §13.7
+  augmented dataset (6,951 verbatim + 3,043 generic-health synth rows) produced a
+  functioning adapter, not a degenerate one.
+- **Verdict 2 — no transfer.** Train loss fell 0.827→0.444 and the training win
+  rate was 0.4971, but none of that fit surfaces as golden-question gains. The
+  r8 q/v-proj LoRA over the ten full-attention layers is a wash on TherapyBench;
+  the +0.026 safety edge is the only positive signal. For run 2 this reframes
+  the question: the dataset forensics are settled benign, so effort belongs in
+  arc-pipeline expansion / a stronger recipe (rank, target modules, or
+  full-attention coverage), not in re-litigating the corpus.
+- **Artifacts**: `ai/research/experiments/evals/evaluation_results_adaption_run1_{base,adapter,comparison,preflight_adapter}.json`
+  (ai `d7094746`); the multi-mode GPU fix landed as ai `8613ee7e`.
+
+**How the run went (ops record):**
+
+- **L4 attempt (~$0.79/hr, GCP)**: payment-method gate cleared by owner
+  mid-session; start succeeded. `uv` defaulted to CPython 3.15 (no torch
+  2.13.0 wheels) — pinned `-p 3.14`. The 4-bit preflight load then failed:
+  forced `device_map={"": 0}` placed 20.65 GiB before a ~1 GiB quantization
+  workspace hit CUDA OOM against 22.03 GiB usable — the mm+NF4 load
+  (vision tower included) is genuinely ~1 GiB too big for a 22 GiB card
+  without the vision-offload patch.
+- **A100-80 in-place switch (~$5.68/hr, owner-approved)**: filesystem, venv,
+  and the 67 GB HF cache survived `switch_machine()`. Cold load 19:18 for
+  1026 tensors; preflight (5 adapter questions) passed at empath 0.86 / safety
+  0.92 / reflection 0.51.
+- **Base arm completed** (52 questions, ~53 min of generation), **then the
+  adapter arm died loading**: the multi-mode loop builds each arm's model in
+  the same process, and the CUDA caching allocator kept the first load's
+  ~65 GiB staging reserve; the second `from_pretrained` sized its
+  `device_map=auto` plan against the held memory, offloaded linears to
+  CPU/disk, and bnb refused to quantize them. Fixed at the harness root
+  (ai `8613ee7e`: drop mode references, `gc.collect()`,
+  `torch.cuda.empty_cache()` between modes; lazy torch import keeps stub
+  mode torch-less; PLC0415 per-file-ignore matches `adaption_lora_model.py`).
+  The adapter arm then ran clean in a fresh process.
+- **Studio plumbing lessons**: `upload_file`/`download_folder` paths are
+  unreliable around machine switches — writing/reading via base64 through the
+  `run()` command channel is deterministic; driver chains need an ERR trap
+  (the first chain failed silently at the `&&`); the studio shell presets
+  `HF_HOME` to `.cache/huggingface` (driver must export its own); and
+  `.lightningignore` does not cover `hfhome`/`evalvenv`, so both (~90 GB) were
+  deleted before `stop()` to avoid a slow sync. Studio `adaption-eval-l4`
+  stopped 19:22 UTC.
+- **Spend**: ~55 min L4 (~$0.73) + ~2.9 h A100-80 (~$16.5) ≈ **$17.2** total
+  for the complete A/B, against the 5-credit free balance noted in §13.8's
+  hardware decision.
