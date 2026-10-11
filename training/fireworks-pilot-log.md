@@ -491,8 +491,91 @@ shows state **finished** with the full step history streamed (created 18:43:28 U
   - `metrics_wwopccov.jsonl` — `d59a112d3d6324befd61c27a679e06644004ba03010c192e38c1bd728afb7874`
   - `render_samples_wwopccov.jsonl` — `bc8fb6365c303d0c6b3077bc441ba90e8f408d2b36cebdfa5965b44247c029a0`
 - **Step 3 of Package H is complete.** Remaining pilot work: Phase-4 evaluation
-  (untuned vs. tuned on held-out `test.jsonl`, §5.4), path decision pending with the
-  owner — Fireworks deployment line (≤$480 authorized) vs. off-platform local
-  inference at $0 (§11.1–11.2 findings of the export plan's feasibility notes;
-  base on HF `meta-models/Muse-Glimmer-30B`, adapter export via
-  `:getDownloadEndpoint`, chat template captured in the §10 render artifact).
+  (untuned vs. tuned on held-out `test.jsonl`, §5.4), path decided below (§12).
+
+## 12. Phase-4 evaluation path — owner decision: fully local (2026-10-10, 23:50 UTC)
+
+The owner chose **off-platform local inference** for Phase 4 ($0; the authorized ≤$480
+deployment line stays unused). Scoping found two hard blockers, both recorded here with
+their unblock routes.
+
+### 12.1 Blocker A — adapter download is restricted on this account
+
+- `GET /v1/accounts/linencloset/models/arc-pilot-v1-therapist-sft:getDownloadEndpoint`
+  → HTTP 400, code 9: **"model downloading is restricted, please contact Fireworks AI
+  to get access."** The API path exists (§10's feasibility note was correct) but this
+  account lacks the entitlement.
+- **Unblock routes (both live):** (1) support request — draft below, ready to paste;
+  (2) the owner checks the console UI for a download path when logged in (the API
+  gate may not reflect the console).
+- Everything else for the local path is staged and ready (§12.3); only the weights
+  are gated.
+
+### 12.2 Blocker B — no GPU in reach
+
+- This workstation (`vivi`'s box): 4 CPU cores, 15 GiB RAM, **no GPU** (`nvidia-smi`
+  absent), 52 GiB free disk. `headrush` (5.78.155.224, Hetzner; reachable via
+  key-auth SSH): identical shape — no GPU, 15 GiB RAM, 4 cores.
+- A 30B model is infeasible on both: BF16 needs ~60 GB (no GPU); q4 GGUF ~18 GB
+  exceeds RAM and would page-thrash at ~0.1 tok/s (days per eval pass); q2 fits but
+  destroys quality so badly the eval would measure the quant, not the fine-tune.
+- **Unblock route:** the owner points at a GPU box ("then we run on a GPU you point
+  me to"). Requirements to state up front: **≥24 GiB VRAM** for q4/q5 with
+  llama.cpp/vLLM (workable), **≥2×48 GiB or 1×80 GiB** for BF16 (faithful); disk
+  ~20 GB (q4) to ~60 GB (BF16); the repo, the adapter, and
+  `muse_glimmer_template.json` travel by git + download.
+
+### 12.3 Staged and verified now (hardware-independent)
+
+- **Chat template pinned** to `ai/qa/validation/therapy_bench/muse_glimmer_template.json`:
+  BOS `<|begin_of_text|>`; turns `<|start|>{role}[ to=user]<|message|>…<|eot|>`;
+  the renderer's injected system prompt (knowledge cutoff 2026-01-04, **dynamic
+  date stamp** — training saw 2026-10-10; pin the date for eval comparability;
+  "Reasoning strength: high"; "# Valid recipients: "self", "user""), generation
+  prefix `<|start|>assistant to=user<|message|>`, stop `<|eot|>`. Exactly one distinct
+  system prompt and one assistant-header form across all 20 datums.
+- **Deterministic-rendering finding:** the `jf3tmylp` and `wwopccov` render-sample
+  artifacts are **byte-identical** (same SHA-256 `bc8fb636…c029a0`) — the renderer
+  is fully deterministic given (dataset, renderer, template, date stamp). Local
+  prompting can therefore reproduce the provider's exact training-time format.
+- **Harness ready:** `ai/qa/validation/therapy_bench/therapy_bench.py` — deterministic
+  offline heuristic judge (empathy/safety/reflection), `GenerativeModel` protocol
+  (`generate(prompt) -> str`); the local server wrapper is a thin client.
+- **Base model staged:** HF `meta-models/Muse-Glimmer-30B` public, ungated (13 files).
+- **Held-out set local:** `test.jsonl` — 78 rows, 2.6 MiB, multi-turn dialogues
+  (row 1: 48 turns, user/assistant alternating, turns up to ~2.1k chars).
+
+### 12.4 Support request — ready to paste (owner sends)
+
+> **To:** Fireworks AI support
+> **Subject:** Request model download access — account `linencloset`
+>
+> We'd like to download a fine-tuned model from our account for local inference and
+> artifact portability.
+>
+> - Account: `accounts/linencloset` (display name "Top Nacho")
+> - Model: `accounts/linencloset/models/arc-pilot-v1-therapist-sft` — LoRA (rank 8),
+>   base `accounts/fireworks/models/muse-glimmer-30b`, trained via managed SFT job
+>   `wwopccov` (completed 2026-10-10, `JOB_STATE_COMPLETED`)
+> - Current behavior: `GET /v1/accounts/linencloset/models/arc-pilot-v1-therapist-sft:getDownloadEndpoint`
+>   returns HTTP 400 code 9: "model downloading is restricted, please contact
+>   Fireworks AI to get access"
+> - Request: enable the model-download entitlement for this account so
+>   `:getDownloadEndpoint` / `firectl model download` work for our own fine-tunes.
+>
+> Purpose is evaluation on our own infrastructure; the artifact is our own fine-tune
+> of the public Apache-2.0 base `meta-models/Muse-Glimmer-30B`.
+
+### 12.5 Open design questions for the run (when compute lands)
+
+- **Input protocol:** `test.jsonl` rows are full multi-turn dialogues; therapy_bench
+  consumes golden questions (`id/category/prompt/expected_behavior`). Adapter needed:
+  candidate — `prompt` = dialogue rendered through the last user turn (under a
+  context budget), `expected_behavior` = the reference assistant turn, `category`
+  mapped from the row's ledger/tier tags where available.
+- **Both arms identical:** untuned = base model + the SAME pinned template + same
+  generation params as tuned; pinned date stamp in both.
+- **Catastrophic-tier caveat stands** (§5.4 / packages §"must say so explicitly"):
+  all 10 catastrophic rows are in train — held-out eval cannot measure that tier and
+  the report must say so.
+- Judge driver: the harness default (`heuristic`, offline, deterministic).

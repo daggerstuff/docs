@@ -348,9 +348,13 @@ Training API until 10/31 ✨ No credit card required"** — verified via
 managed jobs included). The budget-gate block above is therefore **dissolved for this
 account's Glimmer SFT through 10/31**: actual training spend is $0.00, the smoke-test bound
 is moot, and step 3 COMPLETED as job `wwopccov` (2 epochs, wandb-instrumented, $0.00, eval loss 0.649→0.430, LoRA model READY — pilot log §11.4; first attempt `ida9f81a` cancelled pre-steps for the wandb hookup, §11.1).
-The list-basis figures are retained for post-promo planning. **The only remaining
-authorized paid line is budget row 3 (evaluation endpoint)** — or $0 if Phase-4 evaluation
-runs on a local/off-platform inference point (adapter export path verified — pilot log §10).
+The list-basis figures are retained for post-promo planning. **The owner chose the
+$0 local/off-platform path for Phase-4 evaluation (pilot log §12)** — the authorized
+deployment line (budget row 3) stays unused. Note the correction to the earlier
+feasibility note: the adapter-export API exists but the account's model-download
+entitlement is **restricted** (§12.1); unblock routes are a support request (draft in
+§12.4) or a console-download check by the owner. The chat template and harness are
+staged and hardware-independent (§12.3).
 
 1. **Render Samples (free, required):** verify loss masks (user 0 / assistant 1), ledger
    rendering, and no truncation. Largest row ≈23.2k tokens (chars/4) vs. the 32,768-token
