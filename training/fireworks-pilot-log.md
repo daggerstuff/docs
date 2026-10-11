@@ -579,3 +579,45 @@ their unblock routes.
   all 10 catastrophic rows are in train — held-out eval cannot measure that tier and
   the report must say so.
 - Judge driver: the harness default (`heuristic`, offline, deterministic).
+
+## 13. Adaption Labs credits — option scan and pending owner decisions (2026-10-11)
+
+The owner surfaced **free credits on Adaption** (`docs.adaptionlabs.ai`) and asked how
+best to use them. Platform scanned (public docs only; **nothing uploaded, nothing run,
+no account access yet** — no `ADAPTION_API_KEY` in this environment). Recorded here so
+the analysis survives the session; the Foresight memory carries the same.
+
+- **Products:** (1) **Adaptive Data** — import (jsonl/csv/parquet/HF/Kaggle) → column
+  mapping (prompt/completion/context/image/chat) → recipes (dedupe, rephrase, reasoning
+  traces) → expand (augment/translate/localize) → brand controls → adapt + evaluate
+  (quality signals source-vs-adapted; **free credit estimate before every run**,
+  `estimate=True`). (2) **AutoScientist** — automated loop: data optimization →
+  training (SFT or SFT→DPO "alignment"; LoRA r 1–64 or full) → eval vs
+  `target_win_rate` → hyperparameter revision; best checkpoint is **downloadable**
+  (no restriction — unlike our Fireworks entitlement blocker, §12.1).
+- **Hard constraints:** Muse-Glimmer-30B is **not** in their model list → any run
+  there is a **parallel track, not an A/B** with the Fireworks pilot. Row minimums:
+  SFT 1,000 (all models), **10,000 for the 30B-class bases** (Gemma ≥26B, Qwen ≥35B,
+  NVIDIA), DPO 12,000; 20K recommended. Our corpus (418 train / 80 val / 78 test =
+  576 rows) is below every usable-model floor → **expansion is a prerequisite**.
+  No inference-serving product → Phase-4 eval compute is NOT solved by this.
+- **Strategy as proposed (pending owner decisions):**
+  1. Parallel therapist-model track on AutoScientist — the strategic prize is
+     **weights portability** (breaks both Fireworks dependencies at once: the
+     download-entitlement blocker and post-10/31 training cost). Candidate bases:
+     `Qwen/Qwen3.6-35B-A3B` (MoE, 3B active → local inference feasible even on
+     CPU-class hardware — relevant since no GPU is currently in reach, §12.2) or
+     `google/gemma-4-31B-it` (closest class match to Glimmer).
+  2. Optional cheap Adaptive Data evaluation pass on the arc corpus (independent
+     second opinion to our own validators; estimates are free).
+  3. DPO/alignment stage later (roadmap stage not yet built; needs ~12K preference
+     pairs first).
+  4. Expansion path preference: **our own arc pipeline expands (clinical governance,
+     ledger discipline), Adaption trains** — their augmentation is fast but
+     synthetic-of-synthetic; any augmented rows must clear the clinical review gate.
+- **Egress note:** the arc corpus is synthetic/no-PHI, but the packages C–E approval
+  covered **Fireworks** — Adaption is a **new third-party processor**; the owner's
+  go-ahead on this question is the sign-off.
+- **Pending owner actions/decisions:** create an API key (`pt_live_…`, app settings →
+  API keys) and add `ADAPTION_API_KEY` to the root `.env`; state the credit amount;
+  egress sign-off; base-model pick; expansion path; credit budget for the run.
