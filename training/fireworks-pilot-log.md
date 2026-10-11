@@ -728,6 +728,48 @@ rows (dialogue basis) to **3,049 datum rows**. Options for the owner:
 - val/test splits and `arc_dpo_pairs.jsonl` were **not** uploaded (held-out discipline;
   test stays strictly local for Phase-4).
 
-**Next owner inputs:** augmentation-in-run vs arc-pipeline expand (given the smaller
-gap); `max_iterations` cap + `target_win_rate` for the run; the dashboard credit
-balance (not API-readable) so the spend ceiling is known before create.
+**Next owner inputs:** ~~augmentation vs arc-expand; run caps; balance~~ — **delegated
+to the agent 2026-10-11 ("you decide the best options here")**; decided and executed
+(§13.4).
+
+### 13.4 Run-1 decisions + launch (2026-10-11, 10:52 UTC; agent-decided per owner delegation)
+
+**The decisions, with reasons:**
+
+1. **Gap bridge: AutoScientist's in-run domain augmentation (+3,049 rows), minimum
+   effective size, NO general mix** — validated for free via `recommend_hyperparams`
+   (exactly 10,000 effective passes the floor check). Reasons: (a) the arc-pipeline
+   expansion, while clinically governed, is a multi-session generation job on the NF
+   inference budget — it would delay the parallel track's whole point (a portable
+   artifact) by days; (b) in-run augmentation is synthesized FROM our uploaded corpus,
+   so it inherits the real dialogues' style and format; (c) run 1 is a probe, not a
+   production candidate — minimum size = minimum compute = minimum credit exposure
+   under an unknown balance. The general-purpose mix (~6,667 rows, "strongly
+   recommended" for diversity) is deferred to a quality run if run 1 justifies one.
+   **Caveat stands:** the +3,049 synthetic rows mean this artifact is NOT
+   clinically-governed training data — the parallel-track checkpoint must clear the
+   clinical review gate before any clinical promotion, same as any augmented corpus.
+2. **`max_iterations=1`, `target_win_rate=0.6`** — a hard cap of one
+   optimize→train→evaluate cycle: bounded credit burn, still yields a downloadable
+   checkpoint (best-of-1), their win-rate evaluation, and the per-iteration cost
+   signal that decides whether a longer run is worth it. The 0.6 target is moot at
+   1 iteration but recorded for continuity into any follow-up run.
+3. **Credit balance (unknown, dashboard-only):** mitigated by the 1-iteration cap —
+   worst case is one iteration's cost; `client.autoscientist.cancel` exists as the
+   kill switch mid-run.
+
+**Launch record:**
+
+- `training_method="instruction"` (SFT — the DPO/alignment stage comes later; 693
+  local pairs exist but the DPO floor is 12,000), model `Qwen/Qwen3.6-35B-A3B`,
+  dataset B (`02e1331f`, 6,951 rows, succeeded), augmentation +3,049 domain / 0
+  general, `max_iterations=1`, `target_win_rate=0.6`, idempotency key
+  `adaption-qwen36-35b-a3b-run1-20261011` (double-create protection on retries).
+- **Run `cf1ebae0-1197-4362-92a1-3228c38ce96e` — status `running`** at 10:52 UTC.
+  Run object exposes no credit fields at create time (cost observable as the run
+  progresses / at terminal state).
+- **Watcher:** background poll (60 s, 6 h cap) saving the final run JSON to the
+  gitignored export dir at terminal state (run id, best_win_rate, download flag,
+  any credit fields). Checkpoint download happens after the watcher reports.
+- Baseline recipe (platform-recommended, unchanged — the loop's job to own):
+  LoRA r8/α8 q,v-proj, lr 1e-4 cosine, 1 epoch, batch max, train_on_inputs false.
