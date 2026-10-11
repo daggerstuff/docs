@@ -618,6 +618,33 @@ the analysis survives the session; the Foresight memory carries the same.
 - **Egress note:** the arc corpus is synthetic/no-PHI, but the packages C–E approval
   covered **Fireworks** — Adaption is a **new third-party processor**; the owner's
   go-ahead on this question is the sign-off.
-- **Pending owner actions/decisions:** create an API key (`pt_live_…`, app settings →
-  API keys) and add `ADAPTION_API_KEY` to the root `.env`; state the credit amount;
-  egress sign-off; base-model pick; expansion path; credit budget for the run.
+- **Pending owner actions/decisions:** ~~create an API key~~ **DONE 2026-10-11** (added to
+  the root `.env` as `ADAPTION_API_KEY`; value never printed in logs/docs); state the
+  credit amount (see below); egress sign-off; base-model pick; expansion path; credit
+  budget for the run.
+
+### 13.1 API verification (2026-10-11, read-only probes)
+
+- **SDK works:** `pip install adaption` verified via `uv run --with adaption`
+  (ephemeral dependency — the repo lockfile is untouched); client constructs from
+  `ADAPTION_API_KEY`. Note: the `.env` is not shell-sourced in agent contexts —
+  scripts must read/export the variable explicitly.
+- **Runtime model list (authoritative, 19 models — same set as the docs page):**
+  both strategy candidates are live — `google/gemma-4-31B-it` (31B, sft/dpo,
+  **lora+full**, model context 262,144) and `Qwen/Qwen3.6-35B-A3B` (35B MoE A3B,
+  sft/dpo, lora, model context 262,144). Also present: gpt-oss-20b/120b, Llama 3.3
+  70B (lora+full), Llama 4 Scout 109B, Nemotron 3 30B-A3B/120B-A12B, Qwen 3.5
+  family, Gemma 3 family. Caveat carried over: the docs' per-model **"Context (SFT)"
+  column (e.g. 49,152 for Gemma 4 31B) is the training-context cap that actually
+  applies to rows** — the runtime `context_length` is the model's serving context.
+- **`autoscientist` surface:** `create / get / list / cancel / wait_for_completion /
+  download / list_models / recommend_hyperparams` — the latter is worth consulting
+  before pinning the run config.
+- **Credit balance is NOT API-exposed** (404 on `/credits`, `/v1/credits`, `/user`,
+  `/account`; no SDK resource): balance is **app-dashboard-only**. The owner reads
+  the amount there; every Adaptive Data run quotes `estimated_credits_consumed`
+  for free via `estimate=True` before spending anything.
+- **No data has been uploaded and no run has been started** — the egress sign-off
+  (§13) gates the first upload. Next concrete step after sign-off: upload the
+  corpus (`.jsonl`, `processing_mode="raw"` per the AutoScientist quickstart if
+  training-ready, or through Adaptive Data first) and request the free estimate.
