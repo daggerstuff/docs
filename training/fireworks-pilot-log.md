@@ -773,3 +773,26 @@ to the agent 2026-10-11 ("you decide the best options here")**; decided and exec
   any credit fields). Checkpoint download happens after the watcher reports.
 - Baseline recipe (platform-recommended, unchanged — the loop's job to own):
   LoRA r8/α8 q,v-proj, lr 1e-4 cosine, 1 epoch, batch max, train_on_inputs false.
+
+### 13.5 Post-run readiness — verified while run 1 is in flight (2026-10-11)
+
+- **Base model is locally obtainable:** `Qwen/Qwen3.6-35B-A3B` is public and ungated
+  on HF (26 safetensors shards, ≈35B params; 3.5M downloads). MoE A3B (3B active)
+  keeps inference CPU-viable on a 32 GB-class machine without a GPU.
+- **The checkpoint will be a LoRA adapter, not merged weights** (docs: archive =
+  `adapter_config.json` + `adapter_model.safetensors` + tokenizer + trainer_state):
+  the local stack is HF base + peft (all present in this repo's venv: torch 2.14
+  CPU, transformers 5.18, peft 0.21.1), or a merge for GGUF quantization.
+- **Template note for this track:** unlike muse_glimmer (§12.3), the Qwen artifact
+  uses Qwen's own HF chat template — the §12.3 pin is Fireworks-pilot-specific and
+  does not apply to the Adaption artifact.
+- **Eval adapter design settles (§12.5's open question):** `manifest_internal.jsonl`
+  carries per-row provenance — `arc_id`, `session_n`, `split`, `source_family`
+  (e.g. `nightmare_scenarios`), `difficulty` (e.g. `severe`), `domain` (e.g.
+  `boundary_testing`), `verdict`, `line_sha256`. therapy_bench's golden-question
+  `category` maps cleanly onto `domain`/`source_family`, `expected_behavior` onto
+  the reference assistant turn, prompt onto the rendered dialogue prefix — with
+  ledger-grade provenance per row via `line_sha256`.
+- Ready state: on run-1 success the remaining work is download → inspect archive →
+  wire therapy_bench (GenerativeModel wrapper over base+adapter) → run the 78-row
+  held-out eval locally — no Fireworks dependency on this track's eval.
