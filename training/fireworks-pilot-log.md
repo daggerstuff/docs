@@ -796,3 +796,42 @@ to the agent 2026-10-11 ("you decide the best options here")**; decided and exec
 - Ready state: on run-1 success the remaining work is download → inspect archive →
   wire therapy_bench (GenerativeModel wrapper over base+adapter) → run the 78-row
   held-out eval locally — no Fireworks dependency on this track's eval.
+
+### 13.6 Run-1 results + checkpoint secured (2026-10-11, 12:06 UTC)
+
+**Status: `succeeded` — 74 minutes end-to-end** (created 10:52:16, completed 12:06:21).
+
+- **`best_win_rate` 0.4971 vs target 0.6** — a coin-flip on their generic judge, below
+  target, with `max_iterations=1` capping any recipe adjustment. Honest read: this
+  number says little about therapy quality (their judge is domain-generic); it says
+  the probe's mechanics work. The real quality test is the local therapy_bench eval.
+- **Training was healthy:** `trainer_state.json` shows train loss **0.827 → 0.444**
+  over 58 steps / 1 epoch — a clean descent curve, comparable in magnitude to the
+  Fireworks pilot (0.708 → 0.371 over 2 epochs; eval loss 0.430). The 58 steps over
+  ~10,000 rows imply sequence packing (~170 rows/step at batch max) on their side.
+- **Recipe actually used** (matches the recommendation): LoRA r8/α8, dropout 0,
+  `q_proj,v_proj`, CAUSAL_LM.
+- **Checkpoint downloaded and verified** (no restriction, no ceremony):
+  `adaption_run1_qwen36_lora.tgz` — plain tar (not gzip, despite the name), 7.7 MB,
+  sha `2ff7a31f75c8be38cb135cd5944b52175736824e7df226502067ad70f4dd2ee1`;
+  contents: `adapter_config.json`, `adapter_model.safetensors` (**4.1 MB** — r8 on
+  q,v is tiny), `chat_template.jinja`, `config.json`, tokenizer trio,
+  `trainer_state.json`, `README.md`. Extracted to
+  `export/fireworks_pilot_v1/adaption_run1_qwen36_lora/`.
+- **Reproduction nuance:** `adapter_config.base_model_name_or_path` =
+  `togethercomputer/Qwen3.6-35B-A3B_bnb_4bit_t` — the LoRA was trained against a
+  **bitsandbytes 4-bit quantized base**. Applying the adapter to the full-precision
+  HF base works (standard practice) with some drift; faithful reproduction wants the
+  same 4-bit base (bnb requires CUDA — GPU). Included `chat_template.jinja` is the
+  authoritative template for this artifact.
+- **Credit cost: not API-exposed even at terminal state** (no credit fields on the
+  run object). Balance and burn are dashboard-only — the owner's read of the
+  dashboard is the only way to know what run 1 consumed.
+- **Next decision (owner):** (a) read the dashboard (credit burn + remaining
+  balance); (b) local therapy_bench eval of THIS checkpoint first (free, no
+  Adaption spend, tells us whether a run-2 is worth anything) — my recommendation;
+  (c) run 2 with the general mix and more iterations, if the balance justifies it.
+  Eval compute note: this artifact's eval needs a modest GPU (≥24 GB with the 4-bit
+  base, or 40 GB+ for FP16) or a 32 GB-RAM machine with a GGUF quant — a lower bar
+  than the Fireworks artifact (dense 30B), but still not runnable on this
+  workstation or `headrush`.
