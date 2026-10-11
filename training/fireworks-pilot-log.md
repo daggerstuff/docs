@@ -682,3 +682,52 @@ the analysis survives the session; the Foresight memory carries the same.
   dataset's effective training size and launches nothing) — so the recipe
   recommendation itself is egress-gated; sequence: upload → estimate → recommend →
   decide → run.
+
+### 13.3 Owner decisions + zero-cost execution (2026-10-11)
+
+**Owner decisions (all six):** (1) Fireworks support request **sent**; (2) GPU box —
+deferred until the adapter downloads; (3) **egress to Adaption signed off**; (4) model
+pick: **`Qwen/Qwen3.6-35B-A3B`**; (5) expansion path: **arc pipeline expands,
+Adaption trains** (recommendation followed); (6) credit budget: **estimate first**,
+then decide.
+
+**Executed with zero credits spent:**
+
+- **Dataset A** (`adb7d8eb-a3c9-434a-aea0-c4a6a7b8a788`) — `train.jsonl` dialogues,
+  418 rows, `awaiting_input`. **Adaptive Data adapt estimate: 5 credits / 16 min**
+  (chat mapping `{"chat": "messages"}` validated by the estimate call).
+- Raw mode **rejects chat mapping** (requires explicit `prompt` + `completion` or
+  `chosen`/`rejected` columns) → performed the **local unroll** locally: per-assistant-turn,
+  mirroring the `muse_glimmer` per-datum training semantics (prompt = chat-turn array
+  through the preceding user turn; completion = the assistant turn verbatim, structured
+  notes intact). **418 dialogues → 6,951 datums** (110 MB) — every assistant turn
+  trained exactly once, same as the Fireworks renderer does.
+- **Dataset B** (`02e1331f-ff62-4f01-bf03-1df439c62fbd`) — the unrolled set, raw,
+  6,951 rows, **`succeeded` — training-ready**, upload + processing free.
+- **`recommend_hyperparams` for Qwen3.6-35B-A3B:** at 6,951 rows without augmentation
+  → HTTP 400, explicit floor error ("cannot be used… fewer than 10000 effective
+  training rows"). Bridged via their augmentation (+3,049 domain, +6,667 general =
+  16,667 effective) → **validates**, recommended recipe: LoRA **r 8 / α 8** on
+  `q_proj,v_proj`, lr 1e-4 cosine, warmup 0.1, **1 epoch**, batch `max`,
+  `train_on_inputs false` — strikingly close to the Fireworks pilot config (loraRank 8,
+  lr 1e-4), a useful independent confirmation.
+- **Cost-control levers on `autoscientist.create`:** `max_iterations` (hard spend cap
+  on the loop), `target_win_rate` (early stop), `voucher`, `idempotency_key`. **No
+  pre-run cost quote exists for AutoScientist runs** — only Adaptive Data has the
+  estimate endpoint; the run's credit cost is observable at create/first iteration.
+
+**Reshaped expansion math (material):** the unroll changes the floor gap from ~9,582
+rows (dialogue basis) to **3,049 datum rows**. Options for the owner:
+- (a) **AutoScientist's own augmentation bridges it in-run** (+3,049 domain rows it
+  synthesizes — synthetic-of-synthetic; the clinical review gate applies to anything
+  its artifact trains on), plus the recommended 40% general-purpose mix (+6,667).
+- (b) **Arc pipeline expansion is now a ~7× smaller job** than scoped pre-unroll:
+  ~3,049 datum-equivalents ≈ ~185 more dialogues at the observed 16.6 datums/dialogue.
+  The owner's standing decision (arc pipeline expands) now costs a fraction of the
+  original estimate — or can be revisited given (a) exists.
+- val/test splits and `arc_dpo_pairs.jsonl` were **not** uploaded (held-out discipline;
+  test stays strictly local for Phase-4).
+
+**Next owner inputs:** augmentation-in-run vs arc-pipeline expand (given the smaller
+gap); `max_iterations` cap + `target_win_rate` for the run; the dashboard credit
+balance (not API-readable) so the spend ceiling is known before create.
