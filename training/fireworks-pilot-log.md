@@ -885,3 +885,66 @@ directly**, and reading it changed the picture of run 1.
   same. By contrast, the arc-pipeline expansion (~185 real dialogues ≈ 3,049 datums)
   now looks strictly better for domain quality; the platform's augmentation's main
   remaining value is regularization/diversity, which the general mix provides anyway.
+
+### 13.8 Eval harness built, CPU-smoke-verified (2026-10-11, 14:40 UTC)
+
+**The therapy_bench A/B of the run-1 checkpoint is now one command on a GPU box**
+(bare base vs base+LoRA). It answers the §13.6 open question — whether `"N/A"`
+was trained as a literal target (a poisoned adapter should score at-or-below the
+bare base) or skipped as an export marker (at-or-above) — and measures the
+adapter's actual therapy delta.
+
+- **New harness** (`ai/qa/validation/therapy_bench/`):
+  - `adaption_lora_model.py` — the bench's `GenerativeModel` over the checkpoint
+    stack: tokenizer + chat template from the checkpoint dir; thinking markers
+    derived programmatically at runtime (template bytes never hardcoded —
+    display/transcription mangles tag-like strings); no-thinking prefill by
+    default, greedy, 512 new tokens; two load strategies (below). Heavy imports
+    are lazy so the module imports (and unit tests run) without torch.
+  - `run_adaption_eval.py` — CLI A/B runner: `--modes base,adapter` (or `stub`),
+    `--limit N` smoke, per-mode `results.json` + a `comparison.json` with deltas
+    vs base.
+  - 13 new tests (pure helpers, lazy-import guard, stub end-to-end); 32 pass
+    total with the existing suite; ruff clean (three pre-existing
+    `therapy_bench.py` debts fixed at root: an unused noqa, two magic numbers).
+- **Verified offline, zero spend** (meta-instantiation + local files; nothing
+  downloaded but configs/index):
+  - The public base `Qwen/Qwen3.6-35B-A3B` is **multimodal**
+    (`Qwen3_5MoeForConditionalGeneration`); its text weights live under
+    `model.language_model.*` plus top-level `lm_head.weight` and cover the
+    checkpoint's text-only CausalLM **exactly** (692 + 1 = 693 keys, zero
+    missing/extra). No official text-only or BNB-4bit sibling exists (Instruct
+    404s; togethercomputer's bnb variant is private; unsloth/nvidia FP8/GGUF/
+    NVFP4 variants are different stacks).
+  - Adapter census: **20 modules** — q_proj (out 8192) and v_proj (out 512) of
+    the **ten full-attention layers only**; the hybrid model's linear-attention
+    layers use a different module family (`linear_attn`) and were never matched.
+    40 tensors, three shape groups (A [8, 2048] ×20; B [8192, 8] ×10; B [512,
+    8] ×10).
+  - **`remap` strategy** (default): text-only CausalLM instantiated from the
+    checkpoint's own config, public shards streamed in under the prefix remap,
+    adapter attached with native PEFT (keys align exactly). BF16 → ~70 GiB: an
+    80 GiB GPU or a ~96 GiB-RAM CPU box.
+  - **`mm` strategy**: full multimodal `from_pretrained` — required for bnb NF4
+    (the faithful training-time quantization; fits a **~24 GiB GPU**) — then LoRA
+    injected into the language-model subtree with a name-restricted regex and
+    the adapter tensors copied in under a key rewrite. Meta-verified: exactly 20
+    modules injected, **zero vision-tower escapes**; strict load-time accounting
+    asserts all 40 tensors land.
+  - Training rows carry **no system turn** → eval messages are user-only,
+    matching training conditions exactly.
+  - Live CPU smoke all green: tokenizer + template auto-load from the checkpoint
+    dir; 52-question stub run through the full pipeline (heuristic judge +
+    comparison); CLI form verified
+    (`PYTHONPATH=.. uv run python -m ai.qa.validation.therapy_bench.run_adaption_eval`).
+- **Invocation on the GPU box** (from the ai repo root):
+  - ~24 GiB GPU: `PYTHONPATH=.. uv run python -m ai.qa.validation.therapy_bench.run_adaption_eval --modes base,adapter --load-strategy mm --load-4bit`
+  - ~80 GiB GPU or ~96 GiB-RAM CPU box: `PYTHONPATH=.. uv run python -m ai.qa.validation.therapy_bench.run_adaption_eval` (remap default)
+  - Pre-flight first: `--modes adapter --limit 5`. Disk: ~75 GiB for the 26-shard
+    base download either way.
+- **Still blocked on hardware** (unchanged): this workstation (4-core/15 GiB, no
+  GPU, 5.5 GiB free, swap full) and `headrush` cannot run it. The deferred owner
+  decision is now due: which GPU box ("cross that bridge when we download
+  adapter" — the adapter is downloaded and fully wired). Also noted: an Adaption
+  MCP server is connected to this session but needs owner authentication via
+  `/mcp` before its tools become usable.
