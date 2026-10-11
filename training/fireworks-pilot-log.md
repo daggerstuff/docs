@@ -835,3 +835,53 @@ to the agent 2026-10-11 ("you decide the best options here")**; decided and exec
   base, or 40 GB+ for FP16) or a 32 GB-RAM machine with a GGUF quant — a lower bar
   than the Fireworks artifact (dense 30B), but still not runnable on this
   workstation or `headrush`.
+
+### 13.7 Reading the results properly — the augmented dataset, pulled apart (2026-10-11, 12:45 UTC)
+
+The owner pushed back on "dashboard-only" ("read the results yourself, use the API
+properly") — correct: `datasets.list()` surfaced a **third dataset we never created
+directly**, and reading it changed the picture of run 1.
+
+- **Discovered: `a7079227-…` — "train_unrolled_adaption (augmented)", kind
+  `augmented`, `source_dataset_id` = our unrolled upload, run id
+  `augmented-a7079227-…`, created 11:16:40 UTC (run 1's augmentation phase), 9,994
+  rows, `succeeded`.** This is the materialized training set of run 1 — and it is
+  downloadable and fully inspectable. Downloaded (225.6 MB jsonl, plain, not
+  tarred).
+- **Composition, quantified:**
+  - **6,951 rows = our corpus, verbatim passthrough.** `enhanced_completion` is the
+    literal string `"N/A"` on exactly these rows (count matches our upload to the
+    row); `original_prompt`/`original_completion` carry our turns with content
+    intact (character-level verification done — earlier mismatch fears were an
+    artifact of comparing decoded text against escaped-JSON bytes).
+  - **3,043 rows = platform-synthesized — and NOT derived from our corpus.** Their
+    sources are generic health-advice Q&A (HealthCareMagic-style: "Hi Tabitha!
+    Welcome to HCm…", HIV-risk reassurance, abdominal-pain advice), rewritten into
+    elaborate single-turn compassionate-clinician prompt/completion pairs
+    (`original_prompt` None on 2,416 of them). **Zero** of them carry our structured
+    note format; zero share content with our corpus. So "domain augmentation" here
+    means *topic-adjacent generic content*, not corpus-derived synthesis — materially
+    different from what "domain-targeted" suggested, and directly relevant to run-2
+    design and the clinical-review scope.
+- **The "N/A" question, honestly:** if run 1 trained `"N/A"` as a literal target on
+  69% of rows, the artifact would be poisoned; if "N/A" is an export marker meaning
+  "no enhancement applied" (training on the original), the corpus is a sane mix.
+  The loss curve (0.827→0.444, ordinary LM descent — a constant-target corpus would
+  collapse far faster) points to the benign reading, but it cannot settle it from
+  outside. **The therapy_bench eval settles it empirically.**
+- **Export quirk:** the dataset download stringifies turn-arrays with a malformed
+  repr (`'role': user` — missing quotes), so the export is not programmatically
+  round-trippable without repair. Raw material is preserved; the encoding is sloppy.
+- **Augmentation count:** 3,043 rows generated, not the requested 3,049 (9,994 vs
+  10,000 — six short; presumably dedupe).
+- **Credits, exhaustively re-verified negative:** no credits endpoint (17
+  undocumented paths swept: 404s), no credit fields on run/dataset/model objects,
+  SDK exposes exactly three resources (`autoscientist`, `datasets`,
+  `training_models`). Balance/burn are dashboard-only — that specific claim stands,
+  but the results themselves were absolutely readable, and the initial
+  "get_status-only" reading was too shallow.
+- **Implication for run 2:** the augmentation knob pulls generic health content,
+  not corpus-derived therapy material — a general-mix run 2 would add more of the
+  same. By contrast, the arc-pipeline expansion (~185 real dialogues ≈ 3,049 datums)
+  now looks strictly better for domain quality; the platform's augmentation's main
+  remaining value is regularization/diversity, which the general mix provides anyway.
