@@ -1015,3 +1015,56 @@ togethercomputer bnb-4bit variant, confirming the quantization match):
 - **Spend**: ~55 min L4 (~$0.73) + ~2.9 h A100-80 (~$16.5) ≈ **$17.2** total
   for the complete A/B, against the 5-credit free balance noted in §13.8's
   hardware decision.
+
+### 13.10 Run-2 expansion kicked off: 189 plans written, sessions generating (2026-10-12, 03:40 UTC)
+
+**Owner picked the run-2 direction — arc-pipeline expansion + a stronger
+recipe, not dataset forensics — and said "kick off the expansion job."** The
+long-arc generator is now building the ~185-dialogue expansion (≈3,049
+datum-equivalents at the §13.4 16.6/dialogue rate) on top of the intact
+235-arc accepted corpus, with all 189 target plans written and lint-clean.
+
+- **Plan waves** (`build_arc_plans`, resumable, W&B-tracked): 2 fresh seeds
+  (`arc_0231-0232`) + 148 on the first-ever seed-reuse pass (`arc_0233-0384`,
+  `--variation 2`) + 39 on pass 3 (`arc_0385-0424`), using the builder's
+  skip-existing semantics for safe retries. Six slots failed per-plan lint 3×
+  (`arc_0250/0290/0337/0379/0390` + one timeout slot) — seeds stay unclaimed,
+  retryable as bonus volume. The new-batch lint is clean; the set-level lint's
+  4 errors are pre-existing debt in two OLD accepted plans (`arc_0017`
+  calendar dates, `arc_0040` beat type).
+- **Backend saga** (the standing routing was dead on both legs):
+  - Plan leg's api.cheaperinference.com: **http_402** (credits exhausted);
+    9Router writer/auditor: `NINEROUTER_KEY` **absent from every env file**
+    (the October runs must have used a hand-exported key).
+  - **NVIDIA NIM** (`NVIDIA_API_KEY`, live-verified) took all three legs:
+    150 plans in 2h11m (923,649 tokens), then went **unresponsive
+    mid-wave-3** (transport Timeouts → HTTP 000 on every probe; outage or
+    rate-limit cooldown after the ~933k-token run — still dark at 03:40Z).
+  - **Featherless fallback**: key #1 (`rc_d93c…`) healthy — 200 even on
+    16,384-token writer payloads; key #2 (`rc_e070…`, the old one) is
+    **dead: 403 "no active subscription"**, and the KeyPool does not rotate
+    on 403 (only 429/402), so its presence in the writer pool poisoned all
+    176 session calls (0 sessions) until it was pulled. Writer now runs
+    K1-only at concurrency 1 (Featherless = 1 slot/account; concurrency 2
+    self-429s).
+- **Session generation** (the multi-day phase) is RUNNING detached since
+  03:16:38Z: 190 plans / 495 sessions queued, writer
+  `deepseek-ai/DeepSeek-V4.1-Flash` (spec bake-off winner, thinking off),
+  resumable via `sessions_checkpoint.jsonl`, W&B run `i12v2l3g`. First arc
+  complete at a ~3.7 min/session average → ETA ~24-48h. The deterministic
+  gates are visibly enforcing quality (arc_0231 s2 attempt 1 rejected for a
+  caving phrase, attempt 2 clean).
+- **Config state** (root `.env`, dated provenance comments for every flip):
+  plans+writer on Featherless K1; **auditor stays `moonshotai/kimi-k3` on
+  NIM** — needed only after sessions land. Recheck NIM then; if still dark,
+  the fallback is W&B Inference kimi-k2.6/k2.7-code (the Sep 32k-cap
+  workaround route) or waiting out the cooldown.
+- **Next, in order**: generation completes → K3 audit pass → revise/accept
+  iterate (HR arcs get the manual lane) → consolidate to gold (quadit-gated)
+  + `arc_dpo_pairs.jsonl` refresh → Adaption upload + free
+  `recommend_hyperparams` estimate → owner reads dashboard balance → run-2
+  training with the stronger recipe (rank > r8, target modules beyond
+  q/v-proj of the ten full-attention layers — the §13.9 verdict's
+  prescription). Owner accelerators on offer: re-subscribing the second
+  Featherless account would double writer throughput; NIM recovery would
+  restore the fast writer + auditor.
