@@ -1068,3 +1068,43 @@ datum-equivalents at the §13.4 16.6/dialogue rate) on top of the intact
   prescription). Owner accelerators on offer: re-subscribing the second
   Featherless account would double writer throughput; NIM recovery would
   restore the fast writer + auditor.
+
+### 13.11 Multi-lane generation: W&B joins as writer lane 2; audit wave 1 done (2026-10-12, 13:30 UTC)
+
+**Owner: "We can add another and/or multiple lanes now, if we have more
+access to them like you said. No one said it had to be single file line
+like that."** The single-file Featherless lane (~3-day ETA) is retired; the
+remaining 447 sessions now run as two disjoint writer lanes.
+
+- **Lane qualification (live probes, 12:56-13:15Z)**: NIM is
+  split-personality — `kimi-k3` (auditor) answers 200 in ~7s, but the
+  `deepseek-v4.1-flash` writer model still hangs (HTTP 000, 60s+), so no
+  NIM writer lane. **W&B Inference serves the exact writer model**
+  (`deepseek-ai/DeepSeek-V4.1-Flash`): 200 in 1.1s, accepts the full 32k
+  `max_tokens` budget, and the generator already sends
+  `chat_template_kwargs: {"thinking": false}` for DeepSeek — no writer-code
+  changes needed.
+- **Generator change** (ai `31a364c1`): `ARC_ENV_FILE` layers a small diff
+  env file on top of root `.env` (`load_dotenv` override), letting a second
+  generator process run a different writer backend concurrently; each lane
+  keeps its own `--output`/`--checkpoint`. Lane W's diff file holds only
+  `ARC_WRITER_URL/MODEL/KEYS` (W&B), no key material.
+- **Lane split** (447 remaining sessions across 173 incomplete arcs of the
+  189 new plans — 493 sessions total expected): lane W (W&B, concurrency 2)
+  takes 115 arcs / 295 sessions (`arc_0231-0364`), writing
+  `laneW_records.jsonl` + `laneW_sessions_checkpoint.jsonl`; lane F
+  (Featherless K1, concurrency 1) takes 58 arcs / 156 sessions
+  (`arc_0365-0424`) on the canonical files. Observed lane W pace:
+  **~22-25s/session** (~2/min at concurrency 2) → ~3h for its shard; lane F
+  remains ~8 min/session (~21h) — the new long pole. Rebalance option when
+  W drains: hand its shard-2 to a lane W2. Old run stopped mid-flight
+  (checkpoint-resumable), drivers `/tmp/arc_lane_{w,f}.sh`.
+- **K3 audit wave 1 (first 27 completed arcs, NIM kimi-k3, recovered)**:
+  **16 ACCEPT / 11 REVISE**. The 25 auditor-dropped session rows live in
+  lane W's arc range; its `resume: 0` means it regenerates those sessions
+  with the corrective notes in `arc_audit_notes/` (the revise-regen loop,
+  automatic), but also re-rolls already-accepted sessions — merge rule at
+  completion: (arc, session)-keyed, **canonical rows win, laneW fills
+  gaps**, then re-audit the 11 REVISE arcs.
+- **Wall-clock**: single-lane ETA was ~3 days; two-lane ETA ~21h (lane F
+  bound), ~3h if lane W absorbs the balance after draining.
