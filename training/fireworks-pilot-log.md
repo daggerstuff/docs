@@ -1108,3 +1108,62 @@ remaining 447 sessions now run as two disjoint writer lanes.
   gaps**, then re-audit the 11 REVISE arcs.
 - **Wall-clock**: single-lane ETA was ~3 days; two-lane ETA ~21h (lane F
   bound), ~3h if lane W absorbs the balance after draining.
+
+### 13.12 Adaption contamination cleanup (2026-10-12)
+
+- **Augmented dataset soft-deleted via the Adaption SDK**:
+  `datasets.delete("a7079227-6c65-4bc7-a371-d85921514a2e")` returned
+  `Success`; a follow-up `datasets.get()` returned `Dataset not found`.
+- **Source dataset soft-deleted**:
+  `datasets.delete("02e1331f-ff62-4f01-bf03-1df439c62fbd")` returned
+  `Success`; a follow-up `datasets.get()` returned `Dataset not found`. This
+  source held the 6,951 uploaded training turns; deletion was intentional to
+  remove the contaminated training input from the cloud workspace.
+- **Training run remains**: `autoscientist.get()` reports
+  `cf1ebae0-1197-4362-92a1-3228c38ce96e` as `succeeded`. The SDK exposes
+  `autoscientist.cancel()` only, which is for active runs; no run deletion or
+  archival operation is exposed. Cancel was not called on a completed run.
+  The run's recorded dataset id was the source dataset id above.
+- The locally quarantined adapter and contaminated export remain preserved for
+  forensic traceability; they were not deleted locally.
+
+**Cleanup scope:** both cloud datasets are no longer retrievable, but the
+completed run record cannot be removed through the available API. It must be
+retained as provenance or escalated to Adaption support for backend deletion.
+
+### 13.13 Run-2 corpus generated; audit wave 2 done; revise loop running (2026-10-12, 21:50 UTC)
+
+**The multi-lane expansion generated the full 189-plan corpus in ~3.5 hours
+of wall clock** (vs. the ~3-day single-lane Featherless projection):
+
+- **Lane W** (W&B `DeepSeek-V4.1-Flash`, concurrency 2): 282 sessions /
+  110 arcs in 1h57m (3.76M tokens, ~22s/session, zero 429s, 5 gate
+  failures). **Lane F** (Featherless K1): 9 sessions before handoff. **Lane
+  W2** (W&B, remainder on canonical files after the merge): 142 sessions /
+  52 arcs in 70 min, plus a Featherless pass over the residue. Merged via
+  `merge_lane_checkpoints.py` (ai `8ee20326`) — canonical-wins, 278
+  checkpoint rows + 110 records appended.
+- **Operational incident**: the raw-`nohup` watcher scripts (orchestrator +
+  audit chain) were silently reaped with an Execute call's process group
+  mid-afternoon; the generation lanes were unaffected (managed tasks). All
+  orphaned stages were run directly and the remainder re-launched as ONE
+  managed task (W2 → fallback → audit). Lesson recorded: long-lived
+  processes only via managed background tasks; also two `pgrep/pkill -f`
+  self-match traps observed (a `pkill -9 -f` killed its own command).
+- **K3 audit wave 2** (171 records, kimi-k3 on NIM, 55 min):
+  **97 ACCEPT / 70 REVISE / 4 HR**. Corpus now stands at **348 accepted
+  arc records** (235 original + 16 wave-1 + 97 wave-2), zero duplicate
+  rows; 4 HR arcs held for the manual review lane.
+- **Revise/regen convergence loop running since 21:46Z** (managed task,
+  `/tmp/arc_revise_loop.sh`, log `/tmp/arc_revise_loop.log`): 72 incomplete
+  arcs / 159 sessions (REVISE drops + gate-fail stragglers) regenerate with
+  the auditor's corrective notes on W&B, Featherless pass on residue, then
+  re-audit; repeats until an audit returns revised=0, cap 5 iterations
+  (~2h each — converges overnight).
+- **Next after convergence**: consolidate to gold (quadit-gated;
+  `consolidate()` appends — dry runs need a temp gold copy) → refresh
+  `arc_dpo_pairs.jsonl` → Adaption upload + free `recommend_hyperparams`
+  → owner reads dashboard balance → run-2 training with the stronger
+  recipe (rank > r8, target modules beyond q/v-proj) → same-day A/B eval.
+  Bonus volume: the 6 lint-failed plan slots remain retryable.
+
