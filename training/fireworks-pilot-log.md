@@ -1212,6 +1212,71 @@ free recipe estimate validates at corpus-only size.** Owner go-ahead:
   hyperparams overrides) waits on the owner's dashboard balance read.
   Nothing has been launched; zero credits spent so far.
 
+### 13.15 Run-2 trained (stronger recipe) and A/B'd: platform win-rate up, local therapy delta negative (2026-10-13)
+
+**Owner authorized the training run ("then you can begin the training run")
+after the git-commit pass** (ai `fae07087`/`fb1499b0`/`0b1a35a9`, docs
+`160fcb5`, root `ec1d33314`+`491a66979`; all trees clean, all pushed). Run
+`8da8f685-7ef6-43c0-958e-ab34dbdcd520`:
+
+- `autoscientist.create(dataset_id=2f983459…, model=Qwen/Qwen3.6-35B-A3B,
+  training_method="instruction", hyperparams={lora_r 32, lora_alpha 32,
+  lora_trainable_modules "q_proj,k_proj,v_proj,o_proj"}, max_iterations=1,
+  target_win_rate=0.6, idempotency key adaption-qwen36-35b-a3b-run2-20261013)`;
+  no augmentation fields passed.
+- **Succeeded in 1h20m** (14:15:14→15:35:18Z). The `best_hyperparams` echo and
+  the downloaded `adapter_config.json` both confirm the overrides were
+  honored (r32/α32, q,k,v,o; all else at platform defaults). Train loss
+  0.59 → ~0.30 band over 85 steps, 1 epoch.
+- **Platform win-rate 0.6414 vs run-1's 0.4971** (+0.1443 — run-2 cleared the
+  0.6 target run-1 missed). The SDK still exposes no credit fields; balance
+  remains a dashboard read.
+- **Checkpoint**: `autoscientist.download` → 29,339,823-byte zstd tar,
+  sha256 `0a67cc5b…`, extracted to `export/adaption_run2_v1/checkpoint_run2/`
+  (config verified: r 32, α 32, targets [q,v,o,k], CAUSAL_LM).
+
+**A/B, same day, bare-base arm reused from run-1** (same base repo, same 52
+golden questions, same heuristic judge, same mm+NF4 strategy; base model and
+judge are adapter-independent):
+
+| arm                        | empath  | safety  | reflection |
+| -------------------------- | ------- | ------- | ---------- |
+| bare base (run-1 record)   | 0.8000  | 0.8596  | 0.5186     |
+| run-2 adapter (52 q)       | 0.7548  | 0.8293  | 0.4349     |
+| Δ run-2                    | −0.0452 | −0.0303 | −0.0838    |
+| Δ run-1 (§13.9, for scale) | −0.0038 | +0.0255 | −0.0168    |
+
+**Verdict: the stronger recipe over the 11,192-row corpus did NOT transfer to
+the local heuristic judge — run-2 sits below the bare base on all three
+metrics, a worse local delta than run-1's parity, while the platform's own
+win-rate metric improved sharply.** The model moved; not in the direction
+this bench measures. The confound runs both ways: recipe (r32/q,k,v,o vs
+r8/q,v) **and** corpus (corpus-only vs augmented) both changed, so this is
+not a pure recipe A/B. Candidate explanations, unranked: heuristic-judge
+divergence from the platform's win-rate scoring; the extra capacity
+overfitting the arc style at the cost of empathy-judged nuance; an
+arc-corpus tone shift. A recipe-only A/B would need the same corpus at
+r8/q,v.
+
+**Harness fix that unblocked the eval** (ai `68639cd5`): the mm-strategy
+adapter injection had pinned run-1's scope (q,v; 20 modules), so run-2's
+40-module adapter failed the pre-injection count assert with k/o tensors
+unexpected. Scope and expected module count are now derived from the adapter
+file itself (suffixes and distinct module paths from the safetensors keys);
+the language-model-subtree escape check and the strict load-time tensor
+accounting are unchanged. 39 qa tests pass; ruff clean.
+
+**Studio lessons (the §13.9 class, now both directions):** `upload_file`
+"successfully" misplaced a module write (remote md5 mismatch; content never
+landed at the requested absolute path), and `download_file` 404s on
+not-yet-synced storage (NoSuchKey). The base64-through-`run()` channel with
+md5/JSON verification is the reliable route both ways. Spend: ~1.6 h
+A100-80 ≈ **$9.1** (base-arm reuse halved run-1's $17.2). Preflight (5 q):
+empath 0.73 / safety 0.92 / reflection 0.4971. Studio stopped;
+`hfhome`/`evalvenv` deleted before stop. Evidence:
+`export/adaption_run2_v1/{adaption_run2_create.json,
+adaption_run2_8da8f685.json, run2_adapter.bin, eval_run2/}`.
+
 ## 14. Glimmer ordered follow-up recheck (2026-10-13)
 
 Owner requested adapter/compute verification → paired evaluation → bounded SFT
