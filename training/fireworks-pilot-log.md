@@ -1167,3 +1167,74 @@ of wall clock** (vs. the ~3-day single-lane Featherless projection):
   recipe (rank > r8, target modules beyond q/v-proj) → same-day A/B eval.
   Bonus volume: the 6 lint-failed plan slots remain retryable.
 
+### 13.14 Run-2 uploaded to Adaption raw — corpus-only, estimate validated (2026-10-13, 12:40 UTC)
+
+**The converged run-2 corpus is on Adaption, augmentation-free, and the
+free recipe estimate validates at corpus-only size.** Owner go-ahead:
+"Begin, carefully assessing along the way for proper execution."
+
+- **Export** (new `export_adaption_run2.py`, ai `c7e2e163`/`6c24ab30`):
+  re-ran the run-1 validation stack (ledger contract, PII screen, content
+  fidelity, lineage) without run-1's frozen pins on the expanded corpus —
+  **936 gold arc rows, 0 hard violations**, splits
+  **train 679 / val 129 / test 128** (72.5/13.8/13.7, groups intact —
+  225/44/41 seed groups, no group straddles splits). Unrolled train:
+  **11,192 per-assistant-turn datums** (174.4 MB, run-1 format verified
+  byte-shape: cumulative prompt w/ weight 0, completion w/ weight 1).
+  val/test held local (run-1 discipline). Fresh SHAs recorded in
+  `export/adaption_run2_v1/identity_run2.json`.
+- **Upload-route discovery** (the careful part that mattered): the SDK has
+  TWO ingest paths. `datasets.upload.initiate/complete` (what the run-2
+  tool first used) lands in the **adapt wizard**: message-array prompts
+  get auto-chat-mapped and the dataset parks at `awaiting_input`
+  (adapt-gated) — `recommend_hyperparams` refuses anything below
+  `succeeded` (TRAINING_NOT_ELIGIBLE). The correct raw path per the
+  `autoscientist.create` contract is **`datasets.create(processing_mode=
+  "raw", column_mapping={"prompt","completion"})` → presigned PUT →
+  `upload.complete_by_id` (sha256-verified) → `succeeded` in one poll
+  cycle**. Raw "materializes the data straight to a trainable dataset
+  with **no augmentation**" — the run-2 anti-contamination requirement,
+  now encoded in `adaption_dataset_upload.py` (ai `c71e785a`). The
+  wizard-route dataset was soft-deleted and confirmed gone (§13.12
+  discipline).
+- **Dataset**: `arc-run2-train-v1`
+  (`2f983459-b3ff-47be-aa62-faa686b14306`), raw, **succeeded,
+  row_count 11,192**, upload + processing free.
+- **Free estimate, corpus-only**: `recommend_hyperparams` with NO
+  augmentation parameters validated at 11,192 effective rows — the run-1
+  floor error (10,000 minimum for Qwen3.6-35B-A3B) did not recur; the
+  §13.10 expansion was sized for exactly this. Platform default recipe:
+  LoRA **r8/α8, q_proj,v_proj**, lr 1e-4 cosine, 1 epoch, batch max —
+  same as run-1's, as expected (it is the derived default, not the run-2
+  prescription; `autoscientist.create` accepts per-field `hyperparams`
+  overrides for the stronger recipe).
+- **Gate**: run-2 training (with the stronger recipe as explicit
+  hyperparams overrides) waits on the owner's dashboard balance read.
+  Nothing has been launched; zero credits spent so far.
+
+## 14. Glimmer ordered follow-up recheck (2026-10-13)
+
+Owner requested adapter/compute verification → paired evaluation → bounded SFT
+follow-up → RL readiness, in that order. Live account checks confirm `wwopccov`
+COMPLETED and `arc-pilot-v1-therapist-sft` READY, but the download endpoint still
+returns HTTP 400/code 9 (downloads temporarily disabled). No Fireworks deployment
+exists; Lightning `adaption-eval-l4` is Stopped with no machine allocated.
+
+The actual Glimmer r8 adapter targets all seven projection modules; the older
+Qwen-specific restricted-target diagnosis does not apply. No GPU was started,
+model evaluated, new dataset uploaded, or new training job launched.
+
+**New lineage finding:** resolving v1 arc-ID fallbacks through generator seed
+maps identifies 16 seed groups crossing original split boundaries. Twenty test
+rows from eight arcs share training/validation seeds. A new local preparer
+excludes these and produces 58 retained corpus cases plus 52 controls, with
+frozen inputs, provider template/date, and separate references. The original
+v1 export is unchanged; original validation-loss numbers are historical training
+telemetry, not an independently established generalization result.
+
+Details, the tested preparation command, follow-up recipe, expanded-corpus
+lineage exclusions and DPO incompatibilities are recorded in
+[`muse-glimmer-experiments.md`](./muse-glimmer-experiments.md). The required next
+unblock remains adapter access (or an explicitly costed alternate evaluation
+route), before executing the comparison or choosing another training run.
+
