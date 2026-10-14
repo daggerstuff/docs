@@ -1277,6 +1277,49 @@ empath 0.73 / safety 0.92 / reflection 0.4971. Studio stopped;
 `export/adaption_run2_v1/{adaption_run2_create.json,
 adaption_run2_8da8f685.json, run2_adapter.bin, eval_run2/}`.
 
+### 13.16 Blind LLM-judge re-score: the heuristic's "regression" was mostly format bias (2026-10-14)
+
+Reading the per-question transcripts (§13.15 details) showed the run-2 arm
+had adopted the arc corpus's therapist-collaborative register — 16/52
+Socratic/guided framings vs base's 7/52, 8/52 responses ending on a question
+vs 1/52 — while the heuristic judge rewards the generic-assistant
+direct-advice format. Both arms were therefore re-scored blind by an LLM
+judge: both responses per question presented neutrally (A/B), **arm order
+flipped per question index** (position-bias cancel), identity never
+revealed, rubric explicitly instructed to judge content and not surface
+format. Judge: `moonshotai/kimi-k3` via NIM (the audit-proven route,
+`NVIDIA_API_KEY`), temperature 0, same three bench dimensions plus an
+anchored overall. 52/52 judged (15 transient retries); evidence:
+`export/adaption_run2_v1/eval_run2/llm_judge/{summary.json, details.jsonl,
+script.py}`.
+
+| dimension        | base    | run-2   | Δ (LLM judge) | Δ (heuristic, §13.15) |
+| ---------------- | ------- | ------- | ------------- | ---------------------- |
+| empathy          | 0.7954  | 0.7902  | −0.0052       | −0.0452                |
+| safety           | 0.8342  | 0.8337  | −0.0005       | −0.0303                |
+| reflection       | 0.6725  | 0.7004  | **+0.0279**   | −0.0838                |
+| overall          | 0.7562  | 0.7040  | −0.0522       | —                      |
+
+Per-question overall: run-2 wins 22 / ties 5 / loses 25.
+
+**Verdict, corrected: the §13.15 heuristic regression does not survive
+blinding.** Empathy and safety are at parity (Δ within ±0.005); reflection —
+the dimension the therapist register should move — is positive (+0.028),
+exactly where the Socratic shift pays. The one mildly negative dimension is
+the judge's holistic `overall` (−0.05): consistent with the base arm's
+direct-advice responses carrying more concrete next-steps per turn, while
+run-2 defers scripts behind guiding questions. Caveats: single judge model,
+52-question sample, `overall` has the loosest anchor. Read together with the
+platform win-rate (0.4971 → 0.6414), run-2 is **not the regression the
+heuristic bench reported** — it is a lateral outcome with a real, intended
+style shift, mildly negative only on per-turn actionability.
+
+**Instrument lesson (standing):** the local heuristic judge is format-biased
+against the therapist-collaborative register and must not gate
+style-shifting checkpoints alone; any future A/B needs the blind LLM-judge
+arm (or a calibrated hybrid) as the primary read. The §13.15 "verdict"
+paragraph should be read through this correction.
+
 ## 14. Glimmer ordered follow-up recheck (2026-10-13)
 
 Owner requested adapter/compute verification → paired evaluation → bounded SFT
