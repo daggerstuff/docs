@@ -1320,6 +1320,70 @@ style-shifting checkpoints alone; any future A/B needs the blind LLM-judge
 arm (or a calibrated hybrid) as the primary read. The §13.15 "verdict"
 paragraph should be read through this correction.
 
+### 13.17 Retry lane executed: arc_0261/0408 unblocked, 6 bonus slots, audit + consolidation (2026-10-14)
+
+**Root cause of the 5×5 exhausted attempts was a gate false negative, not
+writer failure.** Both arcs' plan quotes narrate the client in the third
+person (`claims she 'never leaves the house at night'`, `claims she 'never
+texts between sessions'`) while the beat-containment gate demanded the quoted
+morphology verbatim inside the client's own lines. Re-reading the 10 failed
+dumps showed the writer had planted the beat naturally in first person
+("I never leave the house at night, not once", "I never text between
+sessions. Not once.") in 8/10 attempts — the gate rejected them on verb
+person alone. The `sleep/sleeps` special case in the matcher was this same
+bug, patched narrowly once before.
+
+- **Fix (ai `76d52b7f`):** `_beat_phrase_is_present` now accepts one
+  third-person-singular verb de-inflected (-s, phonological -es, -ies),
+  word-boundary safe; the gate's quote regex hoisted to `_BEAT_QUOTE_RE`
+  (gate and tests share one definition). 9 regression tests in
+  `qa/validation/tests/test_arc_beat_containment.py` pin extraction, the
+  tolerance, and the non-match classes (past tense, unrelated text);
+  50 qa tests green, ruff 0 net-new (34 pre-existing untouched), strict
+  ratchet unchanged. Against the historical dumps, 8/10 old attempts now
+  pass the beat gate; the remaining 2 are genuine writer misses that the
+  corrective loop handles.
+- **Retry run:** `generate_arc_corpus --plans arc_0261,arc_0408
+  --concurrency 1` (Featherless K1, DeepSeek-V4.1-Flash) — 5/5 sessions,
+  0 gate failures; arc_0261 (3 sessions) and arc_0408 (2) both recorded on
+  the first post-fix pass.
+- **Bonus slots:** the six lint-failed slots' seeds had since been claimed
+  by later waves (all 177 base seeds have ≥1 written plan), so the retry is
+  a variation-4 seed-reuse pass: `build_arc_plans --start 425 --count 6
+  --variation 4` wrote **arc_0425-0430**, all six individually lint-clean
+  (the 4 set-level errors are the pre-existing arc_0017/0040 debt). Their
+  18 sessions generated with 0 gate failures (23 gate rejects caught and
+  corrected in-loop by the mechanical gates + corrective notes).
+- **Audit (2 passes):** NIM kimi-k3's chat path went dark again (HTTP 000
+  for 2.5h+ while `/v1/models` stays 200), so the auditor ran on the
+  §13.10-sanctioned fallback — W&B Serverless Inference
+  `moonshotai/Kimi-K2.6` (exact audit payload verified: `response_format
+  json_object` + `chat_template_kwargs thinking=false`, clean JSON; `.env`
+  flip carries a dated provenance comment; restore kimi-k3/NIM when its
+  chat path recovers). Pass 1: 3 ACCEPT (arc_0408, 0427, 0430), 5 REVISE.
+  After one revise round (14 sessions regenerated with audit notes, 0 gate
+  failures): arc_0428 ACCEPT; arc_0261/0425/0426/0429 escalated to the HR
+  queue per the second-consecutive-revise policy. Net: **4 new ACCEPT, 4
+  new HR** (owner's manual lane, now 56 distinct arcs).
+- **Consolidation:** gold 190,095 → **190,158** rows (+63 session datums —
+  11 from tonight's four accepts, the rest prior-wave arcs the last
+  consolidation predated; 936 already-consolidated sessions deduped clean;
+  1 prior-wave session quarantined to `consolidation_rejections.jsonl`:
+  arc_0366 consecutive-therapist-turns). `build_arc_dpo` emitted **89 new
+  preference pairs** (session/attempt/case modes; 1,092 dupes skipped).
+  No Adaption re-upload was made — that belongs to the pending run-3
+  direction decision.
+
+**Fireworks chase-or-drop evidence (for the owner, decision pending):**
+`:getDownloadEndpoint` still returns HTTP 400 code 9 — fourth consecutive
+day unchanged. Fireworks' own troubleshooting docs treat weight download as
+a routine step, so this reads as an account entitlement, not a platform
+outage; the §12.4 support request is drafted and only the owner can send
+it. The adapter stays READY on the account with no known expiry, and the
+10/31 promo only binds NEW SFT jobs — so dropping now loses nothing and the
+chase can happen at the same cost later. Recommended: send the request when
+convenient; no spend accrues either way.
+
 ## 14. Glimmer ordered follow-up recheck (2026-10-13)
 
 Owner requested adapter/compute verification → paired evaluation → bounded SFT
