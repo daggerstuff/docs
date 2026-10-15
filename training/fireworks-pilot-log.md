@@ -1384,6 +1384,45 @@ it. The adapter stays READY on the account with no known expiry, and the
 chase can happen at the same cost later. Recommended: send the request when
 convenient; no spend accrues either way.
 
+### 13.18 Run-3 direction decided; Fireworks request sent; HR digest delivered (2026-10-15)
+
+**Fireworks:** the owner sent the §12.4 support request on 2026-10-15 — no
+response yet. Endpoint re-probed same day: still HTTP 400 code 9. The lane
+now simply waits on support; the §13.17 assessment (drop-now loses nothing,
+adapter stays READY) stands until they respond.
+
+**Run-3 direction (owner delegated the pick): PROMOTE RUN-2; defer the next
+retrain until the HR lane resolves.** Rationale:
+
+- Run-2 cleared its target (0.4971 → 0.6414) and the blind judge read it as
+  parity-plus with the intended therapist-register shift (§13.16) — it is
+  the current best checkpoint by every instrument we trust, so it becomes
+  the working reference for any future comparison.
+- Retraining now buys almost nothing: tonight's accepted delta is 11
+  sessions (~1% of the ~999-session corpus). The recipe question (r32/q,k,v,o
+  vs the run-1 r8/q,v) is settled enough — run-2 followed the §13.9
+  prescription and beat target.
+- The HR lane is the meaningful next data event: the 56 queued arcs carry
+  ~136 sessions; owner acceptances there would grow the corpus ~13-15%, which
+  is the retrain trigger. Until then: **zero platform spend, no re-upload**
+  (a re-upload only matters at retrain time, and the freshest corpus — post-HR
+  — is the one worth uploading).
+
+Operational consequence: `adaption_run2_v1` (run `8da8f685`, §13.15) is the
+promoted checkpoint; `ai/training/adaption_run2_v1/checkpoint_run2/` is its
+canonical local artifact; the eval instruments (therapy_bench mm-injection,
+blind-judge script) already support it.
+
+**HR lane:** full digest delivered — every one of the 56 arcs grouped for
+disposition in `hr-queue-digest.md` (this repo): Group A safety-heavy (4
+arcs, shared beat-timing signature), Group B other stance-flagged (24, incl.
+the four §13.17 arcs), Group C ledger-only (28, no therapist-behavior
+defects). Notable: the auditor never issued an outright `fail` on any queued
+arc — all 56 arrived via the second-consecutive-revise rule, and the
+dominant safety failure is one mechanical beat-timing drift, not 20
+independent content problems. Owner verdicts pending (accept / requeue /
+reject per arc or per group).
+
 ## 14. Glimmer ordered follow-up recheck (2026-10-13)
 
 Owner requested adapter/compute verification → paired evaluation → bounded SFT
