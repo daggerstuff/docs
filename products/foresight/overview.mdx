@@ -74,12 +74,15 @@ Foresight runs as an MCP server, exposing tools that AI agents can call:
 | Tool                         | Description                                |
 | ---------------------------- | ------------------------------------------ |
 | `manage_memories`            | Store, update, delete, or archive memories |
+| `capture_in_flight_memory`   | Store a memory immediately mid-session     |
+| `capture_triggered_memories` | Store memories from triggered detections   |
 | `search_memories`            | Hybrid search (semantic + keyword)         |
 | `manage_context_blocks`      | Read, update, or clear context blocks      |
 | `process_session_transcript` | Extract memories from session transcripts  |
 | `manage_curation_runs`       | Start, monitor, or cancel curation jobs    |
 | `inject_context`             | Surface relevant context for current task  |
 | `query_memories_temporal`    | Query by time window and trend             |
+| `reprocess_raw_events`       | Rebuild memories from the raw-events layer |
 | `get_system_status`          | System health, memory statistics, trends   |
 
 ### CLI
