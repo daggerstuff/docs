@@ -1,7 +1,7 @@
 requests==2.34.2
 pytest==9.1.1
-ruff==0.16.10
-pydantic==2.13.5
+ruff==0.17.0
+pydantic==2.14.1
 pytest-cov==7.1.0
 bandit==1.9.4
 mypy>=1.10.0
