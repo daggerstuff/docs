@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "synthetic_unscored_access_and_format_smoke",
+  "cases_file": "diagnostic-smoke-cases.jsonl",
+  "cases_sha256": "59aeb4eeee62b34c9ac7cbd1bbd0e400e08f5f39bb4b479ae6a0007bb6ab2ede",
+  "case_count": 5,
+  "case_ids": [
+    "format_json_01",
+    "provided_fact_01",
+    "tool_choice_01",
+    "summarize_rule_01",
+    "short_answer_01"
+  ],
+  "domain": "nonclinical synthetic only",
+  "source_data": false,
+  "clinical_claims": false,
+  "tool_execution": false,
+  "diagnostic_checks": "nonclinical and unvalidated; never use as a model-quality or safety gate",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 256,
+    "stop": []
+  },
+  "input_token_upper_bound": {
+    "method": "UTF-8 bytes plus chat/tool framing allowance",
+    "maximum_per_case": 512
+  },
+  "config_file": "wandb-base-access-smoke.config.json",
+  "config_sha256": "0038a602671d3da12143fad6dd12e1b1565b40b74db02d9e8fbddc9dc5a7f33d",
+  "smoke_execution": {
+    "status": "complete_access_smoke_only",
+    "model": "Qwen/Qwen3.6-35B-A3B",
+    "project": "wutang/pixelated-empathy-kan28",
+    "results_dir": "results/wandb-base-synthetic-smoke-corrected-20261017",
+    "results_sha256": "fb8d12363e8a4040397c4f72e3132ebe43dfef2b325f5228b0abb92e0d05949f",
+    "successful_cases": 5,
+    "finish_reasons": ["length", "length", "tool_calls", "length", "stop"],
+    "successful_responses_estimated_cost_usd": 0.00147125,
+    "actual_billed_usd": null,
+    "actual_billed_status": "unknown; seven earlier rejected requests returned no usage"
+  },
+  "created_at": "2026-10-17"
+}

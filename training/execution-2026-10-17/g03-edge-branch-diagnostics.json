@@ -1,0 +1,147 @@
+{
+  "created_at_utc": "2026-10-17T16:26:05+00:00",
+  "status": "research_only_edge_subset_diagnostic_passes_source_lineage_and_basic_regex_privacy_screens; provider_and_clinical_limitations_remain",
+  "scope": "Metadata-only; contains hashes, counts, source classes, and split identities; no dialogue text, prompts, names, credentials, or PHI.",
+  "candidate": {
+    "path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "rows": 190139
+  },
+  "source_origin": {
+    "classification": "first_party_generated_synthetic_edge_case_seed",
+    "generator_path": "ai/training/build_edge_and_nightmare_dataset.py",
+    "generator_sha256": "7a17480eab0bea9245491b3bdf49554678ba0d91ba6d53603da3e0ab093e5d9f",
+    "origin_basis": "generate_edge_case_turn builds prompts only from the hardcoded 10-family taxonomy plus difficulty, ambiguity, and variation; no external seed record or clinical narrative is read for this branch. build_arc_plans._make_seed records edge_cases provenance and ARC generation consumes the local generated transcript.",
+    "generated_seed_artifact_hashes": [
+      {
+        "path": "ai/training/output/nightmare_fuel/edge_and_nightmare_accepted.jsonl",
+        "sha256": "f52fd72945c9527d0b74032879a9fcea37f4a8445efa52c968400aaa7e909b44",
+        "edge_case_seed_rows": 80
+      },
+      {
+        "path": "ai/training/output/nightmare_fuel/edge_and_nightmare_hr70_accepted.jsonl",
+        "sha256": "ef2abadfe667df0c0b704f9d9857012a2d2ffbf05ae691911766b4f2c35b8c7e",
+        "edge_case_seed_rows": 20
+      }
+    ],
+    "generator_run_provider_model": "not recorded in accepted-row provenance, seed map, checkpoint state, or inspected run-log metadata; code accepts environment-selected NF_BACKEND/NF_MODEL. No .env or credential values were inspected.",
+    "clinical_reviewed_field": "auto-set true in generate_edge_case_turn; not treated as proof of actual clinician review, rights, privacy, or clinical validation.",
+    "rights_interpretation": "Internal synthetic prompt construction supports first-party origin for this exact edge branch; the broad proposed source manifest does not independently establish other source classes or blanket external-transfer terms.",
+    "generated_run_artifact": {
+      "path": "ai/training/output/nightmare_fuel/checkpoints/edge_and_nightmare_generated.jsonl",
+      "sha256": "f601a0b8e7dba97db888e63d585cb5309ce734b3f40254b9dfe232d0bf01ce20",
+      "bytes": 1113006,
+      "modified_at_utc": "2026-09-17T14:24:26.825969Z",
+      "row_count": 212,
+      "edge_case_source_rows": 120,
+      "nightmare_fuel_source_rows": 92,
+      "limitation": "Rows preserve source and scenario metadata but no generator backend/model receipt."
+    },
+    "targeted_historical_receipt_search": {
+      "opencode_session_message_search": "Read-only SQLite search over 2026-09-17 through 2026-09-18 for generator script/artifact names and NF_BACKEND/NF_MODEL terms returned zero rows. Three matching rows were dated 2026-10-17 and belonged to current audit context.",
+      "claude_local_logs": "No Claude JSON/JSONL/log files were present under /home/vivi/.claude for 2026-09-17 through 2026-09-19.",
+      "foresight_search": "Keyword queries for edge generation provider/model returned no historical receipt.",
+      "conclusion": "Historical backend/model is not established by targeted local evidence; do not infer from present environment defaults. Further local broad search is not justified absent a new index/artifact."
+    }
+  },
+  "row_level_reservation": {
+    "candidate_edge_rows": 551,
+    "candidate_edge_arc_ids": 226,
+    "candidate_edge_seed_groups": 190,
+    "heldout_final_turn_cases": 58,
+    "heldout_final_turn_seed_groups": 22,
+    "edge_arcs_sharing_heldout_seed_group": 12,
+    "edge_rows_excluded_for_heldout_group_overlap": 29,
+    "remaining_rows_before_other_gates": 522,
+    "remaining_arc_ids": 214,
+    "remaining_seed_groups": 179,
+    "rowref_path": "docs/training/execution-2026-10-17/g03-edge-case-post-holdout-rowrefs.jsonl",
+    "rowref_sha256": "a5294068c241eb48007c6c33036da0c033a16198094c6e83f307eeaabf443a7a",
+    "rowref_rows": 522,
+    "provisional_group_split": {
+      "train": {
+        "rows": 410,
+        "groups": 139
+      },
+      "validation": {
+        "rows": 72,
+        "groups": 25
+      },
+      "test": {
+        "rows": 40,
+        "groups": 15
+      }
+    },
+    "split_method": "Stable SHA-256(candidate digest, seed-group digest, fixed g03-edge-v1 salt), 80/10/10 bucket; assignment is groupwise and provisional, not G04-approved.",
+    "source_group_disjointness": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0,
+      "heldout_eval_groups_in_retained": 0
+    },
+    "heldout_exclusion_sha256": "b19a4e120b7d179585c55fe8292c6711de4adeb96deed81fe5775d148b74527b"
+  },
+  "privacy_regex_screen": {
+    "patterns": [
+      "card",
+      "email",
+      "ipv4",
+      "phone",
+      "ssn",
+      "url"
+    ],
+    "candidate_rows_scanned": 551,
+    "match_count_by_pattern": {
+      "email": 0,
+      "ssn": 0,
+      "phone": 0,
+      "card": 0,
+      "url": 0,
+      "ipv4": 0
+    },
+    "matched_rows_by_pattern": {
+      "email": 0,
+      "ssn": 0,
+      "phone": 0,
+      "card": 0,
+      "url": 0,
+      "ipv4": 0
+    },
+    "elapsed_seconds": 7.395,
+    "limitation": "Regex indicator screen only; no raw matches were emitted. It does not detect names or all clinical identifiers. Presidio package is unavailable in this environment; this is a limitation, not proof of absence."
+  },
+  "heldout_near_duplicate_screen": {
+    "method": "Per-row unique normalized alphanumeric token 5-gram containment into each heldout rendered prompt; discard ngrams appearing in more than 10/58 prompts. No content output.",
+    "cases": 58,
+    "rows_after_exact_group_exclusion": 522,
+    "rows_any_filtered_5gram_overlap": 522,
+    "rows_at_or_above_containment": {
+      "0.25": 0,
+      "0.5": 0,
+      "0.8": 0,
+      "1.0": 0
+    },
+    "elapsed_seconds": 7.395,
+    "limitations": "Near-duplicate diagnostic only; not semantic equivalence or clinical quality. Golden-control source identities remain missing, though existing full-candidate screen found no control row at >=0.25 containment."
+  },
+  "eligibility_gates": {
+    "met_for_research_subset": "Specific first-party synthetic edge seed lineage; exact machine accept metadata and exact archive content binding; 29 heldout-group rows removed; no matches in six basic PII-pattern indicators.",
+    "not_met_or_not_proven": "Actual edge generator provider/model and applicable output-use terms are not recorded in run artifacts; remote provider transfer/use permission must be checked against current provider terms/policy before upload. `clinical_reviewed` is auto-set and cannot support clinical quality claims; production or clinical use is out of scope. Separate lane-2 human review content binding remains unproven.",
+    "release_view_created": false,
+    "upload_or_spend": false
+  },
+  "golden_control_near_duplicate_screen": {
+    "method": "Per-row unique normalized alphanumeric token 5-gram containment into each golden-control rendered prompt; discard grams appearing in more than 10/52 prompts. No content output.",
+    "controls": 52,
+    "rows_after_exact_eval_group_exclusion": 522,
+    "rows_any_filtered_5gram_overlap": 371,
+    "rows_at_or_above_containment": {
+      "0.25": 0,
+      "0.5": 0,
+      "0.8": 0,
+      "1.0": 0
+    },
+    "elapsed_seconds": 2.693,
+    "limitations": "The control source identities are unavailable; a low-overlap screen cannot establish source independence or semantic separation."
+  }
+}

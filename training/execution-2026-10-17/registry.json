@@ -1,0 +1,501 @@
+{
+  "updated_at": "2026-10-18T13:43:48+00:00",
+  "authorization": "User approved consolidated plan and beginning execution on 2026-10-17; W&B inference and Adaption credits confirmed; Fireworks credits tentative. Verify bounded actual coverage before spend.",
+  "campaign_status": "active_local_synthetic_pilot_ready_for_review",
+  "active_next_task": "RECONCILE_WANDB_SFT_JOB_POST_400_BEFORE_RETRY",
+  "runtime_transition": {
+    "less_expensive_model_requested": true,
+    "active_model_switched": false,
+    "forced_compaction_performed": false,
+    "reason": "The main session model was intentionally left unchanged; task execution was routed to lower-cost gpt-6-luna workers (training_execution, provider_qualification, evaluation_readiness). No client-side model-switch control is needed for this worker routing.",
+    "automatic_context_compaction_observed": true,
+    "worker_model_routing": "gpt-6-luna for training_execution, provider_qualification, evaluation_readiness"
+  },
+  "external_effects": {
+    "uploads": 0,
+    "new_training_jobs": 0,
+    "new_deployments": 0,
+    "provider_inference_requests_recorded": 18,
+    "successful_inference_responses": 11,
+    "http_400_inference_responses": 7,
+    "successful_usage_tokens": {
+      "prompt": 430,
+      "completion": 1091
+    },
+    "successful_request_cost_estimate_usd": 0.00147125,
+    "all_12_requests_theoretical_cost_ceiling_usd": 0.005376,
+    "provider_billed_usage_actual": "unknown for 7 rejected responses without usage; do not report spend as zero",
+    "additional_inference_requests_authorized": false,
+    "pending_credential_policy_decision": "Resolved for bounded provider operations: user authorized process-only use of existing .env credentials; values must remain in process environment and never be emitted or persisted.",
+    "remote_generation_run_receipt": {
+      "status": "checked_metadata_no_artifact_binding",
+      "scope": "read-only W&B metadata for September 17-18 generator runs",
+      "finding": "two candidate runs show backend=vercel and model=deepseek/deepseek-v4-flash-0731 but no output artifact hash or receipt binding to the 212-row artifact",
+      "credential_values_read_or_emitted": false
+    },
+    "bounded_next_inference_plan": {
+      "config": "wandb-synthetic-capability-v1-budget-0.02.config.json",
+      "scope": "two synthetic support/research cases",
+      "max_completions": 6,
+      "max_input_tokens_including_tool_trace": 1024,
+      "max_output_tokens": 1024,
+      "max_tool_rounds": 2,
+      "retries": 0,
+      "budget_usd": 0.02,
+      "theoretical_bound_usd": 0.009216,
+      "authorization": "executed; six-completion cap consumed; no additional inference under this authorization"
+    },
+    "authorized_process_only_credential_exception": true,
+    "bounded_synthetic_diagnostic_2026_10_18": {
+      "scope": "synthetic-only support and research cases using W&B-hosted inference for Qwen/Qwen3.6-35B-A3B; no candidate or clinical data sent",
+      "completion_count": 6,
+      "prompt_tokens": 1791,
+      "completion_tokens": 1330,
+      "estimated_usage_cost_usd": 0.00248575,
+      "actual_billed_usd": "unknown; provider response had no actual-billing field",
+      "authorization_cap_usd": 0.02,
+      "cap_status": "consumed; no more inference under this authorization",
+      "support_case": "one completion truncated at output cap",
+      "research_case": "completed after retry with 2048-token context cap; initial request sequence stopped locally on cap",
+      "runs": [
+        "wandb-synthetic-capability-v1-dev-base-output1024-budget002-pending",
+        "wandb-synthetic-capability-v1-research-retry-2048-budget009216-20261018"
+      ],
+      "result_directories": [
+        "docs/training/execution-2026-10-18/results/wandb-synthetic-cap-v1-base-20261018T022350Z",
+        "docs/training/execution-2026-10-18/results/wandb-research-base-2048-20261018T022456Z"
+      ],
+      "diagnostic_only": true
+    },
+    "new_adaption_jobs_started": 0
+  },
+  "tasks": [
+    {
+      "id": "G00",
+      "status": "completed",
+      "task": "Reconcile gold size and preserve recoverable content",
+      "evidence": [
+        "../gold-discrepancy-investigation-2026-10-17.md",
+        "../gold-recovery-audit-2026-10-17.json"
+      ]
+    },
+    {
+      "id": "G01",
+      "status": "completed",
+      "task": "Validate recovery identities, profile schema/metadata/duplicates, compare historical split overlap",
+      "evidence": [
+        "recovered-gold-preflight.json"
+      ],
+      "findings": {
+        "candidate_rows": 190139,
+        "unique_message_payloads": 190127,
+        "duplicate_rows_beyond_first": 12,
+        "rows_without_assistant_target": 2,
+        "old_train_payloads_present": 180460,
+        "old_val_payloads_matching": 0,
+        "old_test_payloads_matching": 0
+      },
+      "limits": [
+        "Exact JSON hash overlap only; semantic and source-group overlap untested.",
+        "Metadata absence does not establish absence of permission."
+      ]
+    },
+    {
+      "id": "G02",
+      "status": "completed",
+      "task": "Join per-source rights/privacy approvals; validate proposed registry against located unsigned source-review authority",
+      "prerequisites": [
+        "G01"
+      ],
+      "outputs": [
+        "source-decision-ledger.jsonl",
+        "source-eligibility-summary.json"
+      ],
+      "evidence": [
+        "source-evidence-inventory.json",
+        "source-eligibility-summary.json",
+        "g03-lineage-reservation.json"
+      ],
+      "findings": [
+        "Joined all 190,139 candidate rows to exact row SHA-256 and canonical messages SHA-256 in a metadata-only ledger; 475 distinct source labels including unique arc labels.",
+        "Exact alias matches connect 177,423 rows across 16 candidate source labels to existing per-source family manifest entries; those manifests remain proposals, not approvals.",
+        "Source status is per-source: no candidate rows meet the exact signed rights/privacy clearance threshold in evidence inspected, but this is not a finding that every source is prohibited.",
+        "AnnoMI (98 rows) has positive direct-use/reviewer claims in the representative registry and a Public Domain label in the project catalog; 4,848 unique normalized message hashes match the local source CSV. Official upstream repository describes public availability but exposes no license file in the checked repository view.",
+        "AnnoMI remains unresolved: a separate proposed clinical-dialogue manifest says deprecated-restricted, the registry provenance value is not a valid SHA-256 digest, and privacy/source-owner authorization is not bound to exact candidate rows."
+      ]
+    },
+    {
+      "id": "G03",
+      "status": "completed",
+      "task": "Record exclusions and normalize source/seed groups; reserve holdouts; semantic duplicate audit",
+      "prerequisites": [
+        "G02"
+      ],
+      "outputs": [
+        "exclusions.jsonl",
+        "g03-lineage-reservation.json",
+        "lineage-evidence-snapshot-20261017T1559Z/arc_records.jsonl",
+        "split-lineage-report.json",
+        "g03-generated-source-origin.json",
+        "g03-edge-branch-diagnostics.json",
+        "g03-edge-case-post-holdout-rowrefs.jsonl",
+        "g03-edge-case-heldout-exclusions.jsonl"
+      ],
+      "evidence": [
+        "ai/training/arc_plans/seed_map.jsonl",
+        "ai/training/output/arc_corpus/export/glimmer_eval_20261013/manifest.json",
+        "lineage-evidence-snapshot-20261017T1559Z/arc_records.jsonl",
+        "recovered-gold-preflight.json",
+        "source-decision-ledger.jsonl",
+        "g03-generated-source-origin.json",
+        "g03-edge-branch-diagnostics.json",
+        "g03-edge-case-breakaway-review.json",
+        "g03-edge-case-post-holdout-rowrefs.jsonl",
+        "g03-edge-case-heldout-exclusions.jsonl",
+        "g03-edge-regeneration-fallback.json"
+      ],
+      "findings": [
+        "Metadata-only exclusions identify 12 duplicate rows beyond first occurrence and 2 rows without nonempty assistant targets; overlap is zero (14 unique structural exclusions).",
+        "Using successful seed-map keys with only terminal :<integer> or :v<integer> normalization: 927/980 rows resolve to one group, 51 rows across 18 arc IDs remain ambiguous, and 2 rows in pilot_01 remain unresolved. Nine pilots have plan-backed fallback (19 rows).",
+        "The 58 held-out cases resolve to 22 seed groups; 87 candidate ARC rows across 34 IDs share those groups and are reserved. The 52 golden controls still have no source identity metadata.",
+        "SUPERSEDES prior 0/980 warning: the exact canonical renderer in ai/training/consolidate_arc_corpus.py, applied to a stable private snapshot, reproduces all 980/980 candidate ARC message payloads. Candidate row provenance (arc_id/session_n) binds to the snapshot records; all 980 linked records have matching writer/auditor/plan/spec metadata and machine verdict=accept. This is exact content binding, not an ARC-ID-only transfer.",
+        "Separate lane-2 manual-review JSON artifacts contain decisions keyed by arc_id without candidate payload digests. Their decisions are not transferred by ID alone; exact human-decision-to-content binding remains unproven.",
+        "No split assignments or candidate modifications were made. Rights/privacy eligibility remains per-source and unresolved for the current candidate; no release view is authorized by this diagnostic.",
+        "Exact ARC renderer binding supersedes old 0/980 warning: 980/980 candidate payloads match stable private snapshot and linked machine accept metadata.",
+        "Edge branch source trace proves first-party synthetic construction for this branch only: hardcoded 10-family taxonomy \u00d7 3 difficulty \u00d7 4 ambiguity; no external clinical source narrative enters this generator branch. `clinical_reviewed=true` is auto-set and is not treated as a review/rights/privacy signal.",
+        "Exact heldout group intersection excludes 29/551 edge rows across 12 ARC IDs; retained 522 rows across 214 ARC IDs and 179 seed groups. Provisional group split has 410 train / 72 validation / 40 test rows with 139 / 25 / 15 groups, no pairwise intersections and no heldout group intersection.",
+        "Basic email/SSN/phone/card/URL/IP regex screens matched 0/551 edge rows. On retained rows, 0/522 met 0.25 filtered 5-gram containment against 58 heldout prompts; all had some low lexical overlap. Regex and ngram limits are explicit; golden controls still lack source identities.",
+        "Legacy 980-ARC 5-gram threshold estimates are superseded for the narrow edge branch: exact group exclusion removes 29 rows, and 0/522 retained edge rows reach 0.25 heldout containment; broad full-candidate overlap results are recorded separately and do not prove semantic independence.",
+        "Full non-ARC overlap screen completed: 189,159 non-ARC rows scanned; filtered 5-gram matches occurred on 63,399 rows, but no row reached 0.25 containment for heldout prompts. 52 golden-control identities remain missing; lexical screening does not establish source independence.",
+        "Historic local receipt search was targeted: OpenCode session messages on Sep 17-18 had no generator/artifact/NF_BACKEND/NF_MODEL matches; Claude dated logs and Foresight search had no receipt. Generated artifact hash f601a0b8e7dba97db888e63d585cb5309ce734b3f40254b9dfe232d0bf01ce20 records 120 edge and 92 Nightmare rows but no provider/model. Present environment defaults are not used as historical evidence; provider worker may check authoritative W&B run metadata.",
+        "Basic email/SSN/phone/card/URL/IP regex screens matched 0/551 edge rows. On retained edge rows, 0/522 met 0.25 filtered 5-gram containment against 58 heldout prompts and 0/522 against 52 controls (371 rows had some low control overlap). Control identities remain missing; regex/ngram limits are explicit."
+      ],
+      "next_step": "Keep historical generated rows unresolved until the receipt and applicable terms are tied to output hashes. Credential runtime is now authorized for bounded process-only use; before regeneration, receive explicit capped inference authorization for the full generation workload and verify the W&B-only destination."
+    },
+    {
+      "id": "G04",
+      "status": "in_progress",
+      "task": "Freeze passing break-away subset and provider-neutral/provider-specific views",
+      "prerequisites": [
+        "G03"
+      ],
+      "outputs": [
+        "release manifest",
+        "data card",
+        "render report",
+        "g04-release-manifest.json",
+        "g04-edge-render-report.json",
+        "private 522-row weighted JSONL candidate split"
+      ],
+      "notes": "A local-only weighted JSONL draft for 522 structurally/source-lineage qualified edge rows is rendered and exact-verified against the existing exporter projection. Coordinator independently verified the manifest/payload hashes, rows, mode 0600, assistant-only weights, and group membership (139/25/15 groups; pairwise intersections zero). Manifest remains draft_local_only, release_id null, upload_gate false; historical source terms/provider receipt, source rights/privacy, and human decision binding remain unresolved; no promotion or upload. Prospective generator code now writes private hash-linked provider/model/config/code/source run receipts, records returned usage/model labels, rejects unreceipted or mismatched resumes, and marks new output clinical_reviewed=false without changing machine mi_quality. First-party W&B/Qwen regeneration fallback is prepared but not executed and cannot clear historical rows. Final provenance review fix: independent generation outputs receive unique run UUIDs while deterministic compatibility fingerprints remain shared; resuming preserves run_id and refreshes invocation_id. Usage receipts are explicitly per invocation (cumulative=false), so resumed totals are not misrepresented as whole-run cumulative usage.",
+      "evidence": [
+        "g03-edge-branch-diagnostics.json",
+        "g03-edge-case-post-holdout-rowrefs.jsonl",
+        "g03-edge-case-heldout-exclusions.jsonl",
+        "g04-release-manifest.json",
+        "g04-edge-render-report.json",
+        "g03-edge-case-source-provenance-decision.md",
+        "coordinator-package-verification.json",
+        "g03-edge-regeneration-fallback.json",
+        "ai/training/generation_provenance.py",
+        "ai/training/tests/test_build_edge_and_nightmare_dataset.py",
+        "ai/training/tests/test_curate_pipeline_import_gate.py"
+      ],
+      "draft_manifest": {
+        "path": "g04-release-manifest.json",
+        "sha256": "be331cabdd4394f8b675609a33e418f3b1ad05d0164b53f4b6db19a6e9b411cd",
+        "status": "draft_local_only",
+        "release_id": null,
+        "upload_gate": false,
+        "private_package_dir": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z",
+        "partition_counts": {
+          "train": 410,
+          "validation": 72,
+          "test": 40
+        },
+        "reason_not_approved": "Historical generator provider/model and output-use/remote-training terms remain unverified; source rights/privacy and human decision binding are incomplete."
+      },
+      "limits": [
+        "Historical G04 candidate remains blocked from upload by source rights/privacy and generation-term gaps; separate clean synthetic corpus work may proceed after local review."
+      ]
+    },
+    {
+      "id": "P00",
+      "status": "in_progress",
+      "task": "Read-only provider/credit/model/export qualification, now including W&B account-specific price entitlement and OVHcloud region/resource costs",
+      "prerequisites": [],
+      "notes": "Read-only provider qualification continues. Historical W&B metadata narrowed two September 17 generator runs to Vercel / DeepSeek V4 Flash but did not bind either to the 212-row artifact. Process-only credential use is now explicitly authorized. The prior 12-call smoke estimate remains $0.00147125 with rejected-call billing unknown. A separate authorized synthetic-only W&B inference diagnostic used six completions; usage estimate $0.00248575, actual billing unknown, and the $0.02 cap is consumed. Adaption has two datasets visible; the 11,192-row dataset succeeded but evaluation summary/results are null; the 418-row dataset awaits_input and has no evaluation results. No upload or training job.",
+      "evidence": [
+        "evaluation-readiness.json",
+        "results/wandb-base-synthetic-smoke-corrected-20261017/results.jsonl",
+        "../free-training-experiment-plan-2026-10-17.md \u00a79",
+        "wandb-training-live-check-2026-10-18 (read-only)"
+      ]
+    },
+    {
+      "id": "E00",
+      "status": "in_progress",
+      "task": "Revalidate evaluation suite and qualify existing Adaption/Fireworks checkpoint inference",
+      "prerequisites": [
+        "G03",
+        "P00"
+      ],
+      "notes": "Evaluator tests and local multi-step tool mocks are ready. The authorized synthetic-only W&B diagnostic used all six completions (support truncated, research diagnostic completed after retry); this was not a scored comparison. No more inference under the consumed $0.02 cap. Scored comparison still requires G03 lineage clearance, selected SFT artifact, provider terms/cost qualification, and calibrated human-reviewed rubric.",
+      "evidence": [
+        "ai/qa/validation/therapy_bench/paired_eval.py",
+        "ai/qa/validation/therapy_bench/wandb-synthetic-capability-v1-budget-0.02.config.json"
+      ]
+    },
+    {
+      "id": "E01",
+      "status": "queued",
+      "task": "Up to four initial qualified Fireworks/W&B SFT jobs and paired base/SFT evaluation",
+      "prerequisites": [
+        "G04",
+        "P00",
+        "E00"
+      ]
+    },
+    {
+      "id": "E02",
+      "status": "queued",
+      "task": "Selected data/recipe/system ablations; bounded Adaption follow-up if justified",
+      "prerequisites": [
+        "E01"
+      ]
+    },
+    {
+      "id": "E03",
+      "status": "conditional",
+      "task": "Exact-prefix reviewed therapist DPO and verified-reward RL",
+      "prerequisites": [
+        "E02"
+      ],
+      "conditions": [
+        "Valid preferences/reward audits",
+        "Provider method support",
+        "Covered bounded costs"
+      ]
+    },
+    {
+      "id": "E04",
+      "status": "queued",
+      "task": "Replicate finalists, sealed evaluation, full-model recommendations and campaign handoff",
+      "prerequisites": [
+        "E02"
+      ]
+    }
+  ],
+  "handoff": "../TRAINING_EXECUTION_HANDOFF.md",
+  "measured_local_runtime_seconds": {
+    "arc_evaluation_5gram_overlap_screen": 6.733,
+    "final_artifact_hash_and_metadata_verification": 2.082,
+    "scope": "Measured command wall times for named checks only; no total elapsed-task estimate; excludes external/provider/user waits. Added edge-branch 551-row regex/near-duplicate screen (7.395 seconds), including metadata lookup; no total duration forecast. Added local-only 522-row weighted JSONL materialization and exact exporter projection verification; no provider calls. Added prospective-only source/model/config receipt and resume-guard implementation with offline generator/curation tests; no historical output mutation or provider calls. Final handoff/registry markdown and JSON edits followed; focused generator/curation tests rerun at 1.62 seconds, documentation lint passed, and draft candidate/partition hashes and file modes rechecked. Full Ruff on modified legacy generation_backend.py still reports pre-existing PLR0913 at chat_completion; HEAD baseline confirms this finding predates the change. Parent review prompted a final receipt correction: unique UUID run identity per new output, stable ID on resume, and explicitly invocation-scoped non-cumulative provider usage. Added independent-output/resume and resumed-usage tests; focused suite now passes 28 tests in 1.70 seconds.",
+    "arc_snapshot_secure_copy_seconds": 0.315,
+    "exact_arc_renderer_binding_check_seconds": 8.861,
+    "edge_branch_post_holdout_privacy_and_neardup_diagnostic": 7.395,
+    "source_provider_metadata_inventory": 0.2,
+    "edge_branch_golden_control_neardup_diagnostic": 2.693,
+    "g04_weighted_payload_render_and_exact_projection_verify": 9.9,
+    "prospective_generation_provenance_focused_tests": 1.7
+  },
+  "updated_at_utc": "2026-10-18T13:15:40Z",
+  "verification_notes": {
+    "focused_generation_and_curation_tests": "28 passed in 1.70 seconds",
+    "ruff_new_generation_module_and_focused_tests": "passed; Ruff format check passed",
+    "ruff_modified_legacy_builder_and_backend": "one pre-existing PLR0913 at generation_backend.py:320 chat_completion; confirmed in HEAD baseline",
+    "markdownlint": "passed for handoff, plan, and execution markdown reports",
+    "git_diff_check": "passed for campaign docs and ai submodule edits",
+    "private_payload_metadata": "candidate 190139 rows; draft train/validation/test 410/72/40 rows; manifest and payload hashes match recorded values; each payload mode 0600",
+    "provider_actions_since_smoke": "Six W&B inference completions on synthetic-only inputs; estimated cost $0.00248575, actual billed amount unknown. No uploads or training. No further inference under consumed $0.02 authorization.",
+    "provenance_receipt_semantics": "Unique run_id for each independent output directory; compatibility_fingerprint remains deterministic; resume preserves run_id and creates an invocation_id; usage is tagged invocation-scoped and cumulative=false.",
+    "aws_toolkit_resume": "AWS CLI 2.38.1; agent-toolkit configured for Claude Code, Cline, Codex, Gemini CLI, and OpenCode with 24 default skills; aws-core 1.1.0 enabled. Read-only STS auth passed via asm-exec in us-east-1. A help probe is unsupported by this CLI subcommand and made no changes.",
+    "adaption_live_read_only_2026_10_18": "Run 2 remains succeeded/downloadable on Qwen/Qwen3.6-35B-A3B (0.6414 platform win rate); dataset arc-run2-train-v1 has 11,192 rows/three columns. Separate 418-row messages dataset remains awaiting_input. Dataset evaluation summaries are null.",
+    "focused_resume_suite": "47 passed in 2.29 seconds across edge generator, curation import gate, paired evaluator, and evaluation preparation tests.",
+    "draft_upload_gate": "W&B launcher dry-run rejected the draft G04 manifest before upload; package counts, hashes, file modes, and assistant-only weights were reverified.",
+    "draft_package_recheck_2026_10_18": "train/validation/test payload hashes match recorded values; row counts 410/72/40; all payloads mode 0600; manifest remains draft_local_only with upload_gate=false.",
+    "draft_launcher_recheck_2026_10_18": "W&B launcher dry-run exited 2 with qualification failure: G04 release is not approved; no upload is allowed."
+  },
+  "goal_blocked_audit": {
+    "condition": "W&B API access works through aiohttp; artifact and model were created for the 120-scenario synthetic cohort, but the SFT job-create call returned HTTP 400 without a job ID and launcher state is unknown.",
+    "recurrence": "Previous credential-runtime blocker resolved in this resumed run.",
+    "live_work": "All three delegated worker tasks are now terminal/completed, verified via collaboration.list_agents. No external training/inference job is live.",
+    "remaining_work": "Reconcile W&B job-create outcome before retry; if rejected, fix the request and reuse the existing artifact/model. Then train, compare against base on held-out rows, and continue the broader provider comparisons.",
+    "next_action": "Reconcile POST /preview/sft-training-jobs HTTP 400. No line-by-line review or 24-row pilot.",
+    "requested_exception_pending": false,
+    "full_objective_preserved": true
+  },
+  "current_checkpoint_2026-10-18": {
+    "aws_cli_version": "2.38.1",
+    "agent_toolkit": "configured for Claude Code, Cline, Codex, Gemini CLI, and OpenCode; 24 default skills installed",
+    "codex_plugin": "aws-core@agent-toolkit-for-aws 1.1.0 installed and enabled; aws-secrets-manager skill and asm-exec are present",
+    "aws_auth": "read-only STS identity check passed via asm-exec; default profile region set to us-east-1 after confirming the prior `nov` value came from IMDS; asm-exec is now on PATH via symlink to the installed aws-core skill helper; no secrets read/emitted",
+    "provider_credentials": "provider keys are non-dynamic .env values; user authorized process-only use for bounded operations; values were not emitted or persisted; no provider-specific or provider-named Secrets Manager entry was found",
+    "adaption_read_only": {
+      "dataset": "arc-run2-train-v1",
+      "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+      "rows": 11192,
+      "status": "succeeded",
+      "columns": [
+        "uuid",
+        "original_prompt",
+        "original_completion"
+      ],
+      "run_id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+      "run_status": "succeeded",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "best_win_rate": 0.6414,
+      "download_available": true,
+      "evaluation_summary": "null; live dataset evaluation endpoint returned status/summary/raw_results all null"
+    },
+    "other_adaption_dataset": {
+      "name": "train",
+      "dataset_id": "adb7d8eb-a3c9-434a-aea0-c4a6a7b8a788",
+      "rows": 418,
+      "status": "awaiting_input",
+      "columns": [
+        "messages"
+      ],
+      "evaluation_summary": "null; live dataset evaluation endpoint returned status/summary/raw_results all null"
+    },
+    "provider_calls_this_resume": {
+      "read_only_adaption_calls": 3,
+      "training_jobs": 0,
+      "inference_requests": 0,
+      "uploads": 0,
+      "deployments": 0
+    },
+    "uploads_training_jobs_deployments_this_resume": 0,
+    "local_verification": {
+      "draft_package": "pass: 410/72/40 counts, SHA-256, 0600 payload modes, 0700 directory, assistant-only weight contract; manifest remains draft_local_only and upload_gate=false",
+      "focused_tests": "47 passed in 2.51 seconds: edge generation, curation import gate, paired evaluator, and eval preparation",
+      "wandb_launcher_dry_run": "correctly rejected G04 draft with `G04 release is not approved; no upload is allowed`",
+      "provider_calls": "6 W&B inference completions, synthetic-only; first support response truncated, research diagnostic complete after retry; no training or upload"
+    },
+    "wandb_historical_provenance": "two September 17 generator runs narrowed to Vercel / DeepSeek V4 Flash, but neither contains an output-artifact hash/receipt binding to the 212-row artifact; historical rows remain unresolved",
+    "synthetic_inference": "six completion cap consumed; estimate $0.00248575; actual billing unknown; no further inference under this cap",
+    "aws_toolkit_resume": "AWS CLI 2.38.1; agent-toolkit configured for Claude Code, Cline, Codex, Gemini CLI, and OpenCode with 24 default skills; aws-core 1.1.0 enabled. Read-only STS auth passed via asm-exec with us-east-1; no secret values were read/emitted during AWS verification. User separately authorized bounded process-only .env use for providers.",
+    "rights_privacy_audit": "docs/training/source-rights-privacy-audit-2026-10-18.md: 0/190139 candidate rows have exact signed rights+privacy/consent clearance bound to rowrefs; 177423 rows join 16 source IDs; 12716 rows across 459 labels remain unmapped; Reddit, ESConv, DAIC-WOZ and AnnoMI primary-source restrictions/conflicts recorded; no data changed or approved.",
+    "provider_terms_audit": "docs/training/provider-terms-audit-2026-10-18.md: public terms reviewed for W&B, Fireworks, Adaption, and the plausible Vercel/DeepSeek historical route. Current terms do not prove exact September 17 acceptance, routing/settings, output rights in context, or permission to send sensitive personal health data; account contract/settings and clinical privacy clearance remain unresolved.",
+    "historical_provenance_followup": "docs/training/execution-2026-10-17/g03-historical-run-provenance-followup.md: two plausible W&B runs match Vercel/DeepSeek V4 Flash, generator path/commit/time window, but neither binds to 212-row artifact SHA; no source file changed",
+    "clearance_packet": "docs/training/execution-2026-10-17/clearance-decision-packet-2026-10-18.md; structured owner decision template prepared; no approvals inferred",
+    "evaluation_readiness": "six-completion synthetic W&B inference diagnostic completed under prior separate cap; result and usage status reflected in readiness report; no further inference under that cap",
+    "clearance_decision_packet": "docs/training/execution-2026-10-17/clearance-decision-packet-2026-10-18.md; source-owner, privacy/clinical owner, training owner, and curator decision template prepared; no approvals inferred.",
+    "provider_plan_update_2026_10_18": {
+      "plan": "../free-training-experiment-plan-2026-10-17.md \u00a79; supersedes older W&B free-preview assumptions",
+      "wandb_read_only_live_check": {
+        "system_check": "healthy",
+        "trainable_base_count": 13,
+        "anchor_model_available": "Qwen/Qwen3.6-35B-A3B",
+        "resources_created": false,
+        "account_specific_free_training_entitlement": "user reports free/exportable; not verified by read-only system/catalog calls; confirm current account estimate before job"
+      },
+      "adaption": "User confirms credits remain. Existing run-2 export is downloadable but old input corpus clearance remains unresolved; do not use it as a production candidate until lineage is cleared. Verify remaining credits in account dashboard and estimate before new run.",
+      "ovhcloud": "AI Training custom Docker/GPU jobs with Object Storage output and AI Deploy custom endpoint are the portable custom-recipe route. Public price references are in plan \u00a79; account/region quote, budget, and access remain unverified.",
+      "fireworks": "Treat Glimmer promo as disposable synthetic-only experiment before owner-reported October 31 date if account eligibility and separate inference coverage are confirmed; no weights-export route currently qualified.",
+      "next": "Prepare a fit-for-purpose local synthetic training corpus and human-review package; verify W&B account training entitlement/artifact quota, Adaption credits, Fireworks offer/inference terms, and OVHcloud account/region cost before provider jobs.",
+      "adaption_live_read_only_check": "Two historical datasets and two successful, downloadable Qwen runs confirmed; credit balance/expiry and per-run deduction remain unavailable via connector."
+    },
+    "adaption_read_only_2026_10_18": {
+      "datasets": [
+        {
+          "name": "arc-run2-train-v1",
+          "rows": 11192,
+          "status": "succeeded"
+        },
+        {
+          "name": "train",
+          "rows": 418,
+          "status": "awaiting_input"
+        }
+      ],
+      "runs": [
+        {
+          "id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "status": "succeeded",
+          "download_available": true,
+          "platform_win_rate": 0.6414
+        },
+        {
+          "id": "cf1ebae0-1197-4362-92a1-3228c38ce96e",
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "status": "succeeded",
+          "download_available": true,
+          "platform_win_rate": 0.4971
+        }
+      ],
+      "credit_balance": "not exposed by connector; dashboard confirmation remains required",
+      "new_jobs_started": 0
+    },
+    "synthetic_eval_review": {
+      "suite": "synthetic_capability_v1; 5 development and 5 sealed fictional software-workspace cases",
+      "training_ready": false,
+      "wandb_cases_reviewed": {
+        "dev-support-request": "response truncated before deterministic response-enum check passed",
+        "dev-research-citations": "required fictional source IDs absent"
+      },
+      "interpretation": "unvalidated diagnostic only; no clinical-quality claim",
+      "additional_inference_requests": 0,
+      "authorization_cap_status": "six-completion/$0.02 cap consumed"
+    },
+    "breakaway_package_reverification": {
+      "manifest": "g04-release-manifest.json",
+      "rows": 522,
+      "split_counts": {
+        "train": 410,
+        "validation": 72,
+        "test": 40
+      },
+      "payload_hashes_match": true,
+      "file_modes": "0600; directory 0700",
+      "assistant_only_loss_weights": true,
+      "group_counts": {
+        "train": 139,
+        "validation": 25,
+        "test": 15
+      },
+      "pairwise_split_group_intersections": 0,
+      "launcher_dry_run": "blocked before upload: G04 release is not approved",
+      "focused_tests": "9 passed",
+      "upload_gate": false,
+      "release_id": null,
+      "remaining_gates": [
+        "generation provider/model receipt bound to seed hashes",
+        "generation output-use terms",
+        "selected provider privacy/retention/transfer terms",
+        "golden-control lineage"
+      ]
+    },
+    "wandb_full_edge_matrix": {
+      "source_sha256": "2f9617b9e71799c8738100a73161d5d94a8333079a05f82790f39a5737fd2c8c",
+      "rows": 120,
+      "split_counts": {
+        "train": 80,
+        "validation": 20,
+        "test": 20
+      },
+      "automatic_gate": "passed",
+      "sft_dry_run": "passed",
+      "execute_attempt": "HTTP 403 GET /preview/base-models before upload; no job created",
+      "next_action": "reconcile whether job exists before any retry",
+      "api_access": "healthy via aiohttp; 13 trainable bases listed",
+      "artifact_uploaded": true,
+      "model_resource_id": "4c9e5d0d-abd9-4bf8-94cf-95bc249b37e9",
+      "training_data_url": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-qwen36-edge-matrix-20261018-v1-baseline-7f31c66054dc:v0",
+      "training_job_post": "HTTP 400; no job ID returned; state is job_creation_submitted_unknown"
+    }
+  },
+  "research_experiment_policy": {
+    "row_by_row_human_review_required": false,
+    "small_pilot_required": false,
+    "automated_checks": "Run once across all 522 rows; keep the 40-row test split sealed.",
+    "human_review": "Only before clinical/production claims; optional risk-stratified diagnostic spot check for research.",
+    "transfer_gates": [
+      "generation provenance tied to seed hashes",
+      "generation output-use terms",
+      "W&B training data handling/retention/export terms",
+      "golden-control lineage or exclusion"
+    ]
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "created_at_utc": "2026-10-17T16:26:05+00:00",
+  "scope": "metadata-only report; no conversation text, prompts, references, or credentials emitted",
+  "candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+  "candidate_rows": 190139,
+  "candidate_arc_lineage": {
+    "candidate_arc_ids": 390,
+    "candidate_arc_rows": 980,
+    "arc_ids_resolved_to_one_seed_group": 371,
+    "resolved_arc_rows": 927,
+    "arc_ids_with_multiple_successful_normalized_seed_keys": 18,
+    "ambiguous_arc_rows": 51,
+    "arc_ids_with_no_successful_seed_key_or_nonempty_plan_seed": 1,
+    "unresolved_arc_rows": 2,
+    "plan_fallback_arc_ids": [
+      "pilot_02",
+      "pilot_03",
+      "pilot_04",
+      "pilot_05",
+      "pilot_06",
+      "pilot_07",
+      "pilot_08",
+      "pilot_09",
+      "pilot_10"
+    ],
+    "plan_fallback_arc_rows": 19,
+    "seed_map_records": 629,
+    "seed_map_arc_ids": 420,
+    "seed_map_sha256": "044342f2e4f041feb4f8c304f2fcf9f7f453b648871ec08a6540fb815db17753",
+    "arc_records_sha256": "31a3f6e354928c79792f3f4a501402471095a95c65672f95c2cb6c56b1624a3f",
+    "normalization": "Only terminal :<integer> or :v<integer> removed from successful seed-map keys; distinct surviving keys retained as ambiguity. Pilot/plan fallback uses exact source/scenario_id pair and matches any mapped key with same pair.",
+    "group_ids": "SHA-256 identifiers, not raw seed values; detailed identities remain in source artifacts.",
+    "arc_records_snapshot_path": "ai/data/curated/recovery/gold-20261017/lineage-evidence-snapshot-20261017T1559Z/arc_records.jsonl",
+    "arc_records_snapshot_mode": "0600; parent directory mode 0700",
+    "arc_records_snapshot_bytes": 35508867
+  },
+  "evaluation_reservation": {
+    "cases": 110,
+    "heldout_final_turn_cases": 58,
+    "golden_controls": 52,
+    "heldout_groups_resolved": 22,
+    "heldout_case_ids_unresolved": 0,
+    "candidate_resolved_arc_ids_in_heldout_groups": 34,
+    "candidate_rows_in_heldout_groups": 87,
+    "ambiguous_candidate_arc_ids_intersecting_heldout_groups": 0,
+    "golden_controls_with_source_identity_metadata": 0,
+    "existing_bundle_status": "prepared_not_evaluated",
+    "prior_evaluation_lineage_excluded_test_arcs": 8,
+    "claim_limit": "Reserve the identified candidate source groups from evaluation use. The controls lack source identities, so their training overlap cannot be cleared."
+  },
+  "candidate_nonarc_heldout_alias_overlap": {
+    "distinct_nonarc_source_labels": 85,
+    "exact_normalized_alias_matches": 0,
+    "matching_labels": []
+  },
+  "annomi_hash_identity": {
+    "candidate_rows": 98,
+    "candidate_message_count": 13278,
+    "raw_source_utterances": 13551,
+    "unique_candidate_message_hashes": 5273,
+    "unique_raw_utterance_hashes": 7359,
+    "unique_normalized_text_hashes_in_both": 4848,
+    "claim_limit": "Supports source-origin identity only. It does not decide the conflicting source-rights record or bind reviewer approval to exact candidate rows."
+  },
+  "audit_content_binding": {
+    "candidate_arc_rows": 980,
+    "canonical_renderer": "ai/training/consolidate_arc_corpus.py::_session_messages (client->user, therapist->assistant, adjacent client turns merged with two newlines, assistant ledger JSON plus newline plus therapist text, trailing user turns omitted)",
+    "stable_snapshot_sha256": "31a3f6e354928c79792f3f4a501402471095a95c65672f95c2cb6c56b1624a3f",
+    "exact_role_normalized_message_payload_matches_to_snapshot": 980,
+    "candidate_arc_rows_bound_to_snapshot_by_arc_id_and_session_number": 980,
+    "matching_writer_auditor_plan_spec_and_machine_verdict_metadata_rows": 980,
+    "machine_verdict_counts_for_candidate_linked_rows": {
+      "accept": 980
+    },
+    "lane2_manual_review_records_with_exact_candidate_content_sha256": 0,
+    "candidate_rows_under_archive_records_with_embedded_lane2_review_note": 90,
+    "arc_ids_under_archive_records_with_embedded_lane2_review_note": 36,
+    "human_review_decisions_transferred_by_arc_id_alone": 0,
+    "interpretation": "The prior 0/980 candidate-to-archive warning is superseded: exact canonical rendering binds every candidate ARC payload to the stable archive snapshot, and the linked machine audit metadata is accept for all 980 rows. This does not establish a content digest in the separate lane-2 decision artifacts; do not transfer those decisions by ARC ID alone."
+  },
+  "remaining_diagnostic_gates": [
+    "Golden-control source lineage is missing; recover source IDs or document a defensible independent origin before claiming holdout isolation.",
+    "Semantic duplicate review is not complete; the 5-gram screen is lexical only and covered 980 arc rows, not the 189,159 non-arc rows.",
+    "Candidate seed lineage is unresolved for 2 arc rows; 51 arc rows across 18 arc IDs have multiple distinct successful seed keys and must be quarantined or reconciled.",
+    "Non-arc source aliases require evidence-based normalization/review; no source label directly matches held-out family/source identifiers.",
+    "Exact-rendered ARC payload binding is now 980/980 against the stable snapshot; source rights/privacy and separate lane-2 review decision content-binding remain distinct gates.",
+    "Exact heldout group reservation and 80/10/10 groupwise diagnostic split completed for the 522-row synthetic edge branch; actual generation backend/model and applicable output-use/remote-training terms remain unverified.",
+    "Golden-control identities are absent; broad claims of full-control source-group isolation cannot be made.",
+    "The edge 5-gram screen is a near-duplicate indicator only, not semantic independence or clinical safety."
+  ],
+  "generated_source_origin_evidence": "g03-generated-source-origin.json",
+  "generated_source_origin_assessment": {
+    "resolved_edge_cases_seed_rows": 551,
+    "resolved_nightmare_scenarios_seed_rows": 376,
+    "ambiguous_rows": 51,
+    "pilot_01_unresolved_rows": 2,
+    "interpretation": "Exact local generator establishes first-party synthetic origin for the edge_cases branch. The 522-row post-holdout subset has zero matches in six basic PII regex patterns and no >=0.25 heldout 5-gram containment; generation provider/model and applicable output-use/remote-training terms are unrecorded and must be verified before transfer. clinical_reviewed is auto-set. Nightmare Fuel remains restricted; no release view created."
+  },
+  "edge_branch_diagnostics": {
+    "path": "g03-edge-branch-diagnostics.json",
+    "candidate_edge_rows": 551,
+    "heldout_excluded_rows": 29,
+    "heldout_excluded_arc_ids": 12,
+    "post_holdout_rows": 522,
+    "post_holdout_arc_ids": 214,
+    "post_holdout_seed_groups": 179,
+    "group_split": {
+      "train": {
+        "rows": 410,
+        "groups": 139
+      },
+      "validation": {
+        "rows": 72,
+        "groups": 25
+      },
+      "test": {
+        "rows": 40,
+        "groups": 15
+      }
+    },
+    "heldout_group_intersections_after_exclusion": {
+      "train": 0,
+      "validation": 0,
+      "test": 0
+    },
+    "regex_indicator_matches": 0,
+    "near_duplicate_rows_at_or_above_0_25_containment": 0,
+    "runtime_seconds": 7.395,
+    "claim_limit": "Metadata-only and research diagnostic. Unknown golden-control source identities remain; no clinical readiness assertion."
+  },
+  "legacy_980_arc_lexical_screen": {
+    "candidate_arc_rows_scanned": 980,
+    "evaluation_cases_scanned": 110,
+    "method": "Per candidate arc row, unique normalized alphanumeric token 5-gram containment into rendered evaluation prompts; 5-grams shared by more than 10/110 prompts are discarded; aggregate counts only.",
+    "heldout_final_turn_cases": {
+      "any_filtered_5gram_overlap": 58,
+      "max_containment_at_least_0_25": 58,
+      "at_least_0_50": 58,
+      "at_least_0_80": 58,
+      "at_least_1_00": 0
+    },
+    "golden_controls": {
+      "any_filtered_5gram_overlap": 29,
+      "max_containment_at_least_0_25": 0,
+      "at_least_0_50": 0,
+      "at_least_0_80": 0,
+      "at_least_1_00": 0
+    },
+    "elapsed_seconds": 6.733,
+    "interpretation": "All held-out prompts meet the 0.80 filtered-5gram threshold and their 87 matching ARC rows/groups are reserved. This lexical screen does not establish semantic independence; it covered ARC rows only, not the 189,159 non-ARC rows.",
+    "prior_980_arc_screen_status": "legacy estimate; its 0.80 containment claim is superseded for edge branch by g03-edge-branch-diagnostics.json using per-row denominator and exact group exclusion. Full 980 ARC rows not recomputed in this branch.",
+    "edge_branch_exact_screen": {
+      "path": "g03-edge-branch-diagnostics.json",
+      "before_holdout_rows": 551,
+      "heldout_group_excluded_rows": 29,
+      "retained_rows": 522,
+      "any_filtered_5gram_overlap": 522,
+      "at_least_0_25": 0,
+      "at_least_0_50": 0,
+      "at_least_0_80": 0,
+      "full_containment": 0,
+      "elapsed_seconds": 7.395
+    },
+    "status": "legacy_estimate_superseded_for_edge_branch; do not use its all-58-at-0.80 claim to disposition the exact edge branch"
+  },
+  "lexical_overlap_screen": {
+    "current_scope": "edge_cases rows after exact heldout source-group exclusion",
+    "candidate_rows_before_exclusion": 551,
+    "heldout_group_excluded_rows": 29,
+    "candidate_rows_after_exclusion": 522,
+    "heldout_cases": 58,
+    "rows_any_filtered_5gram_overlap": 522,
+    "rows_at_least_0_25_containment": 0,
+    "rows_at_least_0_50_containment": 0,
+    "rows_at_least_0_80_containment": 0,
+    "rows_full_containment": 0,
+    "elapsed_seconds": 7.395,
+    "method": "Per-row unique normalized alphanumeric token 5-gram containment into each heldout rendered prompt; discard grams appearing in more than 10/58 prompts.",
+    "interpretation": "No high near-duplicate signal after exact seed-group overlap exclusion. Every row has some lower lexical overlap; this is not semantic independence or clinical safety evidence. Golden-control source identities remain unknown.",
+    "golden_controls": {
+      "controls": 52,
+      "rows_any_filtered_5gram_overlap": 371,
+      "rows_at_least_0_25_containment": 0,
+      "rows_at_least_0_50_containment": 0,
+      "rows_at_least_0_80_containment": 0,
+      "rows_full_containment": 0,
+      "elapsed_seconds": 2.693,
+      "claim_limit": "Golden-control source IDs remain missing; low lexical overlap is not independent-origin evidence."
+    }
+  }
+}

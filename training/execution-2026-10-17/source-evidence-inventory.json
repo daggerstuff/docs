@@ -1,0 +1,353 @@
+{
+  "status": "evidence_inventory_and_candidate_join_only_not_training_clearance",
+  "source_review_status": "awaiting_human_sign_off",
+  "family_manifest_decisions": "proposed_not_ratified",
+  "evidence_files": [
+    {
+      "path": "ai/docs/dataset-source-review.md",
+      "bytes": 6778,
+      "sha256": "b7860f6b87fa7f736e96f0745ed47f6eadd53ea7fd5c51562d9e4ca1943c9d32"
+    },
+    {
+      "path": "ai/data/source_family_provenance_manifest.yaml",
+      "bytes": 45605,
+      "sha256": "f424f3b0c272bb1350016749d96cf148056411ea9a0195f69d7a3dbe224e8526"
+    },
+    {
+      "path": "ai/data/licenses/source_manifest.yaml",
+      "bytes": 1992,
+      "sha256": "0d38b0461a07be501dc4ef57e4e97b613315c3436cebbbfb4bca7d67d0ad2391"
+    },
+    {
+      "path": "ai/data/curated/construction/source_registry/representative_sources.jsonl",
+      "bytes": 3653,
+      "sha256": "8ee64440ae10f717a85b70d4275ea83a1c716a2d1a50700c5ba1b34aab7091b0"
+    }
+  ],
+  "representative_registry": [
+    {
+      "source_id": "SRC-047",
+      "direct_use_approved_claim": true,
+      "license_and_use_policy_claim": [
+        "direct",
+        "attribution"
+      ],
+      "content_digest_count": 0,
+      "provenance_hash_claim_count": 1,
+      "campaign_training_clearance": "unverified",
+      "limitations": [
+        "Registry claims require evidence validation and exact candidate-row join; no automatic source-wide approval."
+      ]
+    },
+    {
+      "source_id": "SRC-068",
+      "direct_use_approved_claim": false,
+      "license_and_use_policy_claim": [
+        "eval_only"
+      ],
+      "content_digest_count": 0,
+      "provenance_hash_claim_count": 1,
+      "campaign_training_clearance": "unverified",
+      "limitations": [
+        "Registry claims require evidence validation and exact candidate-row join; no automatic source-wide approval."
+      ]
+    }
+  ],
+  "next": [
+    "Join candidate source identities to source inventory without interpreting proposals as approvals.",
+    "Verify evidence and privacy review per source and content; preserve unknowns.",
+    "Prepare narrowly scoped decision ledger for any required owner review."
+  ],
+  "dataset_mutations": 0,
+  "uploads": 0,
+  "provider_spend": 0,
+  "candidate_join": {
+    "candidate_path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "candidate_rows": 190139,
+    "ledger_path": "source-decision-ledger.jsonl",
+    "ledger_candidate_row_references": 190139,
+    "ledger_records": 836,
+    "identity_fields": [
+      "row_number_1based",
+      "row_sha256",
+      "messages_sha256"
+    ],
+    "metadata_only": true,
+    "training_eligibility": "hold_pending_source_owner_rights_and_privacy_review"
+  },
+  "evidence_findings": {
+    "source_review": "awaiting_human_sign_off",
+    "family_manifest_status": "proposed_not_ratified",
+    "family_manifest_source_count": 21,
+    "generic_license_manifest": "7 generic source classes; no exact candidate row clearance",
+    "representative_registry_candidate_matches": {
+      "SRC-047": {
+        "candidate_source": "annomi",
+        "candidate_rows": 98,
+        "direct_use_approved_claim": true,
+        "valid_sha256_content_digest_count": 0,
+        "campaign_clearance": "unverified"
+      },
+      "SRC-068": {
+        "candidate_source_match_rows": 0,
+        "direct_use_approved_claim": false,
+        "campaign_clearance": "not_applicable_to_candidate_join"
+      }
+    },
+    "candidate_rows_with_exact_signed_rights_and_privacy_clearance": 0,
+    "limits": [
+      "No message text or PHI recorded in reports.",
+      "A registry claim or family proposal does not establish campaign training clearance.",
+      "Candidate identity hashes bind each row reference to the verified recovery candidate; they do not prove rights or privacy status."
+    ],
+    "interpretation": "Zero rows meet the exact signed-rights/privacy evidence threshold in this inspection. This does not classify every source as prohibited: AnnoMI has positive but conflicting source-level evidence; other sources remain individually unresolved rather than inferred disallowed.",
+    "annomi_hash_origin_check": {
+      "candidate_rows": 98,
+      "unique_normalized_message_hash_intersections_with_local_AnnoMI_full_csv": 4848,
+      "meaning": "Origin corroboration only, not rights or privacy clearance."
+    }
+  },
+  "outputs": {
+    "source_decision_ledger": "source-decision-ledger.jsonl",
+    "source_eligibility_summary": "source-eligibility-summary.json",
+    "exclusions": "exclusions.jsonl",
+    "split_lineage_report": "split-lineage-report.json"
+  },
+  "additional_source_family_manifests": [
+    {
+      "path": "ai/data/source_dossier_manifest.yaml",
+      "sha256": "20d537c72d33cb0f94876562b0290195fd069c695b12fd2a099d20e6fff1841b",
+      "decision_status": "proposed",
+      "source_family": "knowledge_and_creator_material",
+      "source_count": 15
+    },
+    {
+      "path": "ai/data/source_family_classification_taxonomy_manifest.yaml",
+      "sha256": "77404d06bd1d43d4ccc5249fe974985c418d8c3985155be956f7d9dc3cf2b619",
+      "decision_status": "proposed",
+      "source_family": "classification_and_taxonomy_corpora",
+      "source_count": 9
+    },
+    {
+      "path": "ai/data/source_family_clinical_dialogue_manifest.yaml",
+      "sha256": "c2cd2362f7b23d1a588e652db59de1d1e1c7eb35ac0a669b0af8e330951018ac",
+      "decision_status": "proposed",
+      "source_family": "clinical_dialogue_counseling_and_lived_experience",
+      "source_count": 25
+    },
+    {
+      "path": "ai/data/source_family_provenance_manifest.yaml",
+      "sha256": "f424f3b0c272bb1350016749d96cf148056411ea9a0195f69d7a3dbe224e8526",
+      "decision_status": "proposed",
+      "source_family": "provenance_aggregates_and_generated_lineages",
+      "source_count": 21
+    },
+    {
+      "path": "ai/data/source_family_safety_evaluation_manifest.yaml",
+      "sha256": "3ff4182fbe84c54c5dfbee0f4123cb01f89438d6622d392d9ff7862224c7b616",
+      "decision_status": "proposed",
+      "source_family": "safety_evaluation_and_restricted_research",
+      "source_count": 29
+    }
+  ],
+  "exact_alias_manifest_matches": {
+    "candidate_source_labels": 16,
+    "candidate_rows": 177423,
+    "manifest_status": "all_proposed_not_ratified",
+    "matches_by_source": {
+      "annomi": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-047",
+          "title": "AnnoMI",
+          "rights_decision_claim": "deprecated-restricted"
+        }
+      ],
+      "daic_woz": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-046",
+          "title": "DAIC-WOZ",
+          "rights_decision_claim": "restricted-knowledge-extraction"
+        }
+      ],
+      "dsm_vector_space": [
+        {
+          "manifest": "source_family_safety_evaluation_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-044",
+          "title": "DSM vector-space",
+          "rights_decision_claim": "permissive-use"
+        }
+      ],
+      "empath": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-030",
+          "title": "Empathetic Dialogues v2",
+          "rights_decision_claim": "restricted-knowledge-extraction"
+        }
+      ],
+      "esconv": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-039",
+          "title": "ESConv",
+          "rights_decision_claim": "restricted-voice-extraction"
+        }
+      ],
+      "hope": [
+        {
+          "manifest": "source_family_safety_evaluation_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-051",
+          "title": "HOPE",
+          "rights_decision_claim": "restricted-knowledge-extraction"
+        }
+      ],
+      "kokorochat": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-034",
+          "title": "KokoroChat",
+          "rights_decision_claim": "restricted-voice-extraction"
+        }
+      ],
+      "mental_health_multiagent": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-033",
+          "title": "Mental Health MultiAgent",
+          "rights_decision_claim": "restricted-knowledge-extraction"
+        }
+      ],
+      "mentalchat16k": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-032",
+          "title": "MentalChat16K",
+          "rights_decision_claim": "restricted-voice-extraction"
+        }
+      ],
+      "mitags": [
+        {
+          "manifest": "source_family_safety_evaluation_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-050",
+          "title": "MITAGS",
+          "rights_decision_claim": "restricted-knowledge-extraction"
+        }
+      ],
+      "mitch_hamidi_bpd_nlp": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-031",
+          "title": "Mitch Hamidi BPD NLP",
+          "rights_decision_claim": "restricted-knowledge-extraction"
+        }
+      ],
+      "psy_insight": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-041",
+          "title": "PsyInsight",
+          "rights_decision_claim": "restricted-voice-extraction"
+        }
+      ],
+      "psycheval": [
+        {
+          "manifest": "source_family_safety_evaluation_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-036",
+          "title": "PsychEval",
+          "rights_decision_claim": "permissive-use"
+        }
+      ],
+      "psydial": [
+        {
+          "manifest": "source_family_clinical_dialogue_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-040",
+          "title": "PsyDial",
+          "rights_decision_claim": "restricted-voice-extraction"
+        }
+      ],
+      "reddit_mental_health_posts": [
+        {
+          "manifest": "source_family_safety_evaluation_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-028",
+          "title": "Reddit mental-health posts",
+          "rights_decision_claim": "restricted-knowledge-extraction"
+        }
+      ],
+      "reddit_mental_nlp": [
+        {
+          "manifest": "source_family_safety_evaluation_manifest.yaml",
+          "decision_status": "proposed",
+          "source_id": "SRC-027",
+          "title": "Reddit mental-disorders identification",
+          "rights_decision_claim": "restricted-knowledge-extraction"
+        }
+      ]
+    },
+    "important_conflict": "SRC-047 AnnoMI has a representative registry direct-use claim with an approved selected-information reviewer decision, while the separate clinical-dialogue family manifest proposes deprecated-restricted. The family decision is unratified; registry provenance has no valid SHA-256 content digest. Campaign clearance remains unresolved."
+  },
+  "representative_registry_claims": {
+    "SRC-047": {
+      "source_id": "SRC-047",
+      "canonical_name": "AnnoMI",
+      "direct_use_approved_claim": true,
+      "license_and_use_policy_claim": [
+        "direct",
+        "attribution"
+      ],
+      "selected_information_reviewer_decisions": {
+        "approved": 1
+      },
+      "source_unit_reference_count": 1,
+      "provenance_hash_claim_count": 1,
+      "valid_sha256_content_digest_count": 0,
+      "registry_version": "2026-08-20.1"
+    },
+    "SRC-068": {
+      "source_id": "SRC-068",
+      "canonical_name": "AIPsy Bench",
+      "direct_use_approved_claim": false,
+      "license_and_use_policy_claim": [
+        "eval_only"
+      ],
+      "selected_information_reviewer_decisions": {},
+      "source_unit_reference_count": 1,
+      "provenance_hash_claim_count": 1,
+      "valid_sha256_content_digest_count": 0,
+      "registry_version": "2026-08-20.1"
+    }
+  },
+  "approval_evidence_search": {
+    "scanned_paths": [
+      "ai/docs/dataset-source-review.md",
+      "ai/data/*source*manifest.yaml",
+      "ai/data/licenses/source_manifest.yaml",
+      "ai/data/curated/construction/source_registry/representative_sources.jsonl"
+    ],
+    "findings": "All five source-family manifests declare decision_status=proposed. The source review awaits sign-off. No separate signed privacy, consent, or campaign clearance artifact was found in the scanned paths.",
+    "scope_limit": "Local repository evidence only; no external legal or provider confirmation performed."
+  },
+  "external_primary_source_check": {
+    "url": "https://github.com/uccollab/AnnoMI",
+    "checked": "2026-10-17",
+    "observation": "Official public repository README describes dataset availability; repository contains README and CSVs, with no LICENSE file shown. Public availability is not a training license.",
+    "source_license_evidence": "No primary-source license text found in repository snapshot."
+  }
+}

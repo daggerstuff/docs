@@ -1,0 +1,67 @@
+{
+  "status": "prepared_not_executed",
+  "intent": "Regenerate a new first-party synthetic edge-case cohort under the qualified provider route if the historical creator receipt for the old cohort cannot be recovered.",
+  "scope": {
+    "matrix": "10 hardcoded edge families x 3 difficulty levels x 4 ambiguity patterns",
+    "planned_matrix_records": 120,
+    "nightmare_fuel": false,
+    "external_clinical_seed_text": false,
+    "existing_rows_reused": false
+  },
+  "provider_route": {
+    "provider": "wandb",
+    "model": "Qwen/Qwen3.6-35B-A3B",
+    "provider_terms_basis": "docs/training/execution-2026-10-17/provider-qualification.md, W&B and Qwen terms review",
+    "use": "Generate and fine-tune only within W&B research SFT under the reviewed terms; no transfer to Fireworks or Adaption."
+  },
+  "proposed_cli_args": [
+    "--backend",
+    "wandb",
+    "--model",
+    "Qwen/Qwen3.6-35B-A3B",
+    "--no-nightmare",
+    "--limit",
+    "1",
+    "--output-dir",
+    "ai/data/curated/recovery/gold-20261017/edge-regeneration-wandb-qwen36-20261017"
+  ],
+  "entrypoint": "uv run python ai/training/build_edge_and_nightmare_dataset.py",
+  "new_generation_provenance": {
+    "run_manifest": "<output-dir>/edge_and_nightmare_generated.run-manifest.json",
+    "record_fields": [
+      "run_id",
+      "provider",
+      "provider_host (hostname only)",
+      "configured_model",
+      "resolved_request_model",
+      "source_artifact_path",
+      "source_artifact_sha256"
+    ],
+    "run_receipt_fields": [
+      "UTC start/completion timestamps",
+      "provider/model/config/code/source hashes",
+      "provider-reported usage and model label when returned"
+    ],
+    "resume_policy": "Reject existing output without a receipt or any provider/model/source/code/config fingerprint mismatch.",
+    "clinical_review_field": "clinical_reviewed=false; machine mi_quality remains distinct."
+  },
+  "pre_execution_gates": [
+    "Process-only credential use is user-authorized; this plan has no inference budget authorization. Obtain a distinct explicit cap before any generation call.",
+    "Estimate request count and worst-case inference cost for the full transcript; do not assume record limit bounds completion calls. Obtain the distinct explicit cap before generation.",
+    "Confirm output directory is new/private and the W&B training service remains the only downstream destination.",
+    "After generation, machine acceptance, PII/source checks, heldout group overlap, split disjointness and payload hashes must pass before any draft release can be considered.",
+    "No generation until source/seed rights and privacy scope are cleared and provider terms permit this use."
+  ],
+  "current_external_effects": {
+    "provider_calls_for_this_plan": 0,
+    "training_jobs": 0,
+    "uploads": 0
+  },
+  "provenance_code": {
+    "generator_path": "ai/training/build_edge_and_nightmare_dataset.py",
+    "generator_sha256": "f11c6b638539e1e37c826ba2fe47553486c1f67d6d250f9af96572969abea4bb",
+    "helper_path": "ai/training/generation_provenance.py",
+    "helper_sha256": "577f5b20933b06a0f05b5e1793e5f2c6027323663f3531ce84c0fbbffc5c554a"
+  },
+  "limitations": "This is a new cohort and is not a clearance or replacement for historical candidate rows. Historical edge outputs remain unresolved until their exact provider/model receipt and applicable terms are established."
+}

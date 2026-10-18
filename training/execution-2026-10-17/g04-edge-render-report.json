@@ -1,0 +1,111 @@
+{
+  "created_at_utc": "2026-10-17T16:27:42+00:00",
+  "status": "draft_local_weighted_payload_rendered_and_verified",
+  "candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+  "manifest_path": "docs/training/execution-2026-10-17/g04-release-manifest.json",
+  "manifest_sha256": "be331cabdd4394f8b675609a33e418f3b1ad05d0164b53f4b6db19a6e9b411cd",
+  "package_directory": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z",
+  "package_directory_mode": "0700",
+  "provider_payload_schema": {
+    "format": "weighted_messages_jsonl_v1",
+    "json_object_keys": [
+      "messages"
+    ],
+    "message_keys": [
+      "role",
+      "content",
+      "weight"
+    ],
+    "roles": [
+      "user",
+      "assistant"
+    ],
+    "user_weight": 0,
+    "assistant_weight": 1,
+    "loss_mask": "assistant-turn-only",
+    "system_messages": "none",
+    "hash_check": "exact file SHA-256 is checked before any provider operation; launcher must not re-render after hashing"
+  },
+  "partitions": {
+    "train": {
+      "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/train.jsonl",
+      "sha256": "60031b4233196cc66f0467c569486a873caf31eddf383b04c40b9619ec0d5aef",
+      "row_count": 410,
+      "source_group_count": 139,
+      "format": "weighted_messages_jsonl_v1"
+    },
+    "validation": {
+      "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/validation.jsonl",
+      "sha256": "a75ae273717227c7f8921fce191ebe261bc06f2fe7c36e2822c37f4adb005450",
+      "row_count": 72,
+      "source_group_count": 25,
+      "format": "weighted_messages_jsonl_v1"
+    },
+    "test": {
+      "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/test.jsonl",
+      "sha256": "30e1ffe5bcf887afb02dfcffe33a564dfd89015dd6bf0945efdc5fba86a351b0",
+      "row_count": 40,
+      "source_group_count": 15,
+      "format": "weighted_messages_jsonl_v1"
+    }
+  },
+  "internal_manifest": {
+    "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/manifest_internal.jsonl",
+    "sha256": "ca14e31d84883c935e4bf245a38f66ce6e8687554f84f324cbc5c36ebf3e13cf",
+    "row_count": 522
+  },
+  "render_verification": {
+    "status": "exact_existing_exporter_projection_pass",
+    "implementation_path": "ai/training/export_fireworks_payload.py",
+    "implementation_sha256": "27b1915006ea15306db986f22efc45c1df8923123d6720d977755158d896821a",
+    "candidate_rows_joined": 522,
+    "rendered_rows": 522,
+    "message_turns": 16990,
+    "row_content_fidelity": "each emitted provider row is byte-for-byte JSON rendering of existing `_provider_row(record)` projection",
+    "assistant_target_policy": "all assistant messages weight=1; all user messages weight=0",
+    "payload_hashes_reverified": true,
+    "provider_upload_gate": false
+  },
+  "group_disjointness": {
+    "status": "verified_diagnostic_only",
+    "group_key": "seed_group_sha256",
+    "train_group_count": 139,
+    "validation_group_count": 25,
+    "test_group_count": 15,
+    "pairwise_intersections": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    },
+    "reserved_eval_group_count": 22,
+    "heldout_group_intersections": {
+      "train": 0,
+      "validation": 0,
+      "test": 0
+    },
+    "evidence_path": "docs/training/execution-2026-10-17/g03-edge-case-post-holdout-rowrefs.jsonl",
+    "evidence_sha256": "a5294068c241eb48007c6c33036da0c033a16198094c6e83f307eeaabf443a7a",
+    "heldout_exclusions_path": "docs/training/execution-2026-10-17/g03-edge-case-heldout-exclusions.jsonl",
+    "heldout_exclusions_sha256": "b19a4e120b7d179585c55fe8292c6711de4adeb96deed81fe5775d148b74527b"
+  },
+  "safety_and_clearance": {
+    "status": "draft_local_only",
+    "upload_gate": false,
+    "generation_provider_model_verified": false,
+    "generation_output_use_terms_verified": false,
+    "training_provider_transfer_terms_verified": false,
+    "privacy_regex_matches": 0,
+    "clinical_reviewed_field": "auto-set by generator; not a clinical readiness claim",
+    "golden_control_source_identity": "unresolved"
+  },
+  "external_effects": {
+    "uploads": 0,
+    "training_jobs": 0,
+    "deployments": 0
+  },
+  "source_candidate": {
+    "path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "row_count": 190139
+  }
+}

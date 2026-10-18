@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-18T16:26:38Z",
+  "scope": "provider job status plus local dataset and synthetic diagnostic results",
+  "secrets_read_or_emitted": false,
+  "adaption": {
+    "datasets": [
+      {
+        "name": "arc-run2-train-v1",
+        "status": "succeeded",
+        "rows": 11192,
+        "id": "2f983459-b3ff-47be-aa62-faa686b14306"
+      },
+      {
+        "name": "train",
+        "status": "awaiting_input",
+        "rows": 418,
+        "id": "adb7d8eb-a3c9-434a-aea0-c4a6a7b8a788"
+      }
+    ],
+    "runs": [
+      {
+        "id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+        "status": "succeeded",
+        "model": "Qwen/Qwen3.6-35B-A3B",
+        "best_win_rate": 0.6414,
+        "download_available": true
+      },
+      {
+        "id": "cf1ebae0-1197-4362-92a1-3228c38ce96e",
+        "status": "succeeded",
+        "model": "Qwen/Qwen3.6-35B-A3B",
+        "best_win_rate": 0.4971,
+        "download_available": true
+      }
+    ],
+    "live_catalog": {
+      "qwen_anchor": "Qwen/Qwen3.6-35B-A3B",
+      "gemma4": "google/gemma-4-31B-it",
+      "nemotron": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16"
+    },
+    "credit_balance": "not exposed by connector; user reports credits, exact balance/expiry and run deduction remain unverified",
+    "new_jobs_started": 0
+  },
+  "wandb": {
+    "training_jobs_started": 2,
+    "inference_authorization": "prior six-completion $0.02 cap consumed; no further requests made",
+    "previous_results_review": [
+      {
+        "case_id": "dev-support-request",
+        "status": "success",
+        "diagnostic_check": "response_enum",
+        "passed": false,
+        "reason": "response ended at output length limit"
+      },
+      {
+        "case_id": "dev-research-citations",
+        "status": "success",
+        "diagnostic_check": "supported_citations",
+        "passed": false,
+        "reason": "required fictional source IDs absent from citations"
+      }
+    ],
+    "interpretation": "synthetic capability diagnostics only; unvalidated and not clinical-quality evidence",
+    "training_job": {
+      "id": "8b4f4722-9849-4942-a9e6-00829b1cd9c9",
+      "status": "RUNNING",
+      "model_id": "4c9e5d0d-abd9-4bf8-94cf-95bc249b37e9",
+      "training_rows": 80,
+      "artifact_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-qwen36-edge-matrix-20261018-v1-baseline-total-len-json-7f31c66054dc:v0",
+      "artifact_metadata_total_len": 80,
+      "last_checked_at": "2026-10-18T15:31:06Z"
+    },
+    "policy_permissive_source_training_job": {
+      "id": "4dee0d62-ffc0-43e2-a300-2776723a1011",
+      "creation_status": "PENDING",
+      "last_status_check": "HTTP 403 at 2026-10-18T16:26:20Z using available workspace WANDB_API_KEY; status could not be refreshed",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "model_id": "a856188b-36c9-44de-a4bc-5c9e7acc6f40",
+      "training_rows": 1673,
+      "release_id": "wandb-policy-permissive-sources-20261018-v1",
+      "release_manifest": "docs/training/execution-2026-10-18/wandb-policy-permissive-sources-release.json",
+      "state": "docs/training/execution-2026-10-17/wandb-sft-state/wandb-sft-f00e0bf27bf322be1772b4f330efcfce972635d41428c61be376307c18991ae6.json",
+      "artifact_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-policy-permissive-sources-20261018-v1-baseline-f00e0bf27bf3:v0",
+      "payload_sha256": "9e38a5a0b44129e4ba35ffca2877c3e688d997b98a22bc9bc8a0623f12b774a0",
+      "scope": "research experiment; not clinical or production readiness"
+    }
+  },
+  "synthetic_suite": {
+    "dev_cases": 5,
+    "sealed_cases": 5,
+    "scenario_families": [
+      "support",
+      "research",
+      "tool",
+      "memory",
+      "injection"
+    ],
+    "clinical_or_source_data_used": false,
+    "training_ready": false,
+    "reason": "evaluation fixtures only, not a training corpus; shared templates mean no statistical-independence claim"
+  },
+  "release_gate": {
+    "candidate_190139_rows_uploaded": false,
+    "breakaway_522_rows_uploaded": false,
+    "upload_gate": false,
+    "training_authorized_dataset_available": true
+  },
+  "next_actions": [
+    "restore authorized W&B Training API status access and poll both jobs; record terminal status and checkpoint artifacts",
+    "run held-out evaluation for the policy-permissive-source job when a checkpoint is available",
+    "build a materially larger source-policy-cleared cohort from existing project dispositions and compare against the 2,093-row cohort",
+    "qualify Adaption credit balance and run a matched-base comparison using its downloadable adapter",
+    "qualify OVHcloud account, region, and cost quote for the final portable training run"
+  ],
+  "breakaway_package_reverification": {
+    "manifest": "docs/training/execution-2026-10-17/g04-release-manifest.json",
+    "scope": "522 first-party synthetic edge-case rows; local research candidate only",
+    "counts": {
+      "train": 410,
+      "validation": 72,
+      "test": 40
+    },
+    "payload_sha256": {
+      "train": "60031b4233196cc66f0467c569486a873caf31eddf383b04c40b9619ec0d5aef",
+      "validation": "a75ae273717227c7f8921fce191ebe261bc06f2fe7c36e2822c37f4adb005450",
+      "test": "30e1ffe5bcf887afb02dfcffe33a564dfd89015dd6bf0945efdc5fba86a351b0"
+    },
+    "file_permissions": "0600; package directory 0700",
+    "assistant_only_loss_weights": "verified across all payload rows",
+    "group_split_intersections": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    },
+    "split_source_groups": {
+      "train": 139,
+      "validation": 25,
+      "test": 15
+    },
+    "launcher_dry_run": "blocked as expected before any provider call: G04 release is not approved; no upload is allowed",
+    "launcher_test": "ai/training/tests/test_wandb_sft_g04.py: 9 passed",
+    "status": "structurally verified, not release-cleared; upload_gate=false; release_id=null",
+    "remaining_release_gates": [
+      "contemporaneous generation provider/model receipt tied to seed hashes",
+      "generation-provider output retention and fine-tuning terms",
+      "selected training-provider terms/privacy/retention/transfer approval",
+      "control-set source lineage"
+    ]
+  },
+  "research_experiment_policy": {
+    "row_by_row_human_review_required_for_research_sft": false,
+    "automated_full_corpus_checks": [
+      "payload hashes",
+      "JSON/schema and assistant-only loss weights",
+      "group-disjoint splits",
+      "heldout exclusion",
+      "exact and near-duplicate screen",
+      "identifier-pattern screen"
+    ],
+    "human_review_scope": "clinical or production claims/use only; optional risk-stratified diagnostic sample for research",
+    "small_pilot_required": false,
+    "remaining_transfer_gates": [
+      "generation provider/model receipt bound to seed hashes",
+      "generation output-use terms",
+      "training provider privacy/retention/transfer terms",
+      "golden-control lineage or exclusion"
+    ]
+  },
+  "wandb_full_edge_matrix_2026_10_18": {
+    "source_path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/edge_and_nightmare_generated.jsonl",
+    "source_rows": 120,
+    "source_sha256": "2f9617b9e71799c8738100a73161d5d94a8333079a05f82790f39a5737fd2c8c",
+    "coverage": "10 families x 3 difficulties x 4 ambiguity patterns",
+    "generation_runs": [
+      "t2df59al",
+      "s95vdvlv"
+    ],
+    "receipt": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/generation_receipt.json",
+    "inference_usage": "not captured by generator; billed amount unknown",
+    "training_release": "docs/training/execution-2026-10-18/wandb-qwen36-edge-matrix-release.json",
+    "training_rows": {
+      "train": 80,
+      "validation": 20,
+      "test": 20
+    },
+    "automated_checks": {
+      "cliche_gate": "120 written, 0 rejected, 0 dropped",
+      "identifier_patterns": {
+        "email": 0,
+        "ssn": 0,
+        "phone": 0,
+        "card": 0,
+        "url": 0,
+        "ipv4": 0
+      },
+      "group_disjointness": "verified; 120 unique groups"
+    },
+    "launcher_dry_run": "passed; prepared exact 80-row artifact",
+    "training_attempt": "created; job 8b4f4722-9849-4942-a9e6-00829b1cd9c9 returned HTTP 200 and immediate GET status RUNNING",
+    "human_review_gate": "none for same-provider research SFT; required before clinical/production claims/use",
+    "remote_artifact_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-qwen36-edge-matrix-20261018-v1-baseline-total-len-json-7f31c66054dc:v0",
+    "remote_model_id": "4c9e5d0d-abd9-4bf8-94cf-95bc249b37e9",
+    "launcher_state": "job_created; training_job_id persisted in wandb-sft-state",
+    "read_only_reconciliation": "GET model checkpoints returned only step 0; API has no training-job list route",
+    "next_action": "Poll job 8b4f4722-9849-4942-a9e6-00829b1cd9c9 and record terminal status/checkpoint artifact."
+  }
+}

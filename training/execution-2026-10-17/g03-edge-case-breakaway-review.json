@@ -1,0 +1,135 @@
+{
+  "created_at_utc": "2026-10-17T16:22:59+00:00",
+  "status": "narrow_research_subset_diagnostic_ready_generation_provider_terms_evidence_open_no_release_view",
+  "privacy": "Metadata-only: exact candidate row numbers, SHA-256 digests, ARC IDs/session numbers, source class, and source artifact identities; no messages/prompts/rationale/PHI.",
+  "scope": {
+    "candidate_path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "candidate_rows": 190139,
+    "candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "reviewable_generated_edge_case_rows": 522,
+    "rowrefs_path": "docs/training/execution-2026-10-17/g03-edge-case-breakaway-rowrefs.jsonl",
+    "rowrefs_sha256": "b86fdcf371b56ede8a481b71d0f2e6b7be5e55c9ab6031894ddcf197ba92a6a7",
+    "rowrefs_bytes": 506757,
+    "rowrefs_count": 551,
+    "seed_map_sha256": "044342f2e4f041feb4f8c304f2fcf9f7f453b648871ec08a6540fb815db17753",
+    "generated_seed_sources": [
+      {
+        "path": "ai/training/output/nightmare_fuel/edge_and_nightmare_accepted.jsonl",
+        "sha256": "f52fd72945c9527d0b74032879a9fcea37f4a8445efa52c968400aaa7e909b44",
+        "rows": 140,
+        "clinical_edge_case_rows": 80,
+        "nightmare_fuel_predefined_rows": 60,
+        "clinical_reviewed_true_rows": 140
+      },
+      {
+        "path": "ai/training/output/nightmare_fuel/edge_and_nightmare_hr70_accepted.jsonl",
+        "sha256": "ef2abadfe667df0c0b704f9d9857012a2d2ffbf05ae691911766b4f2c35b8c7e",
+        "rows": 37,
+        "clinical_edge_case_rows": 20,
+        "nightmare_fuel_predefined_rows": 17,
+        "clinical_reviewed_true_rows": 37
+      }
+    ],
+    "generator_code": [
+      {
+        "path": "ai/training/build_arc_plans.py",
+        "sha256": "e69262e38cccdadaad6b43a797f5a0d8dd58166d5b2cdd1806362444bd78cf79"
+      },
+      {
+        "path": "ai/training/consolidate_edge_nightmare.py",
+        "sha256": "88bda14ae3c0328ef94647f335431ab59a5b22eb280352b8bee04163acdc7aa9"
+      }
+    ],
+    "machine_audit_content_binding": {
+      "exact_candidate_arc_rows": 980,
+      "snapshot_sha256": "31a3f6e354928c79792f3f4a501402471095a95c65672f95c2cb6c56b1624a3f",
+      "accept_rows": 980
+    },
+    "heldout_reservation": {
+      "candidate_arc_rows_across_all_seed_sources": 87,
+      "candidate_arc_ids": 34,
+      "known_edge_branch_overlap_exact_rowrefs": "not materialized yet; final view must exclude any matching held-out seed groups"
+    },
+    "other_exclusions": {
+      "ambiguous_seed_rows": 51,
+      "unknown_pilot_rows": 2,
+      "nightmare_scenarios_resolved_rows": 376,
+      "structural_exclusions_outside_arc_branch": 14
+    },
+    "exact_seed_input_artifact_paths": {
+      "ai/training/output/nightmare_fuel/edge_and_nightmare_hr70_accepted.jsonl": 124,
+      "ai/training/output/nightmare_fuel/edge_and_nightmare_accepted.jsonl": 427
+    },
+    "pre_holdout_edge_case_rows": 551,
+    "heldout_excluded_rows": 29,
+    "post_holdout_rowrefs_path": "docs/training/execution-2026-10-17/g03-edge-case-post-holdout-rowrefs.jsonl",
+    "post_holdout_rowrefs_sha256": "a5294068c241eb48007c6c33036da0c033a16198094c6e83f307eeaabf443a7a",
+    "post_holdout_rowrefs_count": 522,
+    "heldout_exclusion_rowrefs_path": "docs/training/execution-2026-10-17/g03-edge-case-heldout-exclusions.jsonl",
+    "heldout_exclusion_rowrefs_sha256": "b19a4e120b7d179585c55fe8292c6711de4adeb96deed81fe5775d148b74527b",
+    "heldout_exclusion_count": 29,
+    "provisional_group_split": {
+      "train": {
+        "rows": 410,
+        "groups": 139
+      },
+      "validation": {
+        "rows": 72,
+        "groups": 25
+      },
+      "test": {
+        "rows": 40,
+        "groups": 15
+      },
+      "method": "deterministic candidate+group hash buckets 80/10/10; provisional only, groupwise; exact identities in post-holdout rowrefs"
+    },
+    "generated_seed_artifact_paths": [
+      {
+        "path": "ai/training/output/nightmare_fuel/edge_and_nightmare_accepted.jsonl",
+        "sha256": "f52fd72945c9527d0b74032879a9fcea37f4a8445efa52c968400aaa7e909b44",
+        "edge_case_seed_rows": 80
+      },
+      {
+        "path": "ai/training/output/nightmare_fuel/edge_and_nightmare_hr70_accepted.jsonl",
+        "sha256": "ef2abadfe667df0c0b704f9d9857012a2d2ffbf05ae691911766b4f2c35b8c7e",
+        "edge_case_seed_rows": 20
+      }
+    ]
+  },
+  "origin_claims_and_limits": [
+    "Exact local generator code constructs edge prompts from a hardcoded 10-family taxonomy, difficulty, ambiguity, and variation; it reads no external clinical seed narrative for this branch. Candidate seed maps trace the edge rows to those accepted generated edge records. This is evidence of first-party synthetic origin for this branch, not for other candidate sources.",
+    "The accepted-record `clinical_reviewed=true` field is set inside the generator and is not treated as evidence of actual clinician review, privacy/consent, rights, or clinical validation.",
+    "Exact machine accept metadata and canonical rendered payload binding apply to all 980 candidate ARC rows. Separate lane-2 human decisions remain unbound to candidate content digests and are not transferred by ARC ID.",
+    "Exact heldout seed groups remove 29 edge rows across 12 ARC IDs. Remaining 522 rows/179 seed groups are disjoint from all 58 heldout-final-turn groups; the 52 golden-control identities remain unavailable.",
+    "Basic email/SSN/phone/card/URL/IP pattern scan found zero hits over the 551 edge rows. This is a limited indicator screen, not an exhaustive PHI detector. The 522 remaining rows had no >=0.25 filtered 5-gram containment to heldout prompts; this is near-duplicate screening, not proof of semantic independence or clinical safety.",
+    "Accepted row provenance, seed map, checkpoint state, and inspected run-log metadata do not record the generation backend/model. The generator selects these from NF_BACKEND/NF_MODEL; no `.env` or credentials were inspected. Recover an exact contemporaneous run receipt and verify the applicable output-use/remote-training terms before transfer.",
+    "No generic source-family signoff is inferred as needed for this independently evidenced first-party synthetic branch. Nightmare Fuel remains excluded under proposed deprecated-restricted family terms unless a specific disposition permits derivatives."
+  ],
+  "proposed_disposition": {
+    "include_for_research_diagnostic_only": "The 522 exact post-holdout rowrefs in `g03-edge-case-post-holdout-rowrefs.jsonl`, split by 179 exact seed groups, have a private local-only weighted draft payload for review. Do not promote or upload until actual generation provider/model and applicable output-use/remote-training terms are verified. This is not clinical/production authorization.",
+    "exclude": "29 exact rows in `g03-edge-case-heldout-exclusions.jsonl`; all 376 resolved Nightmare Fuel-derived rows; 51 ambiguous and 2 unknown rows; all structural exclusions; other unrelated source classes; any row failing an applicable privacy/clinical gate.",
+    "no_release": "A private local-only weighted payload package and draft manifest exist for 522 rows; no approved release view was created, promoted, or uploaded."
+  },
+  "decision_fields_needed": [
+    "Exact generation run receipt for the referenced edge seed artifact hashes with backend/provider and model identity (no credentials).",
+    "Evidence that the identified provider terms/policy at generation time permit retaining the generated synthetic outputs and using them for research fine-tuning; separately verify transfer/use terms for the selected training provider before upload.",
+    "If original generation receipt cannot be recovered, named evidence owner may document the precise applicable backend/model and terms basis for these exact hashes; no blanket family manifest ratification requested.",
+    "Any separate production/clinical claim remains out of scope; do not treat auto-set clinical_reviewed as clinical authorization."
+  ],
+  "unclassified_candidate_rows_missing_ledger_join": 0,
+  "uploads": 0,
+  "provider_spend": null,
+  "provider_spend_status": "Actual billed amount unknown for seven rejected W&B smoke requests; see registry external_effects.",
+  "draft_package": {
+    "manifest_path": "docs/training/execution-2026-10-17/g04-release-manifest.json",
+    "manifest_sha256": "be331cabdd4394f8b675609a33e418f3b1ad05d0164b53f4b6db19a6e9b411cd",
+    "status": "draft_local_only",
+    "upload_gate": false,
+    "row_count": 522,
+    "partition_counts": {
+      "train": 410,
+      "validation": 72,
+      "test": 40
+    }
+  }
+}

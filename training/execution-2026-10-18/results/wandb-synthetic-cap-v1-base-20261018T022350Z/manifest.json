@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-synthetic-capability-v1-dev-base-output1024-budget002-pending",
+  "status": "incomplete",
+  "cases_sha256": "9f0734cfde7384faa40e0f45163b12de906c69e6f0b22aa61f82dd5e8c0c10a3",
+  "config_sha256": "09c82c1683ab8f9434b2ba8a679b2d380d2f8b3995a65e9b6c21aa2f8bf8aab2",
+  "case_ids": [
+    "dev-support-request",
+    "dev-research-citations"
+  ],
+  "arm_ids": [
+    "base"
+  ],
+  "comparison_mode": "single_arm_diagnostic",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": []
+  },
+  "input_token_cap": 1024,
+  "max_tool_rounds": 2,
+  "allow_sealed": false,
+  "preflight_token_upper_bounds": {
+    "dev-support-request": 404,
+    "dev-research-citations": 815
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-inference",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.009216,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 1,
+  "error_count": 1,
+  "estimated_cost_usd": 0.00129375,
+  "latency_ms_by_arm": {
+    "base": {
+      "count": 1,
+      "p50_ms": 5757.055,
+      "p95_ms": 5757.055
+    }
+  },
+  "usage_totals_by_arm": {
+    "base": {
+      "cases_with_usage": 1,
+      "prompt_tokens": 55,
+      "completion_tokens": 1024,
+      "total_tokens": 1079
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "base": 1
+  }
+}

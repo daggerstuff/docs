@@ -1,0 +1,119 @@
+{
+  "created_at": "2026-10-17T14:50:39.105793+00:00",
+  "status": "recovery_candidate_not_training_approved",
+  "active_master_modified": false,
+  "sources": {
+    "/home/vivi/pixelated/ai/data/curated/sft_chatml/train_master_gold.jsonl.pre_stale_removal_20261010T040441Z": "3e647eddb77fa365e7ed93c5cb54155a8fb60e5bd24fb6357b9ce01b8bc7c80b",
+    "/home/vivi/pixelated/ai/data/curated/sft_chatml/train_master_gold.jsonl": "e3fc508e6c7bec360f9b67e5c963bdf14e2f4e08752c0e6b7900d380a964ace5"
+  },
+  "candidate": {
+    "path": "/home/vivi/pixelated/ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "rows": 190139,
+    "bytes": 411493422,
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "counts": {
+      "non_arc": 189159,
+      "arc": 980
+    }
+  },
+  "arc_snapshot": {
+    "path": "/home/vivi/pixelated/ai/data/curated/recovery/gold-20261017/arc_only_before_recovery.jsonl",
+    "sha256": "e3fc508e6c7bec360f9b67e5c963bdf14e2f4e08752c0e6b7900d380a964ace5",
+    "rows": 980
+  },
+  "non_arc_slice_sha256": "e5783f5b90ae7ee5111e6ea1a58306f7f8211c73a16084aa5fbd15498b284167",
+  "checks": {
+    "json_parsing": true,
+    "non_arc_bytes_match_all_four_historical_backups": true,
+    "arc_bytes_match_current_master": true,
+    "unique_arc_session_keys": true,
+    "sources_unchanged": true
+  },
+  "remaining": {
+    "historical_oct14_total": 190158,
+    "recovered_candidate_total": 190139,
+    "historical_arc_row_net_difference": 19,
+    "accepted_session_exclusion": {
+      "arc_id": "arc_0366",
+      "session_n": 2,
+      "reason": "consecutive therapist turns"
+    },
+    "original_master_disappearance": "Unresolved; prior session observed missing at 2026-10-17T03:17:36Z before rebuilding only arc slice at 03:44Z",
+    "promotion": "Not promoted; historical source eligibility, current content decisions, leakage, semantic dedup, and explicit disposition of superseded 19-session versions remain required.",
+    "historical_arc_row_explanation": "19 sessions in seven previously accepted arc versions were superseded by different content with null audit verdicts. All retained in Oct16 backup; historical versions extracted to quarantine, not automatically re-promoted."
+  },
+  "historical_arc_versions": {
+    "source": "/home/vivi/pixelated/ai/training/output/arc_corpus/backups/audit_prep_20261016/arc_records.jsonl",
+    "source_sha256": "b91af5e549d4d0e30bdc37e7e7553fe64176669edfefa4409d0ff7b194851b57",
+    "artifact": "/home/vivi/pixelated/ai/data/curated/recovery/gold-20261017/quarantine_historical_accepted_arc_versions.jsonl",
+    "sha256": "19619dd9086e03a9a5635bd747eae6437899a1ce5a7543f9236bbf736c82229e",
+    "arc_count": 7,
+    "session_count": 19,
+    "details": [
+      {
+        "arc_id": "arc_0231",
+        "sessions": 3,
+        "historical_verdict": "accept",
+        "current_verdict": null,
+        "historical_sessions_sha256": "0399fae65dff7e2dfb8164f04d10cc8d3e68c900fea7a4967a38b55a35637240",
+        "current_sessions_sha256": "cab7c74c13aaa63ccedc86c7ef862308a36fece4d7d113bc38686402621d7769",
+        "same_content": false
+      },
+      {
+        "arc_id": "arc_0262",
+        "sessions": 3,
+        "historical_verdict": "accept",
+        "current_verdict": null,
+        "historical_sessions_sha256": "735fd5ebfb4c493f75587fe8455913c0b3503d327f3e1a67bdcfd169b8604f07",
+        "current_sessions_sha256": "369923bd6e4cf7090dfbf649d5630d402b7d7ef800f8b8929f0855efb132db54",
+        "same_content": false
+      },
+      {
+        "arc_id": "arc_0264",
+        "sessions": 3,
+        "historical_verdict": "accept",
+        "current_verdict": null,
+        "historical_sessions_sha256": "573be1614509df3525761ab5745102e8e28284dcd1f5fa984c22ba3199c6e043",
+        "current_sessions_sha256": "40d77f3ff62871a2dbf150600eaa128019ed8fef7a2e4354c723d864d8d9c0c9",
+        "same_content": false
+      },
+      {
+        "arc_id": "arc_0302",
+        "sessions": 2,
+        "historical_verdict": "accept",
+        "current_verdict": null,
+        "historical_sessions_sha256": "eaa52ec59d20a26f8bd039d98fc37b4bda3f128515e71a842a079a5ecb0f720a",
+        "current_sessions_sha256": "576be34a9c0920e91a59999f97ca89ab33e7f5cdb92e3878e0e29dd98d5b8627",
+        "same_content": false
+      },
+      {
+        "arc_id": "arc_0305",
+        "sessions": 2,
+        "historical_verdict": "accept",
+        "current_verdict": null,
+        "historical_sessions_sha256": "be62a30ec5f3c8b71ec177fe52d0befa27951879293a79aa11dcba03beb1f533",
+        "current_sessions_sha256": "5135be36a199a6dd95ff617bebd7e5b478fa4d26498b8d241ccc1b3045cf61fa",
+        "same_content": false
+      },
+      {
+        "arc_id": "arc_0313",
+        "sessions": 3,
+        "historical_verdict": "accept",
+        "current_verdict": null,
+        "historical_sessions_sha256": "61db53c8ae3f1f1288fbdbf3f55dc05b231ffdb927c08b401395ded68c62b051",
+        "current_sessions_sha256": "33fadd63e5730466eefd46ac73c84f40b9e27419bb210b286395935f8ab65810",
+        "same_content": false
+      },
+      {
+        "arc_id": "arc_0358",
+        "sessions": 3,
+        "historical_verdict": "accept",
+        "current_verdict": null,
+        "historical_sessions_sha256": "cb9eaece1a7735181896d5f86954000988114dd46c67a184d45722addc8c2773",
+        "current_sessions_sha256": "b8525d71549e68ec528980dd8912d301dd93c73e4ccf24a774006221b68c8852",
+        "same_content": false
+      }
+    ],
+    "status": "quarantined_historical_versions_not_current_acceptances"
+  }
+}

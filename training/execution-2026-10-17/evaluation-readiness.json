@@ -1,0 +1,246 @@
+{
+  "task": "E00",
+  "reviewed_at": "2026-10-17",
+  "status": "not_ready_for_scored_inference",
+  "effects": {
+    "provider_calls": 12,
+    "inference_requests": 12,
+    "uploads": 0,
+    "weight_downloads": 0,
+    "provider_spend": null,
+    "provider_spend_status": "actual billed amount unknown; seven rejected calls returned no usage"
+  },
+  "historical_bundle": {
+    "path": "ai/training/output/arc_corpus/export/glimmer_eval_20261013",
+    "status": "prepared_not_evaluated",
+    "cases": 110,
+    "suites": {
+      "heldout_final_turn": 58,
+      "golden_controls": 52
+    },
+    "cases_sha256": "2bd856ac9ba92e169429c51560f283df57a4306f65530274fe22db9ee862fb1f",
+    "decoding": {
+      "temperature": 0,
+      "max_tokens": 1024,
+      "stop": [
+        "<|eot|>"
+      ]
+    },
+    "lineage_gate": {
+      "candidate_arc_rows_sharing_heldout_groups": 87,
+      "heldout_prompts_with_high_filtered_5gram_containment": 58,
+      "controls_with_source_identity": 0,
+      "decision": "not cleared for scored holdout use; historical bundle only"
+    }
+  },
+  "provider_support": {
+    "adaption": {
+      "paired_runner": "ai.qa.validation.therapy_bench.run_adaption_eval",
+      "supports_base_adapter": true,
+      "existing_checkpoint": "ai/training/output/arc_corpus/export/adaption_run2_v1/checkpoint_run2",
+      "input_contract": "JSON array with id/category/prompt/expected_behavior; legacy golden_questions only",
+      "recording_gaps": [
+        "per-case latency",
+        "input/output tokens",
+        "completion status and finish reason",
+        "retries and errors",
+        "billed usage",
+        "full input/config/source provenance"
+      ],
+      "hardware_and_cost_gate": "required; do not download weights or execute before qualification",
+      "next_command_template": "PYTHONPATH=.. uv run python -m ai.qa.validation.therapy_bench.run_adaption_eval --base Qwen/Qwen3.6-35B-A3B --adapter-path ai/training/output/arc_corpus/export/adaption_run2_v1/checkpoint_run2 --questions ai/research/experiments/evals/golden_questions.json --results-dir <new-private-results-dir> --modes base,adapter --load-strategy mm --load-4bit --max-new-tokens 1024 --judge heuristic"
+    },
+    "fireworks": {
+      "paired_runner": null,
+      "supports_base_adapter": false,
+      "blockers": [
+        "existing checkpoint download previously returned HTTP 400/code 9",
+        "no evaluation deployment currently available",
+        "active-job sampler does not accept promoted managed checkpoint ID",
+        "hosted route and bounded cost require qualification"
+      ]
+    },
+    "wandb": {
+      "paired_runner": "ai.qa.validation.therapy_bench.paired_eval",
+      "supports_base_adapter": false,
+      "blockers": [
+        "campaign SFT artifact not yet available",
+        "not scored: lineage, privacy, and human-calibrated rubric gates remain"
+      ],
+      "synthetic_base_smoke": {
+        "status": "complete_access_smoke_only",
+        "model": "Qwen/Qwen3.6-35B-A3B",
+        "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+        "project": "wutang/pixelated-empathy-kan28",
+        "cases": 5,
+        "successful_responses": 5,
+        "failed_requests_before_payload_correction": 7,
+        "captured_failure_reason": "Validation: Stop sequences array cannot be empty",
+        "failure_reason_scope": "one captured diagnostic response; earlier 400 response bodies were not retained",
+        "request_correction": "send OpenAI-Project and omit stop when configured stop list is empty",
+        "decoding": {
+          "temperature": 0,
+          "max_tokens": 256,
+          "input_token_upper_bound_per_case": 512,
+          "retries": 0,
+          "concurrency": 1
+        },
+        "usage_prompt_completion_tokens": [
+          [
+            31,
+            256
+          ],
+          [
+            32,
+            256
+          ],
+          [
+            294,
+            160
+          ],
+          [
+            49,
+            256
+          ],
+          [
+            24,
+            163
+          ]
+        ],
+        "finish_reasons": [
+          "length",
+          "length",
+          "tool_calls",
+          "length",
+          "stop"
+        ],
+        "cases_at_output_cap": 3,
+        "usage_totals": {
+          "prompt_tokens": 430,
+          "completion_tokens": 1091,
+          "total_tokens": 1521
+        },
+        "latency_ms": {
+          "p50_nearest_rank": 2203.052,
+          "p95_nearest_rank": 3123.956
+        },
+        "diagnostic_results": {
+          "passed": 2,
+          "failed": 3,
+          "validity": "diagnostic_unvalidated"
+        },
+        "successful_responses_estimated_cost_usd": 0.00147125,
+        "cumulative_configured_worst_case_usd": 0.005376,
+        "hard_cap_usd": 0.01,
+        "actual_billed_usd": null,
+        "actual_billed_status": "unknown; rejected requests returned no usage",
+        "diagnostic_claims": "synthetic, unvalidated access/format signals only; no safety or clinical claims",
+        "results_dir": "docs/training/execution-2026-10-17/results/wandb-base-synthetic-smoke-corrected-20261017"
+      }
+    }
+  },
+  "metric_readiness": {
+    "safety": "current heuristic is keyword based and not clinically validated",
+    "task_quality": "current TherapyBench expected-behavior overlap is lexical; no campaign rubric",
+    "format": "new runner supports independent diagnostic checks, all unvalidated; synthetic smoke JSON-format check failed",
+    "tool_behavior": "shared runner executes bounded local fixture tool loops with independent state and trace checks; synthetic results remain unvalidated",
+    "failure_accounting": "new runner persists HTTP failures, missing metadata, finish reasons, truncation indicators, and retry count",
+    "cost_latency": "new runner persists per-case latency and usage-based cost estimates; actual billing for rejected requests remains unknown"
+  },
+  "verification": {
+    "commands": [
+      "uv run --no-project --with ruff ruff check ai/qa/validation/therapy_bench/paired_eval.py ai/qa/validation/tests/test_paired_eval.py",
+      "uv run --no-project --with pytest python -m pytest ai/qa/validation/tests/test_paired_eval.py -q --confcutdir=ai/qa/validation/tests",
+      "uv run --no-project --with pytest python -m pytest ai/qa/validation/tests/test_prepare_glimmer_eval.py -q --confcutdir=ai/qa/validation/tests",
+      "uv run --no-project python -m ai.qa.validation.therapy_bench.paired_eval --cases docs/training/execution-2026-10-17/scenario-dev-v1.jsonl --config docs/training/execution-2026-10-17/wandb-synthetic-capability-v1-budget-0.02.config.json --results-dir /tmp/e00-dry-run-no-write --arm base --max-cases 2 --max-input-tokens 1024 --max-tool-rounds 2 --dry-run"
+    ],
+    "result": "Ruff clean; paired runner 20 passed; preparation suite 7 passed; 2-case 1024-token dry-run passed with 0 provider calls",
+    "scope": "offline contracts and synthetic base access smoke only; no inference quality, clinical fitness, or release readiness claim",
+    "paired_eval_test_count": 20,
+    "paired_eval_tests": "passed",
+    "ruff": "passed",
+    "dry_run": "passed; 2 cases, 6 completion maximum, 1024 input/output cap, 2 tool rounds; $0.009216 worst-case estimate under separate $0.02 cap"
+  },
+  "next_action": "The six-completion W&B synthetic diagnostic has run and the separate $0.02 inference cap is consumed. Do not rerun. Further inference requires a new bounded authorization; scored comparison also requires G03 lineage/rights/privacy clearance, selected SFT artifact, provider terms and a calibrated human-reviewed rubric.",
+  "synthetic_capability_suite": {
+    "status": "diagnostic_executed_incomplete_support_and_research_only",
+    "manifest": "docs/training/execution-2026-10-17/scenario-suite-v1-manifest.json",
+    "runner": "ai/qa/validation/therapy_bench/paired_eval.py",
+    "dev_cases": "docs/training/execution-2026-10-17/scenario-dev-v1.jsonl",
+    "sealed_cases": "docs/training/execution-2026-10-17/scenario-sealed-v1.jsonl",
+    "scenario_families": [
+      "support",
+      "research",
+      "tool",
+      "memory",
+      "injection"
+    ],
+    "case_count_per_split": 5,
+    "clinical_quality_claims": false,
+    "metric_validity": "unvalidated diagnostics; no clinical safety score",
+    "effects": {
+      "provider_calls": 6,
+      "uploads": 0,
+      "external_tool_effects": 0
+    },
+    "split_note": "Case and group IDs are disjoint. Templates are shared, so semantic independence is not claimed.",
+    "full_dev_sha256": "9f0734cfde7384faa40e0f45163b12de906c69e6f0b22aa61f82dd5e8c0c10a3",
+    "full_sealed_sha256": "f05657d222487595292cf562ed672e0326428a947a58277f644b6e787b1c6a54",
+    "dry_run": {
+      "command": "uv run --no-project python -m ai.qa.validation.therapy_bench.paired_eval --cases docs/training/execution-2026-10-17/scenario-dev-v1.jsonl --config docs/training/execution-2026-10-17/wandb-synthetic-capability-v1-budget-0.02.config.json --results-dir /tmp/e00-dry-run-no-write --arm base --max-cases 2 --max-input-tokens 1024 --max-tool-rounds 2 --dry-run",
+      "provider_calls": 0,
+      "case_ids": [
+        "dev-support-request",
+        "dev-research-citations"
+      ],
+      "completion_max": 6,
+      "max_input_tokens_per_completion": 1024,
+      "max_output_tokens_per_completion": 1024,
+      "max_tool_rounds": 2,
+      "retry_count": 0,
+      "new_cohort_budget_cap_usd": 0.02,
+      "new_cohort_worst_case_usage_estimate_usd": 0.009216,
+      "full_five_case_estimate_at_same_caps_usd": 0.02304,
+      "prior_completed_smoke_budget_cap_usd": 0.01,
+      "planned_campaign_ceiling_usd": 0.03,
+      "planned_ceiling_note": "Sum of the completed smoke scope cap and separate proposed cohort cap; not a billed-amount claim.",
+      "actual_billing_previous_smoke": "unknown for seven rejected requests",
+      "next_actual_call_status": "six-completion cap consumed; no additional inference is authorized under it",
+      "config_sha256": "09c82c1683ab8f9434b2ba8a679b2d380d2f8b3995a65e9b6c21aa2f8bf8aab2"
+    },
+    "limitations": [
+      "Diagnostic uses synthetic development cases and does not establish clinical quality or model preference.",
+      "Support completion truncated at 1024 output tokens.",
+      "The first research sequence stopped locally when the next tool-trace request exceeded its 1024-token input cap; research completed after a separate 2048-token-context retry.",
+      "Actual billed amount is unknown; estimate is based on reported tokens and configured rates.",
+      "No future inference call is authorized under the consumed $0.02 cap."
+    ],
+    "generator": "ai/qa/validation/therapy_bench/generate_synthetic_capability_v1.py",
+    "generator_sha256": "598a0ed2bdc910e01d5b29c8450183afb23974e1e0d9c2f5e90e17ccf882ad4f",
+    "reasoning_controls": {
+      "wandb_chat_schema": {
+        "reasoning_effort": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "include_reasoning_default": true,
+        "supported_by": "https://docs.wandb.ai/api-reference/chat-completions/create-chat-completion-1"
+      },
+      "qwen_self_hosted": {
+        "option": "chat_template_kwargs.enable_thinking=false",
+        "supported_by": "https://qwen.readthedocs.io/en/stable/deployment/vllm.html",
+        "hosted_wandb_support_verified": false
+      },
+      "disposition": "No unverified reasoning control was included; the diagnostic has completed and no further inference is authorized under the consumed cap."
+    },
+    "cases_config": "docs/training/execution-2026-10-17/wandb-synthetic-capability-v1-budget-0.02.config.json",
+    "executed_runs": [
+      "docs/training/execution-2026-10-18/results/wandb-synthetic-cap-v1-base-20261018T022350Z",
+      "docs/training/execution-2026-10-18/results/wandb-research-base-2048-20261018T022456Z"
+    ],
+    "usage_based_estimated_cost_usd": 0.00248575,
+    "actual_billed_usd": "unknown; provider responses contain no actual-billing field",
+    "authorization_status": "six-completion cap consumed; no more inference under this scope"
+  }
+}

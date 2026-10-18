@@ -1,0 +1,30 @@
+{
+  "arm": "baseline",
+  "artifact_bytes": 394400,
+  "artifact_hashes": {
+    "metadata": "3e35beb65509e599653d753d0754e4f986563ef33f718daaee01ea202e485146",
+    "trajectories": "bc33af0465356fe04a6cea01b09f5ea929a3ce12261ca7f9f1e4639daf548fa6"
+  },
+  "artifact_metadata_fix": {
+    "artifact_name": "g04-wandb-qwen36-edge-matrix-20261018-v1-baseline-total-len-json-7f31c66054dc",
+    "location": "metadata.json",
+    "total_len": 80,
+    "version": "v0"
+  },
+  "config": {
+    "assistant_turns": "all",
+    "batch_size": "auto",
+    "learning_rate": 0.0001
+  },
+  "manifest_sha256": "f331760695a294c71ab41140a6056397d5cc2b56fa38292a1e11766247dc7972",
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "model_id": "4c9e5d0d-abd9-4bf8-94cf-95bc249b37e9",
+  "payload_sha256": "bc33af0465356fe04a6cea01b09f5ea929a3ce12261ca7f9f1e4639daf548fa6",
+  "phase": "job_created",
+  "phase_updated_unix": 1792337460,
+  "release_id": "wandb-qwen36-edge-matrix-20261018-v1",
+  "row_count": 80,
+  "task_id": "7f31c66054dc78829cbe5f50fb8f7fb96f80c7b9cd490d170802da19a49e0742",
+  "training_data_url": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-qwen36-edge-matrix-20261018-v1-baseline-total-len-json-7f31c66054dc:v0",
+  "training_job_id": "8b4f4722-9849-4942-a9e6-00829b1cd9c9"
+}

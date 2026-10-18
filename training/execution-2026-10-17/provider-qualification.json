@@ -1,0 +1,463 @@
+{
+  "schema_version": 1,
+  "qualification_id": "P00",
+  "as_of": "2026-10-17",
+  "status": "partial_qualified",
+  "scope": "P00 read-only qualification, one approved capped synthetic W&B inference smoke by the evaluation worker, and local fail-closed launcher preparation. No training job, dataset upload, model resource, or deployment was created. The corrected five-case smoke succeeded 5/5; three outputs were truncated at 256 tokens.",
+  "credential_handling": {
+    "source": "Existing workspace .env was loaded in memory for authenticated read-only requests.",
+    "secrets_written_or_printed": false,
+    "exposed_together_token_used": false,
+    "credential_names": [
+      "FIREWORKS_API_KEY",
+      "WANDB_API_KEY"
+    ]
+  },
+  "fireworks": {
+    "account_access": {
+      "authenticated_reads_succeeded": true,
+      "account_id": "linencloset",
+      "base_model_resource": "accounts/fireworks/models/muse-glimmer-30b",
+      "base_model_status": "READY",
+      "supports_serverless_training": true,
+      "supports_supervised_lora_tuning": true,
+      "supports_serverless_inference": false,
+      "account_deployments": 0,
+      "billing_summary_period": "2026-10-01 through 2026-10-18 UTC",
+      "serverless_training_tokens_rated_cost_usd": "0.00",
+      "credit_balance_or_promo_eligibility": "Not exposed by the read-only account responses checked. Public Muse Glimmer SFT offer is documented, but account-specific offer activation remains unverified."
+    },
+    "eligible_model_routes": [
+      {
+        "model_id": "accounts/fireworks/models/muse-glimmer-30b",
+        "tokenizer": "meta-models/Muse-Glimmer-30B",
+        "renderer": "muse_glimmer",
+        "qualified_for": "LoRA supervised fine-tuning via Serverless Training API; account model resource reports support.",
+        "promotion": "Official pricing page currently advertises Muse Glimmer 30B SFT free via UI and Serverless Training API until 2026-11-30, no credit card required. This is a public offer; authenticated account balance/promo activation is not queryable through the safe routes checked.",
+        "inference_route": "Fireworks public model page lists serverless inference at $0.35/M input and $1.50/M output, but current account API metadata reports supportsServerless=false and serverlessModes=[]; account inference model list omitted Muse Glimmer. Contradiction leaves account serving eligibility unqualified.",
+        "adapter_route": "In-session sampler during an active Serverless Training session. A promoted adapter requires an on-demand/preemptible deployment; no ordinary serverless chat endpoint exists for tuned LoRAs.",
+        "export_route": "Existing trained Fireworks adapter download entitlement remains denied; see export check below."
+      }
+    ],
+    "existing_adapter_export_check": {
+      "model_id": "accounts/linencloset/models/arc-pilot-v1-therapist-sft",
+      "operation": "GET getDownloadEndpoint",
+      "http_status": 400,
+      "provider_message": "model downloads are temporarily disabled, please contact Fireworks AI to get access",
+      "result": "not_exportable_under_current_account_entitlement"
+    },
+    "cost_boundary": {
+      "training": "Muse Glimmer SFT public offer covers eligible LoRA SFT only; does not cover DPO, RL, full-parameter training, deployments, or inference outside the training session.",
+      "inference": "Fireworks inference credits remain tentative. Do not schedule external inference until a covered route and price are verified.",
+      "bounded_first_job": "No run was launched. Public SFT offer and account model capability are verified; the official read-only cookbook plan was run successfully and showed training at $0 promotional, while explicitly marking in-session sampling as a separate uncovered line. Do not use the serverless evaluation loop until sampling coverage is verified."
+    },
+    "read_only_plan_check": {
+      "official_command": "python -m examples.sft.muse_glimmer_starter plan --surface serverless --run-id p00-read-only-qualification",
+      "execution": "Ran in-memory from official Fireworks cookbook source with existing installed fireworks-ai 1.2.22 SDK; no install, job, model, dataset, or deployment created.",
+      "account": "linencloset",
+      "reported_promotion_active": true,
+      "reported_deadline": "2026-11-01T00:00:00-07:00",
+      "reported_training_cost": "$0 (promotional)",
+      "plan_limitation": "The starter computes promotion-active from a local hardcoded deadline; it does not query an account-specific promotion activation endpoint. Its deadline differs from the current Fireworks pricing page's November 30, 2026 offer, so follow the live provider pricing/UI rather than treating this local date as authoritative.",
+      "sampling_cost_boundary": "Starter plan explicitly excludes in-session evaluation sampling unless account shows it covered; serverless pricing separately lists Muse Glimmer sample at $4.88/M tokens and prefill at $1.96/M tokens."
+    },
+    "evidence": [
+      "Authenticated GET model resource returned READY, supportsServerlessTraining=true, supervisedLoraTunable=true, supportsServerless=false, serverlessModes=[].",
+      "Authenticated GET deployments returned totalSize=0.",
+      "Authenticated GET billing/summary reported Serverless Training Tokens totalCost USD 0.00 for the checked period; the response contains no credit balance.",
+      "Authenticated GET existing model download endpoint returned HTTP 400 with the provider restriction message."
+    ],
+    "official_sources": [
+      "https://docs.fireworks.ai/fine-tuning/training-api/cookbook/muse-glimmer",
+      "https://docs.fireworks.ai/fine-tuning/models",
+      "https://docs.fireworks.ai/fine-tuning/evaluating-fine-tuned-models",
+      "https://docs.fireworks.ai/fine-tuning/deploying-loras",
+      "https://docs.fireworks.ai/accounts/exporting-usage-and-costs",
+      "https://fireworks.ai/pricing",
+      "https://fireworks.ai/models/fireworks/muse-glimmer-30b",
+      "https://github.com/fw-ai/cookbook/blob/main/training/examples/sft/muse_glimmer_starter.py"
+    ]
+  },
+  "wandb": {
+    "account_access": {
+      "authenticated_reads_succeeded": true,
+      "known_project_accessible": "wutang/pixelated-empathy-kan28",
+      "project_visibility": "PRIVATE (authenticated read-only GraphQL project metadata returned access=PRIVATE).",
+      "project_visibility_field": "access",
+      "training_system_check_http_status": 200,
+      "inference_model_catalog_http_status": 200,
+      "inference_models_returned": 23,
+      "credit_balance": "Not exposed by read-only endpoints checked. User confirmed substantial W&B inference credits; no cross-provider transfer assumed."
+    },
+    "account_visible_inference_models_relevant_to_campaign": [
+      {
+        "model_id": "Qwen/Qwen3.6-35B-A3B",
+        "eligible_for": "W&B hosted inference; also matches the base model used for Adaption run 2.",
+        "pricing_usd_per_1m_tokens": {
+          "input": 0.25,
+          "output": 1.25
+        },
+        "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+        "model_parameter": "Qwen/Qwen3.6-35B-A3B"
+      }
+    ],
+    "terms_review": {
+      "reviewed_on": "2026-10-17",
+      "service_route": "W&B Serverless Inference API uses https://api.inference.wandb.ai/v1; official W&B inference product page says hosted models run on CoreWeave infrastructure.",
+      "inference_input_output_scope": "W&B AI Terms last updated 2026-08-04 say prompts/data/text submitted as Input and generated results as Output are Customer Data between W&B and Customer, excluding W&B Background IP. The W&B MSA defines Customer Data broadly and gives W&B rights to use Customer Data to provide/improve W&B Assets, develop offerings, and provide/improve AI Features. The free-use section permits W&B to use data from free and academic customers for testing and development. No inference-specific prompt/output retention period, output-only license, or default no-improvement setting was identified in reviewed docs.",
+      "coreweave_scope_and_retention": "W&B's privacy link redirects to CoreWeave. CoreWeave Privacy Policy last updated 2026-02-24 says it collects service content including inputs/outputs and may process that content to operate, debug, evaluate, develop, improve, and optimize products/services. It gives personal-data retention as only as long as needed, with deletion/anonymization/isolation after; this policy explicitly excludes data processed solely as a processor/customer data, so it does not specify exact inference request retention for W&B customer data. CoreWeave hosted-inference path is evidenced by W&B's official inference page.",
+      "remote_research_finetuning_transfer": "W&B AI Terms treat Input/Output as Customer Data between the parties and require Customer to hold input rights; the MSA lets W&B process Customer Data to provide/improve W&B Assets and AI Features and does not expressly restrict the Customer's reuse of outputs. For new fully first-party authored synthetic prompts with no external seed text or personal/regulated data, routing Qwen outputs back to W&B's own SFT service is a reasonable documented basis for research-only fine-tuning under the same provider terms; this is not a legal guarantee and includes W&B's stated product-improvement/testing-development rights. No clause located that expressly prohibits Customer reuse or third-party transfer of outputs, but no distinct blanket output license or upstream seed-data rights were found. This basis does not clear historical outputs whose generator/model/terms are unknown or imply permission to transfer to another provider without applying that provider's terms.",
+      "first_party_generation_fallback": {
+        "status": "qualified_as_a_bounded_W&B-only_research_fallback",
+        "basis": "Use manually authored, hardcoded prompts derived without third-party seed texts; generate with the exact known W&B model Qwen/Qwen3.6-35B-A3B; use only synthetic non-real-person content; retain the exact prompt/model/request receipt; process the resulting Customer Data only through W&B's private project and W&B Serverless SFT under the same provider's documented service terms.",
+        "conditions": [
+          "Source prompts are created by the project and contain no third-party text, real person case facts, or identifiable/regulated health data.",
+          "Output generation and later SFT stay within W&B; no cross-provider upload is implied by this qualification.",
+          "The project accepts W&B AI Terms and MSA rights to use Customer Data for service support, product development/improvement, and free-plan testing/development.",
+          "The release still passes privacy, source lineage, holdout reservation, content-quality, private-project, and G04 approval gates."
+        ],
+        "limits": "This qualifies a prospective first-party fallback, not the existing historical dataset with unknown teacher identity/terms; it does not authorize clinical/production use or create an output-specific copyright license."
+      },
+      "sensitive_data_constraint": "MSA defines Sensitive Data to include HIPAA-regulated patient/medical/PHI and EU special-category data, and says Customer will not send it to W&B without W&B's prior written consent. Use only the approved synthetic/privacy-screened release; do not send identifiable or regulated health data.",
+      "official_sources": [
+        {
+          "url": "https://wandb.ai/site/ai-terms/",
+          "document": "W&B AI Terms",
+          "last_updated": "2026-08-04",
+          "scope": "Input/Output, Customer Data, W&B rights, customer's rights warranties"
+        },
+        {
+          "url": "https://wandb.ai/site/terms/",
+          "document": "W&B Master Service Agreement",
+          "last_updated": "2026-09-30",
+          "scope": "Customer Data, use rights, free-plan testing/development, sensitive data, deletion on termination"
+        },
+        {
+          "url": "https://docs.coreweave.com/policies/terms-of-service/privacy-policy",
+          "document": "CoreWeave Privacy Policy",
+          "last_updated": "2026-02-24",
+          "scope": "service inputs/outputs, improvement/evaluation purposes, personal-data retention; excludes processor-held customer data"
+        },
+        {
+          "url": "https://wandb.ai/site/inference/",
+          "document": "W&B Serverless Inference product page",
+          "scope": "W&B-hosted inference and CoreWeave infrastructure"
+        },
+        {
+          "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/blob/main/README.md",
+          "document": "Official Qwen model card",
+          "scope": "exact base model repository and license metadata"
+        },
+        {
+          "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/blob/main/LICENSE",
+          "document": "Official Qwen model LICENSE",
+          "scope": "Apache-2.0 license applies to model repository/work; no output-specific license located"
+        }
+      ],
+      "qualification": "W&B service usage is documented, but exact prompt/output retention and an exclusive or downstream output license are not established by the reviewed official sources. Apache-2.0 authorizes uses of the model work subject to its conditions; it does not itself clear dataset provenance or grant rights in outputs."
+    },
+    "public_training_catalog_models": [
+      {
+        "model_id": "OpenPipe/Qwen3-14B-Instruct",
+        "public_catalog_surface": "ART Serverless RL model catalog",
+        "current_account_inference_catalog": false,
+        "account_specific_training_eligibility": "Unverified"
+      },
+      {
+        "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "public_catalog_surface": "ART Serverless RL model catalog",
+        "current_account_inference_catalog": false,
+        "account_specific_training_eligibility": "Unverified"
+      }
+    ],
+    "training_and_checkpoint_route": {
+      "public_preview": "W&B Serverless SFT and RL training are documented as free during public preview; inference and checkpoint storage are billed separately.",
+      "account_visible_training_base_models": [
+        "OpenPipe/Qwen3-14B-Instruct",
+        "Qwen/Qwen2.5-14B-Instruct",
+        "Qwen/Qwen3-235B-A22B-Instruct-2507",
+        "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "Qwen/Qwen3.5-4B",
+        "Qwen/Qwen3.5-9B",
+        "Qwen/Qwen3.6-27B",
+        "Qwen/Qwen3.6-35B-A3B",
+        "google/gemma-4-26B-A4B-it",
+        "google/gemma-4-31B-it",
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B"
+      ],
+      "preferred_campaign_base": "Qwen/Qwen3.6-35B-A3B is returned by the authenticated W&B Training GET /v1/preview/base-models endpoint and matches the existing Adaption run-2 base. It is also present in the current W&B inference catalog.",
+      "read_only_training_readiness": "GET /v1/system-check returned healthy; GET /v1/preview/base-models returned 13 trainable base IDs. The API documents POST /v1/preview/models and POST /v1/preview/sft-training-jobs only for creating resources/jobs. No create call was made. Account-specific quota/eligibility beyond the returned trainable list remains unverified.",
+      "sft_api_contract": {
+        "base_url": "https://api.training.wandb.ai/v1",
+        "authentication_env_name": "WANDB_API_KEY",
+        "model_creation": "POST /preview/models with entity, project, name, base_model; creates a model resource and is deferred until G04 is approved.",
+        "job_creation": "POST /preview/sft-training-jobs with model_id, training_data_url (W&B artifact URI), and optional config.",
+        "documented_config_fields": {
+          "batch_size": "integer 1..32 or auto",
+          "learning_rate": "number, list of numbers, or null",
+          "assistant_turns": "all or last; default all",
+          "metric_logging": "optional enabled/target_training_step"
+        },
+        "dataset_artifact_requirements": "W&B SFT API requires a W&B artifact containing trajectories.jsonl and metadata.json and an artifact URI wandb-artifact:///entity/project/name:version. G04 train payload is copied byte-for-byte; only train is uploaded.",
+        "training_data_format": "Approved JSONL rows contain messages with user/assistant role, content, and weight; user weight=0 and assistant weight=1. Launcher validates assistant_turns=all, no system role, nonempty text, and assistant-final rows; does not re-render.",
+        "private_destination": "wutang/pixelated-empathy-kan28, verified PRIVATE by authenticated read-only project metadata; launcher rechecks privacy immediately before upload."
+      },
+      "post_g04_sft_request_template": {
+        "model_create": {
+          "method": "POST",
+          "path": "/v1/preview/models",
+          "body": {
+            "entity": "wutang",
+            "project": "pixelated-empathy-kan28",
+            "name": "arc-sft-qwen36-35b-g04",
+            "base_model": "Qwen/Qwen3.6-35B-A3B",
+            "return_existing": true
+          }
+        },
+        "sft_job": {
+          "method": "POST",
+          "path": "/v1/preview/sft-training-jobs",
+          "body": {
+            "model_id": "<UUID returned by model creation>",
+            "training_data_url": "<W&B Artifact URI for G04-approved trajectories.jsonl + metadata.json>",
+            "config": {
+              "batch_size": "auto",
+              "learning_rate": 0.0001,
+              "assistant_turns": "all"
+            }
+          },
+          "execution_gate": "Template only. Use after G04 passes under the user's existing campaign authorization and the documented public-preview free SFT offer is still active; no model or job exists from P00."
+        },
+        "execution_gate": "Template only. Under existing user campaign authorization, execute only after G04 passes exact source/privacy/group gates, private project and base catalog revalidate, and the documented public-preview free SFT offer is still active; no model/job/upload has occurred."
+      },
+      "checkpoint_storage": "W&B Training docs state checkpoints are stored as LoRA artifacts; all plans include at least 5 GB free storage and this is typically enough for about 30 LoRAs. Storage above plan quota may be billed monthly. The documented read-only files/query_stats endpoint reports total bytes in one project, not remaining account quota; no exact account headroom or checkpoint byte estimate was obtained.",
+      "trained_adapter_endpoint_format": "wandb-artifact:///<entity>/<project>/<model-name>:<step>",
+      "documented_inference_base_url": "https://api.inference.wandb.ai/v1",
+      "alternate_training_api_base_url": "https://api.training.wandb.ai/v1",
+      "authentication_env_name": "WANDB_API_KEY",
+      "adapter_export": "W&B-hosted LoRAs are stored as artifacts and documented as downloadable; arbitrary external adapter compatibility has not been verified for Adaption or Fireworks adapters."
+    },
+    "bounded_first_experiment": {
+      "experiment": "Five-call, synthetic-only base-model diagnostic smoke; no dataset upload, model creation, training, or judge calls.",
+      "model_id": "Qwen/Qwen3.6-35B-A3B",
+      "api_base": "https://api.inference.wandb.ai/v1",
+      "authentication_env_name": "WANDB_API_KEY",
+      "calls_max": 5,
+      "input_tokens_per_call_max": 512,
+      "output_tokens_per_call_max": 256,
+      "total_input_tokens_max": 2560,
+      "total_output_tokens_max": 1280,
+      "price_usd_per_1m_tokens": {
+        "input": 0.25,
+        "output": 1.25
+      },
+      "estimated_max_cost_usd": 0.00224,
+      "spend_cap_usd": 0.01,
+      "controls": [
+        "Synthetic prompts only",
+        "Pretokenize and reject over-limit input",
+        "max_completion_tokens=256",
+        "Sequential requests",
+        "No retries",
+        "Stop if usage or finish metadata is absent"
+      ],
+      "execution_status": "Corrected authorized diagnostic smoke succeeded 5/5. Three outputs were truncated by the 256-token limit. Estimated usage cost was $0.00147125 for successful calls; including seven prior HTTP 400 attempts at an upper-bound estimate, cumulative stays below the $0.01 cap."
+    },
+    "evidence": [
+      "Existing .env credentials authenticated read-only W&B Public API access to the known project.",
+      "GET https://api.training.wandb.ai/v1/system-check returned HTTP 200.",
+      "GET https://api.inference.wandb.ai/v1/models returned 23 account-visible model IDs and included Qwen/Qwen3.6-35B-A3B.",
+      "Authenticated GET https://api.training.wandb.ai/v1/preview/base-models returned 13 trainable bases including Qwen/Qwen3.6-35B-A3B; this training catalog is separate from inference availability.",
+      "Authenticated GET https://api.training.wandb.ai/openapi.json documented base-model listing and SFT create schemas; no training resource/job was created."
+    ],
+    "official_sources": [
+      "https://wandb.ai/site/inference/",
+      "https://site.wandb.ai/pricing/training/",
+      "https://wandb.ai/site/pricing/inference/",
+      "https://site.wandb.ai/pricing/training/",
+      "https://docs.wandb.ai/api-reference/training-api-overview",
+      "https://docs.wandb.ai/api-reference/training-jobs/sft-training-job-create",
+      "https://docs.wandb.ai/training/serverless-sft",
+      "https://docs.wandb.ai/training/serverless-rl/available-models",
+      "https://docs.wandb.ai/training/serverless-rl/use-trained-models",
+      "https://docs.wandb.ai/training/serverless-rl/usage-limits",
+      "https://docs.wandb.ai/api-reference/models/create-model",
+      "https://docs.wandb.ai/api-reference/chat-completions/create-chat-completion-1",
+      "https://wandb.ai/site/inference-model/cw_qwen_qwen3.6-35b-a3b/"
+    ],
+    "prepared_launcher": {
+      "path": "ai/training/launch/wandb_sft_g04.py",
+      "default": "dry-run; no provider writes",
+      "execute_gate": "explicit --execute plus exact G04 approved_for_research_training manifest, private project check, authenticated current base catalog check, currently active documented public-preview free SFT offer, and existing user campaign authorization",
+      "manifest": "docs/training/execution-2026-10-17/g04-release-manifest.json",
+      "required_release_evidence": [
+        "provider=wandb",
+        "status=approved_for_research_training",
+        "upload_gate=true",
+        "scope=research-only",
+        "nonempty limitations",
+        "source_candidate path+sha256+row_count",
+        "internal_manifest path+sha256+row_count with exact split membership",
+        "train/validation/test path+sha256+row_count+source_group_count",
+        "verified seed_group_sha256 rowrefs and heldout exclusion files with matching hashes",
+        "recomputed pairwise group intersections and heldout exclusion intersections are zero"
+      ],
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "arms": {
+        "baseline": {
+          "dataset_partition": "partitions.train",
+          "config": {
+            "batch_size": "auto",
+            "learning_rate": 0.0001,
+            "assistant_turns": "all"
+          }
+        },
+        "data-ablation": {
+          "dataset_partition": "ablations.data_ablation.train",
+          "config": {
+            "batch_size": "auto",
+            "learning_rate": 0.0001,
+            "assistant_turns": "all"
+          }
+        }
+      },
+      "cost_and_storage": "Public-preview SFT cost is $0 while the offer remains active. Dry run measures the exact input artifact bytes. Public docs provide at least 5 GB free storage and say this is typically enough for about 30 LoRAs; over-quota storage can be billed monthly. The documented read-only API reports per-project used bytes, not remaining account quota, and no checkpoint byte estimate was available; this is recorded as a limitation, not an invented account-quota gate.",
+      "durability": "Deterministic task id from release/payload/arm/config; state file mode 0600; ambiguous artifact/model/job create outcome blocks resume rather than repeating a POST; successful job id supports status polling.",
+      "test": "Ruff check and format pass for launcher and tests; 9 fake API/local validation tests pass; local draft partition size/context metrics recorded without row text; canonical draft still fails closed; no provider writes performed.",
+      "current_g04_draft_preflight": {
+        "canonical_manifest": "docs/training/execution-2026-10-17/g04-release-manifest.json",
+        "canonical_status": "draft_local_only",
+        "canonical_upload_gate": false,
+        "real_dry_run_result": "rejected before upload with G04 release is not approved",
+        "temporary_structural_copy": "passed hash, source-row-count, internal membership, rowref membership, recomputed group disjointness, heldout exclusion, payload row-count, role, and loss-mask checks; temporary manifest deleted afterward",
+        "approval_effect": "none; canonical draft was not modified"
+      },
+      "dataset_context_qualification": {
+        "measurement_date": "2026-10-17",
+        "measurement_scope": "Current G04 draft train partition only; local streaming counts; no row text emitted.",
+        "manifest_state": "draft_local_only; upload_gate=false",
+        "payload": {
+          "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/train.jsonl",
+          "sha256": "60031b4233196cc66f0467c569486a873caf31eddf383b04c40b9619ec0d5aef",
+          "bytes": 12445999,
+          "rows": 410,
+          "messages": 13248,
+          "user_messages": 6624,
+          "assistant_messages": 6624,
+          "max_messages_per_example": 54,
+          "max_content_utf8_bytes_per_example": 93061,
+          "max_content_unicode_characters_per_example": 92707,
+          "max_single_message_utf8_bytes": 5749,
+          "p95_content_utf8_bytes_per_example": 49196,
+          "p99_content_utf8_bytes_per_example": 58417
+        },
+        "tokenization": {
+          "installed_tokenizer_packages": {
+            "transformers": false,
+            "tokenizers": false,
+            "tiktoken": false
+          },
+          "cached_exact_qwen_tokenizer": false,
+          "downloaded_model_or_tokenizer": false,
+          "raw_text_byte_fallback_upper_bound_proxy": 93061,
+          "upper_bound_assumption": "At most one token per UTF-8 byte for raw content if the tokenizer uses byte fallback; not a validated token count and excludes provider chat-template markers."
+        },
+        "base_model_native_context": {
+          "max_position_embeddings": 262144,
+          "source": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/blob/main/config.json",
+          "qualification": "Model config only; W&B may enforce a smaller training limit."
+        },
+        "wandb_public_sft_limits": {
+          "per_example_token_or_context_limit": "Not published in reviewed SFT create schema or serverless-training docs.",
+          "dataset_rows_or_bytes_limit": "Not published in reviewed SFT create schema or serverless-training docs.",
+          "training_step_or_epoch_limit": "No explicit step/epoch limit or config control found in the rendered public SFT create schema.",
+          "overlength_example_behavior": "No guarantee found for reject, truncate, or other processing behavior.",
+          "sources": [
+            "https://docs.wandb.ai/api-reference/training-jobs/sft-training-job-create",
+            "https://docs.wandb.ai/training/serverless-sft",
+            "https://docs.wandb.ai/training/serverless-rl/usage-limits"
+          ]
+        },
+        "request_controls": {
+          "batch_size": "Documented range 1..32 or auto; launcher uses auto.",
+          "learning_rate": "Documented numeric field; launcher explicitly uses 0.0001.",
+          "assistant_turns": "Documented values all or last; launcher uses all to supervise every assistant message.",
+          "epochs_or_max_steps": "Not set; no request control is shown by reviewed SFT schema.",
+          "max_sequence_length": "No request control found.",
+          "stop_sequences": "No SFT stop control found; inference stop is omitted when empty.",
+          "returned_config": "Launcher captures known non-secret scalar fields including epochs, num_train_epochs, and max_steps only if returned by provider."
+        },
+        "next_create_check": "No arbitrary new threshold added. Existing launcher will recheck approved release hashes, row roles/weights, private project, and current trainable model catalog; it does not locally truncate. Provider-side limits/truncation can only be confirmed through documented provider response/status after a real create, and the create endpoint itself is not a dry-run."
+      }
+    },
+    "inference_smoke": {
+      "status": "Corrected authorized synthetic smoke succeeded 5/5; three outputs truncated at the 256-token cap. Successful-call usage estimate $0.00147125; cumulative upper-bound including seven earlier HTTP 400 attempts remains below $0.01.",
+      "diagnosis": "The first six requests failed because the inference gateway rejects an empty stop sequence array (stop: []) even though current public schema lists empty array as the default.",
+      "corrective_request": "Omit stop when empty; retain project attribution wutang/pixelated-empathy-kan28, model Qwen/Qwen3.6-35B-A3B, output cap 256, no retries, one sequential five-case diagnostic request under cumulative $0.01 preflight cap.",
+      "current_public_chat_schema": "max_completion_tokens is supported; max_tokens is deprecated; reasoning_effort supports low/medium/high; stop may be omitted."
+    }
+  },
+  "adaption": {
+    "account_access": {
+      "authenticated_read_tools_succeeded": true,
+      "credit_balance": "No balance or pricing tool is available in the exposed Adaption connector. User confirmed Adaption credits; exact remaining balance, expiry, and per-run deduction remain unverified."
+    },
+    "existing_run_2": {
+      "run_id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+      "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+      "dataset_name": "arc-run2-train-v1",
+      "dataset_status": "succeeded",
+      "row_count": 11192,
+      "columns": [
+        "uuid",
+        "original_prompt",
+        "original_completion"
+      ],
+      "model_id": "Qwen/Qwen3.6-35B-A3B",
+      "training_method": "instruction",
+      "status": "succeeded",
+      "download_available": true,
+      "best_win_rate": 0.6414,
+      "local_checkpoint": "ai/training/output/arc_corpus/export/adaption_run2_v1/checkpoint_run2/",
+      "local_checkpoint_size": "46M",
+      "inference_status": "Downloaded checkpoint exists; no Adaption hosted inference endpoint is exposed. Local model weights are not practical on this host without a compatible GPU/runtime; current host has 28 GiB RAM and no nvidia-smi."
+    },
+    "currently_listed_non_llama_training_models": [
+      "google/gemma-3-27b-it-VLM",
+      "google/gemma-3-4b-it",
+      "google/gemma-3-4b-it-VLM",
+      "google/gemma-4-31B-it",
+      "google/gemma-4-31B-it-VLM",
+      "openai/gpt-oss-120b",
+      "openai/gpt-oss-20b",
+      "mistralai/Mistral-7B-Instruct-v0.2",
+      "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16",
+      "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+      "Qwen/Qwen3.5-0.8B",
+      "Qwen/Qwen3.5-122B-A10B",
+      "Qwen/Qwen3.5-4B",
+      "Qwen/Qwen3.5-9B",
+      "Qwen/Qwen3.6-35B-A3B"
+    ],
+    "excluded_models": [
+      "All meta-llama models returned by Adaption are excluded by user preference.",
+      "Qwen 3.8 is not listed and remains excluded by user preference."
+    ],
+    "methods": "The live Adaption catalog reports SFT and DPO for listed models; LoRA is offered for all listed non-Llama models, with full fine-tuning only for a subset. The run-2 base Qwen/Qwen3.6-35B-A3B is listed for SFT/DPO LoRA.",
+    "first_experiment": "Reuse run 2 as a historical reference after E00 reaches a qualified inference route. Do not launch a new run until an exact credit estimate and balance/expiry are available; connector exposes no cost-estimate or balance method.",
+    "evidence": [
+      "Read-only Adaption list_datasets, list_autoscientist_runs, list_training_models, get_dataset, and recommend_autoscientist_hyperparameters all succeeded.",
+      "Run 2 status is succeeded and download_available=true; platform win rate 0.6414 is not a clinical verdict.",
+      "Dataset metadata shows 11,192 rows with uuid, original_prompt, and original_completion columns.",
+      "Current host has 28 GiB RAM and no nvidia-smi executable; no local inference was run."
+    ]
+  },
+  "remaining_qualification": [
+    "Fireworks: official read-only plan reported promotional training; re-run current cookbook plan immediately before a G04-approved launch, omit --allow-paid, and stop if paid. Serverless sampling remains separately priced/uncovered; adapter export remains blocked.",
+    "W&B: training base and private project verified. Corrected 5-case synthetic inference smoke succeeded under the $0.01 cumulative cap; 3 outputs were truncated at 256 tokens. SFT launcher is prepared; G04 passing release and public-preview offer revalidation remain required. Storage headroom and checkpoint bytes are unavailable from the documented read-only API and are reported as limitations.",
+    "Adaption: obtain exact credit balance/expiry and per-run estimate through a read-only account interface before another training run; qualify hosted matching-base adapter route or matching runtime before evaluating run 2.",
+    "G04 source/privacy/lineage release gates remain prerequisites for all training payload uploads."
+  ]
+}

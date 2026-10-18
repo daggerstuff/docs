@@ -1,0 +1,47 @@
+{
+  "verified_at": "2026-10-17T16:29:42.736911+00:00",
+  "scope": "Independent coordinator verification of local draft bytes only; not approval for upload/training or clinical readiness.",
+  "manifest_sha256": "be331cabdd4394f8b675609a33e418f3b1ad05d0164b53f4b6db19a6e9b411cd",
+  "observed_manifest_status": "draft_local_only",
+  "observed_upload_gate": false,
+  "partitions": [
+    {
+      "split": "train",
+      "sha256": "60031b4233196cc66f0467c569486a873caf31eddf383b04c40b9619ec0d5aef",
+      "rows": 410,
+      "permissions": "0600",
+      "assistant_only_loss_weights": true
+    },
+    {
+      "split": "validation",
+      "sha256": "a75ae273717227c7f8921fce191ebe261bc06f2fe7c36e2822c37f4adb005450",
+      "rows": 72,
+      "permissions": "0600",
+      "assistant_only_loss_weights": true
+    },
+    {
+      "split": "test",
+      "sha256": "30e1ffe5bcf887afb02dfcffe33a564dfd89015dd6bf0945efdc5fba86a351b0",
+      "rows": 40,
+      "permissions": "0600",
+      "assistant_only_loss_weights": true
+    }
+  ],
+  "group_counts": {
+    "train": 139,
+    "validation": 25,
+    "test": 15
+  },
+  "recomputed_group_intersections": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "remaining_gates": [
+    "Historical generated-seed model/provider receipt and applicable output-use/transfer terms",
+    "User clarification of non-AWS credential runtime policy",
+    "Launcher compatibility review against versioned G04 schema"
+  ],
+  "provider_actions": 0,
+  "source_dataset_mutations": 0
+}

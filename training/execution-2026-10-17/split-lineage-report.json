@@ -1,0 +1,203 @@
+{
+  "created_date": "2026-10-17T16:26:05+00:00",
+  "status": "local_metadata_lineage_and_lexical_overlap_audit_only",
+  "candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+  "candidate_rows": 190139,
+  "source_lineage": {
+    "distinct_source_group_keys": 85,
+    "rows_with_source_group": 189159,
+    "groups_by_size": {
+      "1": 1,
+      "3": 1,
+      "4": 7,
+      "5": 9,
+      "6": 1,
+      "7": 1,
+      "9": 4,
+      "10": 3,
+      "11": 4,
+      "12": 1,
+      "16": 1,
+      "18": 1,
+      "25": 1,
+      "28": 1,
+      "30": 1,
+      "39": 1,
+      "44": 1,
+      "46": 1,
+      "50": 1,
+      "56": 1,
+      "60": 1,
+      "63": 1,
+      "66": 1,
+      "67": 1,
+      "68": 2,
+      "71": 2,
+      "77": 1,
+      "80": 1,
+      "81": 1,
+      "98": 1,
+      "100": 1,
+      "110": 1,
+      "111": 1,
+      "116": 1,
+      "123": 1,
+      "128": 1,
+      "129": 1,
+      "131": 1,
+      "144": 1,
+      "155": 1,
+      "166": 1,
+      "191": 1,
+      "224": 1,
+      "267": 1,
+      "273": 1,
+      "588": 1,
+      "673": 1,
+      "892": 2,
+      "1038": 1,
+      "1415": 1,
+      "1522": 1,
+      "1977": 1,
+      "3725": 1,
+      "4615": 1,
+      "5606": 1,
+      "11135": 1,
+      "13890": 1,
+      "30444": 1,
+      "35977": 1,
+      "70968": 1
+    },
+    "basis": "normalized source label plus available provenance source_type/source_book; this may merge unrelated acquisitions or fail to connect aliases; owner review needed."
+  },
+  "arc_seed_lineage": {
+    "seed_map_path": "ai/training/arc_plans/seed_map.jsonl",
+    "seed_map_sha256": "044342f2e4f041feb4f8c304f2fcf9f7f453b648871ec08a6540fb815db17753",
+    "seed_map_records": 629,
+    "seed_map_arc_ids": 420,
+    "candidate_arc_rows": 980,
+    "candidate_arc_ids": 390,
+    "rows_resolved_to_one_seed_group": 927,
+    "rows_with_multiple_distinct_successful_seed_keys": 51,
+    "rows_with_no_successful_seed_key_or_nonempty_plan_seed": 2,
+    "ambiguous_arc_ids": 18,
+    "unresolved_arc_ids": 1,
+    "plan_fallback_arc_ids": 9,
+    "plan_fallback_arc_rows": 19,
+    "normalization": "Removed only a terminal :<integer> or :v<integer> suffix from successful seed-map keys. Distinct resulting keys remain ambiguous. Nine candidate pilot IDs use their own nonempty plan seeds; pilot_01 remains unresolved.",
+    "group_key_format": "SHA-256 of normalized successful seed-map key; truncated IDs in g03-lineage-reservation.json",
+    "source_evidence": "Plan and seed-map lineage identifies generator inputs but does not by itself establish rights/privacy clearance or exact content audit.",
+    "archive_snapshot": {
+      "path": "ai/data/curated/recovery/gold-20261017/lineage-evidence-snapshot-20261017T1559Z/arc_records.jsonl",
+      "sha256": "31a3f6e354928c79792f3f4a501402471095a95c65672f95c2cb6c56b1624a3f",
+      "bytes": 35508867,
+      "mode": "0600; parent directory mode 0700"
+    },
+    "audit_content_binding": {
+      "prior_0_of_980_claim": "superseded",
+      "candidate_rows_exactly_reproduced": 980,
+      "renderer": "ai/training/consolidate_arc_corpus.py::_session_messages",
+      "machine_audit_accept_rows": 980,
+      "human_review_payload_hash_rows": 0,
+      "meaning": "Candidate ARC messages exactly reproduce stable snapshot content; this binds its machine audit metadata. Separate lane-2 review files are ARC-ID keyed and do not provide candidate content hashes, so no lane-2 decision is transferred by ID alone."
+    }
+  },
+  "exclusions": {
+    "path": "exclusions.jsonl",
+    "duplicate_rows_beyond_first": 12,
+    "no_nonempty_assistant_target_rows": 2,
+    "overlap_rows": 0,
+    "unique_rows_with_structural_exclusion": 14
+  },
+  "historical_split_reservation": {
+    "source_preflight": "recovered-gold-preflight.json",
+    "old_train_exact_payloads_in_candidate": 180460,
+    "old_val_exact_payloads_in_candidate": 0,
+    "old_test_exact_payloads_in_candidate": 0,
+    "candidate_rows_to_reserve_by_exact_val_test_hash": 0,
+    "semantic_or_source_group_overlap": "For edge_cases, exact heldout group matching excludes 29 rows across 12 ARC IDs; the remaining 522 rows/179 groups have 0 rows at >=0.25 filtered 5-gram containment. This result supersedes the previous all-58-at-0.80 estimate for the edge branch only. Broad ARC and non-ARC screens are recorded separately; no semantic independence claim.",
+    "legacy_980_arc_screen_status": "Prior all-58-at-0.80 5-gram result is not used for edge branch disposition; exact edge-specific per-row screen is in edge_branch_diagnostics. The full 980 ARC population was not recomputed in this update."
+  },
+  "splitter_readiness": "edge branch diagnostic split prepared but not approved for release: 522 exact first-party synthetic edge rows remain after 29 heldout-group exclusions, with provisional groupwise split; generation provider/model and applicable output-use/remote-training terms remain unverified, golden-control source identities absent, and separate lane-2 decisions lack payload hashes.",
+  "limits": [
+    "Source group identity for non-arc rows is metadata-derived and provisional.",
+    "Arc seed lineage resolves 927/980 rows to one normalized successful key; 51 rows have multiple distinct keys and 2 rows remain unknown.",
+    "Golden-control source lineage is absent; source independence cannot be established from current case metadata.",
+    "Current arc audit/review decisions lack exact payload hash binding to recovery candidate content.",
+    "No messages or PHI are present in this report.",
+    "The prior 0/980 archive payload warning is superseded by exact canonical-renderer reproduction of all 980/980 candidate ARC rows against a stable private snapshot. Separate human lane-2 decisions remain without candidate content hashes.",
+    "Edge-branch exact screen supersedes earlier 0.80 claim for that branch: after excluding 29 heldout-group rows, 0/522 rows meet 0.25 filtered 5-gram containment. This is not semantic or clinical clearance.",
+    "First-party synthetic origin is established only for the edge_cases branch; actual generation backend/model terms still need verification before remote training transfer."
+  ],
+  "evaluation_reservation": {
+    "bundle_path": "ai/training/output/arc_corpus/export/glimmer_eval_20261013",
+    "case_count": 110,
+    "heldout_final_turn_cases": 58,
+    "golden_controls": 52,
+    "heldout_seed_groups_resolved": 22,
+    "candidate_rows_sharing_resolved_heldout_groups": 87,
+    "candidate_arc_ids_sharing_resolved_heldout_groups": 34,
+    "golden_controls_with_source_identity_metadata": 0,
+    "heldout_prompt_lexical_screen": {
+      "all_58_exceed_0_80_5gram_containment_against_candidate_arc_rows": "legacy estimate superseded for the exact edge branch; see edge_branch_diagnostics",
+      "golden_controls_exceeding_0_25_containment": 0,
+      "edge_branch_exact_screen": "g03-edge-branch-diagnostics.json: after excluding 29 exact heldout-group rows, 0/522 rows meet >=0.25 filtered 5-gram containment."
+    },
+    "bundle_status": "prepared_not_evaluated",
+    "old_split_cross_seed_groups": 16,
+    "old_test_arcs_excluded_from_bundle": 8,
+    "meaning": "Diagnostic identities only. Reserve matched groups; control origin remains unknown. Exact ARC payload binding does not resolve the evaluation contamination screen or rights/privacy gates.",
+    "interpretation": "The 58 heldout-final-turn cases resolve to 22 seed groups. Exact group overlap reserves 87 ARC rows across 34 IDs; the narrow edge branch separately removes 29 rows across 12 IDs and leaves 522 rows/179 groups with no >=0.25 filtered 5-gram containment. The 52 golden-control identities remain missing. Lexical screening is not semantic independence."
+  },
+  "edge_branch_diagnostics": {
+    "path": "g03-edge-branch-diagnostics.json",
+    "rows_before_holdout": 551,
+    "heldout_group_excluded_rows": 29,
+    "post_holdout_rows": 522,
+    "post_holdout_groups": 179,
+    "group_split": {
+      "train": {
+        "rows": 410,
+        "groups": 139
+      },
+      "validation": {
+        "rows": 72,
+        "groups": 25
+      },
+      "test": {
+        "rows": 40,
+        "groups": 15
+      }
+    },
+    "heldout_group_intersections": {
+      "train": 0,
+      "validation": 0,
+      "test": 0
+    },
+    "basic_regex_matches": 0,
+    "retained_rows_at_or_above_0_25_filtered_5gram_containment": 0,
+    "elapsed_seconds": 7.395,
+    "limitations": [
+      "The screen is an ngram near-duplicate check, not semantic independence.",
+      "The 52 golden-control records still lack source identities.",
+      "Generator provider/model and terms remain unverified."
+    ],
+    "golden_control_screen": {
+      "controls": 52,
+      "rows_any_filtered_5gram_overlap": 371,
+      "rows_at_or_above_0_25_containment": 0,
+      "elapsed_seconds": 2.693,
+      "claim_limit": "Golden-control source identities remain unavailable."
+    }
+  },
+  "full_candidate_nonarc_overlap_screen": {
+    "rows_scanned": 189159,
+    "filtered_5gram_any_overlap_rows": 63399,
+    "rows_at_or_above_0_25_containment": 0,
+    "rows_at_or_above_0_50_containment": 0,
+    "rows_at_or_above_0_80_containment": 0,
+    "rows_full_containment": 0,
+    "scope": "non-ARC candidate rows vs 58 heldout cases and 52 controls; aggregate counts from completed metadata-only screen",
+    "limits": "Overlap counts can intersect across suites; low overlap is not source lineage or semantic clearance."
+  }
+}

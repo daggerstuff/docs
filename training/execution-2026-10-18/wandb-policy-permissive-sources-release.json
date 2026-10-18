@@ -1,0 +1,120 @@
+{
+  "schema_version": "g04-release-manifest-v1",
+  "status": "approved_for_research_training",
+  "upload_gate": true,
+  "release_id": "wandb-policy-permissive-sources-20261018-v1",
+  "provider": "wandb",
+  "scope": {
+    "use": "research_fine_tuning_candidate_only",
+    "clinical_or_production_readiness": false,
+    "candidate_rows": 2093,
+    "source_groups": 2093
+  },
+  "source_candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+  "source_candidate": {
+    "path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "row_count": 190139
+  },
+  "partitions": {
+    "train": {
+      "path": "ai/data/curated/recovery/gold-20261017/wandb-policy-permissive-20261018/train.jsonl",
+      "sha256": "9e38a5a0b44129e4ba35ffca2877c3e688d997b98a22bc9bc8a0623f12b774a0",
+      "row_count": 1673,
+      "source_group_count": 1673,
+      "format": "weighted_messages_jsonl_v1",
+      "split": "train"
+    },
+    "validation": {
+      "path": "ai/data/curated/recovery/gold-20261017/wandb-policy-permissive-20261018/validation.jsonl",
+      "sha256": "22038a08da1cf1183f39beecd48aa82d271d98b17c77f3209bcfcf6cb7e7baa5",
+      "row_count": 210,
+      "source_group_count": 210,
+      "format": "weighted_messages_jsonl_v1",
+      "split": "validation"
+    },
+    "test": {
+      "path": "ai/data/curated/recovery/gold-20261017/wandb-policy-permissive-20261018/test.jsonl",
+      "sha256": "ec1d5f65732432ba1ae1af5b8d536c76df685846db9efa7344314b749c66e8cd",
+      "row_count": 210,
+      "source_group_count": 210,
+      "format": "weighted_messages_jsonl_v1",
+      "split": "test"
+    }
+  },
+  "payload_contract": {
+    "format": "weighted_messages_jsonl_v1",
+    "user_weight": 0,
+    "assistant_weight": 1,
+    "loss_mask": "assistant-turn-only",
+    "projection": "drop source system messages; preserve user/assistant turns and weight assistant targets"
+  },
+  "evidence": {
+    "group_disjointness": {
+      "status": "verified",
+      "group_key": "content_group_sha256",
+      "train_group_count": 1673,
+      "validation_group_count": 210,
+      "test_group_count": 210,
+      "pairwise_intersections": {
+        "train_validation": 0,
+        "train_test": 0,
+        "validation_test": 0
+      },
+      "evidence_path": "ai/data/curated/recovery/gold-20261017/wandb-policy-permissive-20261018/rowrefs.jsonl",
+      "evidence_sha256": "06d8e34bd0a454e2ec38f690657a84eef6c8d468cd47693a216ed9c2fbfbf765",
+      "reserved_eval_group_count": 0,
+      "heldout_group_intersections": {
+        "train": 0,
+        "validation": 0,
+        "test": 0
+      },
+      "heldout_exclusions_path": "ai/data/curated/recovery/gold-20261017/wandb-policy-permissive-20261018/heldout.jsonl",
+      "heldout_exclusions_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "privacy": {
+      "basic_pattern_screen": {
+        "status": "passed",
+        "counts": {
+          "email": 0,
+          "ssn": 0,
+          "phone": 0,
+          "card": 0,
+          "url": 0,
+          "ipv4": 0
+        }
+      },
+      "clinical_ner_screen": "not run",
+      "limitations": [
+        "Pattern screen does not certify absence of sensitive information.",
+        "clinical_reviewed source metadata is not treated as clinical validation."
+      ]
+    },
+    "source_origin": {
+      "status": "existing_project_manifest_permissive_use_decisions",
+      "policy_entries": {
+        "dsm_vector_space": {
+          "source_id": "SRC-044",
+          "manifest_sha256": "3ff4182fbe84c54c5dfbee0f4123cb01f89438d6622d392d9ff7862224c7b616"
+        },
+        "psycheval": {
+          "source_id": "SRC-036",
+          "manifest_sha256": "3ff4182fbe84c54c5dfbee0f4123cb01f89438d6622d392d9ff7862224c7b616"
+        }
+      },
+      "decision_basis": "Existing project source-family manifest entries classify these two sources as permissive-use and supervised-finetuning; research experiment only."
+    }
+  },
+  "internal_manifest": {
+    "path": "ai/data/curated/recovery/gold-20261017/wandb-policy-permissive-20261018/manifest_internal.jsonl",
+    "sha256": "5f2323b95fcd184d0036ea8d29a4984961567860ffdca95d145956b7fea16b6b",
+    "row_count": 2093
+  },
+  "limitations": [
+    "Research-only SFT experiment; not clinical or production readiness.",
+    "Groups are exact-message hashes; no original seed lineage key exists for these source rows.",
+    "No semantic near-duplicate certification.",
+    "System messages were removed to satisfy the W&B weighted user/assistant payload contract."
+  ],
+  "created_at_utc": "2026-10-18T15:35:00Z"
+}

@@ -1,0 +1,164 @@
+{
+  "schema_version": "g04-release-manifest-v1",
+  "status": "draft_local_only",
+  "upload_gate": false,
+  "release_id": null,
+  "provider": "wandb",
+  "scope": {
+    "use": "research_fine_tuning_candidate_only",
+    "clinical_or_production_readiness": false,
+    "candidate_rows": 522,
+    "candidate_arc_ids": 214,
+    "source_groups": 179
+  },
+  "source_candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+  "partitions": {
+    "train": {
+      "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/train.jsonl",
+      "sha256": "60031b4233196cc66f0467c569486a873caf31eddf383b04c40b9619ec0d5aef",
+      "row_count": 410,
+      "source_group_count": 139,
+      "format": "weighted_messages_jsonl_v1"
+    },
+    "validation": {
+      "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/validation.jsonl",
+      "sha256": "a75ae273717227c7f8921fce191ebe261bc06f2fe7c36e2822c37f4adb005450",
+      "row_count": 72,
+      "source_group_count": 25,
+      "format": "weighted_messages_jsonl_v1"
+    },
+    "test": {
+      "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/test.jsonl",
+      "sha256": "30e1ffe5bcf887afb02dfcffe33a564dfd89015dd6bf0945efdc5fba86a351b0",
+      "row_count": 40,
+      "source_group_count": 15,
+      "format": "weighted_messages_jsonl_v1"
+    }
+  },
+  "payload_contract": {
+    "format": "weighted_messages_jsonl_v1",
+    "json_object_keys": [
+      "messages"
+    ],
+    "message_keys": [
+      "role",
+      "content",
+      "weight"
+    ],
+    "roles": [
+      "user",
+      "assistant"
+    ],
+    "user_weight": 0,
+    "assistant_weight": 1,
+    "loss_mask": "assistant-turn-only",
+    "system_messages": "none",
+    "hash_check": "exact file SHA-256 is checked before any provider operation; launcher must not re-render after hashing"
+  },
+  "evidence": {
+    "group_disjointness": {
+      "status": "verified_diagnostic_only",
+      "group_key": "seed_group_sha256",
+      "train_group_count": 139,
+      "validation_group_count": 25,
+      "test_group_count": 15,
+      "pairwise_intersections": {
+        "train_validation": 0,
+        "train_test": 0,
+        "validation_test": 0
+      },
+      "reserved_eval_group_count": 22,
+      "heldout_group_intersections": {
+        "train": 0,
+        "validation": 0,
+        "test": 0
+      },
+      "evidence_path": "docs/training/execution-2026-10-17/g03-edge-case-post-holdout-rowrefs.jsonl",
+      "evidence_sha256": "a5294068c241eb48007c6c33036da0c033a16198094c6e83f307eeaabf443a7a",
+      "heldout_exclusions_path": "docs/training/execution-2026-10-17/g03-edge-case-heldout-exclusions.jsonl",
+      "heldout_exclusions_sha256": "b19a4e120b7d179585c55fe8292c6711de4adeb96deed81fe5775d148b74527b"
+    },
+    "source_origin": {
+      "status": "first_party_synthetic_edge_branch_supported",
+      "evidence_path": "docs/training/execution-2026-10-17/g03-edge-branch-diagnostics.json",
+      "evidence_sha256": "5dac7cc8adf7f0c0acb6bb02c68b404482aaa91553d28f0f1d3c859d5db67d96",
+      "generation_provider_model": "unverified",
+      "terms_for_output_retention_research_finetuning_and_selected_provider_transfer": "unverified",
+      "rowref_ledger": {
+        "path": "docs/training/execution-2026-10-17/g03-edge-case-post-holdout-rowrefs.jsonl",
+        "sha256": "a5294068c241eb48007c6c33036da0c033a16198094c6e83f307eeaabf443a7a",
+        "rows": 522
+      }
+    },
+    "privacy": {
+      "basic_pattern_screen": "0 matches across six email/SSN/phone/card/URL/IP patterns in 551 source rows and rendered 522-row payload",
+      "clinical_ner_screen": "not run; Presidio unavailable",
+      "limitations": [
+        "Pattern screen does not detect all identifiers or clinical PHI.",
+        "Golden-control source identities remain unavailable.",
+        "Low 5-gram overlap is not semantic independence proof."
+      ]
+    },
+    "clinical_quality": {
+      "clinical_reviewed_field": "auto-set by generator; not evidence of clinician review or clinical readiness",
+      "production_clinical_use": "not authorized by this manifest"
+    }
+  },
+  "pending_gates": [
+    "Recover a contemporaneous generator backend/provider and model receipt tied to the generated seed artifact hashes.",
+    "Verify that generation-provider terms/policy permit retaining outputs and using them in research fine-tuning.",
+    "Verify selected training-provider terms, privacy settings, retention, and remote transfer permissions.",
+    "Golden-control lineage remains unknown; no source independence claim for those controls."
+  ],
+  "privacy_and_local_handling": {
+    "package_directory_mode": "0700",
+    "payload_and_manifest_internal_modes": "0600",
+    "external_effects": {
+      "uploads": 0,
+      "training_jobs": 0,
+      "deployments": 0
+    }
+  },
+  "internal_manifest": {
+    "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z/manifest_internal.jsonl",
+    "sha256": "ca14e31d84883c935e4bf245a38f66ce6e8687554f84f324cbc5c36ebf3e13cf",
+    "row_count": 522
+  },
+  "created_at_utc": "2026-10-17T16:27:42+00:00",
+  "render_verification": {
+    "status": "exact_existing_exporter_projection_pass",
+    "implementation_path": "ai/training/export_fireworks_payload.py",
+    "implementation_sha256": "27b1915006ea15306db986f22efc45c1df8923123d6720d977755158d896821a",
+    "candidate_rows_joined": 522,
+    "rendered_rows": 522,
+    "message_turns": 16990,
+    "row_content_fidelity": "each emitted provider row is byte-for-byte JSON rendering of existing `_provider_row(record)` projection",
+    "assistant_target_policy": "all assistant messages weight=1; all user messages weight=0",
+    "payload_hashes_reverified": true,
+    "provider_upload_gate": false
+  },
+  "external_provider_activity": {
+    "wandb_inference_requests": 12,
+    "successful_responses": 5,
+    "http_400_responses": 7,
+    "successful_usage_tokens": {
+      "prompt": 430,
+      "completion": 1091
+    },
+    "successful_request_cost_estimate_usd": 0.00147125,
+    "all_request_theoretical_ceiling_usd": 0.005376,
+    "actual_billed_usage": "unknown for rejected requests; no zero-spend claim",
+    "additional_requests_authorized": false,
+    "pending_gate": "coordinator reports no further requests authorized pending credential-policy decision"
+  },
+  "source_candidate": {
+    "path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "row_count": 190139
+  },
+  "research_only_review_policy": {
+    "row_by_row_human_review_required": false,
+    "lane_2_arc_id_decisions": "Do not transfer them to this package; they are not needed for a research-only SFT comparison.",
+    "clinical_or_production_use": "Requires separate clinical and privacy review."
+  }
+}

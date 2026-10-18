@@ -1,0 +1,185 @@
+{
+  "created_at_utc": "2026-10-17T16:22:59+00:00",
+  "status": "edge_seed_first_party_generation_evidenced; remote_training_terms_unverified; no_release",
+  "scope": "Metadata-only; no source text, conversation text, prompts, reviewer rationale, or PHI emitted.",
+  "candidate": {
+    "path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "rows": 190139,
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663"
+  },
+  "exact_arc_content_binding": {
+    "candidate_arc_rows": 980,
+    "matching_snapshot_rows": 980,
+    "snapshot_sha256": "31a3f6e354928c79792f3f4a501402471095a95c65672f95c2cb6c56b1624a3f",
+    "machine_accept_rows": 980,
+    "interpretation": "Exact canonical renderer binds machine audit provenance to current candidate payloads; this is not rights/privacy clearance and does not bind separate arc-id-only lane-2 decisions."
+  },
+  "seed_map": {
+    "path": "ai/training/arc_plans/seed_map.jsonl",
+    "bytes": 239543,
+    "sha256": "044342f2e4f041feb4f8c304f2fcf9f7f453b648871ec08a6540fb815db17753",
+    "written_records": 420,
+    "skipped_records": 26,
+    "failed_records": 183,
+    "mapping_method": "written/skipped seed_map entries; normalize only terminal :<integer> or :v<integer>; keep distinct surviving keys ambiguous; 9 pilot arcs use nonempty plan-seed fallback (19 rows); pilot_01 remains unknown (2 rows)."
+  },
+  "generator_evidence": {
+    "plan_builder": {
+      "path": "ai/training/build_arc_plans.py",
+      "bytes": 26605,
+      "sha256": "e69262e38cccdadaad6b43a797f5a0d8dd58166d5b2cdd1806362444bd78cf79"
+    },
+    "consolidator": {
+      "path": "ai/training/consolidate_edge_nightmare.py",
+      "bytes": 16965,
+      "sha256": "88bda14ae3c0328ef94647f335431ab59a5b22eb280352b8bee04163acdc7aa9"
+    },
+    "seed_use": "build_arc_plans._make_seed derives nightmare_scenarios seeds from provenance scenario_id, and edge_cases seeds from domain/difficulty plus record identity; seed prompt passes up to the first 15 source turns into LLM plan generation. Candidate ARC text is therefore generated, but its lineage is dependent on the source seed records.",
+    "accepted_seed_artifacts": [
+      {
+        "path": "ai/training/output/nightmare_fuel/edge_and_nightmare_accepted.jsonl",
+        "bytes": 675174,
+        "sha256": "f52fd72945c9527d0b74032879a9fcea37f4a8445efa52c968400aaa7e909b44",
+        "rows": 140,
+        "source_label_counts": {
+          "nightmare_fuel_predefined": 60,
+          "clinical_edge_case_ambiguous_crisis_language": 3,
+          "clinical_edge_case_delusion_or_paranoia": 7,
+          "clinical_edge_case_coercion_or_abuse": 8,
+          "clinical_edge_case_medical_uncertainty": 8,
+          "clinical_edge_case_minor_or_dependent_person": 10,
+          "clinical_edge_case_therapeutic_rupture": 7,
+          "clinical_edge_case_cultural_or_identity_conflict": 11,
+          "clinical_edge_case_boundary_testing": 8,
+          "clinical_edge_case_multi_problem_complexity": 9,
+          "clinical_edge_case_substance_use": 9
+        },
+        "clinical_reviewed_counts": {
+          "True": 140
+        },
+        "provenance_type_counts": {
+          "None": 60,
+          "clinical_edge_case": 80
+        }
+      },
+      {
+        "path": "ai/training/output/nightmare_fuel/edge_and_nightmare_hr70_accepted.jsonl",
+        "bytes": 215355,
+        "sha256": "ef2abadfe667df0c0b704f9d9857012a2d2ffbf05ae691911766b4f2c35b8c7e",
+        "rows": 37,
+        "source_label_counts": {
+          "clinical_edge_case_ambiguous_crisis_language": 3,
+          "clinical_edge_case_boundary_testing": 3,
+          "clinical_edge_case_coercion_or_abuse": 1,
+          "clinical_edge_case_cultural_or_identity_conflict": 1,
+          "clinical_edge_case_delusion_or_paranoia": 3,
+          "clinical_edge_case_medical_uncertainty": 2,
+          "clinical_edge_case_minor_or_dependent_person": 1,
+          "clinical_edge_case_multi_problem_complexity": 2,
+          "clinical_edge_case_therapeutic_rupture": 4,
+          "nightmare_fuel_predefined": 17
+        },
+        "clinical_reviewed_counts": {
+          "True": 37
+        },
+        "provenance_type_counts": {
+          "clinical_edge_case": 20,
+          "None": 17
+        }
+      }
+    ],
+    "clinical_quality_field": "clinical_reviewed is set True by generate_edge_case_turn and generate_nightmare_scenario_turn; it cannot substantiate clinician review, source rights, privacy, or clinical validation.",
+    "edge_generator": {
+      "path": "ai/training/build_edge_and_nightmare_dataset.py",
+      "sha256": "7a17480eab0bea9245491b3bdf49554678ba0d91ba6d53603da3e0ab093e5d9f",
+      "prompt_source": "hardcoded 10 edge families × 3 difficulty values × 4 ambiguity values plus variation; no external clinical seed narrative",
+      "runtime_backend": "environment selected by NF_BACKEND/NF_MODEL through training/generation_backend.py; these values are absent from accepted row provenance, seed_map, checkpoint state, and scanned run-log metadata; .env and credentials were not inspected"
+    },
+    "edge_generated_run_artifact": {
+      "path": "ai/training/output/nightmare_fuel/checkpoints/edge_and_nightmare_generated.jsonl",
+      "bytes": 1113006,
+      "sha256": "f601a0b8e7dba97db888e63d585cb5309ce734b3f40254b9dfe232d0bf01ce20",
+      "modified_at_utc": "2026-09-17T14:24:26.825969Z",
+      "rows": 212,
+      "source_counts": {
+        "clinical_edge_case_rows": 120,
+        "nightmare_fuel_predefined_rows": 92
+      }
+    },
+    "targeted_receipt_search": {
+      "opencode_sqlite": "Read-only targeted date/keyword query for Sep 17-18 generator/artifact/NF_BACKEND/NF_MODEL returned 0 rows; three matching rows were Oct 17 audit discussion.",
+      "claude_local_logs": "No dated JSON/JSONL/log files present under /home/vivi/.claude during Sep 17-19.",
+      "foresight": "No historical edge-generation provider/model receipt found by keyword search.",
+      "conclusion": "No contemporaneous provider/model receipt found in targeted local evidence; current environment defaults are not treated as historical facts."
+    }
+  },
+  "candidate_seed_lineage": {
+    "single_resolved_seed_key_rows": 927,
+    "single_resolved_source_counts": {
+      "nightmare_scenarios": 376,
+      "edge_cases": 551
+    },
+    "ambiguous_rows": 51,
+    "ambiguous_arc_ids": 18,
+    "unresolved_pilot_rows": 2,
+    "pilot_plan_fallback_rows": 19,
+    "heldout_reserved_rows": 87,
+    "heldout_reserved_arc_ids": 34
+  },
+  "admissibility_assessment": [
+    {
+      "source_group": "nightmare_scenarios",
+      "candidate_rows_with_resolved_seed_key": 376,
+      "independent_evidence": "Local exact accepted seed corpora and generator code establish a generated-seed path. The proposed source-family manifest maps Nightmare Fuel to deprecated-restricted with no-direct-quote, no-voice-reproduction, no-case-study-reproduction, concept-citation, and clinical-claim review restrictions.",
+      "decision": "Do not release these rows absent a source-specific rights/privacy decision showing generated derivatives are permitted under the restrictions."
+    },
+    {
+      "source_group": "edge_cases",
+      "candidate_rows_with_resolved_seed_key": 551,
+      "independent_evidence": "The exact candidate edge branch traces to `generate_edge_case_turn()` in ai/training/build_edge_and_nightmare_dataset.py: the generator constructs scenarios solely from a hardcoded 10-family taxonomy, difficulty, ambiguity, and variation; it does not read an external seed narrative for this branch. The accepted corpora contain 100 such synthetic edge seed records. build_arc_plans._make_seed records edge_cases provenance and passes the generated source transcript into ARC plan generation. Exact candidate content is machine-accepted and content-bound to the stable archive snapshot. This supports first-party synthetic origin for this branch only.",
+      "decision": "Eligible for a narrow research-only diagnostic subset after exact heldout-group removal and basic regex indicator screen, subject to recovery of actual generation provider/model and applicable output-use/remote-training terms. No generic source-owner signoff is inferred as a prerequisite from the unsigned family proposal. No production/clinical-readiness claim; clinical_reviewed is generator-set and not evidence of actual review."
+    },
+    {
+      "source_group": "ambiguous_or_unknown",
+      "candidate_rows": 53,
+      "independent_evidence": "51 rows across 18 IDs have multiple successful normalized seed keys; 2 pilot_01 rows lack a source scenario identity.",
+      "decision": "Exclude from any break-away view until exact lineage is resolved."
+    }
+  ],
+  "owner_decisions_needed_for_smallest_possible_breakaway": [
+    "Recover a contemporaneous generation run receipt or other authoritative record identifying NF_BACKEND and NF_MODEL for the exact edge seed outputs, then verify the governing provider terms/policy permit retaining synthetic outputs and using them in research fine-tuning, including transfer to the selected training provider. Current row artifacts and checkpoint/log metadata do not record the values; no credentials were inspected.",
+    "No blanket source-family signoff is requested for the edge branch: first-party synthetic origin is supported by exact local generator code and seed lineage. The Nightmare Fuel branch remains excluded under the proposed deprecated-restricted decision unless independently cleared.",
+    "Production/clinical readiness is outside this research-only release; clinical_reviewed is auto-set and cannot support a clinical quality claim."
+  ],
+  "release_view_created": false,
+  "uploads": 0,
+  "provider_spend": null,
+  "edge_branch_diagnostics": {
+    "report": "g03-edge-branch-diagnostics.json",
+    "post_holdout_rows": 522,
+    "heldout_overlap_rows": 29,
+    "heldout_exclusions_path": "docs/training/execution-2026-10-17/g03-edge-case-heldout-exclusions.jsonl",
+    "heldout_exclusions_sha256": "b19a4e120b7d179585c55fe8292c6711de4adeb96deed81fe5775d148b74527b",
+    "post_holdout_rowrefs": "g03-edge-case-post-holdout-rowrefs.jsonl",
+    "post_holdout_rowrefs_sha256": "a5294068c241eb48007c6c33036da0c033a16198094c6e83f307eeaabf443a7a",
+    "basic_pii_regex_matches": 0,
+    "retained_rows_at_or_above_0_25_eval_5gram_containment": 0,
+    "status": "diagnostic_with_private_draft_payload; no approved or promoted release view",
+    "rowrefs_sha256": "b86fdcf371b56ede8a481b71d0f2e6b7be5e55c9ab6031894ddcf197ba92a6a7"
+  },
+  "provider_spend_status": "Actual W&B billed amount unknown for seven rejected smoke requests; successful-response estimate and cap are recorded in registry.",
+  "local_draft_package": {
+    "manifest_path": "docs/training/execution-2026-10-17/g04-release-manifest.json",
+    "manifest_status": "draft_local_only",
+    "manifest_sha256": "be331cabdd4394f8b675609a33e418f3b1ad05d0164b53f4b6db19a6e9b411cd",
+    "upload_gate": false,
+    "private_package_dir": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z",
+    "rows": 522,
+    "partitions": {
+      "train": 410,
+      "validation": 72,
+      "test": 40
+    },
+    "note": "Private weighted payload bytes are locally rendered and verified; no approved release view, promotion, or upload exists."
+  }
+}

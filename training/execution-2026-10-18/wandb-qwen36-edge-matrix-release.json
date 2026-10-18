@@ -1,0 +1,135 @@
+{
+  "schema_version": "g04-release-manifest-v1",
+  "status": "approved_for_research_training",
+  "upload_gate": true,
+  "release_id": "wandb-qwen36-edge-matrix-20261018-v1",
+  "provider": "wandb",
+  "scope": {
+    "use": "research_fine_tuning_candidate_only",
+    "clinical_or_production_readiness": false,
+    "candidate_rows": 120,
+    "source_groups": 120
+  },
+  "source_candidate_sha256": "2f9617b9e71799c8738100a73161d5d94a8333079a05f82790f39a5737fd2c8c",
+  "source_candidate": {
+    "path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/edge_and_nightmare_generated.jsonl",
+    "sha256": "2f9617b9e71799c8738100a73161d5d94a8333079a05f82790f39a5737fd2c8c",
+    "row_count": 120
+  },
+  "partitions": {
+    "train": {
+      "path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/train.jsonl",
+      "sha256": "bc33af0465356fe04a6cea01b09f5ea929a3ce12261ca7f9f1e4639daf548fa6",
+      "row_count": 80,
+      "source_group_count": 80,
+      "format": "weighted_messages_jsonl_v1",
+      "split": "train"
+    },
+    "validation": {
+      "path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/validation.jsonl",
+      "sha256": "300cc2ae852eb4dc11a683b6863d449aae89a665eb2bbadd963580f7da7f770e",
+      "row_count": 20,
+      "source_group_count": 20,
+      "format": "weighted_messages_jsonl_v1",
+      "split": "validation"
+    },
+    "test": {
+      "path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/test.jsonl",
+      "sha256": "2002df496496344acb8f0af2e9bedc973312f553816d87dfe541d022ba1c8916",
+      "row_count": 20,
+      "source_group_count": 20,
+      "format": "weighted_messages_jsonl_v1",
+      "split": "test"
+    }
+  },
+  "payload_contract": {
+    "format": "weighted_messages_jsonl_v1",
+    "user_weight": 0,
+    "assistant_weight": 1,
+    "loss_mask": "assistant-turn-only",
+    "projection": "drop final unmatched user turn from odd-length 15-message source; retain seven complete user/assistant pairs"
+  },
+  "evidence": {
+    "group_disjointness": {
+      "status": "verified",
+      "group_key": "seed_group_sha256",
+      "train_group_count": 80,
+      "validation_group_count": 20,
+      "test_group_count": 20,
+      "pairwise_intersections": {
+        "train_validation": 0,
+        "train_test": 0,
+        "validation_test": 0
+      },
+      "evidence_path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/g04-rowrefs.jsonl",
+      "evidence_sha256": "ad106d779d47456bb9787802561c629331cc941d70ca3e4b09d8c9c0b0f0c40c",
+      "reserved_eval_group_count": 0,
+      "heldout_group_intersections": {
+        "train": 0,
+        "validation": 0,
+        "test": 0
+      },
+      "heldout_exclusions_path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/heldout-exclusions.jsonl",
+      "heldout_exclusions_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "privacy": {
+      "basic_pattern_screen": {
+        "status": "passed",
+        "counts": {
+          "email": 0,
+          "ssn": 0,
+          "phone": 0,
+          "card": 0,
+          "url": 0,
+          "ipv4": 0
+        }
+      },
+      "clinical_ner_screen": "not run; source is first-party synthetic",
+      "limitations": [
+        "Pattern screen is not a clinical privacy certification.",
+        "Source generator sets clinical_reviewed automatically; this is not evidence of clinician review."
+      ]
+    },
+    "source_origin": {
+      "status": "first_party_synthetic_generated_for_this_matrix",
+      "generation_receipt_path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/generation_receipt.json",
+      "generation_receipt_sha256": "1d14827d4b33c6fe55d6be0780f4d01001a08e98cf46e7b2bb799c5c9be672be",
+      "provider": "wandb",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "output_use": "same-provider W&B research SFT only; no third-party provider transfer"
+    }
+  },
+  "internal_manifest": {
+    "path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/manifest_internal.jsonl",
+    "sha256": "793cc07b6b5e4784951c1162146a938ee271bcdc8b099745214c7c3eb87f88de",
+    "row_count": 120
+  },
+  "limitations": [
+    "Synthetic research experiment only; not clinical or production authorization.",
+    "One held-out test partition contains 20 scenarios; no model quality guarantee.",
+    "Only W&B same-provider training is in scope; do not upload this cohort to Fireworks or Adaption."
+  ],
+  "generation": {
+    "receipt_path": "ai/data/curated/recovery/wandb-qwen36-edge-matrix-20261018/generation_receipt.json",
+    "receipt_sha256": "1d14827d4b33c6fe55d6be0780f4d01001a08e98cf46e7b2bb799c5c9be672be",
+    "invocations": [
+      {
+        "wandb_run_id": "t2df59al",
+        "output_rows_appended": [
+          1,
+          60
+        ],
+        "outcome": "checkpointed at the generator 60-record hourly guard; W&B summary counter underreported due cancelled worker aggregation"
+      },
+      {
+        "wandb_run_id": "s95vdvlv",
+        "output_rows_appended": [
+          61,
+          120
+        ],
+        "outcome": "completed; W&B summary reported 60 generated, 0 rejected, 0 dropped"
+      }
+    ]
+  },
+  "created_at_utc": "2026-10-18T14:08:00Z"
+}

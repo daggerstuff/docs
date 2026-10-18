@@ -14,7 +14,7 @@ tests/
 **/.git_disabled/**
 # Recon research sweep output (generated)
 recon/
-.bak
+*.bak
 
 # Python
 .venv/
@@ -24,3 +24,8 @@ __pycache__/
 .ruff_cache/
 .coverage
 htmlcov/
+
+# Heavy training execution artifacts (data dumps, not docs)
+training/execution-2026-10-17/source-decision-ledger.jsonl
+training/execution-2026-10-17/wandb-sft-artifacts/
+training/execution-2026-10-17/__pycache__/

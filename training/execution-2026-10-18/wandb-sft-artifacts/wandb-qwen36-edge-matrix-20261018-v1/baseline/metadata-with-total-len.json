@@ -1,0 +1,18 @@
+{
+  "assistant_turns_config": "all",
+  "base_model": "Qwen/Qwen3.6-35B-A3B",
+  "loss_mask": "assistant turns only",
+  "release_id": "wandb-qwen36-edge-matrix-20261018-v1",
+  "release_manifest_sha256": "4ed03bcc51c9a836a8979f203586100596a58fa1a128f196c0b13f572c535e36",
+  "schema_version": 1,
+  "source": "G04-approved provider-rendered training split",
+  "source_candidate_sha256": "2f9617b9e71799c8738100a73161d5d94a8333079a05f82790f39a5737fd2c8c",
+  "total_len": 80,
+  "train_payload_sha256": "bc33af0465356fe04a6cea01b09f5ea929a3ce12261ca7f9f1e4639daf548fa6",
+  "train_row_count": 80,
+  "training_config": {
+    "assistant_turns": "all",
+    "batch_size": "auto",
+    "learning_rate": 0.0001
+  }
+}

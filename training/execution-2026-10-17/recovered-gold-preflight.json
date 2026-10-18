@@ -1,0 +1,104 @@
+{
+  "created_at": "2026-10-17T14:57:31.990232+00:00",
+  "status": "diagnostic_not_release_approved",
+  "input": {
+    "path": "/home/vivi/pixelated/ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "expected_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "actual_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663"
+  },
+  "provider_spend": 0,
+  "uploads": 0,
+  "counts": {
+    "arc": {
+      "rows": 980,
+      "source_reference_present": 980
+    },
+    "non_arc": {
+      "rows": 189159,
+      "source_reference_present": 189159,
+      "duplicate_message_rows_beyond_first": 12,
+      "rows_without_nonempty_assistant_target": 2
+    }
+  },
+  "top_level_key_presence": {
+    "arc": {
+      "messages": 980,
+      "source": 980,
+      "task_type": 980,
+      "tier": 980,
+      "diagnostic_tag": 980,
+      "family": 980,
+      "difficulty": 980,
+      "provenance": 980,
+      "consolidated_at": 980
+    },
+    "non_arc": {
+      "messages": 189159,
+      "source": 189159,
+      "task_type": 189159,
+      "tier": 189159,
+      "diagnostic_tag": 189159,
+      "demographic_tags": 189159,
+      "linguistic_style": 189159,
+      "clinical_reviewed": 189159,
+      "mi_quality": 189159,
+      "provenance": 8699,
+      "family": 177,
+      "stage": 177,
+      "consolidated_at": 177,
+      "difficulty": 100,
+      "ambiguity": 100,
+      "variation": 100
+    }
+  },
+  "role_counts": {
+    "system": 188982,
+    "user": 580087,
+    "assistant": 590233
+  },
+  "unique_message_payloads": 190127,
+  "historical_split_overlap": {
+    "train": {
+      "source_rows": 180460,
+      "unique_source_message_payloads": 180460,
+      "matching_candidate_unique_payloads": 180460,
+      "matching_source_rows_by_candidate_group": {
+        "non_arc": 180460
+      }
+    },
+    "val": {
+      "source_rows": 38766,
+      "unique_source_message_payloads": 38766,
+      "matching_candidate_unique_payloads": 0,
+      "matching_source_rows_by_candidate_group": {}
+    },
+    "test": {
+      "source_rows": 38784,
+      "unique_source_message_payloads": 38784,
+      "matching_candidate_unique_payloads": 0,
+      "matching_source_rows_by_candidate_group": {}
+    }
+  },
+  "historical_split_file_sha256": {
+    "/home/vivi/pixelated/ai/data/curated/sft_chatml/train.jsonl": "aa7e9cd160d77870f2c9bc3f08a005dda30e77de42e7c3f41e643d9fbd1eed88",
+    "/home/vivi/pixelated/ai/data/curated/sft_chatml/val.jsonl": "de1ab12857ae4fc5e6af1da9c25a6f79965c1856784924f5b4f51de77d847dd9",
+    "/home/vivi/pixelated/ai/data/curated/sft_chatml/test.jsonl": "1352581ca358571684e6e4bedd00eca46b0206422ea17394f5b44e930f178b14"
+  },
+  "historical_cross_split_unique_payloads": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "limitations": [
+    "Metadata presence is not verified licensing, consent, or privacy approval.",
+    "Exact message JSON hashes do not detect semantic duplicates or reformatted copies.",
+    "Recovered master is a pool, not a training split. Preserve independently identified validation/test roles.",
+    "No provider tokenization, semantic deduplication, clinical adjudication, or external calls performed."
+  ],
+  "next_actions": [
+    "Reconstruct per-source rights and privacy evidence from source registries.",
+    "Reserve historical validation/test groups and current frozen evaluation seeds before splitting.",
+    "Audit current arc eligibility and generator-seed mappings in a new release view."
+  ],
+  "source_identity_unchanged": true
+}
