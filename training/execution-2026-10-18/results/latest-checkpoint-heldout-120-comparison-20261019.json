@@ -1,0 +1,244 @@
+{
+  "observed_at_utc": "2026-10-19T18:23:46.835777Z",
+  "suite": "agent_tool_sft_heldout_v1",
+  "cases_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+  "interpretation": "Synthetic held-out diagnostics only. At the original two-round cap the base arm completed 111/120; a separate four-round run recovered all nine resource_compare cases after three rounds each. Across the combined 120 base outputs, both adapters had zero exact response matches; v1 and v2 matched each other on all 120. Each adapter collapsed to one response and made no tool calls. Estimated costs only; actual billing was not returned. A second 120-case evaluation on v1 v115 and v2 v113 yielded the exact same response hash in every case as the prior v1 v114/v2 v112 runs; no behavior changed over that additional 500-step checkpoint interval.",
+  "runs": {
+    "base": {
+      "run_id": "wandb-full-corpus-latest-base-tool-heldout-120-20261019T1802Z",
+      "status": "incomplete",
+      "checkpoint": null,
+      "case_count": 120,
+      "success_count": 111,
+      "error_count": 9,
+      "estimated_cost_usd": 0.087427,
+      "actual_billed_usd": null,
+      "unique_success_responses": 82,
+      "cases_with_tool_trace": 88,
+      "tool_events": 137,
+      "state_metrics": {
+        "tool_status": {
+          "pass": 60,
+          "fail": 6
+        },
+        "response_contains": {
+          "pass": 42,
+          "fail": 15
+        },
+        "memory_value": {
+          "pass": 6,
+          "fail": 9
+        },
+        "state_value": {
+          "pass": 46,
+          "fail": 14
+        },
+        "response_omits": {
+          "pass": 15
+        }
+      },
+      "error_types": {
+        "ToolRoundLimitExceeded": 9
+      },
+      "base_fail_case_ids": [
+        "tool-eval-resource_compare-137",
+        "tool-eval-resource_compare-139",
+        "tool-eval-resource_compare-140",
+        "tool-eval-resource_compare-141",
+        "tool-eval-resource_compare-142",
+        "tool-eval-resource_compare-145",
+        "tool-eval-resource_compare-146",
+        "tool-eval-resource_compare-147",
+        "tool-eval-resource_compare-149"
+      ]
+    },
+    "v1": {
+      "run_id": "wandb-full-corpus-latest-v1-v114-tool-heldout-120-20261019T1810Z",
+      "status": "complete",
+      "checkpoint": "v114",
+      "case_count": 120,
+      "success_count": 120,
+      "error_count": 0,
+      "estimated_cost_usd": 0.012306,
+      "actual_billed_usd": null,
+      "unique_success_responses": 1,
+      "cases_with_tool_trace": 0,
+      "tool_events": 0,
+      "state_metrics": {
+        "tool_status": {
+          "fail": 75
+        },
+        "response_contains": {
+          "fail": 75
+        },
+        "memory_value": {
+          "fail": 15
+        },
+        "state_value": {
+          "pass": 45,
+          "fail": 15
+        },
+        "response_omits": {
+          "pass": 15
+        }
+      },
+      "error_types": {},
+      "base_fail_case_ids": []
+    },
+    "v2": {
+      "run_id": "wandb-full-corpus-latest-v2-v112-tool-heldout-120-20261019T1810Z",
+      "status": "complete",
+      "checkpoint": "v112",
+      "case_count": 120,
+      "success_count": 120,
+      "error_count": 0,
+      "estimated_cost_usd": 0.012306,
+      "actual_billed_usd": null,
+      "unique_success_responses": 1,
+      "cases_with_tool_trace": 0,
+      "tool_events": 0,
+      "state_metrics": {
+        "tool_status": {
+          "fail": 75
+        },
+        "response_contains": {
+          "fail": 75
+        },
+        "memory_value": {
+          "fail": 15
+        },
+        "state_value": {
+          "pass": 45,
+          "fail": 15
+        },
+        "response_omits": {
+          "pass": 15
+        }
+      },
+      "error_types": {},
+      "base_fail_case_ids": []
+    },
+    "v1_latest": {
+      "run_id": "wandb-full-corpus-latest-v1-v115-tool-heldout-120-20261019T1822Z",
+      "status": "complete",
+      "checkpoint": "v115",
+      "case_count": 120,
+      "success_count": 120,
+      "error_count": 0,
+      "estimated_cost_usd": 0.012306,
+      "actual_billed_usd": null,
+      "unique_success_responses": 1,
+      "cases_with_tool_trace": 0,
+      "tool_events": 0,
+      "state_metrics": {
+        "tool_status": {
+          "fail": 75
+        },
+        "response_contains": {
+          "fail": 75
+        },
+        "memory_value": {
+          "fail": 15
+        },
+        "state_value": {
+          "pass": 45,
+          "fail": 15
+        },
+        "response_omits": {
+          "pass": 15
+        }
+      },
+      "error_types": {},
+      "response_sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd"
+    },
+    "v2_latest": {
+      "run_id": "wandb-full-corpus-latest-v2-v113-tool-heldout-120-20261019T1822Z",
+      "status": "complete",
+      "checkpoint": "v113",
+      "case_count": 120,
+      "success_count": 120,
+      "error_count": 0,
+      "estimated_cost_usd": 0.012306,
+      "actual_billed_usd": null,
+      "unique_success_responses": 1,
+      "cases_with_tool_trace": 0,
+      "tool_events": 0,
+      "state_metrics": {
+        "tool_status": {
+          "fail": 75
+        },
+        "response_contains": {
+          "fail": 75
+        },
+        "memory_value": {
+          "fail": 15
+        },
+        "state_value": {
+          "pass": 45,
+          "fail": 15
+        },
+        "response_omits": {
+          "pass": 15
+        }
+      },
+      "error_types": {},
+      "response_sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd"
+    }
+  },
+  "paired_comparisons": [
+    {
+      "comparison": "base_vs_v1",
+      "shared_success_cases": 120,
+      "exact_response_matches": 0,
+      "base_cases_with_tool_trace": 88,
+      "adapter_cases_with_tool_trace": 0,
+      "base_coverage_method": "The nine base cases over the original two-round cap were all recovered in a separate four-round run after three tool rounds each."
+    },
+    {
+      "comparison": "base_vs_v2",
+      "shared_success_cases": 120,
+      "exact_response_matches": 0,
+      "base_cases_with_tool_trace": 88,
+      "adapter_cases_with_tool_trace": 0,
+      "base_coverage_method": "The nine base cases over the original two-round cap were all recovered in a separate four-round run after three tool rounds each."
+    }
+  ],
+  "v1_v2_exact_output_match_on_all_120": true,
+  "base_recovery_run": {
+    "run_id": "base-resource-compare-rounds-4-followup-9-20261019T1815Z",
+    "status": "complete",
+    "max_tool_rounds": 4,
+    "case_count": 9,
+    "success_count": 9,
+    "error_count": 0,
+    "estimated_cost_usd": 0.010751,
+    "actual_billed_usd": null,
+    "all_nine_completed_after_tool_rounds": [
+      3
+    ]
+  },
+  "combined_base_after_recovery": {
+    "case_count": 120,
+    "success_count": 120,
+    "failed_cases": 0,
+    "unique_success_responses": 91,
+    "cases_with_tool_trace": 88,
+    "tool_events": 146,
+    "estimated_cost_usd": 0.098178,
+    "actual_billed_usd": null,
+    "method": "Original 120-case base run with max_tool_rounds=2 plus separate max_tool_rounds=4 recovery run for only the nine over-limit cases; do not describe this as a uniform-cap full-suite run."
+  },
+  "checkpoint_recheck": {
+    "case_count_per_run": 120,
+    "newest_checkpoint_runs": [
+      "v1 v115",
+      "v2 v113"
+    ],
+    "all_480_outputs_across_v1_v114_v115_and_v2_v112_v113_are_identical": "same SHA-256 output digest on all cases and all four runs",
+    "v1_v114_vs_v115_case_output_matches": 120,
+    "v2_v112_vs_v113_case_output_matches": 120,
+    "v1_v115_vs_v2_v113_case_output_matches": 120,
+    "conclusion": "One 500-step interval changed none of the held-out outputs; both latest checkpoints preserve the same one-response collapse. Continue the diagnostic at later checkpoints or change training inputs/objective before treating either adapter as a candidate."
+  },
+  "all_eval_runs_estimated_cost_usd": 0.147402
+}

@@ -1,0 +1,11 @@
+{
+  "observed_at_utc": "2026-10-19T15:07:00Z",
+  "source": "authenticated W&B Public GraphQL Project.storageBytes field",
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_access": "PRIVATE",
+  "storage_bytes": 30167440389,
+  "storage_gb_decimal": 30.167440389,
+  "storage_gib_binary": 28.096,
+  "quota_limit_bytes": null,
+  "interpretation": "Project-level storageBytes metric. Account plan limit, billable rolling storage, and UI deletion history were not returned. Compared with the 15:00:19Z reading (30,167,214,689 B), this metric increased by 225,700 B; it does not prove which UI items were deleted or whether quota was reclaimed."
+}

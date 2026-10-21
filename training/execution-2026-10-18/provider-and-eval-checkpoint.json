@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-18T16:26:38Z",
-  "scope": "provider job status plus local dataset and synthetic diagnostic results",
+  "checked_at": "2026-10-18T23:20:00Z",
+  "scope": "full-corpus W&B training execution, plus provider and synthetic evaluation state",
   "secrets_read_or_emitted": false,
   "adaption": {
     "datasets": [
@@ -43,8 +43,8 @@
     "new_jobs_started": 0
   },
   "wandb": {
-    "training_jobs_started": 2,
-    "inference_authorization": "prior six-completion $0.02 cap consumed; no further requests made",
+    "training_jobs_started": 4,
+    "inference_authorization": "User-authorized W&B inference for bounded comparisons and repair continuations; the paired comparison cap is $0.05, and actual billed credits are not exposed.",
     "previous_results_review": [
       {
         "case_id": "dev-support-request",
@@ -84,6 +84,55 @@
       "artifact_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-policy-permissive-sources-20261018-v1-baseline-f00e0bf27bf3:v0",
       "payload_sha256": "9e38a5a0b44129e4ba35ffca2877c3e688d997b98a22bc9bc8a0623f12b774a0",
       "scope": "research experiment; not clinical or production readiness"
+    },
+    "full_corpus_training_job": {
+      "id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "RUNNING",
+      "status_checked_at": "2026-10-18T23:20:00Z",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "model_id": "efb50f55-f874-4c0e-8552-9ee8f6be4e88",
+      "release_id": "wandb-full-corpus-20261018-v1",
+      "release_manifest": "docs/training/execution-2026-10-18/wandb-full-corpus-release.json",
+      "state": "docs/training/execution-2026-10-18/wandb-full-corpus-state/wandb-sft-8ce8354c67ef10915f78ebd385950aaed8fcac505578645dba907d330befbe91.json",
+      "train_rows": 171121,
+      "validation_rows": 9664,
+      "test_rows": 9302,
+      "candidate_rows": 190139,
+      "retained_rows": 190087,
+      "source_labels": 475,
+      "structurally_untrainable_rows": 52,
+      "artifact_bytes": 296246318,
+      "training_data_url": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-full-corpus-20261018-v1-baseline-8ce8354c67ef:v0",
+      "payload_sha256": "04217267a3e9e2d4219edc871a4c7b493b3766536a7c736e0e445ccaa1f45cd6",
+      "scope": "full-corpus research experiment; not clinical or production readiness",
+      "checkpoint_steps": [
+        0
+      ],
+      "note": "Initial release v1; superseded for corrected full-corpus training by v2 job."
+    },
+    "corrected_full_corpus_training_job": {
+      "id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "RUNNING",
+      "status_checked_at": "2026-10-18T23:20:00Z",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "model_id": "339688ad-b611-439f-afba-a8405efae633",
+      "release_id": "wandb-full-corpus-20261018-v2",
+      "release_manifest": "docs/training/execution-2026-10-18/wandb-full-corpus-release-v2.json",
+      "state": "docs/training/execution-2026-10-18/wandb-full-corpus-v2-state/wandb-sft-556695bfd5c4dcd55a12d698290840432a5e0c193d5a3180aef274e2ed8e1790.json",
+      "candidate_rows": 190139,
+      "retained_rows": 190139,
+      "repaired_rows": 52,
+      "train_rows": 171167,
+      "validation_rows": 9666,
+      "test_rows": 9306,
+      "source_labels": 475,
+      "artifact_bytes": 296288577,
+      "training_data_url": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-full-corpus-20261018-v2-baseline-556695bfd5c4:v0",
+      "payload_sha256": "138045ba6fb263e0d68bb42c3e8d0a7e3bf7314c3fc79397ecfd805a2c980a76",
+      "checkpoint_steps": [
+        0
+      ],
+      "next_action": "Poll for step 1, then run paired five-case eval against base using inference-configs/wandb-full-corpus-v2-vs-base-2048-512.json."
     }
   },
   "synthetic_suite": {
@@ -104,14 +153,16 @@
     "candidate_190139_rows_uploaded": false,
     "breakaway_522_rows_uploaded": false,
     "upload_gate": false,
-    "training_authorized_dataset_available": true
+    "training_authorized_dataset_available": true,
+    "full_candidate_rows_submitted": 190087,
+    "full_candidate_source_labels_submitted": 475
   },
   "next_actions": [
-    "restore authorized W&B Training API status access and poll both jobs; record terminal status and checkpoint artifacts",
-    "run held-out evaluation for the policy-permissive-source job when a checkpoint is available",
-    "build a materially larger source-policy-cleared cohort from existing project dispositions and compare against the 2,093-row cohort",
-    "qualify Adaption credit balance and run a matched-base comparison using its downloadable adapter",
-    "qualify OVHcloud account, region, and cost quote for the final portable training run"
+    "poll W&B job 2087f223-a48f-45f7-9999-daece5743bba and record terminal status/checkpoint artifact",
+    "evaluate the trained checkpoint on the 9,302 held-out full-corpus test rows and the separate sealed scenario suite",
+    "compare the full-corpus model against the existing 2,093-row policy-permissive experiment and the 80-row synthetic experiment on the same eval prompts",
+    "run the planned Adaption comparison using the downloadable adapter and matched-base inference",
+    "qualify OVHcloud for a portable final run after comparing measured results"
   ],
   "breakaway_package_reverification": {
     "manifest": "docs/training/execution-2026-10-17/g04-release-manifest.json",
@@ -204,5 +255,113 @@
     "launcher_state": "job_created; training_job_id persisted in wandb-sft-state",
     "read_only_reconciliation": "GET model checkpoints returned only step 0; API has no training-job list route",
     "next_action": "Poll job 8b4f4722-9849-4942-a9e6-00829b1cd9c9 and record terminal status/checkpoint artifact."
+  },
+  "repair_work": {
+    "repair_manifest": "ai/data/curated/recovery/gold-20261017/wandb-full-corpus-repairs-20261018/repair_manifest.json",
+    "repair_rows": 52,
+    "source_dialogue_repairs_with_generated_continuation": 50,
+    "source_quality_triage_repairs": 2,
+    "generated_continuations_human_reviewed": false,
+    "inference_usage": {
+      "prompt_tokens": 10332,
+      "completion_tokens": 2642,
+      "total_tokens": 12974,
+      "estimated_cost_usd_at_configured_rates": 0.0058855
+    }
+  },
+  "active_checkpoint_watchers": [
+    {
+      "version": "v1-original-projection",
+      "exec_session_id": 68310,
+      "state": "docs/training/execution-2026-10-18/wandb-full-corpus-state/wandb-sft-8ce8354c67ef10915f78ebd385950aaed8fcac505578645dba907d330befbe91.json",
+      "eval_config": "docs/training/execution-2026-10-18/inference-configs/wandb-full-corpus-v1-vs-base-2048-512.json",
+      "eval_results": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-step1-paired",
+      "watcher_condition": "first available checkpoint with step >= 1"
+    },
+    {
+      "version": "v2-repaired-52",
+      "exec_session_id": 41393,
+      "state": "docs/training/execution-2026-10-18/wandb-full-corpus-v2-state/wandb-sft-556695bfd5c4dcd55a12d698290840432a5e0c193d5a3180aef274e2ed8e1790.json",
+      "eval_config": "docs/training/execution-2026-10-18/inference-configs/wandb-full-corpus-v2-vs-base-2048-512.json",
+      "eval_results": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-step1-paired",
+      "watcher_condition": "first available checkpoint with step >= 1"
+    }
+  ],
+  "evaluation_next_step": "Wait for the first published nonzero checkpoint on each W&B model, then run the same five-case paired base/checkpoint inference. Checkpoint publication is currently anomalous: full training event history advances, but the models endpoint exposes only step 0.",
+  "checkpoint_diagnostic": {
+    "checked_at": "2026-10-19T12:22:38Z",
+    "jobs": {
+      "v1-original-projection": {
+        "training_job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+        "latest_gradient_step": 39273,
+        "reported_num_sequences": 85561,
+        "reported_checkpoint_interval": 500,
+        "event_types": {
+          "training_started": 1,
+          "gradient_step": 39273
+        },
+        "checkpoint_api_steps": [
+          0
+        ],
+        "step500_inference_http_status": 400,
+        "step500_inference_error": "artifact version not found",
+        "step0_inference_http_status": 200,
+        "step1_inference_status": "inconclusive",
+        "step1_inference_http_status": 403,
+        "step1_inference_error": "Cloudflare error code 1010; request blocked before artifact resolution"
+      },
+      "v2-repaired-52": {
+        "training_job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+        "latest_gradient_step": 38402,
+        "reported_num_sequences": 85584,
+        "reported_checkpoint_interval": 500,
+        "event_types": {
+          "training_started": 1,
+          "gradient_step": 38402
+        },
+        "checkpoint_api_steps": [
+          0
+        ],
+        "step500_inference_http_status": 400,
+        "step500_inference_error": "artifact version not found",
+        "step0_inference_http_status": 200,
+        "step1_inference_status": "inconclusive",
+        "step1_inference_http_status": 403,
+        "step1_inference_error": "Cloudflare error code 1010; request blocked before artifact resolution"
+      }
+    },
+    "finding": "Training loops were advancing in the latest event audit; the checkpoint listing exposed only step 0. The step500 probes do not establish a failure because checkpoint artifact aliases may be ordinal (step1) rather than raw optimizer steps. A step1 inference probe was blocked by Cloudflare before artifact resolution, so nonzero checkpoint availability remains unresolved.",
+    "scope_note": "Two step0 and two step500 probes used a one-token cap; step0 succeeded and step500 returned HTTP 400. Two step1 probes returned HTTP 403 / Cloudflare error 1010, inconclusive about artifact existence. No training data was sent.",
+    "docs": [
+      "https://docs.wandb.ai/api-reference/models/list-model-checkpoints",
+      "https://github.com/wandb/docs/blob/main/serverless-training.mdx"
+    ]
+  },
+  "adaption_live_check_2026_10_19": {
+    "observed_at_utc": "2026-10-19T15:33:14.266606Z",
+    "available_model": "Qwen/Qwen3.6-35B-A3B",
+    "dataset": {
+      "id": "2f983459-b3ff-47be-aa62-faa686b14306",
+      "name": "arc-run2-train-v1",
+      "status": "succeeded",
+      "rows": 11192,
+      "evaluation_summary": null
+    },
+    "existing_run": {
+      "id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+      "status": "succeeded",
+      "training_method": "instruction",
+      "best_win_rate": 0.6414,
+      "download_available": true,
+      "base_model": "Qwen/Qwen3.6-35B-A3B"
+    },
+    "credit_balance": "Not exposed through available connector; user confirms Adaption credits remain, exact balance and run debit unknown.",
+    "inference": "No inference operation/endpoint is exposed by current Adaption connector or documented API reference; docs expose model download. Existing 27.5 MB adapter exists at ai/training/output/arc_corpus/export/adaption_run2_v1/checkpoint_run2, but no base model weights are cached and the local host has no NVIDIA GPU; direct local eval is not currently practical.",
+    "next_comparable_route": "Use a qualified OVHcloud GPU or another explicitly authorized compatible serving route to load the downloaded adapter with its pinned Qwen3.6 base, then run the same frozen 120-case suite. OVH account, region, cost, and job credentials remain unqualified.",
+    "official_docs": [
+      "https://docs.adaptionlabs.ai/api/",
+      "https://docs.adaptionlabs.ai/resources/faq/"
+    ],
+    "caveat": "AutoScientist best_win_rate is its provider-internal run metric and is not comparable to the W&B synthetic held-out task suite."
   }
 }

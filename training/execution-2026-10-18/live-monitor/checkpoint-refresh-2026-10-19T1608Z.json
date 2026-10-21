@@ -1,0 +1,57 @@
+{
+  "observed_at_utc": "2026-10-19T16:08:50.516343+00:00",
+  "source": "read-only W&B Training API and artifact API",
+  "project": "wutang/pixelated-empathy-kan28",
+  "jobs": {
+    "v1": {
+      "id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "RUNNING",
+      "training_start": "2026-10-18T22:44:42.321704Z",
+      "training_end": null,
+      "updated_at": "2026-10-18T22:44:42.293216Z",
+      "progress": null,
+      "error_message": null
+    },
+    "v2": {
+      "id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "RUNNING",
+      "training_start": "2026-10-18T23:13:12.829151Z",
+      "training_end": null,
+      "updated_at": "2026-10-18T23:13:12.819915Z",
+      "progress": null,
+      "error_message": null
+    }
+  },
+  "collections": {
+    "v1_lora": {
+      "name": "arc-sft-baseline-8ce8354c67ef-sft-resume",
+      "version": "v101",
+      "created_at": "2026-10-19T16:03:51Z",
+      "completed_batches": 51000,
+      "size_bytes": 117843308
+    },
+    "v1_train-state": {
+      "name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v101",
+      "created_at": "2026-10-19T16:03:53Z",
+      "completed_batches": 51000,
+      "size_bytes": 1060414709
+    },
+    "v2_lora": {
+      "name": "arc-sft-baseline-556695bfd5c4-sft-resume",
+      "version": "v99",
+      "created_at": "2026-10-19T16:01:43Z",
+      "completed_batches": 50000,
+      "size_bytes": 117843308
+    },
+    "v2_train-state": {
+      "name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v99",
+      "created_at": "2026-10-19T16:01:45Z",
+      "completed_batches": 50000,
+      "size_bytes": 1060414709
+    }
+  },
+  "local_backup_root": "ai/training/output/wandb_local_checkpoints_20261019",
+  "note": "Checkpoint cadence is authoritative progress evidence; Training API progress and total-step fields are null."
+}

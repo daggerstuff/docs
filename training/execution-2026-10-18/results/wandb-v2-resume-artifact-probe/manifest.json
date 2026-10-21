@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-v2-resume-artifact-probe",
+  "status": "complete",
+  "cases_sha256": "9f0734cfde7384faa40e0f45163b12de906c69e6f0b22aa61f82dd5e8c0c10a3",
+  "config_sha256": "1a76da8f4940c89bb516965c6e27ba0420f07004bc8f3f8c60460559bc121bf9",
+  "case_ids": [
+    "dev-support-request"
+  ],
+  "arm_ids": [
+    "sft"
+  ],
+  "comparison_mode": "single_arm_diagnostic",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 512,
+    "stop": []
+  },
+  "input_token_cap": 2048,
+  "max_tool_rounds": 2,
+  "allow_sealed": false,
+  "preflight_token_upper_bounds": {
+    "dev-support-request": 404
+  },
+  "arms": [
+    {
+      "id": "sft",
+      "provider": "wandb-serverless-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v84",
+      "endpoint": "https://api.training.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": null
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.003456,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 1,
+  "error_count": 0,
+  "estimated_cost_usd": 3.55e-05,
+  "latency_ms_by_arm": {
+    "sft": {
+      "count": 1,
+      "p50_ms": 5227.398,
+      "p95_ms": 5227.398
+    }
+  },
+  "usage_totals_by_arm": {
+    "sft": {
+      "cases_with_usage": 1,
+      "prompt_tokens": 57,
+      "completion_tokens": 17,
+      "total_tokens": 74
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "sft": 0
+  }
+}

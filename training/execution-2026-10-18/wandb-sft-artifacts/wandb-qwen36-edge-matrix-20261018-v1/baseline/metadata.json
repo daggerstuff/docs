@@ -7,6 +7,7 @@
   "schema_version": 1,
   "source": "G04-approved provider-rendered training split",
   "source_candidate_sha256": "2f9617b9e71799c8738100a73161d5d94a8333079a05f82790f39a5737fd2c8c",
+  "total_len": 80,
   "train_payload_sha256": "bc33af0465356fe04a6cea01b09f5ea929a3ce12261ca7f9f1e4639daf548fa6",
   "train_row_count": 80,
   "training_config": {

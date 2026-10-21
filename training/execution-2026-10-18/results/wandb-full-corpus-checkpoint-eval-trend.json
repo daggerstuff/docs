@@ -1,0 +1,1250 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T15:21:17.515207Z",
+  "scope": "five-case synthetic development paired diagnostics only; not clinical or deployment evaluation",
+  "candidate_task_mix": {
+    "candidate_rows": 190139,
+    "rows_by_task": {
+      "practitioner_persona": 415,
+      "clinical_literature_distillation": 8107,
+      "therapy_response_generation": 77181,
+      "risk_assessment": 1638,
+      "severity_estimation": 229,
+      "symptom_classification": 101412,
+      "adversarial_crisis_deescalation": 77,
+      "clinical_edge_case": 100,
+      "long_session_arc": 980
+    },
+    "training_rows": 171121,
+    "train_rows_by_task": {
+      "practitioner_persona": 369,
+      "clinical_literature_distillation": 7279,
+      "therapy_response_generation": 69553,
+      "risk_assessment": 1480,
+      "severity_estimation": 204,
+      "symptom_classification": 91186,
+      "adversarial_crisis_deescalation": 72,
+      "clinical_edge_case": 91,
+      "long_session_arc": 887
+    },
+    "symptom_classification_share_pct": 53.287,
+    "symptom_classification_sources": {
+      "reddit_mental_health_posts": 27373,
+      "reddit_mental_nlp": 63813
+    }
+  },
+  "evaluations": [
+    {
+      "release": "v2",
+      "completed_batches": 42500,
+      "run_id": "v2-step42500-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00337175,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "d6538b7135662620d49028b0dc50fd0488a0a49fa90bc1c4b5faac2f2e5de526",
+      "results_sha256": "b71d7c51956bfd1bfac6e92adb6e65f466894e683c49a31e313ac38b2069fbeb",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "46d8a3160184558b16ca805e31b14d2bdeea362afa123442922f5442bd4e1352",
+              "occurrences": 1,
+              "chars": 201,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1710,
+            "total_tokens": 4840
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 3422.231,
+            "p95_ms": 4255.896
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v84",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "490113a290e3597c5831a1c6911a974df0f617a8c79b130fa51f5418cb3e1ec9",
+              "occurrences": 5,
+              "chars": 51,
+              "exact_training_matches": 6301,
+              "training_source_task_matches": [
+                {
+                  "source": "reddit_mental_health_posts",
+                  "task_type": "symptom_classification",
+                  "count": 6301
+                }
+              ]
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 85,
+            "total_tokens": 1467
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1224.626,
+            "p95_ms": 1797.598
+          }
+        }
+      }
+    },
+    {
+      "release": "v1",
+      "completed_batches": 43500,
+      "run_id": "v1-step43500-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.003493,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "6084b7982d6a0b96b110af89c32c3eb75377f7111c275aa3b4c5099d570960a6",
+      "results_sha256": "54ad741e619517d24b8fc5032474c247ee568476c7ef3691193c02f0727fb3eb",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1787,
+            "total_tokens": 4917
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 3402.599,
+            "p95_ms": 5182.188
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v86",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "530a2de7357fbc4407473ce16577a7331e5199716cb53eecee843d9917adbcc6",
+              "occurrences": 5,
+              "chars": 76,
+              "exact_training_matches": 4378,
+              "training_source_task_matches": [
+                {
+                  "source": "reddit_mental_health_posts",
+                  "task_type": "symptom_classification",
+                  "count": 4378
+                }
+              ]
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 105,
+            "total_tokens": 1487
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1544.035,
+            "p95_ms": 3132.337
+          }
+        }
+      }
+    },
+    {
+      "release": "v2",
+      "completed_batches": 45500,
+      "run_id": "wandb-full-corpus-v2-step-current-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.0035055,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "3e7ac5395c42fe143390ed957fef98bb73961d3c252f8effd934570c22d42e55",
+      "results_sha256": "8cef20d07b1ed0877a900d04bbc3f68969904f9b33cd002bdf1a2a3a1d1e8838",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1802,
+            "total_tokens": 4932
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 2784.765,
+            "p95_ms": 4658.231
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v90",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "40fbbf76a25d039f8f838d138e993150792f71eb99187a5735ad2ba58b8e1fca",
+              "occurrences": 5,
+              "chars": 78,
+              "exact_training_matches": 4343,
+              "training_source_task_matches": [
+                {
+                  "source": "reddit_mental_health_posts",
+                  "task_type": "symptom_classification",
+                  "count": 4343
+                }
+              ]
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 100,
+            "total_tokens": 1482
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1243.512,
+            "p95_ms": 2881.344
+          }
+        }
+      }
+    },
+    {
+      "release": "v2",
+      "completed_batches": 46000,
+      "run_id": "wandb-full-corpus-v2-step-47000-46000-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00352175,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "f251b02531c7ebc8e9ae47599d7f63d469de614f5ee4780584e7c674b0688bff",
+      "results_sha256": "a654e05a47a146d3ea3a468d2d8f9ee4973d0a764e4829f839813217ed97ab56",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1815,
+            "total_tokens": 4945
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 2288.445,
+            "p95_ms": 2891.182
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v91",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "40fbbf76a25d039f8f838d138e993150792f71eb99187a5735ad2ba58b8e1fca",
+              "occurrences": 5,
+              "chars": 78,
+              "exact_training_matches": 4343,
+              "training_source_task_matches": [
+                {
+                  "source": "reddit_mental_health_posts",
+                  "task_type": "symptom_classification",
+                  "count": 4343
+                }
+              ]
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 100,
+            "total_tokens": 1482
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1489.546,
+            "p95_ms": 2863.364
+          }
+        }
+      }
+    },
+    {
+      "release": "v1",
+      "completed_batches": 46500,
+      "run_id": "wandb-full-corpus-v1-step-current-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.0035055,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "3dbc14aa428dab5cc6c524015d100c1cc8c7ec47ea05e3f73f35a60894290a8d",
+      "results_sha256": "d677e25ea3d9c1e724fc48c79ddaba67cb4cd014fb34c6f020960b63ba7fd6de",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "46d8a3160184558b16ca805e31b14d2bdeea362afa123442922f5442bd4e1352",
+              "occurrences": 1,
+              "chars": 201,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1802,
+            "total_tokens": 4932
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 2880.143,
+            "p95_ms": 4155.135
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v92",
+          "cases": 5,
+          "distinct_responses": 3,
+          "response_multiplicities": [
+            3,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "40fbbf76a25d039f8f838d138e993150792f71eb99187a5735ad2ba58b8e1fca",
+              "occurrences": 3,
+              "chars": 78,
+              "exact_training_matches": 4343,
+              "training_source_task_matches": [
+                {
+                  "source": "reddit_mental_health_posts",
+                  "task_type": "symptom_classification",
+                  "count": 4343
+                }
+              ]
+            },
+            {
+              "sha256": "866bf2832e9c04e342b0cf3e7dae06c48c573c146a9ceceadf9e7f7ab579d538",
+              "occurrences": 1,
+              "chars": 72,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "23e84d575261a494ecc0a092ecede771f38fde8598743813b0ee2cee9acecbc8",
+              "occurrences": 1,
+              "chars": 87,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 100,
+            "total_tokens": 1482
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1604.847,
+            "p95_ms": 2875.735
+          }
+        }
+      }
+    },
+    {
+      "release": "v2",
+      "completed_batches": 46500,
+      "run_id": "wandb-full-corpus-v2-step-47500-46500-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.003523,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "3a24e794709cddbbc719a63218a0b0fdc0739d801f345fa1439f385d547e7024",
+      "results_sha256": "2b81d1fb64c31387fe83a96c72e8ad9f96f5b3cf9309554e25f63bda1d4aec42",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1816,
+            "total_tokens": 4946
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 2351.744,
+            "p95_ms": 3619.607
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v92",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "40fbbf76a25d039f8f838d138e993150792f71eb99187a5735ad2ba58b8e1fca",
+              "occurrences": 5,
+              "chars": 78,
+              "exact_training_matches": 4343,
+              "training_source_task_matches": [
+                {
+                  "source": "reddit_mental_health_posts",
+                  "task_type": "symptom_classification",
+                  "count": 4343
+                }
+              ]
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 100,
+            "total_tokens": 1482
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1273.632,
+            "p95_ms": 2941.543
+          }
+        }
+      }
+    },
+    {
+      "release": "v1",
+      "completed_batches": 47000,
+      "run_id": "wandb-full-corpus-v1-step-47000-46000-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00355925,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "7855719a7f8d23e4c125588da95d00baadf6b9d6119fb1381fc320e2a747bd2d",
+      "results_sha256": "74d95b6a217169446bc9f973f4108522b3b00b1bf8042a1f85f7e0f89ed6fda1",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1819,
+            "total_tokens": 4949
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 2711.665,
+            "p95_ms": 3290.33
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v93",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+              "occurrences": 1,
+              "chars": 75,
+              "exact_training_matches": 8047,
+              "training_source_task_matches": [
+                {
+                  "source": "reddit_mental_health_posts",
+                  "task_type": "symptom_classification",
+                  "count": 8047
+                }
+              ]
+            },
+            {
+              "sha256": "97d64a3416bbe1473eab00c9d0d87108b64be5b786cb39d927f6227e873946f8",
+              "occurrences": 1,
+              "chars": 74,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "bbe54fb55b3d3313c894a6aec1d83c9c4e0e2ef5c397fcc18bc1557d56d0ddbc",
+              "occurrences": 2,
+              "chars": 87,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "58d616f499cea35b1df16ef00d380709ecd9a5853c1c5733ebe3caea22d50362",
+              "occurrences": 1,
+              "chars": 81,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 126,
+            "total_tokens": 1508
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1564.517,
+            "p95_ms": 3243.87
+          }
+        }
+      }
+    },
+    {
+      "release": "v2",
+      "completed_batches": 47000,
+      "run_id": "wandb-full-corpus-v2-step47000-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00345425,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "1df1005d9747f8ac0e598b7f2a387ab03d405facbe0f3ba623009c073826e826",
+      "results_sha256": "686ebd1def0d798ee8ac268678a5ae9edb120f21accecb1d4c8694c813cdf3e5",
+      "arms": {
+        "base": {
+          "cases": 5,
+          "successful_calls": 5,
+          "errors": 0,
+          "distinct_response_count": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_sha256_counts": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "count": 2,
+              "chars": 0
+            },
+            {
+              "sha256": "46d8a3160184558b16ca805e31b14d2bdeea362afa123442922f5442bd4e1352",
+              "count": 1,
+              "chars": 201
+            },
+            {
+              "sha256": "8e2f43644c36ae633c3d6a876da0f67b26818c3047829c0c6955ebbfbad8c763",
+              "count": 1,
+              "chars": 100
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "count": 1,
+              "chars": 57
+            }
+          ],
+          "tool_call_count": 0,
+          "state_check_passed": 0,
+          "state_check_total": 0,
+          "usage": {
+            "prompt_tokens": 3130,
+            "completion_tokens": 1743,
+            "total_tokens": 4873
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 2224.565,
+            "p95_ms": 4493.888
+          },
+          "cases_with_any_failed_deterministic_check": 0
+        },
+        "sft": {
+          "cases": 5,
+          "successful_calls": 5,
+          "errors": 0,
+          "distinct_response_count": 3,
+          "response_multiplicities": [
+            3,
+            1,
+            1
+          ],
+          "response_sha256_counts": [
+            {
+              "sha256": "990db63ffe0f0a94672a1d331664d90eed08f58e6d2b96bdd62b4cf5f2ad3e3c",
+              "count": 1,
+              "chars": 98
+            },
+            {
+              "sha256": "5a3f9d1d3cdaceb292fae44ad11f7510f3bb063639593f80a15b58236690edf5",
+              "count": 3,
+              "chars": 67
+            },
+            {
+              "sha256": "a6a4c1a255dfc34a4f6793cdcd13ca7cc71dd2d1da2a85ab9a4199d48005af1c",
+              "count": 1,
+              "chars": 84
+            }
+          ],
+          "tool_call_count": 0,
+          "state_check_passed": 0,
+          "state_check_total": 0,
+          "usage": {
+            "prompt_tokens": 1382,
+            "completion_tokens": 118,
+            "total_tokens": 1500
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1311.721,
+            "p95_ms": 1732.566
+          },
+          "cases_with_any_failed_deterministic_check": 0
+        }
+      }
+    },
+    {
+      "release": "v1",
+      "completed_batches": 47500,
+      "run_id": "wandb-full-corpus-v1-step-47500-46500-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00354175,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "5a4401cbc553cad26b4466e38d7989f358171b916d2725a9457499625a7ae4f1",
+      "results_sha256": "cb143fda34b7662ad09ddbd3b59a2590d69b6ecb41d8f8f90cdd718fe884381b",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57,
+              "exact_training_matches": 0,
+              "training_source_task_matches": []
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1816,
+            "total_tokens": 4946
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 2495.17,
+            "p95_ms": 3399.912
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v94",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+              "occurrences": 5,
+              "chars": 75,
+              "exact_training_matches": 8047,
+              "training_source_task_matches": [
+                {
+                  "source": "reddit_mental_health_posts",
+                  "task_type": "symptom_classification",
+                  "count": 8047
+                }
+              ]
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 115,
+            "total_tokens": 1497
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1274.114,
+            "p95_ms": 3179.867
+          }
+        }
+      }
+    },
+    {
+      "release": "v1",
+      "checkpoint_version": "v96",
+      "completed_batches": 48500,
+      "run_id": "wandb-full-corpus-v1-step-current-1519-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.003528,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "24ba90796220f2d1faa21d864714e0d826e5c5fe853654c4d59ceba6ea851f37",
+      "results_sha256": "f2b201469190af99d72409c77c67d2f940a612edede50b604bfea28c93b1c8d4",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1805,
+            "total_tokens": 4935
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 3000.824,
+            "p95_ms": 4131.972
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v96",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+              "occurrences": 5,
+              "chars": 75
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 115,
+            "total_tokens": 1497
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1443.085,
+            "p95_ms": 1998.36
+          }
+        }
+      }
+    },
+    {
+      "release": "v2",
+      "checkpoint_version": "v94",
+      "completed_batches": 47500,
+      "run_id": "wandb-full-corpus-v2-step-current-1519-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00359175,
+      "actual_billed_usd": null,
+      "success_count": 10,
+      "error_count": 0,
+      "manifest_sha256": "9a946f7e88d14854252e91f8c8b4f505f28602f7be1af76b6075761f82c6394e",
+      "results_sha256": "4e5b3582c965c425688a83cfffd7b9824dc0cefe7da2834b6846cc513f71660a",
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1856,
+            "total_tokens": 4986
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 3774.894,
+            "p95_ms": 3873.04
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v94",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+              "occurrences": 5,
+              "chars": 75
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 115,
+            "total_tokens": 1497
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1361.953,
+            "p95_ms": 1522.037
+          }
+        }
+      }
+    }
+  ],
+  "training_payload_structure": {
+    "rows": 171121,
+    "message_role_counts": {
+      "user": 521053,
+      "assistant": 532557,
+      "tool": 0
+    },
+    "assistant_structured_tool_calls": 0,
+    "rows_with_structured_tool_calls": 0,
+    "assistant_target_char_count_by_task": {
+      "symptom_classification": 2249532,
+      "total": 98689036
+    },
+    "symptom_classification_assistant_char_share_pct": 2.279,
+    "long_session_arc_rows": 887,
+    "long_session_arc_assistant_turns": 14501,
+    "interpretation": "Although symptom-classification tasks are 53.287% of training rows, they contribute about 2.28% of assistant-target characters. The stronger tool-agent mismatch is structural: the uploaded training payload contains no tool calls or tool-role messages."
+  }
+}

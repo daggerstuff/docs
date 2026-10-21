@@ -1,0 +1,11 @@
+{
+  "observed_at_utc": "2026-10-19T14:40:56.676329Z",
+  "source": "authenticated W&B Public GraphQL Project.storageBytes field",
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_access": "PRIVATE",
+  "storage_bytes": 26396506333,
+  "storage_gb_decimal": 26.397,
+  "storage_gib_binary": 24.584,
+  "quota_limit_bytes": null,
+  "interpretation": "Project-level W&B storageBytes metric; account plan limit and rolling 30-day billable storage were not returned by this query."
+}

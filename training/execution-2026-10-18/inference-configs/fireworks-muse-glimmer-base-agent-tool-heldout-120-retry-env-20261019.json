@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "run_id": "fireworks-muse-glimmer-base-agent-tool-heldout-120-retry-env-20261019",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 512,
+    "stop": []
+  },
+  "pricing": {
+    "input_usd_per_million_tokens": 0.35,
+    "output_usd_per_million_tokens": 1.5,
+    "hard_cap_usd": 0.6,
+    "require_usage": true,
+    "require_finish_reason": true
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "fireworks-serverless",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "model": "accounts/fireworks/models/muse-glimmer-30b",
+      "api_key_env": "FIREWORKS_API_KEY"
+    },
+    {
+      "id": "sft",
+      "provider": "fireworks-serverless",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "model": "accounts/fireworks/models/muse-glimmer-30b",
+      "api_key_env": "FIREWORKS_API_KEY"
+    }
+  ]
+}

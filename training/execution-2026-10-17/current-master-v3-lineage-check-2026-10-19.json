@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T15:26:25.177196Z",
+  "release_status": "local_staging_pending_scope_direction",
+  "upload_gate": false,
+  "candidate": {
+    "path": "ai/data/curated/sft_chatml/train_master_gold.jsonl",
+    "rows": 190230,
+    "sha256": "c5ed52809930b5b602c43a4021afc083eb09e688bf3049c0088f38a8c7bfb606"
+  },
+  "pinned_v2_release": {
+    "rows": 190139,
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "row_content_signature_matches": 190139
+  },
+  "delta": {
+    "rows": 91,
+    "unique_source_labels": 35,
+    "rowref_hash_ledger_sha256": "2538911aac4be8ec87632a7aaa821a3978444d7fa22c932f1d84f17259fced01",
+    "decision_status_counts": {
+      "rights_unresolved": 91,
+      "privacy_unverified": 91,
+      "training_hold": 91,
+      "authority_awaiting_human_signoff": 91,
+      "generic_license_not_exact_row_clearance": 91
+    }
+  },
+  "repairs": {
+    "rows": 52,
+    "sha256": "17308c80a2eb332774d3549a2ef0260bdfabac6f53044cc0160880e166a7238a"
+  },
+  "payloads": {
+    "train": {
+      "rows": 171250,
+      "sha256": "e93b6c5eeaa0c5ffb68763e42344a8a117cf1f57e50cc8fa2f51e62f4ad48fe3",
+      "sha256_matches_file": true
+    },
+    "validation": {
+      "rows": 9671,
+      "sha256": "c9475fc1b1ee37b33d75cb400b5aebcebb8eda1a16ab3709c8276d95710294f9",
+      "sha256_matches_file": true
+    },
+    "test": {
+      "rows": 9309,
+      "sha256": "03bfa099a3d3f5e1d5cd07599f3bdb6f5d68db274332832d33dd889f610aa2f8",
+      "sha256_matches_file": true
+    }
+  },
+  "group_split_intersections": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "privacy_pattern_hits_after_redaction": {
+    "email": 0,
+    "ssn": 0,
+    "phone": 0,
+    "url": 0,
+    "ipv4": 0
+  },
+  "limits": [
+    "Pattern screening is not comprehensive de-identification; clinical NER was not run.",
+    "This release is local staging only. The added 91 rows are not approved for upload or training.",
+    "The 190139-row v2 release and its training jobs remain bound to their pinned candidate hash."
+  ]
+}

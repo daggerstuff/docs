@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-full-corpus-v2-v103-system-context-removed-120-20261019T1650Z",
+  "checkpoint": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v103",
+  "suite": "pixelated-agent-tool-sft-20261019-v1 held-out synthetic tool-use suite",
+  "cases": 120,
+  "cases_sha256": "89a143d930af63d1e6d98730c492d0a30ccf4407d3259be29e6b05ab80f3e4ba",
+  "condition": "Removed the single system-role message from each of the 120 cases; all other case fields and decoding settings retained.",
+  "result": {
+    "status": "complete",
+    "success_count": 120,
+    "error_count": 0,
+    "unique_response_count": 3,
+    "largest_response_frequency": 105,
+    "response_hash_multiplicities": [
+      {
+        "sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+        "count": 105
+      },
+      {
+        "sha256": "27f607b167c747d64ad58dc8400b6e8bc9e0770b2ba3daac3e6bce58f2ff1716",
+        "count": 13
+      },
+      {
+        "sha256": "6155df11b20e3862a41066eaa59d4cc236bf3e842b324e723151e1886153ac3c",
+        "count": 2
+      }
+    ],
+    "tool_trace_events": 0,
+    "cases_with_tool_trace": 0,
+    "state_checks_passed": 60,
+    "state_checks_total": 240,
+    "cases_all_state_checks_passed": 30,
+    "prompt_tokens": 41304,
+    "completion_tokens": 2038,
+    "estimated_usage_cost_usd": 0.0128735,
+    "actual_billed_usd": null,
+    "configured_max_cost_usd": 0.41472
+  },
+  "comparison_to_system_present_v2_v103": {
+    "system_present_run": "wandb-full-corpus-v2-tool-heldout-120-latest-20261019T1644Z",
+    "system_present_response_hash": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+    "system_removed_response_hash": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+    "same_response_hash": false,
+    "system_present_prompt_tokens": 47424,
+    "system_removed_prompt_tokens": 41304,
+    "same_dominant_response_hash": true,
+    "system_present_unique_responses": 1,
+    "system_present_largest_response_frequency": 120,
+    "system_removed_unique_responses": 3,
+    "system_removed_largest_response_frequency": 105,
+    "system_removed_cases_with_non_dominant_response": 15
+  },
+  "interpretation": "Removing system messages produced more response variation (3 hashes instead of 1); the former dominant response still appeared in 105/120 cases, and 15 cases shifted to two other outputs. Tool use and state-check scores did not improve. Thus system context affects some outputs, but removing it does not recover task behavior. This inference-time ablation does not establish why training produced collapse or whether retraining while preserving system context would help. Synthetic diagnostic only, not clinical-quality or safety evidence."
+}

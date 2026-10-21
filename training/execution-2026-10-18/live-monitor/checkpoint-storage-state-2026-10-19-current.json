@@ -1,0 +1,93 @@
+{
+  "observed_at_utc": "2026-10-19T18:55:08Z",
+  "source": "Direct W&B Training job API and Artifact API collections (types lora and train-state), refreshed 2026-10-19T18:52:50Z; project.storageBytes remains the earlier 17:59:32Z observation",
+  "project": "wutang/pixelated-empathy-kan28",
+  "jobs": {
+    "v1": {
+      "job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "RUNNING",
+      "collections": {
+        "lora": {
+          "name": "arc-sft-baseline-8ce8354c67ef-sft-resume",
+          "retained_version_count": 38,
+          "min_version": 82,
+          "max_version": 119,
+          "latest": {
+            "version": "v119",
+            "created_at": "2026-10-19T18:52:08Z",
+            "size_bytes": 117843308,
+            "completed_batches": 60000,
+            "internal_checkpoint": true
+          }
+        },
+        "train-state": {
+          "name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+          "retained_version_count": 38,
+          "min_version": 82,
+          "max_version": 119,
+          "latest": {
+            "version": "v119",
+            "created_at": "2026-10-19T18:52:10Z",
+            "size_bytes": 1060414709,
+            "completed_batches": 60000,
+            "internal_checkpoint": true
+          }
+        }
+      }
+    },
+    "v2": {
+      "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "RUNNING",
+      "collections": {
+        "lora": {
+          "name": "arc-sft-baseline-556695bfd5c4-sft-resume",
+          "retained_version_count": 38,
+          "min_version": 80,
+          "max_version": 117,
+          "latest": {
+            "version": "v117",
+            "created_at": "2026-10-19T18:49:00Z",
+            "size_bytes": 117843308,
+            "completed_batches": 59000,
+            "internal_checkpoint": true
+          }
+        },
+        "train-state": {
+          "name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+          "retained_version_count": 38,
+          "min_version": 80,
+          "max_version": 117,
+          "latest": {
+            "version": "v117",
+            "created_at": "2026-10-19T18:49:01Z",
+            "size_bytes": 1060414709,
+            "completed_batches": 59000,
+            "internal_checkpoint": true
+          }
+        }
+      }
+    }
+  },
+  "storage_quota_bytes": null,
+  "deletion_audit_exposed": false,
+  "project_storage_graphql": {
+    "name": "pixelated-empathy-kan28",
+    "access": "PRIVATE",
+    "storageBytes": 65581760073,
+    "observed_at_utc": "2026-10-19T17:59:32.505399Z"
+  },
+  "interpretation": "Direct W&B artifact collection queries and rolling local backups confirm continued checkpoint creation during cleanup. Training model-checkpoints is not the live artifact stream. Artifact and Training APIs queried do not expose deletion audit or account storage quota.",
+  "endpoint_reconciliation": "The W&B Training model-checkpoints endpoint showed only base step-0 entries and was not the live training artifact stream. Active LoRA and resume-state versions are recorded above.",
+  "local_backup_state": {
+    "checked_at_utc": "2026-10-19T18:55:08Z",
+    "latest_saved_versions": {
+      "v1_lora": "v119",
+      "v1_train_state": "v119",
+      "v2_lora": "v117",
+      "v2_train_state": "v117"
+    },
+    "integrity_check": "Four latest artifacts are present in rolling local backup paths; backup scripts verify file size and SHA-256 before finalizing each local copy.",
+    "backup_root": "ai/training/output/wandb_local_checkpoints_20261019",
+    "interpretation": "Each active run has its newest two LoRA and train-state artifacts locally mirrored and integrity-checked by 18:55. W&B created v1 v119 at 18:52 and the backup workers verified it by 18:55. Active checkpoint uploads continued during user cleanup."
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "observed_at_utc": "2026-10-19T15:30:44.785635Z",
+  "source": "read-only W&B Training API and artifact API and GraphQL project metric",
+  "project": "wutang/pixelated-empathy-kan28",
+  "jobs": {
+    "v1": {
+      "id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "RUNNING",
+      "updated_at": "2026-10-18T22:44:42.293216Z",
+      "training_start": "2026-10-18T22:44:42.321704Z",
+      "progress": null,
+      "error": null
+    },
+    "v2": {
+      "id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "RUNNING",
+      "updated_at": "2026-10-18T23:13:12.819915Z",
+      "training_start": "2026-10-18T23:13:12.829151Z",
+      "progress": null,
+      "error": null
+    }
+  },
+  "collections": {
+    "arc-sft-baseline-8ce8354c67ef-sft-resume": {
+      "type": "lora",
+      "count": 16,
+      "first_version": "v82",
+      "latest_version": "v97",
+      "created_at": "2026-10-19T15:25:40Z",
+      "size_bytes": 117843308,
+      "completed_batches": 49000,
+      "internal_checkpoint": true,
+      "older_listed_range": [
+        "v82",
+        "v95"
+      ]
+    },
+    "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume": {
+      "type": "train-state",
+      "count": 16,
+      "first_version": "v82",
+      "latest_version": "v97",
+      "created_at": "2026-10-19T15:25:42Z",
+      "size_bytes": 1060414709,
+      "completed_batches": 49000,
+      "internal_checkpoint": true,
+      "older_listed_range": [
+        "v82",
+        "v95"
+      ]
+    },
+    "arc-sft-baseline-556695bfd5c4-sft-resume": {
+      "type": "lora",
+      "count": 16,
+      "first_version": "v80",
+      "latest_version": "v95",
+      "created_at": "2026-10-19T15:23:41Z",
+      "size_bytes": 117843308,
+      "completed_batches": 48000,
+      "internal_checkpoint": true,
+      "older_listed_range": [
+        "v80",
+        "v93"
+      ]
+    },
+    "arc-sft-baseline-556695bfd5c4-train-state-sft-resume": {
+      "type": "train-state",
+      "count": 16,
+      "first_version": "v80",
+      "latest_version": "v95",
+      "created_at": "2026-10-19T15:23:44Z",
+      "size_bytes": 1060414709,
+      "completed_batches": 48000,
+      "internal_checkpoint": true,
+      "older_listed_range": [
+        "v80",
+        "v93"
+      ]
+    }
+  },
+  "project_storage_bytes": 35823507422,
+  "note": "Project storageBytes is not confirmed quota or physical deletion state; listed older versions are retention candidates only. Keep newest two LoRA and train-state versions per run for resume recovery."
+}

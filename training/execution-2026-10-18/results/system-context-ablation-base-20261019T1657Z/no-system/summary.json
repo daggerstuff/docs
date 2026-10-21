@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-base-system-context-removed-120-20261019T1657Z",
+  "provider_manifest_status": "incomplete",
+  "provider": "wandb-inference",
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "suite": "pixelated-agent-tool-sft-20261019-v1 held-out synthetic tool-use suite",
+  "cases": 120,
+  "cases_sha256": "89a143d930af63d1e6d98730c492d0a30ccf4407d3259be29e6b05ab80f3e4ba",
+  "condition": "Removed the single system-role message from each of the 120 cases; all other case fields and decoding settings retained.",
+  "result": {
+    "case_records": 120,
+    "successful_completions": 115,
+    "case_errors": 5,
+    "error_types": {
+      "ToolRoundLimitExceeded": 5
+    },
+    "error_interpretation": "All five recorded errors were ToolRoundLimitExceeded after two tool rounds; no provider HTTP failures occurred.",
+    "unique_response_hashes": 72,
+    "largest_exact_response_frequency": 35,
+    "most_frequent_response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "empty_final_content_successes": 35,
+    "tool_trace_events": 145,
+    "cases_with_tool_trace": 90,
+    "state_checks_passed": 157,
+    "state_checks_observed": 227,
+    "state_checks_expected": 240,
+    "cases_all_observed_state_checks_passed": 56,
+    "prompt_tokens_all_calls": 106944,
+    "completion_tokens_all_calls": 63633,
+    "manifest_estimated_usage_cost_successes_usd": 0.10207775,
+    "estimated_cost_failed_case_attempts_usd": 0.0041995,
+    "estimated_usage_cost_all_attempts_usd": 0.10627725,
+    "actual_billed_usd": null,
+    "configured_max_cost_usd": 0.41472,
+    "successful_completion_latency_p50_ms": 4265.04,
+    "successful_completion_latency_p95_ms": 10276.891
+  },
+  "comparison_to_system_present_base_same_case_ids": {
+    "system_present_runs": [
+      "agent-tool-sft-heldout-base-120-20261019",
+      "agent-tool-sft-resource-compare-retry-10-base-20261019"
+    ],
+    "matched_case_ids": 120,
+    "both_conditions_successful": 115,
+    "both_success_output_hash_changed": 98,
+    "both_success_output_hash_same": 17,
+    "no_system_tool_round_errors": 5,
+    "no_system_success_when_system_present_failed": 0,
+    "system_present_baseline_summary": {
+      "successful_cases": 120,
+      "tool_trace_events": 142,
+      "cases_with_tool_trace": 85,
+      "state_checks_passed": 189,
+      "state_checks_total": 240
+    },
+    "interpretation": "Removing system context changed the exact response on most jointly successful cases and increased tool traces/cases using tools, while five no-system cases exceeded the two-round limit. State-check totals are not directly denominator-equivalent because the five error rows have no score and three successful rows exposed fewer checks; report observed coverage alongside the 240 expected checks."
+  },
+  "diagnostic_scope": "Synthetic agent-tool behavior only; diagnostic metrics are unvalidated and are not clinical-quality or safety evidence."
+}

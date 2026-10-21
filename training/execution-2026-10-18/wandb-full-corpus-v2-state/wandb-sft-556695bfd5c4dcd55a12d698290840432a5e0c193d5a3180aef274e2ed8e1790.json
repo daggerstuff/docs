@@ -1,0 +1,41 @@
+{
+  "arm": "baseline",
+  "artifact_bytes": 296288577,
+  "artifact_hashes": {
+    "metadata": "5f68f94f80f7f5a485c1523e1bc621307c31ea30016bfe034b63ac8a0a546165",
+    "trajectories": "138045ba6fb263e0d68bb42c3e8d0a7e3bf7314c3fc79397ecfd805a2c980a76"
+  },
+  "config": {
+    "assistant_turns": "all",
+    "batch_size": "auto",
+    "learning_rate": 0.0001
+  },
+  "last_status": "RUNNING",
+  "last_status_response": {
+    "id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+    "status": "RUNNING",
+    "created_at": "2026-10-18T23:12:59.817203Z",
+    "updated_at": "2026-10-18T23:13:12.819915Z"
+  },
+  "manifest_sha256": "6274bed5a23ff7a6ee05083210c877131c1510385b1a5965b41119420576a545",
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "model_id": "339688ad-b611-439f-afba-a8405efae633",
+  "payload_sha256": "138045ba6fb263e0d68bb42c3e8d0a7e3bf7314c3fc79397ecfd805a2c980a76",
+  "phase": "job_created",
+  "phase_updated_unix": 1792365185,
+  "release_id": "wandb-full-corpus-20261018-v2",
+  "row_count": 171167,
+  "task_id": "556695bfd5c4dcd55a12d698290840432a5e0c193d5a3180aef274e2ed8e1790",
+  "training_data_url": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-full-corpus-20261018-v2-baseline-556695bfd5c4:v0",
+  "training_job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+  "checkpoints": [
+    {
+      "id": "ceb6db57-0b5d-4631-9f44-55973cbc2734",
+      "step": 0,
+      "artifact_name": "arc-sft-baseline-556695bfd5c4",
+      "version": 0,
+      "metrics": {}
+    }
+  ],
+  "last_polled_at_utc": "2026-10-19T13:30:59.111263Z"
+}

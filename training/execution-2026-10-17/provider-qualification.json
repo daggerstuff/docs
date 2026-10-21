@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "qualification_id": "P00",
-  "as_of": "2026-10-17",
+  "as_of": "2026-10-19",
   "status": "partial_qualified",
   "scope": "P00 read-only qualification, one approved capped synthetic W&B inference smoke by the evaluation worker, and local fail-closed launcher preparation. No training job, dataset upload, model resource, or deployment was created. The corrected five-case smoke succeeded 5/5; three outputs were truncated at 256 tokens.",
   "credential_handling": {
@@ -25,7 +25,20 @@
       "account_deployments": 0,
       "billing_summary_period": "2026-10-01 through 2026-10-18 UTC",
       "serverless_training_tokens_rated_cost_usd": "0.00",
-      "credit_balance_or_promo_eligibility": "Not exposed by the read-only account responses checked. Public Muse Glimmer SFT offer is documented, but account-specific offer activation remains unverified."
+      "credit_balance_or_promo_eligibility": "Not exposed by the read-only account responses checked. Public Muse Glimmer SFT offer is documented, but account-specific offer activation remains unverified.",
+      "current_catalog_recheck_2026_10_19": {
+        "checked_at_utc": "2026-10-19T15:56Z",
+        "endpoint": "GET https://api.fireworks.ai/inference/v1/models",
+        "http_status": 200,
+        "model_count": 22,
+        "muse_glimmer_listed": false,
+        "muse_spark_open_listed": true,
+        "glm_5p3_listed": true,
+        "glm_5p3_flash_listed": true,
+        "inference_requests_sent": 0,
+        "provider_spend_usd": 0,
+        "result": "API key is valid for catalog reads. Muse Glimmer serverless inference is unavailable; no account-specific serving or credit balance was qualified."
+      }
     },
     "eligible_model_routes": [
       {
@@ -33,8 +46,8 @@
         "tokenizer": "meta-models/Muse-Glimmer-30B",
         "renderer": "muse_glimmer",
         "qualified_for": "LoRA supervised fine-tuning via Serverless Training API; account model resource reports support.",
-        "promotion": "Official pricing page currently advertises Muse Glimmer 30B SFT free via UI and Serverless Training API until 2026-11-30, no credit card required. This is a public offer; authenticated account balance/promo activation is not queryable through the safe routes checked.",
-        "inference_route": "Fireworks public model page lists serverless inference at $0.35/M input and $1.50/M output, but current account API metadata reports supportsServerless=false and serverlessModes=[]; account inference model list omitted Muse Glimmer. Contradiction leaves account serving eligibility unqualified.",
+        "promotion": "Official Muse Glimmer model page currently advertises free SFT via UI and Serverless Training API through 2026-11-30, no credit card required. The user-provided training notice said October 31; current official page says November 30. Account-specific activation/balance is still not exposed.",
+        "inference_route": "Not qualified. Current authenticated GET /inference/v1/models returned HTTP 200 and 22 models but omitted accounts/fireworks/models/muse-glimmer-30b. The official model page states Serverless is not supported and says Muse Glimmer serverless availability ended starting 2026-09-25; on-demand deployment is the listed serving option. No deployment was created.",
         "adapter_route": "In-session sampler during an active Serverless Training session. A promoted adapter requires an on-demand/preemptible deployment; no ordinary serverless chat endpoint exists for tuned LoRAs.",
         "export_route": "Existing trained Fireworks adapter download entitlement remains denied; see export check below."
       }
@@ -76,7 +89,61 @@
       "https://fireworks.ai/pricing",
       "https://fireworks.ai/models/fireworks/muse-glimmer-30b",
       "https://github.com/fw-ai/cookbook/blob/main/training/examples/sft/muse_glimmer_starter.py"
-    ]
+    ],
+    "live_model_page_recheck": {
+      "url": "https://fireworks.ai/models/fireworks/muse-glimmer-30b",
+      "checked_at": "2026-10-19",
+      "state": "Ready",
+      "fine_tuning": "Supported",
+      "serverless_inference": "Not supported",
+      "sft_promotion_through": "2026-11-30",
+      "page_note": "Muse Glimmer serverless deprecation starts 2026-09-25; on-demand deployment continues."
+    },
+    "official_sources_current": [
+      "https://fireworks.ai/models/fireworks/muse-glimmer-30b",
+      "https://fireworks.ai/pricing",
+      "https://docs.fireworks.ai/fine-tuning/training-api/cookbook/muse-glimmer",
+      "https://docs.fireworks.ai/fine-tuning/fine-tuning-models",
+      "https://docs.fireworks.ai/fine-tuning/evaluating-fine-tuned-models",
+      "https://docs.fireworks.ai/fine-tuning/training-api/serverless",
+      "https://trust.fireworks.ai/faq",
+      "https://fireworks.ai/terms-of-service"
+    ],
+    "synthetic_agent_tool_release_review_2026_10_19": {
+      "release_id": "pixelated-agent-tool-sft-20261019-v1",
+      "manifest": "docs/training/agent-tool-sft-2026-10-19/release-manifest.json",
+      "train_payload": "docs/training/agent-tool-sft-2026-10-19/train/trajectories.jsonl",
+      "train_sha256": "010322208f7938085de42fdd8d2c9e529c94ac1024fd02847c6d31d4edb15d78",
+      "train_examples": 960,
+      "train_file_bytes": 1431878,
+      "composition_counts": {
+        "assistant_tool_call_messages": 1200,
+        "tool_result_role_messages": 1200,
+        "tool_definitions": 1440,
+        "all_rows_include_system_user_assistant": true
+      },
+      "data_character": "Manifest identifies first-party deterministic synthetic data, no external content, and no real-person data; this is a local research candidate and has not been uploaded.",
+      "documented_format_fit": {
+        "jsonl_and_example_count": "Within Fireworks documented JSONL limits: 960 examples versus 3 minimum and 3 million maximum; 1.43 MB, below the documented UI small-dataset guidance of 500 MB.",
+        "tools_and_tool_calls": "The managed SFT guide documents a top-level tools list and assistant tool_calls records.",
+        "tool_result_role": "All 1,200 tool results use role=tool with tool_call_id. The current managed SFT message schema enumerates system, user, assistant only and does not document role=tool, although it documents function-call training. This candidate therefore is not confirmed upload-compatible as-is. No provider render validation can be done without dataset upload/job creation, which was not authorized in this qualification task.",
+        "disposition": "Do not upload as-is. Resolve support for role=tool through an authoritative provider response or prepare and locally validate a semantics-preserving supported-format variant, then requalify before transfer. Do not change the frozen source release."
+      },
+      "promotion_and_cost": {
+        "public_offer": "Current official Muse Glimmer page and pricing page advertise SFT through 2026-11-30 with no credit card required; the previously reported account-specific zero rated cost applies to earlier jobs only and does not prove account entitlement for this new run.",
+        "sft_training": "Publicly eligible route is Muse Glimmer 30B LoRA SFT via UI / Serverless Training API; account model resource was previously read as supporting supervised LoRA and serverless training.",
+        "sampling": "In-session sampling exists only while the Serverless Training session is active. Pricing separately lists Muse Glimmer at $1.96/M prefill and $4.88/M sample; the SFT promotion does not explicitly say those meters are waived. Bound them as uncovered/paid unless the account confirms otherwise.",
+        "retention": "Save a sampler checkpoint and promote it before session teardown; a sampler checkpoint is not a resumable training checkpoint. Fireworks docs say trained LoRAs require on-demand deployment for post-session inference; no tuned-model serverless chat route exists. Preemptible deployment is documented for eval, but its price/credit coverage is not established here.",
+        "local_export": "The existing managed Fireworks adapter download check for this account returned HTTP 400 (download disabled). Fireworks docs describe adapter download for entitled users; this does not establish that this account can export a newly promoted serverless adapter. Do not claim durable local retention unless export permission and an actual downloaded artifact are verified."
+      },
+      "terms_review": {
+        "trust_center_statement": "Fireworks Trust Center FAQ says training datasets are used only to train the customer's specified model, remain under customer control, and are not used to improve shared foundation models.",
+        "terms_interaction": "The public Terms of Service page links a PDF containing broad User Content license language. Its interaction with the Trust Center's narrower training-data assurance is not resolved by the public materials reviewed. Because this release is first-party synthetic and contains no real-person data, clinical dataset rights are not the obstacle; definitive contract interpretation/account tier terms remain unverified.",
+        "status": "Provider use terms are not disqualified for rights ownership based on the manifest, but retention/use terms are not fully reconciled. Treat transfer as conditional on preserving the synthetic-only scope and confirming the governing account terms; no transfer occurred."
+      },
+      "job_eligibility_within_existing_authorization": "Not eligible to upload/start as-is: role=tool compatibility is undocumented, promotion/account coverage for a new job is not verified account-specifically, sampler billing is outside the explicit SFT offer, and adapter download entitlement is unresolved. The release is promising and below dataset size limits; these are specific unresolved route gates, not a rejection of the 960-row corpus.",
+      "no_external_actions": "No dataset rows sent, uploaded, or read by Fireworks; no dataset/model/job/deployment created; no inference request or spend."
+    }
   },
   "wandb": {
     "account_access": {
@@ -171,7 +238,7 @@
       }
     ],
     "training_and_checkpoint_route": {
-      "public_preview": "W&B Serverless SFT and RL training are documented as free during public preview; inference and checkpoint storage are billed separately.",
+      "public_preview": "W&B's published Training Pricing page says Serverless SFT/RL training is free during public preview, and Serverless Training docs explicitly say the same. The docs repository is archived and the training-pricing URL currently redirects to CoreWeave Forge, so monitor actual account billing for an exception; do not apply Forge post-training rates without provider confirmation. Inference is metered separately; artifact storage follows the workspace plan/quota.",
       "account_visible_training_base_models": [
         "OpenPipe/Qwen3-14B-Instruct",
         "Qwen/Qwen2.5-14B-Instruct",
@@ -227,9 +294,9 @@
               "assistant_turns": "all"
             }
           },
-          "execution_gate": "Template only. Use after G04 passes under the user's existing campaign authorization and the documented public-preview free SFT offer is still active; no model or job exists from P00."
+          "execution_gate": "Template only. Use after G04 passes under the user's existing campaign authorization and current account/provider training price and entitlement are verified; no model or job exists from P00."
         },
-        "execution_gate": "Template only. Under existing user campaign authorization, execute only after G04 passes exact source/privacy/group gates, private project and base catalog revalidate, and the documented public-preview free SFT offer is still active; no model/job/upload has occurred."
+        "execution_gate": "Template only. Under existing user campaign authorization, execute only after G04 passes exact source/privacy/group gates, private project and base catalog revalidate, and current account/provider training price and entitlement are verified; no model/job/upload has occurred."
       },
       "checkpoint_storage": "W&B Training docs state checkpoints are stored as LoRA artifacts; all plans include at least 5 GB free storage and this is typically enough for about 30 LoRAs. Storage above plan quota may be billed monthly. The documented read-only files/query_stats endpoint reports total bytes in one project, not remaining account quota; no exact account headroom or checkpoint byte estimate was obtained.",
       "trained_adapter_endpoint_format": "wandb-artifact:///<entity>/<project>/<model-name>:<step>",
@@ -289,7 +356,7 @@
     "prepared_launcher": {
       "path": "ai/training/launch/wandb_sft_g04.py",
       "default": "dry-run; no provider writes",
-      "execute_gate": "explicit --execute plus exact G04 approved_for_research_training manifest, private project check, authenticated current base catalog check, currently active documented public-preview free SFT offer, and existing user campaign authorization",
+      "execute_gate": "explicit --execute plus exact G04 approved_for_research_training manifest, private project check, authenticated current base catalog check, verified current account/provider training price and entitlement, and existing user campaign authorization",
       "manifest": "docs/training/execution-2026-10-17/g04-release-manifest.json",
       "required_release_evidence": [
         "provider=wandb",
@@ -322,7 +389,7 @@
           }
         }
       },
-      "cost_and_storage": "Public-preview SFT cost is $0 while the offer remains active. Dry run measures the exact input artifact bytes. Public docs provide at least 5 GB free storage and say this is typically enough for about 30 LoRAs; over-quota storage can be billed monthly. The documented read-only API reports per-project used bytes, not remaining account quota, and no checkpoint byte estimate was available; this is recorded as a limitation, not an invented account-quota gate.",
+      "cost_and_storage": "Current account-specific SFT price and entitlement are unverified; do not assume the historical public-preview offer is active or that the Forge rate applies. Dry run measures exact input artifact bytes. Archived docs historically claimed at least 5 GB storage and said this was typically enough for about 30 LoRAs; over-quota storage may be billed. The documented read-only API reports per-project used bytes, not remaining account quota, and no checkpoint byte estimate was available; this is recorded as a limitation, not an invented account-quota gate.",
       "durability": "Deterministic task id from release/payload/arm/config; state file mode 0600; ambiguous artifact/model/job create outcome blocks resume rather than repeating a POST; successful job id supports status polling.",
       "test": "Ruff check and format pass for launcher and tests; 9 fake API/local validation tests pass; local draft partition size/context metrics recorded without row text; canonical draft still fails closed; no provider writes performed.",
       "current_g04_draft_preflight": {
@@ -396,6 +463,15 @@
       "diagnosis": "The first six requests failed because the inference gateway rejects an empty stop sequence array (stop: []) even though current public schema lists empty array as the default.",
       "corrective_request": "Omit stop when empty; retain project attribution wutang/pixelated-empathy-kan28, model Qwen/Qwen3.6-35B-A3B, output cap 256, no retries, one sequential five-case diagnostic request under cumulative $0.01 preflight cap.",
       "current_public_chat_schema": "max_completion_tokens is supported; max_tokens is deprecated; reasoning_effort supports low/medium/high; stop may be omitted."
+    },
+    "pricing_refresh_2026_10_19": {
+      "checked_at_utc": "2026-10-19",
+      "official_current_public_source": "https://www.coreweave.com/forge-pricing/post-training",
+      "finding": "Current CoreWeave Forge Post-Training public pricing lists Serverless SFT/RL at $2.70 per GPU-hour; inference, evaluation, and checkpoint storage are separately billed.",
+      "legacy_wandb_preview_source": "https://site.wandb.ai/pricing/training/",
+      "legacy_source_behavior": "The old W&B training-pricing URL redirects to the current CoreWeave Forge Post-Training pricing page.",
+      "account_specific_entitlement": "Unknown. Existing training jobs remain RUNNING and publishing checkpoints, but the training API exposes no billing fields; no account billing portal credential or usage endpoint was available in this audit. Do not classify accrued charges as either zero or $2.70/GPU-hour without account evidence.",
+      "action": "No additional SFT jobs until account-specific preview/credit coverage and expected GPU-hours are bounded. Existing authorized jobs remain under read-only monitoring; do not cancel solely from public list pricing."
     }
   },
   "adaption": {
@@ -452,11 +528,143 @@
       "Run 2 status is succeeded and download_available=true; platform win rate 0.6414 is not a clinical verdict.",
       "Dataset metadata shows 11,192 rows with uuid, original_prompt, and original_completion columns.",
       "Current host has 28 GiB RAM and no nvidia-smi executable; no local inference was run."
-    ]
+    ],
+    "live_read_only_recheck_2026_10_19": {
+      "observed_at_utc": "2026-10-19",
+      "calls": [
+        "mcp__adaption__list_training_models",
+        "mcp__adaption__list_datasets(limit=50)",
+        "mcp__adaption__list_autoscientist_runs(limit=50)"
+      ],
+      "result": "All three authenticated read-only calls succeeded. Current state agrees with the earlier qualification: Qwen/Qwen3.6-35B-A3B is listed with SFT/DPO and LoRA; run 2 is succeeded and download_available=true; no new run was created.",
+      "visible_current_assets": {
+        "eligible_base": "Qwen/Qwen3.6-35B-A3B",
+        "historical_run_2": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+        "run_2_dataset": {
+          "id": "2f983459-b3ff-47be-aa62-faa686b14306",
+          "status": "succeeded",
+          "rows": 11192,
+          "evaluation_summary": null
+        },
+        "run_2_platform_win_rate": 0.6414,
+        "other_dataset": {
+          "id": "adb7d8eb-a3c9-434a-aea0-c4a6a7b8a788",
+          "status": "awaiting_input",
+          "rows": 418,
+          "evaluation_summary": null
+        }
+      },
+      "credits_and_billing": {
+        "user_confirmed_credit_exists": true,
+        "numeric_balance": null,
+        "expiry": null,
+        "credit_coverage_for_training": null,
+        "per_run_estimate_or_deduction": null,
+        "evidence": "The exposed connector has no billing, balance, credit expiry, or training cost-estimate operation. No exact cost or credit coverage can be bounded from current account-visible read-only methods."
+      },
+      "export_and_inference": {
+        "existing_adapter_downloadable": true,
+        "existing_local_adapter_path": "ai/training/output/arc_corpus/export/adaption_run2_v1/checkpoint_run2/",
+        "hosted_inference_route": "Not exposed by the available Adaption connector; local inference remains unqualified on this host (28 GiB RAM, no NVIDIA runtime/device observed in prior qualification).",
+        "base_route": "Account-visible training catalog confirms the Qwen base for training only; it does not establish a serving endpoint."
+      },
+      "safe_next_action": "Continue using the already-exported run-2 adapter only after E00 qualifies an inference route. Do not submit the frozen 522-row breakaway package or start another Adaption run until dataset eligibility/provenance and exact account credit estimate/balance/expiry are established.",
+      "limitations": [
+        "Connector list calls do not prove organization contract terms or data-processing clearance.",
+        "Run 2 platform win rate is not a clinical outcome.",
+        "No dataset evaluation results are available in the current list response."
+      ]
+    },
+    "live_read_only_recheck_2026_10_20": {
+      "observed_at_utc": "2026-10-20",
+      "calls": [
+        "mcp__adaption__list_training_models",
+        "mcp__adaption__list_datasets(limit=50)",
+        "mcp__adaption__list_autoscientist_runs(limit=50)",
+        "mcp__adaption__get_autoscientist_run(run-2)",
+        "mcp__adaption__get_dataset(run-2-dataset)",
+        "mcp__adaption__get_dataset(latest-import)",
+        "mcp__adaption__get_dataset_status(latest-import)"
+      ],
+      "result": "All seven authenticated read-only calls succeeded. Qwen/Qwen3.6-35B-A3B remains listed for SFT/DPO LoRA. Run 2 remains succeeded with download_available=true. The newest 522,658-row import is awaiting_input, has physical prompt/completion columns but null canonical mappings and null processed_rows. No training, dataset creation, import, upload, or inference was initiated.",
+      "historical_run_2": {
+        "run_id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+        "status": "succeeded",
+        "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+        "dataset_rows": 11192,
+        "download_available": true,
+        "local_export_path": "ai/training/output/arc_corpus/export/adaption_run2_v1/checkpoint_run2/",
+        "local_export_size": "46M"
+      },
+      "recent_522658_row_failures": [
+        {
+          "run_id": "ef278ee7-b04d-4014-9b7a-cb7ee81b66fd",
+          "dataset_id": "c00e322e-3842-4a56-9e6b-b9c81cf8b599",
+          "dataset_status": "succeeded",
+          "run_status": "failed",
+          "iterations_completed": 0,
+          "failure": "Validation JSONL temporary file empty (0 bytes) before upload."
+        },
+        {
+          "run_id": "33bba6d2-d9e5-408c-bd4d-76544d2cde78",
+          "dataset_id": "5cf8efd5-3426-4cc4-b3cc-4d40f7912f9d",
+          "dataset_status": "succeeded",
+          "run_status": "failed",
+          "iterations_completed": 0,
+          "failure": "Validation JSONL temporary file empty (0 bytes) before upload."
+        },
+        {
+          "run_id": "8d00b26c-de36-452a-abc2-5cd36b76036b",
+          "dataset_id": "5cf8efd5-3426-4cc4-b3cc-4d40f7912f9d",
+          "dataset_status": "succeeded",
+          "run_status": "failed",
+          "iterations_completed": 0,
+          "failure": "Validation JSONL temporary file empty (0 bytes) before upload."
+        },
+        {
+          "run_id": "7b859acc-f325-4022-92c7-b1a1ff40c2c3",
+          "dataset_id": "21f6d03f-5f56-41be-9070-14c8fccbf442",
+          "dataset_status": "succeeded",
+          "run_status": "failed",
+          "iterations_completed": 0,
+          "failure": "S3 training JSONL download timed out after 60 seconds."
+        }
+      ],
+      "latest_import": {
+        "dataset_id": "60ea43c8-c965-4ab1-968a-b4b82be7703d",
+        "name": "pixelated-v4-ctx9-top-level-raw-20261020",
+        "status": "awaiting_input",
+        "rows": 522658,
+        "created_at": "2026-10-20T02:41:29.813Z",
+        "meaning": "Registration is not proof of trainable/readiness state; inspect get_dataset/status before reuse.",
+        "processed_rows": null,
+        "columns": [
+          "prompt",
+          "completion"
+        ],
+        "prompt_column": null,
+        "completion_column": null,
+        "progress_percentage": null,
+        "diagnosis": "The physical columns exist but canonical prompt/completion mapping fields and processed-row count are null. This exactly explains why the upload is not ready to train: field presence alone did not register the canonical mapping."
+      },
+      "credits_and_cost": {
+        "user_confirmed_credit_exists": true,
+        "balance_expiry_and_training_coverage": "unverified",
+        "per_run_estimate": "not exposed",
+        "basis": "Available connector has no billing, balance, expiry, or training-cost estimate endpoint."
+      },
+      "export_and_upload_limits": {
+        "run_result_metadata": "get_autoscientist_run returns metrics and download_available boolean, not a checkpoint URL or bytes.",
+        "existing_checkpoint": "Run-2 local adapter verified at the path above.",
+        "connector_ingest": "import_dataset accepts Hugging Face, Kaggle, or Google Sheets URLs; no exposed connector tool uploads a local file or downloads checkpoint payload.",
+        "upload_action": "None attempted; URL import does not establish private transport or resolve local-file registration/validation issues."
+      },
+      "next_action": "Do not start another Adaption run on current evidence. Inspect the awaiting_input dataset public columns/status, fix empty-validation generation and S3 transfer in client workflow, and use existing run-2 adapter only after qualifying inference."
+    }
   },
   "remaining_qualification": [
     "Fireworks: official read-only plan reported promotional training; re-run current cookbook plan immediately before a G04-approved launch, omit --allow-paid, and stop if paid. Serverless sampling remains separately priced/uncovered; adapter export remains blocked.",
-    "W&B: training base and private project verified. Corrected 5-case synthetic inference smoke succeeded under the $0.01 cumulative cap; 3 outputs were truncated at 256 tokens. SFT launcher is prepared; G04 passing release and public-preview offer revalidation remain required. Storage headroom and checkpoint bytes are unavailable from the documented read-only API and are reported as limitations.",
+    "W&B: training base and private project verified. Corrected 5-case synthetic inference smoke succeeded under the $0.01 cumulative cap; 3 outputs were truncated at 256 tokens. SFT launcher is prepared; G04 passing release and current account/provider price-entitlement verification remain required. Storage headroom and checkpoint bytes are unavailable from the documented read-only API and are reported as limitations.",
     "Adaption: obtain exact credit balance/expiry and per-run estimate through a read-only account interface before another training run; qualify hosted matching-base adapter route or matching runtime before evaluating run 2.",
     "G04 source/privacy/lineage release gates remain prerequisites for all training payload uploads."
   ]

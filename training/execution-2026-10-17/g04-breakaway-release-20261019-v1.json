@@ -1,0 +1,13 @@
+{
+  "release_id": "g04-breakaway-release-20261019-v1",
+  "path": "ai/data/curated/recovery/gold-20261017/g04-breakaway-release-20261019-v1",
+  "manifest_sha256": "de3820398395629d73bdde0845f5aff7f5c0e7d02e63794fc35accf7fdc1cd9b",
+  "status": "local_research_views_prepared_provider_transfer_blocked",
+  "upload_gate": false,
+  "rows": 522,
+  "excluded_rows": 29,
+  "provider_views": [
+    "wandb",
+    "fireworks"
+  ]
+}

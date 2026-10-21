@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-policy-vs-base-20261018-step1-no-project",
+  "status": "complete",
+  "cases_sha256": "9f0734cfde7384faa40e0f45163b12de906c69e6f0b22aa61f82dd5e8c0c10a3",
+  "config_sha256": "ba2c7295c58f0837b24d32f36250a7f391a609de613e3a5f6d9c340c4f8007d2",
+  "case_ids": [
+    "dev-support-request"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "comparison_mode": "paired",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": []
+  },
+  "input_token_cap": 1024,
+  "max_tool_rounds": 2,
+  "allow_sealed": false,
+  "preflight_token_upper_bounds": {
+    "dev-support-request": 404
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-base",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-serverless-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-f00e0bf27bf3:step1",
+      "endpoint": "https://api.training.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": null
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.009216,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 2,
+  "error_count": 0,
+  "estimated_cost_usd": 0.001363,
+  "latency_ms_by_arm": {
+    "base": {
+      "count": 1,
+      "p50_ms": 7087.064,
+      "p95_ms": 7087.064
+    },
+    "sft": {
+      "count": 1,
+      "p50_ms": 2304.435,
+      "p95_ms": 2304.435
+    }
+  },
+  "usage_totals_by_arm": {
+    "base": {
+      "cases_with_usage": 1,
+      "prompt_tokens": 55,
+      "completion_tokens": 1024,
+      "total_tokens": 1079
+    },
+    "sft": {
+      "cases_with_usage": 1,
+      "prompt_tokens": 57,
+      "completion_tokens": 44,
+      "total_tokens": 101
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "base": 1,
+    "sft": 0
+  }
+}

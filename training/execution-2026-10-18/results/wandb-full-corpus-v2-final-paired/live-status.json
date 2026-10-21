@@ -1,0 +1,16 @@
+{
+  "observed_at_utc": "2026-10-19T22:50:34.210481Z",
+  "release": "v2",
+  "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+  "status": "RUNNING",
+  "job_updated_at": "2026-10-18T23:13:12.819915Z",
+  "latest_resume_artifact": {
+    "name": "arc-sft-baseline-556695bfd5c4-sft-resume",
+    "version": "v142",
+    "uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v142",
+    "created_at": "2026-10-19T22:43:29Z",
+    "size_bytes": 117843308,
+    "completed_batches": 71500,
+    "internal_checkpoint": true
+  }
+}

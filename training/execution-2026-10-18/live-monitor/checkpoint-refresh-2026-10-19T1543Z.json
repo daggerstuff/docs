@@ -1,0 +1,66 @@
+{
+  "observed_at_utc": "2026-10-19T15:43:58.792411+00:00",
+  "source": "read-only W&B Training API and artifact API",
+  "project": "wutang/pixelated-empathy-kan28",
+  "jobs": {
+    "v1": {
+      "id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "RUNNING",
+      "updated_at": "2026-10-18T22:44:42.293216Z",
+      "completed_at": null,
+      "progress": null,
+      "error": null
+    },
+    "v2": {
+      "id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "RUNNING",
+      "updated_at": "2026-10-18T23:13:12.819915Z",
+      "completed_at": null,
+      "progress": null,
+      "error": null
+    }
+  },
+  "collections": {
+    "v1_lora": {
+      "name": "arc-sft-baseline-8ce8354c67ef-sft-resume",
+      "latest": {
+        "version": "v98",
+        "created_at": "2026-10-19T15:35:13Z",
+        "completed_batches": 49500,
+        "size_bytes": 117843308
+      },
+      "listed_versions": 17
+    },
+    "v1_train-state": {
+      "name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "latest": {
+        "version": "v98",
+        "created_at": "2026-10-19T15:35:15Z",
+        "completed_batches": 49500,
+        "size_bytes": 1060414709
+      },
+      "listed_versions": 17
+    },
+    "v2_lora": {
+      "name": "arc-sft-baseline-556695bfd5c4-sft-resume",
+      "latest": {
+        "version": "v97",
+        "created_at": "2026-10-19T15:42:42Z",
+        "completed_batches": 49000,
+        "size_bytes": 117843308
+      },
+      "listed_versions": 18
+    },
+    "v2_train-state": {
+      "name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "latest": {
+        "version": "v97",
+        "created_at": "2026-10-19T15:42:44Z",
+        "completed_batches": 49000,
+        "size_bytes": 1060414709
+      },
+      "listed_versions": 18
+    }
+  },
+  "interpretation": "Checkpoints are advancing despite stale job updated_at and null progress. User-reported cleanup overlapped checkpoint writes. Artifact inventory cannot provide deletion audit or quota."
+}

@@ -1,0 +1,18 @@
+{
+  "observed_at_utc": "2026-10-19T15:39:07Z",
+  "source": "read-only W&B Training API, artifact API, and GraphQL Project.storageBytes",
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_storage_bytes": 37708953809,
+  "jobs": {
+    "v1": {"job_id": "2087f223-a48f-45f7-9999-daece5743bba", "status": "RUNNING", "updated_at": "2026-10-18T22:44:42.293216Z", "progress": null, "error": null},
+    "v2": {"job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e", "status": "RUNNING", "updated_at": "2026-10-18T23:13:12.819915Z", "progress": null, "error": null}
+  },
+  "collections": {
+    "v1_lora": {"name": "arc-sft-baseline-8ce8354c67ef-sft-resume", "latest": "v98", "created_at": "2026-10-19T15:35:13Z", "completed_batches": 49500, "size_bytes": 117843308, "retain_latest_two": ["v97", "v98"], "older_listed_candidates": ["v82-v96"]},
+    "v1_train_state": {"name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume", "latest": "v98", "created_at": "2026-10-19T15:35:15Z", "completed_batches": 49500, "size_bytes": 1060414709, "retain_latest_two": ["v97", "v98"], "older_listed_candidates": ["v82-v96"]},
+    "v2_lora": {"name": "arc-sft-baseline-556695bfd5c4-sft-resume", "latest": "v96", "created_at": "2026-10-19T15:33:13Z", "completed_batches": 48500, "size_bytes": 117843308, "retain_latest_two": ["v95", "v96"], "older_listed_candidates": ["v80-v94"]},
+    "v2_train_state": {"name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume", "latest": "v96", "created_at": "2026-10-19T15:33:15Z", "completed_batches": 48500, "size_bytes": 1060414709, "retain_latest_two": ["v95", "v96"], "older_listed_candidates": ["v80-v94"]}
+  },
+  "storage_delta_from_1530": 1855446387,
+  "caveat": "Project.storageBytes does not expose account quota, rolling billable storage, UI deletion history, or physical reclamation. Older version ranges are retention candidates, not a deletion log or safe-delete instruction. Keep the newest two LoRA and train-state versions per job for resume recovery."
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-full-corpus-v2-v117-resource-compare-latest-refresh-20261019T1851Z",
+  "status": "complete",
+  "cases_sha256": "0d60b1ebe9f40a18504854f27b9e06fcd8cbe90115f84b784ee987911e532ad2",
+  "config_sha256": "de5e030edb64ed5ace1de86e6d8faf929e4e1425848b3b78087d7567e1c4e2ce",
+  "case_ids": [
+    "tool-eval-resource_compare-137",
+    "tool-eval-resource_compare-139",
+    "tool-eval-resource_compare-140",
+    "tool-eval-resource_compare-141",
+    "tool-eval-resource_compare-145",
+    "tool-eval-resource_compare-147",
+    "tool-eval-resource_compare-148",
+    "tool-eval-resource_compare-149"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "comparison_mode": "paired",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 512,
+    "stop": []
+  },
+  "input_token_cap": 2048,
+  "max_tool_rounds": 4,
+  "allow_sealed": false,
+  "preflight_token_upper_bounds": {
+    "tool-eval-resource_compare-137": 1015,
+    "tool-eval-resource_compare-139": 1007,
+    "tool-eval-resource_compare-140": 1008,
+    "tool-eval-resource_compare-141": 1010,
+    "tool-eval-resource_compare-145": 1008,
+    "tool-eval-resource_compare-147": 1015,
+    "tool-eval-resource_compare-148": 1010,
+    "tool-eval-resource_compare-149": 1007
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-base",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-serverless-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v117",
+      "endpoint": "https://api.training.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": null
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.09216,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 16,
+  "error_count": 0,
+  "estimated_cost_usd": 0.01030925,
+  "latency_ms_by_arm": {
+    "base": {
+      "count": 8,
+      "p50_ms": 5939.316,
+      "p95_ms": 8102.673
+    },
+    "sft": {
+      "count": 8,
+      "p50_ms": 503.934,
+      "p95_ms": 3147.12
+    }
+  },
+  "usage_totals_by_arm": {
+    "base": {
+      "cases_with_usage": 8,
+      "prompt_tokens": 15649,
+      "completion_tokens": 4449,
+      "total_tokens": 20098
+    },
+    "sft": {
+      "cases_with_usage": 8,
+      "prompt_tokens": 3223,
+      "completion_tokens": 24,
+      "total_tokens": 3247
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "base": 1,
+    "sft": 0
+  }
+}

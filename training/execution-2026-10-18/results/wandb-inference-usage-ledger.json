@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T17:26:14.555927Z",
+  "provider": "wandb-inference",
+  "measurement": "usage-based estimates from recorded input/output tokens and published prices; actual billing not returned",
+  "completed_unique_manifest_runs": 33,
+  "completed_runs_estimated_total_usd": 0.3115635,
+  "completed_runs_configured_max_total_usd": 8.307072,
+  "completed_run_actual_billed_values_present": 0,
+  "agent_tool_120_case_base_baseline": {
+    "run_id": "agent-tool-sft-heldout-base-120-20261019",
+    "status": "complete",
+    "estimated_usage_cost_usd": 0.09516425,
+    "worst_case_cap_usd": 0.4608,
+    "actual_billed_usd": null
+  },
+  "campaign_total_including_agent_tool_base_baseline_estimated_usd": 0.513005,
+  "campaign_total_configured_max_usd": 9.182592,
+  "exact_account_credit_balance": "not exposed by authenticated W&B APIs used in this campaign",
+  "runs": [
+    {
+      "run_id": "v1-step43500-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.003493,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-step43500-paired/manifest.json"
+    },
+    {
+      "run_id": "v2-step42500-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00337175,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-step42500-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-step-47000-46000-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00355925,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-step-47000-46000-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-step-47500-46500-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00354175,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-step-47500-46500-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-step-current-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.0035055,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-step-current-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-step-47000-46000-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00352175,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-step-47000-46000-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-step-47500-46500-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.003523,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-step-47500-46500-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-step-current-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.0035055,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-step-current-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-policy-vs-base-20261018-step1-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.0040945,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-policy-full-2048-512-aiohttp/manifest.json"
+    },
+    {
+      "run_id": "wandb-synthetic-capability-v1-research-retry-2048-budget009216-20261018",
+      "status": "complete",
+      "estimated_cost_usd": 0.000719,
+      "configured_max_usd": 0.009216,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-research-base-2048-20261018T022456Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-v2-resume-artifact-probe",
+      "status": "complete",
+      "estimated_cost_usd": 3.55e-05,
+      "configured_max_usd": 0.003456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-v2-resume-artifact-probe/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-step47000-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00345425,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-step-47000-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-step-current-1519-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.003528,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-step-current-1519-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-step-current-1519-vs-base-2048-512",
+      "status": "complete",
+      "estimated_cost_usd": 0.00359175,
+      "configured_max_usd": 0.03456,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-step-current-1519-paired/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-20261019T1527Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.015306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v97/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-20261019T1527Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.0152935,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v95/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-current-20261019T1548Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.015306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-current-20261019T1548Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-current-20261019T1548Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.015306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-current-20261019T1548Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-v102-20261019T1618Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.014556,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v102-20261019T1618Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-v100-20261019T1618Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.015306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v100-20261019T1618Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-vlatest-20261019T1629Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.014556,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-vlatest-20261019T1629Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-vlatest-20261019T1629Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.015306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-vlatest-20261019T1629Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-v102-20261019T1630Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.014556,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v102-20261019T1630Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-v104-20261019T1634Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.014556,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v104-20261019T1634Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-latest-20261019T1644Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.014556,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-latest-20261019T1644Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-latest-20261019T1644Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.014556,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-latest-20261019T1644Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-v103-system-context-removed-120-20261019T1650Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.0128735,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/system-context-ablation-v2-v103-20261019T1650Z/no-system/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-live-v106-20261019T1652Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.012306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-live-v106-20261019T1652Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-live-v104-20261019T1652Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.014556,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-live-v104-20261019T1652Z/manifest.json"
+    },
+    {
+      "run_id": "wandb-base-system-context-removed-120-20261019T1657Z",
+      "status": "incomplete",
+      "successful_cases": 115,
+      "case_errors": 5,
+      "error_type": "ToolRoundLimitExceeded",
+      "estimated_cost_usd": 0.10627725,
+      "manifest_success_only_estimated_cost_usd": 0.10207775,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/system-context-ablation-base-20261019T1657Z/no-system/manifest.json",
+      "summary_path": "docs/training/execution-2026-10-18/results/system-context-ablation-base-20261019T1657Z/no-system/summary.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-v107-20261019T1712Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.012306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v107-20261019T1712Z/manifest.json",
+      "summary_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v107-20261019T1712Z/summary.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-v106-20261019T1712Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.012306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v106-20261019T1712Z/manifest.json",
+      "summary_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v106-20261019T1712Z/summary.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-v109-20261019T1719Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.012306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v109-20261019T1719Z/manifest.json",
+      "summary_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v109-20261019T1719Z/summary.json"
+    },
+    {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-v107-20261019T1719Z",
+      "status": "complete",
+      "estimated_cost_usd": 0.012306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "manifest_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v107-20261019T1719Z/manifest.json",
+      "summary_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v107-20261019T1719Z/summary.json"
+    }
+  ],
+  "observed_unique_manifest_runs": 34,
+  "incomplete_runs_estimated_total_usd": 0.10627725
+}

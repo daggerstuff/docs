@@ -1,0 +1,145 @@
+{
+  "checked_at": "2026-10-19",
+  "provider": "Adaption",
+  "scope": "read-only training/inference/credit/export qualification",
+  "no_resources_created": true,
+  "no_dataset_uploaded": true,
+  "secret_handling": {
+    "environment_variable_name_present": "ADAPTION_API_KEY",
+    "secret_value_read_printed_copied_or_transmitted": false
+  },
+  "account_evidence": {
+    "source": "authenticated Adaption read-only connector",
+    "training_models_checked": true,
+    "qwen_qwen3_6_35b_a3b": {
+      "available": true,
+      "methods": [
+        "sft",
+        "dpo"
+      ],
+      "training_types": [
+        "lora"
+      ],
+      "context_length": 262144
+    },
+    "historical_runs_checked": true,
+    "successful_runs": 2,
+    "both_download_available": true,
+    "new_runs_started": 0,
+    "credit_balance_or_expiry": "Not exposed by available connector; user confirms credits exist, but amount and expiry are unverified.",
+    "run_cost_estimate_or_coverage": "Not obtained from account data; do not infer exact coverage or balance from user-reported credit availability.",
+    "user_reported_credit_availability": "User reports Adaption credits are available; the authenticated connector does not expose the balance, expiry, or exact per-run coverage."
+  },
+  "capabilities": {
+    "training": "AutoScientist supports SFT/instruction and preference alignment SFT-to-DPO; live catalog supports Qwen3.6-35B-A3B LoRA for both methods.",
+    "inference": "No Adaption hosted inference/chat endpoint was documented in the checked API reference or exposed by the available connector. Plan a separately qualified compatible runtime for evaluation.",
+    "artifact_export": "Successful AutoScientist runs expose GET /autoscientist/{experiment_id}/download; account evidence confirms historical runs have download_available=true. Download and retain locally after a future authorized run.",
+    "dataset_export": "Processed datasets can be downloaded in CSV, JSON, JSONL, or Parquet via GET /datasets/{dataset_id}/download.",
+    "retention": "Public API pages checked document download operations but do not establish account-specific artifact or dataset retention duration/deletion policy. Verify contract/dashboard policy before relying on hosted retention."
+  },
+  "training_constraints": {
+    "sft_minimum_effective_rows": 1000,
+    "dpo_minimum_effective_preference_pairs": 12000,
+    "campaign_dataset_evidence": "Prior repo record says run-2 dataset arc-run2-train-v1 has 11192 rows and three columns; this is below documented DPO minimum absent eligible preference-pair augmentation. Historical successful run was instruction/SFT.",
+    "estimate_path": "GET /autoscientist/recommend-hyperparams is documented as a pre-run sizing/recommendation call and does not launch training; app walkthrough describes live credit/row updates for optional augmentation. Confirm actual credit charge in authenticated dashboard before any operation that consumes credits."
+  },
+  "missing_prerequisites": [
+    "Authenticated dashboard evidence of remaining Adaption credits and expiry.",
+    "Account-specific cost/credit estimate for exact model, SFT settings, effective rows, and any augmentation; establish zero uncovered spend before launch.",
+    "For DPO, a cleared preference-pair dataset with at least 12000 effective pairs, or separately priced/approved eligible augmentation; the historical 11192-row dataset alone does not establish this.",
+    "A qualified matching-base inference route for evaluation; available Adaption tools expose training and artifact download, not hosted inference.",
+    "Account-specific artifact/dataset retention terms and confirmation that the downloaded artifact contains the needed weights/config for portable use."
+  ],
+  "decision": "Conditionally qualified for SFT/LoRA capability and artifact export based on current catalog plus historical account runs. Not qualified for a new job, credit coverage, DPO dataset readiness, hosted inference, or retention guarantees until missing prerequisites are resolved.",
+  "sources": [
+    {
+      "title": "Adaption AutoScientist API",
+      "url": "https://docs.adaptionlabs.ai/api/resources/autoscientist"
+    },
+    {
+      "title": "Adaption list training models API",
+      "url": "https://docs.adaptionlabs.ai/api/resources/autoscientist/methods/list_models"
+    },
+    {
+      "title": "Adaption AutoScientist run and download API",
+      "url": "https://docs.adaptionlabs.ai/api/resources/autoscientist/methods/create"
+    },
+    {
+      "title": "Adaption AutoScientist running guide",
+      "url": "https://docs.adaptionlabs.ai/autoscientist/running-autoscientist/"
+    },
+    {
+      "title": "Adaption credit and augmentation walkthrough",
+      "url": "https://docs.adaptionlabs.ai/tutorials/autoscientist-app-walkthrough/"
+    },
+    {
+      "title": "Adaption dataset download API",
+      "url": "https://docs.adaptionlabs.ai/api/resources/datasets/methods/download"
+    }
+  ],
+  "repository_basis": [
+    "docs/training/free-training-experiment-plan-2026-10-17.md \u00a79",
+    "docs/training/execution-2026-10-17/registry.json adaption_read_only_2026_10_18",
+    "docs/training/execution-2026-10-17/registry.json adaption_read_only_2026_10_18 prior run and dataset snapshots"
+  ],
+  "live_refresh_2026_10_19T1827Z": {
+    "datasets_seen": [
+      {
+        "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+        "name": "arc-run2-train-v1",
+        "status": "succeeded",
+        "row_count": 11192
+      },
+      {
+        "dataset_id": "adb7d8eb-a3c9-434a-aea0-c4a6a7b8a788",
+        "name": "train",
+        "status": "awaiting_input",
+        "row_count": 418
+      }
+    ],
+    "successful_runs": [
+      {
+        "id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+        "status": "succeeded",
+        "download_available": true,
+        "best_win_rate": 0.6414
+      },
+      {
+        "id": "cf1ebae0-1197-4362-92a1-3228c38ce96e",
+        "status": "succeeded",
+        "download_available": true,
+        "best_win_rate": 0.4971
+      }
+    ],
+    "recommendation_call": {
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "result": "returned one-epoch LoRA SFT hyperparameters; no cost or credit estimate returned; did not create a run"
+    },
+    "credit_balance_or_expiry": "Still not exposed by the live connector; user-reported credits acknowledged, exact available amount and coverage unverified.",
+    "new_resources_created": false
+  },
+  "live_refresh_2026_10_20T0718Z": {
+    "dataset_id": "60ea43c8-c965-4ab1-968a-b4b82be7703d",
+    "name": "pixelated-v4-ctx9-top-level-raw-20261020",
+    "status": "awaiting_input",
+    "row_count": 522658,
+    "processed_rows": null,
+    "columns": ["prompt", "completion"],
+    "prompt_column": "prompt",
+    "completion_column": "completion",
+    "updated_at": "2026-10-20T07:15:56.862Z",
+    "dataset_status_poll": "awaiting_input; no progress percentage or processed-row count",
+    "evaluation": "no result",
+    "recommendation_call": "Qwen/Qwen3.6-35B-A3B recommendation rejected because dataset is not ready; no run created",
+    "related_ready_dataset": {
+      "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+      "name": "arc-run2-train-v1",
+      "status": "succeeded",
+      "row_count": 11192,
+      "processed_rows": 11192,
+      "columns": ["uuid", "original_prompt", "original_completion"]
+    },
+    "new_resources_created": false,
+    "credit_balance_or_expiry": "Not exposed by connector; amount, expiry, and coverage remain unverified."
+  }
+}

@@ -1,0 +1,827 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T17:26:14.583771Z",
+  "scope": "Synthetic agent tool-use diagnostic only; not clinical-quality or safety validation.",
+  "suite": {
+    "release_id": "pixelated-agent-tool-sft-20261019-v1",
+    "path": "docs/training/agent-tool-sft-2026-10-19/evaluation/heldout-test-cases.jsonl",
+    "sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+    "cases": 120,
+    "split": "dev"
+  },
+  "baseline": {
+    "runs": [
+      "agent-tool-sft-heldout-base-120-20261019",
+      "agent-tool-sft-resource-compare-retry-10-base-20261019"
+    ],
+    "summary": {
+      "cases_success": 120,
+      "cases_failed_or_missing": 0,
+      "unique_response_count": 81,
+      "largest_exact_response_frequency": 31,
+      "largest_response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "known_high_frequency_training_target_hash_frequency": 0,
+      "tool_trace_event_count": 142,
+      "cases_with_tool_trace": 85,
+      "state_checks_passed": 189,
+      "state_checks_total": 240,
+      "cases_all_state_checks_passed": 77,
+      "estimated_usage_cost_usd": 0.09516425,
+      "prompt_tokens": 121967,
+      "completion_tokens": 51738,
+      "p50_latency_ms": 3674.76
+    }
+  },
+  "prior_checkpoints": {
+    "v1_v99": {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-current-20261019T1548Z",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+        "known_high_frequency_training_target_hash_frequency": 120,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.015306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2760,
+        "p50_latency_ms": 630.866
+      }
+    },
+    "v2_v97": {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-current-20261019T1548Z",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+        "known_high_frequency_training_target_hash_frequency": 120,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.015306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2760,
+        "p50_latency_ms": 628.494
+      }
+    }
+  },
+  "latest_checkpoints": {
+    "v1_v102": {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-v102-20261019T1618Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v102",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+        "known_high_frequency_training_target_hash_frequency": 0,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.014556,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2160,
+        "p50_latency_ms": 484.755
+      }
+    },
+    "v2_v100": {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-v100-20261019T1618Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v100",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+        "known_high_frequency_training_target_hash_frequency": 120,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.015306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2760,
+        "p50_latency_ms": 539.946
+      }
+    },
+    "v1_v103": {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-vlatest-20261019T1629Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v103",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+        "known_high_frequency_training_target_hash_frequency": 0,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.014556,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2160,
+        "p50_latency_ms": 488.968
+      }
+    },
+    "v2_v101": {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-vlatest-20261019T1629Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v101",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+        "known_high_frequency_training_target_hash_frequency": 120,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.015306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2760,
+        "p50_latency_ms": 549.674
+      }
+    },
+    "v2_v102": {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-v102-20261019T1630Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v102",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+        "known_high_frequency_training_target_hash_frequency": 0,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.014556,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2160,
+        "p50_latency_ms": 483.854
+      }
+    },
+    "v1_v104": {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-v104-20261019T1634Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v104",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+        "known_high_frequency_training_target_hash_frequency": 0,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.014556,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2160,
+        "p50_latency_ms": 579.073
+      }
+    },
+    "v1_v105": {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-latest-20261019T1644Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v105",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+        "known_high_frequency_training_target_hash_frequency": 0,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.014556,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2160,
+        "p50_latency_ms": 511.065
+      }
+    },
+    "v2_v103": {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-latest-20261019T1644Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v103",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+        "known_high_frequency_training_target_hash_frequency": 0,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.014556,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2160,
+        "p50_latency_ms": 549.938
+      }
+    },
+    "v1_v106": {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-live-v106-20261019T1652Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v106",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+        "known_high_frequency_training_target_hash_frequency": 0,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.012306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 360,
+        "p50_latency_ms": 396.23
+      }
+    },
+    "v2_v104": {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-live-v104-20261019T1652Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v104",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+        "known_high_frequency_training_target_hash_frequency": 0,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.014556,
+        "prompt_tokens": 47424,
+        "completion_tokens": 2160,
+        "p50_latency_ms": 604.492
+      }
+    },
+    "v1_v107": {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-v107-20261019T1712Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v107",
+      "summary_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v107-20261019T1712Z/summary.json",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+        "known_high_frequency_training_target_hash_frequency": 120,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.012306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 360,
+        "p50_latency_ms": 428.292
+      },
+      "comparison_to_base": {
+        "base_runs": [
+          "agent-tool-sft-heldout-base-120-20261019",
+          "agent-tool-sft-resource-compare-retry-10-base-20261019"
+        ],
+        "base_successful_cases": 120,
+        "matched_case_ids": 120,
+        "checkpoint_outputs_different_from_base": 120,
+        "checkpoint_outputs_same_as_base": 0,
+        "base_tool_trace_events": 142,
+        "base_cases_with_tool_trace": 85,
+        "base_state_checks_passed": 189,
+        "base_state_checks_total": 240
+      },
+      "scenario_breakdown": {
+        "appointment_consent_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 15,
+          "checkpoint_cases_all_observed_state_checks_passed": 15,
+          "base_tool_events": 14,
+          "base_state_checks_passed": 15,
+          "base_state_checks_observed": 15,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "appointment_explicit_consent": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 30,
+          "base_state_checks_passed": 16,
+          "base_state_checks_observed": 30,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "approval_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 0,
+          "base_state_checks_passed": 21,
+          "base_state_checks_observed": 30,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "memory_consent_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 15,
+          "checkpoint_cases_all_observed_state_checks_passed": 15,
+          "base_tool_events": 3,
+          "base_state_checks_passed": 15,
+          "base_state_checks_observed": 15,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "memory_opt_in": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 10,
+          "base_state_checks_passed": 16,
+          "base_state_checks_observed": 30,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "resource_compare": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 45,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 42,
+          "base_state_checks_passed": 42,
+          "base_state_checks_observed": 45,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "resource_lookup": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 28,
+          "base_state_checks_passed": 21,
+          "base_state_checks_observed": 30,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "untrusted_note": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 45,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 15,
+          "base_state_checks_passed": 43,
+          "base_state_checks_observed": 45,
+          "checkpoint_output_changed_from_base": 15
+        }
+      }
+    },
+    "v2_v106": {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-v106-20261019T1712Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v106",
+      "summary_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v106-20261019T1712Z/summary.json",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+        "known_high_frequency_training_target_hash_frequency": 120,
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "cases_all_state_checks_passed": 30,
+        "estimated_usage_cost_usd": 0.012306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 360,
+        "p50_latency_ms": 405.163
+      },
+      "comparison_to_base": {
+        "base_runs": [
+          "agent-tool-sft-heldout-base-120-20261019",
+          "agent-tool-sft-resource-compare-retry-10-base-20261019"
+        ],
+        "base_successful_cases": 120,
+        "matched_case_ids": 120,
+        "checkpoint_outputs_different_from_base": 120,
+        "checkpoint_outputs_same_as_base": 0,
+        "base_tool_trace_events": 142,
+        "base_cases_with_tool_trace": 85,
+        "base_state_checks_passed": 189,
+        "base_state_checks_total": 240
+      },
+      "scenario_breakdown": {
+        "appointment_consent_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 15,
+          "checkpoint_cases_all_observed_state_checks_passed": 15,
+          "base_tool_events": 14,
+          "base_state_checks_passed": 15,
+          "base_state_checks_observed": 15,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "appointment_explicit_consent": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 30,
+          "base_state_checks_passed": 16,
+          "base_state_checks_observed": 30,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "approval_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 0,
+          "base_state_checks_passed": 21,
+          "base_state_checks_observed": 30,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "memory_consent_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 15,
+          "checkpoint_cases_all_observed_state_checks_passed": 15,
+          "base_tool_events": 3,
+          "base_state_checks_passed": 15,
+          "base_state_checks_observed": 15,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "memory_opt_in": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 10,
+          "base_state_checks_passed": 16,
+          "base_state_checks_observed": 30,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "resource_compare": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 45,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 42,
+          "base_state_checks_passed": 42,
+          "base_state_checks_observed": 45,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "resource_lookup": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 28,
+          "base_state_checks_passed": 21,
+          "base_state_checks_observed": 30,
+          "checkpoint_output_changed_from_base": 15
+        },
+        "untrusted_note": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 45,
+          "checkpoint_cases_all_observed_state_checks_passed": 0,
+          "base_tool_events": 15,
+          "base_state_checks_passed": 43,
+          "base_state_checks_observed": 45,
+          "checkpoint_output_changed_from_base": 15
+        }
+      }
+    },
+    "v1_v109": {
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-v109-20261019T1719Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v109",
+      "summary_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v109-20261019T1719Z/summary.json",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "estimated_usage_cost_usd": 0.012306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 360,
+        "p50_latency_ms": 393.1675
+      },
+      "scenario_breakdown": {
+        "resource_lookup": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "resource_compare": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 45,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "memory_opt_in": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "memory_consent_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 15,
+          "checkpoint_cases_all_observed_state_checks_passed": 15
+        },
+        "appointment_explicit_consent": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "appointment_consent_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 15,
+          "checkpoint_cases_all_observed_state_checks_passed": 15
+        },
+        "approval_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "untrusted_note": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 45,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        }
+      }
+    },
+    "v2_v107": {
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-v107-20261019T1719Z",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v107",
+      "summary_path": "docs/training/execution-2026-10-18/results/wandb-full-corpus-v2-tool-heldout-120-v107-20261019T1719Z/summary.json",
+      "summary": {
+        "cases_success": 120,
+        "cases_failed_or_missing": 0,
+        "unique_response_count": 1,
+        "largest_exact_response_frequency": 120,
+        "largest_response_sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+        "tool_trace_event_count": 0,
+        "cases_with_tool_trace": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "estimated_usage_cost_usd": 0.012306,
+        "prompt_tokens": 47424,
+        "completion_tokens": 360,
+        "p50_latency_ms": 393.9675
+      },
+      "scenario_breakdown": {
+        "resource_lookup": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "resource_compare": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 45,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "memory_opt_in": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "memory_consent_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 15,
+          "checkpoint_cases_all_observed_state_checks_passed": 15
+        },
+        "appointment_explicit_consent": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 0,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "appointment_consent_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 15,
+          "checkpoint_cases_all_observed_state_checks_passed": 15
+        },
+        "approval_gate": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 30,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        },
+        "untrusted_note": {
+          "cases": 15,
+          "unique_response_hashes": 1,
+          "checkpoint_tool_events": 0,
+          "checkpoint_state_checks_passed": 15,
+          "checkpoint_state_checks_observed": 45,
+          "checkpoint_cases_all_observed_state_checks_passed": 0
+        }
+      }
+    }
+  },
+  "billing": {
+    "actual_billed_usd": null,
+    "note": "Actual billed amount was not returned by W&B. Each v1 v107 and v2 v106 checkpoint-only evaluation had a configured cap of $0.41472; the combined observed usage estimate is recorded in the inference ledger."
+  },
+  "interpretation": [
+    "Base completed all 120 cases after combining the 110-case main run with the 10-case retry; 189/240 synthetic state checks passed, 77/120 cases passed all their checks, and the trace recorded 142 tool events.",
+    "Both prior SFT checkpoints emitted one repeated response across all cases, matched the known high-frequency training-target hash, made no tool calls, and passed 60/240 checks.",
+    "At v102, v1 still emitted one repeated response across all 120 and made no tool calls; its response hash differs from the known repeated target hash, but it passed only 60/240 checks.",
+    "At v100, v2 still emitted the known repeated target hash on all 120 cases, made no tool calls, and passed 60/240 checks.",
+    "All outputs are diagnostic signals from synthetic cases and do not establish clinical quality or safety.",
+    "At v103 and v101, both SFT checkpoints again emitted one repeated response across all 120 cases, made zero tool calls, and passed 60/240 deterministic synthetic state checks (30 cases passed all checks); v2 matches the known repeated target hash on every case. This signals persistent behavioral collapse on this suite, not clinical-quality or safety evidence.",
+    "The newly published v2 v102 checkpoint also emitted its single repeated response across all 120 cases, matched the known target hash on all 120, made zero tool calls, and passed 60/240 deterministic synthetic checks (30 cases passed all checks).",
+    "The newly evaluated v1 v104 checkpoint also returned one repeated response on all 120 cases, made zero tool calls, and passed 60/240 deterministic checks (30 cases passed all checks); its hash differs from the repeated training-target hash, but behavior remains collapsed on this synthetic suite.",
+    "At v1 v105 and v2 v103, both checkpoints again returned one repeated response across all 120 held-out synthetic cases. Both produced the same response hash, different from the previously known high-frequency training-target hash. Neither made tool calls; each passed 60/240 deterministic state checks (30/120 cases passed all checks). The response has changed, but behavior remains collapsed on this suite; this is not a clinical-quality or safety evaluation.",
+    "At v1 v106 and v2 v104, both checkpoints completed all 120 cases, emitted one repeated response per checkpoint, made zero tool calls, and passed 60/240 deterministic state checks (30/120 cases passed all checks). The repeated output changed again for v1 v106, which now emits a very short response; v2 v104 retains the previous v2 hash. This is persistent behavioral collapse, not a clinical-quality or safety evaluation.",
+    "The latest v1 v107 and v2 v106 checkpoints both returned the same exact response hash on all 120 cases (the short response first observed at v1 v106), made no tool calls, and passed 60/240 synthetic state checks (30 cases passed all checks). Their output hash matches a frequent symptom-classification training target. On this diagnostic suite, both remain behaviorally collapsed despite continued training; this does not establish clinical quality or safety."
+  ],
+  "latest_evaluation_refresh": {
+    "observed_at_utc": "2026-10-19T17:26:14.583760Z",
+    "v1_run_id": "wandb-full-corpus-v1-tool-heldout-120-v109-20261019T1719Z",
+    "v2_run_id": "wandb-full-corpus-v2-tool-heldout-120-v107-20261019T1719Z",
+    "note": "Both runs completed 120/120. Both returned the same response hash on all 120 cases, made zero tool calls, and passed 60/240 deterministic synthetic state checks. The v1 and v2 response hashes are identical on all 120 paired case IDs. Each estimated $0.012306; actual billing is not exposed. More full-corpus training steps did not improve this tool-use diagnostic."
+  },
+  "system_context_ablation_v2_v103": {
+    "summary_path": "docs/training/execution-2026-10-18/results/system-context-ablation-v2-v103-20261019T1650Z-summary.json",
+    "run_id": "wandb-full-corpus-v2-v103-system-context-removed-120-20261019T1650Z",
+    "cases": 120,
+    "error_count": 0,
+    "unique_response_count": 3,
+    "largest_response_frequency": 105,
+    "response_hash": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+    "tool_trace_event_count": 0,
+    "state_checks_passed": 60,
+    "state_checks_total": 240,
+    "estimated_usage_cost_usd": 0.0128735,
+    "actual_billed_usd": null,
+    "interpretation": "Removing system messages increased response variation (3 outputs instead of 1); the same dominant response remained in 105/120 cases. Tool use and state-check performance did not improve. This shows some inference-time sensitivity without recovering task behavior; it does not identify a training-time cause.",
+    "system_present_unique_responses": 1,
+    "system_present_largest_response_frequency": 120,
+    "system_removed_unique_responses": 3,
+    "system_removed_largest_response_frequency": 105,
+    "system_removed_cases_with_non_dominant_response": 15,
+    "dominant_response_hash_unchanged": true
+  },
+  "system_context_ablation_base_no_system": {
+    "run_id": "wandb-base-system-context-removed-120-20261019T1657Z",
+    "summary_path": "docs/training/execution-2026-10-18/results/system-context-ablation-base-20261019T1657Z/no-system/summary.json",
+    "condition": "Same 120 held-out synthetic cases as the v2 system-context ablation, with only system-role messages removed.",
+    "result": {
+      "case_records": 120,
+      "successful_completions": 115,
+      "case_errors": 5,
+      "error_types": {
+        "ToolRoundLimitExceeded": 5
+      },
+      "error_interpretation": "All five recorded errors were ToolRoundLimitExceeded after two tool rounds; no provider HTTP failures occurred.",
+      "unique_response_hashes": 72,
+      "largest_exact_response_frequency": 35,
+      "most_frequent_response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "empty_final_content_successes": 35,
+      "tool_trace_events": 145,
+      "cases_with_tool_trace": 90,
+      "state_checks_passed": 157,
+      "state_checks_observed": 227,
+      "state_checks_expected": 240,
+      "cases_all_observed_state_checks_passed": 56,
+      "prompt_tokens_all_calls": 106944,
+      "completion_tokens_all_calls": 63633,
+      "manifest_estimated_usage_cost_successes_usd": 0.10207775,
+      "estimated_cost_failed_case_attempts_usd": 0.0041995,
+      "estimated_usage_cost_all_attempts_usd": 0.10627725,
+      "actual_billed_usd": null,
+      "configured_max_cost_usd": 0.41472,
+      "successful_completion_latency_p50_ms": 4265.04,
+      "successful_completion_latency_p95_ms": 10276.891
+    },
+    "comparison_to_system_present_base_same_case_ids": {
+      "system_present_runs": [
+        "agent-tool-sft-heldout-base-120-20261019",
+        "agent-tool-sft-resource-compare-retry-10-base-20261019"
+      ],
+      "matched_case_ids": 120,
+      "both_conditions_successful": 115,
+      "both_success_output_hash_changed": 98,
+      "both_success_output_hash_same": 17,
+      "no_system_tool_round_errors": 5,
+      "no_system_success_when_system_present_failed": 0,
+      "system_present_baseline_summary": {
+        "successful_cases": 120,
+        "tool_trace_events": 142,
+        "cases_with_tool_trace": 85,
+        "state_checks_passed": 189,
+        "state_checks_total": 240
+      },
+      "interpretation": "Removing system context changed the exact response on most jointly successful cases and increased tool traces/cases using tools, while five no-system cases exceeded the two-round limit. State-check totals are not directly denominator-equivalent because the five error rows have no score and three successful rows exposed fewer checks; report observed coverage alongside the 240 expected checks."
+    },
+    "interpretation": "The base model retained broad tool use without system messages (145 trace events on 90 cases), but 5 cases exceeded the configured two-tool-round limit and only 157 of 227 observed state checks passed (240 expected). On jointly successful cases, exact outputs changed on 98/115 case IDs. This suggests system context materially affects outputs; it does not establish that removing system context caused or would fix the fine-tuned checkpoint collapse."
+  }
+}

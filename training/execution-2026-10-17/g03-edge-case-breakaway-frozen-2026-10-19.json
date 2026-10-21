@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "freeze_id": "g03-edge-synthetic-research-522-20261019-v1",
+  "created_at_utc": "2026-10-19T16:06:32.081985+00:00",
+  "status": "frozen_local_research_only_provider_transfer_unqualified",
+  "scope": "522 first-party synthetic edge-case rows from the 190,139-row recovery candidate; exact local research package; no provider upload or clinical/production clearance",
+  "candidate": {
+    "path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "rows": 190139,
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663"
+  },
+  "selection": {
+    "post_holdout_rowrefs": "docs/training/execution-2026-10-17/g03-edge-case-post-holdout-rowrefs.jsonl",
+    "rows": 522,
+    "sha256": "a5294068c241eb48007c6c33036da0c033a16198094c6e83f307eeaabf443a7a",
+    "heldout_exclusions": "docs/training/execution-2026-10-17/g03-edge-case-heldout-exclusions.jsonl",
+    "excluded_rows": 29,
+    "excluded_arc_ids": 12,
+    "excluded_seed_groups": 11,
+    "excluded_sha256": "b19a4e120b7d179585c55fe8292c6711de4adeb96deed81fe5775d148b74527b",
+    "source_groups_retained": 179,
+    "row_source_sha256_matches": 522,
+    "row_message_sha256_matches": 522,
+    "machine_audit_accept_rows": 522,
+    "source_origin": "first-party-generated synthetic edge branch from local hardcoded taxonomy and locally accepted generated seeds; scoped only to these edge rows"
+  },
+  "package": {
+    "path": "ai/data/curated/recovery/gold-20261017/g03-edge-review-package-20261017T1626Z",
+    "files": {
+      "train.jsonl": {
+        "rows": 410,
+        "size_bytes": 12445999,
+        "sha256": "60031b4233196cc66f0467c569486a873caf31eddf383b04c40b9619ec0d5aef"
+      },
+      "validation.jsonl": {
+        "rows": 72,
+        "size_bytes": 2314041,
+        "sha256": "a75ae273717227c7f8921fce191ebe261bc06f2fe7c36e2822c37f4adb005450"
+      },
+      "test.jsonl": {
+        "rows": 40,
+        "size_bytes": 1356302,
+        "sha256": "30e1ffe5bcf887afb02dfcffe33a564dfd89015dd6bf0945efdc5fba86a351b0"
+      }
+    },
+    "manifest_internal": {
+      "rows": 522,
+      "size_bytes": 424267,
+      "sha256": "ca14e31d84883c935e4bf245a38f66ce6e8687554f84f324cbc5c36ebf3e13cf"
+    },
+    "split_rows": {
+      "train": 410,
+      "validation": 72,
+      "test": 40
+    },
+    "message_body_and_role_matches": 522,
+    "loss_weights": {
+      "user_weight_0": 8495,
+      "assistant_weight_1": 8495
+    },
+    "split_group_intersections": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0,
+      "retained_heldout": 0
+    }
+  },
+  "privacy_screen": {
+    "method": "basic regex screen on frozen message text",
+    "matches_by_pattern": {
+      "email": 0,
+      "ssn": 0,
+      "phone": 0,
+      "card": 0,
+      "url": 0,
+      "ipv4": 0
+    },
+    "status": "zero_basic_regex_matches",
+    "limitations": "does not detect all identifiers or establish de-identification"
+  },
+  "generation_receipt": {
+    "provider": null,
+    "model": null,
+    "historical_run_id": null,
+    "status": "not located; do not infer from current environment"
+  },
+  "rights_and_transfer": {
+    "local_research_freeze": true,
+    "third_party_training_upload_authorized_by_this_manifest": false,
+    "provider_transfer_terms_status": "unqualified because historical generator provider/model receipt is missing",
+    "adapter_export": false
+  },
+  "clinical_status": {
+    "independent_clinical_review_established": false,
+    "clinical_safety_validation": false,
+    "production_use": false,
+    "note": "generator-set clinical_reviewed metadata is not treated as evidence of clinician review"
+  },
+  "next_action": "Retain as an exact reproducible local research package. Use the 190,139-row active W&B candidate for the already-authorized runs. Do not upload this separate breakaway package to a new provider until historical generation provider/model terms are established."
+}

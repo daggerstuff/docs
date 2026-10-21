@@ -1,0 +1,563 @@
+{
+  "observed_at_utc": "2026-10-19T16:26:11.985707Z",
+  "source": "read-only W&B artifact collection inventory",
+  "project": "wutang/pixelated-empathy-kan28",
+  "collections": {
+    "arc-sft-baseline-8ce8354c67ef-sft-resume": {
+      "version_count": 22,
+      "oldest_version": "v82",
+      "newest_version": "v103",
+      "versions": [
+        {
+          "version": "v82",
+          "created_at": "2026-10-19T13:03:11Z",
+          "size_bytes": 117843308,
+          "completed_batches": 41500
+        },
+        {
+          "version": "v83",
+          "created_at": "2026-10-19T13:12:29Z",
+          "size_bytes": 117843308,
+          "completed_batches": 42000
+        },
+        {
+          "version": "v84",
+          "created_at": "2026-10-19T13:21:48Z",
+          "size_bytes": 117843308,
+          "completed_batches": 42500
+        },
+        {
+          "version": "v85",
+          "created_at": "2026-10-19T13:31:15Z",
+          "size_bytes": 117843308,
+          "completed_batches": 43000
+        },
+        {
+          "version": "v86",
+          "created_at": "2026-10-19T13:40:34Z",
+          "size_bytes": 117843308,
+          "completed_batches": 43500
+        },
+        {
+          "version": "v87",
+          "created_at": "2026-10-19T13:49:45Z",
+          "size_bytes": 117843308,
+          "completed_batches": 44000
+        },
+        {
+          "version": "v88",
+          "created_at": "2026-10-19T13:59:10Z",
+          "size_bytes": 117843308,
+          "completed_batches": 44500
+        },
+        {
+          "version": "v89",
+          "created_at": "2026-10-19T14:08:46Z",
+          "size_bytes": 117843308,
+          "completed_batches": 45000
+        },
+        {
+          "version": "v90",
+          "created_at": "2026-10-19T14:18:22Z",
+          "size_bytes": 117843308,
+          "completed_batches": 45500
+        },
+        {
+          "version": "v91",
+          "created_at": "2026-10-19T14:27:54Z",
+          "size_bytes": 117843308,
+          "completed_batches": 46000
+        },
+        {
+          "version": "v92",
+          "created_at": "2026-10-19T14:37:24Z",
+          "size_bytes": 117843308,
+          "completed_batches": 46500
+        },
+        {
+          "version": "v93",
+          "created_at": "2026-10-19T14:47:03Z",
+          "size_bytes": 117843308,
+          "completed_batches": 47000
+        },
+        {
+          "version": "v94",
+          "created_at": "2026-10-19T14:56:44Z",
+          "size_bytes": 117843308,
+          "completed_batches": 47500
+        },
+        {
+          "version": "v95",
+          "created_at": "2026-10-19T15:06:19Z",
+          "size_bytes": 117843308,
+          "completed_batches": 48000
+        },
+        {
+          "version": "v96",
+          "created_at": "2026-10-19T15:15:58Z",
+          "size_bytes": 117843308,
+          "completed_batches": 48500
+        },
+        {
+          "version": "v97",
+          "created_at": "2026-10-19T15:25:40Z",
+          "size_bytes": 117843308,
+          "completed_batches": 49000
+        },
+        {
+          "version": "v98",
+          "created_at": "2026-10-19T15:35:13Z",
+          "size_bytes": 117843308,
+          "completed_batches": 49500
+        },
+        {
+          "version": "v99",
+          "created_at": "2026-10-19T15:44:44Z",
+          "size_bytes": 117843308,
+          "completed_batches": 50000
+        },
+        {
+          "version": "v100",
+          "created_at": "2026-10-19T15:54:14Z",
+          "size_bytes": 117843308,
+          "completed_batches": 50500
+        },
+        {
+          "version": "v101",
+          "created_at": "2026-10-19T16:03:51Z",
+          "size_bytes": 117843308,
+          "completed_batches": 51000
+        },
+        {
+          "version": "v102",
+          "created_at": "2026-10-19T16:13:16Z",
+          "size_bytes": 117843308,
+          "completed_batches": 51500
+        },
+        {
+          "version": "v103",
+          "created_at": "2026-10-19T16:22:43Z",
+          "size_bytes": 117843308,
+          "completed_batches": 52000
+        }
+      ]
+    },
+    "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume": {
+      "version_count": 22,
+      "oldest_version": "v82",
+      "newest_version": "v103",
+      "versions": [
+        {
+          "version": "v82",
+          "created_at": "2026-10-19T13:03:13Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 41500
+        },
+        {
+          "version": "v83",
+          "created_at": "2026-10-19T13:12:31Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 42000
+        },
+        {
+          "version": "v84",
+          "created_at": "2026-10-19T13:21:50Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 42500
+        },
+        {
+          "version": "v85",
+          "created_at": "2026-10-19T13:31:17Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 43000
+        },
+        {
+          "version": "v86",
+          "created_at": "2026-10-19T13:40:36Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 43500
+        },
+        {
+          "version": "v87",
+          "created_at": "2026-10-19T13:49:47Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 44000
+        },
+        {
+          "version": "v88",
+          "created_at": "2026-10-19T13:59:12Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 44500
+        },
+        {
+          "version": "v89",
+          "created_at": "2026-10-19T14:08:48Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 45000
+        },
+        {
+          "version": "v90",
+          "created_at": "2026-10-19T14:18:24Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 45500
+        },
+        {
+          "version": "v91",
+          "created_at": "2026-10-19T14:27:56Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 46000
+        },
+        {
+          "version": "v92",
+          "created_at": "2026-10-19T14:37:26Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 46500
+        },
+        {
+          "version": "v93",
+          "created_at": "2026-10-19T14:47:06Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 47000
+        },
+        {
+          "version": "v94",
+          "created_at": "2026-10-19T14:56:46Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 47500
+        },
+        {
+          "version": "v95",
+          "created_at": "2026-10-19T15:06:21Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 48000
+        },
+        {
+          "version": "v96",
+          "created_at": "2026-10-19T15:16:00Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 48500
+        },
+        {
+          "version": "v97",
+          "created_at": "2026-10-19T15:25:42Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 49000
+        },
+        {
+          "version": "v98",
+          "created_at": "2026-10-19T15:35:15Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 49500
+        },
+        {
+          "version": "v99",
+          "created_at": "2026-10-19T15:44:46Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 50000
+        },
+        {
+          "version": "v100",
+          "created_at": "2026-10-19T15:54:16Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 50500
+        },
+        {
+          "version": "v101",
+          "created_at": "2026-10-19T16:03:53Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 51000
+        },
+        {
+          "version": "v102",
+          "created_at": "2026-10-19T16:13:18Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 51500
+        },
+        {
+          "version": "v103",
+          "created_at": "2026-10-19T16:22:45Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 52000
+        }
+      ]
+    },
+    "arc-sft-baseline-556695bfd5c4-sft-resume": {
+      "version_count": 22,
+      "oldest_version": "v80",
+      "newest_version": "v101",
+      "versions": [
+        {
+          "version": "v80",
+          "created_at": "2026-10-19T13:01:55Z",
+          "size_bytes": 117843308,
+          "completed_batches": 40500
+        },
+        {
+          "version": "v81",
+          "created_at": "2026-10-19T13:11:21Z",
+          "size_bytes": 117843308,
+          "completed_batches": 41000
+        },
+        {
+          "version": "v82",
+          "created_at": "2026-10-19T13:20:38Z",
+          "size_bytes": 117843308,
+          "completed_batches": 41500
+        },
+        {
+          "version": "v83",
+          "created_at": "2026-10-19T13:30:08Z",
+          "size_bytes": 117843308,
+          "completed_batches": 42000
+        },
+        {
+          "version": "v84",
+          "created_at": "2026-10-19T13:39:40Z",
+          "size_bytes": 117843308,
+          "completed_batches": 42500
+        },
+        {
+          "version": "v85",
+          "created_at": "2026-10-19T13:49:12Z",
+          "size_bytes": 117843308,
+          "completed_batches": 43000
+        },
+        {
+          "version": "v86",
+          "created_at": "2026-10-19T13:58:48Z",
+          "size_bytes": 117843308,
+          "completed_batches": 43500
+        },
+        {
+          "version": "v87",
+          "created_at": "2026-10-19T14:08:09Z",
+          "size_bytes": 117843308,
+          "completed_batches": 44000
+        },
+        {
+          "version": "v88",
+          "created_at": "2026-10-19T14:17:26Z",
+          "size_bytes": 117843308,
+          "completed_batches": 44500
+        },
+        {
+          "version": "v89",
+          "created_at": "2026-10-19T14:26:50Z",
+          "size_bytes": 117843308,
+          "completed_batches": 45000
+        },
+        {
+          "version": "v90",
+          "created_at": "2026-10-19T14:36:21Z",
+          "size_bytes": 117843308,
+          "completed_batches": 45500
+        },
+        {
+          "version": "v91",
+          "created_at": "2026-10-19T14:45:46Z",
+          "size_bytes": 117843308,
+          "completed_batches": 46000
+        },
+        {
+          "version": "v92",
+          "created_at": "2026-10-19T14:55:13Z",
+          "size_bytes": 117843308,
+          "completed_batches": 46500
+        },
+        {
+          "version": "v93",
+          "created_at": "2026-10-19T15:04:44Z",
+          "size_bytes": 117843308,
+          "completed_batches": 47000
+        },
+        {
+          "version": "v94",
+          "created_at": "2026-10-19T15:14:13Z",
+          "size_bytes": 117843308,
+          "completed_batches": 47500
+        },
+        {
+          "version": "v95",
+          "created_at": "2026-10-19T15:23:41Z",
+          "size_bytes": 117843308,
+          "completed_batches": 48000
+        },
+        {
+          "version": "v96",
+          "created_at": "2026-10-19T15:33:13Z",
+          "size_bytes": 117843308,
+          "completed_batches": 48500
+        },
+        {
+          "version": "v97",
+          "created_at": "2026-10-19T15:42:42Z",
+          "size_bytes": 117843308,
+          "completed_batches": 49000
+        },
+        {
+          "version": "v98",
+          "created_at": "2026-10-19T15:52:14Z",
+          "size_bytes": 117843308,
+          "completed_batches": 49500
+        },
+        {
+          "version": "v99",
+          "created_at": "2026-10-19T16:01:43Z",
+          "size_bytes": 117843308,
+          "completed_batches": 50000
+        },
+        {
+          "version": "v100",
+          "created_at": "2026-10-19T16:11:09Z",
+          "size_bytes": 117843308,
+          "completed_batches": 50500
+        },
+        {
+          "version": "v101",
+          "created_at": "2026-10-19T16:20:43Z",
+          "size_bytes": 117843308,
+          "completed_batches": 51000
+        }
+      ]
+    },
+    "arc-sft-baseline-556695bfd5c4-train-state-sft-resume": {
+      "version_count": 22,
+      "oldest_version": "v80",
+      "newest_version": "v101",
+      "versions": [
+        {
+          "version": "v80",
+          "created_at": "2026-10-19T13:01:57Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 40500
+        },
+        {
+          "version": "v81",
+          "created_at": "2026-10-19T13:11:24Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 41000
+        },
+        {
+          "version": "v82",
+          "created_at": "2026-10-19T13:20:40Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 41500
+        },
+        {
+          "version": "v83",
+          "created_at": "2026-10-19T13:30:10Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 42000
+        },
+        {
+          "version": "v84",
+          "created_at": "2026-10-19T13:39:42Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 42500
+        },
+        {
+          "version": "v85",
+          "created_at": "2026-10-19T13:49:14Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 43000
+        },
+        {
+          "version": "v86",
+          "created_at": "2026-10-19T13:58:50Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 43500
+        },
+        {
+          "version": "v87",
+          "created_at": "2026-10-19T14:08:11Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 44000
+        },
+        {
+          "version": "v88",
+          "created_at": "2026-10-19T14:17:28Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 44500
+        },
+        {
+          "version": "v89",
+          "created_at": "2026-10-19T14:26:52Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 45000
+        },
+        {
+          "version": "v90",
+          "created_at": "2026-10-19T14:36:23Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 45500
+        },
+        {
+          "version": "v91",
+          "created_at": "2026-10-19T14:45:48Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 46000
+        },
+        {
+          "version": "v92",
+          "created_at": "2026-10-19T14:55:15Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 46500
+        },
+        {
+          "version": "v93",
+          "created_at": "2026-10-19T15:04:46Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 47000
+        },
+        {
+          "version": "v94",
+          "created_at": "2026-10-19T15:14:15Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 47500
+        },
+        {
+          "version": "v95",
+          "created_at": "2026-10-19T15:23:44Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 48000
+        },
+        {
+          "version": "v96",
+          "created_at": "2026-10-19T15:33:15Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 48500
+        },
+        {
+          "version": "v97",
+          "created_at": "2026-10-19T15:42:44Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 49000
+        },
+        {
+          "version": "v98",
+          "created_at": "2026-10-19T15:52:16Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 49500
+        },
+        {
+          "version": "v99",
+          "created_at": "2026-10-19T16:01:45Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 50000
+        },
+        {
+          "version": "v100",
+          "created_at": "2026-10-19T16:11:11Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 50500
+        },
+        {
+          "version": "v101",
+          "created_at": "2026-10-19T16:20:45Z",
+          "size_bytes": 1060414709,
+          "completed_batches": 51000
+        }
+      ]
+    }
+  }
+}

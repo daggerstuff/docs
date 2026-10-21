@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-10-18T13:43:48+00:00",
+  "updated_at": "2026-10-19T17:00:00+00:00",
   "authorization": "User approved consolidated plan and beginning execution on 2026-10-17; W&B inference and Adaption credits confirmed; Fireworks credits tentative. Verify bounded actual coverage before spend.",
-  "campaign_status": "active_local_synthetic_pilot_ready_for_review",
-  "active_next_task": "RECONCILE_WANDB_SFT_JOB_POST_400_BEFORE_RETRY",
+  "campaign_status": "full_corpus_wandb_training_in_progress_synthetic_eval_regression_found",
+  "active_next_task": "MONITOR_WANDB_FULL_CORPUS_SFT_AND_EVALUATE_TERMINAL_CHECKPOINTS",
   "runtime_transition": {
     "less_expensive_model_requested": true,
     "active_model_switched": false,
@@ -12,8 +12,8 @@
     "worker_model_routing": "gpt-6-luna for training_execution, provider_qualification, evaluation_readiness"
   },
   "external_effects": {
-    "uploads": 0,
-    "new_training_jobs": 0,
+    "uploads": 2,
+    "new_training_jobs": 2,
     "new_deployments": 0,
     "provider_inference_requests_recorded": 18,
     "successful_inference_responses": 11,
@@ -67,7 +67,39 @@
       ],
       "diagnostic_only": true
     },
-    "new_adaption_jobs_started": 0
+    "new_adaption_jobs_started": 0,
+    "active_wandb_full_corpus_sft_jobs": [
+      {
+        "release": "v1",
+        "job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+        "status": "RUNNING",
+        "latest_lora_checkpoint": "v102",
+        "completed_batches": 51500,
+        "observed_at_utc": "2026-10-19T16:22:28Z"
+      },
+      {
+        "release": "v2",
+        "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+        "status": "RUNNING",
+        "latest_lora_checkpoint": "v101",
+        "completed_batches": 51000,
+        "observed_at_utc": "2026-10-19T16:22:28Z"
+      }
+    ],
+    "training_cost_status": "W&B's published Training Pricing page says Serverless SFT/RL training is free during public preview. The docs repository is archived and the training-pricing URL currently redirects to CoreWeave Forge; monitor actual account billing for exceptions. Inference is separately metered; artifact storage follows workspace plan/quota. Do not apply Forge post-training rates without provider confirmation.",
+    "latest_synthetic_tool_eval": {
+      "suite": "pixelated-agent-tool-sft-20261019-v1",
+      "cases": 120,
+      "cases_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+      "base": "120/120 cases; 189/240 checks; 77 cases all checks; 142 tool-trace events",
+      "v1": "checkpoint v102; 120/120 cases; 0 tool traces; 60/240 checks; one repeated response across 120",
+      "v2": "checkpoint v100; 120/120 cases; 0 tool traces; 60/240 checks; known training-target response hash on 120/120",
+      "estimated_usage_usd": 0.029862,
+      "actual_billed_usd": null,
+      "evaluation_is_synthetic_diagnostic_only": true
+    },
+    "upload_count_scope": "Two W&B dataset artifacts were uploaded for the active v1/v2 full-corpus SFT jobs; this count does not include checkpoint artifact versions.",
+    "provider_inference_counter_scope": "The legacy provider_inference_requests_recorded / successful_inference_responses / http_400_inference_responses / token totals describe only the earlier P00 qualification smokes, not the full campaign. Post-training paired evaluations are tracked by per-run manifest and wandb-inference-usage-ledger.json."
   },
   "tasks": [
     {
@@ -152,7 +184,9 @@
         "g03-edge-case-breakaway-review.json",
         "g03-edge-case-post-holdout-rowrefs.jsonl",
         "g03-edge-case-heldout-exclusions.jsonl",
-        "g03-edge-regeneration-fallback.json"
+        "g03-edge-regeneration-fallback.json",
+        "candidate-identity-metadata-audit-2026-10-19.json",
+        "candidate-source-locator-sidecar-2026-10-19.json"
       ],
       "findings": [
         "Metadata-only exclusions identify 12 duplicate rows beyond first occurrence and 2 rows without nonempty assistant targets; overlap is zero (14 unique structural exclusions).",
@@ -170,7 +204,8 @@
         "Historic local receipt search was targeted: OpenCode session messages on Sep 17-18 had no generator/artifact/NF_BACKEND/NF_MODEL matches; Claude dated logs and Foresight search had no receipt. Generated artifact hash f601a0b8e7dba97db888e63d585cb5309ce734b3f40254b9dfe232d0bf01ce20 records 120 edge and 92 Nightmare rows but no provider/model. Present environment defaults are not used as historical evidence; provider worker may check authoritative W&B run metadata.",
         "Basic email/SSN/phone/card/URL/IP regex screens matched 0/551 edge rows. On retained edge rows, 0/522 met 0.25 filtered 5-gram containment against 58 heldout prompts and 0/522 against 52 controls (371 rows had some low control overlap). Control identities remain missing; regex/ngram limits are explicit."
       ],
-      "next_step": "Keep historical generated rows unresolved until the receipt and applicable terms are tied to output hashes. Credential runtime is now authorized for bounded process-only use; before regeneration, receive explicit capped inference authorization for the full generation workload and verify the W&B-only destination."
+      "next_step": "Keep historical generated rows unresolved until the receipt and applicable terms are tied to output hashes. Credential runtime is now authorized for bounded process-only use; before regeneration, receive explicit capped inference authorization for the full generation workload and verify the W&B-only destination.",
+      "lineage_note": "All 190139 candidate rows retain verified source-label/row-hash references. Additive sidecar records proposed, unratified source-ID mappings for 177423 rows, structured local locator metadata for 9679 rows, and 3037 rows with neither. Rights remain unresolved; privacy unverified. See candidate-source-locator-sidecar-2026-10-19.json and candidate-identity-metadata-audit-2026-10-19.json."
     },
     {
       "id": "G04",
@@ -180,14 +215,19 @@
         "G03"
       ],
       "outputs": [
-        "release manifest",
-        "data card",
-        "render report",
-        "g04-release-manifest.json",
-        "g04-edge-render-report.json",
-        "private 522-row weighted JSONL candidate split"
+        "provider-neutral canonical train/dev/test",
+        "W&B weighted provider view",
+        "Fireworks role/content provider view",
+        "manifest.json",
+        "source_licenses.json",
+        "lineage.jsonl",
+        "splits.jsonl",
+        "DATA_CARD.md",
+        "reports/render_and_lineage.json",
+        "backlog.jsonl",
+        "17 hash-verified files"
       ],
-      "notes": "A local-only weighted JSONL draft for 522 structurally/source-lineage qualified edge rows is rendered and exact-verified against the existing exporter projection. Coordinator independently verified the manifest/payload hashes, rows, mode 0600, assistant-only weights, and group membership (139/25/15 groups; pairwise intersections zero). Manifest remains draft_local_only, release_id null, upload_gate false; historical source terms/provider receipt, source rights/privacy, and human decision binding remain unresolved; no promotion or upload. Prospective generator code now writes private hash-linked provider/model/config/code/source run receipts, records returned usage/model labels, rejects unreceipted or mismatched resumes, and marks new output clinical_reviewed=false without changing machine mi_quality. First-party W&B/Qwen regeneration fallback is prepared but not executed and cannot clear historical rows. Final provenance review fix: independent generation outputs receive unique run UUIDs while deterministic compatibility fingerprints remain shared; resuming preserves run_id and refreshes invocation_id. Usage receipts are explicitly per invocation (cumulative=false), so resumed totals are not misrepresented as whole-run cumulative usage.",
+      "notes": "The original 522-row G03 freeze remains locally exact and now has a hash-bound release layout at ai/data/curated/recovery/gold-20261017/g04-breakaway-release-20261019-v1/: provider-neutral canonical train/dev/test, W&B weighted view, Fireworks role/content view, row maps, lineage, split ledger, source_licenses.json, DATA_CARD.md, reports, and row-level backlog. Independent verification passed for all 522 candidate-to-payload mappings, 410/72/40 counts, zero group overlap, all 17 file hashes, and private 0700/0600 modes. The release upload gate is false. The Fireworks view follows documented role/content fields but omits weights; assistant-only loss semantics are unconfirmed. G04 remains in progress because 1,566 row-linked generation-terms, rights/privacy, and content-decision items remain open, and provider transfer is not qualified. No rows were uploaded and no job was created.",
       "evidence": [
         "g03-edge-branch-diagnostics.json",
         "g03-edge-case-post-holdout-rowrefs.jsonl",
@@ -199,7 +239,12 @@
         "g03-edge-regeneration-fallback.json",
         "ai/training/generation_provenance.py",
         "ai/training/tests/test_build_edge_and_nightmare_dataset.py",
-        "ai/training/tests/test_curate_pipeline_import_gate.py"
+        "ai/training/tests/test_curate_pipeline_import_gate.py",
+        "g03-edge-case-breakaway-frozen-2026-10-19.json",
+        "g04-breakaway-release-20261019-v1.json",
+        "../../ai/training/build_g04_breakaway_release_views.py",
+        "../../ai/data/curated/recovery/gold-20261017/g04-breakaway-release-20261019-v1/manifest.json",
+        "../../ai/data/curated/recovery/gold-20261017/g04-breakaway-release-20261019-v1/reports/render_and_lineage.json"
       ],
       "draft_manifest": {
         "path": "g04-release-manifest.json",
@@ -217,14 +262,28 @@
       },
       "limits": [
         "Historical G04 candidate remains blocked from upload by source rights/privacy and generation-term gaps; separate clean synthetic corpus work may proceed after local review."
-      ]
+      ],
+      "prepared_release": {
+        "path": "ai/data/curated/recovery/gold-20261017/g04-breakaway-release-20261019-v1",
+        "manifest_sha256": "de3820398395629d73bdde0845f5aff7f5c0e7d02e63794fc35accf7fdc1cd9b",
+        "status": "local_research_views_prepared_provider_transfer_blocked",
+        "upload_gate": false,
+        "candidate_rows": 522,
+        "excluded_rows": 29,
+        "canonical_splits": {
+          "train": 410,
+          "dev": 72,
+          "test": 40
+        },
+        "row_linked_open_gate_items": 1566
+      }
     },
     {
       "id": "P00",
       "status": "in_progress",
       "task": "Read-only provider/credit/model/export qualification, now including W&B account-specific price entitlement and OVHcloud region/resource costs",
       "prerequisites": [],
-      "notes": "Read-only provider qualification continues. Historical W&B metadata narrowed two September 17 generator runs to Vercel / DeepSeek V4 Flash but did not bind either to the 212-row artifact. Process-only credential use is now explicitly authorized. The prior 12-call smoke estimate remains $0.00147125 with rejected-call billing unknown. A separate authorized synthetic-only W&B inference diagnostic used six completions; usage estimate $0.00248575, actual billing unknown, and the $0.02 cap is consumed. Adaption has two datasets visible; the 11,192-row dataset succeeded but evaluation summary/results are null; the 418-row dataset awaits_input and has no evaluation results. No upload or training job.",
+      "notes": "Provider qualification is account- and route-specific. Fireworks read-only account checks show Muse Glimmer 30B supports SFT; the public free-SFT offer runs through 2026-11-30, but account-specific activation/credits are not exposed. Fireworks serverless inference for Muse Glimmer is unavailable and the existing adapter export request was denied. W&B account supports Qwen/Qwen3.6-35B-A3B training and inference; the old W&B free-training page redirects to CoreWeave pricing listing $2.70/GPU-hour, while this account's preview entitlement and actual charges are unknown. Adaption still lists Qwen/Qwen3.6-35B-A3B for LoRA SFT/DPO and the existing run-2 adapter is downloadable; account credit balance/estimate and a hosted matching-base inference route are unavailable. Do not infer credit coverage from user-confirmed balances. See provider-qualification.json/.md for timestamped evidence. No additional training job created in this P00 refresh.",
       "evidence": [
         "evaluation-readiness.json",
         "results/wandb-base-synthetic-smoke-corrected-20261017/results.jsonl",
@@ -240,7 +299,7 @@
         "G03",
         "P00"
       ],
-      "notes": "Evaluator tests and local multi-step tool mocks are ready. The authorized synthetic-only W&B diagnostic used all six completions (support truncated, research diagnostic completed after retry); this was not a scored comparison. No more inference under the consumed $0.02 cap. Scored comparison still requires G03 lineage clearance, selected SFT artifact, provider terms/cost qualification, and calibrated human-reviewed rubric.",
+      "notes": "The frozen 120-case synthetic tool-use suite was evaluated against base and current W&B checkpoints: base scored 189/240 deterministic checks with 142 tool-trace events; v1 v103/v104 and v2 v101/v102 each scored 60/240 with zero tool traces and one repeated response across all cases. v2 v101/v102 repeat the known target hash; v1 v103/v104 differ from it but remain behaviorally collapsed. These are synthetic diagnostics, not clinical quality or safety evidence. Adaption run 2 lacks a qualified hosted inference route; Muse Glimmer lacks a serverless inference route.",
       "evidence": [
         "ai/qa/validation/therapy_bench/paired_eval.py",
         "ai/qa/validation/therapy_bench/wandb-synthetic-capability-v1-budget-0.02.config.json"
@@ -248,12 +307,26 @@
     },
     {
       "id": "E01",
-      "status": "queued",
+      "status": "in_progress",
       "task": "Up to four initial qualified Fireworks/W&B SFT jobs and paired base/SFT evaluation",
       "prerequisites": [
         "G04",
         "P00",
         "E00"
+      ],
+      "notes": "Two user-authorized W&B full-corpus SFT jobs remain RUNNING on the pinned 190,139-row release. At 2026-10-19 16:52:25 UTC, v1 had adapter/train-state v106 at 53,500 batches and v2 had v104 at 52,500. All four collections listed 25 versions. Rolling local watchers have backed up these adapters and resume states, with local manifest size verification passing. The latest shared 120-case synthetic tool-use evaluation returned 120/120 cases on each checkpoint with no API errors, no tool calls, and 60/240 state checks passed; each checkpoint emitted one repeated response. This remains collapsed behavior on the diagnostic suite, not a clinical-quality or safety evaluation. A v2 v103 inference ablation showed removing system prompts increased variation to 3 outputs (105/13/2), but retained the same dominant response and did not improve tools or checks. No Fireworks job was created because role=tool compatibility, account-specific offer coverage, and export conditions remain unqualified. W&B training credit coverage and actual charges remain unknown; no further training job should be created until costs are bounded.",
+      "evidence": [
+        "../execution-2026-10-18/live-monitor/checkpoint-refresh-2026-10-19T1633Z.json",
+        "../execution-2026-10-18/live-monitor/full-corpus-jobs.jsonl",
+        "../execution-2026-10-18/results/wandb-full-corpus-tool-heldout-120-latest-checkpoint-comparison.json",
+        "../execution-2026-10-18/results/wandb-inference-usage-ledger.json",
+        "../../ai/training/output/wandb_local_checkpoints_20261019/manifest.json",
+        "../../ai/training/output/wandb_local_checkpoints_20261019/train-state-manifest.json",
+        "../execution-2026-10-18/results/wandb-full-corpus-v1-tool-heldout-120-v104-20261019T1634Z/manifest.json",
+        "../execution-2026-10-18/live-monitor/checkpoint-stream-confirmation-2026-10-19T1646Z.json",
+        "../execution-2026-10-18/results/system-context-ablation-v2-v103-20261019T1650Z-summary.json",
+        "../execution-2026-10-18/live-monitor/checkpoint-refresh-2026-10-19T1655Z.json",
+        "../execution-2026-10-18/results/wandb-full-corpus-response-target-overlap-20261019T1700Z.json"
       ]
     },
     {
@@ -299,7 +372,7 @@
     "g04_weighted_payload_render_and_exact_projection_verify": 9.9,
     "prospective_generation_provenance_focused_tests": 1.7
   },
-  "updated_at_utc": "2026-10-18T13:15:40Z",
+  "updated_at_utc": "2026-10-19T17:00:00Z",
   "verification_notes": {
     "focused_generation_and_curation_tests": "28 passed in 1.70 seconds",
     "ruff_new_generation_module_and_focused_tests": "passed; Ruff format check passed",
@@ -497,5 +570,47 @@
       "W&B training data handling/retention/export terms",
       "golden-control lineage or exclusion"
     ]
+  },
+  "active_wandb_full_corpus_sft_jobs": [
+    {
+      "release": "v1",
+      "job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "RUNNING",
+      "latest_lora_checkpoint": "v106",
+      "latest_train_state_checkpoint": "v106",
+      "completed_batches": 53500,
+      "observed_at_utc": "2026-10-19T16:52:25Z",
+      "local_adapter_and_resume_state_backed_up": true
+    },
+    {
+      "release": "v2",
+      "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "RUNNING",
+      "latest_lora_checkpoint": "v104",
+      "latest_train_state_checkpoint": "v104",
+      "completed_batches": 52500,
+      "observed_at_utc": "2026-10-19T16:52:25Z",
+      "local_adapter_and_resume_state_backed_up": true
+    }
+  ],
+  "latest_synthetic_tool_eval": {
+    "suite": "pixelated-agent-tool-sft-20261019-v1",
+    "cases": 120,
+    "cases_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+    "base": "120/120 cases; 189/240 checks; 77 cases all checks; 142 tool-trace events",
+    "v1": "checkpoint v106; 120/120 cases; 0 tool traces; 60/240 checks; one repeated very short response across 120",
+    "v2": "checkpoint v104; 120/120 cases; 0 tool traces; 60/240 checks; one repeated response across 120",
+    "additional_v2_v101_run": "120/120 cases; 0 tool traces; 60/240 checks; known training-target response hash on 120/120",
+    "estimated_usage_usd": 0.044418,
+    "actual_billed_usd": null,
+    "evaluation_is_synthetic_diagnostic_only": true,
+    "latest_pair_run_ids": [
+      "wandb-full-corpus-v1-tool-heldout-120-live-v106-20261019T1652Z",
+      "wandb-full-corpus-v2-tool-heldout-120-live-v104-20261019T1652Z"
+    ],
+    "latest_pair_estimated_usage_usd": 0.026862,
+    "latest_pair_actual_billed_usd": null,
+    "system_context_removed_v2_v103": "120/120 cases; 3 response hashes (105/13/2); same dominant hash as system-present; 0 tool traces; 60/240 checks",
+    "system_context_removed_estimated_usage_usd": 0.0128735
   }
 }

@@ -1,6 +1,6 @@
 {
   "created_at_utc": "2026-10-17T16:22:59+00:00",
-  "status": "narrow_research_subset_diagnostic_ready_generation_provider_terms_evidence_open_no_release_view",
+  "status": "frozen_local_research_only_provider_transfer_unqualified_generation_receipt_unresolved",
   "privacy": "Metadata-only: exact candidate row numbers, SHA-256 digests, ARC IDs/session numbers, source class, and source artifact identities; no messages/prompts/rationale/PHI.",
   "scope": {
     "candidate_path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
@@ -131,5 +131,28 @@
       "validation": 72,
       "test": 40
     }
+  },
+  "frozen_local_package": {
+    "manifest": "g03-edge-case-breakaway-frozen-2026-10-19.json",
+    "freeze_id": "g03-edge-synthetic-research-522-20261019-v1",
+    "candidate_row_bindings_verified": 522,
+    "split_rows": {
+      "train": 410,
+      "validation": 72,
+      "test": 40
+    },
+    "heldout_exclusions": {
+      "rows": 29,
+      "arc_ids": 12,
+      "seed_groups": 11
+    },
+    "split_group_intersections": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0,
+      "retained_heldout": 0
+    },
+    "provider_transfer_qualified": false,
+    "clinical_or_production_release": false
   }
 }

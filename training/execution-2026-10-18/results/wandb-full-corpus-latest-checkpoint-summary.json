@@ -1,0 +1,211 @@
+{
+  "observed_at_utc": "2026-10-19T15:21:17.515207Z",
+  "suite": "five synthetic development capability cases, paired at temperature 0",
+  "case_ids": [
+    "dev-support-request",
+    "dev-research-citations",
+    "dev-tool-approval",
+    "dev-memory-write",
+    "dev-injection-untrusted-document"
+  ],
+  "actual_billed_cost_usd": null,
+  "cost_note": "W&B usage-based estimate only; actual billing not returned; model-rate configuration matches W&B published Qwen3.6-35B-A3B rates as checked 2026-10-19.",
+  "latest_artifact_observed_at_utc": "2026-10-19T15:04:46Z",
+  "releases": {
+    "v1": {
+      "checkpoint_version": "v96",
+      "checkpoint_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v96",
+      "run_id": "wandb-full-corpus-v1-step-current-1519-vs-base-2048-512",
+      "status": "complete",
+      "manifest_sha256": "24ba90796220f2d1faa21d864714e0d826e5c5fe853654c4d59ceba6ea851f37",
+      "results_sha256": "f2b201469190af99d72409c77c67d2f940a612edede50b604bfea28c93b1c8d4",
+      "estimated_cost_usd": 0.003528,
+      "estimated_max_cost_usd": 0.03456,
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1805,
+            "total_tokens": 4935
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 3000.824,
+            "p95_ms": 4131.972
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v96",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+              "occurrences": 5,
+              "chars": 75
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 115,
+            "total_tokens": 1497
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1443.085,
+            "p95_ms": 1998.36
+          }
+        }
+      }
+    },
+    "v2": {
+      "checkpoint_version": "v94",
+      "checkpoint_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v94",
+      "run_id": "wandb-full-corpus-v2-step-current-1519-vs-base-2048-512",
+      "status": "complete",
+      "manifest_sha256": "9a946f7e88d14854252e91f8c8b4f505f28602f7be1af76b6075761f82c6394e",
+      "results_sha256": "4e5b3582c965c425688a83cfffd7b9824dc0cefe7da2834b6846cc513f71660a",
+      "estimated_cost_usd": 0.00359175,
+      "estimated_max_cost_usd": 0.03456,
+      "arms": {
+        "base": {
+          "model": "Qwen/Qwen3.6-35B-A3B",
+          "cases": 5,
+          "distinct_responses": 4,
+          "response_multiplicities": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "response_hashes": [
+            {
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "occurrences": 2,
+              "chars": 0
+            },
+            {
+              "sha256": "df813409c7020be16fe7d2b7f2aeb772acf9a8c2014a9a98757395b16e48f2c3",
+              "occurrences": 1,
+              "chars": 313
+            },
+            {
+              "sha256": "6858012ee32322bb5dd7cd81f9d28b74346e098e10f2ac60c78514a67484a06e",
+              "occurrences": 1,
+              "chars": 116
+            },
+            {
+              "sha256": "90f60af13e011e69df71a77d210549086e6d9465564947757396d6bcebd33688",
+              "occurrences": 1,
+              "chars": 57
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 4,
+          "deterministic_checks_passed": 3,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 3130,
+            "completion_tokens": 1856,
+            "total_tokens": 4986
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 3774.894,
+            "p95_ms": 3873.04
+          }
+        },
+        "sft": {
+          "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v94",
+          "cases": 5,
+          "distinct_responses": 1,
+          "response_multiplicities": [
+            5
+          ],
+          "response_hashes": [
+            {
+              "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+              "occurrences": 5,
+              "chars": 75
+            }
+          ],
+          "tool_call_count": 0,
+          "cases_with_any_failed_deterministic_check": 5,
+          "deterministic_checks_passed": 2,
+          "deterministic_checks_total": 7,
+          "usage": {
+            "cases_with_usage": 5,
+            "prompt_tokens": 1382,
+            "completion_tokens": 115,
+            "total_tokens": 1497
+          },
+          "latency_ms": {
+            "count": 5,
+            "p50_ms": 1361.953,
+            "p95_ms": 1522.037
+          }
+        }
+      }
+    }
+  },
+  "snapshot_status": "historical_snapshot_superseded",
+  "superseded_at_utc": "2026-10-19T16:20:00Z",
+  "superseded_by": "wandb-full-corpus-tool-heldout-120-latest-checkpoint-comparison.json",
+  "current_checkpoint_observation": {
+    "observed_at_utc": "2026-10-19T16:22:28Z",
+    "v1": {
+      "version": "v102",
+      "completed_batches": 51500
+    },
+    "v2": {
+      "version": "v101",
+      "completed_batches": 51000
+    },
+    "status": "both RUNNING; see live-monitor/full-corpus-jobs.jsonl and private local checkpoint index"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "observed_at_utc": "2026-10-19T15:19:16Z",
+  "source": "fresh authenticated W&B artifact collection API, Training API, and GraphQL read; read-only",
+  "project": "wutang/pixelated-empathy-kan28",
+  "storage_bytes": 33938141393,
+  "storage_gb_decimal": 33.938141393,
+  "storage_gib_binary": 31.605,
+  "previous_storage_bytes": 30167440389,
+  "storage_delta_bytes": 3770701004,
+  "jobs": {
+    "v1": {"job_id": "2087f223-a48f-45f7-9999-daece5743bba", "status": "RUNNING", "training_start": "2026-10-18T22:44:42Z", "updated_at": "2026-10-18T22:44:42Z", "progress": null, "error": null},
+    "v2": {"job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e", "status": "RUNNING", "training_start": "2026-10-18T23:13:12Z", "updated_at": "2026-10-18T23:13:12Z", "progress": null, "error": null}
+  },
+  "collections": {
+    "v1_lora": {"name": "arc-sft-baseline-8ce8354c67ef-sft-resume", "latest": "v96", "created_at": "2026-10-19T15:15:58Z", "size_bytes_per_artifact": 117843308, "retain_latest_two": ["v95", "v96"], "older_listed_candidates": ["v82-v94"]},
+    "v1_train_state": {"name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume", "latest": "v96", "created_at": "2026-10-19T15:16:00Z", "size_bytes_per_artifact": 1060414709, "retain_latest_two": ["v95", "v96"], "older_listed_candidates": ["v82-v94"]},
+    "v2_lora": {"name": "arc-sft-baseline-556695bfd5c4-sft-resume", "latest": "v94", "created_at": "2026-10-19T15:14:13Z", "size_bytes_per_artifact": 117843308, "retain_latest_two": ["v93", "v94"], "older_listed_candidates": ["v80-v92"]},
+    "v2_train_state": {"name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume", "latest": "v94", "created_at": "2026-10-19T15:14:15Z", "size_bytes_per_artifact": 1060414709, "retain_latest_two": ["v93", "v94"], "older_listed_candidates": ["v80-v92"]}
+  },
+  "retention_candidate_logical_bytes": 30665078442,
+  "deletion_audit": "The collection API still listed these artifacts at observation time. The current snapshot advances past 15:05: v1 checkpoints v95-v96 were created during the cleanup window. Project storageBytes rose 3,770,701,004 bytes since 15:07, but the API does not expose quota, deletion events, or physical reclamation. This does not identify what the user removed in the UI. Candidate ranges assume retaining the newest two artifacts per collection and are not deletion instructions or proof of safe deletion; checkpoint train-state is larger than LoRA and needed for full resume."
+}

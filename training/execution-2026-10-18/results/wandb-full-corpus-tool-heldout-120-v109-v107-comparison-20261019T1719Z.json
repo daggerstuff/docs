@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T17:25:20.071716Z",
+  "suite": "agent_tool_sft_heldout_v1",
+  "cases_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+  "same_case_set": true,
+  "cases_compared": 120,
+  "identical_response_hash_cases": 120,
+  "v1_run_id": "wandb-full-corpus-v1-tool-heldout-120-v109-20261019T1719Z",
+  "v2_run_id": "wandb-full-corpus-v2-tool-heldout-120-v107-20261019T1719Z",
+  "v1_checkpoint": "v109",
+  "v2_checkpoint": "v107",
+  "interpretation": "Compare checkpoint output hashes and deterministic synthetic state metrics; no clinical or safety claim."
+}

@@ -31,7 +31,7 @@ synthetic-only W&B inference probe is distinct from dataset upload or training.
   Subprocessors](https://wandb.ai/site/wb-subprocessors/)
 - **Serverless Training:** W&B says its Training service logs metrics and rollout traces to the W&B workspace; pricing documentation
   says trained LoRA checkpoints are stored for evaluation, serving, or continued training, and storage is billed by plan. Training is
-  described as public-preview free at the time of review. The public pages reviewed do not spell out a complete data-retention period,
+  explicitly described as free during public preview on W&B's published Training Pricing page (checked 2026-10-19). The Serverless Training docs also label the feature public preview. Although the docs repository is archived and the training-pricing URL now redirects to CoreWeave Forge, those facts do not erase the published preview statement; the redirect does make the current pricing page difficult to independently reopen. This published offer is distinct from account-level entitlement, which remains unverified for our current runs. The public pages reviewed do not spell out a complete data-retention period,
   model/data rights allocation, or whether training inputs/outputs are used for general model improvement. Apply the account
   agreement/DPA and obtain written product-specific clarification for those points. [W&B Training](https://wandb.ai/site/wb-training/),
   [W&B Training Pricing](https://site.wandb.ai/pricing/training/)

@@ -1,0 +1,98 @@
+{
+  "observed_at_utc": "2026-10-19T15:45:12.898900+00:00",
+  "source": "read-only W&B artifact API; compared with 2026-10-19T1434Z inventory",
+  "project": "wutang/pixelated-empathy-kan28",
+  "artifact_types": {
+    "wandb-history": {
+      "collections": 160,
+      "versions": 160,
+      "logical_bytes": 789512
+    },
+    "run_table": {
+      "collections": 2,
+      "versions": 2,
+      "logical_bytes": 15634
+    },
+    "wandb-events": {
+      "collections": 92,
+      "versions": 92,
+      "logical_bytes": 1637879
+    },
+    "lora": {
+      "collections": 11,
+      "versions": 44,
+      "logical_bytes": 5488310687
+    },
+    "dataset": {
+      "collections": 9,
+      "versions": 5,
+      "logical_bytes": 609368143
+    },
+    "train-state": {
+      "collections": 7,
+      "versions": 40,
+      "logical_bytes": 41921898938
+    },
+    "code": {
+      "collections": 1,
+      "versions": 2,
+      "logical_bytes": 5407
+    },
+    "job": {
+      "collections": 1,
+      "versions": 2,
+      "logical_bytes": 1208
+    }
+  },
+  "collections": 283,
+  "visible_versions": 347,
+  "summed_logical_version_bytes": 48022027408,
+  "errors": [],
+  "delta_vs_1434": {
+    "collections": 0,
+    "visible_versions": 32,
+    "summed_logical_version_bytes": 18852128272,
+    "by_type": {
+      "wandb-history": {
+        "collections": 0,
+        "versions": 0,
+        "logical_bytes": 0
+      },
+      "run_table": {
+        "collections": 0,
+        "versions": 0,
+        "logical_bytes": 0
+      },
+      "wandb-events": {
+        "collections": 0,
+        "versions": 0,
+        "logical_bytes": 0
+      },
+      "lora": {
+        "collections": 0,
+        "versions": 16,
+        "logical_bytes": 1885492928
+      },
+      "dataset": {
+        "collections": 0,
+        "versions": 0,
+        "logical_bytes": 0
+      },
+      "train-state": {
+        "collections": 0,
+        "versions": 16,
+        "logical_bytes": 16966635344
+      },
+      "code": {
+        "collections": 0,
+        "versions": 0,
+        "logical_bytes": 0
+      },
+      "job": {
+        "collections": 0,
+        "versions": 0,
+        "logical_bytes": 0
+      }
+    }
+  }
+}

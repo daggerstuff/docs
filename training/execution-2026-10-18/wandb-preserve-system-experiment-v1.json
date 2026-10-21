@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "experiment_id": "wandb-full-corpus-preserve-system-20261019-v1",
+  "status": "local_package_verified_upload_and_job_pending_storage_capacity",
+  "hypothesis": "Retaining source system prompts as zero-loss context restores task instructions and reduces the repeated-completion collapse seen when system prompts were removed.",
+  "dataset_manifest": "docs/training/execution-2026-10-18/wandb-full-corpus-preserve-system-v1-staged.json",
+  "dataset_sha256": "80e7426688c3add7dc9eddfa8493e18b7216495da7a1be4708981be303db4a11",
+  "candidate_rows": 190139,
+  "candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+  "repairs_sha256": "17308c80a2eb332774d3549a2ef0260bdfabac6f53044cc0160880e166a7238a",
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "training_config": {
+    "assistant_turns": "all",
+    "batch_size": "auto",
+    "learning_rate": 0.0001
+  },
+  "controlled_difference_from_running_jobs": [
+    "Preserve system messages as context, with weight 0; preserve existing assistant weight 1 and user weight 0."
+  ],
+  "matched_evaluation": [
+    "Same frozen five-case synthetic development suite, paired with W&B base endpoint.",
+    "Same frozen 120-case synthetic tool-use suite; compare against the saved base benchmark."
+  ],
+  "upload_gate": false,
+  "job_launch_gate": false,
+  "prelaunch_checks": [
+    "Both current W&B jobs reach terminal state.",
+    "Fresh artifact inventory and account storage headroom confirm the new dataset artifact and checkpoint versions can fit.",
+    "Validate uploaded artifact hash and W&B SFT input format before creating the job."
+  ],
+  "cost_note": "W&B's published Training Pricing page says Serverless SFT/RL training is free during public preview; Serverless Training docs say the same. The docs repository is archived and the training-pricing URL currently redirects to CoreWeave Forge, so monitor actual account billing for any exception. The /preview/ API path alone does not establish pricing. Inference is metered separately; artifact storage follows the workspace plan/quota, whose exact allowance is not exposed here."
+}

@@ -1,0 +1,53 @@
+{
+  "release_status": "local_staging_prepared_pending_storage_and_job_capacity",
+  "upload_gate": false,
+  "candidate_rows": 190139,
+  "retained_rows": 190139,
+  "dropped": 0,
+  "repairs": 52,
+  "split_counts": {
+    "train": 170895,
+    "validation": 9585,
+    "test": 9659
+  },
+  "payloads": {
+    "train": {
+      "rows": 170895,
+      "manifest_rows": 170895,
+      "hash_matches": true,
+      "sha256": "1d403f3273e150f90ff145b010a698b26576c48f55cc79befe442de6ac081792"
+    },
+    "validation": {
+      "rows": 9585,
+      "manifest_rows": 9585,
+      "hash_matches": true,
+      "sha256": "eaec7dc9c8d7b0affecce78a7056f077521ad189516bb8d2e67a33d47eebabd3"
+    },
+    "test": {
+      "rows": 9659,
+      "manifest_rows": 9659,
+      "hash_matches": true,
+      "sha256": "5b5f09f2d7fb1165d7ea298b79687c0787a9b40293f9507f46087cc42dfef1c7"
+    }
+  },
+  "system_messages": 188980,
+  "system_messages_zero_weight": 188980,
+  "assistant_messages": 590233,
+  "assistant_messages_weight_one": 590233,
+  "row_count": 170895,
+  "intersections": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "pattern_hits_after_redaction": {
+    "email": 0,
+    "ssn": 0,
+    "phone": 0,
+    "url": 0,
+    "ipv4": 0
+  },
+  "source_candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+  "repairs_sha256": "17308c80a2eb332774d3549a2ef0260bdfabac6f53044cc0160880e166a7238a",
+  "observed_at_utc": "2026-10-19T15:37:18.294797Z"
+}

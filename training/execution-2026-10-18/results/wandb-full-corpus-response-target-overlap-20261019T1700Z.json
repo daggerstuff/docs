@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T17:00:00Z",
+  "candidate": {
+    "path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "rows": 190139
+  },
+  "assistant_targets": {
+    "count": 590233,
+    "unique_exact_sha256": 356590
+  },
+  "target_overlap": {
+    "v1_v106": {
+      "sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+      "assistant_message_exact_matches": 25193,
+      "candidate_rows_containing_target": 25193,
+      "distinct_source_labels": 1,
+      "top_source_labels": [
+        [
+          "reddit_mental_nlp",
+          25193
+        ]
+      ],
+      "task_type_counts": {
+        "symptom_classification": 25193
+      }
+    },
+    "v2_v104": {
+      "sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+      "assistant_message_exact_matches": 4799,
+      "candidate_rows_containing_target": 4799,
+      "distinct_source_labels": 1,
+      "top_source_labels": [
+        [
+          "reddit_mental_health_posts",
+          4799
+        ]
+      ],
+      "task_type_counts": {
+        "symptom_classification": 4799
+      }
+    },
+    "previous_frequent_target": {
+      "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+      "assistant_message_exact_matches": 8970,
+      "candidate_rows_containing_target": 8970,
+      "distinct_source_labels": 1,
+      "top_source_labels": [
+        [
+          "reddit_mental_health_posts",
+          8970
+        ]
+      ],
+      "task_type_counts": {
+        "symptom_classification": 8970
+      }
+    }
+  },
+  "interpretation": "The v1 v106 response matches a frequent symptom-classification training target (22690/532603 assistant targets, 4.26%). The v2 v104 response matches another exact target at 4304/532603 (0.81%); the prior repeated target occurs 8047 times (1.51%). Two minority outputs from the system-removed v2 run have zero exact matches in train, validation, or test. These are correlations and do not establish why the model collapsed. The later v1 v107 and v2 v106 checkpoints converge on the same short-response hash observed at v1 v106; that exact target occurs 22,690 times among 532,603 training assistant targets. This remains a correlation, not a causal explanation.",
+  "split_level_exact_target_counts": {
+    "train": {
+      "rows": 171167,
+      "assistant_targets": 532603,
+      "unique_exact_hashes": 324170,
+      "v1_v106_response_matches": 22690,
+      "v2_v104_response_matches": 4304,
+      "previous_frequent_response_matches": 8047,
+      "system_removed_minor_hash_13_matches": 0,
+      "system_removed_minor_hash_2_matches": 0
+    },
+    "validation": {
+      "rows": 9666,
+      "assistant_targets": 29488,
+      "unique_exact_hashes": 20220,
+      "v1_v106_response_matches": 1242,
+      "v2_v104_response_matches": 250,
+      "previous_frequent_response_matches": 474,
+      "system_removed_minor_hash_13_matches": 0,
+      "system_removed_minor_hash_2_matches": 0
+    },
+    "test": {
+      "rows": 9306,
+      "assistant_targets": 28142,
+      "unique_exact_hashes": 19457,
+      "v1_v106_response_matches": 1261,
+      "v2_v104_response_matches": 245,
+      "previous_frequent_response_matches": 449,
+      "system_removed_minor_hash_13_matches": 0,
+      "system_removed_minor_hash_2_matches": 0
+    }
+  },
+  "latest_checkpoint_matches": {
+    "v1_v107": {
+      "sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+      "same_as": "v1_v106",
+      "assistant_target_matches_in_train": 22690,
+      "train_assistant_targets": 532603
+    },
+    "v2_v106": {
+      "sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+      "same_as": "v1_v106",
+      "assistant_target_matches_in_train": 22690,
+      "train_assistant_targets": 532603
+    }
+  }
+}

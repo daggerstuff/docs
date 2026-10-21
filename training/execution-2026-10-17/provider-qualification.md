@@ -1,4 +1,4 @@
-# Provider qualification — 2026-10-17
+# Provider qualification — 2026-10-17 (historical snapshot; current price qualification is in the execution handoff)
 
 Status: partial. Checks used existing authenticated sessions and public
 official docs. This worker made no inference, training, upload, deployment, or
@@ -21,11 +21,26 @@ job was not created. The destination project
 `wutang/pixelated-empathy-kan28` is private (`access=PRIVATE` in an authenticated
 read-only project metadata query). Remaining artifact storage was not queried.
 
-W&B Serverless SFT and RL training are free during public preview. Trained
-checkpoints are stored as LoRA artifacts; all plans include at least 5 GB
-storage, with monthly billing possible above the plan quota. W&B says this
-minimum is typically enough for about 30 LoRAs, or roughly 170 MB per adapter
-if divided evenly; this is an estimate, not an account-specific ceiling.
+The 2026-10-17 snapshot below was too cautious about the published training
+terms. Rechecked against W&B's current official pages on 2026-10-20: Serverless
+SFT remains in public preview, and W&B states that Serverless SFT/RL training
+is free during public preview, with pricing to be announced at general
+availability. This establishes the published service status and training
+price, but not account-specific eligibility or coverage for inference and
+storage. The `/preview/` API path alone is not proof of free pricing. Trained
+checkpoints are LoRA artifacts; storage is billed according to the workspace
+plan/quota, which remains unknown for this account. W&B says the minimum 5 GB
+plan storage is typically enough for about 30 LoRAs, or roughly 170 MB per
+adapter if divided evenly; this is an estimate, not an account-specific
+ceiling. Check the current project storage and account terms before assuming
+there is room for additional checkpoints.
+
+Current sources: [W&B Training Pricing](https://wandb.ai/site/pricing/training/)
+states that training is free during public preview and storage is billed
+monthly; [W&B Serverless Training API reference](https://docs.wandb.ai/api-reference/training-jobs/sft-training-jobs)
+still documents the SFT job endpoint under `/v1/preview/`. The preview endpoint
+and public-preview label agree, but only the pricing page establishes the
+published training-price statement.
 W&B's documented read-only `POST /files/query_stats` returns total file bytes
 for one project, not remaining account quota. The read-only qualification
 checks did not query it. W&B's SFT API requires a model resource created with
@@ -57,8 +72,9 @@ artifact URI, model/job UUIDs, status, and polling state are written locally
 with mode 0600. The launcher validates the destination project as PRIVATE and
 rechecks the authenticated trainable base catalog before upload.
 
-Dry-run reports the measured input artifact byte count. Public preview training
-is $0 while the offer remains active. All plans include at least 5 GB storage,
+Dry-run reports the measured input artifact byte count. Training price and
+account entitlement are unverified; do not assume the historical public-preview
+offer is active. The legacy page claimed at least 5 GB storage,
 which W&B says is typically enough for about 30 LoRAs; storage above quota may
 be billed monthly. The documented read-only project stats endpoint reports
 bytes already used in a single project, not remaining account quota. No exact
@@ -218,6 +234,29 @@ inference catalog. Account-level inference remains unqualified. Sources:
 [Fireworks pricing](https://fireworks.ai/pricing),
 [Muse Glimmer model page](https://fireworks.ai/models/fireworks/muse-glimmer-30b).
 
+## Adaption — live account recheck (2026-10-19 16:12 UTC)
+
+Three authenticated read-only calls were repeated: `list_training_models`,
+`list_datasets(limit=50)`, and `list_autoscientist_runs(limit=50)`. They confirm
+`Qwen/Qwen3.6-35B-A3B` remains available for SFT/DPO LoRA; historical run 2
+(`8da8f685-7ef6-43c0-958e-ab34dbdcd520`) is still succeeded and downloadable,
+with platform win rate 0.6414. The 11,192-row training dataset is succeeded;
+the separate 418-row dataset remains `awaiting_input`. Both list results have
+no evaluation summary. No inference, estimate, dataset write, or training call
+was made.
+
+The user-confirmed Adaption credit existence is recorded, but no current
+numeric balance, expiry, eligible-use scope, or per-run deduction is exposed by
+the available connector. It therefore cannot bound another training run. The
+connector also exposes no Adaption-hosted inference endpoint. Run 2 is already
+exported locally (path above), but serving it locally has not been qualified on
+the available host. The frozen 522-row breakaway dataset is not uploaded or
+qualified for Adaption. Continue with the historical adapter only after E00
+qualifies an inference route; do not create an Adaption dataset/run until
+provenance eligibility and exact credit coverage are evidenced. Detailed
+current evidence is recorded in `provider-qualification.json` under
+`adaption.live_read_only_recheck_2026_10_19`.
+
 ## Adaption
 
 The live catalog includes `Qwen/Qwen3.6-35B-A3B` for SFT/DPO LoRA. Existing
@@ -271,3 +310,29 @@ uv run --with pytest --no-project python -m pytest ai/training/tests/test_wandb_
 - [W&B trained model endpoint](https://docs.wandb.ai/training/serverless-rl/use-trained-models)
 - [W&B serverless usage and storage](https://docs.wandb.ai/training/serverless-rl/usage-limits)
 - [Qwen3.6-35B-A3B model config](https://huggingface.co/Qwen/Qwen3.6-35B-A3B/blob/main/config.json)
+
+## Fireworks live qualification refresh — 2026-10-19
+
+The current Muse Glimmer page advertises free SFT through the UI and Serverless
+Training API until **2026-11-30**, with no credit card required. This supersedes
+the offer deadline stated in the October 10 notes and the October 19 user
+message. The authenticated account model resource reports SFT support, but the
+current model page marks ordinary serverless inference unsupported; the
+previous authenticated catalog check likewise omitted Muse Glimmer, so the
+120-case Fireworks base-inference run did not succeed.
+
+The Serverless Training documentation now describes a viable experiment-only
+evaluation path: save sampler checkpoints and sample them while the training
+session is active. Training checkpoints contain optimizer state and are
+resumable but not promotable; sampler checkpoints are inference weights but
+not resumable. After the session, a sampler checkpoint must be promoted and
+served through an on-demand deployment; Fireworks states trained LoRAs are not
+available for serverless serving. This account's existing model download check
+was denied, so this does not establish local weight export. The serverless
+training API also lists separate prefill/sample/train token meters; do not
+assume the managed SFT promotion covers sampling or post-run deployment. No
+Fireworks training job or deployment was created in this refresh.
+
+Sources checked: [Muse Glimmer model page](https://fireworks.ai/models/fireworks/muse-glimmer-30b),
+[Fireworks pricing](https://fireworks.ai/pricing), and
+[Serverless Training lifecycle, sampling, checkpoints, promotion, and serving](https://docs.fireworks.ai/fine-tuning/training-api/serverless).

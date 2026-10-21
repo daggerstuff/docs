@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T17:00:00Z",
+  "finding": "Latest evaluated checkpoints v1 v99 and v2 v97 both emit the same exact high-frequency training target in all 120 held-out tool cases; neither uses tools. The v2 secondary response seen at v95 disappeared by v97.",
+  "evidence": {
+    "checkpoints": {
+      "v1": {
+        "checkpoint_version": "v97",
+        "run_id": "wandb-full-corpus-v1-tool-heldout-120-20261019T1527Z",
+        "cases": 120,
+        "response_sha256_multiplicities": [
+          {
+            "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+            "count": 120
+          }
+        ]
+      },
+      "v2": {
+        "checkpoint_version": "v95",
+        "run_id": "wandb-full-corpus-v2-tool-heldout-120-20261019T1527Z",
+        "cases": 120,
+        "response_sha256_multiplicities": [
+          {
+            "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+            "count": 110
+          },
+          {
+            "sha256": "5981e370777ca6c95d27b517f433e4d5df69589aac89c170953e41d48009bfdb",
+            "count": 10
+          }
+        ]
+      }
+    },
+    "common_response_sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+    "exact_training_target_matches": 8047,
+    "source_label": "reddit_mental_health_posts",
+    "task_type": "symptom_classification",
+    "training_rows": 171167,
+    "assistant_target_messages": 532603,
+    "rows_containing_exact_target": 8047,
+    "unique_content_groups_containing_target": 8016,
+    "target_occurrences_as_pct_of_train_rows": 4.7013,
+    "target_occurrences_as_pct_of_assistant_targets": 1.5109,
+    "other_v2_response_exact_training_target_matches": 0,
+    "same_full_candidate_and_recipe": true,
+    "latest_checkpoints": {
+      "v1": {
+        "checkpoint_version": "v99",
+        "completed_batches": 50000,
+        "run_id": "wandb-full-corpus-v1-tool-heldout-120-current-20261019T1548Z",
+        "cases": 120,
+        "tool_calls": 0,
+        "response_sha256_multiplicities": [
+          {
+            "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+            "count": 120
+          }
+        ],
+        "exact_matches_to_known_frequent_training_target": 120
+      },
+      "v2": {
+        "checkpoint_version": "v97",
+        "completed_batches": 49000,
+        "run_id": "wandb-full-corpus-v2-tool-heldout-120-current-20261019T1548Z",
+        "cases": 120,
+        "tool_calls": 0,
+        "response_sha256_multiplicities": [
+          {
+            "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+            "count": 120
+          }
+        ],
+        "exact_matches_to_known_frequent_training_target": 120
+      }
+    }
+  },
+  "interpretation": "The latest repeated outputs are exact matches to frequent symptom-classification training targets (v1 v106 4.26%; v2 v104 0.81%). System prompt removal increases variation on 15 cases but does not change the dominant response or restore tool use. This supports a target-attractor correlation and limits the system prompt as the sole immediate explanation. It does not prove cause; task balance, message/loss formatting, truncation, duplication, and optimization dynamics remain hypotheses requiring a controlled training-time ablation.",
+  "limitations": [
+    "Exact string identity and source/task distribution are measured; no semantic-response clustering was run.",
+    "Evaluation suite is synthetic and diagnostic; this does not establish clinical quality or safety.",
+    "The v1 v105 and v2 v103 outputs share a new repeated-response hash and match none of the previously identified high-frequency target hash; this does not isolate whether the behavior comes from data composition, message formatting, loss masks, or training configuration."
+  ],
+  "recommended_next_experiment": "Run the locally verified full 190139-row system-preserving package as a one-factor ablation against the same model and training config after current jobs terminate and artifact capacity is verified.",
+  "context_loss": {
+    "candidate_rows": 190139,
+    "candidate_rows_with_system_message": 188982,
+    "candidate_system_rows_pct": 99.3915,
+    "candidate_rows_by_task": {
+      "practitioner_persona": {
+        "rows": 415,
+        "rows_with_system": 415
+      },
+      "clinical_literature_distillation": {
+        "rows": 8107,
+        "rows_with_system": 8107
+      },
+      "therapy_response_generation": {
+        "rows": 77181,
+        "rows_with_system": 77181
+      },
+      "risk_assessment": {
+        "rows": 1638,
+        "rows_with_system": 1638
+      },
+      "severity_estimation": {
+        "rows": 229,
+        "rows_with_system": 229
+      },
+      "symptom_classification": {
+        "rows": 101412,
+        "rows_with_system": 101412
+      },
+      "adversarial_crisis_deescalation": {
+        "rows": 77,
+        "rows_with_system": 0
+      },
+      "clinical_edge_case": {
+        "rows": 100,
+        "rows_with_system": 0
+      },
+      "long_session_arc": {
+        "rows": 980,
+        "rows_with_system": 0
+      }
+    },
+    "system_messages_in_v2_training_payload": 0,
+    "system_messages_in_v2_validation_and_test_payloads": 0,
+    "system_messages_in_preserve_system_variant_payloads": 188980,
+    "repairs_overwrite_source_dialogues_before_projection": 52,
+    "interpretation": "The G04 builder intentionally excludes every system-role message. System instructions were present in almost all source rows, including symptom-classification tasks. The repeated training target is therefore consistent with loss of task instructions; this is a strong causal hypothesis, not yet proven."
+  },
+  "latest_checkpoint_refresh": {
+    "observed_at_utc": "2026-10-19T16:55:00Z",
+    "suite_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+    "cases": 120,
+    "checkpoints": {
+      "v1": {
+        "checkpoint_version": "v106",
+        "completed_batches": 53500,
+        "run_id": "wandb-full-corpus-v1-tool-heldout-120-live-v106-20261019T1652Z",
+        "response_sha256_multiplicities": [
+          {
+            "sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd",
+            "count": 120
+          }
+        ],
+        "tool_calls": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "completion_tokens": 360
+      },
+      "v2": {
+        "checkpoint_version": "v104",
+        "completed_batches": 52500,
+        "run_id": "wandb-full-corpus-v2-tool-heldout-120-live-v104-20261019T1652Z",
+        "response_sha256_multiplicities": [
+          {
+            "sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+            "count": 120
+          }
+        ],
+        "tool_calls": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240
+      }
+    },
+    "system_context_ablation": "v2 v103 with system messages removed produced 3 response hashes (105/13/2); the dominant response hash remained the system-present dominant hash. No tools; 60/240 state checks."
+  },
+  "previous_checkpoint_refresh": {
+    "observed_at_utc": "2026-10-19T16:46:00Z",
+    "suite_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+    "cases": 120,
+    "checkpoints": {
+      "v1": {
+        "checkpoint_version": "v105",
+        "completed_batches": 53000,
+        "run_id": "wandb-full-corpus-v1-tool-heldout-120-latest-20261019T1644Z",
+        "response_sha256_multiplicities": [
+          {
+            "sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+            "count": 120
+          }
+        ],
+        "tool_calls": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "exact_matches_to_previous_known_frequent_target": 0
+      },
+      "v2": {
+        "checkpoint_version": "v103",
+        "completed_batches": 52000,
+        "run_id": "wandb-full-corpus-v2-tool-heldout-120-latest-20261019T1644Z",
+        "response_sha256_multiplicities": [
+          {
+            "sha256": "8c76f24adf8071730282012eb124a42c153f78e6e3837590c1dd8e2a162b9d2c",
+            "count": 120
+          }
+        ],
+        "tool_calls": 0,
+        "state_checks_passed": 60,
+        "state_checks_total": 240,
+        "exact_matches_to_previous_known_frequent_target": 0
+      }
+    },
+    "observed_behavior": "The latest v1 and v2 checkpoints converge to the same one-response output across all 120 cases; it is no longer the formerly dominant frequent target hash.",
+    "interpretation": "The new results support persistent behavioral collapse on the held-out synthetic tool-use suite, while weakening the narrower claim that the single frequent training target is the only attractor. System-message loss, task imbalance, target duplication, formatting, truncation, and training dynamics remain testable hypotheses; the correlation does not establish cause."
+  },
+  "target_overlap_report": "docs/training/execution-2026-10-18/results/wandb-full-corpus-response-target-overlap-20261019T1700Z.json",
+  "target_overlap_latest_evaluated_outputs": {
+    "v1_v106": {
+      "training_exact_target_matches": 22690,
+      "training_assistant_targets": 532603,
+      "training_frequency_pct": 4.26,
+      "task_type": "symptom_classification"
+    },
+    "v2_v104": {
+      "training_exact_target_matches": 4304,
+      "training_assistant_targets": 532603,
+      "training_frequency_pct": 0.81,
+      "task_type": "symptom_classification"
+    },
+    "prior_frequent_target": {
+      "training_exact_target_matches": 8047,
+      "training_assistant_targets": 532603,
+      "training_frequency_pct": 1.51,
+      "task_type": "symptom_classification"
+    }
+  },
+  "system_context_ablation_qualification": "Removing system prompts at inference changed 15/120 outputs but left the same dominant target in 105/120; tool calls and state checks did not improve. This does not isolate training-time loss behavior.",
+  "dataset_target_prevalence": {
+    "observed_at_utc": "2026-10-19",
+    "source_candidate_sha256": "f56e10b52ed83645ec3eca1b468724644dcbf6f843da96d7e82b5b4ef47bc349",
+    "releases": {
+      "v1": {
+        "release_id": "wandb-full-corpus-20261018-v1",
+        "source_candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+        "train_rows": 171121,
+        "assistant_targets": 532557,
+        "exact_normalized_BPD": 22690,
+        "exact_BPD_percent_of_assistant_targets": 4.2606,
+        "targets_le_3_chars": 26389,
+        "short_targets_percent_of_assistant_targets": 4.9552
+      },
+      "v2": {
+        "release_id": "wandb-full-corpus-20261018-v2",
+        "source_candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+        "train_rows": 171167,
+        "assistant_targets": 532603,
+        "exact_normalized_BPD": 22690,
+        "exact_BPD_percent_of_assistant_targets": 4.2602,
+        "targets_le_3_chars": 26389,
+        "short_targets_percent_of_assistant_targets": 4.9547
+      },
+      "v4": {
+        "release_id": "wandb-full-corpus-current-master-20261019-v4",
+        "source_candidate_sha256": "f56e10b52ed83645ec3eca1b468724644dcbf6f843da96d7e82b5b4ef47bc349",
+        "train_rows": 171261,
+        "assistant_targets": 534162,
+        "exact_normalized_BPD": 22690,
+        "exact_BPD_percent_of_assistant_targets": 4.2478,
+        "targets_le_3_chars": 26389,
+        "short_targets_percent_of_assistant_targets": 4.9403
+      }
+    },
+    "exact_BPD_metadata_counts": {
+      "source": {
+        "reddit_mental_nlp": 22690
+      },
+      "task_type": {
+        "symptom_classification": 22690
+      },
+      "diagnostic_tag": {
+        "borderline_personality_disorder": 22690
+      },
+      "unmatched_or_ambiguous": 0
+    },
+    "short_targets_uniquely_attributed": {
+      "source": {
+        "reddit_mental_nlp": 22690,
+        "kokorochat": 2938,
+        "mitch_hamidi_bpd_nlp": 79,
+        "psydial": 75,
+        "empath": 26,
+        "annomi": 18,
+        "esconv": 18,
+        "psy_insight": 10
+      },
+      "task_type": {
+        "symptom_classification": 22690,
+        "therapy_response_generation": 3167,
+        "severity_estimation": 5
+      },
+      "diagnostic_tag": {
+        "borderline_personality_disorder": 22690,
+        "<missing>": 3034,
+        "diagnosed": 62,
+        "reducing alcohol consumption": 10,
+        "afraid": 6,
+        "medicine": 6,
+        "ptsd": 5,
+        "proud": 5
+      },
+      "unmatched_or_ambiguous": 527,
+      "uniquely_attributed": 25862
+    },
+    "interpretation": "Exact BPD target prevalence is substantial and concentrated in one source/task/diagnostic tuple, supporting a target-attractor correlation for the observed collapse. Its presence at the same count in v4 means the dataset rebuild did not remove this candidate target. This association alone does not establish causation.",
+    "private_aggregate_report": "ai/data/curated/recovery/gold-20261017/private-bpd-target-diagnostic-20261019/aggregate.json"
+  }
+}

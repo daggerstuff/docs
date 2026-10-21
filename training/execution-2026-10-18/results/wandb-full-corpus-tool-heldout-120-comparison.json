@@ -1,0 +1,360 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T15:29:22.946094Z",
+  "suite": "120-case synthetic tool-use held-out development suite; same frozen case hash for baseline and both SFT checkpoints",
+  "cases_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+  "metrics_validity": "synthetic deterministic checks; not clinical quality or safety validation",
+  "baseline": {
+    "source": "saved W&B base 110-case run plus saved 10-case resource-compare retry; model Qwen/Qwen3.6-35B-A3B",
+    "estimated_cost_usd": 0.09516425,
+    "actual_billed_usd": null,
+    "summary": {
+      "cases": 120,
+      "successful_cases": 120,
+      "failed_cases": 0,
+      "deterministic_checks_passed": 189,
+      "deterministic_checks_total": 240,
+      "cases_all_checks_passed": 77,
+      "tool_calls": 142,
+      "cases_with_tool_calls": 85,
+      "finish_reason_length_cases": 32,
+      "distinct_success_responses": 81,
+      "response_multiplicities": [
+        31,
+        3,
+        3,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "by_family": {
+        "appointment_consent_gate": {
+          "cases": 15,
+          "all_checks_passed": 15,
+          "checks_passed": 15,
+          "checks_total": 15,
+          "tool_calls": 14,
+          "cases_with_tool_calls": 14
+        },
+        "appointment_explicit_consent": {
+          "cases": 15,
+          "all_checks_passed": 1,
+          "checks_passed": 16,
+          "checks_total": 30,
+          "tool_calls": 30,
+          "cases_with_tool_calls": 15
+        },
+        "approval_gate": {
+          "cases": 15,
+          "all_checks_passed": 6,
+          "checks_passed": 21,
+          "checks_total": 30,
+          "tool_calls": 0,
+          "cases_with_tool_calls": 0
+        },
+        "memory_consent_gate": {
+          "cases": 15,
+          "all_checks_passed": 15,
+          "checks_passed": 15,
+          "checks_total": 15,
+          "tool_calls": 3,
+          "cases_with_tool_calls": 3
+        },
+        "memory_opt_in": {
+          "cases": 15,
+          "all_checks_passed": 6,
+          "checks_passed": 16,
+          "checks_total": 30,
+          "tool_calls": 10,
+          "cases_with_tool_calls": 10
+        },
+        "resource_compare": {
+          "cases": 15,
+          "all_checks_passed": 14,
+          "checks_passed": 42,
+          "checks_total": 45,
+          "tool_calls": 42,
+          "cases_with_tool_calls": 14
+        },
+        "resource_lookup": {
+          "cases": 15,
+          "all_checks_passed": 7,
+          "checks_passed": 21,
+          "checks_total": 30,
+          "tool_calls": 28,
+          "cases_with_tool_calls": 14
+        },
+        "untrusted_note": {
+          "cases": 15,
+          "all_checks_passed": 13,
+          "checks_passed": 43,
+          "checks_total": 45,
+          "tool_calls": 15,
+          "cases_with_tool_calls": 15
+        }
+      }
+    }
+  },
+  "trained_models": {
+    "v1": {
+      "checkpoint_version": "v97",
+      "model_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v97",
+      "run_id": "wandb-full-corpus-v1-tool-heldout-120-20261019T1527Z",
+      "status": "complete",
+      "manifest_sha256": "8523e4d63f95505f578750518fe4c5f1dd660c5407f1763f873ad46aa641080d",
+      "results_sha256": "56794c408a34ba1e455dca28b75b3775046a739b47e133cfa031f3330f609d23",
+      "estimated_cost_usd": 0.015306,
+      "estimated_max_cost_usd": 0.41472,
+      "actual_billed_usd": null,
+      "summary": {
+        "cases": 120,
+        "successful_cases": 120,
+        "failed_cases": 0,
+        "deterministic_checks_passed": 60,
+        "deterministic_checks_total": 240,
+        "cases_all_checks_passed": 30,
+        "tool_calls": 0,
+        "cases_with_tool_calls": 0,
+        "finish_reason_length_cases": 0,
+        "distinct_success_responses": 1,
+        "response_multiplicities": [
+          120
+        ],
+        "by_family": {
+          "appointment_consent_gate": {
+            "cases": 15,
+            "all_checks_passed": 15,
+            "checks_passed": 15,
+            "checks_total": 15,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "appointment_explicit_consent": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 0,
+            "checks_total": 30,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "approval_gate": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 15,
+            "checks_total": 30,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "memory_consent_gate": {
+            "cases": 15,
+            "all_checks_passed": 15,
+            "checks_passed": 15,
+            "checks_total": 15,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "memory_opt_in": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 0,
+            "checks_total": 30,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "resource_compare": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 0,
+            "checks_total": 45,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "resource_lookup": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 0,
+            "checks_total": 30,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "untrusted_note": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 15,
+            "checks_total": 45,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          }
+        }
+      }
+    },
+    "v2": {
+      "checkpoint_version": "v95",
+      "model_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v95",
+      "run_id": "wandb-full-corpus-v2-tool-heldout-120-20261019T1527Z",
+      "status": "complete",
+      "manifest_sha256": "2e231217fcfa57c187c4b3213fea04f85abd14ed4ccc4da1d9cf037bc9b53aa1",
+      "results_sha256": "541795281ab9e4f6ae20b8f8d73babb7a7a2235f48a8934c0439f03ef426a844",
+      "estimated_cost_usd": 0.0152935,
+      "estimated_max_cost_usd": 0.41472,
+      "actual_billed_usd": null,
+      "summary": {
+        "cases": 120,
+        "successful_cases": 120,
+        "failed_cases": 0,
+        "deterministic_checks_passed": 60,
+        "deterministic_checks_total": 240,
+        "cases_all_checks_passed": 30,
+        "tool_calls": 0,
+        "cases_with_tool_calls": 0,
+        "finish_reason_length_cases": 0,
+        "distinct_success_responses": 2,
+        "response_multiplicities": [
+          110,
+          10
+        ],
+        "by_family": {
+          "appointment_consent_gate": {
+            "cases": 15,
+            "all_checks_passed": 15,
+            "checks_passed": 15,
+            "checks_total": 15,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "appointment_explicit_consent": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 0,
+            "checks_total": 30,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "approval_gate": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 15,
+            "checks_total": 30,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "memory_consent_gate": {
+            "cases": 15,
+            "all_checks_passed": 15,
+            "checks_passed": 15,
+            "checks_total": 15,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "memory_opt_in": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 0,
+            "checks_total": 30,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "resource_compare": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 0,
+            "checks_total": 45,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "resource_lookup": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 0,
+            "checks_total": 30,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          },
+          "untrusted_note": {
+            "cases": 15,
+            "all_checks_passed": 0,
+            "checks_passed": 15,
+            "checks_total": 45,
+            "tool_calls": 0,
+            "cases_with_tool_calls": 0
+          }
+        }
+      }
+    }
+  }
+}

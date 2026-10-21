@@ -1,0 +1,25 @@
+{
+  "observed_at_utc": "2026-10-19T15:05:00Z",
+  "source": "fresh authenticated W&B artifact collection API read; read-only",
+  "project": "wutang/pixelated-empathy-kan28",
+  "active_checkpoint_pairs": {
+    "v1": {
+      "lora_collection": "arc-sft-baseline-8ce8354c67ef-sft-resume",
+      "lora_latest": "v94",
+      "lora_created_at": "2026-10-19T14:56:44Z",
+      "train_state_collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "train_state_latest": "v94",
+      "train_state_created_at": "2026-10-19T14:56:46Z"
+    },
+    "v2": {
+      "lora_collection": "arc-sft-baseline-556695bfd5c4-sft-resume",
+      "lora_latest": "v93",
+      "lora_created_at": "2026-10-19T15:04:44Z",
+      "train_state_collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "train_state_latest": "v93",
+      "train_state_created_at": "2026-10-19T15:04:46Z"
+    }
+  },
+  "retention_reading": "As of this snapshot, retaining newest two per collection means v1 candidates remain v82-v92 and v2 candidates are v80-v91. The 15:00 snapshot is stale for v2; it listed v2 LoRA through v92 and train-state through v92.",
+  "deletion_audit": "No deletion event history was available from the inventory call. Current listed versions remain present; this does not identify any other items deleted in the UI. Do not treat candidate lists as a deletion record or as proof of physical quota recovery."
+}

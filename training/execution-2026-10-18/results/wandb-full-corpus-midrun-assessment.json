@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "evaluation_scope": "five synthetic development capability scenarios; interim checkpoints, not final training results",
+  "results": {
+    "v1": {
+      "checkpoint_version": "v86",
+      "completed_batches": 43500,
+      "checkpoint_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v86",
+      "case_count": 5,
+      "successful_calls": 10,
+      "errors": 0,
+      "trained_arm_distinct_response_count": 1,
+      "trained_arm_response_sha256": "530a2de7357fbc4407473ce16577a7331e5199716cb53eecee843d9917adbcc6",
+      "trained_arm_identical_response_on_all_cases": true,
+      "trained_arm_cases_with_failed_deterministic_checks": 5,
+      "trained_arm_deterministic_checks_total": 7,
+      "trained_arm_deterministic_checks_passed": 2,
+      "trained_arm_tool_call_count": 0,
+      "base_arm_length_finish_count": 2,
+      "matching_training_completion_rows": 4378,
+      "estimated_inference_cost_usd": 0.003493,
+      "actual_billed_usd": null,
+      "results_sha256": "54ad741e619517d24b8fc5032474c247ee568476c7ef3691193c02f0727fb3eb"
+    },
+    "v2": {
+      "checkpoint_version": "v84",
+      "completed_batches": 42500,
+      "checkpoint_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v84",
+      "case_count": 5,
+      "successful_calls": 10,
+      "errors": 0,
+      "trained_arm_distinct_response_count": 1,
+      "trained_arm_response_sha256": "490113a290e3597c5831a1c6911a974df0f617a8c79b130fa51f5418cb3e1ec9",
+      "trained_arm_identical_response_on_all_cases": true,
+      "trained_arm_cases_with_failed_deterministic_checks": 5,
+      "trained_arm_deterministic_checks_total": 7,
+      "trained_arm_deterministic_checks_passed": 2,
+      "trained_arm_tool_call_count": 0,
+      "base_arm_length_finish_count": 2,
+      "matching_training_completion_rows": 6301,
+      "estimated_inference_cost_usd": 0.00337175,
+      "actual_billed_usd": null,
+      "results_sha256": "b71d7c51956bfd1bfac6e92adb6e65f466894e683c49a31e313ac38b2069fbeb"
+    }
+  }
+}

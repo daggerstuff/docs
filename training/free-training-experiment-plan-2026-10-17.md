@@ -14,8 +14,7 @@ credits and Adaption credits; Fireworks inference credits are tentative.
 
 Execution authorized October 17. The local preflight is complete; continue through the [execution handoff](TRAINING_EXECUTION_HANDOFF.md) and [task
 registry](execution-2026-10-17/registry.json). Scope and credit-use authorization persist; provider eligibility and actual cost coverage still require
-qualification. Automatic context compaction occurred; the active model has not been switched. Read §9 for the current provider/portable-finish plan; where it
-conflicts with older W&B preview statements in §§3 and 8, §9 is authoritative.
+qualification. Automatic context compaction occurred; the active model has not been switched. Read §9 for the current provider/portable-finish plan. Sections 3, 8, and 9 consistently record W&B Serverless Training as public preview; the remaining uncertainty is account-level eligibility and billing, not the published preview status.
 
 ## 1. Recommendation
 
@@ -73,7 +72,7 @@ model, method, promo eligibility, and cost immediately before each launch.
 | Lane | Training plan | Inference plan | Eligibility boundary |
 | --- | --- | --- | --- |
 | Fireworks | Muse Glimmer 30B LoRA SFT first | Same-provider in-session sampling for new Serverless Training jobs; hosted evaluation deployment for the existing managed checkpoint | Current offer is SFT-specific; DPO/RL and evaluation costs need separate coverage |
-| W&B | Serverless SFT, then bounded RL on independently verifiable tasks | Its automatically hosted checkpoint through W&B inference | Adapter training is free during public preview; inference and artifact storage are charged |
+| W&B | Serverless SFT under W&B's published free-during-public-preview terms; bounded RL on independently verifiable tasks only after its own scope is confirmed | Its automatically hosted checkpoint through W&B inference | Public pricing says training is free during preview; inference is metered separately and artifact storage follows workspace plan/quota |
 | Adaption | Credit-funded SFT/DPO; retain run 2 as historical reference, then qualify controlled new comparisons | Existing local adapters plus a qualified matching-base runtime; hosted inference availability needs checking | User confirms credits; verify balance, method cost, dataset floor, and export before another run |
 | GLM 5.3 / Flash | Catalog and capability qualification, followed by credit-covered experiments if eligible | Same-provider endpoint for each trained checkpoint | Fireworks lists these on its paid Serverless Training rate card; the Glimmer promotion does not establish free GLM training |
 | Together | Optional additional lane, subject to the user's provider preference | Together endpoint if a Together job is actually included | The supplied key identifies a separate service; it does not establish free training or credits |
@@ -99,10 +98,16 @@ Fireworks does not support ordinary serverless deployment of trained LoRAs;
 its serving guide specifies on-demand deployments. Avoid designing around a
 nonexistent adapter chat endpoint. [Fireworks deployment documentation](https://docs.fireworks.ai/fine-tuning/deploying-loras)
 
-W&B automatically hosts trained adapters, but public preview still bills
-inference and storage. Confirm current balances, expiry, private artifact
-access, and checkpoint identity before a smoke run.
-[W&B training documentation](https://raw.githubusercontent.com/wandb/docs/main/serverless-training.mdx)
+W&B automatically hosts trained adapters. W&B's published Training Pricing
+page explicitly says Serverless SFT/RL training is free during public preview,
+and the Serverless Training docs label the service public preview. That is the
+published service status for this plan; the docs repository being archived and
+the training-pricing URL redirecting to CoreWeave Forge do not negate that
+statement, though the redirect makes it difficult to reopen the pricing page.
+Check account billing as a separate entitlement check. Inference is metered
+separately; artifact storage follows the workspace plan/quota. Do not apply
+Forge post-training rates without confirmation that these jobs' billing changed.
+[W&B Training Pricing](https://site.wandb.ai/pricing/training/) · [Serverless Training docs](https://github.com/wandb/docs/blob/main/serverless-training.mdx)
 
 W&B's ART serverless model list currently names Qwen 3 14B and Qwen 3 30B A3B.
 Do not infer support for DeepSeek, GLM, Glimmer, or another model from inference
@@ -310,9 +315,10 @@ sanitized Weave traces; avoid publishing the full dataset as old scripts do.
 
 The prior October 17–31 schedule is superseded. Move each eligible task forward
 immediately when its prerequisites pass; a calendar date is not an execution
-gate. The October 31 Fireworks offer date, if still confirmed for the account,
-is only an external provider condition and does not override dataset, access, or
-cost checks.
+gate. Fireworks currently advertises Glimmer SFT through November 30. The
+account-side plan has reported the training promotion active, but its date is
+computed locally and does not prove account-specific eligibility; inference
+remains a separate metered cost.
 
 | Order | Work | Dependency / external wait |
 | --- | --- | --- |
@@ -388,14 +394,17 @@ fitness, provider account access, or release readiness.
 
 ## 9. 2026-10-18 execution addendum — credits, comparisons, portable finish
 
-This addendum supersedes the older W&B “training is free during public preview” assumption in §§3 and 8. The user's account-specific report is that W&B
-Serverless Training remains free/exportable and Adaption credits remain available. We will use those entitlements if the live account estimate confirms no
-uncovered charge. A read-only W&B check on 2026-10-18 returned a healthy Training API and 13 trainable bases, including `Qwen/Qwen3.6-35B-A3B`; it did not
-establish price, remaining credits, or storage headroom. Current public CoreWeave Forge pricing lists Serverless SFT at $2.70/GPU-hour, with inference and
-checkpoint storage billed separately. Older W&B docs describe a free public-preview period and are archived in their docs repository as of 2026-09-30. Resolve
-this discrepancy from the authenticated account's job estimate/credit view before creating a job. [Current CoreWeave post-training
-pricing](https://www.coreweave.com/forge-pricing/post-training) · [W&B Serverless Training docs](https://github.com/wandb/docs/blob/main/serverless-
-training.mdx) · [W&B Serverless Inference](https://site.wandb.ai/inference/).
+Correction to the earlier cost interpretation: W&B's published Training Pricing
+page says Serverless SFT/RL training is free during public preview, and its
+Serverless Training docs explicitly label the service public preview. Plan these
+SFT jobs as training-free under those published terms. The pricing URL currently
+redirects to CoreWeave Forge, which makes the original pricing page difficult to
+reopen but does not change what W&B's published page says. Check actual account
+billing separately; do not substitute Forge's separate post-training rates
+without confirmation. Inference is metered separately and artifact storage
+follows the workspace plan/quota. [W&B Training Pricing](https://site.wandb.ai/pricing/training/)
+· [Serverless Training docs](https://github.com/wandb/docs/blob/main/serverless-training.mdx)
+· [W&B Serverless Inference](https://site.wandb.ai/inference/).
 
 Adaption remains the credit-funded, exportable optimization lane. Its current API supports AutoScientist run creation, downloadable best-model artifacts, and
 downloadable/processable datasets. The dashboard, rather than the API, exposes remaining credit balance; estimates are available before credit-consuming
@@ -466,9 +475,7 @@ guidance](https://docs.adaptionlabs.ai/autoscientist/interpreting-results) · [A
 ### Critical path and time boundary
 
 The work that can proceed immediately is account/price verification, clean synthetic authoring, local rendering, evaluation-suite construction, and provider
-format dry-runs. Provider jobs can start after the synthetic set passes local and human checks and the account shows covered cost. The Fireworks free window
-is time-sensitive (owner-reported through October 31); run only its disposable synthetic diagnostic before that date if eligibility is still active. W&B
-public-preview status/pricing and Adaption/OVH credits are account-dependent, so do not infer them from old public terms. OVH training/deployment is paid
+format dry-runs. A bounded non-production research run can proceed when automated dataset/schema, split, and held-out checks pass and provider coverage is established; do not make line-by-line human review a launch gate. Reserve targeted human review for specific unresolved high-impact cases and require clinical review before clinical or production use. Fireworks' public Glimmer SFT offer currently runs through November 30; verify account-specific activation before relying on it, and budget inference separately. W&B's published Serverless Training pricing says training is free during public preview; account-specific applicability and inference credits remain unverified. The `/preview/` API path alone does not establish free pricing. OVH training/deployment is paid
 compute; request and record a bounded dollar ceiling before resource creation. External reviewer turnaround is a separate wait and does not stop the
 independent synthetic/model-comparison lane.
 

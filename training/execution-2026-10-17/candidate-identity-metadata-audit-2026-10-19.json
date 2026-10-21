@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T17:00:00Z",
+  "scope": "Local metadata-only audit of the pinned 190139-row candidate; no message text emitted or modified.",
+  "candidate": {
+    "path": "ai/data/curated/recovery/gold-20261017/train_master_gold.recovered_candidate.jsonl",
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+    "rows": 190139,
+    "matches_existing_lineage_audit": true
+  },
+  "identity_metadata": {
+    "top_level_source_label_field": "source",
+    "rows_with_nonempty_source_label": 190139,
+    "distinct_source_labels": 475,
+    "rows_with_task_type": 190139,
+    "rows_with_provenance_object": 9679,
+    "rows_without_provenance_object": 180460,
+    "rows_with_source_row_id": 0,
+    "rows_with_dataset_id": 0,
+    "rows_with_source_uri_or_url": 0,
+    "rows_with_exact_license_or_license_id": 0,
+    "limitation": "A source label and exact candidate-row hash establish identity within this recovered candidate, but do not establish the upstream source record ID, applicable license, rights, privacy status, or permission to transfer."
+  },
+  "row_hash_binding": {
+    "release_manifest": "docs/training/execution-2026-10-18/wandb-full-corpus-release-v2.json",
+    "candidate_row_refs": 190139,
+    "rowref_hashes_and_source_labels_verified": true,
+    "train_validation_test_group_intersections": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    }
+  },
+  "provenance_object_coverage": {
+    "arc_corpus_rows_with_arc_id_session_and_plan_path": 980,
+    "clinical_literature_rows_with_source_book": 8107,
+    "practitioner_rows_with_name": 415,
+    "edge_case_rows_with_seed_or_scenario_key": 0
+  },
+  "conclusion": "All 190139 rows remain technically bound by row and message hashes. The additive sidecar enriches 177423 rows with proposed, unratified source IDs and 9679 rows with local metadata locators; 3037 rows across unmapped labels have only candidate row identity. This does not assert source rights, privacy clearance, or transfer authorization.",
+  "sidecar_result": {
+    "path": "ai/data/curated/recovery/gold-20261017/lineage-sidecars/full-candidate-source-locators-20261019-v1.jsonl",
+    "sha256": "f6d3fc724db2a85f47c17b5387133c7a8ccbefb8df2cc9ce56d3dd90934d759c",
+    "size_bytes": 159019590,
+    "rows": 190139,
+    "proposed_source_id_rows": 177423,
+    "unmapped_source_id_rows": 12716,
+    "structured_local_locator_rows": 9679,
+    "unmapped_and_without_locator_rows": 3037,
+    "source_labels": 475,
+    "labels_with_proposed_unratified_source_id": 16,
+    "labels_without_mapping": 459,
+    "rowref_mismatches": 0
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "observed_at_utc": "2026-10-19T14:39:00Z",
+  "scope": "read-only refresh of the four active W&B checkpoint collections",
+  "project": "wutang/pixelated-empathy-kan28",
+  "active_jobs": {
+    "v1": {"job_id": "2087f223-a48f-45f7-9999-daece5743bba", "status": "RUNNING", "completed_batches": 46500, "latest_lora": "v92", "latest_train_state": "v92"},
+    "v2": {"job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e", "status": "RUNNING", "completed_batches": 45500, "latest_lora": "v90", "latest_train_state": "v90"}
+  },
+  "collections": {
+    "v1_lora": {"name": "arc-sft-baseline-8ce8354c67ef-sft-resume", "visible_versions": ["v82", "v83", "v84", "v85", "v86", "v87", "v88", "v89", "v90", "v91", "v92"], "bytes_each": 117843308, "latest_aliases": ["latest", "sft-resume-2087f223-a48f-45f7-9999-daece5743bba"]},
+    "v1_train_state": {"name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume", "visible_versions": ["v82", "v83", "v84", "v85", "v86", "v87", "v88", "v89", "v90", "v91", "v92"], "bytes_each": 1060414709, "latest_aliases": ["latest", "sft-resume-2087f223-a48f-45f7-9999-daece5743bba"]},
+    "v2_lora": {"name": "arc-sft-baseline-556695bfd5c4-sft-resume", "visible_versions": ["v80", "v81", "v82", "v83", "v84", "v85", "v86", "v87", "v88", "v89", "v90"], "bytes_each": 117843308, "latest_aliases": ["latest", "sft-resume-f914f0fb-f892-4e1a-8291-8cea3757274e"]},
+    "v2_train_state": {"name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume", "visible_versions": ["v80", "v81", "v82", "v83", "v84", "v85", "v86", "v87", "v88", "v89", "v90"], "bytes_each": 1060414709, "latest_aliases": ["latest", "sft-resume-f914f0fb-f892-4e1a-8291-8cea3757274e"]}
+  },
+  "cleanup_candidates_if_pruning": {
+    "retention_rule": "Keep the two newest recovery versions in every active collection; additionally retain evaluated LoRA v1 v86 and v2 v84.",
+    "train_state_v1": ["v82", "v83", "v84", "v85", "v86", "v87", "v88", "v89", "v90"],
+    "train_state_v2": ["v80", "v81", "v82", "v83", "v84", "v85", "v86", "v87", "v88"],
+    "lora_v1": ["v82", "v83", "v84", "v85", "v87", "v88", "v89", "v90"],
+    "lora_v2": ["v80", "v81", "v82", "v83", "v85", "v86", "v87", "v88"],
+    "version_count": 34,
+    "logical_bytes": 20972957690,
+    "logical_gib": 19.53,
+    "every_candidate_unaliased": true,
+    "used_by_count_for_every_candidate": 0
+  },
+  "caveats": [
+    "The version inventory changes as jobs checkpoint; re-query exact versions before cleanup.",
+    "No artifacts were deleted by this inventory.",
+    "Logical bytes and used_by() do not prove physical quota reclamation or absence of internal provider references.",
+    "This snapshot does not recover deletion history or provide the account quota meter."
+  ]
+}

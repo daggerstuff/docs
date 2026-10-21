@@ -10,19 +10,19 @@
     "batch_size": "auto",
     "learning_rate": 0.0001
   },
-  "last_status": "PENDING",
+  "last_status": "COMPLETED",
   "last_status_response": {
     "created_at": "2026-10-18T16:25:55.860648Z",
     "id": "4dee0d62-ffc0-43e2-a300-2776723a1011",
-    "status": "PENDING",
-    "updated_at": "2026-10-18T16:25:55.860648Z"
+    "status": "COMPLETED",
+    "updated_at": "2026-10-18T16:45:24.877182Z"
   },
   "manifest_sha256": "44b1267419b8a5d4fc2b57b44fda482786cfc631e917c1adc6fc4164a20eb5ce",
   "model": "Qwen/Qwen3.6-35B-A3B",
   "model_id": "a856188b-36c9-44de-a4bc-5c9e7acc6f40",
   "payload_sha256": "9e38a5a0b44129e4ba35ffca2877c3e688d997b98a22bc9bc8a0623f12b774a0",
   "phase": "job_created",
-  "phase_updated_unix": 1792340757,
+  "phase_updated_unix": 1792363558,
   "release_id": "wandb-policy-permissive-sources-20261018-v1",
   "row_count": 1673,
   "task_id": "f00e0bf27bf322be1772b4f330efcfce972635d41428c61be376307c18991ae6",

@@ -1,0 +1,64 @@
+{
+  "observed_at_utc": "2026-10-19T16:54:49Z",
+  "remote_api_observed_at_utc": "2026-10-19T16:52:25Z",
+  "project": "wutang/pixelated-empathy-kan28",
+  "remote_jobs": {
+    "v1": {
+      "status": "RUNNING",
+      "latest_adapter_and_train_state": "v106",
+      "completed_batches": 53500
+    },
+    "v2": {
+      "status": "RUNNING",
+      "latest_adapter_and_train_state": "v104",
+      "completed_batches": 52500
+    }
+  },
+  "remote_collection_versions": {
+    "v1": {
+      "count": 25,
+      "range": [
+        "v82",
+        "v106"
+      ]
+    },
+    "v2": {
+      "count": 25,
+      "range": [
+        "v80",
+        "v104"
+      ]
+    }
+  },
+  "local_backup_indexes": {
+    "manifest.json:v1": {
+      "version": "v106",
+      "completed_batches": 53500,
+      "path_exists": true,
+      "file_sizes_match_manifest": true,
+      "file_count": 2
+    },
+    "manifest.json:v2": {
+      "version": "v104",
+      "completed_batches": 52500,
+      "path_exists": true,
+      "file_sizes_match_manifest": true,
+      "file_count": 2
+    },
+    "train-state-manifest.json:v1": {
+      "version": "v106",
+      "completed_batches": 53500,
+      "path_exists": true,
+      "file_sizes_match_manifest": true,
+      "file_count": 11
+    },
+    "train-state-manifest.json:v2": {
+      "version": "v104",
+      "completed_batches": 52500,
+      "path_exists": true,
+      "file_sizes_match_manifest": true,
+      "file_count": 11
+    }
+  },
+  "conclusion": "Both remote runs remain active and publish adapter and resume-state checkpoints. Both latest adapter and train-state versions observed remotely are now represented in the private local rolling backup indexes; indexed file sizes match local manifests."
+}

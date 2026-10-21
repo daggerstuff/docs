@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "run_id": "base-resource-compare-rounds-4-followup-9-20261019T1815Z",
+  "status": "complete",
+  "cases_sha256": "a206ac10b177ae5e1f8d162218971388ff440150f3f7ddff1f7999278803a60b",
+  "config_sha256": "d215045251aa7c3e6666c391da24b72948ee0896935fb424ba64fef1aa0699b0",
+  "case_ids": [
+    "tool-eval-resource_compare-137",
+    "tool-eval-resource_compare-139",
+    "tool-eval-resource_compare-140",
+    "tool-eval-resource_compare-141",
+    "tool-eval-resource_compare-142",
+    "tool-eval-resource_compare-145",
+    "tool-eval-resource_compare-146",
+    "tool-eval-resource_compare-147",
+    "tool-eval-resource_compare-149"
+  ],
+  "arm_ids": [
+    "base"
+  ],
+  "comparison_mode": "single_arm_diagnostic",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 512,
+    "stop": []
+  },
+  "input_token_cap": 2048,
+  "max_tool_rounds": 4,
+  "allow_sealed": false,
+  "preflight_token_upper_bounds": {
+    "tool-eval-resource_compare-137": 1015,
+    "tool-eval-resource_compare-139": 1007,
+    "tool-eval-resource_compare-140": 1008,
+    "tool-eval-resource_compare-141": 1010,
+    "tool-eval-resource_compare-142": 1015,
+    "tool-eval-resource_compare-145": 1008,
+    "tool-eval-resource_compare-146": 1010,
+    "tool-eval-resource_compare-147": 1015,
+    "tool-eval-resource_compare-149": 1007
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-base",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.05184,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 9,
+  "error_count": 0,
+  "estimated_cost_usd": 0.010751,
+  "latency_ms_by_arm": {
+    "base": {
+      "count": 9,
+      "p50_ms": 4640.668,
+      "p95_ms": 5821.877
+    }
+  },
+  "usage_totals_by_arm": {
+    "base": {
+      "cases_with_usage": 9,
+      "prompt_tokens": 19584,
+      "completion_tokens": 4684,
+      "total_tokens": 24268
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "base": 0
+  }
+}

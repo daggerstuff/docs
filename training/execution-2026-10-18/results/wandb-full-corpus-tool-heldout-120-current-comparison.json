@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T15:50Z",
+  "suite": "same frozen 120-case synthetic held-out tool-use set; same cases/config/decoding/input and output limits as prior checkpoint evaluations",
+  "cases_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+  "metrics_validity": "deterministic synthetic diagnostics only; not clinical quality or safety validation",
+  "runs": {
+    "v1": {
+      "checkpoint": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ce8354c67ef-sft-resume:v99",
+      "success_count": 120,
+      "error_count": 0,
+      "estimated_cost_usd": 0.015306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "total_tool_calls": 0,
+      "cases_with_tool_calls": 0,
+      "distinct_response_count": 1,
+      "response_hash_multiplicities": [
+        120
+      ],
+      "state_checks_passed": 60,
+      "state_checks_total": 240,
+      "by_family": {
+        "resource_lookup": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 0,
+          "state_checks_total": 30
+        },
+        "resource_compare": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 0,
+          "state_checks_total": 45
+        },
+        "memory_opt_in": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 0,
+          "state_checks_total": 30
+        },
+        "memory_consent_gate": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 15,
+          "state_checks_total": 15
+        },
+        "appointment_explicit_consent": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 0,
+          "state_checks_total": 30
+        },
+        "appointment_consent_gate": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 15,
+          "state_checks_total": 15
+        },
+        "approval_gate": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 15,
+          "state_checks_total": 30
+        },
+        "untrusted_note": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 15,
+          "state_checks_total": 45
+        }
+      },
+      "prior_checkpoint": {
+        "run_id": "wandb-full-corpus-v1-tool-heldout-120-20261019T1527Z",
+        "distinct_response_count": 1,
+        "response_hash_multiplicities": [
+          120
+        ],
+        "total_tool_calls": 0,
+        "state_checks_passed": 60
+      },
+      "response_hashes": [
+        {
+          "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+          "count": 120
+        }
+      ],
+      "matches_known_frequent_training_target": 120
+    },
+    "v2": {
+      "checkpoint": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-556695bfd5c4-sft-resume:v97",
+      "success_count": 120,
+      "error_count": 0,
+      "estimated_cost_usd": 0.015306,
+      "configured_max_usd": 0.41472,
+      "actual_billed_usd": null,
+      "total_tool_calls": 0,
+      "cases_with_tool_calls": 0,
+      "distinct_response_count": 1,
+      "response_hash_multiplicities": [
+        120
+      ],
+      "state_checks_passed": 60,
+      "state_checks_total": 240,
+      "by_family": {
+        "resource_lookup": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 0,
+          "state_checks_total": 30
+        },
+        "resource_compare": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 0,
+          "state_checks_total": 45
+        },
+        "memory_opt_in": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 0,
+          "state_checks_total": 30
+        },
+        "memory_consent_gate": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 15,
+          "state_checks_total": 15
+        },
+        "appointment_explicit_consent": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 0,
+          "state_checks_total": 30
+        },
+        "appointment_consent_gate": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 15,
+          "state_checks_total": 15
+        },
+        "approval_gate": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 15,
+          "state_checks_total": 30
+        },
+        "untrusted_note": {
+          "cases": 15,
+          "tool_calls": 0,
+          "state_checks_passed": 15,
+          "state_checks_total": 45
+        }
+      },
+      "prior_checkpoint": {
+        "run_id": "wandb-full-corpus-v2-tool-heldout-120-20261019T1527Z",
+        "distinct_response_count": 2,
+        "response_hash_multiplicities": [
+          110,
+          10
+        ],
+        "total_tool_calls": 0,
+        "state_checks_passed": 60
+      },
+      "response_hashes": [
+        {
+          "sha256": "3e4cf703e12baba4254a604e2370afd9ce5ecc28d4c5de1fdd1080494d6adac8",
+          "count": 120
+        }
+      ],
+      "matches_known_frequent_training_target": 120
+    }
+  }
+}

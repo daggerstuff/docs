@@ -1,0 +1,58 @@
+{
+  "observed_at_utc": "2026-10-19T14:34:00Z",
+  "scope": "read-only inventory of W&B project artifact collections and visible versions",
+  "project": "wutang/pixelated-empathy-kan28",
+  "artifact_types": 8,
+  "collections": 283,
+  "visible_versions": 315,
+  "summed_logical_version_bytes": 29169899136,
+  "quota_meter": "not exposed by this inventory; logical size is not physical quota usage",
+  "types": {
+    "wandb-history": {"collections": 160, "versions": 160, "logical_bytes": 789512},
+    "run_table": {"collections": 2, "versions": 2, "logical_bytes": 15634},
+    "wandb-events": {"collections": 92, "versions": 92, "logical_bytes": 1637879},
+    "lora": {"collections": 11, "versions": 28, "logical_bytes": 3602817759},
+    "dataset": {"collections": 9, "versions": 5, "logical_bytes": 609368143},
+    "train-state": {"collections": 7, "versions": 24, "logical_bytes": 24955263594},
+    "code": {"collections": 1, "versions": 2, "logical_bytes": 5407},
+    "job": {"collections": 1, "versions": 2, "logical_bytes": 1208}
+  },
+  "active_jobs": {
+    "v1": {
+      "job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "RUNNING",
+      "last_status_observed_at_utc": "2026-10-19T14:33:11Z",
+      "completed_batches": 46000,
+      "latest_lora_version": "v91",
+      "latest_train_state_version": "v91",
+      "latest_aliases": ["latest", "sft-resume-2087f223-a48f-45f7-9999-daece5743bba"]
+    },
+    "v2": {
+      "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "RUNNING",
+      "last_status_observed_at_utc": "2026-10-19T14:33:11Z",
+      "completed_batches": 45000,
+      "latest_lora_version": "v89",
+      "latest_train_state_version": "v89",
+      "latest_aliases": ["latest", "sft-resume-f914f0fb-f892-4e1a-8291-8cea3757274e"]
+    }
+  },
+  "active_checkpoint_logical_bytes": 23565160340,
+  "active_checkpoint_logical_gib": 21.95,
+  "safe_retention_policy_used_for_candidate_list": "retain two newest train-state and LoRA versions per job and retain tested LoRAs v1 v86 and v2 v84",
+  "unaliased_zero_used_by_candidate_versions": {
+    "train-state-v1": ["v82", "v83", "v84", "v85", "v86", "v87", "v88", "v89"],
+    "train-state-v2": ["v80", "v81", "v82", "v83", "v84", "v85", "v86", "v87"],
+    "lora-v1": ["v82", "v83", "v84", "v85", "v87", "v88", "v89"],
+    "lora-v2": ["v80", "v81", "v82", "v83", "v85", "v86", "v87"]
+  },
+  "candidate_version_count": 30,
+  "candidate_logical_bytes": 18616441656,
+  "candidate_logical_gib": 17.34,
+  "caveats": [
+    "This inventory cannot recover user deletion history.",
+    "used_by() returned zero for each candidate, but that does not prove absence of W&B internal references.",
+    "Logical sizes do not guarantee the same amount of physical quota reclamation.",
+    "No deletion was performed by this inventory."
+  ]
+}
