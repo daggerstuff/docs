@@ -1,0 +1,176 @@
+{
+  "observed_at_utc": "2026-10-19T19:22:31.765124Z",
+  "source": "read-only W&B Artifact API vs 2026-10-19T1626Z snapshot; local rolling backup manifests",
+  "project": "wutang/pixelated-empathy-kan28",
+  "collections": {
+    "v1_lora": {
+      "type": "lora",
+      "name": "arc-sft-baseline-8ce8354c67ef-sft-resume",
+      "visible_version_count": 41,
+      "range": [
+        "v82",
+        "v122"
+      ],
+      "latest": {
+        "version": "v122",
+        "completed_batches": 61500,
+        "created_at": "2026-10-19T19:20:21Z",
+        "size_bytes": 117843308
+      },
+      "versions_in_2026_10_19T1626Z_snapshot": 22,
+      "versions_missing_since_snapshot": [],
+      "versions_added_since_snapshot": [
+        "v104",
+        "v105",
+        "v106",
+        "v107",
+        "v108",
+        "v109",
+        "v110",
+        "v111",
+        "v112",
+        "v113",
+        "v114",
+        "v115",
+        "v116",
+        "v117",
+        "v118",
+        "v119",
+        "v120",
+        "v121",
+        "v122"
+      ]
+    },
+    "v1_train_state": {
+      "type": "train-state",
+      "name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "visible_version_count": 41,
+      "range": [
+        "v82",
+        "v122"
+      ],
+      "latest": {
+        "version": "v122",
+        "completed_batches": 61500,
+        "created_at": "2026-10-19T19:20:23Z",
+        "size_bytes": 1060414709
+      },
+      "versions_in_2026_10_19T1626Z_snapshot": 22,
+      "versions_missing_since_snapshot": [],
+      "versions_added_since_snapshot": [
+        "v104",
+        "v105",
+        "v106",
+        "v107",
+        "v108",
+        "v109",
+        "v110",
+        "v111",
+        "v112",
+        "v113",
+        "v114",
+        "v115",
+        "v116",
+        "v117",
+        "v118",
+        "v119",
+        "v120",
+        "v121",
+        "v122"
+      ]
+    },
+    "v2_lora": {
+      "type": "lora",
+      "name": "arc-sft-baseline-556695bfd5c4-sft-resume",
+      "visible_version_count": 41,
+      "range": [
+        "v80",
+        "v120"
+      ],
+      "latest": {
+        "version": "v120",
+        "completed_batches": 60500,
+        "created_at": "2026-10-19T19:16:55Z",
+        "size_bytes": 117843308
+      },
+      "versions_in_2026_10_19T1626Z_snapshot": 22,
+      "versions_missing_since_snapshot": [],
+      "versions_added_since_snapshot": [
+        "v102",
+        "v103",
+        "v104",
+        "v105",
+        "v106",
+        "v107",
+        "v108",
+        "v109",
+        "v110",
+        "v111",
+        "v112",
+        "v113",
+        "v114",
+        "v115",
+        "v116",
+        "v117",
+        "v118",
+        "v119",
+        "v120"
+      ]
+    },
+    "v2_train_state": {
+      "type": "train-state",
+      "name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "visible_version_count": 41,
+      "range": [
+        "v80",
+        "v120"
+      ],
+      "latest": {
+        "version": "v120",
+        "completed_batches": 60500,
+        "created_at": "2026-10-19T19:16:57Z",
+        "size_bytes": 1060414709
+      },
+      "versions_in_2026_10_19T1626Z_snapshot": 22,
+      "versions_missing_since_snapshot": [],
+      "versions_added_since_snapshot": [
+        "v102",
+        "v103",
+        "v104",
+        "v105",
+        "v106",
+        "v107",
+        "v108",
+        "v109",
+        "v110",
+        "v111",
+        "v112",
+        "v113",
+        "v114",
+        "v115",
+        "v116",
+        "v117",
+        "v118",
+        "v119",
+        "v120"
+      ]
+    }
+  },
+  "local_backup_manifests": {
+    "manifest.json": {
+      "observed_at_utc": "2026-10-19T19:20:37.530958Z",
+      "versions": {
+        "v1": "v122",
+        "v2": "v120"
+      }
+    },
+    "train-state-manifest.json": {
+      "observed_at_utc": "2026-10-19T19:21:54.695682Z",
+      "versions": {
+        "v1": "v122",
+        "v2": "v120"
+      }
+    }
+  },
+  "interpretation": "Every version visible in the 16:26 snapshot remains visible in the same four active collections. Thus no deletion from these four active checkpoint streams is evidenced after 16:26; new versions were added. This does not identify any deletion from other collections/types or before the snapshot."
+}

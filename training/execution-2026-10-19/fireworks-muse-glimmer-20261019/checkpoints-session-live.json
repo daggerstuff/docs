@@ -1,0 +1,18 @@
+[
+  {
+    "availability": [
+      {
+        "availabilityClass": "SINGLE_REGION",
+        "createTime": "2026-10-19T19:10:40.717034Z",
+        "region": "AP_TAIWAN_1",
+        "updateTime": "2026-10-19T19:10:40.717034Z"
+      }
+    ],
+    "checkpointName": "run-984e7572ea71404eaf8a44231b9f771b-starter-base-c129c098",
+    "checkpointType": "CHECKPOINT_TYPE_INFERENCE_LORA",
+    "createTime": "2026-10-19T19:10:40.717034Z",
+    "name": "accounts/linencloset/trainingSessions/ts-98142570058847bd9725b827fe101e23/checkpoints/run-984e7572ea71404eaf8a44231b9f771b-starter-base-c129c098",
+    "promotable": true,
+    "updateTime": "2026-10-19T19:10:40.717034Z"
+  }
+]

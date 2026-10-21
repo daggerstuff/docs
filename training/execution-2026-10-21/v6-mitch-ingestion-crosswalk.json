@@ -1,0 +1,56 @@
+{
+  "by_v6_partition": {
+    "heldout": {
+      "ambiguous_upstream_rows": 88,
+      "rows": 1191,
+      "rows_with_dated_artifact_match": 192,
+      "rows_with_pinned_file_artifact_match": 192,
+      "unique_upstream_row": 104,
+      "unmatched": 999
+    },
+    "test": {
+      "ambiguous_upstream_rows": 13,
+      "rows": 640,
+      "rows_with_dated_artifact_match": 397,
+      "rows_with_pinned_file_artifact_match": 397,
+      "unique_upstream_row": 384,
+      "unmatched": 243
+    },
+    "train": {
+      "ambiguous_upstream_rows": 198,
+      "rows": 11366,
+      "rows_with_dated_artifact_match": 7311,
+      "rows_with_pinned_file_artifact_match": 7310,
+      "unique_upstream_row": 7112,
+      "unmatched": 4056
+    },
+    "validation": {
+      "ambiguous_upstream_rows": 14,
+      "rows": 693,
+      "rows_with_dated_artifact_match": 414,
+      "rows_with_pinned_file_artifact_match": 414,
+      "unique_upstream_row": 400,
+      "unmatched": 279
+    }
+  },
+  "candidate_sha256": "c7db4d695ec25866d1851c99ce4b07a654da642efffdc5db680852525385c883",
+  "crosswalk_sha256": "27e0864bf4bc00dc5ea6a73071bb43a97669c37b442b65ebff6ae3408e4bee7a",
+  "crosswalk_summary_sha256": "99b06dc25e82ed4e943b7e8a1951c4e15a71725441b5e5e507405a14ef003df4",
+  "dated_ingestion_sha256": "2f89269d3993a434e4cd2ae655b5d08fb3e3ca4dc9c90f8e8542997925e6585a",
+  "heldout_sha256": "a7f6fc3112043dc5b583b6f96ca9b6ccc4719460b6948d971c171d3b979eb82f",
+  "limitations": [
+    "Exact message correspondence in a dated artifact does not prove that artifact fed the candidate build.",
+    "Pinned-file matches retain all ambiguous alternatives; source-row statuses are not upgraded.",
+    "This bridges revalidated dated ingestion evidence, not a fresh independent rerun of the public upstream CSV adapter.",
+    "No corpus rows, targets, source decisions, authorization or explicit holdouts changed."
+  ],
+  "matched_dated_artifact_line_overlap": {
+    "distinct_pinned_file_artifact_lines": 9992,
+    "lines_crossing_v6_partitions": 0
+  },
+  "pinned_repo": "mitch-hamidi/may-2024-mental-health-nlp",
+  "pinned_revision": "5867af435d9d667ae769058f893e3b35ea9f7496",
+  "release_manifest_sha256": "79fdf52b46b3fd12a73fdc18abee2464e46da5ab5665cfe5b8967a354a266486",
+  "rights_privacy_or_clinical_clearance_granted": false,
+  "schema_version": "v6-mitch-ingestion-crosswalk-v1"
+}

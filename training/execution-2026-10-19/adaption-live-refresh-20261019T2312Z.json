@@ -1,0 +1,70 @@
+{
+  "observed_at_utc": "2026-10-19T23:14:30Z",
+  "provider": "Adaption",
+  "earlier_chat_attempt": {
+    "run_id": "33bba6d2-d9e5-408c-bd4d-76544d2cde78",
+    "status": "failed",
+    "iterations_completed": 0,
+    "max_iterations": 1,
+    "download_available": false,
+    "error_category": "generated validation JSONL empty (0 bytes)",
+    "local_schema_finding": "prompt and completion JSON values were arrays of role/content messages; current raw-data docs describe these columns as text"
+  },
+  "corrected_dataset": {
+    "dataset_id": "c00e322e-3842-4a56-9e6b-b9c81cf8b599",
+    "status": "succeeded",
+    "row_count": 522658,
+    "processed_rows": 522658,
+    "columns": [
+      "uuid",
+      "original_prompt",
+      "original_completion"
+    ],
+    "local_sha256": "8c25fd42aa405da48b5fa3f1e5f8c7381797dbc61e63898cfa6a6df43eaa9449",
+    "local_bytes": 675995387,
+    "all_assistant_targets_preserved": true,
+    "prompt_serialization": "chronological role-labeled plain text",
+    "completion_serialization": "assistant message content as text",
+    "local_file_mode": "0600"
+  },
+  "current_run": {
+    "run_id": "ef278ee7-b04d-4014-9b7a-cb7ee81b66fd",
+    "dataset_id": "c00e322e-3842-4a56-9e6b-b9c81cf8b599",
+    "model": "Qwen/Qwen3.6-35B-A3B",
+    "status": "failed",
+    "iterations_completed": 0,
+    "max_iterations": 1,
+    "training_method": "instruction",
+    "data_format": "chat",
+    "augmentation_domain_rows": 0,
+    "augmentation_general_rows": 0,
+    "download_available": false,
+    "error": "Generated validation JSONL empty (0 bytes)",
+    "completed_at": "2026-10-19T23:13:13.183Z"
+  },
+  "recommendation": {
+    "n_epochs": 1,
+    "batch_size": "max",
+    "learning_rate": 0.0003,
+    "lora_r": 8,
+    "lora_alpha": 8,
+    "lora_trainable_modules": "q_proj,v_proj",
+    "train_on_inputs": false
+  },
+  "credit_balance_and_job_cost": "not exposed by connector; not verified",
+  "sources": [
+    "https://docs.adaptionlabs.ai/autoscientist/run-on-non-adapted-data/",
+    "https://docs.adaptionlabs.ai/api/resources/autoscientist/methods/create"
+  ],
+  "comparison_finding": {
+    "successful_control_dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+    "successful_control_rows": 11192,
+    "successful_control_serialization": "array-valued prompt/completion messages",
+    "v4_ctx9_attempts_with_empty_validation": 3,
+    "v4_ctx9_serializations_tried": [
+      "array-valued structured messages",
+      "scalar text"
+    ],
+    "conclusion": "Array-vs-text schema alone is not causal; evidence narrows to larger v4 dataset path or provider-side validation preparation, cause unresolved."
+  }
+}

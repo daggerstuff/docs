@@ -1,0 +1,345 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "fc3e5540cb8356326f96a86a0e195ce57c2ac1281372e69509355af3de684509",
+  "config_sha256": "0d6897dd3357677b0c883ccc112350be9cc66cccf4b2a147a148b8f35cf2fe21",
+  "case_ids": [
+    "bounded-confirmation-000",
+    "bounded-confirmation-001",
+    "bounded-confirmation-002",
+    "bounded-confirmation-003",
+    "bounded-confirmation-004",
+    "bounded-confirmation-005",
+    "bounded-confirmation-006",
+    "bounded-confirmation-007",
+    "bounded-confirmation-008",
+    "bounded-confirmation-009",
+    "bounded-confirmation-010",
+    "bounded-confirmation-011",
+    "bounded-confirmation-012",
+    "bounded-confirmation-013",
+    "bounded-confirmation-014",
+    "bounded-confirmation-015",
+    "bounded-confirmation-016",
+    "bounded-confirmation-017",
+    "bounded-confirmation-018",
+    "bounded-confirmation-019"
+  ],
+  "group_ids": [
+    "bounded-confirmation-000",
+    "bounded-confirmation-001",
+    "bounded-confirmation-002",
+    "bounded-confirmation-003",
+    "bounded-confirmation-004",
+    "bounded-confirmation-005",
+    "bounded-confirmation-006",
+    "bounded-confirmation-007",
+    "bounded-confirmation-008",
+    "bounded-confirmation-009",
+    "bounded-confirmation-010",
+    "bounded-confirmation-011",
+    "bounded-confirmation-012",
+    "bounded-confirmation-013",
+    "bounded-confirmation-014",
+    "bounded-confirmation-015",
+    "bounded-confirmation-016",
+    "bounded-confirmation-017",
+    "bounded-confirmation-018",
+    "bounded-confirmation-019"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1536,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "atomic_safety_audit",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "A": {
+              "type": "object",
+              "properties": {
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "check_id": {
+                        "type": "string",
+                        "enum": [
+                          "privacy",
+                          "actions",
+                          "harm",
+                          "task",
+                          "distance",
+                          "nearby",
+                          "urgent",
+                          "separation",
+                          "proportionate",
+                          "unknown_medicine"
+                        ]
+                      },
+                      "met": {
+                        "type": "boolean"
+                      },
+                      "evidence_id": {
+                        "type": "string",
+                        "enum": [
+                          "s0",
+                          "s1",
+                          "s2",
+                          "s3",
+                          "s4",
+                          "s5",
+                          "s6",
+                          "s7",
+                          "s8",
+                          "s9",
+                          "s10",
+                          "s11",
+                          "s12",
+                          "s13",
+                          "s14",
+                          "s15",
+                          "s16",
+                          "s17",
+                          "s18",
+                          "s19",
+                          "s20",
+                          "s21",
+                          "s22",
+                          "s23",
+                          "s24",
+                          "s25",
+                          "s26",
+                          "s27",
+                          "s28",
+                          "s29",
+                          "s30",
+                          "s31",
+                          "s32",
+                          "s33",
+                          "s34",
+                          "s35",
+                          "s36",
+                          "s37",
+                          "s38",
+                          "s39",
+                          "s40",
+                          "s41",
+                          "s42",
+                          "s43",
+                          "s44",
+                          "s45",
+                          "s46",
+                          "s47",
+                          "s48",
+                          "s49",
+                          "s50",
+                          "s51",
+                          "s52",
+                          "s53",
+                          "s54",
+                          "s55",
+                          "s56",
+                          "s57",
+                          "s58",
+                          "s59",
+                          "s60",
+                          "s61",
+                          "s62",
+                          "s63"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "check_id",
+                      "met",
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 4,
+                  "maxItems": 7
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                }
+              },
+              "required": [
+                "checks",
+                "rationale"
+              ],
+              "additionalProperties": false
+            },
+            "B": {
+              "type": "object",
+              "properties": {
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "check_id": {
+                        "type": "string",
+                        "enum": [
+                          "privacy",
+                          "actions",
+                          "harm",
+                          "task",
+                          "distance",
+                          "nearby",
+                          "urgent",
+                          "separation",
+                          "proportionate",
+                          "unknown_medicine"
+                        ]
+                      },
+                      "met": {
+                        "type": "boolean"
+                      },
+                      "evidence_id": {
+                        "type": "string",
+                        "enum": [
+                          "s0",
+                          "s1",
+                          "s2",
+                          "s3",
+                          "s4",
+                          "s5",
+                          "s6",
+                          "s7",
+                          "s8",
+                          "s9",
+                          "s10",
+                          "s11",
+                          "s12",
+                          "s13",
+                          "s14",
+                          "s15",
+                          "s16",
+                          "s17",
+                          "s18",
+                          "s19",
+                          "s20",
+                          "s21",
+                          "s22",
+                          "s23",
+                          "s24",
+                          "s25",
+                          "s26",
+                          "s27",
+                          "s28",
+                          "s29",
+                          "s30",
+                          "s31",
+                          "s32",
+                          "s33",
+                          "s34",
+                          "s35",
+                          "s36",
+                          "s37",
+                          "s38",
+                          "s39",
+                          "s40",
+                          "s41",
+                          "s42",
+                          "s43",
+                          "s44",
+                          "s45",
+                          "s46",
+                          "s47",
+                          "s48",
+                          "s49",
+                          "s50",
+                          "s51",
+                          "s52",
+                          "s53",
+                          "s54",
+                          "s55",
+                          "s56",
+                          "s57",
+                          "s58",
+                          "s59",
+                          "s60",
+                          "s61",
+                          "s62",
+                          "s63"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "check_id",
+                      "met",
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 4,
+                  "maxItems": 7
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                }
+              },
+              "required": [
+                "checks",
+                "rationale"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "A",
+            "B"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "max_tool_rounds": 0,
+  "input_token_cap": 16384,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "bounded-confirmation-000": 5144,
+    "bounded-confirmation-001": 5147,
+    "bounded-confirmation-002": 4649,
+    "bounded-confirmation-003": 4418,
+    "bounded-confirmation-004": 4406,
+    "bounded-confirmation-005": 4756,
+    "bounded-confirmation-006": 3991,
+    "bounded-confirmation-007": 4837,
+    "bounded-confirmation-008": 4213,
+    "bounded-confirmation-009": 4204,
+    "bounded-confirmation-010": 3396,
+    "bounded-confirmation-011": 3835,
+    "bounded-confirmation-012": 4919,
+    "bounded-confirmation-013": 4932,
+    "bounded-confirmation-014": 3949,
+    "bounded-confirmation-015": 3969,
+    "bounded-confirmation-016": 3944,
+    "bounded-confirmation-017": 3664,
+    "bounded-confirmation-018": 4023,
+    "bounded-confirmation-019": 4728
+  },
+  "estimated_max_cost_usd": 0.041984,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

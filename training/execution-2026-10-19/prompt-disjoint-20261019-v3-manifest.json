@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "release_id": "prompt-disjoint-20261019-v3",
+  "status": "local_candidate_prompt_disjoint_split_audit",
+  "upload_gate": false,
+  "scope": "research-only; no clinical or production readiness",
+  "split_key": "SHA-256 of concatenated user turns after casefold and whitespace normalization",
+  "assignment": "first 8 hex digits modulo 100; train < 90, validation < 95, else test",
+  "source_releases": {
+    "system_stripped_manifest_sha256": "a4b0507ff6447644d022e28b1ada91daefa0139f23f8800ae953a0fa9ab5cdb8",
+    "preserve_system_manifest_sha256": "36508824e3c75893e2e0f03eece2a8f785275d56f7a2975da1d9d366c30dbefe"
+  },
+  "input_rows": 190244,
+  "normalized_prompt_groups": 177004,
+  "prompt_groups_by_split": {
+    "train": 159403,
+    "validation": 8685,
+    "test": 8916
+  },
+  "rows_by_split": {
+    "system-stripped": {
+      "train": 171166,
+      "validation": 9500,
+      "test": 9578
+    },
+    "preserve-system": {
+      "train": 171166,
+      "validation": 9500,
+      "test": 9578
+    }
+  },
+  "preserve_system_pair_validation": "all source rows aligned; non-system projections equal; system weights zero",
+  "verification": {
+    "output_files_reloaded_and_sha256_checked": true,
+    "all_normalized_user_prompt_groups_split_disjoint": true,
+    "system_variants_same_rows_and_non_system_projection": true,
+    "source_row_count_preserved": 190244
+  },
+  "lineage_path": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-row-lineage.jsonl",
+  "lineage_sha256": "60598ab01fdeca2c033a4f5d30e78577398afe25590e3459d5977466cd78e0de",
+  "variants": {
+    "system-stripped": {
+      "directory": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-system-stripped",
+      "files": {
+        "train": {
+          "path": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-system-stripped/train.jsonl",
+          "rows": 171166,
+          "sha256": "0ad535877873676e0f220251e5da5f89b5616ddf4a8a46b622e33dac98edc721",
+          "bytes": 298415825
+        },
+        "validation": {
+          "path": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-system-stripped/validation.jsonl",
+          "rows": 9500,
+          "sha256": "d9d594c25d79b5ef44e97c731fb2b378655691e22c5d9edaded0a6eadb4fe8ef",
+          "bytes": 16634348
+        },
+        "test": {
+          "path": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-system-stripped/test.jsonl",
+          "rows": 9578,
+          "sha256": "0d68311d7c01fa04a23877833b8dd0f6602e1a49f79338e0f312380fc6a0f2ea",
+          "bytes": 16662314
+        }
+      },
+      "rows_by_original_split": {
+        "train": 171261,
+        "validation": 9673,
+        "test": 9310
+      }
+    },
+    "preserve-system": {
+      "directory": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-preserve-system",
+      "files": {
+        "train": {
+          "path": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-preserve-system/train.jsonl",
+          "rows": 171166,
+          "sha256": "bd41613ffec89bacdf8205348e2a1ff99423937d1013f3e81f0c265a5db0a4f5",
+          "bytes": 340219743
+        },
+        "validation": {
+          "path": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-preserve-system/validation.jsonl",
+          "rows": 9500,
+          "sha256": "52091fe3219750b2959345315f49d4a38b86d417c48d316b965ebaf93e4171cf",
+          "bytes": 18959418
+        },
+        "test": {
+          "path": "ai/data/curated/recovery/gold-20261017/prompt-disjoint-20261019-v3-preserve-system/test.jsonl",
+          "rows": 9578,
+          "sha256": "926dc90f51cf58bbff873c8c0d37d769149f0985f5a46b6576359178f0f87fc1",
+          "bytes": 19002385
+        }
+      },
+      "rows_by_original_split": {
+        "train": 171261,
+        "validation": 9673,
+        "test": 9310
+      }
+    }
+  },
+  "limitations": [
+    "Prompt disjointness is exact after casefold and whitespace normalization; semantic paraphrase overlap is not measured.",
+    "Upstream source rights/privacy statuses are unchanged and not resolved by this packaging step.",
+    "Not uploaded to any provider; the current v4 training jobs continue unchanged."
+  ]
+}

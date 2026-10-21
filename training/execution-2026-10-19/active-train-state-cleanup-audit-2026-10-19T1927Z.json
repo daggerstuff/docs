@@ -1,0 +1,723 @@
+{
+  "observed_at_utc": "2026-10-19T19:29:07.982367Z",
+  "project": "wutang/pixelated-empathy-kan28",
+  "scope": "older active-job train-state versions; two newest per collection excluded",
+  "candidate_count": 79,
+  "all_alias_free": true,
+  "all_dependency_checks_succeeded": true,
+  "zero_dependencies": 79,
+  "logical_bytes": 83772762011,
+  "candidates": [
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v80",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v81",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v82",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v83",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v84",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v85",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v86",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v87",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v88",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v89",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v90",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v91",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v92",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v93",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v94",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v95",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v96",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v97",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v98",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v99",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v100",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v101",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v102",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v103",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v104",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v105",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v106",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v107",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v108",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v109",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v110",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v111",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v112",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v113",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v114",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v115",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v116",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v117",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v118",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v119",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v82",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v83",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v84",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v85",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v86",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v87",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v88",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v89",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v90",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v91",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v92",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v93",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v94",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v95",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v96",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v97",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v98",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v99",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v100",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v101",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v102",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v103",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v104",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v105",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v106",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v107",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v108",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v109",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v110",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v111",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v112",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v113",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v114",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v115",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v116",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v117",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v118",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v119",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v120",
+      "size_bytes": 1060414709,
+      "aliases": [],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    }
+  ]
+}

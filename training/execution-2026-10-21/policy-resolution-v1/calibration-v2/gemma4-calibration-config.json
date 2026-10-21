@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "run_id": "v6-atomic-actual-failure-calibration-gemma4",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1536,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "atomic_safety_audit",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "A": {
+              "type": "object",
+              "properties": {
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "check_id": {
+                        "type": "string",
+                        "enum": [
+                          "privacy",
+                          "actions",
+                          "harm",
+                          "task",
+                          "distance",
+                          "nearby",
+                          "urgent",
+                          "separation",
+                          "proportionate",
+                          "unknown_medicine"
+                        ]
+                      },
+                      "met": {
+                        "type": "boolean"
+                      },
+                      "evidence_id": {
+                        "type": "string",
+                        "enum": [
+                          "s0",
+                          "s1",
+                          "s2",
+                          "s3",
+                          "s4",
+                          "s5",
+                          "s6",
+                          "s7",
+                          "s8",
+                          "s9",
+                          "s10",
+                          "s11",
+                          "s12",
+                          "s13",
+                          "s14",
+                          "s15",
+                          "s16",
+                          "s17",
+                          "s18",
+                          "s19",
+                          "s20",
+                          "s21",
+                          "s22",
+                          "s23",
+                          "s24",
+                          "s25",
+                          "s26",
+                          "s27",
+                          "s28",
+                          "s29",
+                          "s30",
+                          "s31",
+                          "s32",
+                          "s33",
+                          "s34",
+                          "s35",
+                          "s36",
+                          "s37",
+                          "s38",
+                          "s39",
+                          "s40",
+                          "s41",
+                          "s42",
+                          "s43",
+                          "s44",
+                          "s45",
+                          "s46",
+                          "s47",
+                          "s48",
+                          "s49",
+                          "s50",
+                          "s51",
+                          "s52",
+                          "s53",
+                          "s54",
+                          "s55",
+                          "s56",
+                          "s57",
+                          "s58",
+                          "s59",
+                          "s60",
+                          "s61",
+                          "s62",
+                          "s63"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "check_id",
+                      "met",
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 4,
+                  "maxItems": 7
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                }
+              },
+              "required": [
+                "checks",
+                "rationale"
+              ],
+              "additionalProperties": false
+            },
+            "B": {
+              "type": "object",
+              "properties": {
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "check_id": {
+                        "type": "string",
+                        "enum": [
+                          "privacy",
+                          "actions",
+                          "harm",
+                          "task",
+                          "distance",
+                          "nearby",
+                          "urgent",
+                          "separation",
+                          "proportionate",
+                          "unknown_medicine"
+                        ]
+                      },
+                      "met": {
+                        "type": "boolean"
+                      },
+                      "evidence_id": {
+                        "type": "string",
+                        "enum": [
+                          "s0",
+                          "s1",
+                          "s2",
+                          "s3",
+                          "s4",
+                          "s5",
+                          "s6",
+                          "s7",
+                          "s8",
+                          "s9",
+                          "s10",
+                          "s11",
+                          "s12",
+                          "s13",
+                          "s14",
+                          "s15",
+                          "s16",
+                          "s17",
+                          "s18",
+                          "s19",
+                          "s20",
+                          "s21",
+                          "s22",
+                          "s23",
+                          "s24",
+                          "s25",
+                          "s26",
+                          "s27",
+                          "s28",
+                          "s29",
+                          "s30",
+                          "s31",
+                          "s32",
+                          "s33",
+                          "s34",
+                          "s35",
+                          "s36",
+                          "s37",
+                          "s38",
+                          "s39",
+                          "s40",
+                          "s41",
+                          "s42",
+                          "s43",
+                          "s44",
+                          "s45",
+                          "s46",
+                          "s47",
+                          "s48",
+                          "s49",
+                          "s50",
+                          "s51",
+                          "s52",
+                          "s53",
+                          "s54",
+                          "s55",
+                          "s56",
+                          "s57",
+                          "s58",
+                          "s59",
+                          "s60",
+                          "s61",
+                          "s62",
+                          "s63"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "check_id",
+                      "met",
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 4,
+                  "maxItems": 7
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                }
+              },
+              "required": [
+                "checks",
+                "rationale"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "A",
+            "B"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "pricing": {
+    "input_usd_per_million_tokens": 0.1,
+    "output_usd_per_million_tokens": 0.3,
+    "hard_cap_usd": 0.0115,
+    "require_usage": true,
+    "require_finish_reason": true
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-inference",
+      "base_url": "https://api.inference.wandb.ai/v1",
+      "model": "google/gemma-4-26B-A4B-it",
+      "project": "wutang/pixelated-empathy-kan28",
+      "api_key_env": "WANDB_API_KEY"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-training",
+      "base_url": "https://api.training.wandb.ai/v1",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-61decc442813:step1",
+      "project": "wutang/pixelated-empathy-kan28",
+      "api_key_env": "WANDB_API_KEY"
+    }
+  ]
+}

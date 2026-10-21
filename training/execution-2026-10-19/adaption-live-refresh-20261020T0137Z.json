@@ -1,0 +1,114 @@
+{
+  "observed_at_utc": "2026-10-20T01:37:34Z",
+  "provider": "Adaption",
+  "access": "Authenticated read-only connector calls succeeded",
+  "datasets": {
+    "full_history": {
+      "id": "21f6d03f-5f56-41be-9070-14c8fccbf442",
+      "status": "succeeded",
+      "rows": 522658,
+      "prompt_column": null,
+      "completion_column": null
+    },
+    "ctx9_arrays": {
+      "id": "5cf8efd5-3426-4cc4-b3cc-4d40f7912f9d",
+      "status": "succeeded",
+      "rows": 522658,
+      "prompt_column": null,
+      "completion_column": null
+    },
+    "ctx9_scalar_text": {
+      "id": "c00e322e-3842-4a56-9e6b-b9c81cf8b599",
+      "status": "succeeded",
+      "rows": 522658,
+      "processed_rows": 522658,
+      "columns": ["uuid", "original_prompt", "original_completion"],
+      "prompt_column": null,
+      "completion_column": null
+    },
+    "successful_control": {
+      "id": "2f983459-b3ff-47be-aa62-faa686b14306",
+      "status": "succeeded",
+      "rows": 11192,
+      "prompt_column": "original_prompt",
+      "completion_column": "original_completion"
+    }
+  },
+  "runs": {
+    "v4_full_history": {
+      "id": "7b859acc-f325-4022-92c7-b1a1ff40c2c3",
+      "status": "failed",
+      "iterations_completed": 0,
+      "error": "Timed out after 60000ms during S3 download of train JSONL"
+    },
+    "ctx9_instruction": {
+      "id": "8d00b26c-de36-452a-abc2-5cd36b76036b",
+      "status": "failed",
+      "iterations_completed": 0,
+      "error": "Empty generated validation JSONL (0 bytes)"
+    },
+    "ctx9_chat_arrays": {
+      "id": "33bba6d2-d9e5-408c-bd4d-76544d2cde78",
+      "status": "failed",
+      "iterations_completed": 0,
+      "error": "Empty generated validation JSONL (0 bytes)"
+    },
+    "ctx9_chat_scalar": {
+      "id": "ef278ee7-b04d-4014-9b7a-cb7ee81b66fd",
+      "status": "failed",
+      "iterations_completed": 0,
+      "error": "Empty generated validation JSONL (0 bytes)"
+    },
+    "control": {
+      "id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+      "status": "succeeded",
+      "iterations_completed": 1,
+      "download_available": true,
+      "best_win_rate": 0.6414
+    }
+  },
+  "model": {
+    "id": "Qwen/Qwen3.6-35B-A3B",
+    "available": true,
+    "methods": ["sft", "dpo"],
+    "training_types": ["lora"],
+    "context_length": 262144
+  },
+  "nonlaunching_recommendation": {
+    "dataset_id": "c00e322e-3842-4a56-9e6b-b9c81cf8b599",
+    "model": "Qwen/Qwen3.6-35B-A3B",
+    "hyperparams": {
+      "training_type": "lora",
+      "n_epochs": 1,
+      "lora_r": 8,
+      "lora_alpha": 8,
+      "lora_trainable_modules": "q_proj,v_proj",
+      "learning_rate": 0.0003,
+      "batch_size": "max",
+      "train_on_inputs": false
+    },
+    "credit_quote_returned": false,
+    "account_balance_returned": false
+  },
+  "api_capability_audit": {
+    "autoscientist_recommend_hyperparams": "available; recipe-only, no cost quote",
+    "autoscientist_create": "available; launches a run and spends credits; not called",
+    "credit_balance_or_billing_history_method": "not present in exposed Adaption connector tools",
+    "training_quote_method": "not present in exposed Adaption connector tools",
+    "separate_adaptive_data_estimate": "documented for data transformation, not AutoScientist training cost"
+  },
+  "ui_preflight": {
+    "officially_documented_surface": "Adaption app final order summary, with separate lines for domain expansion, general expansion, and AutoScientist training",
+    "browserbase_start_result": "Session terminated",
+    "quote_or_balance_observed": false
+  },
+  "work_created": false,
+  "upload_created": false,
+  "training_run_created": false,
+  "sources": [
+    "https://docs.adaptionlabs.ai/api/resources/autoscientist/methods/recommend_hyperparams",
+    "https://docs.adaptionlabs.ai/api/resources/autoscientist/methods/create",
+    "https://docs.adaptionlabs.ai/tutorials/autoscientist-app-walkthrough/",
+    "https://docs.adaptionlabs.ai/api/resources/datasets/methods/adapt/"
+  ]
+}

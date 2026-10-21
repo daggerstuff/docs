@@ -1,0 +1,10 @@
+{
+  "run_dir": "/home/vivi/pixelated/docs/training/execution-2026-10-19/fireworks-muse-glimmer-20261019/logs",
+  "source": "/home/vivi/pixelated/ai/data/curated/recovery/gold-20261017/wandb-full-corpus-current-master-20261019-v4/train.jsonl",
+  "train_rows": 171261,
+  "holdout_rows": 120,
+  "example_tokens": 129,
+  "example_trained_tokens": 39,
+  "max_seq_len": 2048,
+  "fits": true
+}

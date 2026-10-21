@@ -1,0 +1,118 @@
+{
+  "by_v6_partition": {
+    "test": {
+      "exact_ambiguous_upstream_rows": 1,
+      "exact_unique_upstream_row": 52,
+      "exact_unmatched": 509,
+      "normalized_ambiguous_upstream_rows": 1,
+      "normalized_unique_upstream_row": 260,
+      "normalized_unmatched": 301,
+      "rows": 562
+    },
+    "train": {
+      "exact_ambiguous_upstream_rows": 15,
+      "exact_unique_upstream_row": 991,
+      "exact_unmatched": 9048,
+      "normalized_ambiguous_upstream_rows": 18,
+      "normalized_unique_upstream_row": 4953,
+      "normalized_unmatched": 5083,
+      "rows": 10054
+    },
+    "validation": {
+      "exact_ambiguous_upstream_rows": 1,
+      "exact_unique_upstream_row": 47,
+      "exact_unmatched": 471,
+      "normalized_ambiguous_upstream_rows": 1,
+      "normalized_unique_upstream_row": 239,
+      "normalized_unmatched": 279,
+      "rows": 519
+    }
+  },
+  "candidate_family_rows": 11135,
+  "candidate_sha256": "c7db4d695ec25866d1851c99ce4b07a654da642efffdc5db680852525385c883",
+  "heldout_sha256": "a7f6fc3112043dc5b583b6f96ca9b6ccc4719460b6948d971c171d3b979eb82f",
+  "legacy_candidate_sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663",
+  "limitations": [
+    "Exact sequence matches establish limited technical origin evidence, not rights or consent.",
+    "Normalized matches are weaker evidence and remain separate from exact matches.",
+    "Locator overlap checks only matched rows; unmatched rows and semantic similarities are not certified.",
+    "Ambiguous and unmatched rows retain their status; no source decision is upgraded.",
+    "This binds original candidate rows, not repaired targets or clinical quality.",
+    "No corpus rows, partitions, release authorization or explicit holdouts are modified."
+  ],
+  "membership_sha256": "e53ba2109a52a870e33118f0e8c1aaa37dc11b62bd0058ec80307539c401ecf5",
+  "origin_revalidation": {
+    "adapter_sha256": "fc0e06c9d0cb1f4e1e428ec7c2ed2f21cadfe872fe253346e6019324495f7466",
+    "candidate": {
+      "bytes": 411493422,
+      "rows_in_sidecar": 11135,
+      "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663"
+    },
+    "results": {
+      "candidate_family_rows": 11135,
+      "exact_contiguous_sequence_matches": 1107,
+      "exact_full_non_system_sequence_equal_rows": 1107,
+      "exact_status_counts": {
+        "ambiguous_upstream_rows": 17,
+        "unique_upstream_row": 1090,
+        "unmatched": 10028
+      },
+      "normalized_contiguous_sequence_matches": 5472,
+      "normalized_status_counts": {
+        "ambiguous_upstream_rows": 20,
+        "unique_upstream_row": 5452,
+        "unmatched": 5663
+      },
+      "sidecar_rows": 11135
+    },
+    "source_adapter_usable_rows": 16057,
+    "source_files": {
+      "Interview_Data_6K.csv": {
+        "bytes": 13580450,
+        "sha256": "7a2192299807ab2aa202a51dcc5b8b4cb35d1ee6b6eb38e9573be0aa51dc4992"
+      },
+      "Synthetic_Data_10K.csv": {
+        "bytes": 32843740,
+        "sha256": "52273a1d682986013dd6ad077be8a79075bb1877a022cbb33d170527b7fdadea"
+      }
+    },
+    "source_repo": "ShenLab/MentalChat16K",
+    "source_revision": "5f60cd380cfc58f0f12d44892bed41ee3670a70a",
+    "status": "validated_hash_only_exact_turn_sequence_bindings"
+  },
+  "origin_validator_sha256": "1365f98c9b4b7faae9a70854c1499f16c72b699c50aae8a158e2bb0dd6aecf44",
+  "release_id": "wandb-full-corpus-current-master-20261021-v6",
+  "release_manifest_sha256": "79fdf52b46b3fd12a73fdc18abee2464e46da5ab5665cfe5b8967a354a266486",
+  "rights_privacy_or_clinical_clearance_granted": false,
+  "schema_version": "v6-mentalchat-origin-v1",
+  "sidecar_sha256": "c156ece7929bd7e854900301b9ca4a070cd46662aef8e47de39fe6ae69ae1dac",
+  "source_adapter_sha256": "fc0e06c9d0cb1f4e1e428ec7c2ed2f21cadfe872fe253346e6019324495f7466",
+  "source_files": {
+    "Interview_Data_6K.csv": {
+      "bytes": 13580450,
+      "sha256": "7a2192299807ab2aa202a51dcc5b8b4cb35d1ee6b6eb38e9573be0aa51dc4992"
+    },
+    "Synthetic_Data_10K.csv": {
+      "bytes": 32843740,
+      "sha256": "52273a1d682986013dd6ad077be8a79075bb1877a022cbb33d170527b7fdadea"
+    }
+  },
+  "source_locator_overlap": {
+    "exact": {
+      "distinct_matched_source_rows": 1138,
+      "source_rows_in_multiple_v6_partitions": 0,
+      "source_rows_shared_by_train_and_heldout": 0,
+      "source_rows_shared_by_train_and_test": 0,
+      "source_rows_shared_by_train_and_validation": 0
+    },
+    "normalized": {
+      "distinct_matched_source_rows": 5509,
+      "source_rows_in_multiple_v6_partitions": 0,
+      "source_rows_shared_by_train_and_heldout": 0,
+      "source_rows_shared_by_train_and_test": 0,
+      "source_rows_shared_by_train_and_validation": 0
+    }
+  },
+  "source_repo": "ShenLab/MentalChat16K",
+  "source_revision": "5f60cd380cfc58f0f12d44892bed41ee3670a70a"
+}

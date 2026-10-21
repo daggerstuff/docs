@@ -1,0 +1,14 @@
+{
+  "status": "complete_rejected_for_booking_failures",
+  "hypothesis": "An optional note can be omitted instead of requiring an empty scalar.",
+  "changed": "Booking note description and required membership only. No coercion or scoring relaxation.",
+  "cases": 30,
+  "source_cases_sha256": "7f61dbb1efd6a36be5e39a52ff9e52022bb2d4d446e62e48739fba05dd4e15d8",
+  "probe_cases_sha256": "4d64d13def5da79c016050b56e60a3af49892a7bd5c7ec20f8997b5482087f37",
+  "config_sha256": "9dc9afb336824c774ff804a41ffb8d3a65e178fea039164c2b9718339bddad17",
+  "shared_repair_cap_usd": 1.237,
+  "prior_estimated_usage_usd": 0.11545582,
+  "reservation_usd": 0.25,
+  "clinical_clearance": false,
+  "completion_estimated_cost_usd": 0.01191759
+}

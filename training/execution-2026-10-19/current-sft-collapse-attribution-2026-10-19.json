@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T22:40:00Z",
+  "scope": "hash-only target attribution and aggregate comparison for the latest W&B full-corpus checkpoints; no raw clinical text or per-case outputs included",
+  "candidate": {
+    "release_id": "wandb-full-corpus-current-master-20261019-v4",
+    "rows": 190244,
+    "sha256": "f56e10b52ed83645ec3eca1b468724644dcbf6f843da96d7e82b5b4ef47bc349"
+  },
+  "training_partition": {
+    "rows": 171261,
+    "sha256": "60841fbc8d917de4699d1b41eddddf03fade949496db3e561769f94959e37f20",
+    "assistant_targets": 534162,
+    "system_messages_in_current_payload": 0,
+    "user_message_weight": 0,
+    "assistant_message_weight": 1
+  },
+  "task_mix": {
+    "symptom_classification": {
+      "rows": 91186,
+      "row_fraction": 0.5324,
+      "assistant_targets": 91186,
+      "target_fraction": 0.1707
+    },
+    "therapy_response_generation": {
+      "rows": 69597,
+      "row_fraction": 0.4064,
+      "assistant_targets": 409810,
+      "target_fraction": 0.7672
+    },
+    "other_tasks_rows": 10478,
+    "other_tasks_assistant_targets": 33166
+  },
+  "collapsed_response": {
+    "normalized_response_sha256": "74fd2e753c4e2cd9afcadf0a6667fc47ef068c8a782d50e2f3c3907fc666d4c8",
+    "matches_exact_label": "depression",
+    "length_characters": 10,
+    "occurrences_in_v4_assistant_targets": 12771,
+    "fraction_of_v4_assistant_targets": 0.023906,
+    "source_task_attribution": {
+      "reddit_mental_nlp": 12771,
+      "symptom_classification": 12771
+    },
+    "causal_status": "association only; not proof that this target or source caused collapse"
+  },
+  "paired_evaluations": {
+    "suite_sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+    "v1_v141": {
+      "run_id": "wandb-latest-v1-v141-vs-base-heldout120-20261019T2224Z",
+      "checkpoint_batches": 71000,
+      "completed_calls": 240,
+      "errors": 0,
+      "sft_unique_normalized_responses": 1,
+      "sft_tool_actions": 0,
+      "sft_synthetic_assertions_passed": 60,
+      "sft_synthetic_assertions_total": 240,
+      "base_unique_normalized_responses": 96,
+      "base_tool_actions": 149,
+      "base_successful_tool_actions": 143,
+      "base_synthetic_assertions_passed": 201,
+      "base_synthetic_assertions_total": 240,
+      "estimated_cost_usd": 0.11017575,
+      "actual_billed_usd": null
+    },
+    "v2_v140": {
+      "run_id": "wandb-latest-v2-v140-vs-base-heldout120-20261019T2229Z",
+      "checkpoint_batches": 70500,
+      "completed_calls": 240,
+      "errors": 0,
+      "sft_unique_normalized_responses": 1,
+      "sft_tool_actions": 0,
+      "sft_synthetic_assertions_passed": 60,
+      "sft_synthetic_assertions_total": 240,
+      "base_unique_normalized_responses": 87,
+      "base_tool_actions": 141,
+      "base_successful_tool_actions": 138,
+      "base_synthetic_assertions_passed": 185,
+      "base_synthetic_assertions_total": 240,
+      "estimated_cost_usd": 0.10955575,
+      "actual_billed_usd": null
+    }
+  },
+  "system_context_ablation": {
+    "baseline_release": "wandb-full-corpus-current-master-20261019-v4",
+    "builder_behavior": "ai/training/build_full_candidate_release.py explicitly discards system messages before packaging the v4 baseline payload",
+    "preserve_system_release": "wandb-full-corpus-current-master-20261019-v4-preserve-system",
+    "preserve_system_release_status": "local staging only; upload_gate=false; no training job is bound to it",
+    "row_projection_reverification": {
+      "train_rows": 171261,
+      "train_system_messages": 170115,
+      "train_non_system_projection_mismatches": 0,
+      "train_system_weight_errors": 0,
+      "validation_rows": 9673,
+      "validation_system_messages": 9609,
+      "validation_non_system_projection_mismatches": 0,
+      "validation_system_weight_errors": 0,
+      "test_rows": 9310,
+      "test_system_messages": 9256,
+      "test_non_system_projection_mismatches": 0,
+      "test_system_weight_errors": 0
+    },
+    "pending_job_id": "24cc2d06-3ec3-4356-ad3a-179694dd86a7",
+    "pending_job_identity": "ordinary v4 no-system payload; launcher state binds it to artifact wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-full-corpus-current-master-20261019-v4-baseline-30e158011725:v0 with payload SHA 60841fbc8d917de4699d1b41eddddf03fade949496db3e561769f94959e37f20",
+    "pending_status": "PENDING since 2026-10-19T17:07:21.977690Z; no error or job events returned at 22:39 UTC"
+  },
+  "interpretation": "Both newest evaluated v1/v2 checkpoints emit the exact same short target found 12,771 times in the training data, all attributed to reddit_mental_nlp symptom classification. The v4 baseline also removes all system-message context, while a same-row/same-split preserve-system variant is staged and verified. These are strong leads for a full-scale training-time A/B comparison; they do not isolate a cause or establish clinical quality/safety.",
+  "next_controlled_experiment": "Run the staged same-model/same-data/same-split system-preserving v4 package against the v4 baseline after W&B job capacity and separately billed storage coverage are verified. Do not label pending job 24cc as that experiment.",
+  "privacy": "Only hashes, counts, task labels, checkpoint IDs, and aggregate synthetic evaluation metrics are recorded."
+}

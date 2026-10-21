@@ -1,0 +1,4108 @@
+{
+  "train_path": "ai/data/curated/recovery/gold-20261017/wandb-full-corpus-current-master-20261021-v6/train.jsonl",
+  "rows_scanned": 78681,
+  "train_sha256": "1428a1fda03f15cc890e2b4ef44388b7877cf0cdf2b5ddd02149fea3a552f8b4",
+  "assistant_message_pattern_counts": {
+    "confidential_conversation": 371,
+    "absolute_non_disclosure": 226,
+    "between_us": 22,
+    "safe_here": 6
+  },
+  "candidate_row_count": 583,
+  "candidate_rows": [
+    {
+      "train_line": 440,
+      "row_sha256": "909e71a303ec922acbca2ba31bf98e44f80d8ee2ba741d74966a46a8ae1ec1e7",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 584,
+      "row_sha256": "32025f931c2711186c1d35f24caa41e34631574fe3a3f95642b58abd8f4f6813",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 602,
+      "row_sha256": "0092e4d1c6ec24f8623ecd17ee03a024068466d21cded40bf3cd975dd655ba3c",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 729,
+      "row_sha256": "8eed4cd07d1af52f17077f2f78b9ef1e4a8ac9c2ff9f87efeb131cb7bcee4f65",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 757,
+      "row_sha256": "18ee6e818cab5bb716c247f126af210f66566aa8b4f23d35b632922108f13ae5",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 844,
+      "row_sha256": "dc51a4c23a97585ffbe0de20f29288729f1498060accb25cfccfab4c648f2125",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 880,
+      "row_sha256": "981fb71149fc278c1d1e0e8f7e74b554737da98629574f490c5f9f79ff4ba2a0",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 1127,
+      "row_sha256": "794dfc62eb2e319bc9d2647e096f83306f9b9a4943ff0db16b268e8a337607a3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 1360,
+      "row_sha256": "29dbcfef3cfdb34b56b5d7d9389186ea902ff886b86d339f6ff1c9e0a4fc25cd",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 1515,
+      "row_sha256": "0494f1147dd166c9661c5114e7bcd51fbf6243002cdb3a6d2e37c25feb3a617f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 1676,
+      "row_sha256": "97c4b282d095b212466428cb4434a93c5075e84ae335b7d3a0729c72ae70f98a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 1790,
+      "row_sha256": "e83a26676e29fefaf49640789e17b28dcf4d2c2b8cfe92dcdd206b4b903665fe",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 1884,
+      "row_sha256": "2cd1be9669d089f8697a510c84cde1aa3b33d239f47ccc62fe59aa8f07129550",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 2034,
+      "row_sha256": "9df57e2625b24869637ebd955314d954e2d715b8c62e0d5ba22899da023cb4f8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 2189,
+      "row_sha256": "924f89362b7544ebe8cd5f62332146016e33721e3d881b43b86788a066f39307",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 2202,
+      "row_sha256": "bf5b1673ad107bdd8fabed7206e99b160c0f4a872188d87550a93e9550d63e8d",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 2269,
+      "row_sha256": "bf72ac87b2b604ba6edaa6e7160c5aa414a882379473573d15d6cf22b20df047",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 2346,
+      "row_sha256": "2140785e8367adc8624166703dc9fe41b9c7ac68b6cb70636eba123462e90df7",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 2736,
+      "row_sha256": "9c5f9d164deaf1ced778ee404ae7cb05737dd0eaebf78a47c97c9ebb659b1434",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 2853,
+      "row_sha256": "ec237163f22eaf4ef34df38007d2d5318b6f1418066ababdddfa64adcc7c2882",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 3055,
+      "row_sha256": "f5962715e905086fe866b93043bbe1665228f3a2eebd2dc45124752fa834713e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 3114,
+      "row_sha256": "a67c44f9e13a4bf48a2b7cfc3524783cb019da533d27a8cc14f60ebf6b9db036",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 3226,
+      "row_sha256": "259a91c46dea1d77fd7d7f8c4e24625f3fb988da5c871d45b637311521507baf",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 3271,
+      "row_sha256": "4164427a22c0364ee0bf6d475be8e7d8a33a0f9b46b54570992ac544ae378346",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 3340,
+      "row_sha256": "0334758567460e0577944a444a6ade355bf39f714336f59f056c9772aa5df3c4",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 3410,
+      "row_sha256": "60aac9c152a2563e6e1be93c03e2f088dc78440965b4b8e1eef54a4318c1445b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 3411,
+      "row_sha256": "b414ce58f6d2b8e3e6d465012de80c9b193140aeeaf2715110af077a77e4e20f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 3447,
+      "row_sha256": "258d83ebafd57d4dcb921da55440bd5bffa857a430efc4c543ec447e3d20575b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 3636,
+      "row_sha256": "3e86de22b830392fd57967a7d49b6110be49d02cef56af01c3cdd35b89d4bd55",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 3961,
+      "row_sha256": "06f5d57bb405d2ad47b6056199b353a804c3e5976a8625c231121217de0c2c56",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 3995,
+      "row_sha256": "3507a2a7d0b20a47542aa60928dab5ca7331333a983d617f5e30c7e7a1153034",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 4091,
+      "row_sha256": "d2bc184283a0cced72f7ca4e75392a70c0c5f507039e3964990d49970d5be671",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 4098,
+      "row_sha256": "684e74a0963c35e4d1671d827c59250d06bf880f68eb69552d9f31fa13f1abdd",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 4455,
+      "row_sha256": "211143c53ba8a1dbafdfa3fc946b82326572511a2832de400bfbf49bd4a8a5c4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 4479,
+      "row_sha256": "710694b76d8ebada7b694a7cc5b5c0c56a4d3e455de2ac7423ecaa7223e203be",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 4607,
+      "row_sha256": "ad332306401f3976bfc81dc84b934b7325068e86d015b4630c0cb5d2ea612f0f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 4618,
+      "row_sha256": "d1708e5e489e388b6da3335c66110cdd3959d5ff7b3c8550359076a3d97fd4ef",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 4825,
+      "row_sha256": "088bb8364b58ab86e00c81efc31bafca9e2d9bb0ad879f2559e9eaef11abf0bc",
+      "pattern_labels": [
+        "safe_here"
+      ]
+    },
+    {
+      "train_line": 4832,
+      "row_sha256": "80e4fc5b8a631180e0135ff372c32bc612cddee12b54ca81c4bf78c939094794",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 5144,
+      "row_sha256": "12f238801bb46f88ff6ce9d8cff36dcb5fa9717a26bd59eb48decd26bc92dcc6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 5405,
+      "row_sha256": "997af7a52f94b1d0e50bb7abe021695ec8865f1e42a05ade1dc84473b88e51b9",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 5611,
+      "row_sha256": "8b35444f0e067dc3be629de5a6cfb22b21657321ff5fa56f1431774da02bfa63",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 6013,
+      "row_sha256": "9b84cc99a98aba56639d3701324511718d3481767179cec0baa02592ffae23e8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 6675,
+      "row_sha256": "9837c36280d490484f391ca60f989d0e6498571867ea1c3b7dc64bf4832f5fcc",
+      "pattern_labels": [
+        "absolute_non_disclosure",
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 6910,
+      "row_sha256": "4348d0c126b296cd48382f945bef16fe1dcf83198838ec283f4af7f89fe48351",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 7064,
+      "row_sha256": "f3f205205987d563fab87f6d00d6ba1bec997e354a8f7212b7690535aa018b93",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 7099,
+      "row_sha256": "a3f617d36504301de5001d097df4eacdc58449dab335b7a938fab35509394b3e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 7330,
+      "row_sha256": "254675e3d132f715d5b0494dc08da3c1dad6190bce0f4471c5d0abd8d5a696f8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 7405,
+      "row_sha256": "742f6c344db86f1f7ae712905c12b7826d1aeb90d51cfd88c116e32d929ee1d5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 7555,
+      "row_sha256": "36fe9ae4f10369f997c601d3a7de4c6787c7b80a886a35d8c4af619e710494bf",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 7811,
+      "row_sha256": "d8591d684f8d4f7eee9fbb61bd5f49df4446283f0ed055a8a16d894335ea0ddb",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 7861,
+      "row_sha256": "a4767ad21f2730459a6f3ba205751bfdd25004d6d055188dec772b18035fc262",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 8101,
+      "row_sha256": "dfd9960b30890506378bb63aac33cb51cf52569b9e6833ad2c051fb4dc17b846",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 8106,
+      "row_sha256": "33aecdb5d6c5a5fccc49738e03d52d4da18210fa6ea8d6ac03884e23caf0c82f",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 8248,
+      "row_sha256": "2e2b3b4f30b1377037e4119b18e16c8c31e083b2950525dfb7bd9bb799793c8a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 8602,
+      "row_sha256": "611945be5ff87483f0d339441f793af682fe925d9baafc4505872e5eada159f2",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 8676,
+      "row_sha256": "77611e31636c798e804a5fac777ecbafdaa3cfc0b10a04dd28571a1571d2649a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 8889,
+      "row_sha256": "082150d1685c319517f8bcba9f6dc68cc517160861d9c4ccbc45c1f07b6c4124",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 9079,
+      "row_sha256": "558a05642505f780a0ddb70874779de516dedff0716ee80743d43bb6155cb98b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 9231,
+      "row_sha256": "26b8acd417fe6b38a8af36681b71bced28202dadf8be39d276a0d208114a6961",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 9285,
+      "row_sha256": "dbc1fe08e9274197c0e87ebecd22acf31e765f1b488fe667153494c9b2586f63",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 9303,
+      "row_sha256": "eec308ff687aafa907d6f390d13cdc3a8e7391184d235077d466cd43c5b97d4a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 9422,
+      "row_sha256": "63d30909a7f9092a373f01ee0d1c96437508cb3d60aa069574cc66bcae212c22",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 9449,
+      "row_sha256": "1a77c3fb6295d0117110463843e17f64d69832e031a889480d0aba9dbf04bd36",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 9470,
+      "row_sha256": "0c5f2bbb7426a379f258dfb76f09208cc3d96e79c34be93ac96ec9c00d303ada",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 9489,
+      "row_sha256": "71589500f1d5b7824e0583a82c5615c162ca170e1474a9d712994a49e91f0e91",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 10064,
+      "row_sha256": "03a0deb949514d1e431e2978839c30d1b6d3a696d4cac55eba3d5e04f85ffe17",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 10314,
+      "row_sha256": "7e704e102aa013fb1a330c7a7dfa2d73f97b276a21bd0d10b14bac2c7e67456b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 10371,
+      "row_sha256": "4bf7f6180c493955592d6c4c3fccb33595ed4227577f20a9de99cfa69d05bd3e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 10375,
+      "row_sha256": "e2f9bf91d644c563549422b591dcbe37db904e7cc150871b1dcccbf7dc8c1651",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 10953,
+      "row_sha256": "ddeb6f75a994341eb94fb4eef021e550f8b14fb17a0ec64cb04e144cf4a873b2",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 10987,
+      "row_sha256": "767ac41ac01e98771daa03cf6dfeb802d5240949b08a260b25bb822114e6d1c0",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 11107,
+      "row_sha256": "729cd0c1ec1f7c8deb190ba93e54cbfb46c8180c6de92bef5f315979352412e6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 11252,
+      "row_sha256": "20f97437bec623b7f9100d12c15c9407eee809e7aac4fe832478ef183b5e325e",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 11428,
+      "row_sha256": "4b097ae4ee0ce6b819ef4fc3344d160fc2919eba1ded275742ad77dc56dfdaa9",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 11454,
+      "row_sha256": "29b484d1011fc4883c12b750b499bebd91e685bc99e140d4b4e6cb980e654432",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 11519,
+      "row_sha256": "ff00dc3396d02c00ea4d66305dc71d73bcce5ce4c310b2d00a00c6877ad40f3a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 11561,
+      "row_sha256": "1f067594134e9ad669cf3a6afb3f7f86d1cbd63dfbdea6249fc1cfd6c1b0e8fc",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 11860,
+      "row_sha256": "4f8e1c099e25f31926c22c9c68d3edc62c4ebdcd7bc5435e3d49b0ee3d585fc3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 11996,
+      "row_sha256": "d1cc8252a63a6e4189ebd3ca24b83e5a51bccff83c46ae09d5dc194611a18eb3",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 12243,
+      "row_sha256": "dc48d7ba1f7c95b165107850462a7ac81cb145ae8c3e44745ecf76ea5ef5028b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 12276,
+      "row_sha256": "82f0cc44682ca966d814bc06865139782781be8dfcbb1ea91f437b59451e6172",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 12333,
+      "row_sha256": "3c4c038240edee12be3af7a543623d3085b0322b06dafde001c62d4dff571389",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 12433,
+      "row_sha256": "1b776ff4ba414ecb1184472d95f0d3d8e123059e4ee0b339ae53fe381e64a5d1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 12434,
+      "row_sha256": "c9fa97fdd035c37e5d936e9e3f55a35d9151465855705b4deeb162e40228199d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 13113,
+      "row_sha256": "1b21757a511a75c3354c04f6e9a706a9ffb7c8d048bc215780132a60a648d2c3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 13265,
+      "row_sha256": "f1c954a170ac0261bb7c28754b25cb0c4ec07e15eccf5d7fd58d780ad1fc6e01",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 13374,
+      "row_sha256": "94b5ebcb479e62f7257e32b3e229e0b1bfdfb1fb16b5ea72cfed4079cb3c5ae4",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 13649,
+      "row_sha256": "5b09cf2b780c78c52076302294c6b7639e42ec2a36f62a74ca3087206339f944",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 13693,
+      "row_sha256": "c3e11364117e7a57f2492a3fa812da99d90735a06b149fbf8f3a6c2769106c69",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 13865,
+      "row_sha256": "943ba811549987610e975cd93dfe699b7e684a9886243c1591aff7149dc153bf",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 13918,
+      "row_sha256": "365dd7a6124fcf152e04035f5320dbf47bca522918b0f63c10539ba4bbdcda02",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 14206,
+      "row_sha256": "b465cb8cad28dc632f02fafac724bc579fc2859671fcf18474cc2f03502b7ca2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 14240,
+      "row_sha256": "ce086aa62f8305300e06462ab646946866d684f3e951fa7ed6dac2d4f72cbbb5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 14281,
+      "row_sha256": "5398ae6cdb9c7dfd82673cf7f6f36a9bc491580822cfc2b1cf3c3c86ca680f44",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 14290,
+      "row_sha256": "939a1f93280b1f54db721993e6191fa3116526977b1b6762e22faa896ed4a359",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 14379,
+      "row_sha256": "a132c91eacb6865bb20000ac60a62f66fccd4c33adf4b5feff3b190f3fea02cb",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 14419,
+      "row_sha256": "4e15f11139d381a9044a03d56c7b001ecf5d585905bd89c00c5818564e7d02ab",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 14582,
+      "row_sha256": "9b1281d4cb84bd677f2293190eea3236c022e32d3f4ac4e98d8b77da0dbf6017",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 14874,
+      "row_sha256": "34a6dd3061ce56d190bdba63fe8b40b50566868fbaf6ee55e542e63b47274f43",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 14892,
+      "row_sha256": "ab40c056db76292387f4179a06ca0cce6f7c41356f1aa37f94e7ba5e4b7a5b20",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 15050,
+      "row_sha256": "b4277ec4bc0e27ace6c01bac48adb0990a465493f289175dd0b3cb1989fb9b0c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 15206,
+      "row_sha256": "0df794f9b893e88541ebb9a5126e8a3fc3ff419e7da77e16e0d4f4709470d137",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 15264,
+      "row_sha256": "bbc63cdf7e5c5d52ff1a6ee71bc5cfb54d013989dbff43b412b4413689b7a165",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 15534,
+      "row_sha256": "1980663556bb53f55e79bac48b3c655d16ff3926f0a5aa4639d6734b1afb9367",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 15589,
+      "row_sha256": "9d89dfe9c7cdbdc08742285f80f7e3c1cad5e952e165a457e7507c7eae328826",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 15722,
+      "row_sha256": "0f65137b23d7b362513d08b5cd20d9b1efd7e3ecb620d23792888e9fc660fb1a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 15782,
+      "row_sha256": "dbe8f7c6681b71ef2819d41f8f243e03f1d9986ff1fd61d5b7ca1d87e93fa477",
+      "pattern_labels": [
+        "safe_here"
+      ]
+    },
+    {
+      "train_line": 15797,
+      "row_sha256": "4bb948c061354465a1d7267205ba65c70c3a650d2f4fe01024816b46c50711e8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 15879,
+      "row_sha256": "ae8b3b83956d403414bdb287497787a110736a69a34031ce61590625ce96fa38",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 15915,
+      "row_sha256": "c1fa6ce29dfc921175d719c5ab16e5ff4d4a6ba74c363ef8f7759c0e88d0e31b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 15934,
+      "row_sha256": "62af46b7bbd303297e838c240a130e25898b4564eac2060438b7e9b046fed2ad",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 16078,
+      "row_sha256": "84a4f490ed5983ae656ba203fbd4c6378fc8c9e95ea22df6807d7f15f48d5010",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 16177,
+      "row_sha256": "179eed884e901076dfc56462d87c87043d8f34a183561299629c43cd161e90c1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 16279,
+      "row_sha256": "1bb4e9be79d024a681642f817f556df14537d24ee9b9ec731491a20653b04ec6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 16295,
+      "row_sha256": "c893af12163de38d35cd9bafa382415df1c4510d216566cfe8e7f923b44b00ca",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 16557,
+      "row_sha256": "40aca518d37e237480fc5ab2c85219c96afc495a07775ecbfda89cc0f07456fd",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 17115,
+      "row_sha256": "813c2b1c13cfe1a59f7a9ba39ad9c31fa18b1ea7dfc055f3521dcee9bcc7234c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 17139,
+      "row_sha256": "3e21404fd198153eaaa4928927af52e847152166697d8afc95bdeb748e7917fb",
+      "pattern_labels": [
+        "absolute_non_disclosure",
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 17141,
+      "row_sha256": "d71168069c9d8c02b0bfcd4d6adf93df668c813252ff689d172a8aa859180439",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 17170,
+      "row_sha256": "6cd63e2c7cde13df1fac459835fd2c5bedb373669980f13e233499d824528c2d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 17269,
+      "row_sha256": "0cfcdd18f666c7fff7bd927f9b0d5ce70f1aed603df00c2aeb94b8500730ccd1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 17367,
+      "row_sha256": "eb15182ad25d759e4e820a45179f5a4c87ef0133f5f0ba3e75a4711a8f6dbc97",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 17543,
+      "row_sha256": "6eda140a01dc407d501bb65065a7ab60e787de3e6c2852d6a35745f4ce471322",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 17771,
+      "row_sha256": "1b3ddf9c50aa68f92afdb23121d1024b277b7eada922d47c5e193bc17b2dd280",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 17982,
+      "row_sha256": "6e98423cfd8642f84194d47513bca22383740c41126d9715aae667a09400d609",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 18011,
+      "row_sha256": "42e92dea3202b35372770691dff61c147ad365520e2a5708f2cd8599cd40efdf",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 18026,
+      "row_sha256": "9172d8f73fa1099dfbcfdc076fb333746b693dd5a42f6468e215b09920fa21af",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 18318,
+      "row_sha256": "7313facc3342a65c387c8a8740cb0cfbbcf8cff7eb3a3cc233a0d697cd423a7f",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 18342,
+      "row_sha256": "83d9c57842940152c7ed616839d9f57f6674acfc8c1120c975c0101e30d3726a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 19010,
+      "row_sha256": "e0e22eb47eb037223926b31cac69975c04c8e6d98cdce082b2a26e7acad7cf8b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 19137,
+      "row_sha256": "9b79dedc0c322d0acb9198249c8666a1755f692b3d253fc1a2e783a22acaa42c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 19163,
+      "row_sha256": "75c48ce6bdf0dd947bf5a508f26225575bdfd47d479a3d1acdd3830f6aa0efd7",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 19604,
+      "row_sha256": "83485e5788948e27fe859edd456655775209915dab2da00c4cd90772ff01ae8f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 19912,
+      "row_sha256": "c934725738db1126fe0eb6eb1833acbdb75c9174f96966ae01869abe4cd04845",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 19923,
+      "row_sha256": "5c6e669bb2a3b764164b4cc070886f318d1316a44752ebcdb33fae15aaf482fe",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 20112,
+      "row_sha256": "41fa1b9d11d094b6f4a368d97327a27fa0a202691be73cd0f73a788c0f05228d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 20142,
+      "row_sha256": "a7057fe19921bd2bd9efa147747dbf0a61699be1ff6001c3941e3ed0e8e09c58",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 20231,
+      "row_sha256": "4000ef3b16ef5042f4d25ecf687cca14b2f41f3261f32b5c5ad101ee9b008a1b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 20379,
+      "row_sha256": "53c8ee73f9890be839e6162f8b2594e47e1532c6f90ae191b7f28c8729bc358a",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 20432,
+      "row_sha256": "daf768ea8887700754286b1ec94ad5c16857458bb1341da666bb114956dcbb20",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 20506,
+      "row_sha256": "31c2e7a68f8b42e0ffebda05d89f77cba866e77e567040fe473efe3e988ee8f4",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 20533,
+      "row_sha256": "d7c9cfe98ead13ef92231fc0a1c3763a6db594bbdebc1779255a8bb2aa45f7e5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 20605,
+      "row_sha256": "dfd4e6b3458cb0b702f4797076b5fe3a120160e8376c41b705c8d03f1f27889d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 20634,
+      "row_sha256": "7d6be4fd339612d706f107bf0520c35cc87b2f4d00ae17412db8653d16b4d4af",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 20793,
+      "row_sha256": "099eed509959fbbe4829cd1fa062345632adfeb90467ce820fc1bc02a243c236",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 20816,
+      "row_sha256": "4c4d40b0a46dfcf9b3122f3e7a58c558c34cf20fe1cab4116ce7f1157266a005",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 21101,
+      "row_sha256": "ecd007342164714811d3bbbb2b70b82300a62a264e40320993f07149fcf27e3c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 21208,
+      "row_sha256": "ee3597377611203305c0d12dfa25ba2b8e62e0df2b85e9d9b1ca6d1f6f2c45ac",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 21400,
+      "row_sha256": "1f2ec725141f1151cc010cbf34ad2caa4fa7def5b03749516d415feea0ca1565",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 21702,
+      "row_sha256": "eb810574043207ad2edfbb5f4e079ed19488cd0a743950dabb3eb10c5ac2fcd9",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 21716,
+      "row_sha256": "0a5d1437a37f100245344a8b6aa9cf06323cefde536e88ebf24dea73813b10b5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 21825,
+      "row_sha256": "9ef893a02d3156c12893161448be1d6c99acad73c6ce060db5f004d2a735ef90",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 22050,
+      "row_sha256": "550e5c6215d4c83e2e008bfcb687536c45ee077b35fa4dad1d1d5d003312df2a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 22147,
+      "row_sha256": "f711ab55346061412fcc3fbd1c27c1409aae6a1b703eb18e30d48e2e7cdcd7c6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 22279,
+      "row_sha256": "cac4eb5e8b1de4128cfeadd1596ba0fec94142509f008c50ce7bf840a359f85f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 22283,
+      "row_sha256": "c96fbc55f376b08b4d2be97c83ea8f574772baf37b5f30cb4d3fde90984bb800",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 22285,
+      "row_sha256": "9bf01719ab2a398f1c08487da420dc168e2f55293a960a2e685bbf2ca5b7fdc8",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 22721,
+      "row_sha256": "40e9da73c8101f11a3ace71ece66ee0cef2a6b6dcd4e283d4ce5e77af19c41ac",
+      "pattern_labels": [
+        "safe_here"
+      ]
+    },
+    {
+      "train_line": 22912,
+      "row_sha256": "a9818e85f3e792d439080b8159fd323c1a8019c8171d747bd135c058905d4902",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 23214,
+      "row_sha256": "157075acaf99eae8ee5672675e0ef3c680ec4968a72e884b14e46cc0f513febf",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 23270,
+      "row_sha256": "ca5bf9a39e716c1e7c0ccfad7cf5ac84a67fe44a4aaafce187d6948eb723905a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 23276,
+      "row_sha256": "39a2163541ffae4fda61090fe35918a8be14082d4a00d102bc177e9cdac9bbf2",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 23915,
+      "row_sha256": "b7da753b948edd40796e5f41ad19f29af8eaacf53cc523cf4ead86df668fa201",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 24017,
+      "row_sha256": "c014e553484d026a60bef2d13361f6405e60dcc52f117b1a09d68d57833b985e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 24232,
+      "row_sha256": "3da4531fa79e102588530e0e4e090d8e375113c3a73cfc3d83bc9a59d949ec7b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 24300,
+      "row_sha256": "5764fd0dd3d8a9a5588c53587794fabf836a619fcdcad93e39b778dfdae60394",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 24362,
+      "row_sha256": "3bb00a093a4e7951b6d5086f8e8bb3482cf0ebc5f93bd9b30e4ea7663a1b73b0",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 24761,
+      "row_sha256": "b6d09a7317ae248e9e7a2187352d1c0c35c8a4b115163a7ad558dfa25ce76c8b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 25038,
+      "row_sha256": "298d6cb31cb605e88b6bd717aba049e96d5ac6bcf73bb37488d2919efea09219",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 25404,
+      "row_sha256": "c9b93b3dc4104dd6e29c2b38f91da1a3d391ca33d48d1a3b586cc4d008a7c9bf",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 25495,
+      "row_sha256": "95bb445e62ed64003df9e69d7c57e401bf166925503c6a97c5ddacbfcc48777b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 25518,
+      "row_sha256": "a7fda43124d1d346ee79162c9b0702e57328b9da6930fc01fbaeb8f44f37ecaf",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 25650,
+      "row_sha256": "c5c5136d9831689be5e7612c6273d15a4b51515a941f124264fcd3fee70222a8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 25915,
+      "row_sha256": "51ff57516369418d06f717f27618e64da083b96eeb80cbe6ab6dae835de84fff",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 26076,
+      "row_sha256": "519d1aa6022b27bece57c8ffdcbba6246fd7d44d151daf58d71cf810b203aaed",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 26448,
+      "row_sha256": "619890e017f873ade9cb03182b2ed6eca4629cacdf1cf17596cae351fb63b20c",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 26640,
+      "row_sha256": "67d3da337d991c756e09e5546772b020f21cd441dc5a2d739ee7b74acb6109a1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 26832,
+      "row_sha256": "5c8d20c70d9f2595bb611c54ee00a1661f4505c93822d861cf8d238fc174ed2f",
+      "pattern_labels": [
+        "safe_here"
+      ]
+    },
+    {
+      "train_line": 27075,
+      "row_sha256": "cac9594875a3f9efa02054fe5acd728f444772dd72b0fa77f0c6e89871fbd233",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 27170,
+      "row_sha256": "41d77c6e47e6111b1e95893726ef7b603849b4b63412bfe3e714f3cdbacbdb82",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 27259,
+      "row_sha256": "762ac6ffcce0123b11247d21d4b9575ca96afbaf8f38b4e3e7324352d984c34b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 27485,
+      "row_sha256": "98b197bfa4c26469b0631fb74e3f44420d277fc9869f85386bc1f9412ec77dba",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 27677,
+      "row_sha256": "ebc0db4ef088293bb6d5d39a0fd042182691ec2e13c1ca6b053cfdaf81874ae3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 27809,
+      "row_sha256": "e382c61ab1070261d73b48d261a2e796ee6a9d9072249382365dba7d091a29a7",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 27988,
+      "row_sha256": "13d06b6d6a29d4c39020f5044368dfa920d8a3dfc74154d76b7a45b7a617e811",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 28028,
+      "row_sha256": "f0e99c461f508fa74beafd45eb548a6ce8cf0539d50d4a9ce6646a1c7376994f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 28087,
+      "row_sha256": "a9482574f948e0e010aadb14d8bb266ced9d1d09b10fe22b87e3eae5d988a074",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 28307,
+      "row_sha256": "8a7f279d45d2c46a50dd2cdfe5aed4c03fe9659b9b377a43e0b65c73c3a97ed3",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 28436,
+      "row_sha256": "c73a0bca72d3f28fa51241e4767630508839e982fc8df3fae3438351ab90e045",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 28562,
+      "row_sha256": "f99e4d7b2ca4802a4840857fa4e6158781efb4df2ec9736ad191164531a6d9c2",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 28682,
+      "row_sha256": "7203f252e3ac172ba43ed9afea676c0874ad445d3b51f09dac87c67afc8366a7",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 28788,
+      "row_sha256": "dbfe24b7e8cbd6ed23ee3186d2927171fa411088288c5a3c17a9486b8ac61fbf",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 28825,
+      "row_sha256": "6c21ca4262b4d8e0b3baba0466016371ac31971ee78ed2c2bebdff14f12ebc50",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 29211,
+      "row_sha256": "f83e98564dea089bb7ce83f401dc8254d64ab2cd475318bda5bce94a7df9d96f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 29569,
+      "row_sha256": "e48466a1e211371db3d8fd7fd7c84e0d9b421a6a1d66db81e8afb4f9346d289c",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 29576,
+      "row_sha256": "865579c7414d1e5443489c580e9520860dcbf9894863e5450e1d4ac738de2c01",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 29628,
+      "row_sha256": "d13dd614b96a36d6478a3f3dc4abf4d328942c842ce629a272a4820684a4c547",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 29699,
+      "row_sha256": "166b72af29d8a53bc84258b36398981134ec4055a653cfe54a467675a4ec5541",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 29889,
+      "row_sha256": "d363f68219b47426a5e848675e21cec4054aed28e1c581a1f58c98494c0f8a5b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 29931,
+      "row_sha256": "5c0795fa23bfe5e50c3d94944161a154b851faf9c2db407816524a5096dc28e2",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 30308,
+      "row_sha256": "cb8e92f94985b570b853885f47fbdd5b22df8966f57bdb9a617406bcc27f2f51",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 30869,
+      "row_sha256": "aa06d5e5f9b630d33e657178f3a059ad8efdf8f73806c2fa5d2fbd7f42d2870e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 30917,
+      "row_sha256": "0a00f2681a59e119a849f834735494551112878da974c2865dc6e6e305f94d52",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 31120,
+      "row_sha256": "8dc33cc45d0521f1f568df0c5767e39039128d1ed40a261328895abfb3242743",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 31302,
+      "row_sha256": "b870d85d68c0317761fed62eebfcebc5633af073d0c5176c94e7f08bd6654a57",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 31339,
+      "row_sha256": "c258aef356984e203e6f7a303f0146dc4d18b4b83d68251e61a28001d8542e34",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 31748,
+      "row_sha256": "85ecd407aa167f6e4915b9d9b4d296674a2484c34fc2bdcc59e45facbce9a641",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 31790,
+      "row_sha256": "9216e496bd61090004451d366cf661088ac7c8fdbd7830be7425a122dfaad140",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32181,
+      "row_sha256": "0d265ce6fa0a19219090f1ed55900c0472be0907f6dbd23837b652b157554408",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 32284,
+      "row_sha256": "5d13399d7818d67eaf5bda0f7e3b85da56356c266247c9ba6a93ff666afe734b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32332,
+      "row_sha256": "205a40a4ad48555ed6f357f49a89a50106f30603bf9a8334a0d277ec2bd4f8fd",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32339,
+      "row_sha256": "79d0f0a1ccaf3d9e77be2cc920d44ae7095bfad557e286c619f32345c9d2a5f6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32401,
+      "row_sha256": "61418b1b21920645125e8dc2fe591fccabc82479ce1d000099cf8cb404f2978f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 32728,
+      "row_sha256": "ad32c08d3fc9f9fd3732c08d5cef95dc3bb68e32b480bbd5f48088810b7fcabf",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32769,
+      "row_sha256": "4f67c41f1237e1ef22c2ba655d19132a267d2d92728d5497c368e3c4e8eb04c4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32813,
+      "row_sha256": "e50ec2feccf79ad0e71393e9fdd377ee556125c989dcd99a4a3c6761a6c8bfac",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32928,
+      "row_sha256": "50571c00d8f816036d3aa2ce0bfd9dd6867c1d46d4a87ccd82f84af1483e405c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32941,
+      "row_sha256": "65d11eb6658181c8de24eaeb7902d98b7ecfb7af960bbab74952bbe682352338",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 32957,
+      "row_sha256": "2d6a0c6a0e66943d3ebd183ccbf8975ce7415cc1d99cdc9d6aef55fc68a7a68f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 32983,
+      "row_sha256": "6cdf3b88406c0d1c596d6ee13aa29c05749ab78113cbd81a975da5d25cb79d9c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 33075,
+      "row_sha256": "83a544ba44f9050c5c6d1f946d52014b06efe6b0bdf5b075151f48ba6aa4ff5c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 33241,
+      "row_sha256": "c4fc64b75f776b2aecbb87a985264e9919563678a8825ed80b6cad6b4bbf900a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 33300,
+      "row_sha256": "34908351730bc1771938728bd2abf4874a1458c3b25cc68ab68b36737b1b1fe5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 33428,
+      "row_sha256": "9a7634aab4c4736650d4e6ab9d7a87397dca7394230cbd93c68b7779f9fe8ea6",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 33515,
+      "row_sha256": "2dd7b728e4ba99bd6b715d9500f948f6cdef672c140dc95f7a35b9dcc04788cc",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 33603,
+      "row_sha256": "84916678df1ade2dd77cf694cf83964e62213572cc30266c993d229354c5374e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 33818,
+      "row_sha256": "939771ee2c68c40196abffdf6aeecaca41dae72b0f9d092403e55a56851a05f1",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 33824,
+      "row_sha256": "497ea8076c1755800f46087451451e6fd255b3c2db5b4f84f02ac2c9065f71b3",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 34251,
+      "row_sha256": "58c444d103cd41c8576bf66a4c7ac289ab9c9f1f4a02f66bfd5a9c511f6b8138",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 34363,
+      "row_sha256": "ca21a69c9a1dbca989a0c31bbab5d50cfc6108681185bb842485df83b65d908f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 34582,
+      "row_sha256": "3d91b09fd13f773535cd074ee8a72cd91afc386b019f54a3f0c204011dfed7d2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 34612,
+      "row_sha256": "64940943d6fe68da7264c053ac9293d795866f2acda5475c852e0d66e39c5f72",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 34674,
+      "row_sha256": "ed91d70faf98ccd17905376bf7ceba22e9ecd5db7d58a9671354f5d3913418b3",
+      "pattern_labels": [
+        "safe_here"
+      ]
+    },
+    {
+      "train_line": 34762,
+      "row_sha256": "4176092939d6864db409731f3bd7a96d8024255e709889f235a4768ee2ba8bca",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 35077,
+      "row_sha256": "c3feb5068e6e9cfa5b3851eb30d0e9818ec2e6230970ff60a5ce9a0f1fff5143",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 35164,
+      "row_sha256": "ff7f069dc22c7b059ece134da0216721f96acdf61ba8844ce09bf36077de0bc3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 35226,
+      "row_sha256": "3507f7a3cb95f5c5e161e65b0cf21e6a95534585aaecafcad1e988fd916997ef",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 35385,
+      "row_sha256": "b3f74a9c814e543725ec2493e3e6deec47a6696d492e00a96bc536a56f306fda",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 35422,
+      "row_sha256": "41b9e1df71e0898f8246cc696da041616f0e3c8906f14d2d74d40deecd2eb7f6",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 35511,
+      "row_sha256": "eeae70df6f20e33d3007997077225d58f6fa252766d2bead4a9029aece412215",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 35546,
+      "row_sha256": "108e3ee0240c1f44f69d7f8959a9711b4e03f779a7f47c5299192d391a33fbb7",
+      "pattern_labels": [
+        "absolute_non_disclosure",
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 35548,
+      "row_sha256": "f10547cf84443e3e4ef008c4a9337d043981e60d1ccf1c072fca299c71f15173",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 35605,
+      "row_sha256": "dba1ff30f20e172002f667f4c206367bfe651804424aa223447a0c138915c207",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 35805,
+      "row_sha256": "0700951c48523c2c7c8b879875d637d229004262e8b314cf9267a0db9176f658",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 36037,
+      "row_sha256": "f7baa5f59eb88704f026d1f91f5a2a6ef1695671c7f0aee2c7892e83bd5dcae1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 36127,
+      "row_sha256": "6db8a3c660d2b737cd2838bcdc0b26ca599d896a4c1fc3f01b68026958406f3b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 36144,
+      "row_sha256": "c919911fbf074f448c6139ef10d0f783e69b75640adbb0ee7c0da9cd192b958e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 36394,
+      "row_sha256": "93463eab466646c59bb3e739e56724eb3f46c03992221e7b1f0cbcf647fe159d",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 36478,
+      "row_sha256": "6ddc61b29641f8084d9211942690e2dc7f31729f4b13e6a09144ae76c82aa64f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 36540,
+      "row_sha256": "7c95a2ac26a37ca4d596b7826de730f021350fd2990f94bb44551c3b78ae496f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 36560,
+      "row_sha256": "a6a2f9142ee10fd14905efe83e6c973314e296c0a89b45129524ae68bc0cc784",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 37014,
+      "row_sha256": "a70d28d08a8ae907b29e29b7024a67905af55dee517013a343f1473d06dcad1d",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 37177,
+      "row_sha256": "5b5d7e52cf772aae0e2962d2ec7e57054c869f08b31b2079e7aa109a9bdf009e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 37251,
+      "row_sha256": "68cc6f88bd6798f32b75b19c894bb749b881b3c2cee03d74f77156dae21c7aa4",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 37407,
+      "row_sha256": "4901743e7a8e8c8703b58b7adcb6607972f1b002823d39d72a1932f09d2802bd",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 37524,
+      "row_sha256": "add656ec4fc8994a7ebcf7165bc627bd63e0cff5a1750310ac0deeca9ea42f13",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 37713,
+      "row_sha256": "b679d41dbb128132d67099df8a4021e6c40c1d16bd0cb9cfe4c098d43cb81a9a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 37739,
+      "row_sha256": "90ef42854f4964a50b447a14b7fefaf81f58ae56142eaad3498edd1dfbf48958",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 37794,
+      "row_sha256": "be57fdc040ff9c1f168e24a2c41fd9c353407beccb5a421aeca643fc9e17dbe2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 38089,
+      "row_sha256": "c67707dee695f43118e37284f037544f79267ab294636d35bd10f36b22a1b7e3",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 38175,
+      "row_sha256": "f14628ff4f8edf63b2fad488ae604a30967417343f24a975e4cd165445b513e2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 38277,
+      "row_sha256": "3219386e02553b9a0cdb63f604760d62ee62515a78704f7257faaac0fde6ea79",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 38579,
+      "row_sha256": "ee6c0642fdde61e006c1ef92e4b3ae78b70df3915f7681a22d78f5d6bfd40aac",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 38602,
+      "row_sha256": "7d3742899b2c615f34b513b295a505931ef2546934d8b659b547a9d6e0a3013a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 38621,
+      "row_sha256": "2be467f8f6b8360674c8fad5b502b8009f0516b840f6d832a9da8b8abbe9c4ea",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 38739,
+      "row_sha256": "21ca9e96478cd3561b4ecb7fffd5205a9cf9f9056f3d1c15e638824826c20341",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 38962,
+      "row_sha256": "6843ff992cea8d318b594a9a2d2e15ab70d308c404bca3b8d6e2bb6449d63411",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 39005,
+      "row_sha256": "4a223ec390724a95a27c36341301c98901d522da631616d9948f5084cc946ea6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 39158,
+      "row_sha256": "dd04e944395f66bd8c47ed63f19c20a7af0d45f6682e5ff48e9c4920125846c9",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 39326,
+      "row_sha256": "a66489c9c54342d2e6ff0bd3ec1db6bee252cbd6329ecc97b09748c68187110a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 39446,
+      "row_sha256": "0b3095ae885c05f5c7e495de20652130a66348e89989e5b07d5dc36697998063",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 39537,
+      "row_sha256": "f01a94eaba254e906b580891df5a21fa2549ad918e53f3bc633ae0606fc0edd1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 40040,
+      "row_sha256": "a1afc097ce206eb70058fa889e321f035cf462be63a18647e792e5b4b10f7c0a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 40465,
+      "row_sha256": "918d87c528a9e1b8302612b01c2f4f4316cd242164e207574d2aea4815e3c267",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 40531,
+      "row_sha256": "aef7be575765221508846ddefddc72894b582561ebea854a8248ca3336876825",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 40831,
+      "row_sha256": "b62cfcff04b47863031795a1febd4aaca17b3da51f78dbc7ef051452887901d5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 40853,
+      "row_sha256": "d7e4048ac285f02eb957c1bedfdf3121403cca1da4494404da5e116bf8cfea1e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 40922,
+      "row_sha256": "6b30c0da983f04b191a3bbb93451bf654906748e6c88bce735a79bbbaef6fc68",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 41410,
+      "row_sha256": "e0b9788be52008e7a5c353891db7b7a138112f8063f1e3faff19b2855b7e961b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 41411,
+      "row_sha256": "e034860efe5d81094c13c5b67a1e58af3f89db5f300d10c78b5fb6c7909027de",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 41717,
+      "row_sha256": "2e5d1eafb6bd7df29bfb7045f886d2c32285812f4c849899650a5aa3f4aa71aa",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 42264,
+      "row_sha256": "30655f8d6043584d27aeccc8009afebf659e0380011e7555271427c5ff5e60c3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 42286,
+      "row_sha256": "bf4397769424937289d46eb6878e6d01498376a18f99384bce1fd86370f1fb0f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 42451,
+      "row_sha256": "448183dcdad751061c103078b810a8e5fb65ea03681fafce25b1b839678f3bda",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 42499,
+      "row_sha256": "6c67fb2b9856517f8f44e1b7ac3cf6dae8dd976fbee4436a3b07fc5f591f8db9",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 42513,
+      "row_sha256": "751842da6c491cfdf2a78af2103db4addf8c804e3d5ade99286b4be54e17bbd3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 42581,
+      "row_sha256": "98f261455e5015349b98f6a994d502329c842c71c0f0271f5f559699ccb428e0",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 42814,
+      "row_sha256": "714b4c29235377c2cbf3eac8e546f4f69a8e6b1007e210705cc5aed707a29fe2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 42877,
+      "row_sha256": "33001dee5bea5596c70dca02b3787d34cd7c8dd2d4cfcb00aba44ec72c510099",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 42916,
+      "row_sha256": "19f911fc95926d77d95f3f049d272d4836ebfdf9d44e1c7511c5f8cc243aa9c9",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 42977,
+      "row_sha256": "d0e75892ac9ae05ad8934b5a6f0c5f7633873e67b3478cf88c04a9bcbe8ffc5a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 43018,
+      "row_sha256": "9a55bba9a49a27a2f1696f5bbb6fee3c06db183e6fb4373cb47ed029cd0c7c51",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 43079,
+      "row_sha256": "9b4f0076acc47eb50dbff79e98b3767c73f466a634fb8d5d6e305e36436e3de8",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 43094,
+      "row_sha256": "c92c14f330554a5e75cf5497e299b71025912196acab7b31edfddaa1b07d783f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 43253,
+      "row_sha256": "1d9faeff88f7dd8704d79a8b88c71a44f0f4f447f47a5b636b2f42d641c96e17",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 43407,
+      "row_sha256": "e60c19bf1ce787f2260b1e92aaaf28af612ad317af057bfe16859d2148e1573b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 43439,
+      "row_sha256": "83e3b620a1dde804fd3c21f16434714ddebc8b3be97eb7fff1be13159ef8322a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 43646,
+      "row_sha256": "55ef7d70b2f94e4021148b99c887c9310b8d09f4dccafc82ecff4182d3259f63",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 43937,
+      "row_sha256": "0f3579e8daaaec79e72c53cdc868eaa9472e881949baf05d194c063d3a091f7a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 43943,
+      "row_sha256": "b7431dc09dea3f3196748df509b2b0ae064fa8a5db4ded0134b5adbc87a0d28b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 43968,
+      "row_sha256": "c00445a385bd24f0afdb7664903b1a93e0e834ff42db731714e93cc2dcb7e0da",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 44456,
+      "row_sha256": "0415418e0635f2bbff7f56499b6c593d556acb56e7c9a5b3e3277edc7b8354ec",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 44733,
+      "row_sha256": "67daf23823c94ec64dc1239dcdaaa85dfa64f3c746fded8df3c7ac5e9d5a42ea",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 44758,
+      "row_sha256": "ac1b52affe0cc3a28e554013bcddeb53df94d4eef2b7fdb9a662cf800f9e35d8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 44978,
+      "row_sha256": "7dcc982d33f7ae82b1846dcf813c81c96059d9741188797f00eb86e0eafa7c73",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 44997,
+      "row_sha256": "84f30b001132d997537bc70cbb909ac7b08b7494ace27ee1ec05350ac56dfa24",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 45147,
+      "row_sha256": "35da2b0f1bae1fe5124dca9989b42257773abe492f9011b4d8e25c9c117e0cf8",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 45185,
+      "row_sha256": "728ce513110c69968aac199f9f6d9aea9c6109211be702dd8c18b3bc72d89648",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45226,
+      "row_sha256": "8e02f2fddde2c34efb431560b748eb843c207c23ff2876e6e84999cce12bc6e7",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45254,
+      "row_sha256": "365a7857f7256e419ea06897b914a0bfab5e40c8c3b0c33ebf8d0e3f30adc7a2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45428,
+      "row_sha256": "c4c091b701239ab822638c8fee867cc8b1c58afd613b78099bfc4c75ec283191",
+      "pattern_labels": [
+        "absolute_non_disclosure",
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 45495,
+      "row_sha256": "acfe3f5184d019826eb2767a183f7de84ee94c1a0249b51071128b322e1e283d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45522,
+      "row_sha256": "29ff342abd7f691e95462b2488ddb45869e38e5fc074a9e329df812239d42b26",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45544,
+      "row_sha256": "124f65813f10edd8d8a40a7142f12de07db65c511f02aef380333ae930db6a94",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45565,
+      "row_sha256": "146986c7830a8d87338959fc5e8759f38000f11634203b4849f3a15c532f17e6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45625,
+      "row_sha256": "7f096962fdd12dfae24d2ff99ff6c0be1d8e7b7b64f480aeebbb54cbab66aab6",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 45626,
+      "row_sha256": "a9bf0461b0b5ab6238927f4d91b68dd443fe5e8cd3b1aa49d64da6f80f3d9d1a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45674,
+      "row_sha256": "8647d5fe5c971fc180c4f09c08ef00e5f95b2502b93b412fca0295f7a0a4c788",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 45691,
+      "row_sha256": "e7b82a0d215eab312267ea230829ed50313629c0da6da1c8bbca090fb19af43a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45762,
+      "row_sha256": "9b0c362b1e788aafa184a14951178c897e306ccc2d0ce4827d6c6d972f4eafe4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45848,
+      "row_sha256": "005d04dad91bad2b78c43fa76e6b7ba9b96849ae9c43b199fc058bcfcd54eedc",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 45885,
+      "row_sha256": "ec7a3c3455991cf4704c87aa909a72afa7c7ae5619395c9a6454f3813de3eaa1",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 45936,
+      "row_sha256": "c44a0da605204676d13b0697d4d1b238f7d28891742251be43cf26372c822399",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 45994,
+      "row_sha256": "6e4766a3c614c2b854fe9617aed6c6702989950caee09c157adf75312d6a90cb",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 46065,
+      "row_sha256": "4b39baedd3f8c534626c5558b97cf49c447f68cae6b98e6cd1755853aa0edcdf",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 46077,
+      "row_sha256": "29f6909ee928c263c895e3076655bd4e47e11473cb453ee2d0e67e71bc46b644",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 46166,
+      "row_sha256": "bc02a79112dd2d2625627ebb5ef6c50975e761a1ec8e8d0a3d43ecd00259606b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 46228,
+      "row_sha256": "5bf79deb791897d037054c1a69191f90fde8058d3a17e537a74a7ac856037b93",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 46301,
+      "row_sha256": "79f5ab753f5c59fc96b28fefe3a7fc8d64d63f0d0385887db8c52dfb50c78047",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 46430,
+      "row_sha256": "4d16069ec03a4f5726c5260253249f8ebcb8975b534dacbcd8ab0b866b124e55",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 46444,
+      "row_sha256": "9ea76e2865a4257c4c2631dd203afc5a3107d50c29d2cd69372de2fb54413f0c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 46468,
+      "row_sha256": "d293b94200f7e855951a41cd0141b033eb97d0b7673f7b14fbeb6da4050ef761",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 46609,
+      "row_sha256": "ddf83d29a67d70c4a4cf20aea1a9931dd5b17c958c858d301dd874903e50935e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 46715,
+      "row_sha256": "150ae5d18ff4d14012b7c2fef755495b55c33fa2b5c92fed9bc84b8a2a0950b7",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 46807,
+      "row_sha256": "1a7489ac082030a26012b6585d1058dc2d2f52392d10b1dde4ddf40e5533cd8b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 46865,
+      "row_sha256": "a49862b2abee851983fc6193d5a5f6b37ab1861543d530f367dc8b0965b928bc",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 46874,
+      "row_sha256": "9b4f2e76731b3ca6ffd64ed61f5fbc8ec125cad518c1cd57cb7dbffa7b0a3055",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 47074,
+      "row_sha256": "170ac7c31a4250f9f1db94000333aed263deb3ea56bc5a7b7a3fbf72ed3d18b8",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 47187,
+      "row_sha256": "615a7ba2ec2e9df732c5c324c2acef67f4bad470a8f68a5f5ebe33d512a3fd19",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 47383,
+      "row_sha256": "973625d08c232b499fb48d6a1108e797890b66c2a522a83e64e9eb8f5cc889ea",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 47446,
+      "row_sha256": "fd96e90933d26e4b2db3482eb1a8ecbf4d1809d1f11e0d3874e18b929fbe92ce",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 47514,
+      "row_sha256": "a640b3f63b8c62b72cb2247041e1a35fe8266d544bfac74a9f6e8debc8dbe956",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 47645,
+      "row_sha256": "c4127ea009400b8d54e236528f6af78db62db75b7cee6250effb4db027488eb6",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 47826,
+      "row_sha256": "af7c99a5eae4093ccd1ecf23d8d9134e0d9d19938a2815d5ea9e86e42cc2a8fb",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 47991,
+      "row_sha256": "b610f6c6a0c7c91167d10df6ee57cae46cb249171460b25f219fd531d1b57315",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 48038,
+      "row_sha256": "f860c4ea4e826fabfedbbee6960a07b0eaa8306507d9da3eb4f3ebefd45f1923",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 48271,
+      "row_sha256": "0e40f5fec03aaf940b15b2c02e87ee466c0e7db7111735448e417c19e555711f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 48338,
+      "row_sha256": "5b43abfcc4f5f3892ff1af19db3495360abcee1c36663cb4a5ff60546bfc6239",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 48366,
+      "row_sha256": "623484d6754be7081262d36a211ecb77b04a9ac7c298eae2aabb5a531098a1bb",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 48477,
+      "row_sha256": "db1a19815b7aa1fea9f4eca2030ece9c6250cf5d1191f8546a133b7ce20e92df",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 48565,
+      "row_sha256": "86e1dbe2146f978b2b39708f8f26132bc6670dcf871fc80e9f76d29e0b03ca2c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 48697,
+      "row_sha256": "0370ee3e20fb66fc1df524355f1be94e8235132a10204c29e065b492fdc13dc2",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 48723,
+      "row_sha256": "cbd368cf944017bcdf83e2a1b082cb5a15379081543f8810740f8f41f94f5ce6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 49079,
+      "row_sha256": "a4ee2839bc97c9fb011355f5097ea2c78c24579385a035455ae9d2fe851ff07f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 49163,
+      "row_sha256": "bfaa88d080dfd129fcfced7cef447fd2bf45f274d5c30c73d57bea58daf99cc1",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 49225,
+      "row_sha256": "95c8a66699b0b97429aebabae8d9b4fdab54c6cc176c7341cad63ea48e9260a8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 49576,
+      "row_sha256": "1c108ca96e5bc056d120cf3ea1eba095404969771b61d0cbf28216ca1602fb73",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 49603,
+      "row_sha256": "c34d75f5e8d9a3fe86a1d4689357e06dca07ce134bb87c9d2d819f1107026942",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 49617,
+      "row_sha256": "a2a1a4ca528dd949eb5fb2a1afc84a06f31163a862e9fedd948d652f6e0b4e9e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 49825,
+      "row_sha256": "e87f850d853ad6b003ec5dc877ba305f4f3ea8410afe037faa9f13764b28f089",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50014,
+      "row_sha256": "8a1030542266eca2ce1ba04a0a661077c63998c95a1f912c2e530b8af4e82240",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50255,
+      "row_sha256": "76f0e01735e28ce856ba61a303918627c411fa4c5af5e47511f74041f6465142",
+      "pattern_labels": [
+        "absolute_non_disclosure",
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 50285,
+      "row_sha256": "5c42a9cf8fd10e7756a4bf7e16a62a7983c283015348bdfa45b506a1670273b3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50296,
+      "row_sha256": "11aac2ea22e5dd6c140cca74dfed16782065ef45e9c1e75561a355f7aca77522",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50308,
+      "row_sha256": "c10bb2885eb5aedd9a69f1416426ca18fcaeb2fa2a2f8366929bd2bca6c27049",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50378,
+      "row_sha256": "38dc8e0bed637397fac980632dcd5bb317fb26aff24081050816c3553ec8db9f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50543,
+      "row_sha256": "966cac7854c04f54714184e2e14d71bf7e705f9ba915546a03033a371bf27a1c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50566,
+      "row_sha256": "80294bcb74bc8c1355d9c7fd1a446e30dee28df6646b6648241c17c84a64f68e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50658,
+      "row_sha256": "80d7294089f32953733c065a411575bbcc893d34500b37422237ca73de0a32d6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 50704,
+      "row_sha256": "94d1a9d2ca157a05f145bdaaad3107563d35c96f4ea2461c341f39669474e029",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 51118,
+      "row_sha256": "49386a1e273227d979c7a6069b1941adaa482fef9fd2f2775cefe3a63ac32f18",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 51194,
+      "row_sha256": "8595849947abe5e417e8d4b652b499775fbde2b4f5a727812ffa98e652574043",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 51300,
+      "row_sha256": "e034c1aea72a987bf31153a64a2f8a2ebd227f0c917cbd445d7749c575a56237",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 51366,
+      "row_sha256": "9e61d2f73ba2f509d5e3a0ce59a3c11b8a73de65060d25be7edec01e5615fab7",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 51463,
+      "row_sha256": "90ee2abb3b50b9215ef869291652fffe738575459ef32c3678589b40c05ba165",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 51618,
+      "row_sha256": "f57ec3b157c9d377e2c4a5cb699984c1073cd27e2a046e7a69965bb2f8a60f9e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 51677,
+      "row_sha256": "c8f5008a591e6a6fe5a36989923e940993494a159e7d1ad5c0c4e4f69c739948",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 51679,
+      "row_sha256": "0ccd2a36257346dd03d1ae41a812829fbc2d81384ddefd33c058a936e6404a16",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 51736,
+      "row_sha256": "fda993e0ec38664b1c5414822189561e3b89b81e9254db2948cb5a8fedfff116",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 52274,
+      "row_sha256": "ea79dbbf802f2c31410b209079fbb74456a2798f041620dc15c79d568b61ab1d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 52532,
+      "row_sha256": "cf0b44c8f32ad9f4d3864cac43be259d8e035cdfee000202fb66b1db5e8f6e28",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 52686,
+      "row_sha256": "4611ec234c4b435bff39f1cab313e9de285eea2d0c834d83452353dab6a85ad0",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 52724,
+      "row_sha256": "b33f41daf227bcee8fae8383a069d5cac8662030b4f9160c33dac80c7cdf9434",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 52975,
+      "row_sha256": "8cbce30424b5f0dd2555487c1507d5023a66bc601bfa5684eff8f7580a105d56",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 52993,
+      "row_sha256": "fff09d09ce2a317923cec024f7af8e56d218c95db900a508af04fe6e63e74469",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53080,
+      "row_sha256": "2ea0290b29d89acbb19fd2008bb9463a782405bfe154a22a9d16ee720c17ecc4",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 53166,
+      "row_sha256": "35dd1191a2d879af4d64f8cba34d291d69249d4672e63b01e4d4dfffe0b9d2ac",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53190,
+      "row_sha256": "daa210adc92dfa5e30be1d81e39b6a0e7f3ad639b8238003e71f140bac2df4c4",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 53200,
+      "row_sha256": "c1c66871bf72b716b249d5e661da9fd643fa87df2b6fe5200fe003b43d7eedae",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 53234,
+      "row_sha256": "be168d32430f6b3274ac0c6da540dc09f4b1f6922bd6d53658bef63aa0d63dc4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53279,
+      "row_sha256": "0e626ac28e0ceecfc3be682d2da8a8485a22e543c33b45db55bf2d4368aef47c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53406,
+      "row_sha256": "ea04191ac7acccc1ad9faeda0071b0854a63d9e558fbb1439e0735a7882a1964",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53427,
+      "row_sha256": "19b49428f8d227481178d7e82309a62eb946e9c98d3ada1387ee01724cac8362",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53518,
+      "row_sha256": "d9584db78a17e2dfaf86fccec91086d4e8af94199d8525f65c4fafa992a81157",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 53546,
+      "row_sha256": "5b885659b83a8a1f8a7de89ade6bec70ba446b291b7dcc43b3978e2c0c3ede68",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53733,
+      "row_sha256": "211e8bf59302b897faa4bdfff0975d70410b50f8c403ef48b05880bf3e784e2f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53752,
+      "row_sha256": "c2561f79106d6791ca0600bb1bc2e7cf498c4f3d995bcbcb72646d8d5dd842fd",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53755,
+      "row_sha256": "18463753d12a860417afe932ab96a3fae27c66f51f74ee245f945cdd47650549",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53832,
+      "row_sha256": "82d9c1c70e1b8883b36d57e6f5c179be1da9798ae1b5eb7cd01d4cd47d363bb1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 53836,
+      "row_sha256": "e81872cb2515d7de9b336692053c23c3d76e5a0ee4ae8f6a717c24cb0e47e595",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 54073,
+      "row_sha256": "2c9bcb538a1c68677214c788a16795fdc3b7601dc1c57e86077850e12c2be389",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 54102,
+      "row_sha256": "40a4add715646e51fae644078f65b5df0db32507282a294e50e789c681ab5bd9",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 54122,
+      "row_sha256": "fa0df987c8acfef9fa8f2ed0694428b6a4f9f555d60cb975707090f834b4e9d6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 54128,
+      "row_sha256": "6723486f56bfc92748572ecedfae5ae839fba2d2e9d8b2bc870256845cb356f4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 54224,
+      "row_sha256": "639438e9a49fda2b5599d5882e47bd0f35fd4638a409d0d9a63553da48d66c32",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 54759,
+      "row_sha256": "eb63695e70aa918ee6e3318c9081bd5dbb960df5da36a5e71f556b252f89dc71",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 55278,
+      "row_sha256": "486464a2ff1bca0d1e5265e735a3804957fedd1339a31bec1bd230b0df584101",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 55538,
+      "row_sha256": "01643adfc3f17b484129abbba0d35bf486e5eb2a2b54e490d89b62295b799ec8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 55651,
+      "row_sha256": "e0fb5adb31328dadd1f4b53e258954be65e0c0deaa13e2b072c4faa456e71254",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 55698,
+      "row_sha256": "24922311521741d9fd17e09688c8c9dbc758882ebf23a21d141ec8c7a8f458ba",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 55867,
+      "row_sha256": "5e2ad46d266db28e3b983a9b24f08e67584771ea13a36ab42293eb25e056a6fc",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 55947,
+      "row_sha256": "82c6b30878654ed1391ed28404de7b2ccf6ee1f55b53eb30fb3b5cca427b9a7f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 56057,
+      "row_sha256": "c9047c58b58392cead34127ef908ebd9d8b79dcfc3a06fe795afc225a43596c9",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 56068,
+      "row_sha256": "32eb0022058ef924ac6865e5a0098f6c2a680452495f0d8157a6d50818687a26",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 56130,
+      "row_sha256": "2dc471b34b28f9c855a31b292bb61f46a15ca0cb39867c0b87752d60e8801ba4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 56185,
+      "row_sha256": "3364ce376a26c115e4393a402c23b785ceb07c48329a2ac293c9c76e577b602c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 56378,
+      "row_sha256": "f9cb37f2718606b35e4f998fa26ab67e82222b8fa3e53a13b1c1f95ee3c8d4fc",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 57335,
+      "row_sha256": "480c01e95ace14b9e5c4631264fda04c1d69ff4ec5b54eff77181ed179f8e6ae",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 57595,
+      "row_sha256": "901db8da964e00d8487d4f828f7da8f69020cde859045129dd775369c3b0b479",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 57661,
+      "row_sha256": "3831b3a1fbd93675c37a843b5ab3b070ce88494ba3c7ba5333f926f6f608cba9",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 57708,
+      "row_sha256": "a1a37e1e4081a4db2460b6a5043c462bb96c2ff5bcf266a2d4e8a894b6d966fd",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 57729,
+      "row_sha256": "0b99478cd0580ffddc4feeca908929ca39d2d5be3432d30346680932f6895c39",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 58095,
+      "row_sha256": "d586572642971ef37375eb34f21e1e70e214ffeda892b68b517e83ae3bae7114",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 58175,
+      "row_sha256": "8de892de55f8a074e307d339f1e8962088c2ff2433c5ea598637cd112ea657ba",
+      "pattern_labels": [
+        "absolute_non_disclosure",
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 58383,
+      "row_sha256": "3941abaab87747cb37c97e9350a8ef216e2db02e96192cb7fd89a35a436ccbf0",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 58461,
+      "row_sha256": "fb07167168831c9c8cd1612a365c158fb988a9868ab9c397614af61419af4282",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 58548,
+      "row_sha256": "ff561a5610a8b0f1e376e323d40173e3487eccfcea2a3b5d308536d30da8de91",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 59175,
+      "row_sha256": "9adf5faf1dccd513b6cf2049abb457f3ee3bfa86f6b91aa1b5aaec205a4d3e53",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 59185,
+      "row_sha256": "6f9261b349a589fed2a71364274b17b659be55e7017b9eee5729787c0f0f0e38",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 59371,
+      "row_sha256": "858b5f9a3cdb47d54569bc5c73ee9a0e91b8eb0d6bedeb3e13bdbbfc4392bf9d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 59552,
+      "row_sha256": "7199c879700bbaf77743b1ed7b5921bbd6b3499b9cc14a40434cbab979c9c835",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 59601,
+      "row_sha256": "719a8339539bca1d10d950c913eeb4babfbb8ee6f9a9c7d3685a8c67924b16a5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 59604,
+      "row_sha256": "68a5a6eb5171d5d99e65e050b5e2eeef7e5414dddd462651651f8b678de24a63",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 59752,
+      "row_sha256": "22689426d16d6943e3bfb7dc0fe2aa44cb6fe88ab41671bad35beb16e70fd600",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 59870,
+      "row_sha256": "9d99f12119717309883660e6e2ee1bbe1a7bcf9c641685d6c8c99ae724e900d6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 59935,
+      "row_sha256": "1a490062e9debce8a3d97ba6915350428c628968245bfc1c875ede2b4d1317be",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 60409,
+      "row_sha256": "37273c68a28fed3347ea185df0c516f0b87991d3a4e022ad2f39e7b35c089384",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 60670,
+      "row_sha256": "1f92fd463dbad1df8b514f6308757a02cbfa13f492e310a329710cf01f3d313f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 61025,
+      "row_sha256": "28ae2658b88e483088befce94fe7fb2fd385e93e6bb83eb757e7f43321012002",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 61154,
+      "row_sha256": "fa4738cbee12eb7624f2630c355257b56c3ddc3a298ce746a2b191180edd4b44",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 61248,
+      "row_sha256": "89efc9a42fa491be89ee7d9ccf77f63fedf6c39de67197a16a2653e926e57e93",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 61308,
+      "row_sha256": "a109bf7cc13de95b1ab2a761795e683e0ba48879b8309eaef59af087926ab823",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 61331,
+      "row_sha256": "edff3e7b929be472afed554674793636a891c5af8c519667e6bb2201c31b3ea5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 61404,
+      "row_sha256": "6812f4eb76ee95d505965d45f2f829172c08d27101c8df154e3c2c0fb9f135a5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 62133,
+      "row_sha256": "efbac2fcf7ec33a2138184c95e6ddbc5e22b891f51ba057f9d277e81a3455633",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 62301,
+      "row_sha256": "eb3bea74133dc089adee7ae39de9c9980843ca0eae8af43682f08008b04ff884",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 62380,
+      "row_sha256": "0b620498df1eff68e310ef770defa6bbc68247b5e6c6b86005ed7405703998f6",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 62459,
+      "row_sha256": "b96ef6fd70a2003ad5aa6b50db68da41ac3012ba654f4d184e1c9ff0d50e95f1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 62527,
+      "row_sha256": "c124d48dfb7011f4648e81b48a30a007383368470e1ac03e12b122086a924ec1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 62721,
+      "row_sha256": "47c1c2f67420a81ca0322720b442e08f2e060029a40d59e02bd2e3dd3f51673a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 62855,
+      "row_sha256": "a1fc1f874f144713dff657067f314b6673bf68b4fd46e8b0891e3cc78553a0bc",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 63168,
+      "row_sha256": "85c62d14fa324cfb382246e8a3c1ec2c563d811a6e8454ff853c46affbf0a838",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 63205,
+      "row_sha256": "57b1556b5403193585723fb3b76da2216b9c9d8fe7e1062d44b69cec974feb95",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 63501,
+      "row_sha256": "b134b4759febf33931c833a6efdde66acda68655b5a8022e6a65393378da3391",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 63775,
+      "row_sha256": "ee9bda7216c0dbefa107a631b719bf782fef498efe3f82d90ebeeb1fae182302",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 63846,
+      "row_sha256": "59aea9a111c7bd2cd733b8344fb6cc26a68dd43e5e4d81d9ff33a6d5b8cbb4b7",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 63962,
+      "row_sha256": "c1b32cd0ace35ee10d0620287f856940c1412d2270ca048310d7f9bdc88a9403",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 64084,
+      "row_sha256": "10dfd2772c9b8f90edcf059c61540587b7baae315d7965f2acde7a7be0ec99d3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 64132,
+      "row_sha256": "1e2299936a24f9de01a4b397652034e366267c24dd6343eee73c4e438aeaba4c",
+      "pattern_labels": [
+        "safe_here"
+      ]
+    },
+    {
+      "train_line": 64155,
+      "row_sha256": "435b83402accfd335081a5c9c47e5063048499818d49f690a607fad4ab05f86b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 64250,
+      "row_sha256": "08866d4686e8f1c30d0887166e6e7fe263a5d6eda0d6b1fd77bc2aa3da1b808b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 64287,
+      "row_sha256": "f84b9b0978ce350b3df34beec1d02820142cc2ab4dcce407b35340eb08ab3b19",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 64354,
+      "row_sha256": "0dd96d638dc5ebc460ecd1c54c1d656a877db5b1bc7e4101ede264d855a8b9be",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 64382,
+      "row_sha256": "506cf0da77f597bf59befe16904cd3eed541e97e38fc5a70b926cf0f1c9f1a48",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 64434,
+      "row_sha256": "c1e0bded03e0bebe0846de1ca19353c511472a2243d0935135a13a72bd02aea4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 64546,
+      "row_sha256": "85e79df6e3cbc0d2dda415c7f50a7af9e32ca73f9e9956f291428c656198cd23",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 64883,
+      "row_sha256": "80a8dda3dc54c6f930425c46748e64f9181073c0df95f5e731e5b956a22d247e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 64904,
+      "row_sha256": "ea353263f6c33dc95c36b3ee28716d5f31a627d363c25a40a4243eda2271957b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 64908,
+      "row_sha256": "dda0c85597fb3edacf3932888d7a6f144e96d11a58e5f9fbd17fe766002060c2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 65170,
+      "row_sha256": "ab9ff63c98f463b3a2f52f8d1a31c77a8e13d90980dbb74b42cc12f491f70892",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 65431,
+      "row_sha256": "00fa7f55b9826d70d67017e31d308013126154cdad3eb82670b2904dd357f10e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 65510,
+      "row_sha256": "029eecaff89abbbc9ba962d820bbd2a6e951bcd9fcfcd1265414217f792fe25d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 65516,
+      "row_sha256": "d4c48dea360ef63485f8d1e58977c2bf3f75a3616d897600c943c6770716e973",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 65731,
+      "row_sha256": "9c60bf0ac0f919e4b8909ad12f2d0fe2f082c0bec966d25d2c1450bd2176349d",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 66044,
+      "row_sha256": "6ec23da449f96f4f35bdac49d80d50d6456a21b8e265ff3c6d5b4b7f3ded4ee9",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 66242,
+      "row_sha256": "9fe15a28b4be6942c5e9d5104f3e944dff146c454c3519f0b70723bf8b1ed180",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 66382,
+      "row_sha256": "a3b4fef0d21ae8c254b18633825ec197e0783d75a6fd742940ddb73323287696",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 66535,
+      "row_sha256": "c5dba536ffe3ab946ecde9c2b1db7087d5964e5b34045bcce57b7d5d1885f4a0",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 66649,
+      "row_sha256": "6a5523092827e5352f033719904fe56d5ce3feef190c397c37b8622cb14c2cc0",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 66659,
+      "row_sha256": "a81e03d968a069d8e3183675855222f2e8aa047e1843d920d3092ece5567235d",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 66661,
+      "row_sha256": "7644b94ea542ed3fb4b843acc636e1846cfedb18f559bdf848240faf6aee17f8",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 66686,
+      "row_sha256": "160484e46a912603a12dc3c7aa2588f45fb95d7ba4a0e2189030c9404f618ede",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 66803,
+      "row_sha256": "5ca9322400f26101a145b96d75dbd2875d20a2e0d114e06e9f43d0641e556f7d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 67020,
+      "row_sha256": "5e9a47f5ad4b6465e0fe7160008332290fe63f2e536b4f39476db6d7eb933aec",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 67063,
+      "row_sha256": "9aa20bc2599b523983f30dd3db6651773fcab15fbe59184ce2ec6da46d341f26",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 67085,
+      "row_sha256": "4402838e529cffc4bfe5fbd83f0f63f891d717fa282fc84a34836ec9247c084b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 67150,
+      "row_sha256": "361114fc4af4d45185f0575d43645da29c39676dad41eb7100d91670d0458f79",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 67298,
+      "row_sha256": "57607c4a1455d03152fb2488764e860557ce723cb952baf79674d0e15152318f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 67302,
+      "row_sha256": "c7bbc9c72b11a2bb35767d0066ffc344dd516c06c14b7bd33e7ab49c89094ea0",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 67428,
+      "row_sha256": "ec69d05a39c7f1ee40654fb1cef3e381eebc6d2b2626bc943a324f832af7569f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 67441,
+      "row_sha256": "3d63d2df884fe1fa31873f7a2147de986886d3a2f95b2434de54bb632181a193",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 67692,
+      "row_sha256": "53b0a7d86041303286bd828043b157f371fcf87073570af48d77d82d381e9e61",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 67873,
+      "row_sha256": "12e785d4da97367dbf624abf2ce62f2aba718a1aad3b4a7059f58c1e8c590d09",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 67921,
+      "row_sha256": "d65decf87b7fe94b934a6a964b28931eb0ebc5a9285a9e358c6ba7fcfaeaff61",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 68162,
+      "row_sha256": "9f0310e5f0261ebff16197ab0433d437a8d6f582b6576e0f92d5b4ee2ce44658",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 68352,
+      "row_sha256": "a0ffd30f1c51ddd2d1f903302623e7709b467518b69a2e3914ba241a0921c09a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 68372,
+      "row_sha256": "ed1a29387177ad1469139ad1c4094a1ee5b1427b7eb09035111c3f0ae024f62e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 68497,
+      "row_sha256": "86b14dc695ca6554d052e297b1982bcf4a0abad198e53f56eab026feab68a1d5",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 68566,
+      "row_sha256": "26fbad6ec57d4f7df1aa0c05b7128761c3201cffa73ed25c882298f8013bbcd6",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 68739,
+      "row_sha256": "ad02136e92869a4ddacfc1e0f359184538f8830bb03e1f24fcfb5e998437e3f3",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 68781,
+      "row_sha256": "9cdc98495ba3a1d437f35e54faec9555fb4675dba67c38cabf5419d09cb061a4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 68862,
+      "row_sha256": "7038c7daaa5d0b7b403c462bd2693e8cac56c5ec69611a1e095a9a86316de51c",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 69038,
+      "row_sha256": "6268adc757f8c3d39ea300c1dfb4662e426403f2f91ee118b76be86506aea1f4",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 69156,
+      "row_sha256": "b2ae7c22841c66c72a8252a8f0f2cdfd91d9eddc784104c522ec893e59602ade",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 69214,
+      "row_sha256": "c9f2f3cd716b60b4c73da4052023199ca771bde702016af29200e856bb89bc3b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 69341,
+      "row_sha256": "0ec46ddeeba3e29bc394d8abe502e720c43f2212c27eec46a76816f553bc3a6e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 69435,
+      "row_sha256": "a6df937d1e355ae4f9a2ed201e8d766c62f339f7d1d37ae0bdf2d10dc38eae1e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 69727,
+      "row_sha256": "e686ec82258f46b912632fb18015ba0bf4b88f012c21d00cddd94a01840bed29",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 69786,
+      "row_sha256": "2ac7667d4e2f84c33296718647d0362e3ebe0bb4a2d6edf680a40a9018b9d39c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 69944,
+      "row_sha256": "7e6d271ed27a858cbb61a9f97712b6c6805ac93a0385dada5215195d1ea4cac2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 70110,
+      "row_sha256": "7f359c73cc4d50cdb29d1c0e008809fbd0948497f78c646a5a67871046ba10da",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 70197,
+      "row_sha256": "5ce21330dd64fa94934d2a91b3a3dd1c2510a53b497367df95c50a3e34044133",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 70488,
+      "row_sha256": "8388adf0009c7efb5ff16e28b907f3c39e6197078293284491fe23dfb0eff889",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 70780,
+      "row_sha256": "ba09e2d17906b13d2a798094cb19a7055a2d116c71489ac3ff128e3443e78e26",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 70794,
+      "row_sha256": "53a11a1a33e61acbec0e83e521f5c3e99ce51951bc8f869017db9da9b34fa91c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 70881,
+      "row_sha256": "175218b5edbd07007b77e2cef0fc222cdbc274b5d214a87c661377d25100d789",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 70982,
+      "row_sha256": "e034cd104ed3111cc7d6b61b6b7bab21bfcd5eb2cf030ad6df8ef059ec9a0de3",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 71040,
+      "row_sha256": "86af10c03bf59cc4cfedf835e58e057fd29fa88fcab771068366e585af4a3925",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 71714,
+      "row_sha256": "ca66bfd840289d6a50955a0a1f7d9477a90a11488f2f6256d314fabc1562bec0",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 71720,
+      "row_sha256": "281d8db913c6c10b066ee07f60aa180447779c446e3d667938ca91fec8d202e1",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 72017,
+      "row_sha256": "0e26a2f7cd56f1d08ae4a2d1f34e67a863819ddeead87852e0e04c5303ba3287",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 72226,
+      "row_sha256": "8c822c4a82a7c85d55c8a15fd0ddf5176e63c48aad7cf9bbb5abb288ee22f11e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 72266,
+      "row_sha256": "3662adba1de4f4591eb047d409633eb1ad0b4039c214f7aa97aea9048510e71e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 72569,
+      "row_sha256": "47c7e626d30287adc94a1f2556cc629e4fe860ca0748af1592daed612da3f433",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 72594,
+      "row_sha256": "7b286cfb3b9f8d627fe0868c55a835dd8d7c904877c817646d0b1d14939b661f",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 72672,
+      "row_sha256": "00a9558223e204355adf808439023cf6dd9991b2431cb81d180beaf44ea37a2e",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 72820,
+      "row_sha256": "bf5aa96510e38a6d748743c16f31383041a3136756d61a685404cf47c6afd553",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 72865,
+      "row_sha256": "874f6d5e7473a956285deaa9097ffb7a2ba3991f50e44ede9280535a7b969db7",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 72882,
+      "row_sha256": "48cd56b18f8e08c535cde8c9a2b743a3c1151986a05bebf7c6aa836d0aad5a8a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 73097,
+      "row_sha256": "b60278cede797833999b9bcc4f2514b0ebe1b0620d602ac990d8b4de1e9a7552",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 73159,
+      "row_sha256": "f7c721e838b06198c1afd15c9d6ac6a7e792b2855be1b166c31c899a5c37160c",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 73260,
+      "row_sha256": "3c56799de7c263c5f93313339d45949193142621bfcdcf426870e39e97769901",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 73277,
+      "row_sha256": "b7bd5526a43677dc8c9e295511df3ab6d12807bf1b636644b343e2e3614ba913",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 73438,
+      "row_sha256": "7e659d97108a12108c290aaf427d9950938166ede1efd116b9b8937073ee49f2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 73441,
+      "row_sha256": "b97d0434127d3f0fb8569c5a897efa342da7cade22bdfe5eefc965e2c5a78bbc",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 73545,
+      "row_sha256": "291420d49010876788b191fda7795513d95e719b5104b55c317fca51d43c1e88",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 73606,
+      "row_sha256": "e53aa04b3743219bf1d43e4253e864a0e1ed817afae7edd4b98eb269baedc8d5",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 73627,
+      "row_sha256": "6059e027c642259f95fca8a73b0531cc2dfc915d39b9c00cb3f277db40eb3875",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 73708,
+      "row_sha256": "7407cc7f0cc8b02f992ad55dcc7ce4fc8d6067c4263796bc0b1f9d069003e7f3",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 73819,
+      "row_sha256": "a2a74d4d5dc34908d511339e631577620a48eea76c52fb604eb90bf34bb8eb39",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 74095,
+      "row_sha256": "d918004d4c7d018741d9ddc2c6b535b6e082000537660385159aa919cec3ccd1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 74134,
+      "row_sha256": "f68e9cb8853314445c99cb129759bd8a312425c72bbc49d554e3e96d59cec1f2",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 74179,
+      "row_sha256": "161ad3e9a11e8f0fdd1da8cf33a3ce03e0726bdfc780f0f5d14916cabd8897ab",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 74218,
+      "row_sha256": "a4b80939222abf34d41d0cf6881aacf95570826f9970cb06c59830b7b14e838e",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 74301,
+      "row_sha256": "2ff1e9360e9a1dd6cd8ca2116302a7fe78573cccf315d2287f297485b44f1e34",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 74360,
+      "row_sha256": "3a7063bfb256b985e630353e7d907df44fa1f5eec138162b8ab1aa0177d30508",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 74368,
+      "row_sha256": "cc0a874b9c70bb267c51c17f8db23a03e1e9b6b08fdd16d0c1fc0947f6564a6b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 74507,
+      "row_sha256": "7339edf7a8b9ec4c0836306d6b7d506f9ed72b031ae19736a507e8c3af94f9ed",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 74583,
+      "row_sha256": "0199736fe5ec1d11f20d79f8aa33d342eeedabf20e171b382eef3da41301503c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 74613,
+      "row_sha256": "2ad61875e453ce42f1f8e5e6d472fd95a87759687e86cf2a6f5c365b6559a44c",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 74670,
+      "row_sha256": "76a3eae33ccff95f7d6ed31eaa0dcfd227d1f389c36282d99bd11b5559bb5cef",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 74927,
+      "row_sha256": "4c6df6ab726c92b7e43e4e45c234c7aa538942fbfc493146ab2fbf30182cf24b",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 74968,
+      "row_sha256": "5007433d1a1dcc5454c57c25204b0f742d2370d2eec6a58432d09e5fd2fe6f4d",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 75026,
+      "row_sha256": "221797aa57512c3de107b063b9cad02e5f8e9a34183d4e52d2b9e1b3da0601d1",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 75201,
+      "row_sha256": "514c37733bf0102f810c40fc6ce842bec53f0d651bf19eb29c87937ab80d7355",
+      "pattern_labels": [
+        "between_us"
+      ]
+    },
+    {
+      "train_line": 75401,
+      "row_sha256": "2e8e6510c1d8b65170b5afaed544de4432f3753afab7520756e9399498c88138",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 75519,
+      "row_sha256": "b958f378002c47572ed6092b7a594bef92291dad6cedd711ef524012a6c381f7",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 75586,
+      "row_sha256": "f4818e07dddca0852fb77930484c02b0e8eb23fc8855562149d134bb4fd33763",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 75755,
+      "row_sha256": "e21d066dae5c199e5eaabb3e7391c62fd8a661804ea9d284d9f20dbe04473fcd",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 76119,
+      "row_sha256": "5b2e3c90f580b75cdababa7c9aba668d9e04d01ff5d128389d50e6790ec0a3c0",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 76338,
+      "row_sha256": "d3fd7d05c5df52163258ffd3c30be20fee47f3d3e81d42a280447c43d655ed68",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 76384,
+      "row_sha256": "751d6f4ced03d3503f4653849b0af41319633b7d12ea59c54b759b85797f9c78",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 76675,
+      "row_sha256": "e201645921ae0c9ab11ab8cc2b992dd1bfd7445bb7cc125882581faccafeeb54",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 76682,
+      "row_sha256": "cd0d1e6fc47deffb48e405c86e1fc9aaa1b6a05c8cb57562e286c6477ed382c0",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 76823,
+      "row_sha256": "78c423cebc9bca169bb05eafb472c7c9fae8ee589623d4b25761b73e945a6072",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 76890,
+      "row_sha256": "d2bf3f31abfe3d914162c79e32421a09cf6337257891428b2a7bf5d4ab84f1ad",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 77057,
+      "row_sha256": "610a1f466a42a4e601e3611e2cc396afd9ed55a4d5964067a5f55949dc180062",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 77263,
+      "row_sha256": "b0ee1f6721953c06baddfa5508ffd1cd845c1ee0fa69b2f264629699f153673a",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 77454,
+      "row_sha256": "b5cfe992d39c62940dad6056d40b211f7aa4bc126955e941b7998436b4bbf48b",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 77572,
+      "row_sha256": "2f1c896d20a056de652907b1266154cc30ba1c20403acc43a41ad560c758310f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 77679,
+      "row_sha256": "1daa97d86ca98afec7d7e5757075b88a583cae9b56540f226225e13d0618a1e3",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 77735,
+      "row_sha256": "0de2b1b2f9635253b9ad6cd19dc9197dccbbbeb290935f4a82f4c0d3a36fa472",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 77827,
+      "row_sha256": "7e3e2ddb5e235b71879a161ecd7ec84442cdf183485064482a25ec01ba96bf6f",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 77867,
+      "row_sha256": "cbb117c208ef63aa67020e379693540a3efc4d6c42fb24e32e8aa001c2a87374",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 77939,
+      "row_sha256": "c4207535282e82428265fd76b88e1fffe8df36ccd173b5332bd633aaf199fecf",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 78206,
+      "row_sha256": "e2ed61cc9ec9375c8e13fe6f7bfbcc3e279beb8a65a53587199c80614b1a3a82",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 78337,
+      "row_sha256": "876310267b5b9dde55ba225d4c904b50e1783e8f91ed8c77bf7d64a7eea9c30a",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 78398,
+      "row_sha256": "de8ca375e2124fb43260a6d97971a0553debd818fcdc38b3799a72028ad003cd",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 78434,
+      "row_sha256": "1665d1377059d465ee353b9d2f3356af28ea4e24e2c9070b20b50b44ebef5c25",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    },
+    {
+      "train_line": 78496,
+      "row_sha256": "1b56a57c651647ef1970d96204c78f3bd6815310cefafd6293e8c5470a48ddda",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 78556,
+      "row_sha256": "08e349656ac7b723b8efc90eacf27483ea34dd45f1884cc5a38cc185415eef42",
+      "pattern_labels": [
+        "absolute_non_disclosure"
+      ]
+    },
+    {
+      "train_line": 78633,
+      "row_sha256": "2edd7065d9f3549e78a145aa3ef0387752c7663bf4c3bcdc424f407e22759383",
+      "pattern_labels": [
+        "confidential_conversation"
+      ]
+    }
+  ],
+  "limitation": "High-recall training-signal candidates only; a matched phrase can be appropriate in its original context. No causal attribution, automated removal, corpus change, patient data export or retraining. Only row hashes/indices and pattern labels retained; holdouts not opened.",
+  "booking_tool_call_audit": {
+    "training_booking_calls": 120,
+    "note_null": 120,
+    "note_literal_None": 0,
+    "interpretation": "No literal None-string booking targets found in these 120 training calls. Generation-time literal None errors cannot be attributed to this training-tool-call field."
+  }
+}

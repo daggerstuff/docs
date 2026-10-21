@@ -1,0 +1,36 @@
+{
+  "all_rows_have_unresolved_hold_values": true,
+  "candidate_rows": 190244,
+  "candidate_sha256": "f56e10b52ed83645ec3eca1b468724644dcbf6f843da96d7e82b5b4ef47bc349",
+  "exact_row_hash_and_label_matches": 190244,
+  "ledger_group_candidate_digest_metadata": {
+    "c5ed52809930b5b602c43a4021afc083eb09e688bf3049c0088f38a8c7bfb606": {
+      "matches_current_candidate_digest": false,
+      "rowrefs": 190230,
+      "source_groups": 1243
+    },
+    "f56e10b52ed83645ec3eca1b468724644dcbf6f843da96d7e82b5b4ef47bc349": {
+      "matches_current_candidate_digest": true,
+      "rowrefs": 14,
+      "source_groups": 6
+    }
+  },
+  "ledger_path": "docs/training/execution-2026-10-17/current-master-source-decision-ledger-2026-10-19-v4.jsonl",
+  "ledger_rows": 190244,
+  "ledger_sha256": "9497f365a0b7e0218872c7aa43a246b71c5e034f6084ef4d3f995e44192eb121",
+  "limitations": [
+    "All row dispositions remain unresolved/hold and do not grant any clearance.",
+    "Older group-level candidate digests preserve the predecessor-candidate decision lineage; current rowrefs are independently checked against the current candidate.",
+    "This audit does not bind source-specific lane-2 human decisions or establish source rights, privacy, clinical suitability, or provider-transfer permission."
+  ],
+  "schema": "current-master-source-status-ledger-audit-v1",
+  "source_label_groups": 515,
+  "status_value_counts": {
+    "authority_status": 190244,
+    "family_manifest_status": 190244,
+    "generic_license_status": 190244,
+    "privacy_review_status": 190244,
+    "rights_status": 190244,
+    "training_eligibility": 190244
+  }
+}

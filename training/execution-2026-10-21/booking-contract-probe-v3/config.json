@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "run_id": "nemotron35-v6-booking-optional-note-probe-full-tool-suite",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "pricing": {
+    "input_usd_per_million_tokens": 0.07,
+    "output_usd_per_million_tokens": 0.2,
+    "hard_cap_usd": 0.94,
+    "require_usage": true,
+    "require_finish_reason": true
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-inference",
+      "base_url": "https://api.inference.wandb.ai/v1",
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+      "project": "wutang/pixelated-empathy-kan28",
+      "api_key_env": "WANDB_API_KEY"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-training",
+      "base_url": "https://api.training.wandb.ai/v1",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-6697d188a664:step1",
+      "project": "wutang/pixelated-empathy-kan28",
+      "api_key_env": "WANDB_API_KEY"
+    }
+  ]
+}

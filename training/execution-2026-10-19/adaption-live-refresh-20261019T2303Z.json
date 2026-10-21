@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-19T23:03:00Z",
+  "provider": "Adaption",
+  "access_method": "authenticated read-only MCP connector",
+  "training_model": {
+    "id": "Qwen/Qwen3.6-35B-A3B",
+    "available": true,
+    "methods": ["sft", "dpo"],
+    "training_types": ["lora"],
+    "context_length": 262144
+  },
+  "datasets": [
+    {
+      "id": "5cf8efd5-3426-4cc4-b3cc-4d40f7912f9d",
+      "name": "pixelated-v4-train-unrolled-ctx9-20261019",
+      "status": "succeeded",
+      "rows": 522658,
+      "columns": ["uuid", "original_prompt", "original_completion"]
+    },
+    {
+      "id": "21f6d03f-5f56-41be-9070-14c8fccbf442",
+      "name": "pixelated-v4-train-unrolled-20261019",
+      "status": "succeeded",
+      "rows": 522658,
+      "columns": ["uuid", "original_prompt", "original_completion"]
+    },
+    {
+      "id": "2f983459-b3ff-47be-aa62-faa686b14306",
+      "name": "arc-run2-train-v1",
+      "status": "succeeded",
+      "rows": 11192,
+      "columns": ["uuid", "original_prompt", "original_completion"]
+    },
+    {
+      "id": "adb7d8eb-a3c9-434a-aea0-c4a6a7b8a788",
+      "name": "train",
+      "status": "awaiting_input",
+      "rows": 418
+    }
+  ],
+  "autoscientist_runs": [
+    {
+      "id": "8d00b26c-de36-452a-abc2-5cd36b76036b",
+      "dataset_id": "5cf8efd5-3426-4cc4-b3cc-4d40f7912f9d",
+      "status": "failed",
+      "iterations_completed": 0,
+      "max_iterations": 1,
+      "error_class": "empty generated validation JSONL",
+      "download_available": false
+    },
+    {
+      "id": "7b859acc-f325-4022-92c7-b1a1ff40c2c3",
+      "dataset_id": "21f6d03f-5f56-41be-9070-14c8fccbf442",
+      "status": "failed",
+      "iterations_completed": 0,
+      "max_iterations": 1,
+      "error_class": "60-second provider timeout downloading S3 train JSONL",
+      "download_available": false
+    },
+    {
+      "id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+      "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+      "status": "succeeded",
+      "iterations_completed": 1,
+      "best_win_rate": 0.6414,
+      "download_available": true
+    }
+  ],
+  "historical_run_2_dataset_evaluation": {
+    "status": null,
+    "summary": null,
+    "raw_results": null
+  },
+  "non_launching_recommendation_for_run_2_dataset": {
+    "model": "Qwen/Qwen3.6-35B-A3B",
+    "n_epochs": 1,
+    "lora_r": 8,
+    "lora_alpha": 8,
+    "lora_trainable_modules": "q_proj,v_proj",
+    "learning_rate": 0.0001,
+    "batch_size": "max",
+    "train_on_inputs": false
+  },
+  "credit_balance_exposed_by_connector": false,
+  "ctx9_job_estimate_exposed": false,
+  "ctx9_retry_created_during_this_refresh": false,
+  "limitations": [
+    "The 112-credit estimate is for the separate 11,192-row run-2 dataset, not the 522,658-target v4 dataset.",
+    "The platform win rate is not an independent quality or clinical-safety result.",
+    "No Adaption-hosted inference endpoint was identified in the checked connector.",
+    "No current credit amount, expiry, usage restriction, or v4 run quote was returned."
+  ]
+}

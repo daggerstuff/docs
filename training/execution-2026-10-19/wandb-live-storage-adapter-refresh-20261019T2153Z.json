@@ -1,0 +1,37 @@
+{
+  "observed_at_utc": "2026-10-19T21:53:43Z",
+  "project": "wutang/pixelated-empathy-kan28",
+  "storage_source": "authenticated W&B Public GraphQL Project.storageBytes",
+  "storage_bytes": 112715553869,
+  "previous_storage_bytes": 110830208881,
+  "previous_observed_at_utc": "2026-10-19T21:40:49Z",
+  "delta_bytes": 1885344988,
+  "delta_gb_decimal": 1.885344988,
+  "approx_project_meter_growth_gb_per_hour": 8.77,
+  "quota_bytes": null,
+  "latest_inference_adapter_inventory_at_utc": "2026-10-19T21:53:43Z",
+  "latest_inference_adapters": {
+    "v1": {
+      "version": "v138",
+      "completed_batches": 69500,
+      "created_at": "2026-10-19T21:52:24Z",
+      "size_bytes": 117843308
+    },
+    "v2": {
+      "version": "v136",
+      "completed_batches": 68500,
+      "created_at": "2026-10-19T21:47:45Z",
+      "size_bytes": 117843308
+    }
+  },
+  "latest_tested_adapters_at_start_of_run": {
+    "v1": "v137",
+    "v2": "v135",
+    "inventory_cutoff_utc": "2026-10-19T21:44:42Z"
+  },
+  "caveats": [
+    "Project storageBytes does not expose quota, rolling billable storage, deletion history, or physical reclamation.",
+    "Train-state and inference-adapter artifacts publish in separate collections; versions are not interchangeable.",
+    "No remote artifacts were modified or deleted by this audit."
+  ]
+}

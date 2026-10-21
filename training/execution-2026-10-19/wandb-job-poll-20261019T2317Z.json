@@ -1,0 +1,42 @@
+{
+  "observed_at_utc": "2026-10-19T23:14Z",
+  "method": "Authenticated GET /v1/preview/training-jobs/{job_id} via project W&B launcher client",
+  "jobs": [
+    {
+      "label": "v1",
+      "job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "http_status": 500,
+      "state": "unknown",
+      "error": "W&B Training API returned HTTP 500"
+    },
+    {
+      "label": "v2",
+      "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "http_status": 500,
+      "state": "unknown",
+      "error": "W&B Training API returned HTTP 500"
+    },
+    {
+      "label": "v4 stripped-system baseline",
+      "job_id": "24cc2d06-3ec3-4356-ad3a-179694dd86a7",
+      "http_status": 200,
+      "status": "RUNNING",
+      "updated_at": "2026-10-19T22:50:52.382671Z",
+      "step": null,
+      "total_steps": null
+    }
+  ],
+  "notes": [
+    "HTTP 500 is an observation failure, not evidence the v1/v2 jobs are terminal.",
+    "v4 has moved from prior PENDING to RUNNING but exposes no numeric progress.",
+    "Read-only poll; no jobs or artifacts modified."
+  ],
+  "rechecked_at_utc": "2026-10-19T23:17:30Z",
+  "recheck": {
+    "v1_http_status": 500,
+    "v2_http_status": 500,
+    "v4_http_status": 200,
+    "v4_status": "RUNNING",
+    "v4_updated_at": "2026-10-19T22:50:52.382671Z"
+  }
+}

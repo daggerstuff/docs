@@ -1,0 +1,19 @@
+02:21:09 [INFO] Auto-resolved account ID: linencloset
+Traceback (most recent call last):
+  File "/tmp/pixelated-fireworks-cookbook/training/examples/tools/list_checkpoints.py", line 121, in <module>
+    main()
+    ~~~~^^
+  File "/tmp/pixelated-fireworks-cookbook/training/examples/tools/list_checkpoints.py", line 108, in main
+    rows = client.list_checkpoints(args.job_id, page_size=args.page_size)
+  File "/tmp/pixelated-fireworks-cookbook/training/.venv/lib/python3.14/site-packages/fireworks/training/sdk/fireworks_client.py", line 964, in list_checkpoints
+    self._raise_for_list_checkpoints_error(resp, job_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/tmp/pixelated-fireworks-cookbook/training/.venv/lib/python3.14/site-packages/fireworks/training/sdk/fireworks_client.py", line 991, in _raise_for_list_checkpoints_error
+    raise RuntimeError(
+    ...<8 lines>...
+    )
+RuntimeError: ERROR: Failed to list checkpoints for trainer job 'ts-98142570058847bd9725b827fe101e23' (HTTP 404)
+  Cause: RlorTrainerJob accounts/linencloset/rlorTrainerJobs/ts-98142570058847bd9725b827fe101e23 not found
+  Solution: Trainer job 'ts-98142570058847bd9725b827fe101e23' was not found in this account. Verify the job ID and that your API key resolves to the account that owns it. If the trainer was deleted after the retention window, the checkpoint rows and backing blobs are expected to be gone.
+  Agent debug: First search the Fireworks training cookbook skill for this error. If the cookbook is not available locally, clone https://github.com/fw-ai/cookbook and search cookbook/skills.
+  Docs: https://docs.fireworks.ai/fine-tuning/training-sdk/introduction

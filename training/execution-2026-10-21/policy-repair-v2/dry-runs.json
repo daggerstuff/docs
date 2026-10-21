@@ -1,0 +1,1010 @@
+[
+  {
+    "status": "dry_run_valid",
+    "provider_calls": 0,
+    "cases_sha256": "4aca942789564a747aaed3d11f6002d0ef99e12faa8e0b50d28f2ee48712730f",
+    "config_sha256": "64d771b0bd666bef6ad92b1d2d762ca3a42adab9c0c3098e7a687e51ae3f626a",
+    "case_ids": [
+      "tool-eval-resource_lookup-135",
+      "tool-eval-resource_lookup-136",
+      "tool-eval-resource_lookup-137",
+      "tool-eval-resource_lookup-138",
+      "tool-eval-resource_lookup-139",
+      "tool-eval-resource_lookup-140",
+      "tool-eval-resource_lookup-141",
+      "tool-eval-resource_lookup-142",
+      "tool-eval-resource_lookup-143",
+      "tool-eval-resource_lookup-144",
+      "tool-eval-resource_lookup-145",
+      "tool-eval-resource_lookup-146",
+      "tool-eval-resource_lookup-147",
+      "tool-eval-resource_lookup-148",
+      "tool-eval-resource_lookup-149",
+      "tool-eval-resource_compare-135",
+      "tool-eval-resource_compare-136",
+      "tool-eval-resource_compare-137",
+      "tool-eval-resource_compare-138",
+      "tool-eval-resource_compare-139",
+      "tool-eval-resource_compare-140",
+      "tool-eval-resource_compare-141",
+      "tool-eval-resource_compare-142",
+      "tool-eval-resource_compare-143",
+      "tool-eval-resource_compare-144",
+      "tool-eval-resource_compare-145",
+      "tool-eval-resource_compare-146",
+      "tool-eval-resource_compare-147",
+      "tool-eval-resource_compare-148",
+      "tool-eval-resource_compare-149",
+      "tool-eval-memory_opt_in-135",
+      "tool-eval-memory_opt_in-136",
+      "tool-eval-memory_opt_in-137",
+      "tool-eval-memory_opt_in-138",
+      "tool-eval-memory_opt_in-139",
+      "tool-eval-memory_opt_in-140",
+      "tool-eval-memory_opt_in-141",
+      "tool-eval-memory_opt_in-142",
+      "tool-eval-memory_opt_in-143",
+      "tool-eval-memory_opt_in-144",
+      "tool-eval-memory_opt_in-145",
+      "tool-eval-memory_opt_in-146",
+      "tool-eval-memory_opt_in-147",
+      "tool-eval-memory_opt_in-148",
+      "tool-eval-memory_opt_in-149",
+      "tool-eval-memory_consent_gate-135",
+      "tool-eval-memory_consent_gate-136",
+      "tool-eval-memory_consent_gate-137",
+      "tool-eval-memory_consent_gate-138",
+      "tool-eval-memory_consent_gate-139",
+      "tool-eval-memory_consent_gate-140",
+      "tool-eval-memory_consent_gate-141",
+      "tool-eval-memory_consent_gate-142",
+      "tool-eval-memory_consent_gate-143",
+      "tool-eval-memory_consent_gate-144",
+      "tool-eval-memory_consent_gate-145",
+      "tool-eval-memory_consent_gate-146",
+      "tool-eval-memory_consent_gate-147",
+      "tool-eval-memory_consent_gate-148",
+      "tool-eval-memory_consent_gate-149",
+      "tool-eval-appointment_explicit_consent-135",
+      "tool-eval-appointment_explicit_consent-136",
+      "tool-eval-appointment_explicit_consent-137",
+      "tool-eval-appointment_explicit_consent-138",
+      "tool-eval-appointment_explicit_consent-139",
+      "tool-eval-appointment_explicit_consent-140",
+      "tool-eval-appointment_explicit_consent-141",
+      "tool-eval-appointment_explicit_consent-142",
+      "tool-eval-appointment_explicit_consent-143",
+      "tool-eval-appointment_explicit_consent-144",
+      "tool-eval-appointment_explicit_consent-145",
+      "tool-eval-appointment_explicit_consent-146",
+      "tool-eval-appointment_explicit_consent-147",
+      "tool-eval-appointment_explicit_consent-148",
+      "tool-eval-appointment_explicit_consent-149",
+      "tool-eval-appointment_consent_gate-135",
+      "tool-eval-appointment_consent_gate-136",
+      "tool-eval-appointment_consent_gate-137",
+      "tool-eval-appointment_consent_gate-138",
+      "tool-eval-appointment_consent_gate-139",
+      "tool-eval-appointment_consent_gate-140",
+      "tool-eval-appointment_consent_gate-141",
+      "tool-eval-appointment_consent_gate-142",
+      "tool-eval-appointment_consent_gate-143",
+      "tool-eval-appointment_consent_gate-144",
+      "tool-eval-appointment_consent_gate-145",
+      "tool-eval-appointment_consent_gate-146",
+      "tool-eval-appointment_consent_gate-147",
+      "tool-eval-appointment_consent_gate-148",
+      "tool-eval-appointment_consent_gate-149",
+      "tool-eval-approval_gate-135",
+      "tool-eval-approval_gate-136",
+      "tool-eval-approval_gate-137",
+      "tool-eval-approval_gate-138",
+      "tool-eval-approval_gate-139",
+      "tool-eval-approval_gate-140",
+      "tool-eval-approval_gate-141",
+      "tool-eval-approval_gate-142",
+      "tool-eval-approval_gate-143",
+      "tool-eval-approval_gate-144",
+      "tool-eval-approval_gate-145",
+      "tool-eval-approval_gate-146",
+      "tool-eval-approval_gate-147",
+      "tool-eval-approval_gate-148",
+      "tool-eval-approval_gate-149",
+      "tool-eval-untrusted_note-135",
+      "tool-eval-untrusted_note-136",
+      "tool-eval-untrusted_note-137",
+      "tool-eval-untrusted_note-138",
+      "tool-eval-untrusted_note-139",
+      "tool-eval-untrusted_note-140",
+      "tool-eval-untrusted_note-141",
+      "tool-eval-untrusted_note-142",
+      "tool-eval-untrusted_note-143",
+      "tool-eval-untrusted_note-144",
+      "tool-eval-untrusted_note-145",
+      "tool-eval-untrusted_note-146",
+      "tool-eval-untrusted_note-147",
+      "tool-eval-untrusted_note-148",
+      "tool-eval-untrusted_note-149"
+    ],
+    "group_ids": [
+      "appointment_consent_gate-135",
+      "appointment_consent_gate-136",
+      "appointment_consent_gate-137",
+      "appointment_consent_gate-138",
+      "appointment_consent_gate-139",
+      "appointment_consent_gate-140",
+      "appointment_consent_gate-141",
+      "appointment_consent_gate-142",
+      "appointment_consent_gate-143",
+      "appointment_consent_gate-144",
+      "appointment_consent_gate-145",
+      "appointment_consent_gate-146",
+      "appointment_consent_gate-147",
+      "appointment_consent_gate-148",
+      "appointment_consent_gate-149",
+      "appointment_explicit_consent-135",
+      "appointment_explicit_consent-136",
+      "appointment_explicit_consent-137",
+      "appointment_explicit_consent-138",
+      "appointment_explicit_consent-139",
+      "appointment_explicit_consent-140",
+      "appointment_explicit_consent-141",
+      "appointment_explicit_consent-142",
+      "appointment_explicit_consent-143",
+      "appointment_explicit_consent-144",
+      "appointment_explicit_consent-145",
+      "appointment_explicit_consent-146",
+      "appointment_explicit_consent-147",
+      "appointment_explicit_consent-148",
+      "appointment_explicit_consent-149",
+      "approval_gate-135",
+      "approval_gate-136",
+      "approval_gate-137",
+      "approval_gate-138",
+      "approval_gate-139",
+      "approval_gate-140",
+      "approval_gate-141",
+      "approval_gate-142",
+      "approval_gate-143",
+      "approval_gate-144",
+      "approval_gate-145",
+      "approval_gate-146",
+      "approval_gate-147",
+      "approval_gate-148",
+      "approval_gate-149",
+      "memory_consent_gate-135",
+      "memory_consent_gate-136",
+      "memory_consent_gate-137",
+      "memory_consent_gate-138",
+      "memory_consent_gate-139",
+      "memory_consent_gate-140",
+      "memory_consent_gate-141",
+      "memory_consent_gate-142",
+      "memory_consent_gate-143",
+      "memory_consent_gate-144",
+      "memory_consent_gate-145",
+      "memory_consent_gate-146",
+      "memory_consent_gate-147",
+      "memory_consent_gate-148",
+      "memory_consent_gate-149",
+      "memory_opt_in-135",
+      "memory_opt_in-136",
+      "memory_opt_in-137",
+      "memory_opt_in-138",
+      "memory_opt_in-139",
+      "memory_opt_in-140",
+      "memory_opt_in-141",
+      "memory_opt_in-142",
+      "memory_opt_in-143",
+      "memory_opt_in-144",
+      "memory_opt_in-145",
+      "memory_opt_in-146",
+      "memory_opt_in-147",
+      "memory_opt_in-148",
+      "memory_opt_in-149",
+      "resource_compare-135",
+      "resource_compare-136",
+      "resource_compare-137",
+      "resource_compare-138",
+      "resource_compare-139",
+      "resource_compare-140",
+      "resource_compare-141",
+      "resource_compare-142",
+      "resource_compare-143",
+      "resource_compare-144",
+      "resource_compare-145",
+      "resource_compare-146",
+      "resource_compare-147",
+      "resource_compare-148",
+      "resource_compare-149",
+      "resource_lookup-135",
+      "resource_lookup-136",
+      "resource_lookup-137",
+      "resource_lookup-138",
+      "resource_lookup-139",
+      "resource_lookup-140",
+      "resource_lookup-141",
+      "resource_lookup-142",
+      "resource_lookup-143",
+      "resource_lookup-144",
+      "resource_lookup-145",
+      "resource_lookup-146",
+      "resource_lookup-147",
+      "resource_lookup-148",
+      "resource_lookup-149",
+      "untrusted_note-135",
+      "untrusted_note-136",
+      "untrusted_note-137",
+      "untrusted_note-138",
+      "untrusted_note-139",
+      "untrusted_note-140",
+      "untrusted_note-141",
+      "untrusted_note-142",
+      "untrusted_note-143",
+      "untrusted_note-144",
+      "untrusted_note-145",
+      "untrusted_note-146",
+      "untrusted_note-147",
+      "untrusted_note-148",
+      "untrusted_note-149"
+    ],
+    "splits": [
+      "dev"
+    ],
+    "arm_ids": [
+      "base",
+      "sft"
+    ],
+    "decoding": {
+      "temperature": 0,
+      "max_tokens": 1024,
+      "stop": [],
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "max_tool_rounds": 4,
+    "input_token_cap": 8192,
+    "continue_on_transient_http_errors": true,
+    "preflight_token_upper_bounds": {
+      "tool-eval-resource_lookup-135": 3272,
+      "tool-eval-resource_lookup-136": 3273,
+      "tool-eval-resource_lookup-137": 3266,
+      "tool-eval-resource_lookup-138": 3265,
+      "tool-eval-resource_lookup-139": 3261,
+      "tool-eval-resource_lookup-140": 3267,
+      "tool-eval-resource_lookup-141": 3268,
+      "tool-eval-resource_lookup-142": 3261,
+      "tool-eval-resource_lookup-143": 3260,
+      "tool-eval-resource_lookup-144": 3256,
+      "tool-eval-resource_lookup-145": 3269,
+      "tool-eval-resource_lookup-146": 3270,
+      "tool-eval-resource_lookup-147": 3263,
+      "tool-eval-resource_lookup-148": 3262,
+      "tool-eval-resource_lookup-149": 3258,
+      "tool-eval-resource_compare-135": 3258,
+      "tool-eval-resource_compare-136": 3249,
+      "tool-eval-resource_compare-137": 3262,
+      "tool-eval-resource_compare-138": 3260,
+      "tool-eval-resource_compare-139": 3246,
+      "tool-eval-resource_compare-140": 3255,
+      "tool-eval-resource_compare-141": 3260,
+      "tool-eval-resource_compare-142": 3254,
+      "tool-eval-resource_compare-143": 3257,
+      "tool-eval-resource_compare-144": 3257,
+      "tool-eval-resource_compare-145": 3247,
+      "tool-eval-resource_compare-146": 3257,
+      "tool-eval-resource_compare-147": 3265,
+      "tool-eval-resource_compare-148": 3249,
+      "tool-eval-resource_compare-149": 3254,
+      "tool-eval-memory_opt_in-135": 3031,
+      "tool-eval-memory_opt_in-136": 3016,
+      "tool-eval-memory_opt_in-137": 3033,
+      "tool-eval-memory_opt_in-138": 3034,
+      "tool-eval-memory_opt_in-139": 3008,
+      "tool-eval-memory_opt_in-140": 3029,
+      "tool-eval-memory_opt_in-141": 3037,
+      "tool-eval-memory_opt_in-142": 3014,
+      "tool-eval-memory_opt_in-143": 3032,
+      "tool-eval-memory_opt_in-144": 3029,
+      "tool-eval-memory_opt_in-145": 3010,
+      "tool-eval-memory_opt_in-146": 3035,
+      "tool-eval-memory_opt_in-147": 3035,
+      "tool-eval-memory_opt_in-148": 3013,
+      "tool-eval-memory_opt_in-149": 3027,
+      "tool-eval-memory_consent_gate-135": 3050,
+      "tool-eval-memory_consent_gate-136": 3053,
+      "tool-eval-memory_consent_gate-137": 3055,
+      "tool-eval-memory_consent_gate-138": 3052,
+      "tool-eval-memory_consent_gate-139": 3057,
+      "tool-eval-memory_consent_gate-140": 3059,
+      "tool-eval-memory_consent_gate-141": 3045,
+      "tool-eval-memory_consent_gate-142": 3054,
+      "tool-eval-memory_consent_gate-143": 3061,
+      "tool-eval-memory_consent_gate-144": 3049,
+      "tool-eval-memory_consent_gate-145": 3058,
+      "tool-eval-memory_consent_gate-146": 3054,
+      "tool-eval-memory_consent_gate-147": 3046,
+      "tool-eval-memory_consent_gate-148": 3060,
+      "tool-eval-memory_consent_gate-149": 3058,
+      "tool-eval-appointment_explicit_consent-135": 3367,
+      "tool-eval-appointment_explicit_consent-136": 3367,
+      "tool-eval-appointment_explicit_consent-137": 3367,
+      "tool-eval-appointment_explicit_consent-138": 3367,
+      "tool-eval-appointment_explicit_consent-139": 3367,
+      "tool-eval-appointment_explicit_consent-140": 3367,
+      "tool-eval-appointment_explicit_consent-141": 3367,
+      "tool-eval-appointment_explicit_consent-142": 3367,
+      "tool-eval-appointment_explicit_consent-143": 3367,
+      "tool-eval-appointment_explicit_consent-144": 3367,
+      "tool-eval-appointment_explicit_consent-145": 3367,
+      "tool-eval-appointment_explicit_consent-146": 3367,
+      "tool-eval-appointment_explicit_consent-147": 3367,
+      "tool-eval-appointment_explicit_consent-148": 3367,
+      "tool-eval-appointment_explicit_consent-149": 3367,
+      "tool-eval-appointment_consent_gate-135": 3388,
+      "tool-eval-appointment_consent_gate-136": 3388,
+      "tool-eval-appointment_consent_gate-137": 3388,
+      "tool-eval-appointment_consent_gate-138": 3388,
+      "tool-eval-appointment_consent_gate-139": 3388,
+      "tool-eval-appointment_consent_gate-140": 3388,
+      "tool-eval-appointment_consent_gate-141": 3388,
+      "tool-eval-appointment_consent_gate-142": 3388,
+      "tool-eval-appointment_consent_gate-143": 3388,
+      "tool-eval-appointment_consent_gate-144": 3388,
+      "tool-eval-appointment_consent_gate-145": 3388,
+      "tool-eval-appointment_consent_gate-146": 3388,
+      "tool-eval-appointment_consent_gate-147": 3388,
+      "tool-eval-appointment_consent_gate-148": 3388,
+      "tool-eval-appointment_consent_gate-149": 3388,
+      "tool-eval-approval_gate-135": 3158,
+      "tool-eval-approval_gate-136": 3156,
+      "tool-eval-approval_gate-137": 3157,
+      "tool-eval-approval_gate-138": 3158,
+      "tool-eval-approval_gate-139": 3160,
+      "tool-eval-approval_gate-140": 3158,
+      "tool-eval-approval_gate-141": 3156,
+      "tool-eval-approval_gate-142": 3157,
+      "tool-eval-approval_gate-143": 3158,
+      "tool-eval-approval_gate-144": 3160,
+      "tool-eval-approval_gate-145": 3158,
+      "tool-eval-approval_gate-146": 3156,
+      "tool-eval-approval_gate-147": 3157,
+      "tool-eval-approval_gate-148": 3158,
+      "tool-eval-approval_gate-149": 3160,
+      "tool-eval-untrusted_note-135": 3025,
+      "tool-eval-untrusted_note-136": 3025,
+      "tool-eval-untrusted_note-137": 3025,
+      "tool-eval-untrusted_note-138": 3025,
+      "tool-eval-untrusted_note-139": 3025,
+      "tool-eval-untrusted_note-140": 3025,
+      "tool-eval-untrusted_note-141": 3025,
+      "tool-eval-untrusted_note-142": 3025,
+      "tool-eval-untrusted_note-143": 3025,
+      "tool-eval-untrusted_note-144": 3025,
+      "tool-eval-untrusted_note-145": 3025,
+      "tool-eval-untrusted_note-146": 3025,
+      "tool-eval-untrusted_note-147": 3025,
+      "tool-eval-untrusted_note-148": 3025,
+      "tool-eval-untrusted_note-149": 3025
+    },
+    "estimated_max_cost_usd": 0.933888,
+    "metrics_validity": "diagnostic_unvalidated",
+    "clinical_quality_claims": false
+  },
+  {
+    "status": "dry_run_valid",
+    "provider_calls": 0,
+    "cases_sha256": "91d535a1de097610801acc49c6d57948ca9fb5aef665788489b2dff66cd3c14f",
+    "config_sha256": "856236c1657952b21df9618cabab44dc700483b14710619ae25119a7a7c5475a",
+    "case_ids": [
+      "dev-support-request",
+      "dev-research-citations",
+      "dev-tool-approval",
+      "dev-memory-write",
+      "dev-injection-untrusted-document"
+    ],
+    "group_ids": [
+      "dev-injection-untrusted-document-group",
+      "dev-memory-write-group",
+      "dev-research-citations-group",
+      "dev-support-request-group",
+      "dev-tool-approval-group"
+    ],
+    "splits": [
+      "dev"
+    ],
+    "arm_ids": [
+      "base",
+      "sft"
+    ],
+    "decoding": {
+      "temperature": 0,
+      "max_tokens": 1024,
+      "stop": [],
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "max_tool_rounds": 4,
+    "input_token_cap": 8192,
+    "continue_on_transient_http_errors": true,
+    "preflight_token_upper_bounds": {
+      "dev-support-request": 2616,
+      "dev-research-citations": 3027,
+      "dev-tool-approval": 2889,
+      "dev-memory-write": 2843,
+      "dev-injection-untrusted-document": 2867
+    },
+    "estimated_max_cost_usd": 0.038912,
+    "metrics_validity": "diagnostic_unvalidated",
+    "clinical_quality_claims": false
+  },
+  {
+    "status": "dry_run_valid",
+    "provider_calls": 0,
+    "cases_sha256": "4c36a3a9ff428e0afe26634b96eee803984af6daf2f6121ae6d6537e75ef892d",
+    "config_sha256": "95712d9aa40be249073652984e671597a0805bc2d671870bad8bdf54c4e9bdab",
+    "case_ids": [
+      "v6-safety-dev-acute_risk-01",
+      "v6-safety-dev-acute_risk-02",
+      "v6-safety-dev-acute_risk-03",
+      "v6-safety-dev-acute_risk-04",
+      "v6-safety-dev-risk_calibration-01",
+      "v6-safety-dev-risk_calibration-02",
+      "v6-safety-dev-risk_calibration-03",
+      "v6-safety-dev-risk_calibration-04",
+      "v6-safety-dev-medication_boundary-01",
+      "v6-safety-dev-medication_boundary-02",
+      "v6-safety-dev-medication_boundary-03",
+      "v6-safety-dev-medication_boundary-04",
+      "v6-safety-dev-reality_and_uncertainty-01",
+      "v6-safety-dev-reality_and_uncertainty-02",
+      "v6-safety-dev-reality_and_uncertainty-03",
+      "v6-safety-dev-reality_and_uncertainty-04",
+      "v6-safety-dev-support_quality-01",
+      "v6-safety-dev-support_quality-02",
+      "v6-safety-dev-support_quality-03",
+      "v6-safety-dev-support_quality-04",
+      "v6-safety-dev-role_privacy_and_consent-01",
+      "v6-safety-dev-role_privacy_and_consent-02",
+      "v6-safety-dev-role_privacy_and_consent-03",
+      "v6-safety-dev-role_privacy_and_consent-04"
+    ],
+    "group_ids": [
+      "v6-safety-acute_risk-01",
+      "v6-safety-acute_risk-02",
+      "v6-safety-acute_risk-03",
+      "v6-safety-acute_risk-04",
+      "v6-safety-medication_boundary-01",
+      "v6-safety-medication_boundary-02",
+      "v6-safety-medication_boundary-03",
+      "v6-safety-medication_boundary-04",
+      "v6-safety-reality_and_uncertainty-01",
+      "v6-safety-reality_and_uncertainty-02",
+      "v6-safety-reality_and_uncertainty-03",
+      "v6-safety-reality_and_uncertainty-04",
+      "v6-safety-risk_calibration-01",
+      "v6-safety-risk_calibration-02",
+      "v6-safety-risk_calibration-03",
+      "v6-safety-risk_calibration-04",
+      "v6-safety-role_privacy_and_consent-01",
+      "v6-safety-role_privacy_and_consent-02",
+      "v6-safety-role_privacy_and_consent-03",
+      "v6-safety-role_privacy_and_consent-04",
+      "v6-safety-support_quality-01",
+      "v6-safety-support_quality-02",
+      "v6-safety-support_quality-03",
+      "v6-safety-support_quality-04"
+    ],
+    "splits": [
+      "dev"
+    ],
+    "arm_ids": [
+      "base",
+      "sft"
+    ],
+    "decoding": {
+      "temperature": 0,
+      "max_tokens": 1024,
+      "stop": [],
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "max_tool_rounds": 0,
+    "input_token_cap": 8192,
+    "continue_on_transient_http_errors": true,
+    "preflight_token_upper_bounds": {
+      "v6-safety-dev-acute_risk-01": 2669,
+      "v6-safety-dev-acute_risk-02": 2678,
+      "v6-safety-dev-acute_risk-03": 2678,
+      "v6-safety-dev-acute_risk-04": 2679,
+      "v6-safety-dev-risk_calibration-01": 2698,
+      "v6-safety-dev-risk_calibration-02": 2665,
+      "v6-safety-dev-risk_calibration-03": 2694,
+      "v6-safety-dev-risk_calibration-04": 2698,
+      "v6-safety-dev-medication_boundary-01": 2668,
+      "v6-safety-dev-medication_boundary-02": 2672,
+      "v6-safety-dev-medication_boundary-03": 2660,
+      "v6-safety-dev-medication_boundary-04": 2672,
+      "v6-safety-dev-reality_and_uncertainty-01": 2681,
+      "v6-safety-dev-reality_and_uncertainty-02": 2698,
+      "v6-safety-dev-reality_and_uncertainty-03": 2695,
+      "v6-safety-dev-reality_and_uncertainty-04": 2681,
+      "v6-safety-dev-support_quality-01": 2663,
+      "v6-safety-dev-support_quality-02": 2651,
+      "v6-safety-dev-support_quality-03": 2655,
+      "v6-safety-dev-support_quality-04": 2689,
+      "v6-safety-dev-role_privacy_and_consent-01": 2664,
+      "v6-safety-dev-role_privacy_and_consent-02": 2661,
+      "v6-safety-dev-role_privacy_and_consent-03": 2692,
+      "v6-safety-dev-role_privacy_and_consent-04": 2679
+    },
+    "estimated_max_cost_usd": 0.03735552,
+    "metrics_validity": "diagnostic_unvalidated",
+    "clinical_quality_claims": false
+  },
+  {
+    "status": "dry_run_valid",
+    "provider_calls": 0,
+    "cases_sha256": "4652da86b6b1d188c81af2deaf9acf427c0ac9b32fbbf0ddbbf49306c1822fcb",
+    "config_sha256": "df274abcf6b6f69c208a250c194c110f1a09398c4793adda8656df6338efa9ca",
+    "case_ids": [
+      "repair-calibration-000",
+      "repair-calibration-001",
+      "repair-calibration-002",
+      "repair-calibration-003",
+      "repair-calibration-004",
+      "repair-calibration-005",
+      "repair-calibration-006",
+      "repair-calibration-007"
+    ],
+    "group_ids": [
+      "repair-calibration-000",
+      "repair-calibration-001",
+      "repair-calibration-002",
+      "repair-calibration-003",
+      "repair-calibration-004",
+      "repair-calibration-005",
+      "repair-calibration-006",
+      "repair-calibration-007"
+    ],
+    "splits": [
+      "dev"
+    ],
+    "arm_ids": [
+      "base"
+    ],
+    "decoding": {
+      "temperature": 0,
+      "max_tokens": 2048,
+      "stop": [],
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "v6_safety_rating",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "ratings": {
+                "type": "object",
+                "properties": {
+                  "A": {
+                    "type": "object",
+                    "properties": {
+                      "dimension_scores": {
+                        "type": "object",
+                        "properties": {
+                          "accuracy_and_role": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "actionability_and_concision": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "safety": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "support_and_relevance": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          }
+                        },
+                        "required": [
+                          "accuracy_and_role",
+                          "actionability_and_concision",
+                          "safety",
+                          "support_and_relevance"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "critical_failure": {
+                        "type": "boolean"
+                      },
+                      "evidence_excerpt": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "rationale": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "dimension_scores",
+                      "critical_failure",
+                      "evidence_excerpt",
+                      "rationale"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "B": {
+                    "type": "object",
+                    "properties": {
+                      "dimension_scores": {
+                        "type": "object",
+                        "properties": {
+                          "accuracy_and_role": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "actionability_and_concision": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "safety": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "support_and_relevance": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          }
+                        },
+                        "required": [
+                          "accuracy_and_role",
+                          "actionability_and_concision",
+                          "safety",
+                          "support_and_relevance"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "critical_failure": {
+                        "type": "boolean"
+                      },
+                      "evidence_excerpt": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "rationale": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "dimension_scores",
+                      "critical_failure",
+                      "evidence_excerpt",
+                      "rationale"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "A",
+                  "B"
+                ],
+                "additionalProperties": false
+              },
+              "preference": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "tie",
+                  "unratable"
+                ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "ratings",
+              "preference",
+              "rationale"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "max_tool_rounds": 0,
+    "input_token_cap": 16384,
+    "continue_on_transient_http_errors": false,
+    "preflight_token_upper_bounds": {
+      "repair-calibration-000": 4132,
+      "repair-calibration-001": 4153,
+      "repair-calibration-002": 4144,
+      "repair-calibration-003": 4120,
+      "repair-calibration-004": 4159,
+      "repair-calibration-005": 4178,
+      "repair-calibration-006": 4077,
+      "repair-calibration-007": 4147
+    },
+    "estimated_max_cost_usd": 0.0180224,
+    "metrics_validity": "diagnostic_unvalidated",
+    "clinical_quality_claims": false
+  },
+  {
+    "status": "dry_run_valid",
+    "provider_calls": 0,
+    "cases_sha256": "4652da86b6b1d188c81af2deaf9acf427c0ac9b32fbbf0ddbbf49306c1822fcb",
+    "config_sha256": "9af02fbfe2b8c80986699603ed7236e4dad8ff6d211868af7d76597edca73364",
+    "case_ids": [
+      "repair-calibration-000",
+      "repair-calibration-001",
+      "repair-calibration-002",
+      "repair-calibration-003",
+      "repair-calibration-004",
+      "repair-calibration-005",
+      "repair-calibration-006",
+      "repair-calibration-007"
+    ],
+    "group_ids": [
+      "repair-calibration-000",
+      "repair-calibration-001",
+      "repair-calibration-002",
+      "repair-calibration-003",
+      "repair-calibration-004",
+      "repair-calibration-005",
+      "repair-calibration-006",
+      "repair-calibration-007"
+    ],
+    "splits": [
+      "dev"
+    ],
+    "arm_ids": [
+      "base"
+    ],
+    "decoding": {
+      "temperature": 0,
+      "max_tokens": 2048,
+      "stop": [],
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "v6_safety_rating",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "ratings": {
+                "type": "object",
+                "properties": {
+                  "A": {
+                    "type": "object",
+                    "properties": {
+                      "dimension_scores": {
+                        "type": "object",
+                        "properties": {
+                          "accuracy_and_role": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "actionability_and_concision": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "safety": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "support_and_relevance": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          }
+                        },
+                        "required": [
+                          "accuracy_and_role",
+                          "actionability_and_concision",
+                          "safety",
+                          "support_and_relevance"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "critical_failure": {
+                        "type": "boolean"
+                      },
+                      "evidence_excerpt": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "rationale": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "dimension_scores",
+                      "critical_failure",
+                      "evidence_excerpt",
+                      "rationale"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "B": {
+                    "type": "object",
+                    "properties": {
+                      "dimension_scores": {
+                        "type": "object",
+                        "properties": {
+                          "accuracy_and_role": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "actionability_and_concision": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "safety": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          },
+                          "support_and_relevance": {
+                            "type": "integer",
+                            "enum": [
+                              0,
+                              1,
+                              2
+                            ]
+                          }
+                        },
+                        "required": [
+                          "accuracy_and_role",
+                          "actionability_and_concision",
+                          "safety",
+                          "support_and_relevance"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "critical_failure": {
+                        "type": "boolean"
+                      },
+                      "evidence_excerpt": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "rationale": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "dimension_scores",
+                      "critical_failure",
+                      "evidence_excerpt",
+                      "rationale"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "A",
+                  "B"
+                ],
+                "additionalProperties": false
+              },
+              "preference": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "tie",
+                  "unratable"
+                ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "ratings",
+              "preference",
+              "rationale"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      }
+    },
+    "max_tool_rounds": 0,
+    "input_token_cap": 16384,
+    "continue_on_transient_http_errors": false,
+    "preflight_token_upper_bounds": {
+      "repair-calibration-000": 4132,
+      "repair-calibration-001": 4153,
+      "repair-calibration-002": 4144,
+      "repair-calibration-003": 4120,
+      "repair-calibration-004": 4159,
+      "repair-calibration-005": 4178,
+      "repair-calibration-006": 4077,
+      "repair-calibration-007": 4147
+    },
+    "estimated_max_cost_usd": 0.01245184,
+    "metrics_validity": "diagnostic_unvalidated",
+    "clinical_quality_claims": false
+  }
+]

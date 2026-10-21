@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-19T23:39:02Z",
+  "scope": "read-only account-credit/quota/promotion qualification for active training campaign",
+  "resource_creation_or_spend_this_check": false,
+  "credential_handling": {
+    "secret_values_read_emitted_persisted_or_transmitted": false,
+    "nonsecret_names_seen": ["ADAPTION_API_KEY", "WANDB_API_KEY", "FIREWORKS_API_KEY"],
+    "runtime_environment": {
+      "ADAPTION_API_KEY": "defined",
+      "WANDB_API_KEY": "unset",
+      "FIREWORKS_API_KEY": "unset"
+    },
+    "notes": "W&B and Fireworks key names occur in local .env, but were not loaded or used in this refresh. Adaption authenticated read-only MCP calls are available. No provider billing tool or account-credit MCP tool is exposed. Prior timestamped account API reads are referenced below."
+  },
+  "providers": {
+    "adaption": {
+      "account_balance": null,
+      "credit_expiry": null,
+      "auto_scientist_training_quote": null,
+      "status": "unavailable from exposed authenticated connector; no remaining balance or SFT/DPO job quote established",
+      "bounded_experiment_implication": "No new run has verified credit coverage. The recorded 112-credit/150-minute estimate is for run_dataset_adaptation on the separate 11,192-row arc-run2 dataset, not AutoScientist training and not the 522,658-row v4 dataset. A separate 5-credit/16-minute estimate is for processing the 418-row dataset, which is awaiting input. Neither amount proves available balance or covers a training run. V4-derived training attempts failed before optimizer iteration; account deduction was not exposed, so do not assume zero debit.",
+      "evidence": {
+        "authenticated_connector_methods": ["list_training_models", "list_datasets", "list_autoscientist_runs", "recommend_autoscientist_hyperparameters"],
+        "latest_record": "docs/training/execution-2026-10-19/adaption-qualification-refresh-2026-10-19.json",
+        "latest_record_limitations": ["credit_balance_exposed=false", "account_specific_training_quote_or_coverage_exposed=false", "account_specific_credit_expiry_exposed=false"],
+        "user_confirmed_credits": true,
+        "numeric_account_amount": null
+      },
+      "coverage_decision": "unverified; do not classify an Adaption SFT/DPO experiment as credit-covered until the dashboard/account view shows remaining amount and an exact run quote or debit estimate for the selected dataset and settings"
+    },
+    "wandb_inference": {
+      "remaining_credit_balance": null,
+      "account_quota_or_spend_limit": null,
+      "actual_billing_for_recorded_calls": null,
+      "status": "balance/quota not returned by the authenticated W&B model/inference APIs used in this campaign; official support documentation directs users to the Billing page for credit balance",
+      "bounded_experiment_implication": "The latest paired 120-case checkpoint evaluations recorded at 22:50Z have usage estimates of $0.06809825 (v1) and $0.06911325 (v2), $0.13721150 combined; each had a configured preflight maximum of $0.2976, $0.5952 combined. These are experiment estimates/configured caps, not measured credit debits or evidence that the remaining account balance covers another run. Do not authorize further inference from caps alone.",
+      "campaign_ledger_context": {
+        "ledger_as_of_utc": "2026-10-19T17:26:14.555927Z",
+        "estimated_campaign_total_including_base_usd_at_that_time": 0.513005,
+        "configured_campaign_max_usd_at_that_time": 9.182592,
+        "ledger_is_stale_relative_to_later_evaluations": true,
+        "later_actual_billed_amounts_returned": false,
+        "do_not_treat_as_current_balance_or_current_total": true
+      },
+      "training_coverage": "Existing W&B jobs remain subject to account-specific training price/preview terms; current Training API status/usage routes do not expose billing. Public CoreWeave pricing is not an account charge record. New training cannot be classified as covered from this evidence.",
+      "evidence": {
+        "latest_evaluation_summary": "docs/training/execution-2026-10-19/latest-checkpoint-evals/report.md (22:50Z section)",
+        "usage_ledger": "docs/training/execution-2026-10-18/results/wandb-inference-usage-ledger.json",
+        "prior_account_api_finding": "docs/training/execution-2026-10-17/provider-qualification.json pricing_refresh_2026_10_19: no account billing portal credential or usage endpoint was available in that audit"
+      },
+      "coverage_decision": "unverified; individual configured caps bound local runs but do not establish credits or actual billing"
+    },
+    "fireworks": {
+      "account_credit_balance": null,
+      "account_promo_activation": null,
+      "public_promotion": {
+        "muse_glimmer_30b_sft_free": true,
+        "route": "UI and Serverless Training API",
+        "public_end_date": "2026-11-30",
+        "no_credit_card_required_per_public_page": true,
+        "account_specific_application_verified": false
+      },
+      "current_account_read_only_evidence": {
+        "latest_recorded_api_check_utc": "2026-10-19T15:56Z",
+        "billing_summary_period": "2026-10-01 through 2026-10-18 UTC",
+        "serverless_training_tokens_rated_cost_usd": "0.00",
+        "credit_balance_returned": false,
+        "read_only_cookbook_plan_reported_promo_active": true,
+        "plan_limitation": "The cookbook computes promotion-active from a local hardcoded deadline and does not query account activation; result is not account-specific entitlement proof."
+      },
+      "bounded_experiment_implication": "Public terms currently advertise eligible Glimmer SFT as free, but this account's activation is not established by a current account response. The public price table separately lists $1.96/M prefill, $4.88/M sample, and $5.86/M train for Serverless Training; do not assume the SFT offer covers in-session sampling or other inference. No sample/token budget is certified here. Muse Glimmer is not available on the serverless inference route per the account qualification; do not plan an external inference arm as covered.",
+      "coverage_decision": "public offer active as published, account-specific application remains unverified; treat SFT coverage as conditional and all sampling/deployment/inference as uncovered absent a separate account quote"
+    }
+  },
+  "cross_provider_conclusion": "No exact current credit balance/quota was established for Adaption or W&B, and no Fireworks account-specific promotion activation or balance was established. User-confirmed credits and public offers are not numeric account evidence. No future experiment is proven fully covered; require account evidence and route-specific capped estimates before additional spend.",
+  "official_sources": [
+    {"provider": "Adaption", "title": "AutoScientist API and non-launching recommendation/download surface", "url": "https://docs.adaptionlabs.ai/api/resources/autoscientist"},
+    {"provider": "Adaption", "title": "AutoScientist app walkthrough and live credit estimate controls", "url": "https://docs.adaptionlabs.ai/tutorials/autoscientist-app-walkthrough/"},
+    {"provider": "Adaption", "title": "FAQ", "url": "https://docs.adaptionlabs.ai/resources/faq/"},
+    {"provider": "W&B", "title": "Inference quota error and Billing page credit balance guidance", "url": "https://docs.wandb.ai/ja/models/support/inference_insufficient_quota_402_error"},
+    {"provider": "W&B", "title": "Serverless usage, inference, training, and limits", "url": "https://docs.wandb.ai/ja/training/serverless-rl/usage-limits"},
+    {"provider": "Fireworks", "title": "Muse Glimmer 30B account/catalog and SFT offer page", "url": "https://fireworks.ai/models/fireworks/muse-glimmer-30b"},
+    {"provider": "Fireworks", "title": "Current training prices and serverless prefill/sample/train meters", "url": "https://fireworks.ai/pricing"}
+  ]
+}

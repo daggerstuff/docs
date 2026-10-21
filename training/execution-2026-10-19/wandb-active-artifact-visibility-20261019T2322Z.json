@@ -1,0 +1,119 @@
+{
+  "observed_at_utc": "2026-10-19T23:22:00Z",
+  "method": "Read-only authenticated W&B SDK artifact collection and exact-version lookups",
+  "collections": [
+    {
+      "type": "lora",
+      "name": "arc-sft-baseline-8ce8354c67ef-sft-resume",
+      "collection_exists": true,
+      "versions_listed": 0,
+      "exact_versions_found": [],
+      "exact_versions_not_found": ["v100", "v115", "v116", "v140", "v143", "v144", "latest"]
+    },
+    {
+      "type": "train-state",
+      "name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "collection_exists": true,
+      "versions_listed": 0,
+      "exact_versions_found": [],
+      "exact_versions_not_found": ["v143", "latest"]
+    },
+    {
+      "type": "lora",
+      "name": "arc-sft-baseline-556695bfd5c4-sft-resume",
+      "collection_exists": true,
+      "versions_listed": 0,
+      "exact_versions_found": [],
+      "exact_versions_not_found": ["v100", "v114", "v142", "latest"]
+    },
+    {
+      "type": "train-state",
+      "name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "collection_exists": true,
+      "versions_listed": 0,
+      "exact_versions_found": [],
+      "exact_versions_not_found": ["v142", "latest"]
+    }
+  ],
+  "cross_check": "Both the W&B SDK artifact_versions() and artifacts() collection listing methods returned zero versions for all four active v1/v2 collections.",
+  "rechecked_at_utc": "2026-10-19T23:22:46Z",
+  "latest_recheck_at_utc": "2026-10-19T23:27:21Z",
+  "latest_recheck": {
+    "v1_training_api_http_500": true,
+    "v2_training_api_http_500": true,
+    "v4_status": "RUNNING",
+    "v4_updated_at": "2026-10-19T22:50:52.382671Z",
+    "v4_progress": null,
+    "v4_error_message": null,
+    "active_v1_v2_artifact_collections_versions": 0
+  },
+  "backup_workers": {
+    "observed_at_utc": "2026-10-19T23:29:26Z",
+    "lora_process_pid": 581336,
+    "train_state_process_pid": 581337,
+    "poll_interval_seconds": 300,
+    "backup_root": "ai/training/output/wandb_local_checkpoints_20261019",
+    "remote_mutations": false,
+    "current_status": "UNKNOWN for v1/v2; no remote versions visible",
+    "preserved_local_index": {
+      "v1_lora": "v144",
+      "v1_train_state": "v143",
+      "v2_lora": "v142",
+      "v2_train_state": "v142"
+    }
+  },
+  "related_collection_search": {
+    "observed_at_utc": "2026-10-19T23:25Z",
+    "method": "Listed all project lora (13) and train-state (8) collections, then checked names containing both run release hashes.",
+    "related_lora_collections": [
+      {"name": "arc-sft-baseline-556695bfd5c4-sft-resume", "versions_listed": 0},
+      {"name": "arc-sft-baseline-556695bfd5c4", "versions_listed": 0},
+      {"name": "arc-sft-baseline-8ce8354c67ef-sft-resume", "versions_listed": 0},
+      {"name": "arc-sft-baseline-8ce8354c67ef", "versions_listed": 0}
+    ],
+    "related_train_state_collections": [
+      {"name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume", "versions_listed": 0},
+      {"name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume", "versions_listed": 0}
+    ],
+    "interpretation": "No alternate lora/train-state collection matching either run release hash contains visible versions."
+  },
+  "training_api_poll": {
+    "v1_job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+    "v1_http_status": 500,
+    "v1_state": "unknown",
+    "v2_job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+    "v2_http_status": 500,
+    "v2_state": "unknown",
+    "v4_job_id": "24cc2d06-3ec3-4356-ad3a-179694dd86a7",
+    "v4_http_status": 200,
+    "v4_state": "RUNNING",
+    "v4_updated_at": "2026-10-19T22:50:52.382671Z",
+    "v4_progress": null,
+    "v4_error_message": null
+  },
+  "latest_system_check": {
+    "observed_at_utc": "2026-10-19T23:23:54Z",
+    "http_status": 200,
+    "api_healthy": true,
+    "database_reachable": true,
+    "cpu_queue_success": true,
+    "model_management_queue_success": true,
+    "gpu_queue_success": true,
+    "storage_quota_or_usage_exposed": false
+  },
+  "local_mirror": {
+    "backup_root": "ai/training/output/wandb_local_checkpoints_20261019",
+    "observed_latest": {
+      "v1_lora": {"version": "v144", "completed_batches": 72500, "observed_at_utc": "2026-10-19T22:48:52.360757Z"},
+      "v1_train_state": {"version": "v143", "completed_batches": 72000, "observed_at_utc": "2026-10-19T22:45:31.441879Z"},
+      "v2_lora": {"version": "v142", "completed_batches": 71500, "observed_at_utc": "2026-10-19T22:48:53.023933Z"},
+      "v2_train_state": {"version": "v142", "completed_batches": 71500, "observed_at_utc": "2026-10-19T22:45:50.415404Z"}
+    },
+    "manifest_permissions": "0600",
+    "files_reverified_at_utc": "2026-10-19T23:22:46Z",
+    "file_verification": "SHA-256 and byte-size matched every manifest entry: v1 adapter 2/2 files; v1 train state 11/11; v2 adapter 2/2; v2 train state 11/11.",
+    "note": "Local mirrors contain verified adapter and train-state files at the listed versions; later remote progress is not confirmed."
+  },
+  "interpretation": "Multiple SDK listing methods show the named collections but no versions, and exact lookups cannot resolve versions that were visible and downloaded earlier. This is strong evidence that these remote versions are no longer present or visible to this credential, consistent with deletion; it does not prove the active jobs are terminal or that checkpoints stopped being produced.",
+  "actions": "No artifacts were deleted, uploaded, or modified. No training jobs were changed."
+}

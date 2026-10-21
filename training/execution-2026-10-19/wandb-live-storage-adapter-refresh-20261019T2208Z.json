@@ -1,0 +1,73 @@
+{
+  "observed_at_utc": "2026-10-19T22:09:10.375468Z",
+  "project": "wutang/pixelated-empathy-kan28",
+  "storage_source": "authenticated W&B Public GraphQL Project.storageBytes",
+  "http_status": 200,
+  "storage_bytes": 116486273253,
+  "previous_storage_bytes": 112715553869,
+  "previous_observed_at_utc": "2026-10-19T21:53:43Z",
+  "delta_bytes": 3770719384,
+  "direct_training_jobs_and_artifacts": {
+    "v1": {
+      "job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "RUNNING",
+      "updated_at": "2026-10-18T22:44:42.293216Z",
+      "progress": null,
+      "lora": {
+        "name": "arc-sft-baseline-8ce8354c67ef-sft-resume",
+        "version": "v139",
+        "created_at": "2026-10-19T22:01:45Z",
+        "size_bytes": 117843308,
+        "completed_batches": 70000
+      },
+      "train-state": {
+        "name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+        "version": "v139",
+        "created_at": "2026-10-19T22:01:48Z",
+        "size_bytes": 1060414709,
+        "completed_batches": 70000
+      },
+      "training_api_checkpoint_steps": [
+        0
+      ]
+    },
+    "v2": {
+      "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "RUNNING",
+      "updated_at": "2026-10-18T23:13:12.819915Z",
+      "progress": null,
+      "lora": {
+        "name": "arc-sft-baseline-556695bfd5c4-sft-resume",
+        "version": "v138",
+        "created_at": "2026-10-19T22:06:18Z",
+        "size_bytes": 117843308,
+        "completed_batches": 69500
+      },
+      "train-state": {
+        "name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+        "version": "v138",
+        "created_at": "2026-10-19T22:06:20Z",
+        "size_bytes": 1060414709,
+        "completed_batches": 69500
+      },
+      "training_api_checkpoint_steps": [
+        0
+      ]
+    },
+    "v4": {
+      "job_id": "24cc2d06-3ec3-4356-ad3a-179694dd86a7",
+      "status": "PENDING",
+      "updated_at": "2026-10-19T17:07:21.977690Z",
+      "progress": null,
+      "lora": null,
+      "training_api_checkpoint_steps": [
+        0
+      ]
+    }
+  },
+  "caveats": [
+    "Project storageBytes does not disclose account quota, rolling billable storage, deletion history, or physical reclamation.",
+    "Training API /checkpoints returned only step-0 entries; trained adapter and train-state versions are queried from separate W&B artifact collections.",
+    "No remote artifacts were modified or deleted."
+  ]
+}

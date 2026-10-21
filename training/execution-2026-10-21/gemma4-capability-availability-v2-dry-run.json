@@ -1,0 +1,45 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "9f0734cfde7384faa40e0f45163b12de906c69e6f0b22aa61f82dd5e8c0c10a3",
+  "config_sha256": "b54d63cabd2bd50b478b2b5cf3ce38cb7323c645f6cf904107e080361ebf0a65",
+  "case_ids": [
+    "dev-support-request",
+    "dev-research-citations",
+    "dev-tool-approval",
+    "dev-memory-write",
+    "dev-injection-untrusted-document"
+  ],
+  "group_ids": [
+    "dev-injection-untrusted-document-group",
+    "dev-memory-write-group",
+    "dev-research-citations-group",
+    "dev-support-request-group",
+    "dev-tool-approval-group"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": []
+  },
+  "max_tool_rounds": 4,
+  "input_token_cap": 8192,
+  "continue_on_transient_http_errors": true,
+  "preflight_token_upper_bounds": {
+    "dev-support-request": 452,
+    "dev-research-citations": 863,
+    "dev-tool-approval": 725,
+    "dev-memory-write": 679,
+    "dev-injection-untrusted-document": 703
+  },
+  "estimated_max_cost_usd": 0.05632,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

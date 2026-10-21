@@ -1,0 +1,51 @@
+{
+  "observed_at_utc": "2026-10-21T09:09:59.549948+00:00",
+  "organization": "wutang-org",
+  "subscription_status": "ENABLED",
+  "subscription_type": "ACADEMIC_TRIAL",
+  "enforced": true,
+  "raw_allowance": 25000,
+  "allowance_interval": {
+    "start": "2025-02-01T00:00:00Z",
+    "end": "2027-02-01T00:00:00Z"
+  },
+  "raw_usage": {
+    "allowanceInterval": [
+      8716278712000
+    ],
+    "monthly": [
+      3621373938000
+    ]
+  },
+  "conversion_evidence": [
+    {
+      "url": "https://forge.coreweave.com/assets/51f23361e/federation/assets/pricing-COXv2Xwn.js",
+      "sha256": "1b4472893d2d51aa873e08099eb40d2d34aa36f015eb48e8bf832930a9f3c2a8",
+      "observed_behavior": "Maps inference_free_limit directly to inferenceFreeLimit."
+    },
+    {
+      "url": "https://forge.coreweave.com/assets/51f23361e/federation/assets/utils-BPzrDUTy.js",
+      "sha256": "68d9cfaecb33e598c559159be8305d42a7f8f2df0f97cbf0d26bb000a6770f87",
+      "observed_behavior": "Converts INFERENCE_COST usageTotal by integer division by 1e9 before comparing usage to the limit (cents)."
+    },
+    {
+      "url": "https://forge.coreweave.com/assets/51f23361e/federation/assets/inference-D0Azsd8j.js",
+      "sha256": "cee6f0d59fd80040de020aca72931817dd635678f39fca9fd98345a029dcdba0",
+      "observed_behavior": "Calculates USD overage as (usage - inferenceFreeLimit) / 100 and formats as USD via utils."
+    }
+  ],
+  "allowance_usd": "250",
+  "full_allowance_interval_reported_usage_usd": "87.16278712",
+  "remaining_allowance_using_full_interval_usd": "162.83721288",
+  "planned_total_cap_usd": "3.00",
+  "coverage_verified": true,
+  "selected_base_catalog_present": {
+    "google/gemma-4-26B-A4B-it": true,
+    "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B": true
+  },
+  "limitations": [
+    "Read-only usage accounting can lag and concurrent account usage can change headroom.",
+    "The full configured allowance interval is used conservatively instead of only current-month usage.",
+    "Provider frontend conversion confirms currency scaling; this is account-reported allowance minus usage, not an invoice or guaranteed future balance."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "adapter_config_sha256": "0e2c527ba2e4371b960ed8d74e07d43de002d296d97df6f93da8598090ff64f8",
+  "adapter_sha256": "cb91c3de16f6af983710d10febdd965afdf2c11bbb70663605a6e9d1bc65cf0c",
+  "all_values_finite": true,
+  "artifact_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-61decc442813:step0",
+  "artifact_version": "v0",
+  "base_model": "google/gemma-4-26B-A4B-it",
+  "checkpoint_step": 0,
+  "dtype_counts": {
+    "torch.float32": 540
+  },
+  "finality_proven": false,
+  "label": "gemma4",
+  "limitations": [
+    "Local file and tensor validation does not prove provider-job completion or serving compatibility.",
+    "Nonzero finite tensors do not establish learning, response quality, or clinical safety."
+  ],
+  "local_manifest_files_verified": true,
+  "lora_rank": 1,
+  "nonzero_lora_b_elements": 0,
+  "pair_inner_dimension_counts": {
+    "1": 210,
+    "128": 60
+  },
+  "tensor_count": 540,
+  "tensor_elements": 30917760,
+  "trained_export_checks_required": false
+}

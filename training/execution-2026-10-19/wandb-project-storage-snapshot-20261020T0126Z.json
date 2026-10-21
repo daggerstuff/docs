@@ -1,0 +1,11 @@
+{
+  "observed_at_utc": "2026-10-20T01:26:00Z",
+  "project": "wutang/pixelated-empathy-kan28",
+  "storage_source": "Authenticated W&B Public GraphQL Project.storageBytes",
+  "http_status": 200,
+  "storage_bytes": 19154428829,
+  "previous_observed_at_utc": "2026-10-19T22:09:10Z",
+  "previous_storage_bytes": 116486273253,
+  "delta_bytes": -97331844424,
+  "interpretation": "Project storage meter decreased by 97,331,844,424 bytes between the two readings, consistent with deletion/cleanup. This field does not expose account quota, remaining capacity, billing-period usage, or physical reclamation. No artifacts were deleted or modified by this read."
+}

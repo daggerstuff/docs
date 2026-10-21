@@ -1,0 +1,230 @@
+{
+  "account_storage_and_credit_balance": "not exposed by checked APIs; historical user report is not a current measurement",
+  "local_checkpoint_bytes": 125633727,
+  "mirror_pid": 1075154,
+  "models": {
+    "gemma4": {
+      "checkpoints": {
+        "data": [
+          {
+            "artifact_name": "arc-sft-baseline-61decc442813",
+            "id": "17bf2d84-56b9-47a2-9fd0-6b538f62f8ec",
+            "metrics": {},
+            "step": 0,
+            "version": 0
+          }
+        ],
+        "first_id": "17bf2d84-56b9-47a2-9fd0-6b538f62f8ec",
+        "has_more": false,
+        "last_id": "17bf2d84-56b9-47a2-9fd0-6b538f62f8ec",
+        "object": "list"
+      },
+      "job": {
+        "created_at": "2026-10-21T05:55:43.238530Z",
+        "error_message": null,
+        "id": "3ade7446-fbc9-4f47-a557-e4f8ca9cdc28",
+        "model_id": "419e57ad-70f9-46ee-a4c5-ead56569d227",
+        "progress": null,
+        "status": "RUNNING",
+        "training_end": null,
+        "training_start": "2026-10-21T05:55:58.706600Z",
+        "updated_at": "2026-10-21T05:55:58.681776Z"
+      },
+      "local_adapters": [
+        {
+          "details": {
+            "artifact_size_bytes": 123749164,
+            "artifact_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-61decc442813:step0",
+            "artifact_version": "v0",
+            "campaign_id": "wandb-full-corpus-current-master-20261021-v6",
+            "checkpoint_step": 0,
+            "checkpoint_version": 0,
+            "label": "gemma4",
+            "local_files": [
+              {
+                "name": "README.md",
+                "sha256": "048bc99fc7fe5e6fff0441ad2ac9ee65f66560ce978921b6ad369c51e2e25582",
+                "size_bytes": 5151
+              },
+              {
+                "name": "adapter_config.json",
+                "sha256": "0e2c527ba2e4371b960ed8d74e07d43de002d296d97df6f93da8598090ff64f8",
+                "size_bytes": 1093
+              },
+              {
+                "name": "adapter_model.safetensors",
+                "sha256": "cb91c3de16f6af983710d10febdd965afdf2c11bbb70663605a6e9d1bc65cf0c",
+                "size_bytes": 123742920
+              }
+            ],
+            "observed_at_utc": "2026-10-21T05:56:28.176756Z"
+          },
+          "hashes_and_sizes_valid": true,
+          "manifest": "ai/training/output/wandb_local_checkpoints_v6_selected_20261021/gemma4/step-00000000-v0/manifest.json"
+        }
+      ],
+      "progress": {
+        "event_pages_read": 3,
+        "job_id": "3ade7446-fbc9-4f47-a557-e4f8ca9cdc28",
+        "last_event_id": "b628f071-0115-4a17-9579-34c81a968895",
+        "last_poll_at_utc": "2026-10-21T06:23:23.781718Z",
+        "latest_gradient_step": {
+          "event_id": "b628f071-0115-4a17-9579-34c81a968895",
+          "gradient_step": 1148,
+          "throughput_tokens_per_second": 6116.8454680876075,
+          "total_gradient_steps": 4918,
+          "training_loss": 0.6545765399932861
+        },
+        "new_events_seen": 227
+      }
+    },
+    "nemotron35": {
+      "checkpoints": {
+        "data": [
+          {
+            "artifact_name": "arc-sft-baseline-6697d188a664",
+            "id": "630eea2c-9be0-43e5-a28c-f4ce80c950c0",
+            "metrics": {},
+            "step": 0,
+            "version": 0
+          }
+        ],
+        "first_id": "630eea2c-9be0-43e5-a28c-f4ce80c950c0",
+        "has_more": false,
+        "last_id": "630eea2c-9be0-43e5-a28c-f4ce80c950c0",
+        "object": "list"
+      },
+      "job": {
+        "created_at": "2026-10-21T05:54:49.568589Z",
+        "error_message": null,
+        "id": "873e28dd-bc17-453b-8137-0e4c133baa7c",
+        "model_id": "36a3ee00-d993-4ae9-908b-e7c04d68941d",
+        "progress": null,
+        "status": "RUNNING",
+        "training_end": null,
+        "training_start": "2026-10-21T05:55:09.796931Z",
+        "updated_at": "2026-10-21T05:55:09.769935Z"
+      },
+      "local_adapters": [
+        {
+          "details": {
+            "artifact_size_bytes": 1880219,
+            "artifact_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-6697d188a664:step0",
+            "artifact_version": "v0",
+            "campaign_id": "wandb-full-corpus-current-master-20261021-v6",
+            "checkpoint_step": 0,
+            "checkpoint_version": 0,
+            "label": "nemotron35",
+            "local_files": [
+              {
+                "name": "README.md",
+                "sha256": "ec73bad1f21bc8aad3e8b0e1c58ee9c9ee9ccc4a3e79c683fb6b759be01e1c34",
+                "size_bytes": 5222
+              },
+              {
+                "name": "adapter_config.json",
+                "sha256": "60d8003c1eb2a4ba9bfb479eef6b5209f16c17dcf16b2815b7fb9b461e4a2544",
+                "size_bytes": 1101
+              },
+              {
+                "name": "adapter_model.safetensors",
+                "sha256": "32a7e465c4a9e70b074f7bb890ae39a225b0ca0d03378c08d55aad4b1b3860b5",
+                "size_bytes": 1873896
+              }
+            ],
+            "observed_at_utc": "2026-10-21T05:56:26.223347Z"
+          },
+          "hashes_and_sizes_valid": true,
+          "manifest": "ai/training/output/wandb_local_checkpoints_v6_selected_20261021/nemotron35/step-00000000-v0/manifest.json"
+        }
+      ],
+      "progress": {
+        "event_pages_read": 3,
+        "job_id": "873e28dd-bc17-453b-8137-0e4c133baa7c",
+        "last_event_id": "9d5e97d6-0d4c-4be2-ab4a-b7b2a2924b53",
+        "last_poll_at_utc": "2026-10-21T06:23:25.663918Z",
+        "latest_gradient_step": {
+          "event_id": "9d5e97d6-0d4c-4be2-ab4a-b7b2a2924b53",
+          "gradient_step": 1286,
+          "throughput_tokens_per_second": 3233.7063064821336,
+          "total_gradient_steps": 4918,
+          "training_loss": 1.0024651288986206
+        },
+        "new_events_seen": 283
+      }
+    }
+  },
+  "new_charge_bearing_runs_started": false,
+  "observed_at_utc": "2026-10-21T06:23:22.419991+00:00",
+  "provider_api_schema": {
+    "SFTTrainingConfig": {
+      "additionalProperties": false,
+      "description": "Schema for SFT training config.",
+      "properties": {
+        "assistant_turns": {
+          "default": "all",
+          "enum": [
+            "all",
+            "last"
+          ],
+          "title": "Assistant Turns",
+          "type": "string"
+        },
+        "batch_size": {
+          "anyOf": [
+            {
+              "maximum": 32.0,
+              "minimum": 1.0,
+              "type": "integer"
+            },
+            {
+              "const": "auto",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Batch Size"
+        },
+        "learning_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Learning Rate"
+        },
+        "metric_logging": {
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/SFTMetricLoggingConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "title": "SFTTrainingConfig",
+      "type": "object"
+    },
+    "checkpoint_routes": [
+      "/v1/preview/models/{model_id}/checkpoints"
+    ]
+  },
+  "release_validation": {
+    "status": "passed",
+    "train_rows": 78681,
+    "train_sha256": "1428a1fda03f15cc890e2b4ef44388b7877cf0cdf2b5ddd02149fea3a552f8b4"
+  }
+}

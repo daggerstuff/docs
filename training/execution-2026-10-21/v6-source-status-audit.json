@@ -1,0 +1,3359 @@
+{
+  "candidate_rows": 191207,
+  "candidate_sha256": "c7db4d695ec25866d1851c99ce4b07a654da642efffdc5db680852525385c883",
+  "clinical_or_production_clearance_granted": false,
+  "heldout_sha256": "a7f6fc3112043dc5b583b6f96ca9b6ccc4719460b6948d971c171d3b979eb82f",
+  "legacy_by_partition": {
+    "heldout": 93543,
+    "test": 9310,
+    "train": 77718,
+    "validation": 9673
+  },
+  "legacy_exact_hash_and_source_matches": 190244,
+  "legacy_source_followup_queue": [
+    {
+      "partition_counts": {
+        "test": 1793,
+        "train": 32376,
+        "validation": 1808
+      },
+      "source_label": "empath"
+    },
+    {
+      "partition_counts": {
+        "heldout": 1191,
+        "test": 640,
+        "train": 11366,
+        "validation": 693
+      },
+      "source_label": "mitch_hamidi_bpd_nlp"
+    },
+    {
+      "partition_counts": {
+        "test": 562,
+        "train": 10054,
+        "validation": 519
+      },
+      "source_label": "mentalchat16k"
+    },
+    {
+      "partition_counts": {
+        "heldout": 46,
+        "test": 270,
+        "train": 5018,
+        "validation": 272
+      },
+      "source_label": "mental_health_multiagent"
+    },
+    {
+      "partition_counts": {
+        "heldout": 46,
+        "test": 221,
+        "train": 4122,
+        "validation": 226
+      },
+      "source_label": "kokorochat"
+    },
+    {
+      "partition_counts": {
+        "test": 164,
+        "train": 3353,
+        "validation": 208
+      },
+      "source_label": "clinical_book_DSMV"
+    },
+    {
+      "partition_counts": {
+        "test": 92,
+        "train": 1782,
+        "validation": 103
+      },
+      "source_label": "psycheval"
+    },
+    {
+      "partition_counts": {
+        "test": 75,
+        "train": 1278,
+        "validation": 62
+      },
+      "source_label": "counseling_conversations"
+    },
+    {
+      "partition_counts": {
+        "test": 57,
+        "train": 925,
+        "validation": 56
+      },
+      "source_label": "clinical_book_[Bookflare.net] - Treating PTS"
+    },
+    {
+      "partition_counts": {
+        "test": 36,
+        "train": 817,
+        "validation": 39
+      },
+      "source_label": "psydial"
+    },
+    {
+      "partition_counts": {
+        "test": 35,
+        "train": 811,
+        "validation": 46
+      },
+      "source_label": "esconv"
+    },
+    {
+      "partition_counts": {
+        "test": 46,
+        "train": 588,
+        "validation": 39
+      },
+      "source_label": "psy_insight"
+    },
+    {
+      "partition_counts": {
+        "heldout": 63513,
+        "test": 3514,
+        "train": 300,
+        "validation": 3641
+      },
+      "source_label": "reddit_mental_nlp"
+    },
+    {
+      "partition_counts": {
+        "test": 13,
+        "train": 297,
+        "validation": 23
+      },
+      "source_label": "clinical_book_How to Analyze People with Dar"
+    },
+    {
+      "partition_counts": {
+        "test": 22,
+        "train": 266,
+        "validation": 19
+      },
+      "source_label": "clinical_book_DARK PSYCHOLOGY 6 BOOKS IN 1 -"
+    },
+    {
+      "partition_counts": {
+        "test": 17,
+        "train": 248,
+        "validation": 16
+      },
+      "source_label": "clinical_book_DARK PSYCHOLOGY - 6 BOOKS IN 1"
+    },
+    {
+      "partition_counts": {
+        "test": 17,
+        "train": 236,
+        "validation": 14
+      },
+      "source_label": "youtube_persona_Tim Fletcher"
+    },
+    {
+      "partition_counts": {
+        "test": 14,
+        "train": 199,
+        "validation": 11
+      },
+      "source_label": "clinical_book_Manipulation - What People Hig"
+    },
+    {
+      "partition_counts": {
+        "test": 5,
+        "train": 176,
+        "validation": 10
+      },
+      "source_label": "clinical_book_Addiction, Procrastination, an"
+    },
+    {
+      "partition_counts": {
+        "test": 9,
+        "train": 145,
+        "validation": 12
+      },
+      "source_label": "clinical_book_CBT and DBT For Anxiety"
+    },
+    {
+      "partition_counts": {
+        "test": 5,
+        "train": 145,
+        "validation": 5
+      },
+      "source_label": "clinical_book_Art of Speed Reading Body Lang"
+    },
+    {
+      "partition_counts": {
+        "test": 3,
+        "train": 135,
+        "validation": 6
+      },
+      "source_label": "clinical_book_Internal Family Systems Therap"
+    },
+    {
+      "partition_counts": {
+        "test": 4,
+        "train": 118,
+        "validation": 7
+      },
+      "source_label": "daic_woz"
+    },
+    {
+      "partition_counts": {
+        "test": 8,
+        "train": 116,
+        "validation": 7
+      },
+      "source_label": "clinical_book_Dark Psychology - The Practica"
+    },
+    {
+      "partition_counts": {
+        "test": 6,
+        "train": 116,
+        "validation": 6
+      },
+      "source_label": "clinical_book_Brain Energy_ A Revolutionary "
+    },
+    {
+      "partition_counts": {
+        "test": 6,
+        "train": 110,
+        "validation": 7
+      },
+      "source_label": "clinical_book_Dark Psychology and Emotional "
+    },
+    {
+      "partition_counts": {
+        "test": 4,
+        "train": 106,
+        "validation": 6
+      },
+      "source_label": "dsm_vector_space"
+    },
+    {
+      "partition_counts": {
+        "test": 6,
+        "train": 98,
+        "validation": 7
+      },
+      "source_label": "clinical_book_Dark Psychology - Learn the Pr"
+    },
+    {
+      "partition_counts": {
+        "test": 6,
+        "train": 97,
+        "validation": 7
+      },
+      "source_label": "clinical_book_Dark Psychology and Manipulati"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 92,
+        "validation": 5
+      },
+      "source_label": "annomi"
+    },
+    {
+      "partition_counts": {
+        "test": 3,
+        "train": 86,
+        "validation": 11
+      },
+      "source_label": "ml_bpd"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "train": 77,
+        "validation": 2
+      },
+      "source_label": "clinical_book_Sedated How Modern Capitalism "
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 75,
+        "validation": 4
+      },
+      "source_label": "clinical_book_Self_Help_Psychology_Anxiety_P"
+    },
+    {
+      "partition_counts": {
+        "test": 3,
+        "train": 72,
+        "validation": 2
+      },
+      "source_label": "nightmare_fuel_predefined"
+    },
+    {
+      "partition_counts": {
+        "test": 3,
+        "train": 67,
+        "validation": 1
+      },
+      "source_label": "clinical_book_Dark Psychology Secret - The U"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 66,
+        "validation": 1
+      },
+      "source_label": "clinical_book_Persuasion - Dark Psychology -"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 64,
+        "validation": 3
+      },
+      "source_label": "clinical_book_8 Keys to Eliminating Passive-"
+    },
+    {
+      "partition_counts": {
+        "test": 3,
+        "train": 60,
+        "validation": 8
+      },
+      "source_label": "clinical_book_The High Conflict Couple_ A Di"
+    },
+    {
+      "partition_counts": {
+        "test": 3,
+        "train": 60,
+        "validation": 4
+      },
+      "source_label": "clinical_book_How to Analyze People - Dark P"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "train": 58,
+        "validation": 6
+      },
+      "source_label": "clinical_book_Dark Psychology - The only pra"
+    },
+    {
+      "partition_counts": {
+        "test": 4,
+        "train": 54,
+        "validation": 5
+      },
+      "source_label": "clinical_book_Dark psychology 202 - The adva"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "train": 52,
+        "validation": 2
+      },
+      "source_label": "clinical_book_Loving Someone with PTSD by Ap"
+    },
+    {
+      "partition_counts": {
+        "test": 4,
+        "train": 46
+      },
+      "source_label": "clinical_book_Psychology - How To Effortless"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "train": 41,
+        "validation": 3
+      },
+      "source_label": "clinical_book_NLP Dark Psychology - Neuro-Li"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "train": 41,
+        "validation": 1
+      },
+      "source_label": "clinical_book_Psycho Logical Why Mental Heal"
+    },
+    {
+      "partition_counts": {
+        "test": 4,
+        "train": 32,
+        "validation": 3
+      },
+      "source_label": "youtube_persona_Patrick Teahan"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 29
+      },
+      "source_label": "youtube_persona_DoctorRamani"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 25,
+        "validation": 2
+      },
+      "source_label": "youtube_persona_Crappy Childhood Fairy"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 18,
+        "validation": 6
+      },
+      "source_label": "clinical_book_Get More....."
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 17
+      },
+      "source_label": "youtube_persona_Therapy in a Nutshell"
+    },
+    {
+      "partition_counts": {
+        "train": 15,
+        "validation": 1
+      },
+      "source_label": "youtube_persona_Heidi Priebe"
+    },
+    {
+      "partition_counts": {
+        "train": 12
+      },
+      "source_label": "clinical_edge_case_cultural_or_identity_conflict"
+    },
+    {
+      "partition_counts": {
+        "train": 11
+      },
+      "source_label": "clinical_edge_case_boundary_testing"
+    },
+    {
+      "partition_counts": {
+        "train": 11
+      },
+      "source_label": "clinical_edge_case_multi_problem_complexity"
+    },
+    {
+      "partition_counts": {
+        "train": 11
+      },
+      "source_label": "clinical_edge_case_therapeutic_rupture"
+    },
+    {
+      "partition_counts": {
+        "train": 10,
+        "validation": 1
+      },
+      "source_label": "clinical_edge_case_minor_or_dependent_person"
+    },
+    {
+      "partition_counts": {
+        "train": 9,
+        "validation": 1
+      },
+      "source_label": "clinical_book_Complex PTSD_ From Surviving t"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 9
+      },
+      "source_label": "clinical_edge_case_delusion_or_paranoia"
+    },
+    {
+      "partition_counts": {
+        "train": 9
+      },
+      "source_label": "clinical_book__ uploads will cease (your sup"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 8
+      },
+      "source_label": "clinical_edge_case_substance_use"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 8
+      },
+      "source_label": "youtube_persona_Doc Snipes"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "train": 7,
+        "validation": 1
+      },
+      "source_label": "clinical_edge_case_medical_uncertainty"
+    },
+    {
+      "partition_counts": {
+        "train": 7,
+        "validation": 2
+      },
+      "source_label": "clinical_edge_case_coercion_or_abuse"
+    },
+    {
+      "partition_counts": {
+        "train": 7
+      },
+      "source_label": "mitags"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 5
+      },
+      "source_label": "clinical_edge_case_ambiguous_crisis_language"
+    },
+    {
+      "partition_counts": {
+        "train": 5
+      },
+      "source_label": "clinical_book_Bonus Resources"
+    },
+    {
+      "partition_counts": {
+        "train": 5
+      },
+      "source_label": "clinical_book_Readme"
+    },
+    {
+      "partition_counts": {
+        "train": 5
+      },
+      "source_label": "clinical_book__ DOWNLOAD free audiobook vers"
+    },
+    {
+      "partition_counts": {
+        "train": 5
+      },
+      "source_label": "clinical_book__ uploads will stop, your supp"
+    },
+    {
+      "partition_counts": {
+        "train": 5
+      },
+      "source_label": "clinical_book_more audiobooks, books, magazi"
+    },
+    {
+      "partition_counts": {
+        "train": 4,
+        "validation": 1
+      },
+      "source_label": "clinical_book_Bookflare.net"
+    },
+    {
+      "partition_counts": {
+        "train": 4,
+        "validation": 1
+      },
+      "source_label": "clinical_book_FreeBooksOnline.top"
+    },
+    {
+      "partition_counts": {
+        "train": 4
+      },
+      "source_label": "clinical_book_How you can help Team-FTU"
+    },
+    {
+      "partition_counts": {
+        "train": 4
+      },
+      "source_label": "clinical_book_Torrent Downloaded from Glodls"
+    },
+    {
+      "partition_counts": {
+        "train": 4
+      },
+      "source_label": "clinical_book_Torrent downloaded from 1337x."
+    },
+    {
+      "partition_counts": {
+        "train": 4
+      },
+      "source_label": "clinical_book_free audiobook version"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 3,
+        "validation": 1
+      },
+      "source_label": "clinical_book_Torrent_downloaded_from_Demono"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 3,
+        "validation": 1
+      },
+      "source_label": "clinical_book__ free audiobook version"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 3
+      },
+      "source_label": "clinical_book_[TGx]Downloaded from torrentga"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 3
+      },
+      "source_label": "hope"
+    },
+    {
+      "partition_counts": {
+        "train": 3,
+        "validation": 1
+      },
+      "source_label": "youtube_persona_Irene Lyon"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0006"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0012"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0017"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0018"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0022"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0028"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0032"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0039"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0043"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0047"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0048"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0052"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0056"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0060"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0063"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0067"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0070"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0071"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0072"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0076"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0080"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0085"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0089"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0097"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0101"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0108"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0110"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0111"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0116"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0118"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0119"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0120"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0122"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0126"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0127"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0130"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0131"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0133"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0135"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0136"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0137"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0138"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0142"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0144"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0151"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0153"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0154"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0155"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0159"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0163"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0164"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0165"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0170"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0174"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0176"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0177"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0179"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0180"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0181"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0182"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0183"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0184"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0189"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0190"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0196"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0197"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0200"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0201"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0204"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0205"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0209"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0210"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0214"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0215"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0217"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0219"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0232"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0234"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0235"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0236"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0237"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0240"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0241"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0243"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0244"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0251"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0253"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0257"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0258"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0261"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0262"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0263"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0264"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0266"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0269"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0274"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0279"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0280"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0284"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0286"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0287"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0294"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0296"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0297"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0299"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0301"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0308"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0309"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0311"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0312"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0313"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0321"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0322"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0323"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0324"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0328"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0330"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0331"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0332"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0333"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0336"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0340"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0341"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0344"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0345"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0346"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0350"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0352"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0355"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0356"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0358"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0359"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0360"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0362"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0365"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0366"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0369"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0370"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0373"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0374"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0376"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0377"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0378"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0385"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0386"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0388"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0394"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0396"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0397"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0403"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0404"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0405"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0406"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0407"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0409"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0410"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0412"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0414"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0415"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0416"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0417"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0418"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0420"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0422"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0424"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0426"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0427"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_arc_0429"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "arc_corpus_pilot_04"
+    },
+    {
+      "partition_counts": {
+        "train": 3
+      },
+      "source_label": "youtube_persona_BorderlinerNotes"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0008"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0029"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0033"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0035"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0036"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0065"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0075"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0096"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0102"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0105"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0124"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0128"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0140"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0156"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0158"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0167"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0171"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0173"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0186"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0188"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0191"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0194"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0195"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0202"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0208"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0216"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0242"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0245"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0260"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0277"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0281"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0310"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0326"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0334"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0338"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0342"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0349"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0361"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0375"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0380"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0395"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0400"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0402"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0413"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0419"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0423"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0425"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0428"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0430"
+    },
+    {
+      "partition_counts": {
+        "train": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_pilot_09"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0001"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0002"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0004"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0005"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0009"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0011"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0013"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0014"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0015"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0016"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0019"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0020"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0021"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0023"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0025"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0026"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0027"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0030"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0034"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0037"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0040"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0041"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0042"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0046"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0049"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0050"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0051"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0053"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0054"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0055"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0057"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0058"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0059"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0064"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0068"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0069"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0073"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0074"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0078"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0079"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0081"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0082"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0083"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0086"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0088"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0090"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0091"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0092"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0093"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0094"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0095"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0099"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0107"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0109"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0112"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0113"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0114"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0115"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0117"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0121"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0123"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0125"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0129"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0132"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0134"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0139"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0141"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0143"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0146"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0147"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0150"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0152"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0157"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0161"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0162"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0166"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0168"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0169"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0175"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0187"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0193"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0198"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0199"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0203"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0207"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0211"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0212"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0213"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0218"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0221"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0222"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0224"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0225"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0226"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0227"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0228"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0229"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0233"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0238"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0246"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0248"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0249"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0252"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0254"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0255"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0256"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0259"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0267"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0268"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0270"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0271"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0273"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0276"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0278"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0282"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0283"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0285"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0288"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0289"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0291"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0292"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0293"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0295"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0298"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0300"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0302"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0303"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0304"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0305"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0306"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0307"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0314"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0315"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0316"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0317"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0318"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0325"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0327"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0335"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0339"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0347"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0348"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0351"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0353"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0354"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0357"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0363"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0364"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0367"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0372"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0381"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0382"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0383"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0387"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0392"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0393"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0398"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0399"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0411"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_arc_0421"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_pilot_01"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_pilot_02"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_pilot_03"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_pilot_05"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_pilot_06"
+    },
+    {
+      "partition_counts": {
+        "train": 2
+      },
+      "source_label": "arc_corpus_pilot_10"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0103"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 2
+      },
+      "source_label": "arc_corpus_arc_0106"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0231"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 2
+      },
+      "source_label": "arc_corpus_arc_0320"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0329"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0371"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0003"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0007"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0010"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0024"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0031"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0061"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0062"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0066"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0077"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0084"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0087"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0098"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0100"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0104"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0145"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0149"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0160"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0185"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0192"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0206"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0223"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0230"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0239"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0265"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0272"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0275"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0319"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0343"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0368"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0384"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0389"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0391"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_arc_0401"
+    },
+    {
+      "partition_counts": {
+        "train": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0408"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "train": 1
+      },
+      "source_label": "arc_corpus_pilot_08"
+    },
+    {
+      "partition_counts": {
+        "train": 1
+      },
+      "source_label": "arc_corpus_pilot_07"
+    },
+    {
+      "partition_counts": {
+        "train": 1
+      },
+      "source_label": "youtube_persona_Dr. Daniel Fox"
+    },
+    {
+      "partition_counts": {
+        "heldout": 27373,
+        "test": 1490,
+        "validation": 1581
+      },
+      "source_label": "reddit_mental_health_posts"
+    },
+    {
+      "partition_counts": {
+        "heldout": 1374,
+        "test": 69,
+        "validation": 79
+      },
+      "source_label": "crisis_benchmark"
+    },
+    {
+      "partition_counts": {
+        "test": 2,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0148"
+    },
+    {
+      "partition_counts": {
+        "test": 2
+      },
+      "source_label": "arc_corpus_arc_0220"
+    },
+    {
+      "partition_counts": {
+        "test": 1,
+        "validation": 1
+      },
+      "source_label": "arc_corpus_arc_0247"
+    }
+  ],
+  "legacy_status_counts": {
+    "authority_status": {
+      "awaiting_human_sign_off": 190244
+    },
+    "privacy_review_status": {
+      "unverified": 190244
+    },
+    "rights_status": {
+      "unresolved": 190244
+    },
+    "training_eligibility": {
+      "hold_pending_owner_rights_and_privacy_review": 190244
+    }
+  },
+  "limitations": [
+    "Exact source-row binding preserves prior decisions; it does not establish rights or privacy clearance.",
+    "Synthetic additions have release provenance but no legacy source-ledger decision or human review.",
+    "Repairs are payload transformations; this audit binds original candidate rows, not clinical quality of repaired targets.",
+    "Semantic near-duplicate leakage and source-specific human decision attachment are not certified here."
+  ],
+  "partition_counts": {
+    "heldout": 93543,
+    "test": 9310,
+    "train": 78681,
+    "validation": 9673
+  },
+  "release_id": "wandb-full-corpus-current-master-20261021-v6",
+  "release_manifest_sha256": "79fdf52b46b3fd12a73fdc18abee2464e46da5ab5665cfe5b8967a354a266486",
+  "research_training_authorization": "approved_for_research_training",
+  "schema_version": "v6-source-status-audit-v1",
+  "source_followup_queue_policy": "Prioritize source-level provenance evidence by retained train exposure; this does not change release authorization, ledger dispositions, or holdouts.",
+  "source_ledger_sha256": "9497f365a0b7e0218872c7aa43a246b71c5e034f6084ef4d3f995e44192eb121",
+  "synthetic_without_legacy_ledger_by_partition": {
+    "train": 963
+  }
+}

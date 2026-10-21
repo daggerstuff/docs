@@ -1,0 +1,37 @@
+{
+  "observed_at_utc": "2026-10-19T21:58:00Z",
+  "method": "hash-only comparison of completed synthetic held-out SFT outputs against assistant targets in the two frozen source payloads",
+  "evaluated_run_directories": [
+    "latest-checkpoint-evals/v1-v134-heldout120-auth",
+    "latest-checkpoint-evals/v2-v133-heldout120-auth",
+    "latest-checkpoint-evals/v1-v135-heldout120-auth",
+    "latest-checkpoint-evals/v2-v134-heldout120-auth",
+    "latest-checkpoint-evals/v1-v136-heldout120-auth",
+    "latest-checkpoint-evals/v1-v137-heldout120-auth",
+    "latest-checkpoint-evals/v2-v135-heldout120-auth"
+  ],
+  "successful_sft_outputs": 840,
+  "outputs_per_run": 120,
+  "distinct_exact_response_hashes": 1,
+  "dominant_response_sha256": "74fd2e753c4e2cd9afcadf0a6667fc47ef068c8a782d50e2f3c3907fc666d4c8",
+  "dominant_response_count": 840,
+  "source_payload_target_matches": {
+    "v1": {
+      "assistant_targets": 532557,
+      "exact_target_matches": 12771,
+      "percent": 2.3981
+    },
+    "v2": {
+      "assistant_targets": 532603,
+      "exact_target_matches": 12771,
+      "percent": 2.3978
+    }
+  },
+  "most_frequent_exact_assistant_target_hashes": [
+    {"sha256": "e4e633d3f6e70fd1329ba84227b1d18df7c7f654ec86d76faea1440b263dccbd", "count": 22690, "percent": 4.2606, "characters": 3},
+    {"sha256": "7806c4ea4cdc269ec9bef57b3d8967ae6a4dcf4ba20017db416fbaab45412b66", "count": 17570, "percent": 3.2992, "characters": 7},
+    {"sha256": "74fd2e753c4e2cd9afcadf0a6667fc47ef068c8a782d50e2f3c3907fc666d4c8", "count": 12771, "percent": 2.3981, "characters": 10}
+  ],
+  "interpretation": "The exact output is present in both training payloads at about 2.4% of assistant targets. This supports a target-attractor correlation but does not establish causation.",
+  "privacy": "No raw model output, training text, or clinical content is included."
+}

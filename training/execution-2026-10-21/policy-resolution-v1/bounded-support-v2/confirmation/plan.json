@@ -1,0 +1,14 @@
+{
+  "stage": "confirmation",
+  "responses": 40,
+  "runtime_receives_labels": false,
+  "max_target_calls_per_response": 3,
+  "max_router_calls_per_response": 1,
+  "reserved_all_internal_calls_usd": 0.1273088,
+  "response_origin": "Explicit boundary templates on seven routed contexts; target model elsewhere. This evaluates middleware, not model weight improvement.",
+  "source_sha256": "ac9ba0337d55e13db01a43959137186445a6a77f6a32696b5ea0e283b5d02e65",
+  "implementation_sha256": "7a151fece3f50fe849537704a7e8d97e9914afba41e7da9524181b94deaa2eaf",
+  "withheld_is_failure": true,
+  "clinical_validation": false,
+  "deployment_authorized": false
+}

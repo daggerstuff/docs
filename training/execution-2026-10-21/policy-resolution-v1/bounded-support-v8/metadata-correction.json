@@ -1,0 +1,3 @@
+{
+  "reason": "An attempted literal source replacement did not apply; v8 pilot actually repeated v7 system feedback. No user-role result may be inferred from it. Source hashes and all requests retained. Corrected with exact patch before v9."
+}

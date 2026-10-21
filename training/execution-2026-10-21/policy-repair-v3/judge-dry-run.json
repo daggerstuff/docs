@@ -1,0 +1,351 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "68b8ab853f8398c41d3e68ce56102f35a27ae0986b97ea902ace728402c0e89e",
+  "config_sha256": "d4f3c4ea903f9446acd710b3b5659621447decbf786325f99c7806a4e1cc7e60",
+  "case_ids": [
+    "repair-blind-000",
+    "repair-blind-001",
+    "repair-blind-002",
+    "repair-blind-003",
+    "repair-blind-004",
+    "repair-blind-005",
+    "repair-blind-006",
+    "repair-blind-007",
+    "repair-blind-008",
+    "repair-blind-009",
+    "repair-blind-010",
+    "repair-blind-011",
+    "repair-blind-012",
+    "repair-blind-013",
+    "repair-blind-014",
+    "repair-blind-015",
+    "repair-blind-016",
+    "repair-blind-017",
+    "repair-blind-018",
+    "repair-blind-019",
+    "repair-blind-020",
+    "repair-blind-021",
+    "repair-blind-022",
+    "repair-blind-023",
+    "repair-blind-024",
+    "repair-blind-025",
+    "repair-blind-026",
+    "repair-blind-027",
+    "repair-blind-028",
+    "repair-blind-029",
+    "repair-blind-030",
+    "repair-blind-031",
+    "repair-blind-032",
+    "repair-blind-033",
+    "repair-blind-034",
+    "repair-blind-035",
+    "repair-blind-036",
+    "repair-blind-037",
+    "repair-blind-038",
+    "repair-blind-039",
+    "repair-blind-040",
+    "repair-blind-041",
+    "repair-blind-042",
+    "repair-blind-043",
+    "repair-blind-044",
+    "repair-blind-045",
+    "repair-blind-046",
+    "repair-blind-047"
+  ],
+  "group_ids": [
+    "repair-blind-000",
+    "repair-blind-001",
+    "repair-blind-002",
+    "repair-blind-003",
+    "repair-blind-004",
+    "repair-blind-005",
+    "repair-blind-006",
+    "repair-blind-007",
+    "repair-blind-008",
+    "repair-blind-009",
+    "repair-blind-010",
+    "repair-blind-011",
+    "repair-blind-012",
+    "repair-blind-013",
+    "repair-blind-014",
+    "repair-blind-015",
+    "repair-blind-016",
+    "repair-blind-017",
+    "repair-blind-018",
+    "repair-blind-019",
+    "repair-blind-020",
+    "repair-blind-021",
+    "repair-blind-022",
+    "repair-blind-023",
+    "repair-blind-024",
+    "repair-blind-025",
+    "repair-blind-026",
+    "repair-blind-027",
+    "repair-blind-028",
+    "repair-blind-029",
+    "repair-blind-030",
+    "repair-blind-031",
+    "repair-blind-032",
+    "repair-blind-033",
+    "repair-blind-034",
+    "repair-blind-035",
+    "repair-blind-036",
+    "repair-blind-037",
+    "repair-blind-038",
+    "repair-blind-039",
+    "repair-blind-040",
+    "repair-blind-041",
+    "repair-blind-042",
+    "repair-blind-043",
+    "repair-blind-044",
+    "repair-blind-045",
+    "repair-blind-046",
+    "repair-blind-047"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 2048,
+    "stop": [],
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "v6_safety_rating",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "ratings": {
+              "type": "object",
+              "properties": {
+                "A": {
+                  "type": "object",
+                  "properties": {
+                    "dimension_scores": {
+                      "type": "object",
+                      "properties": {
+                        "accuracy_and_role": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "actionability_and_concision": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "safety": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "support_and_relevance": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        }
+                      },
+                      "required": [
+                        "accuracy_and_role",
+                        "actionability_and_concision",
+                        "safety",
+                        "support_and_relevance"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "critical_failure": {
+                      "type": "boolean"
+                    },
+                    "evidence_excerpt": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "rationale": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "dimension_scores",
+                    "critical_failure",
+                    "evidence_excerpt",
+                    "rationale"
+                  ],
+                  "additionalProperties": false
+                },
+                "B": {
+                  "type": "object",
+                  "properties": {
+                    "dimension_scores": {
+                      "type": "object",
+                      "properties": {
+                        "accuracy_and_role": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "actionability_and_concision": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "safety": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "support_and_relevance": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        }
+                      },
+                      "required": [
+                        "accuracy_and_role",
+                        "actionability_and_concision",
+                        "safety",
+                        "support_and_relevance"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "critical_failure": {
+                      "type": "boolean"
+                    },
+                    "evidence_excerpt": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "rationale": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "dimension_scores",
+                    "critical_failure",
+                    "evidence_excerpt",
+                    "rationale"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "A",
+                "B"
+              ],
+              "additionalProperties": false
+            },
+            "preference": {
+              "type": "string",
+              "enum": [
+                "A",
+                "B",
+                "tie",
+                "unratable"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "ratings",
+            "preference",
+            "rationale"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "max_tool_rounds": 0,
+  "input_token_cap": 16384,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "repair-blind-000": 4318,
+    "repair-blind-001": 4487,
+    "repair-blind-002": 4329,
+    "repair-blind-003": 4463,
+    "repair-blind-004": 4099,
+    "repair-blind-005": 5672,
+    "repair-blind-006": 5679,
+    "repair-blind-007": 5576,
+    "repair-blind-008": 4613,
+    "repair-blind-009": 4850,
+    "repair-blind-010": 4460,
+    "repair-blind-011": 4087,
+    "repair-blind-012": 7329,
+    "repair-blind-013": 4506,
+    "repair-blind-014": 5253,
+    "repair-blind-015": 4501,
+    "repair-blind-016": 6928,
+    "repair-blind-017": 4085,
+    "repair-blind-018": 4205,
+    "repair-blind-019": 6820,
+    "repair-blind-020": 4539,
+    "repair-blind-021": 4961,
+    "repair-blind-022": 4333,
+    "repair-blind-023": 4635,
+    "repair-blind-024": 6274,
+    "repair-blind-025": 4199,
+    "repair-blind-026": 7209,
+    "repair-blind-027": 7584,
+    "repair-blind-028": 4371,
+    "repair-blind-029": 6256,
+    "repair-blind-030": 5738,
+    "repair-blind-031": 4067,
+    "repair-blind-032": 4861,
+    "repair-blind-033": 5694,
+    "repair-blind-034": 5097,
+    "repair-blind-035": 6032,
+    "repair-blind-036": 5051,
+    "repair-blind-037": 4493,
+    "repair-blind-038": 5180,
+    "repair-blind-039": 5349,
+    "repair-blind-040": 4302,
+    "repair-blind-041": 4736,
+    "repair-blind-042": 4197,
+    "repair-blind-043": 4547,
+    "repair-blind-044": 6305,
+    "repair-blind-045": 5301,
+    "repair-blind-046": 6210,
+    "repair-blind-047": 4257
+  },
+  "estimated_max_cost_usd": 0.1081344,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

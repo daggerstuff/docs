@@ -1,0 +1,20 @@
+{
+  "observed_at_utc": "2026-10-20T10:40:46.586693Z",
+  "organization": "wutang-org",
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_storage_bytes": 69118476834,
+  "project_storage_gb_decimal": 69.118476834,
+  "storage_entitlement_gigs": 200,
+  "subscription_status": "ENABLED",
+  "subscription_type": "ACADEMIC_TRIAL",
+  "last_30_days_daily_average_bytes": 166026268417,
+  "last_30_days_daily_average_gb_decimal": 166.026268417,
+  "approx_headroom_gb_decimal": 33.97373158299999,
+  "source": "Authenticated read-only W&B GraphQL Project.storageBytes; Organization.subscriptions.privileges; Organization.usageByPeriod(STORAGE,LAST_30_DAYS,CUMULATIVE)",
+  "limitations": [
+    "Trailing-average entitlement measure, not instantaneous quota.",
+    "Project storageBytes is project-level and excludes other organization projects.",
+    "Neither metric reports free disk on a CoreWeave worker or identifies deleted artifact objects.",
+    "No artifacts were deleted or modified by this query."
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "case_id": "support-confirmation-010",
+    "arm": "sft",
+    "error": "ValueError: support failed bounded boilerplate/task checks; response withheld, evaluation failure"
+  },
+  {
+    "case_id": "support-confirmation-014",
+    "arm": "sft",
+    "error": "ValueError: support failed bounded boilerplate/task checks; response withheld, evaluation failure"
+  },
+  {
+    "case_id": "support-confirmation-019",
+    "arm": "base",
+    "error": null
+  }
+]

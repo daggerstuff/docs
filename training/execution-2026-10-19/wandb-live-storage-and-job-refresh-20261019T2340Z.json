@@ -1,0 +1,62 @@
+{
+  "observed_at_utc": "2026-10-19T23:40:17.791606+00:00",
+  "project_storage_bytes": 9727667199,
+  "previous_storage_bytes_2026_10_19T2209Z": 116486273253,
+  "delta_bytes_from_previous": -106758606054,
+  "job_observations": [
+    {
+      "job": "v1",
+      "job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "error": "W&B Training API returned HTTP 500 for GET /preview/training-jobs/2087f223-a48f-45f7-9999-daece5743bba",
+      "status": "UNKNOWN"
+    },
+    {
+      "job": "v2",
+      "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "error": "W&B Training API returned HTTP 500 for GET /preview/training-jobs/f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "status": "UNKNOWN"
+    },
+    {
+      "job": "v4_no_system",
+      "job_id": "24cc2d06-3ec3-4356-ad3a-179694dd86a7",
+      "http": "200",
+      "status": "RUNNING",
+      "updated_at": "2026-10-19T22:50:52.382671Z",
+      "progress": null
+    }
+  ],
+  "artifact_api_recheck_at_utc": "2026-10-19T23:40:30Z",
+  "artifact_collections": [
+    {
+      "type": "lora",
+      "collection": "arc-sft-baseline-8ce8354c67ef-sft-resume",
+      "visible_versions": 0
+    },
+    {
+      "type": "lora",
+      "collection": "arc-sft-baseline-556695bfd5c4-sft-resume",
+      "visible_versions": 0
+    },
+    {
+      "type": "train-state",
+      "collection": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "visible_versions": 0
+    },
+    {
+      "type": "train-state",
+      "collection": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "visible_versions": 0
+    }
+  ],
+  "artifact_recheck_method": "Authenticated W&B SDK artifact_collections and collection.artifacts(per_page=200); all four collections were found and listed empty.",
+  "storage_followup_at_utc": "2026-10-19T23:44:43.402397+00:00",
+  "storage_followup_bytes": 9727667199,
+  "storage_followup_delta_from_2340": 0,
+  "artifact_watcher_followup": {
+    "v1_observed_at_utc": "2026-10-19T23:44:28.647983Z",
+    "v2_observed_at_utc": "2026-10-19T23:44:29.178526Z",
+    "both_job_statuses": "UNKNOWN",
+    "both_latest_checkpoint_versions": null,
+    "artifact_lookup_errors": false
+  }
+}

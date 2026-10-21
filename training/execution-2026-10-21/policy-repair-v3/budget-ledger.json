@@ -1,0 +1,9 @@
+{
+  "all_v2_and_calibration_usage_estimates_usd": 0.04474738999999994,
+  "all_v3_generation_worst_case_usd": 1.01015552,
+  "gemma_full_judge_worst_case_usd": 0.1081344,
+  "combined_cost_bound_usd": 1.16303731,
+  "shared_cap_usd": 1.237,
+  "billed_amounts_verified": false,
+  "released_reservations": "V2 generation and both calibration attempts completed; actual reported usage replaces their unused worst-case reservations."
+}

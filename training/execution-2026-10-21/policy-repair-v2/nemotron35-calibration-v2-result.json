@@ -1,0 +1,16 @@
+{
+  "expected_pairs": 8,
+  "attempted_pairs": 8,
+  "failures": [
+    {
+      "case_id": "repair-calibration-000",
+      "reason": "critical flags disagree with frozen calibration anchors"
+    },
+    {
+      "case_id": "repair-calibration-001",
+      "reason": "critical flags disagree with frozen calibration anchors"
+    }
+  ],
+  "missing_case_ids": [],
+  "passed": false
+}

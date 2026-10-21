@@ -1,0 +1,53 @@
+{
+  "account": "linencloset",
+  "utc_now": "2026-10-19T19:00:43+00:00",
+  "promotion": {
+    "active": true,
+    "deadline": "2026-12-01T00:00:00-08:00",
+    "source": "https://docs.fireworks.ai/fine-tuning/models"
+  },
+  "base_model": "accounts/fireworks/models/muse-glimmer-30b",
+  "method": "LoRA SFT",
+  "run_id": "pixelated-v4-fireworks-20261019-r8-full",
+  "run_id_note": "pass --run-id to launch to use these resource names; IDs of deleted jobs must not be reused",
+  "surface": "serverless",
+  "dataset": {
+    "file": "/home/vivi/pixelated/ai/data/curated/recovery/gold-20261017/wandb-full-corpus-current-master-20261019-v4/train.jsonl",
+    "holdout_rows": 120,
+    "train_rows": "all remaining rows"
+  },
+  "evaluation": "exact match (and per-key accuracy for JSON answers), base vs tuned, same holdout, in-session sampling",
+  "parameters": {
+    "lora_rank": 8,
+    "epochs": 1,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "max_seq_len": 32768,
+    "max_eval_tokens": 512,
+    "seed": 0,
+    "lora_alpha": 32,
+    "lora_targets": {
+      "train_mlp": true,
+      "train_attn": true,
+      "train_unembed": true
+    },
+    "train_on": "last_assistant_turn",
+    "loss": "cross_entropy",
+    "optimizer": {
+      "beta1": 0.9,
+      "beta2": 0.999,
+      "eps": 1e-08,
+      "weight_decay": 0.0,
+      "grad_clip_norm": 1.0
+    },
+    "emit_grad_norm_metrics": true
+  },
+  "resources": {
+    "promoted_model": null,
+    "note": "the tuned sampler checkpoint is promoted to a LoRA model before the session closes; session checkpoints are unreachable after the session ends"
+  },
+  "cost": {
+    "training": "$0 (promotional)",
+    "excluded": "full-parameter SFT, RL, DPO, Dedicated, deployment, inference outside the run; in-session evaluation sampling is a separate line unless the account shows it covered"
+  }
+}

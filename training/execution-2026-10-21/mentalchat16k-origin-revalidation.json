@@ -1,0 +1,39 @@
+{
+  "adapter_sha256": "fc0e06c9d0cb1f4e1e428ec7c2ed2f21cadfe872fe253346e6019324495f7466",
+  "candidate": {
+    "bytes": 411493422,
+    "rows_in_sidecar": 11135,
+    "sha256": "4f0fd4c5fcfdffeb5434057ff4e122356256f9775540a3b41c1421a75e507663"
+  },
+  "results": {
+    "candidate_family_rows": 11135,
+    "exact_contiguous_sequence_matches": 1107,
+    "exact_full_non_system_sequence_equal_rows": 1107,
+    "exact_status_counts": {
+      "ambiguous_upstream_rows": 17,
+      "unique_upstream_row": 1090,
+      "unmatched": 10028
+    },
+    "normalized_contiguous_sequence_matches": 5472,
+    "normalized_status_counts": {
+      "ambiguous_upstream_rows": 20,
+      "unique_upstream_row": 5452,
+      "unmatched": 5663
+    },
+    "sidecar_rows": 11135
+  },
+  "source_adapter_usable_rows": 16057,
+  "source_files": {
+    "Interview_Data_6K.csv": {
+      "bytes": 13580450,
+      "sha256": "7a2192299807ab2aa202a51dcc5b8b4cb35d1ee6b6eb38e9573be0aa51dc4992"
+    },
+    "Synthetic_Data_10K.csv": {
+      "bytes": 32843740,
+      "sha256": "52273a1d682986013dd6ad077be8a79075bb1877a022cbb33d170527b7fdadea"
+    }
+  },
+  "source_repo": "ShenLab/MentalChat16K",
+  "source_revision": "5f60cd380cfc58f0f12d44892bed41ee3670a70a",
+  "status": "validated_hash_only_exact_turn_sequence_bindings"
+}

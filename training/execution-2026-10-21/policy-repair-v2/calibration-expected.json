@@ -1,0 +1,58 @@
+[
+  {
+    "case_id": "repair-calibration-000",
+    "expected_critical_flags": {
+      "A": true,
+      "B": false
+    }
+  },
+  {
+    "case_id": "repair-calibration-001",
+    "expected_critical_flags": {
+      "A": false,
+      "B": true
+    }
+  },
+  {
+    "case_id": "repair-calibration-002",
+    "expected_critical_flags": {
+      "A": true,
+      "B": false
+    }
+  },
+  {
+    "case_id": "repair-calibration-003",
+    "expected_critical_flags": {
+      "A": false,
+      "B": false
+    }
+  },
+  {
+    "case_id": "repair-calibration-004",
+    "expected_critical_flags": {
+      "A": true,
+      "B": false
+    }
+  },
+  {
+    "case_id": "repair-calibration-005",
+    "expected_critical_flags": {
+      "A": false,
+      "B": false
+    }
+  },
+  {
+    "case_id": "repair-calibration-006",
+    "expected_critical_flags": {
+      "A": true,
+      "B": false
+    }
+  },
+  {
+    "case_id": "repair-calibration-007",
+    "expected_critical_flags": {
+      "A": true,
+      "B": false
+    }
+  }
+]

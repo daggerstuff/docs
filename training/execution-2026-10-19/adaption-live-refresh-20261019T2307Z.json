@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T23:07:15.389Z",
+  "provider": "Adaption",
+  "operation": "create_autoscientist_run",
+  "request": {
+    "dataset_id": "5cf8efd5-3426-4cc4-b3cc-4d40f7912f9d",
+    "dataset_name": "pixelated-v4-train-unrolled-ctx9-20261019",
+    "rows": 522658,
+    "model": "Qwen/Qwen3.6-35B-A3B",
+    "training_method": "instruction",
+    "data_format": "chat",
+    "column_mapping": {
+      "prompt": "original_prompt",
+      "completion": "original_completion"
+    },
+    "max_iterations": 1,
+    "target_win_rate": 0.8,
+    "augmentation_domain_rows": 0,
+    "augmentation_general_rows": 0,
+    "idempotency_key": "pixelated-v4-ctx9-qwen36-chat-1iter-20261019"
+  },
+  "response": {
+    "run_id": "33bba6d2-d9e5-408c-bd4d-76544d2cde78",
+    "status": "running",
+    "iterations_completed": 0,
+    "max_iterations": 1,
+    "completed_at": null,
+    "best_win_rate": null,
+    "best_hyperparams": null,
+    "download_available": false,
+    "error": null
+  },
+  "cost_coverage": {
+    "account_credit_balance_available": false,
+    "provider_quote_available": false,
+    "credit_amount_claimed": null,
+    "limitation": "The connector did not expose current credit balance or a cost quote for this v4-sized training run."
+  },
+  "limitations": [
+    "The ctx9 training representation retains all 522,658 assistant targets but omits older history for 288,318 targets.",
+    "Run creation is not proof that training completes or that a checkpoint is downloadable.",
+    "The platform win-rate objective is not an independent quality or clinical-safety measure."
+  ]
+}

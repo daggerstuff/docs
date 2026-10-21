@@ -1,0 +1,10 @@
+{
+  "protocol_sha256": "dd1d96415681cf0c073fc9eefe5dc3143f3103d81d1647b5537fd14cfdb28e0e",
+  "module_sha256": "2edbec1d9ca62745ce19c2448cde63130b967aee67259a2116e8d2a97d8fd707",
+  "model": "google/gemma-4-26B-A4B-it",
+  "requests": 10,
+  "reserved_upper_bound_usd": 0.01792,
+  "actual_frozen_critical_flags": 4,
+  "actual_negative_controls": 6,
+  "clinical_validation": false
+}

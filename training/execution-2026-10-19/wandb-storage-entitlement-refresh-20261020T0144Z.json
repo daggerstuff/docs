@@ -1,0 +1,29 @@
+{
+  "observed_at_utc": "2026-10-20T01:44:34Z",
+  "organization": "wutang-org",
+  "subscription_type": "ACADEMIC_TRIAL",
+  "plan": "Enterprise",
+  "storage_entitlement": {
+    "graphql_privilege": "storage_gigs",
+    "value": 200,
+    "unit_interpretation": "GB, consistent with W&B's published academic storage allowance; confirm exact decimal/binary convention in billing UI"
+  },
+  "storage_usage": {
+    "source": "Authenticated W&B GraphQL Organization.usageByPeriod(usageType: STORAGE, usagePeriod: LAST_30_DAYS, viewType: CUMULATIVE)",
+    "daily_average_bytes": 164173686280,
+    "daily_average_gb_decimal": 164.17368628,
+    "approx_entitlement_headroom_gb_decimal": 35.82631372,
+    "interpretation": "Trailing 30-day average is about 82.1% of the 200 GB entitlement. This is not a direct current-byte total or a provider disk-free reading."
+  },
+  "project_storage": {
+    "project": "wutang/pixelated-empathy-kan28",
+    "storage_bytes": 20097108669,
+    "observed_at_utc": "2026-10-20T01:44:34Z"
+  },
+  "source_note": "W&B pricing documentation says storage is calculated as a trailing 30-day average (GB-days divided by 30) and identifies 200 GB cloud storage for the academic license. Serverless preview training is free, while inference and model storage are charged separately. GraphQL exposes the organization's 200 storage_gigs entitlement and usage. No artifacts were deleted by this read.",
+  "limitations": [
+    "The organization usage measure is a billing-period average and cannot identify which artifact or project contributes each byte.",
+    "Project storageBytes is a project-level measure and is not an account-wide physical disk-space measure.",
+    "Neither metric proves the free space on a CoreWeave training-worker volume."
+  ]
+}

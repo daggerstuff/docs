@@ -1,0 +1,36 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "bbefbb06523d711fba9ae1d1ae9137762eb2919c54967db952ddec07e44cdad6",
+  "config_sha256": "78ea147480657c6b7c2e306f5d7643a3ce4bdbf5ff4713b5e28a20f7f575b75a",
+  "case_ids": [
+    "v6-safety-dev-support_quality-02"
+  ],
+  "group_ids": [
+    "v6-safety-support_quality-02"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "max_tool_rounds": 0,
+  "input_token_cap": 8192,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "v6-safety-dev-support_quality-02": 487
+  },
+  "estimated_max_cost_usd": 0.00155648,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

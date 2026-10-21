@@ -1,0 +1,20 @@
+{
+  "approx_headroom_gb_decimal": 33.973731583,
+  "last_30_days_daily_average_bytes": 166026268417,
+  "last_30_days_daily_average_gb_decimal": 166.026268417,
+  "limitations": [
+    "The entitlement headroom is based on the provider trailing-average usage measure, not instantaneous quota.",
+    "Project storageBytes is project-level and does not show organization-wide attribution.",
+    "These values do not report free disk on a CoreWeave training worker.",
+    "No artifacts were deleted or modified by this query."
+  ],
+  "observed_at_utc": "2026-10-20T10:12:14.332849Z",
+  "organization": "wutang-org",
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_storage_bytes": 66290448324,
+  "project_storage_gb_decimal": 66.290448324,
+  "source": "Authenticated read-only W&B GraphQL Project.storageBytes; Organization.subscriptions.privileges; Organization.usageByPeriod(STORAGE,LAST_30_DAYS,CUMULATIVE)",
+  "storage_entitlement_gigs": 200,
+  "subscription_status": "ENABLED",
+  "subscription_type": "ACADEMIC_TRIAL"
+}

@@ -1,0 +1,124 @@
+{
+  "prior_estimate_usd": 0.16696285,
+  "current_additional_estimate_usd": 0.07246823000000001,
+  "cumulative_estimate_usd": 0.23943108000000002,
+  "cap_usd": 1.237,
+  "billed_amount_verified": false,
+  "in_progress": true,
+  "entries": [
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/bounded-confirmation-judge/results.jsonl",
+      "estimated_cost_usd": 0.0044893,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/bounded-original-judge/results.jsonl",
+      "estimated_cost_usd": 0.0047752,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/confirmation/results.jsonl",
+      "estimated_cost_usd": 0.00133992,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/contextual-booking/results.jsonl",
+      "estimated_cost_usd": 0.00890604,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/contextual-judge/results.jsonl",
+      "estimated_cost_usd": 0.0114757,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/contextual-safety/results.jsonl",
+      "estimated_cost_usd": 0.00173832,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/gemma4-calibration/results.jsonl",
+      "estimated_cost_usd": 0.0013169,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/gemma4-calibration-v2/results.jsonl",
+      "estimated_cost_usd": 0.0013319,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/nemotron35-calibration/results.jsonl",
+      "estimated_cost_usd": 0.00087208,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/nemotron35-calibration-v2/results.jsonl",
+      "estimated_cost_usd": 0.00087228,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/preserved-booking/results.jsonl",
+      "estimated_cost_usd": 0.01255408,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/safety/results.jsonl",
+      "estimated_cost_usd": 0.00262704,
+      "method": "runner row usage; no internal wrapper calls"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/bounded-confirmation/all-provider-calls.jsonl",
+      "estimated_cost_usd": 0.0017498400000000001,
+      "method": "all internal calls including routing and discarded drafts; do not add runner totals"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/bounded-original/all-provider-calls.jsonl",
+      "estimated_cost_usd": 0.0026749300000000003,
+      "method": "all internal calls including routing and discarded drafts; do not add runner totals"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/bounded-v2-confirmation/all-provider-calls.jsonl",
+      "estimated_cost_usd": 0.0017736400000000002,
+      "method": "all internal calls including routing and discarded drafts; do not add runner totals"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/bounded-v2-original/all-provider-calls.jsonl",
+      "estimated_cost_usd": 0.0026144600000000003,
+      "method": "all internal calls including routing and discarded drafts; do not add runner totals"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/bounded-v3-confirmation/all-provider-calls.jsonl",
+      "estimated_cost_usd": 0.00197764,
+      "method": "all internal calls including routing and discarded drafts; do not add runner totals"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/bounded-v3-original/all-provider-calls.jsonl",
+      "estimated_cost_usd": 0.00209966,
+      "method": "all internal calls including routing and discarded drafts; do not add runner totals"
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/response-review-v1/calibration-attempts.json",
+      "estimated_cost_usd": 0.0009357
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/response-review-v2/calibration-attempts.json",
+      "estimated_cost_usd": 0.0009629
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/response-review-v3/calibration-attempts.json",
+      "estimated_cost_usd": 0.0014510999999999999
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/response-review-v4/calibration-attempts.json",
+      "estimated_cost_usd": 0.0012418
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/contextual-routing-audit.json",
+      "estimated_cost_usd": 0.001458
+    },
+    {
+      "path": "/home/vivi/pixelated/ai/training/output/v6-policy-resolution-v1/confirmation-routing-audit.jsonl",
+      "estimated_cost_usd": 0.0012298
+    }
+  ]
+}

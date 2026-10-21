@@ -1,0 +1,9 @@
+# W&B v50 response-channel diagnostic — 2026-10-20
+
+The earlier five-scenario paired evaluation showed the v50 adapter returning no extracted assistant content in all five cases. To separate an evaluator field-mapping issue from a checkpoint behavior issue, I queried the W&B inference endpoint directly with the same minimal synthetic request for the base and v50 adapter: `Reply with exactly PONG.` Temperature was 0 and the completion limit was 256 tokens.
+
+Both HTTP requests succeeded. The base returned visible `message.content` and a separate `message.reasoning` field. The v50 adapter returned `message.content: null`, no tool calls, and a populated `message.reasoning` field; its visible output therefore really is absent at the API boundary, rather than being lost by the paired evaluator's `content` extraction. The adapter's reasoning field began with an unrelated mental-health questionnaire opening rather than following the PONG instruction. The raw reasoning text was not persisted in this diagnostic report.
+
+This confirms a severe task-following/output-channel failure on this prompt for v50. It does not establish why the model behaves this way, prove the checkpoint is corrupt, or establish clinical quality/safety. The W&B runner's behavior of treating `content: null` as empty is correct for a user-visible response; reasoning must not be substituted for final content. Do not promote v50. Continue to treat subsequent checkpoints as experimental and evaluate their user-visible content and tool behavior before any use.
+
+The paired five-case results remain in [the v50 five-scenario evaluation report](wandb-v50-five-scenario-dev-eval-2026-10-20.md). The API response field-shape comparison was two additional small synthetic inference requests; usage was 16 prompt tokens per arm and 141/143 completion tokens. At the configured rates, the combined estimate for these two requests is about `$0.0004`; actual billed usage is unavailable.

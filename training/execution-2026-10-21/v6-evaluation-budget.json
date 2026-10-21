@@ -1,0 +1,119 @@
+{
+  "schema_version": "v6-evaluation-budget-v1",
+  "prepared_at_utc": "2026-10-21T06:57:25.856203+00:00",
+  "source_readiness_sha256": "c6d0c426394fcbcc090860247521d50607881311ced37308f087672ab0e42e58",
+  "selected_base_catalog": {
+    "verified": true,
+    "observed_at_utc": "2026-10-21T06:57:26.435298+00:00",
+    "selected_base_models_present": {
+      "google/gemma-4-26B-A4B-it": true,
+      "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B": true
+    }
+  },
+  "settings": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "max_input_tokens_per_completion": 8192,
+    "require_usage": true,
+    "require_finish_reason": true
+  },
+  "suites": [
+    {
+      "path": "docs/training/agent-tool-sft-2026-10-19/evaluation/prompt-disjoint-heldout-test-cases.jsonl",
+      "sha256": "890718d9da3e697ee20c7683f13303e07c85985d07b35d45417ad853f0722773",
+      "case_count": 120,
+      "max_tool_rounds": 4,
+      "completion_calls_per_case_upper_bound": 5,
+      "two_arm_completion_calls_upper_bound": 1200,
+      "max_initial_conservative_prompt_token_bound": 1224
+    },
+    {
+      "path": "docs/training/execution-2026-10-17/scenario-dev-v1.jsonl",
+      "sha256": "9f0734cfde7384faa40e0f45163b12de906c69e6f0b22aa61f82dd5e8c0c10a3",
+      "case_count": 5,
+      "max_tool_rounds": 4,
+      "completion_calls_per_case_upper_bound": 5,
+      "two_arm_completion_calls_upper_bound": 50,
+      "max_initial_conservative_prompt_token_bound": 863
+    },
+    {
+      "path": "docs/training/execution-2026-10-21/safety-quality-dev-v1.jsonl",
+      "sha256": "5fc61e0d6f2b48a4f68dff19f81388282bff8f190bfa0c15b686c82fe0abb811",
+      "case_count": 24,
+      "max_tool_rounds": 0,
+      "completion_calls_per_case_upper_bound": 1,
+      "two_arm_completion_calls_upper_bound": 48,
+      "max_initial_conservative_prompt_token_bound": 534
+    }
+  ],
+  "per_model_pair": {
+    "gemma4": {
+      "input_usd_per_million_tokens": 0.1,
+      "output_usd_per_million_tokens": 0.3,
+      "suite_cost_upper_bounds_usd": {
+        "docs/training/agent-tool-sft-2026-10-19/evaluation/prompt-disjoint-heldout-test-cases.jsonl": 1.35168,
+        "docs/training/execution-2026-10-17/scenario-dev-v1.jsonl": 0.05632,
+        "docs/training/execution-2026-10-21/safety-quality-dev-v1.jsonl": 0.0540672
+      },
+      "model_pair_cost_upper_bound_usd": 1.4620672
+    },
+    "nemotron35": {
+      "input_usd_per_million_tokens": 0.07,
+      "output_usd_per_million_tokens": 0.2,
+      "suite_cost_upper_bounds_usd": {
+        "docs/training/agent-tool-sft-2026-10-19/evaluation/prompt-disjoint-heldout-test-cases.jsonl": 0.933888,
+        "docs/training/execution-2026-10-17/scenario-dev-v1.jsonl": 0.038912,
+        "docs/training/execution-2026-10-21/safety-quality-dev-v1.jsonl": 0.03735552
+      },
+      "model_pair_cost_upper_bound_usd": 1.01015552
+    }
+  },
+  "all_four_arms_cost_upper_bound_usd": 2.47222272,
+  "planned_total_cap_usd": 3.0,
+  "includes_paid_judge_calls": true,
+  "provider_calls_to_generate_completions": 0,
+  "launch_ready": true,
+  "remaining_gates": [],
+  "limitations": [
+    "Bound assumes published uncached token rates and enforcement of the existing runner input/output/tool-call caps.",
+    "Provider usage metadata and estimates are not verified invoice amounts; hard cap is an application preflight bound.",
+    "No retries or paid rating/judge inference is included.",
+    "Later tool rounds exceeding the input cap stop as errors and must remain in completion denominators."
+  ],
+  "final_adapter_local_validation_and_terminal_jobs_verified": true,
+  "serving_compatibility_verified": false,
+  "configured_suite_caps_total_usd": 2.478,
+  "credit_coverage_evidence": "v6-credit-coverage-verification.json",
+  "bounded_serving_checks_completion_calls": 7,
+  "bounded_serving_checks_worst_case_usd": 0.00649216,
+  "total_suite_caps_plus_serving_checks_bound_usd": 2.48449216,
+  "unbounded_retries_allowed": false,
+  "decoding_override": {
+    "nemotron35_both_arms": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "gemma_first_attempt_stopped_prefix_worst_case_usd": 0.0473088,
+  "revised_total_cap_bound_with_gemma_complete_coverage_attempt_usd": 2.5318009600000004,
+  "gemma_transient_error_policy": "New complete-coverage attempt retains every 500/502/503/504 as an error and continues to next arm/case, with no request retries. Original fail-fast attempts remain separate. Other HTTP/metadata errors still stop.",
+  "run_started_at_utc": "2026-10-21T09:16:27.354636+00:00",
+  "blinded_safety_judges": [
+    "google/gemma-4-26B-A4B-it",
+    "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B"
+  ],
+  "max_judge_pairs": 48,
+  "judge_input_cap": 16384,
+  "judge_output_cap": 2048,
+  "combined_judge_caps_upper_bound_usd": 0.188,
+  "total_evaluation_plus_judge_caps_upper_bound_usd": 2.7198009600000006,
+  "judge_limitations": [
+    "Both judges belong to evaluated model families; self-preference and shared biases remain possible.",
+    "Model ratings are provisional; calibrate and review critical disagreements, with no promotion based on judge averages."
+  ],
+  "strict_schema_judge_followup": true,
+  "strict_schema_probe_completion_calls_max": 4,
+  "judge_attempts_total_conservative_cap_usd": 0.4,
+  "revised_all_evaluation_and_judge_protocol_variants_bound_usd": 2.9318009600000003
+}

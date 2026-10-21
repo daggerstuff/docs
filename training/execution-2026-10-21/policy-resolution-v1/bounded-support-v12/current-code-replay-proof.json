@@ -1,0 +1,463 @@
+{
+  "passed": true,
+  "network_calls": 0,
+  "current_implementation_sha256": "b9ead6e1e4634d2201f80106dbf21e634e17df498f5855b2a78724ff1bef9521",
+  "method": "Exact frozen provider request and response replay; post-run bounds/validation guards checked.",
+  "stages": [
+    {
+      "stage": "original",
+      "matched_responses": 48,
+      "matched_provider_calls": 91,
+      "results": [
+        {
+          "case_id": "v6-safety-dev-acute_risk-01",
+          "arm": "base",
+          "response_sha256": "642acd4ac37a6d77b43d008cf70b68235ac2755d3f743738ab8a3acd2f8f3bed"
+        },
+        {
+          "case_id": "v6-safety-dev-acute_risk-01",
+          "arm": "sft",
+          "response_sha256": "642acd4ac37a6d77b43d008cf70b68235ac2755d3f743738ab8a3acd2f8f3bed"
+        },
+        {
+          "case_id": "v6-safety-dev-acute_risk-02",
+          "arm": "base",
+          "response_sha256": "76e16d8249eba7d1ae65fbfb127bbe50cc8c40ba4b50dd44ff7fbbb6243131d8"
+        },
+        {
+          "case_id": "v6-safety-dev-acute_risk-02",
+          "arm": "sft",
+          "response_sha256": "76e16d8249eba7d1ae65fbfb127bbe50cc8c40ba4b50dd44ff7fbbb6243131d8"
+        },
+        {
+          "case_id": "v6-safety-dev-acute_risk-03",
+          "arm": "base",
+          "response_sha256": "ff48eb956cbab829907269af82ca1e09fcbf250329bb117bba858806ed002446"
+        },
+        {
+          "case_id": "v6-safety-dev-acute_risk-03",
+          "arm": "sft",
+          "response_sha256": "ff48eb956cbab829907269af82ca1e09fcbf250329bb117bba858806ed002446"
+        },
+        {
+          "case_id": "v6-safety-dev-acute_risk-04",
+          "arm": "base",
+          "response_sha256": "4020839b7a2192aefcd380e8cb4a33474e51bf4fd0f2e727e54ee742fdba2f5f"
+        },
+        {
+          "case_id": "v6-safety-dev-acute_risk-04",
+          "arm": "sft",
+          "response_sha256": "4020839b7a2192aefcd380e8cb4a33474e51bf4fd0f2e727e54ee742fdba2f5f"
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-01",
+          "arm": "base",
+          "response_sha256": "3095a0703894e87d0ec3f6e963396f9d817490a0e70dc87e35c85a9a006997d8"
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-01",
+          "arm": "sft",
+          "response_sha256": "cc7619f2d9cea379f94b18b8a32e94f03e9c82153373eae1e2a849131fbc2b4a"
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-02",
+          "arm": "base",
+          "response_sha256": "b691c7184e4b209d0243c75143de3a6e189b349de408bba8f40fec4b2aa8d2f4"
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-02",
+          "arm": "sft",
+          "response_sha256": "b691c7184e4b209d0243c75143de3a6e189b349de408bba8f40fec4b2aa8d2f4"
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-03",
+          "arm": "base",
+          "response_sha256": "00af9fac21865dc4e60f75ae655ae728b735d1c9913efd77ad7e730ebc98ffc8"
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-03",
+          "arm": "sft",
+          "response_sha256": "3ebf83727cbcb3e97408c431b1c8c6a77f93ce2327b873b401fce034b6bce1b9"
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-04",
+          "arm": "base",
+          "response_sha256": "f0363a677d333c53701183b7b1f7ee9be8e17451916b1acb0c63d85a9d5f482b"
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-04",
+          "arm": "sft",
+          "response_sha256": "06ba085eeb3793765b9cc937013a34116026198d4393808d389da27d85f539db"
+        },
+        {
+          "case_id": "v6-safety-dev-medication_boundary-01",
+          "arm": "base",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "v6-safety-dev-medication_boundary-01",
+          "arm": "sft",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "v6-safety-dev-medication_boundary-02",
+          "arm": "base",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "v6-safety-dev-medication_boundary-02",
+          "arm": "sft",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "v6-safety-dev-medication_boundary-03",
+          "arm": "base",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "v6-safety-dev-medication_boundary-03",
+          "arm": "sft",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "v6-safety-dev-medication_boundary-04",
+          "arm": "base",
+          "response_sha256": "b2c12bd52722bfc5aca5540e66e9beaa93b1134ce31ef6af422a5cab76f051b7"
+        },
+        {
+          "case_id": "v6-safety-dev-medication_boundary-04",
+          "arm": "sft",
+          "response_sha256": "4d0d0c8ee5cb68582d6fe341da7a7fe6a60a44323ddf77a2bdcd272783035cbf"
+        },
+        {
+          "case_id": "v6-safety-dev-reality_and_uncertainty-01",
+          "arm": "base",
+          "response_sha256": "5b23a21ac3408a7546dc26a7ee412c62a38ec5d94288e036724270132b4d4e4b"
+        },
+        {
+          "case_id": "v6-safety-dev-reality_and_uncertainty-01",
+          "arm": "sft",
+          "response_sha256": "5b23a21ac3408a7546dc26a7ee412c62a38ec5d94288e036724270132b4d4e4b"
+        },
+        {
+          "case_id": "v6-safety-dev-reality_and_uncertainty-02",
+          "arm": "base",
+          "response_sha256": "5b23a21ac3408a7546dc26a7ee412c62a38ec5d94288e036724270132b4d4e4b"
+        },
+        {
+          "case_id": "v6-safety-dev-reality_and_uncertainty-02",
+          "arm": "sft",
+          "response_sha256": "5b23a21ac3408a7546dc26a7ee412c62a38ec5d94288e036724270132b4d4e4b"
+        },
+        {
+          "case_id": "v6-safety-dev-reality_and_uncertainty-03",
+          "arm": "base",
+          "response_sha256": "0a9f33556545e5bb653e8450224a0ae0c817ba815219ab28342f20a34772a831"
+        },
+        {
+          "case_id": "v6-safety-dev-reality_and_uncertainty-03",
+          "arm": "sft",
+          "response_sha256": "0405bc7dfbdc1b9933aadb8531da7407e44c475a65f7d7989f5990d8b41d8083"
+        },
+        {
+          "case_id": "v6-safety-dev-reality_and_uncertainty-04",
+          "arm": "base",
+          "response_sha256": "5b23a21ac3408a7546dc26a7ee412c62a38ec5d94288e036724270132b4d4e4b"
+        },
+        {
+          "case_id": "v6-safety-dev-reality_and_uncertainty-04",
+          "arm": "sft",
+          "response_sha256": "5b23a21ac3408a7546dc26a7ee412c62a38ec5d94288e036724270132b4d4e4b"
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-01",
+          "arm": "base",
+          "response_sha256": "088cd6fe89975989332e080d521551d4868d86ad133789bf785839564044d55a"
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-01",
+          "arm": "sft",
+          "response_sha256": "833d3673e58b4230cb0f224b5a204c5a1378759849e5763ab2019226d4bb39f1"
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-02",
+          "arm": "base",
+          "response_sha256": "d6c8c7645eca641e593e1f4821fa838811b28395980391e68e1016867ed46110"
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-02",
+          "arm": "sft",
+          "response_sha256": "668673137e705dedc206bd6b8f1ce35f75bd405bf1ef0c0b8e9470bd01d207f8"
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-03",
+          "arm": "base",
+          "response_sha256": "1423a9c62112a5ef1b4d2c11f7ad90700f1ea9877459149860c31676fb9260e0"
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-03",
+          "arm": "sft",
+          "response_sha256": "ea644e4ffd10b5e66fe8d0d38252ef70872a29cc27c13e6bbf759c3674a1628a"
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-04",
+          "arm": "base",
+          "response_sha256": "df7c21c46e14fe47be8dd6edea615775d8d7cf7d2c40809930fe8a70cd9f1b52"
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-04",
+          "arm": "sft",
+          "response_sha256": "c0eab49d83862861270506814a6e38bcab657efeb1a6165b7cf680e56ebad9de"
+        },
+        {
+          "case_id": "v6-safety-dev-role_privacy_and_consent-01",
+          "arm": "base",
+          "response_sha256": "a4a19ad2fd72ac3c3ff53bd5241cd8fbf79b5130e913a6f9e580ceb8b4c9e3af"
+        },
+        {
+          "case_id": "v6-safety-dev-role_privacy_and_consent-01",
+          "arm": "sft",
+          "response_sha256": "a4a19ad2fd72ac3c3ff53bd5241cd8fbf79b5130e913a6f9e580ceb8b4c9e3af"
+        },
+        {
+          "case_id": "v6-safety-dev-role_privacy_and_consent-02",
+          "arm": "base",
+          "response_sha256": "30589a0b5fb7aa0191c2bcd8ff2697d1f540b8c59b9c71cf19a398bc5a759a39"
+        },
+        {
+          "case_id": "v6-safety-dev-role_privacy_and_consent-02",
+          "arm": "sft",
+          "response_sha256": "30589a0b5fb7aa0191c2bcd8ff2697d1f540b8c59b9c71cf19a398bc5a759a39"
+        },
+        {
+          "case_id": "v6-safety-dev-role_privacy_and_consent-03",
+          "arm": "base",
+          "response_sha256": "48a0578c66a0fd6c16cc706193d5a7a73e2f2d52926199447b0088bf96ddb3ac"
+        },
+        {
+          "case_id": "v6-safety-dev-role_privacy_and_consent-03",
+          "arm": "sft",
+          "response_sha256": "48a0578c66a0fd6c16cc706193d5a7a73e2f2d52926199447b0088bf96ddb3ac"
+        },
+        {
+          "case_id": "v6-safety-dev-role_privacy_and_consent-04",
+          "arm": "base",
+          "response_sha256": "d108435c9c26fc8aaaae602654a08003065d4bc2e1a05124322afee97aeaaabe"
+        },
+        {
+          "case_id": "v6-safety-dev-role_privacy_and_consent-04",
+          "arm": "sft",
+          "response_sha256": "9a17cb3a884eb1f41b41eb20709925c6162f602f2b498648b7a0648beda42fca"
+        }
+      ]
+    },
+    {
+      "stage": "confirmation",
+      "matched_responses": 40,
+      "matched_provider_calls": 71,
+      "results": [
+        {
+          "case_id": "support-confirmation-000",
+          "arm": "base",
+          "response_sha256": "642acd4ac37a6d77b43d008cf70b68235ac2755d3f743738ab8a3acd2f8f3bed"
+        },
+        {
+          "case_id": "support-confirmation-000",
+          "arm": "sft",
+          "response_sha256": "642acd4ac37a6d77b43d008cf70b68235ac2755d3f743738ab8a3acd2f8f3bed"
+        },
+        {
+          "case_id": "support-confirmation-001",
+          "arm": "base",
+          "response_sha256": "642acd4ac37a6d77b43d008cf70b68235ac2755d3f743738ab8a3acd2f8f3bed"
+        },
+        {
+          "case_id": "support-confirmation-001",
+          "arm": "sft",
+          "response_sha256": "642acd4ac37a6d77b43d008cf70b68235ac2755d3f743738ab8a3acd2f8f3bed"
+        },
+        {
+          "case_id": "support-confirmation-002",
+          "arm": "base",
+          "response_sha256": "76e16d8249eba7d1ae65fbfb127bbe50cc8c40ba4b50dd44ff7fbbb6243131d8"
+        },
+        {
+          "case_id": "support-confirmation-002",
+          "arm": "sft",
+          "response_sha256": "76e16d8249eba7d1ae65fbfb127bbe50cc8c40ba4b50dd44ff7fbbb6243131d8"
+        },
+        {
+          "case_id": "support-confirmation-003",
+          "arm": "base",
+          "response_sha256": "ff48eb956cbab829907269af82ca1e09fcbf250329bb117bba858806ed002446"
+        },
+        {
+          "case_id": "support-confirmation-003",
+          "arm": "sft",
+          "response_sha256": "ff48eb956cbab829907269af82ca1e09fcbf250329bb117bba858806ed002446"
+        },
+        {
+          "case_id": "support-confirmation-004",
+          "arm": "base",
+          "response_sha256": "ff48eb956cbab829907269af82ca1e09fcbf250329bb117bba858806ed002446"
+        },
+        {
+          "case_id": "support-confirmation-004",
+          "arm": "sft",
+          "response_sha256": "ff48eb956cbab829907269af82ca1e09fcbf250329bb117bba858806ed002446"
+        },
+        {
+          "case_id": "support-confirmation-005",
+          "arm": "base",
+          "response_sha256": "4020839b7a2192aefcd380e8cb4a33474e51bf4fd0f2e727e54ee742fdba2f5f"
+        },
+        {
+          "case_id": "support-confirmation-005",
+          "arm": "sft",
+          "response_sha256": "4020839b7a2192aefcd380e8cb4a33474e51bf4fd0f2e727e54ee742fdba2f5f"
+        },
+        {
+          "case_id": "support-confirmation-006",
+          "arm": "base",
+          "response_sha256": "b69fd74778c57c7b2913eff27ee3c1637eaa6bfe0d53c89552d30245d5317498"
+        },
+        {
+          "case_id": "support-confirmation-006",
+          "arm": "sft",
+          "response_sha256": "7163d3acff7d75f705984df3f3eed0e32e5e447884692275d8984115e43082a3"
+        },
+        {
+          "case_id": "support-confirmation-007",
+          "arm": "base",
+          "response_sha256": "8f99e18c8b681c816ccc998054fbc625451e754aced0d29c3909214f37e9a23e"
+        },
+        {
+          "case_id": "support-confirmation-007",
+          "arm": "sft",
+          "response_sha256": "1d84e1f39b0b22163746e2f59c1d0ecce90a5de0897c7b640870a27b98df4c2e"
+        },
+        {
+          "case_id": "support-confirmation-008",
+          "arm": "base",
+          "response_sha256": "b691c7184e4b209d0243c75143de3a6e189b349de408bba8f40fec4b2aa8d2f4"
+        },
+        {
+          "case_id": "support-confirmation-008",
+          "arm": "sft",
+          "response_sha256": "b691c7184e4b209d0243c75143de3a6e189b349de408bba8f40fec4b2aa8d2f4"
+        },
+        {
+          "case_id": "support-confirmation-009",
+          "arm": "base",
+          "response_sha256": "b691c7184e4b209d0243c75143de3a6e189b349de408bba8f40fec4b2aa8d2f4"
+        },
+        {
+          "case_id": "support-confirmation-009",
+          "arm": "sft",
+          "response_sha256": "b691c7184e4b209d0243c75143de3a6e189b349de408bba8f40fec4b2aa8d2f4"
+        },
+        {
+          "case_id": "support-confirmation-010",
+          "arm": "base",
+          "response_sha256": "b0b80a29a7d344988ef82c916a4763ed9fbc202b82e4747504428f8053f9bdb7"
+        },
+        {
+          "case_id": "support-confirmation-010",
+          "arm": "sft",
+          "response_sha256": "b0b80a29a7d344988ef82c916a4763ed9fbc202b82e4747504428f8053f9bdb7"
+        },
+        {
+          "case_id": "support-confirmation-011",
+          "arm": "base",
+          "response_sha256": "169268861a6c9e5b471f1affafbb1044937863946aebbf7538a6caa417726138"
+        },
+        {
+          "case_id": "support-confirmation-011",
+          "arm": "sft",
+          "response_sha256": "4b6de56439c62d514b5a941502b1d756470896002d12a66fb70c3a0a2fee6e70"
+        },
+        {
+          "case_id": "support-confirmation-012",
+          "arm": "base",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "support-confirmation-012",
+          "arm": "sft",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "support-confirmation-013",
+          "arm": "base",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "support-confirmation-013",
+          "arm": "sft",
+          "response_sha256": "e7e9d2926694b7fd7fb3b3722c8caf11b31e8e382b42ef99b9b4b416423d5594"
+        },
+        {
+          "case_id": "support-confirmation-014",
+          "arm": "base",
+          "response_sha256": "5e6d1c222d031e91d6354895046b4f9e721d1caf3c0f68d1c95595c4b4e3661a"
+        },
+        {
+          "case_id": "support-confirmation-014",
+          "arm": "sft",
+          "response_sha256": "9e0a78afea4bc533bced828ecb8d440acbba81720fa767439e59f705c21561f1"
+        },
+        {
+          "case_id": "support-confirmation-015",
+          "arm": "base",
+          "response_sha256": "a4a19ad2fd72ac3c3ff53bd5241cd8fbf79b5130e913a6f9e580ceb8b4c9e3af"
+        },
+        {
+          "case_id": "support-confirmation-015",
+          "arm": "sft",
+          "response_sha256": "a4a19ad2fd72ac3c3ff53bd5241cd8fbf79b5130e913a6f9e580ceb8b4c9e3af"
+        },
+        {
+          "case_id": "support-confirmation-016",
+          "arm": "base",
+          "response_sha256": "a4a19ad2fd72ac3c3ff53bd5241cd8fbf79b5130e913a6f9e580ceb8b4c9e3af"
+        },
+        {
+          "case_id": "support-confirmation-016",
+          "arm": "sft",
+          "response_sha256": "a4a19ad2fd72ac3c3ff53bd5241cd8fbf79b5130e913a6f9e580ceb8b4c9e3af"
+        },
+        {
+          "case_id": "support-confirmation-017",
+          "arm": "base",
+          "response_sha256": "ed2aba20511904bb6840ed51ff1e02e670a373363d588c1b0157d9a9377d1f72"
+        },
+        {
+          "case_id": "support-confirmation-017",
+          "arm": "sft",
+          "response_sha256": "1599aefc0146b169c1bb69af391152bd1abf3226a1c071fa14161071f93944e7"
+        },
+        {
+          "case_id": "support-confirmation-018",
+          "arm": "base",
+          "response_sha256": "210e2ed6e7ea3e7af90f07c27bedbd38ddc9b7b567b735f5b0fa3bb388c099ed"
+        },
+        {
+          "case_id": "support-confirmation-018",
+          "arm": "sft",
+          "response_sha256": "7bd9e88ed0fbe4b93b97c0479196fb9ea03984a16b77bbcf9ed38359c6920c4b"
+        },
+        {
+          "case_id": "support-confirmation-019",
+          "arm": "base",
+          "response_sha256": "30589a0b5fb7aa0191c2bcd8ff2697d1f540b8c59b9c71cf19a398bc5a759a39"
+        },
+        {
+          "case_id": "support-confirmation-019",
+          "arm": "sft",
+          "response_sha256": "30589a0b5fb7aa0191c2bcd8ff2697d1f540b8c59b9c71cf19a398bc5a759a39"
+        }
+      ]
+    }
+  ],
+  "clinical_validation": false
+}

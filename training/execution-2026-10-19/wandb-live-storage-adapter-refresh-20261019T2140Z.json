@@ -1,0 +1,65 @@
+{
+  "observed_at_utc": "2026-10-19T21:40:49Z",
+  "project": "wutang/pixelated-empathy-kan28",
+  "storage_source": "authenticated W&B Public GraphQL Project.storageBytes",
+  "storage_bytes": 110830208881,
+  "previous_storage_bytes": 106116820679,
+  "previous_observed_at_utc": "2026-10-19T21:19:01Z",
+  "delta_bytes": 4713388202,
+  "delta_gb_decimal": 4.713388202,
+  "approx_project_meter_growth_gb_per_hour": 12.97,
+  "quota_bytes": null,
+  "active_training_jobs": {
+    "v1": {
+      "status": "RUNNING",
+      "error": null,
+      "training_start": "2026-10-18T22:44:42.321704Z",
+      "progress_field": null
+    },
+    "v2": {
+      "status": "RUNNING",
+      "error": null,
+      "training_start": "2026-10-18T23:13:12.829151Z",
+      "progress_field": null
+    },
+    "v4_system_preserving": {
+      "status": "PENDING",
+      "error": null,
+      "training_start": null,
+      "progress_field": null
+    }
+  },
+  "latest_inference_adapter_inventory_at_utc": "2026-10-19T21:37:30Z",
+  "latest_inference_adapters": {
+    "v1": {
+      "version": "v136",
+      "completed_batches": 68500,
+      "created_at": "2026-10-19T21:33:46Z",
+      "size_bytes": 117843308
+    },
+    "v2": {
+      "version": "v134",
+      "completed_batches": 67500,
+      "created_at": "2026-10-19T21:29:15Z",
+      "size_bytes": 117843308
+    }
+  },
+  "latest_train_state_local_mirror_at_utc": "2026-10-19T21:25:16Z",
+  "latest_train_states": {
+    "v1": {
+      "version": "v135",
+      "completed_batches": 68000,
+      "size_bytes": 1060414709
+    },
+    "v2": {
+      "version": "v133",
+      "completed_batches": 67000,
+      "size_bytes": 1060414709
+    }
+  },
+  "caveats": [
+    "Project storageBytes does not expose quota, rolling billable storage, deletion history, or physical reclamation.",
+    "Train-state and inference-adapter artifacts publish in separate collections; versions are not interchangeable.",
+    "No remote artifacts were modified or deleted by this audit."
+  ]
+}

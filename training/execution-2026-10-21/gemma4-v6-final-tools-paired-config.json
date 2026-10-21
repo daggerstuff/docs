@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "run_id": "gemma4-v6-final-tools-20261021",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": []
+  },
+  "pricing": {
+    "input_usd_per_million_tokens": 0.1,
+    "output_usd_per_million_tokens": 0.3,
+    "hard_cap_usd": 1.353,
+    "require_usage": true,
+    "require_finish_reason": true
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-inference",
+      "base_url": "https://api.inference.wandb.ai/v1",
+      "model": "google/gemma-4-26B-A4B-it",
+      "project": "wutang/pixelated-empathy-kan28",
+      "api_key_env": "WANDB_API_KEY"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-training",
+      "base_url": "https://api.training.wandb.ai/v1",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-61decc442813:step1",
+      "project": "wutang/pixelated-empathy-kan28",
+      "api_key_env": "WANDB_API_KEY"
+    }
+  ]
+}

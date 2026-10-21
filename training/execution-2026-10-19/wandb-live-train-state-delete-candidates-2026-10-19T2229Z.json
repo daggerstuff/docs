@@ -1,0 +1,1712 @@
+{
+  "observed_at_utc": "2026-10-19T22:29:31.287297Z",
+  "project": "wutang/pixelated-empathy-kan28",
+  "scope": "read-only inventory of active-job train-state artifact versions; retain newest two per collection; no remote mutations",
+  "collections": {
+    "v1": {
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "versions_count": 60,
+      "latest_versions": [
+        "v140",
+        "v141"
+      ],
+      "entries": [
+        {
+          "version": "v82",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v83",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v84",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v85",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v86",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v87",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v88",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v89",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v90",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v91",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v92",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v93",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v94",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v95",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v96",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v97",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v98",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v99",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v100",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v101",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v102",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v103",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v104",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v105",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v106",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v107",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v108",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v109",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v110",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v111",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v112",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v113",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v114",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v115",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v116",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v117",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v118",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v119",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v120",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v121",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v122",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v123",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v124",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v125",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v126",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v127",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v128",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v129",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v130",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v131",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v132",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v133",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v134",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v135",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v136",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v137",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v138",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v139",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v140",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": null,
+          "dependency_check": "not_checked",
+          "retained_newest_two": true
+        },
+        {
+          "version": "v141",
+          "size_bytes": 1060414709,
+          "aliases": [
+            "latest",
+            "sft-resume-2087f223-a48f-45f7-9999-daece5743bba"
+          ],
+          "dependency_count": null,
+          "dependency_check": "not_checked",
+          "retained_newest_two": true
+        }
+      ]
+    },
+    "v2": {
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "versions_count": 61,
+      "latest_versions": [
+        "v139",
+        "v140"
+      ],
+      "entries": [
+        {
+          "version": "v80",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v81",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v82",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v83",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v84",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v85",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v86",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v87",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v88",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v89",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v90",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v91",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v92",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v93",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v94",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v95",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v96",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v97",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v98",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v99",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v100",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v101",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v102",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v103",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v104",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v105",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v106",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v107",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v108",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v109",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v110",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v111",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v112",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v113",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v114",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v115",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v116",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v117",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v118",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v119",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v120",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v121",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v122",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v123",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v124",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v125",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v126",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v127",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v128",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v129",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v130",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v131",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v132",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v133",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v134",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v135",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v136",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v137",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v138",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": 0,
+          "dependency_check": "success",
+          "retained_newest_two": false
+        },
+        {
+          "version": "v139",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "dependency_count": null,
+          "dependency_check": "not_checked",
+          "retained_newest_two": true
+        },
+        {
+          "version": "v140",
+          "size_bytes": 1060414709,
+          "aliases": [
+            "sft-resume-f914f0fb-f892-4e1a-8291-8cea3757274e",
+            "latest"
+          ],
+          "dependency_count": null,
+          "dependency_check": "not_checked",
+          "retained_newest_two": true
+        }
+      ]
+    }
+  },
+  "storage_metric_note": "Project storageBytes is not account quota, billing-period storage average, deletion history, or physical reclamation.",
+  "storage_bytes": 120256977933,
+  "previous_storage_bytes": 117428953099,
+  "delta_bytes_since_2213": 2828024834,
+  "candidate_count": 117,
+  "candidate_logical_bytes": 124068520953,
+  "candidates": [
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v82",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v83",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v84",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v85",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v86",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v87",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v88",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v89",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v90",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v91",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v92",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v93",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v94",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v95",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v96",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v97",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v98",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v99",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v100",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v101",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v102",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v103",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v104",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v105",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v106",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v107",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v108",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v109",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v110",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v111",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v112",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v113",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v114",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v115",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v116",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v117",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v118",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v119",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v120",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v121",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v122",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v123",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v124",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v125",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v126",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v127",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v128",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v129",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v130",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v131",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v132",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v133",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v134",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v135",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v136",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v137",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v138",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v1",
+      "collection_name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version": "v139",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v80",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v81",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v82",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v83",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v84",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v85",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v86",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v87",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v88",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v89",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v90",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v91",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v92",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v93",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v94",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v95",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v96",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v97",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v98",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v99",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v100",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v101",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v102",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v103",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v104",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v105",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v106",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v107",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v108",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v109",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v110",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v111",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v112",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v113",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v114",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v115",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v116",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v117",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v118",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v119",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v120",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v121",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v122",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v123",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v124",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v125",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v126",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v127",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v128",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v129",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v130",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v131",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v132",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v133",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v134",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v135",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v136",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v137",
+      "size_bytes": 1060414709
+    },
+    {
+      "job": "v2",
+      "collection_name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version": "v138",
+      "size_bytes": 1060414709
+    }
+  ],
+  "candidates_are_not_reclamation_guarantee": true
+}

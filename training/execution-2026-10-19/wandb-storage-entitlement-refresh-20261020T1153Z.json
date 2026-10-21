@@ -1,0 +1,40 @@
+{
+  "observed_at_utc": "2026-10-20T11:53:31.090632+00:00",
+  "organization": "wutang-org",
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_storage_bytes": 76659882751,
+  "project_storage_gb_decimal": 76.659882751,
+  "storage_entitlement_gigs": 200,
+  "subscription_status": "ENABLED",
+  "last_30_days_daily_average_bytes": 166026268417,
+  "last_30_days_daily_average_gb_decimal": 166.026268417,
+  "approx_headroom_gb_decimal": 33.973731583,
+  "active_v4_checkpoint_collection_snapshot": {
+    "observed_at_utc": "2026-10-20T11:52:52.720833+00:00",
+    "adapter_visible_versions": 75,
+    "train_state_visible_versions": 75,
+    "latest_version": "v74",
+    "latest_completed_batches": 37500,
+    "latest_adapter_bytes": 117843308,
+    "latest_train_state_bytes": 1060414709,
+    "older_train_state_versions_audited": 73,
+    "older_train_state_alias_free_zero_dependency_candidates": 73,
+    "candidate_logical_bytes": 77410273349,
+    "retained_versions": [
+      "v73",
+      "v74"
+    ],
+    "dependency_audit_private_path": "ai/training/output/wandb_local_checkpoints_20261019/v4-train-state-cleanup-audit-v74.json"
+  },
+  "comparison_to_2026_10_20T1040Z_project_meter": {
+    "previous_project_storage_bytes": 69118476834,
+    "net_change_bytes": 7541405917,
+    "interpretation": "Net project-meter increase during an active checkpoint stream; cannot separate new checkpoint growth from concurrent owner cleanup."
+  },
+  "limitations": [
+    "The organization usageByPeriod value is a trailing 30-day cumulative daily average, not instantaneous quota or worker-disk availability.",
+    "Project storageBytes covers this project only and does not identify deleted or growing objects.",
+    "Artifact logical version sizes do not guarantee the same amount of physical storage is reclaimed because deduplication and garbage collection are not exposed.",
+    "Read-only audit only; no artifact versions were deleted or modified."
+  ]
+}

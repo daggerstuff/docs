@@ -1,0 +1,59 @@
+{
+  "observed_at_utc": "2026-10-19T19:29:31.272394Z",
+  "scope": "completed-job train-state artifacts; separate final LoRA collections retained",
+  "candidate_count": 4,
+  "all_alias_free": false,
+  "all_dependency_checks_succeeded": true,
+  "zero_dependencies": 4,
+  "logical_bytes": 3746969414,
+  "candidates": [
+    {
+      "collection": "arc-sft-baseline-f00e0bf27bf3-train-state",
+      "version": "v0",
+      "size_bytes": 1060414697,
+      "aliases": [
+        "step1",
+        "latest"
+      ],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-sft-baseline-7f31c66054dc-train-state",
+      "version": "v0",
+      "size_bytes": 1060414691,
+      "aliases": [
+        "step1",
+        "latest"
+      ],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "arc-corpus-qwen36-sft-20261011-train-state",
+      "version": "v0",
+      "size_bytes": 1060414703,
+      "aliases": [
+        "step1",
+        "latest"
+      ],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    },
+    {
+      "collection": "pixelated-arc-gemma4-sft-20261011-train-state",
+      "version": "v0",
+      "size_bytes": 565725323,
+      "aliases": [
+        "step1",
+        "latest"
+      ],
+      "used_by_count": 0,
+      "used_by_run_ids": [],
+      "check_error": null
+    }
+  ]
+}

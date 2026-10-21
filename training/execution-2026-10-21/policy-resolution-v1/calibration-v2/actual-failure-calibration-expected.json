@@ -1,0 +1,22 @@
+{
+  "actual-failure-anchor-000": {
+    "A": true,
+    "B": true
+  },
+  "actual-failure-anchor-001": {
+    "A": false,
+    "B": false
+  },
+  "actual-failure-anchor-002": {
+    "A": false,
+    "B": false
+  },
+  "actual-failure-anchor-003": {
+    "A": true,
+    "B": false
+  },
+  "actual-failure-anchor-004": {
+    "A": false,
+    "B": true
+  }
+}

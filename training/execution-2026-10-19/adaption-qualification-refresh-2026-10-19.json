@@ -1,0 +1,234 @@
+{
+  "checked_at": "2026-10-19",
+  "provider": "Adaption",
+  "scope": "Authenticated Adaption qualification, v4 raw upload/schema acceptance, and one-iteration SFT run status",
+  "resources_created": 4,
+  "uploads": 2,
+  "model": {
+    "id": "Qwen/Qwen3.6-35B-A3B",
+    "available": true,
+    "methods": [
+      "sft",
+      "dpo"
+    ],
+    "training_types": [
+      "lora"
+    ],
+    "context_length": 262144
+  },
+  "datasets": [
+    {
+      "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+      "name": "arc-run2-train-v1",
+      "status": "succeeded",
+      "row_count": 11192
+    },
+    {
+      "dataset_id": "adb7d8eb-a3c9-434a-aea0-c4a6a7b8a788",
+      "name": "train",
+      "status": "awaiting_input",
+      "row_count": 418
+    }
+  ],
+  "runs": [
+    {
+      "id": "8da8f685-7ef6-43c0-958e-ab34dbdcd520",
+      "status": "succeeded",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "training_method": "instruction",
+      "iterations_completed": 1,
+      "best_win_rate": 0.6414,
+      "download_available": true
+    },
+    {
+      "id": "cf1ebae0-1197-4362-92a1-3228c38ce96e",
+      "status": "succeeded",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "training_method": "instruction",
+      "iterations_completed": 1,
+      "best_win_rate": 0.4971,
+      "download_available": true
+    }
+  ],
+  "recommendation": {
+    "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+    "model": "Qwen/Qwen3.6-35B-A3B",
+    "returned": true,
+    "training_type": "lora",
+    "n_epochs": 1,
+    "lora_r": 8,
+    "lora_alpha": 8,
+    "lora_trainable_modules": "q_proj,v_proj",
+    "learning_rate": 0.0001,
+    "cost_or_credit_estimate_returned": false
+  },
+  "live_estimate_refresh_2026_10_19T1957Z": {
+    "dataset_id": "2f983459-b3ff-47be-aa62-faa686b14306",
+    "dataset_name": "arc-run2-train-v1",
+    "dataset_status": "succeeded",
+    "rows": 11192,
+    "column_mapping": {
+      "prompt": "original_prompt",
+      "completion": "original_completion"
+    },
+    "operation": "run_dataset_adaptation estimate=true",
+    "estimated_minutes": 150,
+    "estimated_credits_consumed": 112,
+    "run_created": false,
+    "upload_created": false,
+    "separate_default_hyperparameter_recommendation": {
+      "model": "Qwen/Qwen3.5-4B",
+      "training_type": "lora",
+      "epochs": 1,
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "learning_rate": 1e-05
+    },
+    "balance_or_expiry_exposed": false,
+    "applies_to_full_v4": false
+  },
+  "awaiting_input_dataset_check_2026_10_19T2001Z": {
+    "dataset_id": "adb7d8eb-a3c9-434a-aea0-c4a6a7b8a788",
+    "dataset_name": "train",
+    "status": "awaiting_input",
+    "rows": 418,
+    "column_mapping_tested": {
+      "chat": "messages"
+    },
+    "estimate_minutes": 16,
+    "estimate_credits": 5,
+    "run_created": false,
+    "recommendation_result": "Dataset is not ready yet. Wait until processing succeeds."
+  },
+  "v4_dataset": {
+    "train_rows": 171261,
+    "uploaded": true,
+    "schema_qualified": true,
+    "raw_jsonl_upload_route_documented": true,
+    "current_messages_payload_ready_for_documented_raw_prompt_completion_schema": false,
+    "train_payload_sha256": "60841fbc8d917de4699d1b41eddddf03fade949496db3e561769f94959e37f20",
+    "train_payload_bytes": 299152125,
+    "structural_scan": {
+      "dialogues": 171261,
+      "turns": 1056820,
+      "assistant_messages": 534162,
+      "assistant_targets_eligible_after_unroll": 522658,
+      "rows_with_leading_assistant_context": 11504,
+      "user_weight_0_messages": 522658,
+      "assistant_weight_1_messages": 534162,
+      "malformed_rows": 0,
+      "noncanonical_role_rows": 0,
+      "rows_not_ending_assistant": 0
+    },
+    "required_local_conversion": "Completed at ai/training/output/adaption_v4_unrolled_20261019/train_unrolled.jsonl",
+    "release_manifest_hash_reconciliation": {
+      "artifact_metadata_field": "release_manifest_sha256 uses canonical JSON SHA-256",
+      "canonical_json_sha256": "10d05ac9d820f4f4f9f2a4d8f222ba5c3226e99486a419fd41ed502bee9697e0",
+      "freeze_and_launcher_state_sha256": "raw manifest file SHA-256",
+      "raw_manifest_file_sha256": "a4b0507ff6447644d022e28b1ada91daefa0139f23f8800ae953a0fa9ab5cdb8",
+      "hashes_correctly_describe_same_manifest": true,
+      "payload_hash_matches_frozen_train_partition": true
+    },
+    "provider_dataset_id": "21f6d03f-5f56-41be-9070-14c8fccbf442",
+    "provider_dataset_name": "pixelated-v4-train-unrolled-20261019",
+    "provider_status": "succeeded",
+    "provider_rows": 522658,
+    "provider_columns": [
+      "uuid",
+      "original_prompt",
+      "original_completion"
+    ],
+    "upload_refresh": {
+      "created_at_utc": "2026-10-19T21:00:40.388Z",
+      "processing_mode": "raw",
+      "augmentation": "none",
+      "output_rows": 522658,
+      "output_bytes": 2136003932,
+      "output_sha256": "bec73fb3e8ccb54e2c3f404860d7b4264aba7e59f2602473f9046eb720d3cd37",
+      "provider_status": "succeeded",
+      "recommendation_returned": true,
+      "recommendation_model": "Qwen/Qwen3.6-35B-A3B",
+      "recommendation": {
+        "training_type": "lora",
+        "n_epochs": 1,
+        "lora_r": 8,
+        "lora_alpha": 8,
+        "lora_trainable_modules": "q_proj,v_proj",
+        "learning_rate": 0.0003,
+        "batch_size": "max",
+        "train_on_inputs": false
+      }
+    }
+  },
+  "credit_balance_exposed": false,
+  "account_specific_training_quote_or_coverage_exposed": false,
+  "account_specific_credit_expiry_exposed": false,
+  "public_faq_says_unused_credits_do_not_expire": true,
+  "hosted_inference_endpoint_exposed": false,
+  "decision": "V4 full-history and nine-message-ablation raw uploads are accepted. Both attempted one-iteration AutoScientist runs failed before any training iteration; a corrected chat-format retry is deferred by a 3,040-second provider API rate limit. Account balance and per-run credit usage remain unavailable; no further AutoScientist calls before the retry window. Adaption-hosted inference is not exposed.",
+  "sources": [
+    "Authenticated Adaption connector: list_training_models, list_datasets(limit=50), list_autoscientist_runs(limit=50), recommend_autoscientist_hyperparameters(dataset_id=2f983459-b3ff-47be-aa62-faa686b14306, model=Qwen/Qwen3.6-35B-A3B)",
+    "docs/training/execution-2026-10-17/adaption-qualification-refresh.json (documented effective-row constraints and prior qualification limitations)",
+    "docs/training/execution-2026-10-19/dataset-breakaway-freeze-2026-10-19.md",
+    "https://docs.adaptionlabs.ai/api/resources/datasets/methods/create",
+    "https://docs.adaptionlabs.ai/autoscientist/run-on-non-adapted-data/",
+    "https://docs.adaptionlabs.ai/api/resources/autoscientist/methods/create",
+    "https://docs.adaptionlabs.ai/resources/faq/"
+  ],
+  "current_experiment": {
+    "id": null,
+    "dataset_id": "5cf8efd5-3426-4cc4-b3cc-4d40f7912f9d",
+    "status": "awaiting_autoscientist_rate_limit_cooldown",
+    "next_action": "retry one-iteration AutoScientist with data_format=chat after provider rate limit window",
+    "max_iterations": 1,
+    "credit_balance_exposed": false,
+    "run_cost_quote_exposed": false
+  },
+  "v4_full_history_training_attempt": {
+    "dataset_id": "21f6d03f-5f56-41be-9070-14c8fccbf442",
+    "run_id": "7b859acc-f325-4022-92c7-b1a1ff40c2c3",
+    "status": "failed",
+    "iterations_completed": 0,
+    "max_iterations": 1,
+    "error": "Provider timed out after 60000 ms while downloading the S3 train JSONL",
+    "download_available": false,
+    "credit_deduction_exposed": false
+  },
+  "v4_context_window_ablation": {
+    "dataset_id": "5cf8efd5-3426-4cc4-b3cc-4d40f7912f9d",
+    "dataset_name": "pixelated-v4-train-unrolled-ctx9-20261019",
+    "dataset_status": "succeeded",
+    "row_count": 522658,
+    "max_prompt_messages": 9,
+    "older_history_truncated_targets": 288318,
+    "output_bytes": 790582664,
+    "output_sha256": "4f2b4ef53dfc649f5bd6c5e943b4917d2bec9a8ade309a7caf865b2fd975e2a2",
+    "source_payload_sha256": "60841fbc8d917de4699d1b41eddddf03fade949496db3e561769f94959e37f20",
+    "upload_mode": "raw",
+    "augmentation": "none",
+    "columns": [
+      "uuid",
+      "original_prompt",
+      "original_completion"
+    ],
+    "run_id": "8d00b26c-de36-452a-abc2-5cd36b76036b",
+    "run_status": "failed",
+    "iterations_completed": 0,
+    "max_iterations": 1,
+    "download_available": false,
+    "error": "Pre-upload stat failed for provider validation JSONL; temporary validation file was empty (0 bytes)",
+    "credit_balance_exposed": false,
+    "run_cost_quote_exposed": false,
+    "chat_format_retry": {
+      "attempted": true,
+      "data_format": "chat",
+      "run_created": false,
+      "status": "rate_limited",
+      "retry_after_seconds": 3040,
+      "refusal_observed_utc_approx": "2026-10-19T21:08Z",
+      "earliest_retry_utc_approx": "2026-10-19T21:59Z",
+      "cooldown_elapsed_at_2026_10_19T2111Z": false,
+      "error": "Adaption API rate limit for AutoScientist requests"
+    }
+  }
+}

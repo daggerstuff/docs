@@ -1,0 +1,50 @@
+[
+  {
+    "judge": "gemma4",
+    "case_id": "blind-0000",
+    "validation": "valid",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 1471,
+      "completion_tokens": 366,
+      "total_tokens": 1837
+    },
+    "estimated_cost_usd": 0.0002569
+  },
+  {
+    "judge": "gemma4",
+    "case_id": "blind-0001",
+    "validation": "valid",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 1585,
+      "completion_tokens": 383,
+      "total_tokens": 1968
+    },
+    "estimated_cost_usd": 0.0002734
+  },
+  {
+    "judge": "nemotron35",
+    "case_id": "blind-0000",
+    "validation": "valid",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 1467,
+      "completion_tokens": 551,
+      "total_tokens": 2018
+    },
+    "estimated_cost_usd": 0.00021289
+  },
+  {
+    "judge": "nemotron35",
+    "case_id": "blind-0001",
+    "validation": "rating evidence is not an exact candidate excerpt",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 1608,
+      "completion_tokens": 401,
+      "total_tokens": 2009
+    },
+    "estimated_cost_usd": 0.00019276
+  }
+]

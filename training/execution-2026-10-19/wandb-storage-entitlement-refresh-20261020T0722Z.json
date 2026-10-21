@@ -1,0 +1,24 @@
+{
+  "observed_at_utc": "2026-10-20T07:22:24Z",
+  "organization": "wutang-org",
+  "subscription_type": "ACADEMIC_TRIAL",
+  "subscription_status": "ENABLED",
+  "subscription_expires_at": null,
+  "storage_entitlement_gigs": 200,
+  "last_30_days_daily_average_bytes": 166026268417,
+  "last_30_days_daily_average_gb_decimal": 166.026268417,
+  "approx_headroom_gb_decimal": 33.973731583,
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_storage_bytes": 50264950081,
+  "training_free_limit_metadata": {
+    "value": 100000,
+    "enforced": false,
+    "published_limit_interval": {
+      "start": "2025-02-01T00:00:00Z",
+      "end": "2026-07-31T00:00:00Z"
+    }
+  },
+  "source": "Authenticated read-only W&B GraphQL Project.storageBytes, Organization.subscriptions privileges and Organization.usageByPeriod(STORAGE,LAST_30_DAYS,CUMULATIVE)",
+  "interpretation": "The organization is below its 200 GB trailing-average entitlement by about 33.97 decimal GB; this is not an instantaneous quota or CoreWeave worker-disk reading. Project storage is about 50.26 GB. The subscription contains an unenforced training-free-limit field whose interval ended before this observation; it does not establish current charges or override the current public-preview training terms. Confirm billing treatment for additional jobs before relying on it.",
+  "no_artifacts_deleted": true
+}

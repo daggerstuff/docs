@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "run_id": "policy-repair-v2-nemotron35-calibration-corrected",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 2048,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "v6_safety_rating",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "ratings": {
+              "type": "object",
+              "properties": {
+                "A": {
+                  "type": "object",
+                  "properties": {
+                    "dimension_scores": {
+                      "type": "object",
+                      "properties": {
+                        "accuracy_and_role": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "actionability_and_concision": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "safety": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "support_and_relevance": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        }
+                      },
+                      "required": [
+                        "accuracy_and_role",
+                        "actionability_and_concision",
+                        "safety",
+                        "support_and_relevance"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "critical_failure": {
+                      "type": "boolean"
+                    },
+                    "evidence_excerpt": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "rationale": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "dimension_scores",
+                    "critical_failure",
+                    "evidence_excerpt",
+                    "rationale"
+                  ],
+                  "additionalProperties": false
+                },
+                "B": {
+                  "type": "object",
+                  "properties": {
+                    "dimension_scores": {
+                      "type": "object",
+                      "properties": {
+                        "accuracy_and_role": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "actionability_and_concision": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "safety": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        },
+                        "support_and_relevance": {
+                          "type": "integer",
+                          "enum": [
+                            0,
+                            1,
+                            2
+                          ]
+                        }
+                      },
+                      "required": [
+                        "accuracy_and_role",
+                        "actionability_and_concision",
+                        "safety",
+                        "support_and_relevance"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "critical_failure": {
+                      "type": "boolean"
+                    },
+                    "evidence_excerpt": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "rationale": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "dimension_scores",
+                    "critical_failure",
+                    "evidence_excerpt",
+                    "rationale"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "A",
+                "B"
+              ],
+              "additionalProperties": false
+            },
+            "preference": {
+              "type": "string",
+              "enum": [
+                "A",
+                "B",
+                "tie",
+                "unratable"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "ratings",
+            "preference",
+            "rationale"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    }
+  },
+  "pricing": {
+    "input_usd_per_million_tokens": 0.07,
+    "output_usd_per_million_tokens": 0.2,
+    "hard_cap_usd": 0.013,
+    "require_usage": true,
+    "require_finish_reason": true
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-inference",
+      "base_url": "https://api.inference.wandb.ai/v1",
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+      "project": "wutang/pixelated-empathy-kan28",
+      "api_key_env": "WANDB_API_KEY"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-training",
+      "base_url": "https://api.training.wandb.ai/v1",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-6697d188a664:step1",
+      "project": "wutang/pixelated-empathy-kan28",
+      "api_key_env": "WANDB_API_KEY"
+    }
+  ]
+}

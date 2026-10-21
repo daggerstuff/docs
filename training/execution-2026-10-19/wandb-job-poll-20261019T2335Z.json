@@ -1,0 +1,27 @@
+{
+  "observed_at_utc": "2026-10-19T23:35:00Z",
+  "observations": [
+    {
+      "job": "v1",
+      "job_id": "2087f223-a48f-45f7-9999-daece5743bba",
+      "result": "HTTP 500",
+      "status": "unknown"
+    },
+    {
+      "job": "v2",
+      "job_id": "f914f0fb-f892-4e1a-8291-8cea3757274e",
+      "result": "HTTP 500",
+      "status": "unknown"
+    },
+    {
+      "job": "v4_no_system",
+      "job_id": "24cc2d06-3ec3-4356-ad3a-179694dd86a7",
+      "result": "HTTP 200",
+      "status": "RUNNING",
+      "updated_at": "2026-10-19T22:50:52.382671Z",
+      "progress": null
+    }
+  ],
+  "request": "GET /v1/preview/training-jobs/{job_id}",
+  "secrets_or_payloads_included": false
+}

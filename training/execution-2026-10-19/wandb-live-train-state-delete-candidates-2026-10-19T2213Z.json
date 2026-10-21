@@ -1,0 +1,1216 @@
+{
+  "observed_at_utc": "2026-10-19T22:13:53.934367Z",
+  "project": "wutang/pixelated-empathy-kan28",
+  "scope": "Read-only audit of visible full-corpus train-state artifacts. Retain newest two per active job. Candidates require no aliases and a successful used_by() check returning zero. No artifact is deleted.",
+  "storage_bytes_graphql": 117428953099,
+  "storage_http_status": 200,
+  "storage_metric_note": "Project storageBytes is not account quota, rolling billable storage, deletion history, or physical reclamation.",
+  "candidate_count": 114,
+  "candidate_logical_bytes": 120887276826,
+  "all_candidates_alias_free": true,
+  "all_dependency_checks_succeeded": true,
+  "collections": [
+    {
+      "name": "arc-sft-baseline-8ce8354c67ef-train-state-sft-resume",
+      "version_count": 59,
+      "visible_min_version": "v82",
+      "visible_max_version": "v140",
+      "versions": [
+        {
+          "version": "v82",
+          "created_at": "2026-10-19T13:03:13Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v83",
+          "created_at": "2026-10-19T13:12:31Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v84",
+          "created_at": "2026-10-19T13:21:50Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v85",
+          "created_at": "2026-10-19T13:31:17Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v86",
+          "created_at": "2026-10-19T13:40:36Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v87",
+          "created_at": "2026-10-19T13:49:47Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v88",
+          "created_at": "2026-10-19T13:59:12Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v89",
+          "created_at": "2026-10-19T14:08:48Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v90",
+          "created_at": "2026-10-19T14:18:24Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v91",
+          "created_at": "2026-10-19T14:27:56Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v92",
+          "created_at": "2026-10-19T14:37:26Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v93",
+          "created_at": "2026-10-19T14:47:06Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v94",
+          "created_at": "2026-10-19T14:56:46Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v95",
+          "created_at": "2026-10-19T15:06:21Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v96",
+          "created_at": "2026-10-19T15:16:00Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v97",
+          "created_at": "2026-10-19T15:25:42Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v98",
+          "created_at": "2026-10-19T15:35:15Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v99",
+          "created_at": "2026-10-19T15:44:46Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v100",
+          "created_at": "2026-10-19T15:54:16Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v101",
+          "created_at": "2026-10-19T16:03:53Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v102",
+          "created_at": "2026-10-19T16:13:18Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v103",
+          "created_at": "2026-10-19T16:22:45Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v104",
+          "created_at": "2026-10-19T16:32:12Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v105",
+          "created_at": "2026-10-19T16:41:37Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v106",
+          "created_at": "2026-10-19T16:50:56Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v107",
+          "created_at": "2026-10-19T17:00:16Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v108",
+          "created_at": "2026-10-19T17:09:33Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v109",
+          "created_at": "2026-10-19T17:18:49Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v110",
+          "created_at": "2026-10-19T17:28:08Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v111",
+          "created_at": "2026-10-19T17:37:25Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v112",
+          "created_at": "2026-10-19T17:46:40Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v113",
+          "created_at": "2026-10-19T17:55:55Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v114",
+          "created_at": "2026-10-19T18:05:16Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v115",
+          "created_at": "2026-10-19T18:14:42Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v116",
+          "created_at": "2026-10-19T18:24:02Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v117",
+          "created_at": "2026-10-19T18:33:26Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v118",
+          "created_at": "2026-10-19T18:42:48Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v119",
+          "created_at": "2026-10-19T18:52:10Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v120",
+          "created_at": "2026-10-19T19:01:37Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v121",
+          "created_at": "2026-10-19T19:11:02Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v122",
+          "created_at": "2026-10-19T19:20:23Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v123",
+          "created_at": "2026-10-19T19:29:46Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v124",
+          "created_at": "2026-10-19T19:39:12Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v125",
+          "created_at": "2026-10-19T19:48:45Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v126",
+          "created_at": "2026-10-19T19:58:12Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v127",
+          "created_at": "2026-10-19T20:07:40Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v128",
+          "created_at": "2026-10-19T20:17:10Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v129",
+          "created_at": "2026-10-19T20:26:56Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v130",
+          "created_at": "2026-10-19T20:36:47Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v131",
+          "created_at": "2026-10-19T20:46:36Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v132",
+          "created_at": "2026-10-19T20:56:19Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v133",
+          "created_at": "2026-10-19T21:05:46Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v134",
+          "created_at": "2026-10-19T21:15:01Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v135",
+          "created_at": "2026-10-19T21:24:25Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v136",
+          "created_at": "2026-10-19T21:33:48Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v137",
+          "created_at": "2026-10-19T21:43:09Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v138",
+          "created_at": "2026-10-19T21:52:26Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v139",
+          "created_at": "2026-10-19T22:01:48Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": true,
+          "used_by_count": null,
+          "dependency_check_succeeded": false,
+          "candidate_if_owner_approves": false
+        },
+        {
+          "version": "v140",
+          "created_at": "2026-10-19T22:11:07Z",
+          "size_bytes": 1060414709,
+          "aliases": [
+            "latest",
+            "sft-resume-2087f223-a48f-45f7-9999-daece5743bba"
+          ],
+          "retained_as_newest_two": true,
+          "used_by_count": null,
+          "dependency_check_succeeded": false,
+          "candidate_if_owner_approves": false
+        }
+      ]
+    },
+    {
+      "name": "arc-sft-baseline-556695bfd5c4-train-state-sft-resume",
+      "version_count": 59,
+      "visible_min_version": "v80",
+      "visible_max_version": "v138",
+      "versions": [
+        {
+          "version": "v80",
+          "created_at": "2026-10-19T13:01:57Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v81",
+          "created_at": "2026-10-19T13:11:24Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v82",
+          "created_at": "2026-10-19T13:20:40Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v83",
+          "created_at": "2026-10-19T13:30:10Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v84",
+          "created_at": "2026-10-19T13:39:42Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v85",
+          "created_at": "2026-10-19T13:49:14Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v86",
+          "created_at": "2026-10-19T13:58:50Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v87",
+          "created_at": "2026-10-19T14:08:11Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v88",
+          "created_at": "2026-10-19T14:17:28Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v89",
+          "created_at": "2026-10-19T14:26:52Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v90",
+          "created_at": "2026-10-19T14:36:23Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v91",
+          "created_at": "2026-10-19T14:45:48Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v92",
+          "created_at": "2026-10-19T14:55:15Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v93",
+          "created_at": "2026-10-19T15:04:46Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v94",
+          "created_at": "2026-10-19T15:14:15Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v95",
+          "created_at": "2026-10-19T15:23:44Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v96",
+          "created_at": "2026-10-19T15:33:15Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v97",
+          "created_at": "2026-10-19T15:42:44Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v98",
+          "created_at": "2026-10-19T15:52:16Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v99",
+          "created_at": "2026-10-19T16:01:45Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v100",
+          "created_at": "2026-10-19T16:11:11Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v101",
+          "created_at": "2026-10-19T16:20:45Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v102",
+          "created_at": "2026-10-19T16:30:11Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v103",
+          "created_at": "2026-10-19T16:39:31Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v104",
+          "created_at": "2026-10-19T16:48:52Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v105",
+          "created_at": "2026-10-19T16:58:11Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v106",
+          "created_at": "2026-10-19T17:07:27Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v107",
+          "created_at": "2026-10-19T17:16:41Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v108",
+          "created_at": "2026-10-19T17:25:51Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v109",
+          "created_at": "2026-10-19T17:35:00Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v110",
+          "created_at": "2026-10-19T17:44:18Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v111",
+          "created_at": "2026-10-19T17:53:35Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v112",
+          "created_at": "2026-10-19T18:02:52Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v113",
+          "created_at": "2026-10-19T18:12:07Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v114",
+          "created_at": "2026-10-19T18:21:20Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v115",
+          "created_at": "2026-10-19T18:30:31Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v116",
+          "created_at": "2026-10-19T18:39:44Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v117",
+          "created_at": "2026-10-19T18:49:01Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v118",
+          "created_at": "2026-10-19T18:58:18Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v119",
+          "created_at": "2026-10-19T19:07:33Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v120",
+          "created_at": "2026-10-19T19:16:57Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v121",
+          "created_at": "2026-10-19T19:26:16Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v122",
+          "created_at": "2026-10-19T19:35:37Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v123",
+          "created_at": "2026-10-19T19:45:03Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v124",
+          "created_at": "2026-10-19T19:54:25Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v125",
+          "created_at": "2026-10-19T20:03:44Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v126",
+          "created_at": "2026-10-19T20:13:06Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v127",
+          "created_at": "2026-10-19T20:22:31Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v128",
+          "created_at": "2026-10-19T20:31:57Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v129",
+          "created_at": "2026-10-19T20:41:33Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v130",
+          "created_at": "2026-10-19T20:51:17Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v131",
+          "created_at": "2026-10-19T21:01:04Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v132",
+          "created_at": "2026-10-19T21:10:41Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v133",
+          "created_at": "2026-10-19T21:20:00Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v134",
+          "created_at": "2026-10-19T21:29:17Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v135",
+          "created_at": "2026-10-19T21:38:35Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v136",
+          "created_at": "2026-10-19T21:47:47Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": false,
+          "used_by_count": 0,
+          "dependency_check_succeeded": true,
+          "candidate_if_owner_approves": true
+        },
+        {
+          "version": "v137",
+          "created_at": "2026-10-19T21:57:02Z",
+          "size_bytes": 1060414709,
+          "aliases": [],
+          "retained_as_newest_two": true,
+          "used_by_count": null,
+          "dependency_check_succeeded": false,
+          "candidate_if_owner_approves": false
+        },
+        {
+          "version": "v138",
+          "created_at": "2026-10-19T22:06:20Z",
+          "size_bytes": 1060414709,
+          "aliases": [
+            "sft-resume-f914f0fb-f892-4e1a-8291-8cea3757274e",
+            "latest"
+          ],
+          "retained_as_newest_two": true,
+          "used_by_count": null,
+          "dependency_check_succeeded": false,
+          "candidate_if_owner_approves": false
+        }
+      ]
+    }
+  ]
+}

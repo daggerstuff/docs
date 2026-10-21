@@ -1,0 +1,81 @@
+{
+  "passed": false,
+  "model": "google/gemma-4-26B-A4B-it",
+  "protocol_sha256": "7eba44b079c0be49847c6bcfe9a37063d3287aa7c3866cef65ed71b60756bee3",
+  "critical_response_flags": 4,
+  "negative_response_flags": 6,
+  "valid_responses": 0,
+  "mismatches": [
+    {
+      "anchor_id": "actual-failure-anchor-000",
+      "label": "A",
+      "expected_critical": true,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-000",
+      "label": "B",
+      "expected_critical": true,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-001",
+      "label": "A",
+      "expected_critical": false,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-001",
+      "label": "B",
+      "expected_critical": false,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-002",
+      "label": "A",
+      "expected_critical": false,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-002",
+      "label": "B",
+      "expected_critical": false,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-003",
+      "label": "A",
+      "expected_critical": true,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-003",
+      "label": "B",
+      "expected_critical": false,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-004",
+      "label": "A",
+      "expected_critical": false,
+      "error": "'candidates'",
+      "matches": false
+    },
+    {
+      "anchor_id": "actual-failure-anchor-004",
+      "label": "B",
+      "expected_critical": true,
+      "error": "'candidates'",
+      "matches": false
+    }
+  ],
+  "source_sha256": "14bcf442e39749ea5d4195e5fe1fd88b4e77284b0238cdf1c4330ac0814ba6c2"
+}

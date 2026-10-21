@@ -1,0 +1,31 @@
+{
+  "arm": "baseline",
+  "artifact_bytes": 299152842,
+  "artifact_hashes": {
+    "metadata": "2776b566156a4871735b4d8fbdbe7d9b58726b67d528d0f7687a2c6747e756df",
+    "trajectories": "60841fbc8d917de4699d1b41eddddf03fade949496db3e561769f94959e37f20"
+  },
+  "config": {
+    "assistant_turns": "all",
+    "batch_size": "auto",
+    "learning_rate": 0.0001
+  },
+  "last_status": "PENDING",
+  "last_status_response": {
+    "created_at": "2026-10-19T17:07:21.977690Z",
+    "id": "24cc2d06-3ec3-4356-ad3a-179694dd86a7",
+    "status": "PENDING",
+    "updated_at": "2026-10-19T17:07:21.977690Z"
+  },
+  "manifest_sha256": "a4b0507ff6447644d022e28b1ada91daefa0139f23f8800ae953a0fa9ab5cdb8",
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "model_id": "ac418a9d-1988-4500-8c14-9e5e26814079",
+  "payload_sha256": "60841fbc8d917de4699d1b41eddddf03fade949496db3e561769f94959e37f20",
+  "phase": "job_created",
+  "phase_updated_unix": 1792429646,
+  "release_id": "wandb-full-corpus-current-master-20261019-v4",
+  "row_count": 171261,
+  "task_id": "30e15801172519761c6a4d7d2f59c090dfdb77c576e69578ad16ef554f0b11b2",
+  "training_data_url": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-full-corpus-current-master-20261019-v4-baseline-30e158011725:v0",
+  "training_job_id": "24cc2d06-3ec3-4356-ad3a-179694dd86a7"
+}

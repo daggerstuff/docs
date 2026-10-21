@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-10-20T02:03:00Z",
+  "organization": "wutang-org",
+  "subscription_type": "ACADEMIC_TRIAL",
+  "storage_entitlement_gigs": 200,
+  "last_30_days_daily_average_bytes": 164173686280,
+  "last_30_days_daily_average_gb_decimal": 164.17368628,
+  "approx_headroom_gb_decimal": 35.82631372,
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_storage_bytes": 21984664898,
+  "project_storage_previous_bytes": 20097108669,
+  "project_storage_delta_bytes": 1887556229,
+  "project_storage_previous_observed_at_utc": "2026-10-20T01:44:34Z",
+  "source": "Authenticated W&B GraphQL Project.storageBytes, Organization.subscriptions.privileges.storage_gigs, and Organization.usageByPeriod(STORAGE,LAST_30_DAYS,CUMULATIVE)",
+  "interpretation": "The organization remains below its 200 GB entitlement by the trailing-average usage measure. The project meter increased about 1.89 GB in 19 minutes, consistent with active checkpoint writes. This is billed storage data, not free space on a CoreWeave runtime volume.",
+  "no_artifacts_deleted": true
+}

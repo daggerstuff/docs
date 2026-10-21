@@ -1,0 +1,27 @@
+{
+  "adapter_config_sha256": "60d8003c1eb2a4ba9bfb479eef6b5209f16c17dcf16b2815b7fb9b461e4a2544",
+  "adapter_sha256": "32a7e465c4a9e70b074f7bb890ae39a225b0ca0d03378c08d55aad4b1b3860b5",
+  "all_values_finite": true,
+  "artifact_uri": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-6697d188a664:step0",
+  "artifact_version": "v0",
+  "base_model": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+  "checkpoint_step": 0,
+  "dtype_counts": {
+    "torch.bfloat16": 48
+  },
+  "finality_proven": false,
+  "label": "nemotron35",
+  "limitations": [
+    "Local file and tensor validation does not prove provider-job completion or serving compatibility.",
+    "Nonzero finite tensors do not establish learning, response quality, or clinical safety."
+  ],
+  "local_manifest_files_verified": true,
+  "lora_rank": 8,
+  "nonzero_lora_b_elements": 0,
+  "pair_inner_dimension_counts": {
+    "8": 24
+  },
+  "tensor_count": 48,
+  "tensor_elements": 933888,
+  "trained_export_checks_required": false
+}

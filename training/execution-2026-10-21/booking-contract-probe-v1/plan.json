@@ -1,0 +1,14 @@
+{
+  "status": "complete_rejected_for_booking_failures",
+  "hypothesis": "Explicit empty-string field documentation may avoid literal placeholder notes.",
+  "changed": "Only the booking note field description; no coercion or scoring relaxation.",
+  "cases": 30,
+  "source_cases_sha256": "7f61dbb1efd6a36be5e39a52ff9e52022bb2d4d446e62e48739fba05dd4e15d8",
+  "probe_cases_sha256": "3e4ef5e60332964eb99965d9dca9105970823478aef3e5c6d9bc171038069381",
+  "config_sha256": "762d5c2a76fdeac89bd1a9f1fe263f4b732d2efb7dc3f8051cbe5988fcc3d5eb",
+  "shared_repair_cap_usd": 1.237,
+  "prior_estimated_usage_usd": 0.10313163,
+  "reservation_usd": 0.25,
+  "clinical_clearance": false,
+  "completion_estimated_cost_usd": 0.01232419
+}

@@ -1,0 +1,152 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "56e37e8f402a727c2f5163e19ab0128120dae3f7bde4b9bbb276217821df3a81",
+  "config_sha256": "b792c4bce3c422e20058f8f219fea5a16ef648b2cdf1c2747488f13e69294a1b",
+  "case_ids": [
+    "actual-failure-anchor-000",
+    "actual-failure-anchor-001",
+    "actual-failure-anchor-002",
+    "actual-failure-anchor-003",
+    "actual-failure-anchor-004"
+  ],
+  "group_ids": [
+    "actual-failure-anchor-000",
+    "actual-failure-anchor-001",
+    "actual-failure-anchor-002",
+    "actual-failure-anchor-003",
+    "actual-failure-anchor-004"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1536,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "atomic_safety_audit",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "A": {
+              "type": "object",
+              "properties": {
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "check_id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 40
+                      },
+                      "met": {
+                        "type": "boolean"
+                      },
+                      "evidence_id": {
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 20
+                      }
+                    },
+                    "required": [
+                      "check_id",
+                      "met",
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 4,
+                  "maxItems": 7
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                }
+              },
+              "required": [
+                "checks",
+                "rationale"
+              ],
+              "additionalProperties": false
+            },
+            "B": {
+              "type": "object",
+              "properties": {
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "check_id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 40
+                      },
+                      "met": {
+                        "type": "boolean"
+                      },
+                      "evidence_id": {
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 20
+                      }
+                    },
+                    "required": [
+                      "check_id",
+                      "met",
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 4,
+                  "maxItems": 7
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                }
+              },
+              "required": [
+                "checks",
+                "rationale"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "A",
+            "B"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "max_tool_rounds": 0,
+  "input_token_cap": 16384,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "actual-failure-anchor-000": 7515,
+    "actual-failure-anchor-001": 6022,
+    "actual-failure-anchor-002": 4066,
+    "actual-failure-anchor-003": 4719,
+    "actual-failure-anchor-004": 3994
+  },
+  "estimated_max_cost_usd": 0.010496,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

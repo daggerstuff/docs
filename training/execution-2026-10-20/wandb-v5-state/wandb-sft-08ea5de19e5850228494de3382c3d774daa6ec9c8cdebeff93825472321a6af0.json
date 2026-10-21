@@ -1,0 +1,31 @@
+{
+  "arm": "baseline",
+  "artifact_bytes": 202801923,
+  "artifact_hashes": {
+    "metadata": "428b2c69164efb6e0b3930ca3fcd21009bc302c9f0f5e14c66f4a35692fdb6c6",
+    "trajectories": "29eea24ce984754eeeb4321ef61301cc7149b92edc430c95591797f4f31cdfbf"
+  },
+  "config": {
+    "assistant_turns": "all",
+    "batch_size": 16,
+    "learning_rate": 1e-05
+  },
+  "last_status": "PENDING",
+  "last_status_response": {
+    "created_at": "2026-10-20T15:07:56.856830Z",
+    "id": "b46708dd-9726-44f1-a699-62641ecc49e1",
+    "status": "PENDING",
+    "updated_at": "2026-10-20T15:07:56.856830Z"
+  },
+  "manifest_sha256": "7ace59a5176060293a27805093794ca277ff85ab54a3cb7d5d5cffa9ff436e39",
+  "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+  "model_id": "2f77629d-6f3a-442d-b244-8f22a048a775",
+  "payload_sha256": "29eea24ce984754eeeb4321ef61301cc7149b92edc430c95591797f4f31cdfbf",
+  "phase": "job_created",
+  "phase_updated_unix": 1792508878,
+  "release_id": "wandb-full-corpus-current-master-20261019-v5",
+  "row_count": 77718,
+  "task_id": "08ea5de19e5850228494de3382c3d774daa6ec9c8cdebeff93825472321a6af0",
+  "training_data_url": "wandb-artifact:///wutang/pixelated-empathy-kan28/g04-wandb-full-corpus-current-master-20261019-v5-baseline-08ea5de19e58:v0",
+  "training_job_id": "b46708dd-9726-44f1-a699-62641ecc49e1"
+}

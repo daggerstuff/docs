@@ -1,0 +1,60 @@
+{
+  "all_tool_call_messages": 1500,
+  "base_model": "Qwen/Qwen3.6-35B-A3B",
+  "clinical_or_production_readiness": false,
+  "evaluation_leak_check": "development and sealed scenario prompts are checked for exact text overlap; none are copied into training examples",
+  "example_count": 1200,
+  "external_content": false,
+  "heldout_evaluation": {
+    "case_count": 120,
+    "path": "evaluation/heldout-test-cases.jsonl",
+    "sha256": "adda06506381f140bf5cdc909c9406574fa55225e4f7cd409801cbc1d7d898d0",
+    "suite": "agent_tool_sft_heldout_v1"
+  },
+  "purpose": "agentic SFT tool-use capability experiment",
+  "real_person_data": false,
+  "release_id": "pixelated-agent-tool-sft-20261019-v1",
+  "scenario_families": {
+    "appointment_consent_gate": 150,
+    "appointment_explicit_consent": 150,
+    "approval_gate": 150,
+    "memory_consent_gate": 150,
+    "memory_opt_in": 150,
+    "resource_compare": 150,
+    "resource_lookup": 150,
+    "untrusted_note": 150
+  },
+  "schema_version": 1,
+  "source": "first-party deterministic synthetic data generator",
+  "split_rule": "within each family, indices 0-119 train, 120-134 validation, 135-149 test; no group crosses split",
+  "splits": {
+    "test": {
+      "path": "test/trajectories.jsonl",
+      "row_count": 120,
+      "rowrefs_path": "test/rowrefs.jsonl",
+      "rowrefs_sha256": "e93901ca07a67efe17b3a87da90a6d9c1e9c74e795a97ab85bafd4195221be1f",
+      "sha256": "b139e49e69c7dda3efdde55b5e3a8dfe7a27665b627cefca4d727ee4e4927d34",
+      "tool_call_messages": 150
+    },
+    "train": {
+      "metadata_path": "train/metadata.json",
+      "metadata_sha256": "02533173f783ebf6cd04026160984ffe02f5e5f8f3359199086c375143fd8260",
+      "path": "train/trajectories.jsonl",
+      "row_count": 960,
+      "rowrefs_path": "train/rowrefs.jsonl",
+      "rowrefs_sha256": "a0121a94f116d2fd915809b2842e296c77b81904869ae98893acdb4c7e0b5f39",
+      "sha256": "010322208f7938085de42fdd8d2c9e529c94ac1024fd02847c6d31d4edb15d78",
+      "tool_call_messages": 1200
+    },
+    "validation": {
+      "path": "validation/trajectories.jsonl",
+      "row_count": 120,
+      "rowrefs_path": "validation/rowrefs.jsonl",
+      "rowrefs_sha256": "1aa347f3ae302ca209d60fdbc860cb0ed4e9129de47bcfda2c5e6357690a16b6",
+      "sha256": "3046e03c3281326dae6d9ef28f500e67090ce8b223ecc446a68a516b07dd4b99",
+      "tool_call_messages": 150
+    }
+  },
+  "status": "local_synthetic_research_candidate_not_uploaded",
+  "synthetic_safety_note": "Fictional resources, dates, record IDs, notes, and preferences only; no diagnosis, real contact data, or real appointments."
+}

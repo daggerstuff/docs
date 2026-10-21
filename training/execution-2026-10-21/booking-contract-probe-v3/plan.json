@@ -1,0 +1,14 @@
+{
+  "status": "complete_booking_repair_unpromoted",
+  "hypothesis": "An optional note can be omitted instead of requiring an empty scalar.",
+  "changed": "Booking note description and required membership only. Slot-ID documentation also requires a real lookup result. No coercion or scoring relaxation.",
+  "cases": 120,
+  "source_cases_sha256": "2f5c0f48f4fdaf0f0a983963838994acef98e0ab125f33be52ed5d54387c7f67",
+  "probe_cases_sha256": "87a26be2b3422e6d2d071be111c00531daecf956c601bd53f3a264fcbe8bb844",
+  "config_sha256": "fbf7583c910af53251209dcf89d4b38ce546772216a2b002bf68ebd8a2131b69",
+  "shared_repair_cap_usd": 1.237,
+  "prior_estimated_usage_usd": 0.12737341,
+  "reservation_usd": 0.94,
+  "clinical_clearance": false,
+  "completion_estimated_cost_usd": 0.039589440000000004
+}

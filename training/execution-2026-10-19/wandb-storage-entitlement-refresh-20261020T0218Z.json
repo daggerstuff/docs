@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-10-20T02:18:00Z",
+  "organization": "wutang-org",
+  "subscription_type": "ACADEMIC_TRIAL",
+  "storage_entitlement_gigs": 200,
+  "last_30_days_daily_average_bytes": 164173686280,
+  "last_30_days_daily_average_gb_decimal": 164.17368628,
+  "approx_headroom_gb_decimal": 35.82631372,
+  "project": "wutang/pixelated-empathy-kan28",
+  "project_storage_bytes": 22927341062,
+  "project_storage_previous_bytes": 21984664898,
+  "project_storage_delta_bytes": 942676164,
+  "project_storage_previous_observed_at_utc": "2026-10-20T02:03:00Z",
+  "source": "Authenticated read-only W&B GraphQL Project.storageBytes, Organization.subscriptions privilege and Organization.usageByPeriod(STORAGE,LAST_30_DAYS,CUMULATIVE)",
+  "interpretation": "Organization trailing-average storage use is unchanged and remains below its 200 GB entitlement. Project meter increased about 0.94 GB in 15 minutes, consistent with ongoing checkpoint/artifact writes; project storage is not worker disk space.",
+  "no_artifacts_deleted": true
+}

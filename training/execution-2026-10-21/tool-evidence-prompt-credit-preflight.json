@@ -1,0 +1,28 @@
+{
+  "observed_at_utc": "2026-10-21T09:44:42.761945+00:00",
+  "subscription_type": "ACADEMIC_TRIAL",
+  "subscription_status": "ENABLED",
+  "enforced": true,
+  "raw_allowance": 25000,
+  "raw_full_interval_usage": [
+    8723515620000
+  ],
+  "allowance_interval": {
+    "start": "2025-02-01T00:00:00Z",
+    "end": "2027-02-01T00:00:00Z"
+  },
+  "remaining_full_interval_allowance_usd": "162.7648438",
+  "currency_conversion_source": "v6-credit-coverage-verification.json",
+  "selected_base_models_present": {
+    "google/gemma-4-26B-A4B-it": true,
+    "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B": true
+  },
+  "primary_campaign_cap_usd": 3,
+  "new_tool_evidence_experiment_cap_usd": 0.94,
+  "combined_caps_usd": 3.94,
+  "coverage_verified_for_combined_caps": true,
+  "limitations": [
+    "Usage reporting can lag; billed amounts are not verified.",
+    "No new training or weight export is part of the prompt experiment."
+  ]
+}

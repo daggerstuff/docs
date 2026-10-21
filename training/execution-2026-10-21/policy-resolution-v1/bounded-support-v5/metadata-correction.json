@@ -1,0 +1,4 @@
+{
+  "reason": "The inherited generation plan description says seven boundary contexts. V5 implementation actually contains nine: uncertainty/assessment and external-action were added. Code hash and trace replay establish actual behavior; inputs and outputs unchanged.",
+  "timestamp": "2026-10-21T17:46:45.214547+00:00"
+}
