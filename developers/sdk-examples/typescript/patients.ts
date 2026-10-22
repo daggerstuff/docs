@@ -141,4 +141,4 @@ async function listAllActivePatients(): Promise<void> {
   console.log(`Total active patients: ${allIds.length}`);
 }
 
-searchPatients().then(() => createPatient());
+void searchPatients().then(() => createPatient());

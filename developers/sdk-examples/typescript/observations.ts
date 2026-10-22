@@ -158,5 +158,5 @@ async function createGad7Observation(patientId: string): Promise<void> {
 
 // Run examples
 const patientId = 'patient-001';
-searchByPatient(patientId);
-createPhq9Observation(patientId);
+void searchByPatient(patientId);
+void createPhq9Observation(patientId);

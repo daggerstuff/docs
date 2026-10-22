@@ -63,4 +63,4 @@ async function verifyConnection(): Promise<void> {
   }
 }
 
-verifyConnection();
+void verifyConnection();

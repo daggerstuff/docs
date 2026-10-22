@@ -79,10 +79,8 @@ interface WebhookPayload {
  * JSON parsing. If you use `express.json()` first, the signature
  * verification will fail because the body has been re-serialized.
  *
- * @example
- *   import express from 'express';
- *   const app = express();
- *   app.post('/webhooks/pixelated', express.raw({ type: '*/*' }), handleWebhook);
+ * For a complete Express wiring example, see the commented
+ * "Express integration example" block at the bottom of this file.
  */
 async function handleWebhook(
   rawBody: Buffer,
@@ -135,6 +133,12 @@ async function handleWebhook(
       case WEBHOOK_EVENTS.note_signed:
         await onNoteSigned(payload);
         break;
+      case WEBHOOK_EVENTS.encounter_updated:
+      case WEBHOOK_EVENTS.observation_updated:
+      case WEBHOOK_EVENTS.note_created:
+        // No dedicated handler yet — acknowledge and log.
+        console.log(`Received event without handler: ${payload.eventType}`);
+        break;
       default:
         console.log(`Unhandled event type: ${payload.eventType}`);
     }
@@ -184,27 +188,25 @@ async function onNoteSigned(payload: WebhookPayload): Promise<void> {
 // ---------------------------------------------------------------------------
 // Express integration example (commented out, requires express)
 // ---------------------------------------------------------------------------
-
-/*
-import express from 'express';
-
-const app = express();
-const WEBHOOK_SECRET = process.env.PIXELATED_WEBHOOK_SECRET!;
-
-app.post(
-  '/webhooks/pixelated',
-  express.raw({ type: '*/*' }),
-  async (req, res) => {
-    const result = await handleWebhook(
-      req.body as Buffer,
-      req.headers,
-      WEBHOOK_SECRET,
-    );
-    res.status(result.status).json(result.body);
-  },
-);
-
-app.listen(3000, () => {
-  console.log('Webhook server listening on port 3000');
-});
-*/
+//
+// import express from 'express';
+//
+// const app = express();
+// const WEBHOOK_SECRET = process.env.PIXELATED_WEBHOOK_SECRET!;
+//
+// app.post(
+//   '/webhooks/pixelated',
+//   express.raw({ type: '*/*' }),
+//   async (req, res) => {
+//     const result = await handleWebhook(
+//       req.body as Buffer,
+//       req.headers,
+//       WEBHOOK_SECRET,
+//     );
+//     res.status(result.status).json(result.body);
+//   },
+// );
+//
+// app.listen(3000, () => {
+//   console.log('Webhook server listening on port 3000');
+// });
