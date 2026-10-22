@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "model": "google/gemma-4-26B-A4B-it",
+  "protocol_sha256": "8e3d3ef4ea1be6e02971ecf7a40024c76ec2bf3694d87a27a1de9a37f08ad8cb",
+  "complete_labels_match": true,
+  "anchors": 17,
+  "input_sha256": "ec54dd7be04763f02c48e73f3495892357ff7c32c437572bf5eb09d90256d727",
+  "clinical_safety_approval": false
+}

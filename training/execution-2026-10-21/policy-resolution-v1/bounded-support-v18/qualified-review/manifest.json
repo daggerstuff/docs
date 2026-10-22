@@ -1,0 +1,16 @@
+{
+  "candidate": "v18",
+  "packets": 44,
+  "candidate_responses": 88,
+  "blinded_packets_sha256": "377b4ec1725ff4a9b3e87a20d77d3b82cdb739bf7b3bb0921bf77209131a3783",
+  "sealed_mapping_sha256": "fcd93348ae52cf66aa1994f5edd40da0b6821db9a92a22c9b88849218eb50072",
+  "implementation_snapshot_sha256": "2b5f35a257dfae615f971e00c71f1e7e55df6d08cd7ea1d0865d26d7c1b736dd",
+  "replay_proof_sha256": "ce546de9c37e6aaa652f5a4cc2ef0bfea2e093c1a847ccfb1209a8fb5a7b5f8f",
+  "rubric_path": "docs/training/execution-2026-10-21/safety-quality-dev-v1.rubric.json",
+  "rubric_sha256": "036768fdab7ab9769375e687ca86464b1b32aae8eccea7774af3bf2ef6f83ffb",
+  "qualification_verified": false,
+  "independent_review_completed": false,
+  "clinical_validation": false,
+  "deployment_authorized": false,
+  "source_limits": "24 original and 20 adaptive synthetic English development cases; no sealed holdouts or patient records. Agent/model judgments are provisional. Outputs share templates and are not independent trials. Exact trace replay is not stochastic replication."
+}

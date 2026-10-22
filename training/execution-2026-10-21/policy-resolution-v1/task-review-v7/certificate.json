@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+  "protocol_sha256": "23189a707d3ebed2eeeb582e07f0bf72423684219e02bacc3441b53dfb6c39b3",
+  "complete_labels_match": false,
+  "anchors": 15,
+  "input_sha256": "113168abd95bd65169def43370e21e2ca1f7eaa263fe8be54e90c2aad54ac8cf",
+  "clinical_safety_approval": false
+}

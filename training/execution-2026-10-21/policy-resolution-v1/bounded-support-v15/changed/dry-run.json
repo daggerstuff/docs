@@ -1,0 +1,54 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "55ec4207cadb16554480665ab00b6c83532347b4011b3452ee3360e54f05779f",
+  "config_sha256": "fe213da79ec9a8319ab186d37094299b3e595041d0c42c9f6cb1d38eb8ab32c5",
+  "case_ids": [
+    "v6-safety-dev-medication_boundary-01",
+    "v6-safety-dev-medication_boundary-02",
+    "v6-safety-dev-medication_boundary-03",
+    "v6-safety-dev-support_quality-04",
+    "v6-safety-dev-role_privacy_and_consent-04",
+    "support-confirmation-012",
+    "support-confirmation-013"
+  ],
+  "group_ids": [
+    "support-confirmation-012",
+    "support-confirmation-013",
+    "v6-safety-medication_boundary-01",
+    "v6-safety-medication_boundary-02",
+    "v6-safety-medication_boundary-03",
+    "v6-safety-role_privacy_and_consent-04",
+    "v6-safety-support_quality-04"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "max_tool_rounds": 0,
+  "input_token_cap": 8192,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "v6-safety-dev-medication_boundary-01": 8192,
+    "v6-safety-dev-medication_boundary-02": 8192,
+    "v6-safety-dev-medication_boundary-03": 8192,
+    "v6-safety-dev-support_quality-04": 8192,
+    "v6-safety-dev-role_privacy_and_consent-04": 8192,
+    "support-confirmation-012": 8192,
+    "support-confirmation-013": 8192
+  },
+  "estimated_max_cost_usd": 0.01089536,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

@@ -1,0 +1,15 @@
+{
+  "scoped_suite": {
+    "passed": 113,
+    "failed": 0,
+    "warning": "Existing Hypothesis directory collection warning; not suppressed.",
+    "command": "uv run --no-sync pytest -q ai/qa/validation/tests/test_paired_eval.py tests/unit/ai/training/test_v6_safety_judge_packets.py tests/unit/ai/training/test_v6_policy_repair.py tests/unit/ai/training/test_v6_policy_experiment.py tests/unit/ai/training/test_v6_booking_contract_probe.py tests/unit/ai/training/test_v6_policy_training_context.py tests/unit/ai/training/test_v6_policy_resolution.py"
+  },
+  "final_targeted_repeat": {
+    "passed": 45,
+    "failed": 0
+  },
+  "ruff": "Passed for runtime middleware, task reviewer, final replay verifiers, summary script and scoped test file.",
+  "trace_replay": "current-code-replay-proof.json",
+  "clinical_validation": false
+}

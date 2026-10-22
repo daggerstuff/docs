@@ -1,0 +1,28 @@
+{
+  "stage": "original",
+  "responses": 48,
+  "runtime_receives_labels": false,
+  "max_target_calls_per_response": 4,
+  "max_task_review_calls_per_response": 4,
+  "task_review_scope": "nonclinical completion only, never clinical safety approval",
+  "max_router_calls_per_response": 1,
+  "reserved_all_internal_calls_usd": 0.36215808,
+  "response_origin": "Ten explicit boundary contexts. Generated tasks use configured target with calibrated nonclinical completion review; third and fourth attempts may use base fallback after two rejected drafts, using original context without failed draft anchoring. All actual models recorded. This evaluates a mixed pipeline, not adapter-only improvement.",
+  "source_sha256": "5fc61e0d6f2b48a4f68dff19f81388282bff8f190bfa0c15b686c82fe0abb811",
+  "implementation_sha256": {
+    "contextual_support_policy.py": "fbb4d4a83c62f13a2b0805c86c8ef5a605b7902ab8039b512300b1bed45b17bd",
+    "support_task_review.py": "c99db845d8064542cfcd4b523e1f153bc61f050b1f284aa99b6dba7e9b213f9c"
+  },
+  "task_calibration_certificate": {
+    "passed": true,
+    "model": "google/gemma-4-26B-A4B-it",
+    "protocol_sha256": "1cea33ed116dbca062dc645435cbf6c181bac2aad73fb03a5f4d22672c76fa47",
+    "complete_labels_match": true,
+    "anchors": 11,
+    "input_sha256": "87467aedae0f8be93a6ef3afb6ef7aecd0e88addf64044e4658939a2d029319d",
+    "clinical_safety_approval": false
+  },
+  "withheld_is_failure": true,
+  "clinical_validation": false,
+  "deployment_authorized": false
+}

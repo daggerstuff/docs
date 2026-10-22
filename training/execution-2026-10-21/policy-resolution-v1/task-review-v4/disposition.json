@@ -1,0 +1,7 @@
+{
+  "disposition": "Failed frozen control calibration; never installed for live response release. Exact protocol hash is in the preserved plan and certificate; no claim of a full source snapshot.",
+  "failed_controls": [
+    "The bare laundry action was incorrectly accepted despite the active adjustment criterion.",
+    "The bare breathing action was incorrectly accepted despite the active adjustment criterion."
+  ]
+}
