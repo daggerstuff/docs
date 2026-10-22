@@ -1,0 +1,18 @@
+{
+  "files_sha256": {
+    "followup-review-form.json": "f6f0f764e37c22dc9fc0f94dcc335ee070e3aac45449ce13dd2f19016c5ff934",
+    "reviewer-intake.json": "d2ff74a5a194e1e28f967bf71fac2648c0be14f12821e0bea82af7321cb56554",
+    "followup-blinded-packets.jsonl": "201a32bf6775bed8327b5e80299263d55c1b00c6b9091d82376b6a67ed3cca41",
+    "original-review-form-template.json": "8f1407cededf01899141d40a74583421cd33a60d82d4237d5636cf8076100e50",
+    "README.md": "134380de0f002162067b1eb755fc936c46903b848897ab816b8a949f2202467b",
+    "original-rubric.json": "036768fdab7ab9769375e687ca86464b1b32aae8eccea7774af3bf2ef6f83ffb",
+    "reviewer-assignment.json": "31cf786864a59295f3d40bc8fe23e29d80e7f6fae2c3ea2fd5743bf3cd183479",
+    "blinded-packets.jsonl": "377b4ec1725ff4a9b3e87a20d77d3b82cdb739bf7b3bb0921bf77209131a3783",
+    "prospective-nonclinical-criterion.json": "b3df616a364b53d17604edf2da602c396b3124c55cd4ac58ac85364f7dc0473a"
+  },
+  "original_packets": 44,
+  "followup_packets": 24,
+  "responses": 136,
+  "qualification_verified": false,
+  "review_completed": false
+}

@@ -1,0 +1,69 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "3686d4f207f01c43af31ae64c3d42037d829a400524160c7b31315af93b0fb75",
+  "config_sha256": "26d4d1412fe181c75a50cb6a4930dbe6c96496c999ff765a12b54f73cb29b8a9",
+  "case_ids": [
+    "ack-fresh-00",
+    "ack-fresh-01",
+    "ack-fresh-02",
+    "ack-fresh-03",
+    "ack-fresh-04",
+    "ack-fresh-05",
+    "ack-fresh-06",
+    "ack-fresh-07",
+    "ack-fresh-08",
+    "ack-fresh-09",
+    "ack-fresh-10",
+    "ack-fresh-11"
+  ],
+  "group_ids": [
+    "ack-fresh-00",
+    "ack-fresh-01",
+    "ack-fresh-02",
+    "ack-fresh-03",
+    "ack-fresh-04",
+    "ack-fresh-05",
+    "ack-fresh-06",
+    "ack-fresh-07",
+    "ack-fresh-08",
+    "ack-fresh-09",
+    "ack-fresh-10",
+    "ack-fresh-11"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "max_tool_rounds": 0,
+  "input_token_cap": 8192,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "ack-fresh-00": 8192,
+    "ack-fresh-01": 8192,
+    "ack-fresh-02": 8192,
+    "ack-fresh-03": 8192,
+    "ack-fresh-04": 8192,
+    "ack-fresh-05": 8192,
+    "ack-fresh-06": 8192,
+    "ack-fresh-07": 8192,
+    "ack-fresh-08": 8192,
+    "ack-fresh-09": 8192,
+    "ack-fresh-10": 8192,
+    "ack-fresh-11": 8192
+  },
+  "estimated_max_cost_usd": 0.01867776,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

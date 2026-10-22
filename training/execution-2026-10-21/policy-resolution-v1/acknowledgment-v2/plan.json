@@ -1,0 +1,17 @@
+{
+  "protocol": "v2",
+  "calibration_pairs": 24,
+  "diagnostic_pairs": 4,
+  "maximum_new_judge_cost_usd": 0.06,
+  "retries": 0,
+  "acceptance": "All authored task labels and all critical controls match in both candidate orders, with every pair strict-valid. Diagnostics are excluded from calibration labels. No runtime reviewer authorization.",
+  "clinical_validation": false,
+  "inputs_sha256": {
+    "dry-run.json": "14b0cc68692e7bfaaaeb5b7181fb9e503aece306818a0b5cbeef31ce05e65c18",
+    "judge-cases.jsonl": "df94b8b06e3f31c24ae0b4c892f3217f5f831b4b9c19a67a52ea598ac37335e2",
+    "expected-task-labels.json": "0bb34c38a92928c235a3651169c8f74717570cd37d11a60aafb6ea57702cda6e",
+    "judge-config.json": "91cd0dc248a3b028745e2699c5652297c0a849ac54e67132418ac5c8ca3885d4",
+    "criterion.json": "b388befc8b0212e770314190bb3f725cf9ee9fa93254e1f215d97f492b3ec232",
+    "sealed-mapping.jsonl": "ced9ac2089c08306b7d384a04c44d8074bd29e8db6d11f572c8b7e7433f6a054"
+  }
+}

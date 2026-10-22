@@ -1,0 +1,12 @@
+{
+  "status": "awaiting_named_qualified_independent_reviewer",
+  "reviewer_id": null,
+  "qualified": null,
+  "human_verified_by": null,
+  "verification_reference": null,
+  "independence_and_conflicts_statement": null,
+  "assigned_at_utc": null,
+  "assessment_received_at_utc": null,
+  "no_reviewer_contacted": true,
+  "independent_review_completed": false
+}

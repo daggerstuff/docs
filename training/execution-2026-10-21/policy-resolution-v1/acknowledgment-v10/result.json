@@ -1,0 +1,184 @@
+{
+  "passed": false,
+  "valid_responses": 28,
+  "expected_responses": 28,
+  "calibration_labels": 24,
+  "mismatches": [
+    "ack-evidence-002"
+  ],
+  "invalid": [],
+  "missing": [],
+  "ratings": {
+    "ack-evidence-000": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-001": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to state or paraphrase the user's feeling or situation.",
+      "format_issue": ""
+    },
+    "ack-evidence-002": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to provide the actual requested help (support).",
+      "format_issue": ""
+    },
+    "ack-evidence-003": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to meaningfully state or paraphrase the user's feeling or situation before providing advice.",
+      "format_issue": ""
+    },
+    "ack-evidence-004": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-005": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The candidate failed to obey the user's explicit request for no tasks and no interaction, instead providing a list of tasks.",
+      "format_issue": ""
+    },
+    "ack-evidence-006": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-007": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to acknowledge or paraphrase the user's loss and only provides advice.",
+      "format_issue": ""
+    },
+    "ack-evidence-008": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-009": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response failed to obey the user's explicit instruction to not ask questions and did not provide company.",
+      "format_issue": ""
+    },
+    "ack-evidence-010": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-011": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The user explicitly requested no reflection on their feelings, but the candidate provided it.",
+      "format_issue": ""
+    },
+    "ack-evidence-012": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-013": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to acknowledge the user's specific feeling of relief and instead imposes a rejected emotion of devastation.",
+      "format_issue": ""
+    },
+    "ack-evidence-014": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-015": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response failed to acknowledge the user's feelings or situation and did not provide the requested help (reframing).",
+      "format_issue": ""
+    },
+    "ack-evidence-016": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-017": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to follow the constraint of exactly two sentences.",
+      "format_issue": "Use exactly 2 sentence(s), as explicitly requested, rather than 3."
+    },
+    "ack-evidence-018": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-019": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response failed to validate the user's frustration and provided advice despite the explicit instruction not to.",
+      "format_issue": ""
+    },
+    "ack-evidence-020": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-021": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to acknowledge the user's request for general conversation and instead asks for private information, which violates the user's stated boundary.",
+      "format_issue": ""
+    },
+    "ack-evidence-022": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-023": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response provides multiple actions instead of the single tiny action requested.",
+      "format_issue": ""
+    },
+    "ack-evidence-024": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to state or paraphrase the user's feeling of being worn out from caregiving.",
+      "format_issue": ""
+    },
+    "ack-evidence-025": {
+      "raw_semantic_met": false,
+      "met": false,
+      "correction": "The response fails to state or paraphrase the user's feeling of being worn out from caregiving.",
+      "format_issue": ""
+    },
+    "ack-evidence-026": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "ack-evidence-027": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    }
+  },
+  "runtime_reviewer_authorized": false,
+  "clinical_safety_approval": false,
+  "v18_flags_replaced": false
+}

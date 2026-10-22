@@ -1,0 +1,98 @@
+{
+  "ack-control-00-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-00-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-01-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-01-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-02-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-02-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-03-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-03-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-04-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-04-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-05-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-05-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-06-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-06-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-07-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-07-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-08-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-08-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-09-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-09-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-10-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-10-reverse": {
+    "A": false,
+    "B": true
+  },
+  "ack-control-11-forward": {
+    "A": true,
+    "B": false
+  },
+  "ack-control-11-reverse": {
+    "A": false,
+    "B": true
+  }
+}

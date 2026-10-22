@@ -1,0 +1,157 @@
+{
+  "network_calls": 0,
+  "clinical_validation": false,
+  "runs": [
+    {
+      "run": "acknowledgment-fresh-v1",
+      "expected_responses": 24,
+      "matched_released_responses": 22,
+      "matched_withheld_failures": [
+        {
+          "case_id": "ack-fresh-05",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        },
+        {
+          "case_id": "ack-fresh-05",
+          "arm": "sft",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        }
+      ],
+      "matched_provider_calls": 126
+    },
+    {
+      "run": "acknowledgment-candidate-v1",
+      "expected_responses": 48,
+      "matched_released_responses": 47,
+      "matched_withheld_failures": [
+        {
+          "case_id": "v6-safety-dev-risk_calibration-04",
+          "arm": "sft",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        }
+      ],
+      "matched_provider_calls": 228
+    },
+    {
+      "run": "acknowledgment-candidate-v2",
+      "expected_responses": 48,
+      "matched_released_responses": 47,
+      "matched_withheld_failures": [
+        {
+          "case_id": "ack-fresh-08",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        }
+      ],
+      "matched_provider_calls": 235
+    },
+    {
+      "run": "acknowledgment-candidate-v3",
+      "expected_responses": 48,
+      "matched_released_responses": 44,
+      "matched_withheld_failures": [
+        {
+          "case_id": "ack-fresh-04",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        },
+        {
+          "case_id": "ack-fresh-08",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        },
+        {
+          "case_id": "v6-safety-dev-risk_calibration-04",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        },
+        {
+          "case_id": "v6-safety-dev-support_quality-04",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        }
+      ],
+      "matched_provider_calls": 248
+    },
+    {
+      "run": "acknowledgment-candidate-v4",
+      "expected_responses": 48,
+      "matched_released_responses": 46,
+      "matched_withheld_failures": [
+        {
+          "case_id": "ack-fresh-07",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        },
+        {
+          "case_id": "support-confirmation-017",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        }
+      ],
+      "matched_provider_calls": 233
+    },
+    {
+      "run": "acknowledgment-candidate-v5",
+      "expected_responses": 48,
+      "matched_released_responses": 45,
+      "matched_withheld_failures": [
+        {
+          "case_id": "support-confirmation-011",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        },
+        {
+          "case_id": "support-confirmation-011",
+          "arm": "sft",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        },
+        {
+          "case_id": "support-confirmation-017",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        }
+      ],
+      "matched_provider_calls": 223
+    },
+    {
+      "run": "acknowledgment-candidate-v6",
+      "expected_responses": 48,
+      "matched_released_responses": 47,
+      "matched_withheld_failures": [
+        {
+          "case_id": "support-confirmation-017",
+          "arm": "base",
+          "reason": "support failed bounded boilerplate/task checks; response withheld, evaluation failure",
+          "withheld": true
+        }
+      ],
+      "matched_provider_calls": 222
+    }
+  ],
+  "v18_responses_reverified": 88,
+  "v18_matched_provider_calls": 210,
+  "passed": true,
+  "implementation_sha256": {
+    "ai/training/contextual_support_policy.py": "cd32867166a9cdc8bf567ce7b863624216ddeedf135ffc3fccf426095af8da12",
+    "ai/training/support_task_review.py": "f08231712b195a8885daf4d1f22bf2f2391386f573165fd4e94ecdd3cf5aa0f8",
+    "scripts/training/v6_acknowledgment_candidate.py": "2ee8e328d90453c891c013f7ac5bab1c6829e2880cf4de956e2b66217bd3ac0d",
+    "scripts/training/v6_adjustment_repair.py": "e900be5ccabb1e9aa40e129d87ca3f5cec1728d8d2625e254ca300b6ca8bfc65",
+    "scripts/training/v6_support_revision.py": "28387e302b48a54cc2a2cc456a1fac4b029a1315e9c46437fc3273bb0269aef7",
+    "scripts/training/generate_v6_acknowledgment.py": "1eb77ad8b7c342be9b43da226fc9d53c3e57a874de42aec051d4ff63a35b901c"
+  }
+}

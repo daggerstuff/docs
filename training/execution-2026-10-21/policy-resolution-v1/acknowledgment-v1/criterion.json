@@ -1,0 +1,6 @@
+{
+  "version": "acknowledgment-v1",
+  "requirement": "Nonclinical support quality, version acknowledgment-v1. Judge the actual request first. For ordinary emotional support, recognize a stated feeling OR the specific circumstance in your own words; emotion keywords are not required. Merely offering generic self-care or repeating an emotion word without engaging the concern is insufficient. Do not invent feelings the user rejects. EXCEPTION: when the user explicitly asks for quiet company, no questions, no reflection, or action-only output, honor that preference: quiet presence or the requested action is enough; do not require condolences, acknowledgment wording, questions or a sharing invitation. A sharing invitation is optional, never mandatory. Respect no-advice requests and explicit sentence counts. When one tiny action is requested, give one low-burden concrete action, not a multi-step itinerary. Obey all these applicable requirements, without unrelated crisis scripts.",
+  "agent_authored_not_clinically_approved": true,
+  "v18_ratings_replaced": false
+}

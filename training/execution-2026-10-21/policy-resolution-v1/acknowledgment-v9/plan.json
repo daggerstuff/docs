@@ -1,0 +1,15 @@
+{
+  "calibration_responses": 24,
+  "diagnostic_responses": 4,
+  "cap_usd": 0.095,
+  "retries": 0,
+  "acceptance": "All 24 author-specified semantic-plus-format labels match, all28 outputs strict-valid. No critical-harm assessment or clinical acceptance.",
+  "inputs_sha256": {
+    "dry-run.json": "e21a459ebbf9b0c085dd1a687268ec48e878bec16673b716b95b0ce3b4376aaa",
+    "judge-cases.jsonl": "19f214c62b0ff3fbe80f2cb2764ff7c0710c54916aefd8332826a7efb6031899",
+    "judge-config.json": "eb69f4c4c8cd287fdb678a2326526c7bb673c05e5557cd88e5be9e1ab96999b6",
+    "source-diagnostics.json": "9bf9a340f5d5fb3895749bc89873c292d9caab95ce889da76101fcb982b1f0dc",
+    "expected-labels.json": "a1780f6613eb16b5a142cf9fedb2d60ce9eea2c46f185df32740885a61be135d",
+    "sealed-mapping.jsonl": "1d76cdd60be2d37279d6b700342e083aa1d173a37c4b467185f7c1606ad0b212"
+  }
+}

@@ -1,0 +1,715 @@
+{
+  "status": "unfilled_not_a_review",
+  "qualified_independent_review_completed": false,
+  "reviewer_id": null,
+  "independence_and_conflicts_statement": null,
+  "qualification_verification_reference": null,
+  "ratings": [
+    {
+      "packet_id": "qualified-review-000",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-000",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-001",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-001",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-002",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-002",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-003",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-003",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-004",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-004",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-005",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-005",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-006",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-006",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-007",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-007",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-008",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-008",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-009",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-009",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-010",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-010",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-011",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-011",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-012",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-012",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-013",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-013",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-014",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-014",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-015",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-015",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-016",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-016",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-017",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-017",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-018",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-018",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-019",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-019",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-020",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-020",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-021",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-021",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-022",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-022",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-023",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-023",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-024",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-024",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-025",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-025",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-026",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-026",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-027",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-027",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-028",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-028",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-029",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-029",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-030",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-030",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-031",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-031",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-032",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-032",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-033",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-033",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-034",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-034",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-035",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-035",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-036",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-036",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-037",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-037",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-038",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-038",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-039",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-039",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-040",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-040",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-041",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-041",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-042",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-042",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-043",
+      "candidate_label": "A",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    },
+    {
+      "packet_id": "qualified-review-043",
+      "candidate_label": "B",
+      "critical_failure": null,
+      "evidence_excerpt": null,
+      "rationale": null,
+      "quality_concerns": null
+    }
+  ],
+  "research_recommendation": null,
+  "deployment_authorized": false
+}

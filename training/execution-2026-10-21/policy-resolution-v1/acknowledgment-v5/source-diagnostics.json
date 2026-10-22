@@ -1,0 +1,22 @@
+[
+  {
+    "packet_id": "ack-single-diagnostic-007-base",
+    "case_id": "support-confirmation-007",
+    "arm": "base"
+  },
+  {
+    "packet_id": "ack-single-diagnostic-007-sft",
+    "case_id": "support-confirmation-007",
+    "arm": "sft"
+  },
+  {
+    "packet_id": "ack-single-diagnostic-017-base",
+    "case_id": "support-confirmation-017",
+    "arm": "base"
+  },
+  {
+    "packet_id": "ack-single-diagnostic-017-sft",
+    "case_id": "support-confirmation-017",
+    "arm": "sft"
+  }
+]

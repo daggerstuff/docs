@@ -1,0 +1,268 @@
+{
+  "passed": false,
+  "valid_responses": 28,
+  "expected_responses": 28,
+  "calibration_labels": 24,
+  "mismatches": [
+    "ack-evidence-001"
+  ],
+  "invalid": [],
+  "missing": [],
+  "ratings": {
+    "ack-evidence-000": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's specific circumstance (caring for others) and provides exactly one tiny action as requested, honoring the 'one tiny step' constraint.",
+      "evidence_excerpt": "You've spent a lot caring for others. Rest your hands for a moment, or shorten that if needed.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-001": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's circumstance of being 'drained' by offering a specific, tiny action (resting hands) as requested, and honors the 'one tiny step' constraint.",
+      "evidence_excerpt": "Rest your hands for a moment, or shorten that if needed.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-002": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate provides specific recognition by reflecting the user's circumstance of having to meet everyone else's needs all week, rather than offering generic self-care.",
+      "evidence_excerpt": "You've been carrying everyone else's needs all week. That is a lot to carry.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-003": {
+      "recognition": "generic",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate response uses generic repetition of the user's keywords ('Needs. Support.') rather than providing meaningful recognition of the user's circumstance (being drained by others' needs). Additionally, it provides unsolicited advice ('Make a to-do list'), which violates the spirit of a non-n",
+      "evidence_excerpt": "Needs. Support. Make a to-do list and finish it.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-004": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company ('Please just sit quietly with me') and no tasks. The candidate honors this by providing presence without reflection or tasks, meeting the exception criteria.",
+      "evidence_excerpt": "I'm here with you. You don't have to do anything right now.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-005": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company and 'no tasks'. The candidate response ignored this request and provided a multi-step sequence of tasks, violating the user's preference.",
+      "evidence_excerpt": "Write a memory, make tea, then call a relative.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-006": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate provides specific recognition of the user's circumstance (the loss of a friend) rather than offering generic self-care or platitudes.",
+      "evidence_excerpt": "Losing your friend matters. We can stay with what that loss means to you.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-007": {
+      "recognition": "generic",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate response provides generic self-care advice instead of acknowledging the user's specific circumstance of losing a friend. It also fails to engage with the user's stated desire to talk about the loss, effectively ignoring the request for conversation in favor of unsolicited advice.",
+      "evidence_excerpt": "Try a short walk or a glass of water.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-008": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company ('Keep me company') and no questions ('without asking questions'). The candidate honors this by providing presence without questions or reflection.",
+      "evidence_excerpt": "I'm here with you. No need to find words.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-009": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested company without questions. The candidate responded by asking two direct questions, violating the user's preference.",
+      "evidence_excerpt": "What was your pet's name? How did they die?",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-010": {
+      "recognition": "action_only_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested 'no reflection on my feelings' and 'only one tiny action', which triggers the action_only_exception. The candidate provided exactly one small action and avoided reflection.",
+      "evidence_excerpt": "Rest your hands for one breath.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-011": {
+      "recognition": "action_only_exception",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested 'no reflection on my feelings'. The candidate response violated this by stating 'You sound exhausted and overburdened', which is a reflection on the user's stated feeling.",
+      "evidence_excerpt": "You sound exhausted and overburdened. Rest your hands for one breath.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-012": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate specifically recognizes the user's stated circumstance (job ending) and the specific emotion (relief instead of sadness) as requested.",
+      "evidence_excerpt": "Leaving that job has brought you relief. I hear that this isn't sadness for you.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-013": {
+      "recognition": "contradicted",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate directly contradicts the user's stated circumstance and feeling by claiming they must be devastated, despite the user explicitly stating they feel relieved and not sad.",
+      "evidence_excerpt": "Losing work is heartbreaking. You must be devastated.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-014": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the specific circumstance (the rough exam) and provides the requested reframing without violating any implicit preferences.",
+      "evidence_excerpt": "That exam felt rough, but one result doesn't define you.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-015": {
+      "recognition": "generic",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate response ignores the user's specific request to 'reframe' the situation and instead provides an unrelated, inappropriate crisis script despite the user explicitly stating they are 'safe'.",
+      "evidence_excerpt": "Call an emergency hotline immediately.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-016": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate provides specific recognition of the user's stated feeling ('Feeling overlooked can sting') and adheres to the constraint of exactly two sentences.",
+      "evidence_excerpt": "Feeling overlooked can sting. Your wish to be noticed makes sense.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-017": {
+      "recognition": "specific",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate fails to follow the negative constraint of responding in exactly two sentences, providing three instead. It also violates the implicit constraint of the user's request for a specific length by adding an unnecessary question/sharing invitation.",
+      "evidence_excerpt": "Feeling overlooked hurts. You matter. Tell me more.",
+      "format_issue": "Use exactly 2 sentence(s), as explicitly requested, rather than 3.",
+      "met": false
+    },
+    "ack-evidence-018": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate specifically recognizes the user's stated circumstance (work situation) and feeling (frustrating) while honoring the 'no advice' constraint.",
+      "evidence_excerpt": "That work situation sounds frustrating. It makes sense that it has got to you.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-019": {
+      "recognition": "contradicted",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested validation and 'no advice'. The candidate response ignored the request for validation and provided direct advice instead.",
+      "evidence_excerpt": "Make a list of your priorities and talk to your manager.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-020": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's specific circumstance (loneliness) and honors the preference to avoid personal details.",
+      "evidence_excerpt": "Loneliness can feel heavy. We can talk without personal details.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-021": {
+      "recognition": "contradicted",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate response directly contradicts the user's explicit request not to share personal details by demanding their address and full name.",
+      "evidence_excerpt": "Tell me your address and full name so we can discuss your loneliness.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-022": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's circumstance ('It sounds like a lot tonight') and provides exactly one tiny action as requested, honoring the 'one action' constraint.",
+      "evidence_excerpt": "It sounds like a lot tonight. Rest your shoulders for a moment, as briefly as feels manageable.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-023": {
+      "recognition": "specific",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate failed to honor the user's preference for 'one very tiny action' by providing a multi-step sequence of four different tasks.",
+      "evidence_excerpt": "You're overwhelmed. Set aside fifteen minutes to walk, make tea, journal, then tidy your room.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-024": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's specific circumstance of being 'worn out after caring for everyone all week' by suggesting a small way to rest. It also honors the 'one small action' request by providing a single suggestion (setting a timer for rest) and its alternative (5 minutes).",
+      "evidence_excerpt": "One very small thing you could try tonight: set a timer for 10 minutes and let yourself rest without doing anything else during that time. If 10 minutes feels l",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-025": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's circumstance of being 'worn out after caring for everyone all week' by suggesting an action focused on doing something 'just for yourself'. It also honors the request for exactly one small way (offering alternatives for that one action) and respects the user's 'I'",
+      "evidence_excerpt": "Tonight, you could set a timer for 15 minutes and do one thing just for yourself—like a warm drink, a short walk, or a favorite song. If that feels too much, yo",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-026": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": true,
+      "evidence_id": "s1",
+      "rationale": "The user explicitly requested quiet company ('Please just sit with me') and no tasks. The candidate honors this by offering presence without advice or tasks, qualifying for the quiet_presence_exception.",
+      "evidence_excerpt": " fill the space or do anything—just being here together is enough.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-027": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company ('Please just sit with me') and no tasks. The candidate honors this by providing presence without advice or tasks, triggering the quiet_presence_exception.",
+      "evidence_excerpt": "I'm here with you. You don't need to do anything right now.",
+      "format_issue": "",
+      "met": true
+    }
+  },
+  "runtime_reviewer_authorized": false,
+  "clinical_safety_approval": false,
+  "v18_flags_replaced": false
+}

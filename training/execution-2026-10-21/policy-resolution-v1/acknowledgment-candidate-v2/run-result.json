@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "run_id": "v6-acknowledgment-candidate-v2",
+  "status": "incomplete",
+  "cases_sha256": "e142d1a7cf4742c8acb3e9b177f6ce7025c117168ebbb66fc608788593d1b632",
+  "config_sha256": "4311c1dcabb9f9ab6e9c6c0563fe4cd5bedcad5c55ddd2fc4520b175ac01b771",
+  "case_ids": [
+    "ack-fresh-00",
+    "ack-fresh-01",
+    "ack-fresh-02",
+    "ack-fresh-03",
+    "ack-fresh-04",
+    "ack-fresh-05",
+    "ack-fresh-06",
+    "ack-fresh-07",
+    "ack-fresh-08",
+    "ack-fresh-09",
+    "ack-fresh-10",
+    "ack-fresh-11",
+    "v6-safety-dev-risk_calibration-01",
+    "v6-safety-dev-risk_calibration-04",
+    "v6-safety-dev-support_quality-01",
+    "v6-safety-dev-support_quality-02",
+    "v6-safety-dev-support_quality-03",
+    "v6-safety-dev-support_quality-04",
+    "v6-safety-dev-role_privacy_and_consent-04",
+    "support-confirmation-006",
+    "support-confirmation-007",
+    "support-confirmation-011",
+    "support-confirmation-017",
+    "support-confirmation-018"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "comparison_mode": "paired",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "input_token_cap": 8192,
+  "max_tool_rounds": 0,
+  "allow_sealed": false,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "ack-fresh-00": 8192,
+    "ack-fresh-01": 8192,
+    "ack-fresh-02": 8192,
+    "ack-fresh-03": 8192,
+    "ack-fresh-04": 8192,
+    "ack-fresh-05": 8192,
+    "ack-fresh-06": 8192,
+    "ack-fresh-07": 8192,
+    "ack-fresh-08": 8192,
+    "ack-fresh-09": 8192,
+    "ack-fresh-10": 8192,
+    "ack-fresh-11": 8192,
+    "v6-safety-dev-risk_calibration-01": 8192,
+    "v6-safety-dev-risk_calibration-04": 8192,
+    "v6-safety-dev-support_quality-01": 8192,
+    "v6-safety-dev-support_quality-02": 8192,
+    "v6-safety-dev-support_quality-03": 8192,
+    "v6-safety-dev-support_quality-04": 8192,
+    "v6-safety-dev-role_privacy_and_consent-04": 8192,
+    "support-confirmation-006": 8192,
+    "support-confirmation-007": 8192,
+    "support-confirmation-011": 8192,
+    "support-confirmation-017": 8192,
+    "support-confirmation-018": 8192
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-inference",
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-6697d188a664:step1",
+      "endpoint": "https://api.training.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.03735552,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 47,
+  "error_count": 1,
+  "estimated_cost_usd": 0.00189035,
+  "latency_ms_by_arm": {
+    "base": {
+      "count": 23,
+      "p50_ms": 2841.103,
+      "p95_ms": 6504.405
+    },
+    "sft": {
+      "count": 24,
+      "p50_ms": 2829.622,
+      "p95_ms": 5537.648
+    }
+  },
+  "usage_totals_by_arm": {
+    "base": {
+      "cases_with_usage": 23,
+      "prompt_tokens": 9911,
+      "completion_tokens": 1556,
+      "total_tokens": 11467
+    },
+    "sft": {
+      "cases_with_usage": 24,
+      "prompt_tokens": 10174,
+      "completion_tokens": 866,
+      "total_tokens": 11040
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "base": 0,
+    "sft": 0
+  },
+  "all_provider_calls": 235,
+  "all_provider_estimated_cost_usd": 0.010560820000000004
+}

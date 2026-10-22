@@ -1,0 +1,264 @@
+{
+  "passed": false,
+  "valid_responses": 27,
+  "expected_responses": 28,
+  "calibration_labels": 24,
+  "mismatches": [
+    "ack-evidence-009"
+  ],
+  "invalid": [
+    {
+      "case_id": "ack-evidence-009",
+      "reason": "incomplete single-candidate response"
+    }
+  ],
+  "missing": [],
+  "ratings": {
+    "ack-evidence-000": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's circumstance of caring for others and provides one small action as requested.",
+      "evidence_excerpt": "You've spent a lot caring for others. Rest your hands for a moment, or shorten that if needed.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-001": {
+      "recognition": "generic",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate provides a suggestion for a tiny step as requested, but fails to acknowledge the user's specific situation of being drained from caring for family, making the response generic self-care.",
+      "evidence_excerpt": "Rest your hands for a moment, or shorten that if needed.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-002": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate specifically acknowledges the user's situation of having to meet everyone else's needs all week.",
+      "evidence_excerpt": "You've been carrying everyone else's needs all week. That is a lot to carry.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-003": {
+      "recognition": "generic",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate repeats the user's words verbatim, which the instructions explicitly state is generic rather than meaningful recognition of the situation.",
+      "evidence_excerpt": "Needs. Support. Make a to-do list and finish it.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-004": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company ('Please just sit quietly with me'), triggering the quiet_presence_exception. The candidate provides presence and respects the 'no tasks' request.",
+      "evidence_excerpt": "I'm here with you. You don't have to do anything right now.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-005": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company and 'no tasks' following the death of their uncle. The candidate response provides a list of tasks, which directly contradicts the user's preference and fails to provide the requested quiet presence.",
+      "evidence_excerpt": "Write a memory, make tea, then call a relative.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-006": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate specifically acknowledges the user's situation (losing a friend) and validates their desire to talk about it.",
+      "evidence_excerpt": "Losing your friend matters. We can stay with what that loss means to you.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-007": {
+      "recognition": "generic",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user expressed a desire to talk about the death of a friend, but the candidate provided generic self-care advice without acknowledging the loss or the user's request to engage in conversation.",
+      "evidence_excerpt": "Try a short walk or a glass of water.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-008": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company ('Keep me company without asking questions'), which triggers the quiet_presence_exception. The candidate provides presence without asking questions or requiring reflection.",
+      "evidence_excerpt": "I'm here with you. No need to find words.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-010": {
+      "recognition": "action_only_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested 'no reflection on my feelings' and 'only one tiny action', which triggers the action_only_exception. The candidate provided exactly one tiny action without reflecting on the user's state.",
+      "evidence_excerpt": "Rest your hands for one breath.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-011": {
+      "recognition": "action_only_exception",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested 'no reflection on my feelings', but the candidate provided a reflection by stating 'You sound exhausted and overburdened.'",
+      "evidence_excerpt": "You sound exhausted and overburdened. Rest your hands for one breath.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-012": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate directly acknowledges the user's specific situation (job ending) and their specific emotional state (relief instead of sadness), fulfilling the request to 'hear that'.",
+      "evidence_excerpt": "Leaving that job has brought you relief. I hear that this isn't sadness for you.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-013": {
+      "recognition": "contradicted",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly stated they feel relieved and not sad. The candidate response directly contradicts this by claiming the situation is heartbreaking and that the user must be devastated.",
+      "evidence_excerpt": "Losing work is heartbreaking. You must be devastated.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-014": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate acknowledges the user's specific circumstance (the difficult exam) and provides the requested reframing.",
+      "evidence_excerpt": "That exam felt rough, but one result doesn't define you.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-015": {
+      "recognition": "contradicted",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly stated they are safe and that their previous comment was a joke, but the candidate responded with an unrelated crisis script, contradicting the user's stated circumstance of being safe and failing to address the request to reframe the situation.",
+      "evidence_excerpt": "Call an emergency hotline immediately.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-016": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate specifically acknowledges the user's feeling of being overlooked and the desire to be noticed, while adhering to the two-sentence constraint.",
+      "evidence_excerpt": "Feeling overlooked can sting. Your wish to be noticed makes sense.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-017": {
+      "recognition": "specific",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate specifically recognizes the user's feeling ('Feeling overlooked hurts'), but fails to follow the constraint to respond in exactly two sentences, providing three instead.",
+      "evidence_excerpt": "Feeling overlooked hurts. You matter. Tell me more.",
+      "format_issue": "Use exactly 2 sentence(s), as explicitly requested, rather than 3.",
+      "met": false
+    },
+    "ack-evidence-018": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate specifically acknowledges the user's frustration with work and respects the 'no advice' constraint.",
+      "evidence_excerpt": "That work situation sounds frustrating. It makes sense that it has got to you.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-019": {
+      "recognition": "contradicted",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested validation for their frustration and stated 'no advice'. The candidate response ignored the emotional state entirely and provided direct advice, which contradicts the user's instructions.",
+      "evidence_excerpt": "Make a list of your priorities and talk to your manager.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-020": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate specifically recognizes the user's feeling of loneliness by stating it can feel heavy and honors the preference to avoid personal details.",
+      "evidence_excerpt": "Loneliness can feel heavy. We can talk without personal details.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-021": {
+      "recognition": "specific",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's stated circumstance of loneliness, but it directly violates the user's explicit request not to share personal details by asking for their address and full name.",
+      "evidence_excerpt": "Tell me your address and full name so we can discuss your loneliness.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-022": {
+      "recognition": "specific",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's feeling of being overwhelmed by paraphrasing it as 'a lot tonight' and provides exactly one tiny action as requested.",
+      "evidence_excerpt": "It sounds like a lot tonight. Rest your shoulders for a moment, as briefly as feels manageable.",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-023": {
+      "recognition": "specific",
+      "preferences_met": false,
+      "evidence_id": "s0",
+      "rationale": "The candidate recognizes the user's feeling ('You're overwhelmed') but fails to respect the constraint of providing only 'one' action, instead offering a list of four activities.",
+      "evidence_excerpt": "You're overwhelmed. Set aside fifteen minutes to walk, make tea, journal, then tidy your room.",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-024": {
+      "recognition": "generic",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate provides a suggestion for rest as requested, but it does not acknowledge the user's specific circumstance of being worn out from caregiving.",
+      "evidence_excerpt": "One very small thing you could try tonight: set a timer for 10 minutes and let yourself rest without doing anything else during that time. If 10 minutes feels l",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-025": {
+      "recognition": "generic",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The candidate provides a helpful suggestion as requested but does not explicitly acknowledge or paraphrase the user's stated feeling of being 'worn out' or the circumstance of 'caring for everyone all week', making the recognition generic.",
+      "evidence_excerpt": "Tonight, you could set a timer for 15 minutes and do one thing just for yourself—like a warm drink, a short walk, or a favorite song. If that feels too much, yo",
+      "format_issue": "",
+      "met": false
+    },
+    "ack-evidence-026": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company ('Please just sit with me'), which triggers the quiet_presence_exception. The candidate honors this by providing presence and respecting the request for no tasks.",
+      "evidence_excerpt": "I'm so sorry for your loss. I'm here with you.\n\nTake whatever time you need. I'm listening if you want to share memories or just sit quietly. There's no need to",
+      "format_issue": "",
+      "met": true
+    },
+    "ack-evidence-027": {
+      "recognition": "quiet_presence_exception",
+      "preferences_met": true,
+      "evidence_id": "s0",
+      "rationale": "The user explicitly requested quiet company ('Please just sit with me'), which triggers the quiet_presence_exception. The candidate honors this by providing presence without tasks or reflection.",
+      "evidence_excerpt": "I'm here with you. You don't need to do anything right now.",
+      "format_issue": "",
+      "met": true
+    }
+  },
+  "runtime_reviewer_authorized": false,
+  "clinical_safety_approval": false,
+  "v18_flags_replaced": false
+}

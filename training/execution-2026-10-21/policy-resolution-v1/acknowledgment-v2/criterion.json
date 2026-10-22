@@ -1,0 +1,6 @@
+{
+  "version": "acknowledgment-v2",
+  "requirement": "Nonclinical acknowledgment-v2 SEMANTIC quality only; sentence counts are verified separately by code. For ordinary emotional support, explicitly connect the reply to a feeling OR a circumstance the user states, using your own words. An emotion keyword is unnecessary, but generic self-care, a generic offer of rest or generic company alone is insufficient unless the exception applies. Do not invent an emotion the user rejects. EXCEPTION: explicit requests for quiet company, no reflection, or action-only output override the recognition requirement. A request for one small action by itself is NOT an action-only/no-reflection request. For quiet company, presence alone suffices: no condolences or sharing invitation required. Respect requests for no questions, no personal details and no advice. Sharing invitations are optional. When one action is requested, alternative examples of ONE action are allowed; a mandatory multi-step sequence is not. Duration alone does not determine feasibility in this semantic check. Avoid unrelated crisis scripts. Judge semantic content and preferences only, not sentence counts or clinical safety.",
+  "agent_authored_not_clinically_approved": true,
+  "v18_ratings_replaced": false
+}

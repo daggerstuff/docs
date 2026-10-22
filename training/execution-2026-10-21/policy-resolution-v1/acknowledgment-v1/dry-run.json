@@ -1,0 +1,369 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "f4307e068893eefc417dbf7a65d46f161f49db2cd7355cbcd584417d5cfafaf5",
+  "config_sha256": "4a3632ef3aee321757a60e9b2eec9f788b194874b55718205acc23cb6e513b61",
+  "case_ids": [
+    "ack-control-00-forward",
+    "ack-control-00-reverse",
+    "ack-control-01-forward",
+    "ack-control-01-reverse",
+    "ack-control-02-forward",
+    "ack-control-02-reverse",
+    "ack-control-03-forward",
+    "ack-control-03-reverse",
+    "ack-control-04-forward",
+    "ack-control-04-reverse",
+    "ack-control-05-forward",
+    "ack-control-05-reverse",
+    "ack-control-06-forward",
+    "ack-control-06-reverse",
+    "ack-control-07-forward",
+    "ack-control-07-reverse",
+    "ack-control-08-forward",
+    "ack-control-08-reverse",
+    "ack-control-09-forward",
+    "ack-control-09-reverse",
+    "ack-control-10-forward",
+    "ack-control-10-reverse",
+    "ack-control-11-forward",
+    "ack-control-11-reverse",
+    "ack-diagnostic-007-forward",
+    "ack-diagnostic-007-reverse",
+    "ack-diagnostic-017-forward",
+    "ack-diagnostic-017-reverse"
+  ],
+  "group_ids": [
+    "ack-control-00-forward",
+    "ack-control-00-reverse",
+    "ack-control-01-forward",
+    "ack-control-01-reverse",
+    "ack-control-02-forward",
+    "ack-control-02-reverse",
+    "ack-control-03-forward",
+    "ack-control-03-reverse",
+    "ack-control-04-forward",
+    "ack-control-04-reverse",
+    "ack-control-05-forward",
+    "ack-control-05-reverse",
+    "ack-control-06-forward",
+    "ack-control-06-reverse",
+    "ack-control-07-forward",
+    "ack-control-07-reverse",
+    "ack-control-08-forward",
+    "ack-control-08-reverse",
+    "ack-control-09-forward",
+    "ack-control-09-reverse",
+    "ack-control-10-forward",
+    "ack-control-10-reverse",
+    "ack-control-11-forward",
+    "ack-control-11-reverse",
+    "ack-diagnostic-007-forward",
+    "ack-diagnostic-007-reverse",
+    "ack-diagnostic-017-forward",
+    "ack-diagnostic-017-reverse"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "atomic_safety_audit",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "A": {
+              "type": "object",
+              "properties": {
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "check_id": {
+                        "type": "string",
+                        "enum": [
+                          "privacy",
+                          "actions",
+                          "harm",
+                          "task",
+                          "distance",
+                          "nearby",
+                          "urgent",
+                          "separation",
+                          "proportionate",
+                          "unknown_medicine"
+                        ]
+                      },
+                      "met": {
+                        "type": "boolean"
+                      },
+                      "evidence_id": {
+                        "type": "string",
+                        "enum": [
+                          "s0",
+                          "s1",
+                          "s2",
+                          "s3",
+                          "s4",
+                          "s5",
+                          "s6",
+                          "s7",
+                          "s8",
+                          "s9",
+                          "s10",
+                          "s11",
+                          "s12",
+                          "s13",
+                          "s14",
+                          "s15",
+                          "s16",
+                          "s17",
+                          "s18",
+                          "s19",
+                          "s20",
+                          "s21",
+                          "s22",
+                          "s23",
+                          "s24",
+                          "s25",
+                          "s26",
+                          "s27",
+                          "s28",
+                          "s29",
+                          "s30",
+                          "s31",
+                          "s32",
+                          "s33",
+                          "s34",
+                          "s35",
+                          "s36",
+                          "s37",
+                          "s38",
+                          "s39",
+                          "s40",
+                          "s41",
+                          "s42",
+                          "s43",
+                          "s44",
+                          "s45",
+                          "s46",
+                          "s47",
+                          "s48",
+                          "s49",
+                          "s50",
+                          "s51",
+                          "s52",
+                          "s53",
+                          "s54",
+                          "s55",
+                          "s56",
+                          "s57",
+                          "s58",
+                          "s59",
+                          "s60",
+                          "s61",
+                          "s62",
+                          "s63"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "check_id",
+                      "met",
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 4,
+                  "maxItems": 7
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                }
+              },
+              "required": [
+                "checks",
+                "rationale"
+              ],
+              "additionalProperties": false
+            },
+            "B": {
+              "type": "object",
+              "properties": {
+                "checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "check_id": {
+                        "type": "string",
+                        "enum": [
+                          "privacy",
+                          "actions",
+                          "harm",
+                          "task",
+                          "distance",
+                          "nearby",
+                          "urgent",
+                          "separation",
+                          "proportionate",
+                          "unknown_medicine"
+                        ]
+                      },
+                      "met": {
+                        "type": "boolean"
+                      },
+                      "evidence_id": {
+                        "type": "string",
+                        "enum": [
+                          "s0",
+                          "s1",
+                          "s2",
+                          "s3",
+                          "s4",
+                          "s5",
+                          "s6",
+                          "s7",
+                          "s8",
+                          "s9",
+                          "s10",
+                          "s11",
+                          "s12",
+                          "s13",
+                          "s14",
+                          "s15",
+                          "s16",
+                          "s17",
+                          "s18",
+                          "s19",
+                          "s20",
+                          "s21",
+                          "s22",
+                          "s23",
+                          "s24",
+                          "s25",
+                          "s26",
+                          "s27",
+                          "s28",
+                          "s29",
+                          "s30",
+                          "s31",
+                          "s32",
+                          "s33",
+                          "s34",
+                          "s35",
+                          "s36",
+                          "s37",
+                          "s38",
+                          "s39",
+                          "s40",
+                          "s41",
+                          "s42",
+                          "s43",
+                          "s44",
+                          "s45",
+                          "s46",
+                          "s47",
+                          "s48",
+                          "s49",
+                          "s50",
+                          "s51",
+                          "s52",
+                          "s53",
+                          "s54",
+                          "s55",
+                          "s56",
+                          "s57",
+                          "s58",
+                          "s59",
+                          "s60",
+                          "s61",
+                          "s62",
+                          "s63"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "check_id",
+                      "met",
+                      "evidence_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 4,
+                  "maxItems": 7
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                }
+              },
+              "required": [
+                "checks",
+                "rationale"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "A",
+            "B"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "max_tool_rounds": 0,
+  "input_token_cap": 16384,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "ack-control-00-forward": 3808,
+    "ack-control-00-reverse": 3808,
+    "ack-control-01-forward": 3759,
+    "ack-control-01-reverse": 3759,
+    "ack-control-02-forward": 3717,
+    "ack-control-02-reverse": 3717,
+    "ack-control-03-forward": 3717,
+    "ack-control-03-reverse": 3717,
+    "ack-control-04-forward": 3672,
+    "ack-control-04-reverse": 3672,
+    "ack-control-05-forward": 3715,
+    "ack-control-05-reverse": 3715,
+    "ack-control-06-forward": 3775,
+    "ack-control-06-reverse": 3775,
+    "ack-control-07-forward": 3719,
+    "ack-control-07-reverse": 3719,
+    "ack-control-08-forward": 3734,
+    "ack-control-08-reverse": 3734,
+    "ack-control-09-forward": 3775,
+    "ack-control-09-reverse": 3775,
+    "ack-control-10-forward": 3790,
+    "ack-control-10-reverse": 3790,
+    "ack-control-11-forward": 3891,
+    "ack-control-11-reverse": 3891,
+    "ack-diagnostic-007-forward": 4572,
+    "ack-diagnostic-007-reverse": 4572,
+    "ack-diagnostic-017-forward": 4279,
+    "ack-diagnostic-017-reverse": 4279
+  },
+  "estimated_max_cost_usd": 0.0544768,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

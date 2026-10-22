@@ -1,0 +1,140 @@
+{
+  "status": "dry_run_valid",
+  "provider_calls": 0,
+  "cases_sha256": "cd2aa59c5b21fa30617d2a6664bb3368d4750b0c01dfaa89411b5da906ae4ea7",
+  "config_sha256": "6ee50a4e7127793ee18c15c700fc7412640826c27c75224dec686527d1f9caae",
+  "case_ids": [
+    "ack-evidence-000",
+    "ack-evidence-001",
+    "ack-evidence-002",
+    "ack-evidence-003",
+    "ack-evidence-004",
+    "ack-evidence-005",
+    "ack-evidence-006",
+    "ack-evidence-007",
+    "ack-evidence-008",
+    "ack-evidence-009",
+    "ack-evidence-010",
+    "ack-evidence-011",
+    "ack-evidence-012",
+    "ack-evidence-013",
+    "ack-evidence-014",
+    "ack-evidence-015",
+    "ack-evidence-016",
+    "ack-evidence-017",
+    "ack-evidence-018",
+    "ack-evidence-019",
+    "ack-evidence-020",
+    "ack-evidence-021",
+    "ack-evidence-022",
+    "ack-evidence-023",
+    "ack-evidence-024",
+    "ack-evidence-025",
+    "ack-evidence-026",
+    "ack-evidence-027"
+  ],
+  "group_ids": [
+    "ack-evidence-000",
+    "ack-evidence-001",
+    "ack-evidence-002",
+    "ack-evidence-003",
+    "ack-evidence-004",
+    "ack-evidence-005",
+    "ack-evidence-006",
+    "ack-evidence-007",
+    "ack-evidence-008",
+    "ack-evidence-009",
+    "ack-evidence-010",
+    "ack-evidence-011",
+    "ack-evidence-012",
+    "ack-evidence-013",
+    "ack-evidence-014",
+    "ack-evidence-015",
+    "ack-evidence-016",
+    "ack-evidence-017",
+    "ack-evidence-018",
+    "ack-evidence-019",
+    "ack-evidence-020",
+    "ack-evidence-021",
+    "ack-evidence-022",
+    "ack-evidence-023",
+    "ack-evidence-024",
+    "ack-evidence-025",
+    "ack-evidence-026",
+    "ack-evidence-027"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "arm_ids": [
+    "base"
+  ],
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 256,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "nonclinical_task_completion",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "met": {
+              "type": "boolean"
+            },
+            "correction": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "met",
+            "correction"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "max_tool_rounds": 0,
+  "input_token_cap": 16384,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "ack-evidence-000": 1459,
+    "ack-evidence-001": 1383,
+    "ack-evidence-002": 1426,
+    "ack-evidence-003": 1370,
+    "ack-evidence-004": 1386,
+    "ack-evidence-005": 1362,
+    "ack-evidence-006": 1406,
+    "ack-evidence-007": 1334,
+    "ack-evidence-008": 1349,
+    "ack-evidence-009": 1353,
+    "ack-evidence-010": 1340,
+    "ack-evidence-011": 1416,
+    "ack-evidence-012": 1432,
+    "ack-evidence-013": 1378,
+    "ack-evidence-014": 1406,
+    "ack-evidence-015": 1370,
+    "ack-evidence-016": 1395,
+    "ack-evidence-017": 1365,
+    "ack-evidence-018": 1426,
+    "ack-evidence-019": 1382,
+    "ack-evidence-020": 1415,
+    "ack-evidence-021": 1425,
+    "ack-evidence-022": 1466,
+    "ack-evidence-023": 1464,
+    "ack-evidence-024": 2028,
+    "ack-evidence-025": 1920,
+    "ack-evidence-026": 2001,
+    "ack-evidence-027": 1641
+  },
+  "estimated_max_cost_usd": 0.0480256,
+  "metrics_validity": "diagnostic_unvalidated",
+  "clinical_quality_claims": false
+}

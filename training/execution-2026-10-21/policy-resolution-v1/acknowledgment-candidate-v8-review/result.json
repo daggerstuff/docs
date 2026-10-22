@@ -1,0 +1,303 @@
+{
+  "passed": true,
+  "raw_results_sha256": "7f4dcbcc0d32e22a9c30dec63e524d690e1349dad95b0e08b9f136f6ea4175e9",
+  "valid_responses": 48,
+  "expected_responses": 48,
+  "calibration_labels": 0,
+  "mismatches": [],
+  "invalid": [],
+  "missing": [],
+  "ratings": {
+    "review-evidence-000": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-001": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-002": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-003": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-004": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-005": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-006": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-007": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-008": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-009": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-010": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-011": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-012": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-013": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-014": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-015": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-016": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-017": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-018": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-019": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-020": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-021": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-022": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-023": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-024": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-025": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-026": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-027": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-028": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-029": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-030": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-031": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-032": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-033": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-034": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-035": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-036": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-037": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-038": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-039": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-040": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-041": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-042": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-043": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-044": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-045": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-046": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    },
+    "review-evidence-047": {
+      "raw_semantic_met": true,
+      "met": true,
+      "correction": "",
+      "format_issue": ""
+    }
+  },
+  "runtime_reviewer_authorized": false,
+  "clinical_safety_approval": false,
+  "v18_flags_replaced": false
+}

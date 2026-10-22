@@ -1,0 +1,16 @@
+{
+  "files_sha256": {
+    "reviewer-intake.json": "d2ff74a5a194e1e28f967bf71fac2648c0be14f12821e0bea82af7321cb56554",
+    "proposed-acknowledgment-criterion.json": "183a49653235241996fdd0bd2006d7eba85e9f599927a06ede18c4004721e803",
+    "acknowledgment-addendum-form.json": "fb533b3e9a94af6a903323e5673ef27ae7ab8c8d5fb535e2fa65bf81a89de8b7",
+    "original-review-form-template.json": "8f1407cededf01899141d40a74583421cd33a60d82d4237d5636cf8076100e50",
+    "README.md": "7dcf362fec1231908e4bf5425731837a787055ceb2682fff5207e05dfef6fdb2",
+    "original-rubric.json": "036768fdab7ab9769375e687ca86464b1b32aae8eccea7774af3bf2ef6f83ffb",
+    "blinded-packets.jsonl": "377b4ec1725ff4a9b3e87a20d77d3b82cdb739bf7b3bb0921bf77209131a3783"
+  },
+  "original_blinded_packets_unchanged": true,
+  "original_v18_manifest_sha256": "934e2ba2ffc6ce4946bf6fa54e41c7997fc2ede649dcf16985b69929881a2106",
+  "review_completed": false,
+  "clinical_validation": false,
+  "deployment_authorized": false
+}

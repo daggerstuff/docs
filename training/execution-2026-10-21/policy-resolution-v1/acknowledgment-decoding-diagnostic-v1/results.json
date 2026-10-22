@@ -1,0 +1,185 @@
+{
+  "ratings": [
+    {
+      "mode": "schema_compact",
+      "id": "ack-evidence-000",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "specific",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The candidate recognizes the user's circumstance (spending a lot of energy caring for others) and provides exactly one tiny action as requested.",
+        "evidence_excerpt": "You've spent a lot caring for others. Rest your hands for a moment, or shorten that if needed.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "schema_compact",
+      "id": "ack-evidence-001",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "specific",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The candidate recognizes the user's circumstance of being drained and provides exactly one tiny action as requested, honoring the 'one tiny step' constraint.",
+        "evidence_excerpt": "Rest your hands for a moment, or shorten that if needed.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "schema_compact",
+      "id": "ack-evidence-002",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "specific",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The candidate recognizes the specific circumstance of the user being burdened by others' needs all week.",
+        "evidence_excerpt": "You've been carrying everyone else's needs all week. That is a lot to carry.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "schema_compact",
+      "id": "ack-evidence-003",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "specific",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The candidate recognizes the user's circumstance (everyone needing things/needing support) and honors the implicit request for support by providing a single, direct action (making a to-do list) without asking questions or giving unsolicited advice beyond the requested support type.",
+        "evidence_excerpt": "Needs. Support. Make a to-do list and finish it.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "schema_compact",
+      "id": "ack-evidence-004",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "quiet_presence_exception",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The user explicitly requested quiet company ('Please just sit quietly with me') and no tasks. The candidate honors this by providing presence without reflection or tasks, triggering the quiet_presence_exception.",
+        "evidence_excerpt": "I'm here with you. You don't have to do anything right now.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "schema_compact",
+      "id": "ack-evidence-005",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "quiet_presence_exception",
+        "preferences_met": false,
+        "evidence_id": "s0",
+        "rationale": "The user explicitly requested quiet company and no tasks. The candidate response ignored this request and provided a multi-step sequence of tasks, violating the user's preference.",
+        "evidence_excerpt": "Write a memory, make tea, then call a relative.",
+        "format_issue": "",
+        "met": false
+      },
+      "valid": true
+    },
+    {
+      "mode": "plain_compact",
+      "id": "ack-evidence-000",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "specific",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The candidate recognizes the user's circumstance (spending a lot of energy caring for others) and provides exactly one tiny action as requested.",
+        "evidence_excerpt": "You've spent a lot caring for others. Rest your hands for a moment, or shorten that if needed.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "plain_compact",
+      "id": "ack-evidence-001",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "specific",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The candidate recognizes the user's circumstance of being drained and provides exactly one tiny action as requested, honoring the 'one tiny step' constraint.",
+        "evidence_excerpt": "Rest your hands for a moment, or shorten that if needed.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "plain_compact",
+      "id": "ack-evidence-002",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "specific",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The candidate recognizes the specific circumstance of the user being burdened by others' needs all week.",
+        "evidence_excerpt": "You've been carrying everyone else's needs all week. That is a lot to carry.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "plain_compact",
+      "id": "ack-evidence-003",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "specific",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The candidate recognizes the user's circumstance (everyone needing things/needing support) and honors the implicit request for support by providing a single, direct action (making a to-do list) without unsolicited advice or questions.",
+        "evidence_excerpt": "Needs. Support. Make a to-do list and finish it.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "plain_compact",
+      "id": "ack-evidence-004",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "quiet_presence_exception",
+        "preferences_met": true,
+        "evidence_id": "s0",
+        "rationale": "The user explicitly requested quiet company ('Please just sit quietly with me') and no tasks. The candidate honors this by providing presence without reflection or tasks, triggering the quiet_presence_exception.",
+        "evidence_excerpt": "I'm here with you. You don't have to do anything right now.",
+        "format_issue": "",
+        "met": true
+      },
+      "valid": true
+    },
+    {
+      "mode": "plain_compact",
+      "id": "ack-evidence-005",
+      "finish_reason": "stop",
+      "rating": {
+        "recognition": "quiet_presence_exception",
+        "preferences_met": false,
+        "evidence_id": "s0",
+        "rationale": "The user explicitly requested quiet company and 'no tasks'. The candidate response ignored this request and provided a multi-step sequence of tasks, directly violating the user's preference.",
+        "evidence_excerpt": "Write a memory, make tea, then call a relative.",
+        "format_issue": "",
+        "met": false
+      },
+      "valid": true
+    }
+  ],
+  "cost_usd": 0.0013135
+}
