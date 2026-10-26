@@ -11,7 +11,6 @@ header. Verify the signature before processing the payload.
 import hashlib
 import hmac
 import json
-import os
 from typing import Any
 
 # ---------------------------------------------------------------------------
@@ -30,9 +29,7 @@ def verify_webhook_signature(raw_body: bytes, signature: str, secret: str) -> bo
     Returns:
         True if the signature matches, False otherwise.
     """
-    expected = hmac.new(
-        secret.encode("utf-8"), raw_body, hashlib.sha256
-    ).hexdigest()
+    expected = hmac.new(secret.encode("utf-8"), raw_body, hashlib.sha256).hexdigest()
 
     # Use hmac.compare_digest to prevent timing attacks
     return hmac.compare_digest(expected, signature)
@@ -90,8 +87,6 @@ def handle_webhook(
         return 400, {"error": "Invalid JSON payload"}
 
     event_type = payload.get("eventType", "")
-    resource_id = payload.get("resourceId", "")
-    tenant_id = payload.get("tenantId", "")
 
     # 4. Dispatch to the appropriate handler
     try:
@@ -157,6 +152,7 @@ def on_note_signed(payload: dict[str, Any]) -> None:
 # ---------------------------------------------------------------------------
 
 # from flask import Flask, request, Response
+# import os
 #
 # app = Flask(__name__)
 # WEBHOOK_SECRET = os.environ["PIXELATED_WEBHOOK_SECRET"]
@@ -183,6 +179,7 @@ def on_note_signed(payload: dict[str, Any]) -> None:
 # ---------------------------------------------------------------------------
 
 # from fastapi import FastAPI, Request, Response
+# import os
 #
 # app = FastAPI()
 # WEBHOOK_SECRET = os.environ["PIXELATED_WEBHOOK_SECRET"]
