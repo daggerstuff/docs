@@ -29,18 +29,15 @@ htmlcov/
 # Metadata, run reports, state, and results stay tracked; the giant
 # per-request payloads and raw logs do not. Keep patterns generic so new
 # execution dates don't need edits.
+training/execution-*/wandb-sft-artifacts/
+training/execution-*/wandb-full-corpus-*-artifacts/
+training/**/*.zip
 training/execution-2026-10-17/source-decision-ledger.jsonl
 training/execution-2026-10-17/__pycache__/
 training/execution-2026-10-17/current-master-source-decision-ledger*.jsonl
-training/execution-2026-10-17/wandb-sft-artifacts/
-training/execution-2026-10-18/wandb-sft-artifacts/
-training/execution-2026-10-18/wandb-full-corpus-v2-artifacts/
 training/execution-2026-10-19/fireworks-muse-glimmer-20261019/logs/train.jsonl
 training/execution-2026-10-19/fireworks-muse-glimmer-20261019/logs/metrics.jsonl
 training/execution-2026-10-19/fireworks-muse-glimmer-20261019/launch.stdout
-training/execution-2026-10-19/wandb-sft-artifacts/
-training/execution-2026-10-20/wandb-sft-artifacts/
-training/execution-2026-10-21/wandb-sft-artifacts/
 training/execution-2026-10-19/wandb-artifact-inventory-*.json
 training/execution-2026-10-20/wandb-artifact-inventory-*.json
 training/execution-2026-10-21/wandb-artifact-inventory-*.json
