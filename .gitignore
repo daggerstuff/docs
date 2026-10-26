@@ -26,11 +26,18 @@ __pycache__/
 htmlcov/
 
 # Heavy training execution artifacts (data dumps, not docs)
-# Metadata, run reports, state, and results stay tracked; the giant
-# per-request payloads and raw logs do not. Keep patterns generic so new
-# execution dates don't need edits.
+# Internal review packets, run state, launch payloads, and giant per-request
+# payloads stay untracked; handoffs and run reports are committed deliberately.
+# Keep patterns generic so new execution dates don't need edits.
 training/execution-*/wandb-sft-artifacts/
 training/execution-*/wandb-full-corpus-*-artifacts/
+training/execution-*/policy-resolution-v1/
+training/execution-*/wandb-sft-state/
+training/execution-*/wandb-full-corpus-*.json
+training/execution-*/v*-launch-config.json
+training/execution-*/fireworks-*/create*.json
+training/execution-*/fireworks-*/launch.log
+training/agent-tool-sft-*/
 training/**/*.zip
 training/execution-2026-10-17/source-decision-ledger.jsonl
 training/execution-2026-10-17/__pycache__/
