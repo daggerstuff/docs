@@ -1,8 +1,0 @@
-{
-  "instruction_sha256": "d9bc1a551b30ad97212745573359df22c50f9a14c96ccb2b46633b83428ef9fa",
-  "anchors": 28,
-  "input_sha256": "6b97607e52285e417df1926ccc3682c2c1706bb280d9133ebb4eb77fba0b0718",
-  "model": "google/gemma-4-26B-A4B-it",
-  "cap_usd": 0.05,
-  "retries": 0
-}

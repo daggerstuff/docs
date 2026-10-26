@@ -1,8 +1,0 @@
-{
-  "protocol_sha256": "9b8202d1833abd0ca3398ad9e24fda61d09700c1887feb369abeefc8f8744369",
-  "scope": "Nonclinical task completion only. No authorization of clinical safety.",
-  "failed_task_anchors": 6,
-  "passing_controls": 9,
-  "reserved_usd": 0.01,
-  "labels_sent_to_runtime": false
-}
