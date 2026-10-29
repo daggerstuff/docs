@@ -81,8 +81,7 @@ Items 1–3, 7–8, 10–12 carry verified evidence; item 9's adapter is impleme
 
 ## 5. Pointers (authoritative sources; counts live there, not here)
 
-- Dataset state and close-out: [`ai/training/DATASET_PIPELINE_HANDOFF.md`](../../ai/training/DATASET_PIPELINE_HANDOFF.md) — latest section supersedes earlier snapshots.
-- Dataset history and arc-track background: [`DATASET_CREATION_HANDOFF.md`](../../DATASET_CREATION_HANDOFF.md).
+- Dataset state and close-out: [`ai/training/DATASET_PIPELINE_HANDOFF.md`](../../ai/training/DATASET_PIPELINE_HANDOFF.md) — latest section supersedes earlier snapshots, including the arc-track background that used to live in the retired root `DATASET_CREATION_HANDOFF.md`.
 - Preparation plan and its boundaries: [`.junie/plans/fireworks-training-preplan.md`](../../.junie/plans/fireworks-training-preplan.md).
 - Phase 2 export plan (executed locally 2026-10-10): [`fireworks-export-plan.md`](./fireworks-export-plan.md) — payload spec, screening results, seed-level splits, snapshot identity, execution record §9.
 - Owner decision packages (all granted 2026-10-10; grant records in the file): [`fireworks-approval-packages.md`](./fireworks-approval-packages.md) — Phase 1 determinations and Phase 3 requests.
