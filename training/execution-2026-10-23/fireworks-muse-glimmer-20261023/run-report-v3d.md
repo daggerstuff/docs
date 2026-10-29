@@ -1,0 +1,22 @@
+# Fireworks Muse Glimmer v3d — LR 2e-4 Ablation (2026-10-25)
+
+- Job ID: `accounts/linencloset/supervisedFineTuningJobs/pixelated-glimmer-v3d-20261025064336-r1`
+- State: `JOB_STATE_COMPLETED`
+- Base model: `accounts/fireworks/models/muse-glimmer-30b`
+- Train dataset: `accounts/linencloset/datasets/arc-pilot-v1-train` (418 rows)
+- Eval dataset: `accounts/linencloset/datasets/arc-pilot-v1-eval` (80 rows)
+- Output model: `accounts/linencloset/models/arc-pilot-v3d-glimmer-lr2e4` (`READY`)
+- Treatment: LR `2e-4` (all other settings identical to F1: rank 16, 2 epochs, max context 32,768, `eval_auto_carveout=false`, checkpoint interval 1000)
+- Training telemetry: 28 optimizer steps, eval loss `0.6492 → 0.4180`, ppl `1.914 → 1.519`, step-28 train loss `0.3519`
+- Promo/rated cost: `$0.00`, attribution `COMPLETE`, 0 rows (verified post-run)
+- Results table now:
+  - F1: `1e-4`, rank16 → eval loss `0.4288`
+  - F3-B: `5e-5`, rank16 → eval loss `0.4485`
+  - F3-C: `1e-4`, rank8 → eval loss `0.4295`
+  - **F3-D: `2e-4`, rank16 → eval loss `0.4180` (new low)**
+- Interpretation: among these four one-factor ablations, `2e-4` produced the best eval-loss change; LR direction matters more than rank within this tested range. This is still a provider-match signal (28 steps, single small dataset/predicted by AutoScientist? Fireworks) and not a clinically validated or promoted result.
+- Export status: model `READY`; account-level API-key download restriction still in place (surveyed 2026-10-25); support has not yet effectively unlocked exports despite email.
+- Next:
+  - If downloads unblock, validate and hash adapter locally.
+  - Else, replicate `2e-4 / rank16` with the best available free lane or record it as apparent best Fireworks config.
+  - Avoid any deployment/promotion on this synthetic diagnostic evidence.
