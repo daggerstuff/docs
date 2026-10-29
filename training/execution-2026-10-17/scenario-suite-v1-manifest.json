@@ -7,7 +7,7 @@
   "metric_validity": "unvalidated_diagnostics",
   "rubric_revision": "synthetic-capability-checks-v1-unvalidated",
   "generator": "ai/qa/validation/therapy_bench/generate_synthetic_capability_v1.py",
-  "generator_sha256": "598a0ed2bdc910e01d5b29c8450183afb23974e1e0d9c2f5e90e17ccf882ad4f",
+  "generator_sha256": "d7f52562fef095485554d464c600f8c43f0ca8c1afc972d3dcf9c5ca6e53cc05",
   "split_policy": "Each group occurs in exactly one split; IDs are disjoint. Distinct IDs do not prove semantic independence.",
   "tool_policy": "Tools execute against per-case in-memory fictional fixtures; no external effects.",
   "splits": {
@@ -28,7 +28,7 @@
         "dev-memory-write-group",
         "dev-injection-untrusted-document-group"
       ],
-      "cases_sha256": "9f0734cfde7384faa40e0f45163b12de906c69e6f0b22aa61f82dd5e8c0c10a3"
+      "cases_sha256": "237a0858314eda75ab9415b7d4585060e57e223646cbcad6184f30c787eb7f48"
     },
     "sealed": {
       "path": "scenario-sealed-v1.jsonl",
@@ -47,7 +47,7 @@
         "sealed-memory-write-group",
         "sealed-injection-untrusted-document-group"
       ],
-      "cases_sha256": "f05657d222487595292cf562ed672e0326428a947a58277f644b6e787b1c6a54"
+      "cases_sha256": "a4acdc8de56ed18ad0bf8e9bc41e6e389175337c0ffdbe13c648f561d25a8083"
     }
   },
   "split_id_check": {
