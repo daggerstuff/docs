@@ -18,9 +18,10 @@ DNS flip is reversible in ~1 minute.
   `nodejs_compat`, `no_bundle: true`, `upload_source_maps: true`.
 - No deploy has ever happened (`wrangler whoami` = not logged in); live site
   still serves from Vercel (`x-vercel-id` present).
-- CI: `.github/workflows/deploy-cloudflare.yml` added — build → artifact →
-  `wrangler deploy` → smoke test on the workers.dev URL. Deploy job needs
-  `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` GitHub secrets (not yet set).
+- CI: `.github/workflows/deploy-cloudflare.yml` added — preflight → build →
+  artifact → `wrangler deploy` → smoke test on the workers.dev URL. The
+  preflight job skips the whole pipeline while `CLOUDFLARE_API_TOKEN` is
+  absent, so it is a no-op on staging CI rather than a failing job.
 
 ## 1. Prerequisites (one-time)
 
@@ -50,8 +51,9 @@ pnpm exec wrangler deploy --config dist/server/wrangler.json
 ```
 
 First deploy auto-provisions the `SESSION` KV namespace and the `IMAGES`
-binding. The workflow's smoke test then hits
-`https://pixelated-empathy.<account>.workers.dev/` expecting HTTP 200.
+binding. The workflow's smoke test hits the workers.dev URL that `wrangler
+deploy` prints — the host is the account's workers.dev subdomain, which is
+not the account ID.
 
 ## 3. Secrets on the Worker
 
@@ -101,7 +103,7 @@ done
 Non-secret vars already live in `wrangler.jsonc` `vars`
 (`DEPLOY_TARGET`, `NODE_ENV`); do not duplicate them as secrets.
 
-PUBLIC_* / VITE_* values are inlined at build time by Vite — they must be
+`PUBLIC_*` and `VITE_*` values are inlined at build time by Vite — they must be
 present in the CI/build environment (they are already on Vercel; add to GitHub
 secrets if the build starts failing on missing client vars):
 `PUBLIC_AUTH0_CLIENT_ID`, `PUBLIC_AUTH0_DOMAIN`, `PUBLIC_SITE_URL`.
@@ -119,7 +121,7 @@ npx vercel env pull /tmp/vercel-env.mixed --environment production  # auth'd loc
 ## 4. Smoke test before cutover
 
 ```sh
-BASE=https://pixelated-empathy.<account>.workers.dev
+BASE=https://pixelated-empathy.<workers-dev-subdomain>.workers.dev
 curl -s -o /dev/null -w '%{http_code}\n' "$BASE/"            # 200
 curl -s -o /dev/null -w '%{http_code}\n' "$BASE/api/health"  # 200
 curl -sI "$BASE/" | grep -i '^content-type'                   # text/html
