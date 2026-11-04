@@ -84,12 +84,13 @@ response — covered in [SLA Breach Response](./sla-breach-response.md).
 
 ### 2.3 CI/CD Pipeline Details
 
-- **Platform**: GitHub Actions (27 workflows)
-- **Primary deploy workflow**: `deploy-aws.yml`
+- **Platform**: GitHub Actions
+- **Primary publish workflow**: `build-images.yml`
   - Builds Docker images for 4 services (api, session-agent, qa-agent,
     pipeline-agent)
   - Pushes to Docker Hub (`pixelatedempathy/*`)
-  - Deploys to AWS EKS via `kubectl` + `kustomize`
+  - Production is deployed off AWS (Vercel origin); the former AWS EKS
+    deploy workflow was removed with the cluster
   - Blue slot = active deployment target
   - Post-deploy: rollout status check + smoke test via
     `scripts/deploy/verify-deployment.sh`
@@ -291,10 +292,8 @@ AWS. Control plane failures are AWS's responsibility.
 6. **Deploy latest images**:
 
    ```bash
-   # Trigger deploy-aws.yml workflow or deploy manually
-   kubectl set image deployment/pixelated-empathy \
-     app=pixelatedempathy/api:latest -n pixelated-empathy
-   kubectl rollout status deployment/pixelated-empathy -n pixelated-empathy
+   # Re-publish the latest images (build-images.yml) or redeploy the
+   # previous image tag wherever the fleet now runs (production is off AWS)
    ```
 
 7. **Verify full stack**:
@@ -956,7 +955,7 @@ Deploy synthetic checks to detect region-wide outages:
   staging/production overlays)
 - `k8s/base/` — base K8s resources (namespace, deployments, services, ingress,
   HPA, secrets)
-- `.github/workflows/` — CI/CD workflows (28 files including `deploy-aws.yml`)
+- `.github/workflows/` — CI/CD workflows (including `build-images.yml`)
 - `src/lib/deployment/multi-region/AutomatedFailoverOrchestrator.ts` —
   multi-region failover orchestration
 - `ai/deployment/production_deployer.py` — blue-green canary deployer with

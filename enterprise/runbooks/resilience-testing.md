@@ -560,7 +560,7 @@ errors"]
 | CE-2.2  | HPA maxReplicas=1                  | P0       | Increase to min=2, max=4 for zero-downtime pod-kill tests   | SRE            |
 | CE-2.3  | No circuit breaker instrumentation | P1       | Add circuit breaker metrics for Redis/AI connections        | Backend        |
 | CE-2.4  | No cache fallback layer            | P1       | Implement response caching for AI service partitions        | Backend        |
-| CE-2.5  | No chaos CI workflow               | P1       | Create `.github/workflows/chaos-validation.yml`             | DevOps         |
+| CE-2.5  | Chaos CI workflow                  | P1       | Retired with the AWS EKS cluster (production is off AWS)     | DevOps         |
 | CE-2.6  | No results storage                 | P2       | Create `.agent/internal/chaos-results/` directory structure | Chaos Engineer |
 | CE-2.7  | No synthetic monitoring            | P1       | Add synthetic checks for experiment validation              | SRE            |
 | CE-2.8  | No Foresight MCP experiment        | P2       | Add NetworkChaos targeting Foresight MCP service            | Chaos Engineer |
