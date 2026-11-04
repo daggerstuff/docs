@@ -56,13 +56,14 @@ posts the completed review to the Linear coordination issue.
 
 ## Pipeline Health
 
-| Workflow          | Last run | Status | Evidence   |
-| ----------------- | -------- | ------ | ---------- |
-| CI                | [commit] |        | [run link] |
-| Quality           | [commit] |        | [run link] |
-| Security Scanning | [commit] |        | [run link] |
-| Deploy to AWS EKS | [commit] |        | [run link] |
-| Vercel            | [commit] |        | [run link] |
+| Workflow                 | Last run | Status | Evidence   |
+| ------------------------ | -------- | ------ | ---------- |
+| CI                       | [commit] |        | [run link] |
+| Quality                  | [commit] |        | [run link] |
+| Security Scanning        | [commit] |        | [run link] |
+| Build and Publish Images | [commit] |        | [run link] |
+| Cloudflare (prod)        | [commit] |        | [run link] |
+| Vercel (standby)         | [commit] |        | [run link] |
 
 ## Backlog
 

@@ -3,39 +3,30 @@
 Concise procedures for the failure modes this system actually has. Every
 workflow referenced here lives in `.github/workflows/`.
 
-## 1. EKS deployment failed / auto-rollback fired
+## 1. Image publish failed (Build and Publish Images)
 
-**Detection:** `Deploy to AWS EKS` (workflow_run, triggered by CI success on
-staging) fails. The app deploys in stages (blue/green):
+**Detection:** `Build and Publish Images` (workflow_run, triggered by CI success
+on staging) fails. Production is deployed off AWS: the workflow builds the
+app image (`infra/Dockerfile`) and the agent images (`agents/Dockerfile`) and
+pushes them to Docker Hub.
 
-1. The new image is rolled out on the **idle slot** (the deployment the service
-   selector is not pointing at) and must pass a pre-live `/health` smoke — a
-   failure here has zero user impact.
-2. The service selector is flipped to the staged slot, then a second smoke runs
-   through the service. On failure the selector flips **back** automatically
-   (seconds) and the agent deployments roll back.
+What to do:
 
-What to do after an automatic rollback:
-
-1. Confirm the rollback in the failing run: "Service selector flipped" /
-   "Rollback complete." log lines, and that the service selector points at the
-   previous slot:
-   `kubectl get svc pixelated-empathy -n pixelated-empathy -o jsonpath='{.spec.selector.slot}'`
-2. Identify the change: the deploy ships the image digest built from the CI head
-   that triggered it. Open the linked CI run to find the commit.
-3. If the flip-back itself failed, manually restore the selector to the previous
-   slot with
-   `kubectl patch svc pixelated-empathy -n pixelated-empathy --type merge -p '{"spec":{"selector":{"app":"pixelated-empathy","slot":"<prev>"}}}'`
-   and verify with the same jsonpath above, then roll back the agent deployments
-   (`kubectl rollout undo deployment/<agent> -n pixelated-empathy`) if the run
-   died between their rollout and the app flip.
-4. Re-run the deploy for staging only after the offending commit is fixed or
-   reverted. Deploys are dispatchable manually (`workflow_dispatch`) but
+1. Read the failing step in the run. The most common failure is a Docker Hub
+   push rejected — check `DOCKERHUB_USERNAME` / `DOCKERHUB_TOKEN` are valid.
+2. If a build step fails, reproduce locally with the same `docker build`
+   command the run prints (same `--build-arg AGENT_DIR` and Dockerfile) before
+   pushing a fix.
+3. Identify the change: the publish ships the image built from the CI head that
+   triggered it. Open the linked CI run to find the commit.
+4. Re-run the publish for staging only after the offending commit is fixed or
+   reverted. Publishes are dispatchable manually (`workflow_dispatch`) but
    normally follow a green CI run.
 
-Note: percentage-based canary (traffic split between slots) is NOT enabled —
-Traefik's weighted routing needs the CRD provider, which is not turned on.
-Rollout is staged, not fraction-split.
+Note: the former AWS EKS deployment (and its staged blue/green rollout and
+auto-rollback) was removed when production moved off AWS. Serving-origin
+rollbacks are handled via the Cloudflare Workers domain (section 4);
+image-level rollbacks mean re-publishing the previous tag.
 
 ## 2. Monitoring alert fired (Slack)
 
@@ -70,14 +61,17 @@ routing table and per-surface ownership live in that script.
 4. `Error Insight` posts a digest for red runs; use it for triage, not as a
    substitute for reading the log.
 
-## 4. Frontend deploy issue (Vercel)
+## 4. Serving-origin deploy issue (Cloudflare Workers)
 
-1. Check the `Vercel (Frontend Test Center)` and `Build & Sentry Release` runs
-   for the same commit — the deploy pipeline only ships after green CI, gated by
-   the policies in `.github/workflows/vercel-policy.md`.
-2. If the build is green but the site misbehaves, roll back in the Vercel
-   dashboard to the previous deployment for the affected environment.
-3. Sentry releases tag each deploy; use the release view to confirm which
+1. Check the `Deploy to Cloudflare Workers` run for the commit — it only
+   ships after green CI, and its job log shows the runtime-env sync, the
+   `wrangler deploy`, and the workers.dev + production-domain smoke tests.
+2. If the deploy is green but the site misbehaves, roll back by reverting the
+   offending commit and letting the pipeline redeploy; the Workers custom
+   domain (wrangler.jsonc `routes`) keeps serving the latest green deploy.
+3. To fail back to Vercel wholesale, follow "Failing back to Vercel" in
+   `.github/workflows/vercel-policy.md` — the standby stays warm.
+4. Sentry releases tag each deploy; use the release view to confirm which
    version is live.
 
 ## 5. Nightly accuracy gate is red

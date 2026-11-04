@@ -12,7 +12,7 @@ public git history, which rotation cannot undo.
 **Related docs:**
 
 - Fleet auth helper: `agents/lib/channels/eve.ts`
-- Secret manifest template: `agents/k8s/namespace-secrets.yaml`
+- Fleet deployment: `agents/deploy/README.md`
 - Systemd install: `agents/deploy/systemd/install.sh`
 - Deploy escalation: `docs/runbooks/ci-escalation.md`
 
@@ -69,12 +69,12 @@ Verified behaviour:
 
 ## 3. Rotation record (2026-11-04)
 
-| Location                             | Before                              | After                                |
-| ------------------------------------ | ----------------------------------- | ------------------------------------ |
-| Local `.env` line 365                | exposed literal                     | new 32-char CSPRNG value             |
-| GitHub secret `EVE_AUTH_PASSWORD`    | created 2026-08-30, exposed literal | rewritten 2026-11-04T06:41:58Z       |
-| Public git history                   | `92852f528`                         | **unchanged** — cannot be undisclosed |
-| EKS secret `eve-auth`                | last written 2026-10-21             | retired with the cluster (see §5)    |
+| Location                          | Before                              | After                                 |
+| --------------------------------- | ----------------------------------- | ------------------------------------- |
+| Local `.env` line 365             | exposed literal                     | new 32-char CSPRNG value              |
+| GitHub secret `EVE_AUTH_PASSWORD` | created 2026-08-30, exposed literal | rewritten 2026-11-04T06:41:58Z        |
+| Public git history                | `92852f528`                         | **unchanged** — cannot be undisclosed |
+| EKS secret `eve-auth`             | last written 2026-10-21             | retired with the cluster (see §5)     |
 
 No live deployment consumed the old value at rotation time, so the swap carried
 no availability risk.
@@ -90,11 +90,11 @@ deleted in `bf6504d5a` (2026-11-04). No workflow references `EVE_AUTH_*`.
 
 Remaining consumers are operator-side:
 
-| Consumer                            | How it reads the value                              |
-| ----------------------------------- | --------------------------------------------------- |
+| Consumer                              | How it reads the value                                |
+| ------------------------------------- | ----------------------------------------------------- |
 | `tools/px` (`invoke.ts`, `agents.ts`) | `process.env.EVE_AUTH_*`, typically from local `.env` |
-| `agents/*/agent/channels/eve.ts`    | env, fail-closed when unset                          |
-| `agents/deploy/systemd/install.sh`  | templates `/opt/pixelated/agents.env` on install      |
+| `agents/*/agent/channels/eve.ts`      | env, fail-closed when unset                           |
+| `agents/deploy/systemd/install.sh`    | templates `/opt/pixelated/agents.env` on install      |
 
 Because the fleet is not currently deployed anywhere, there is no running
 process to restart. The value matters again the moment the fleet is
@@ -118,8 +118,10 @@ Consequently:
 - `AWS_DEPLOY_ROLE_ARN` remains in the GitHub secret store as an orphan. It can
   be deleted when convenient; nothing reads it.
 
-Production is Vercel for the web surface and Cloudflare Workers as the
-migration target. The agent fleet has no production home until one is chosen.
+Production serves from Cloudflare Workers for the web surface, with Vercel as
+the warm standby. The agent fleet's home is now Docker Compose on a fleet host
+(`agents/deploy/docker-compose.yaml`), with systemd as the bare-metal
+alternative — see `agents/deploy/README.md`.
 
 ## 6. Re-rotating later
 
@@ -172,7 +174,7 @@ A stale env file shows up as 401s, not as a crash, so check explicitly:
 
 ```bash
 # operator side
-px agents list
+px health
 
 # fleet side, on the host
 grep -c '^EVE_AUTH_PASSWORD=' /opt/pixelated/agents.env

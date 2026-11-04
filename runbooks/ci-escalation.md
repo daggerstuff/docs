@@ -17,8 +17,8 @@ check live, who owns the failure, and what do I fix first?
 
 - `staging` is the primary integration and preview branch. `main` is production.
 - Feature and agent branches do not deploy. Use a PR to `staging` for previews.
-- EKS is the production runtime; Vercel is a frontend test center,
-  path-filtered.
+- Cloudflare Workers is the production runtime (deploy-cloudflare.yml, follows
+  green CI); Vercel is the warm standby, path-filtered.
 - A failing required check blocks merge. Do not rerun a red check without
   reading the failed step.
 
@@ -34,8 +34,9 @@ check live, who owns the failure, and what do I fix first?
 | AI submodule strict types  | `quality.yml`                                                                     | AI                  | Run `node scripts/ci/ai-strict-ratchet.mjs`; fix new files or grown error keys in the submodule.   |
 | AI/training pipeline       | `training-pipeline.yml`, `ai-validation.yml`                                      | AI                  | Verify dataset gates and fixture paths; do not change gates without an AI owner.                   |
 | Security scanning          | `security.yml`, `security-deep.yml`, `security-scanning.yml`                      | Security            | Triage findings by rule/asset; never merge with unexplained high/critical findings.                |
-| AWS/EKS deploy             | `deploy-aws.yml`                                                                  | Platform            | Check image build, then rollout/logs; use `aws-diagnose.yml` for deeper diagnostics.               |
-| Vercel frontend deploy     | `vercel.yml`                                                                      | Frontend            | Confirm the changed paths are frontend-relevant; check build logs before rerunning.                |
+| Vercel standby deploy      | `vercel.yml`                                                                      | Frontend            | Confirm the changed paths are frontend-relevant; check build logs before rerunning.                |
+| Image publishing           | `build-images.yml`                                                                | Platform            | Check the Docker Hub credentials, then the failing `docker build` step.                            |
+| Cloudflare prod deploy     | `deploy-cloudflare.yml`                                                           | Platform            | Production origin; check the credential preflight, the env sync, and the domain smoke test.        |
 | Release/package generation | `sdk-generation.yml`, `release*.yml`, `sentry-build.yml`                          | Platform            | Verify version/secret inputs; keep release automation changes behind review.                       |
 | Scheduled hygiene          | `accuracy-gate.yml`, `flaky-detection.yml`, `stale.yml`, `bias-audit-monthly.yml` | Platform/AI         | Treat repeated scheduled failures as product/platform debt, not flaky CI.                          |
 | Monitoring/compliance      | `monitoring.yml`, `baa-compliance-gate.yml`, `consent-expiry-check.yml`           | Platform/Compliance | Check alert destination and health metric before investigating app logs.                           |
@@ -64,7 +65,8 @@ check live, who owns the failure, and what do I fix first?
 2. Escalate after 30 minutes without a diagnosis, or immediately for:
    - `staging` or `main` is red on a required check,
    - security scanning reports a high/critical finding,
-   - EKS/Vercel deploy is down or repeatedly failing,
+   - the Cloudflare Workers production deploy or the Vercel standby deploy is
+     down or repeatedly failing,
    - patient-impacting functionality is failing in production.
 3. Next escalation: Platform on-call, then the functional lead (AI, Frontend,
    Security, or Docs). Use the SLA breach response runbook for severities and

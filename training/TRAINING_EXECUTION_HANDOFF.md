@@ -657,7 +657,7 @@ W&B credits cannot pay another provider or establish arbitrary-adapter hosting.
 - Existing length/ngram RL reward is unsuitable for clinical alignment.
 - Use blind calibrated comparisons, independent task truth, grouped uncertainty,
   clinical review where needed, and a sealed final test. Never optimize on it.
-- EKS is production, Vercel frontend testing. No deployment to production here.
+- Production is deployed off AWS and serves from Cloudflare Workers. No deployment to production here.
 - Use `uv`/`pnpm`; no `tsc`, `astro check`, or `pnpm typecheck`; no suppressions.
 - No project-root agent configs, raw conversation dumps, secret values, or PHI
   in public logs/artifacts. Keep datasets private. Preserve unrelated edits.

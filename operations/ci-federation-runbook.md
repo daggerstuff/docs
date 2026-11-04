@@ -157,13 +157,15 @@ across two providers:
 
 ### 3.1 Staging (AWS EKS)
 
-| Step                 | Workflow                        | Blocks?          |
-| -------------------- | ------------------------------- | ---------------- |
-| CI checks pass       | `ci.yml`                        | ⚠️ Soft          |
-| Security scan        | `security.yml`                  | ✅               |
-| AI validation        | `ai-validation.yml`             | ⚪ Informational |
-| Migration validation | `migration-validation.yml`      | ✅               |
-| Deploy               | `deploy-aws.yml` (push to main) | ✅ Final gate    |
+| Step                  | Workflow                   | Blocks?          |
+| --------------------- | -------------------------- | ---------------- |
+| CI checks pass        | `ci.yml`                   | ⚠️ Soft          |
+| Security scan         | `security.yml`             | ✅               |
+| AI validation         | `ai-validation.yml`        | ⚪ Informational |
+| Migration validation  | `migration-validation.yml` | ✅               |
+| Image publish         | `build-images.yml`         | ✅ Final gate    |
+| Cloudflare production | `deploy-cloudflare.yml`    | ✅ Final gate    |
+| Vercel standby        | `vercel.yml`               | ⚪ Warm standby  |
 
 ---
 
