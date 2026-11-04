@@ -67,8 +67,8 @@ routing table and per-surface ownership live in that script.
    ships after green CI, and its job log shows the runtime-env sync, the
    `wrangler deploy`, and the workers.dev + production-domain smoke tests.
 2. If the deploy is green but the site misbehaves, roll back by reverting the
-   offending commit and letting the pipeline redeploy; the Workers custom
-   domain (wrangler.jsonc `routes`) keeps serving the latest green deploy.
+   offending commit and letting the pipeline redeploy; the Workers zone route
+   (wrangler.jsonc `routes`) keeps serving the latest green deploy.
 3. To fail back to Vercel wholesale, follow "Failing back to Vercel" in
    `.github/workflows/vercel-policy.md` — the standby stays warm.
 4. Sentry releases tag each deploy; use the release view to confirm which
