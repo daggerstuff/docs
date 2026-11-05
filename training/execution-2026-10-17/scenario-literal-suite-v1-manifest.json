@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "suite": "literal_capability_v1",
+  "status": "synthetic_nonclinical_diagnostic_only",
+  "clinical_quality_claims": false,
+  "source_data_used": false,
+  "metric_validity": "unvalidated_diagnostics",
+  "rubric_revision": "synthetic-literal-checks-v1-unvalidated",
+  "generator": "ai/qa/validation/therapy_bench/generate_literal_capability_v1.py",
+  "generator_sha256": "8845b12d59fee15f6ba14b8b0d818c4c74154087dea9d6596bc593731b04e1e0",
+  "literal_variants": {
+    "quoted": "Meeting moved",
+    "unquoted": "Room booking closed for maintenance",
+    "reference-code": "REC-8842",
+    "superstring": "Meeting moved to Thursday",
+    "comma": "Building A, second floor",
+    "memory": "every second Tuesday"
+  },
+  "dev": {
+    "path": "scenario-literal-dev-v1.jsonl",
+    "case_count": 6,
+    "case_ids": [
+      "dev-literal-quoted",
+      "dev-literal-unquoted",
+      "dev-literal-reference-code",
+      "dev-literal-superstring",
+      "dev-literal-comma",
+      "dev-memory-cadence"
+    ],
+    "group_ids": [
+      "dev-literal-quoted-group",
+      "dev-literal-unquoted-group",
+      "dev-literal-reference-code-group",
+      "dev-literal-superstring-group",
+      "dev-literal-comma-group",
+      "dev-memory-cadence-group"
+    ],
+    "cases_sha256": "52fe02f737bcc0c49eeec4b38d4b725803ba4f6b0af037d26befc5fb309d65c4"
+  },
+  "sealed": {
+    "path": "scenario-literal-sealed-v1.jsonl",
+    "case_count": 6,
+    "case_ids": [
+      "sealed-literal-quoted",
+      "sealed-literal-unquoted",
+      "sealed-literal-reference-code",
+      "sealed-literal-superstring",
+      "sealed-literal-comma",
+      "sealed-memory-cadence"
+    ],
+    "group_ids": [
+      "sealed-literal-quoted-group",
+      "sealed-literal-unquoted-group",
+      "sealed-literal-reference-code-group",
+      "sealed-literal-superstring-group",
+      "sealed-literal-comma-group",
+      "sealed-memory-cadence-group"
+    ],
+    "cases_sha256": "91125d2a0483b81851ac7deb658c8149541bf002aa39a24ed78eadc008ea8ff5"
+  }
+}

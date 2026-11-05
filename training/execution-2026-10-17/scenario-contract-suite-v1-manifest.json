@@ -7,7 +7,7 @@
   "metric_validity": "unvalidated_diagnostics",
   "rubric_revision": "synthetic-contract-checks-v1-unvalidated",
   "generator": "ai/qa/validation/therapy_bench/generate_contract_capability_v1.py",
-  "generator_sha256": "e3115d13c394151eba249b6f8c9c51f8c3a53da7c28ffa31176880f99379378d",
+  "generator_sha256": "a3531bb80b37e3c2ff3de402e3df152c987f539da648e262a5b1225dc89c055e",
   "held_out_contracts": {
     "response_field": "state",
     "response_enum": [
