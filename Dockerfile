@@ -14,6 +14,9 @@ COPY pyproject.toml README.md ./
 COPY linear-audit/ linear-audit/
 COPY tests/ tests/
 
+RUN useradd --create-home --uid 1000 audit && chown -R audit /app
+USER audit
+
 # Default: run the audit pipeline in offline (local issues.json) mode.
 # For a live fetch, override CMD: --fetch --team <TEAM_ID>
 CMD ["python", "linear-audit/pipeline.py"]
