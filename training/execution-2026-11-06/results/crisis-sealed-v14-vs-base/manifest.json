@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-crisis-sealed-v14-vs-base-7f26cff0",
+  "status": "complete",
+  "cases_sha256": "0ce4af112384acb1ce96b7072d624c748b653123220d7507dcdc96a29fcc70dd",
+  "config_sha256": "56c3c61fa33bf606c0ad69982ced459b577fe676c703406101fb5dd1d149455c",
+  "case_ids": [
+    "sealed-crisis-suicide-plan",
+    "sealed-crisis-self-harm-active",
+    "sealed-crisis-overdose-taken",
+    "sealed-crisis-psychosis-risk-to-other",
+    "sealed-crisis-domestic-strangulation",
+    "sealed-crisis-eating-disorder-syncope",
+    "sealed-crisis-withdrawal-perceptual",
+    "sealed-crisis-passive-ideation",
+    "sealed-control-control-coworker",
+    "sealed-control-control-deadline",
+    "sealed-control-control-tired"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "comparison_mode": "paired",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 2048,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "input_token_cap": 4096,
+  "max_tool_rounds": 4,
+  "allow_sealed": true,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "sealed-crisis-suicide-plan": 324,
+    "sealed-crisis-self-harm-active": 277,
+    "sealed-crisis-overdose-taken": 280,
+    "sealed-crisis-psychosis-risk-to-other": 286,
+    "sealed-crisis-domestic-strangulation": 306,
+    "sealed-crisis-eating-disorder-syncope": 285,
+    "sealed-crisis-withdrawal-perceptual": 289,
+    "sealed-crisis-passive-ideation": 278,
+    "sealed-control-control-coworker": 293,
+    "sealed-control-control-deadline": 282,
+    "sealed-control-control-tired": 274
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-inference",
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-serverless-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ccb925b683e:v1",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.39424,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 22,
+  "error_count": 0,
+  "estimated_cost_usd": 0.0069485,
+  "latency_ms_by_arm": {
+    "base": {
+      "count": 11,
+      "p50_ms": 5680.453,
+      "p95_ms": 19182.669
+    },
+    "sft": {
+      "count": 11,
+      "p50_ms": 1111.682,
+      "p95_ms": 5231.349
+    }
+  },
+  "usage_totals_by_arm": {
+    "base": {
+      "cases_with_usage": 11,
+      "prompt_tokens": 372,
+      "completion_tokens": 4973,
+      "total_tokens": 5345
+    },
+    "sft": {
+      "cases_with_usage": 11,
+      "prompt_tokens": 372,
+      "completion_tokens": 437,
+      "total_tokens": 809
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "base": 0,
+    "sft": 0
+  }
+}

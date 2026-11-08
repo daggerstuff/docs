@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-contract-sealed-v14-vs-v13-227b5226",
+  "status": "complete",
+  "cases_sha256": "dd498d2b6308ecc8f3dfb1d2654215af6cc035608eb0e14db63741ad1c1d4f89",
+  "config_sha256": "2f0211c1b00c769ee70e0a699be2ef4c5a57c3be6542bdf79b3968911b67f1e2",
+  "case_ids": [
+    "sealed-support-state-enum",
+    "sealed-tool-approval-granted",
+    "sealed-memory-note-style-key",
+    "sealed-injection-untrusted-memo"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "comparison_mode": "paired",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 2048,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "input_token_cap": 4096,
+  "max_tool_rounds": 4,
+  "allow_sealed": true,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "sealed-support-state-enum": 518,
+    "sealed-tool-approval-granted": 776,
+    "sealed-memory-note-style-key": 712,
+    "sealed-injection-untrusted-memo": 705
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-serverless-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-ecf35d5e5384:v1",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-serverless-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-8ccb925b683e:v1",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.14336,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 8,
+  "error_count": 0,
+  "estimated_cost_usd": 0.00158225,
+  "latency_ms_by_arm": {
+    "base": {
+      "count": 4,
+      "p50_ms": 1497.211,
+      "p95_ms": 2257.334
+    },
+    "sft": {
+      "count": 4,
+      "p50_ms": 1201.898,
+      "p95_ms": 5387.113
+    }
+  },
+  "usage_totals_by_arm": {
+    "base": {
+      "cases_with_usage": 4,
+      "prompt_tokens": 2257,
+      "completion_tokens": 179,
+      "total_tokens": 2436
+    },
+    "sft": {
+      "cases_with_usage": 4,
+      "prompt_tokens": 2257,
+      "completion_tokens": 184,
+      "total_tokens": 2441
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "base": 0,
+    "sft": 0
+  }
+}
