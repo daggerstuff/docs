@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "run_id": "wandb-literal-sealed-v20-vs-v16-5ccc51b3",
+  "status": "complete",
+  "cases_sha256": "91125d2a0483b81851ac7deb658c8149541bf002aa39a24ed78eadc008ea8ff5",
+  "config_sha256": "3b72530c98356c32bc16c810fd78def54dfca4400c9b590d6fa763a78aeafc5a",
+  "case_ids": [
+    "sealed-literal-quoted",
+    "sealed-literal-unquoted",
+    "sealed-literal-reference-code",
+    "sealed-literal-superstring",
+    "sealed-literal-comma",
+    "sealed-memory-cadence"
+  ],
+  "arm_ids": [
+    "base",
+    "sft"
+  ],
+  "comparison_mode": "paired",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 2048,
+    "stop": [],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "input_token_cap": 4096,
+  "max_tool_rounds": 4,
+  "allow_sealed": true,
+  "continue_on_transient_http_errors": false,
+  "preflight_token_upper_bounds": {
+    "sealed-literal-quoted": 753,
+    "sealed-literal-unquoted": 733,
+    "sealed-literal-reference-code": 738,
+    "sealed-literal-superstring": 772,
+    "sealed-literal-comma": 727,
+    "sealed-memory-cadence": 720
+  },
+  "arms": [
+    {
+      "id": "base",
+      "provider": "wandb-serverless-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-562d43347133:v1",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    },
+    {
+      "id": "sft",
+      "provider": "wandb-serverless-training",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-e44e0f31ba6b:v1",
+      "endpoint": "https://api.inference.wandb.ai/v1/chat/completions",
+      "credential_env_name": "WANDB_API_KEY",
+      "project": "wutang/pixelated-empathy-kan28"
+    }
+  ],
+  "diagnostic_metric_validity": "diagnostic_unvalidated",
+  "cost_usd": null,
+  "estimated_max_cost_usd": 0.21504,
+  "actual_billed_usd": null,
+  "cost_status": "usage-based estimate only; actual billed amount not verified",
+  "success_count": 12,
+  "error_count": 0,
+  "estimated_cost_usd": 0.00287625,
+  "latency_ms_by_arm": {
+    "base": {
+      "count": 6,
+      "p50_ms": 1419.576,
+      "p95_ms": 1913.098
+    },
+    "sft": {
+      "count": 6,
+      "p50_ms": 1498.346,
+      "p95_ms": 3817.554
+    }
+  },
+  "usage_totals_by_arm": {
+    "base": {
+      "cases_with_usage": 6,
+      "prompt_tokens": 4290,
+      "completion_tokens": 298,
+      "total_tokens": 4588
+    },
+    "sft": {
+      "cases_with_usage": 6,
+      "prompt_tokens": 4290,
+      "completion_tokens": 287,
+      "total_tokens": 4577
+    }
+  },
+  "finish_reason_length_count_by_arm": {
+    "base": 0,
+    "sft": 0
+  }
+}
