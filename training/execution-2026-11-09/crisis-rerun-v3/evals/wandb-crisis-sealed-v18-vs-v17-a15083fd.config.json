@@ -1,0 +1,37 @@
+{
+  "arms": [
+    {
+      "api_key_env": "WANDB_API_KEY",
+      "base_url": "https://api.inference.wandb.ai/v1",
+      "id": "base",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-b6886c9f8dde:v1",
+      "project": "wutang/pixelated-empathy-kan28",
+      "provider": "wandb-serverless-training"
+    },
+    {
+      "api_key_env": "WANDB_API_KEY",
+      "base_url": "https://api.inference.wandb.ai/v1",
+      "id": "sft",
+      "model": "wandb-artifact:///wutang/pixelated-empathy-kan28/arc-sft-baseline-94b0c6a44c99:v1",
+      "project": "wutang/pixelated-empathy-kan28",
+      "provider": "wandb-serverless-training"
+    }
+  ],
+  "decoding": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "max_tokens": 2048,
+    "stop": [],
+    "temperature": 0
+  },
+  "pricing": {
+    "hard_cap_usd": 0.5,
+    "input_usd_per_million_tokens": 0.25,
+    "output_usd_per_million_tokens": 1.25,
+    "require_finish_reason": true,
+    "require_usage": true
+  },
+  "run_id": "wandb-crisis-sealed-v18-vs-v17-a15083fd",
+  "schema_version": 1
+}
