@@ -16,7 +16,7 @@ session does not have to rediscover it.
 | Registry | `registry.us-east-va.ai.cloud.ovh.us/6d7e4e17-cbf1-4daa-bf7d-ee0210ab9cfc` (SHARED) | `ovhai registry list` |
 | Datastores | `US-EAST-VA`, `US-WEST-OR` (swift, ovhcloud) | `ovhai datastore list` |
 | Object storage | 9.1 TiB quota, zero containers | `ovhai me`, `ovhai bucket list US-EAST-VA` |
-| Credentials on disk | none needed; OAuth token cached by the CLI. No `OVH*` keys in `.env` | `grep` of `.env` |
+| Credentials on disk | OAuth token cached at `~/.config/ovhai/context.json` (mode 600); no `OVH*` keys in `.env` | `ls -la ~/.config/ovhai` |
 
 ## The blocker: GPU quota is zero
 
