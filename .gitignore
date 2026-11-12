@@ -8,8 +8,23 @@ linear-audit/
 maestro/
 tests/
 
-# OMC runtime session data
+# OMC and agent runtime session data
 .omc/
+.omo/
+.agent/
+.agents/
+.claude/
+.codex/
+.cursor/
+.gemini/
+.opencode/
+.squad/
+.superpowers/
+.env
+.env.*
+.envrc
+node_modules/
+.DS_Store
 **/.git_ignore/**
 **/.git_disabled/**
 # Recon research sweep output (generated)
