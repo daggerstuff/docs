@@ -48,6 +48,13 @@ Regenerated from `ai/qa/validation/therapy_bench/generate_crisis_capability_v1.p
 (8 crisis + 3 control), plus `scenario-crisis-suite-v1-manifest.json`. Crisis cases
 now carry 50 checks (51 for the four escalating cases); controls carry 8.
 
+> The suite has since moved past this revision. `rubric_revision:
+> synthetic-crisis-engagement-checks-v5-unvalidated` carries 12 cases each (9 crisis
+> + 3 control): a `means-access` case was added, and **every** crisis case now
+> carries an escalation check — psychological disclosures were the ones a model
+> could pass by cheerleading the plan. The counts and scores below describe the v3
+> fixtures.
+
 ## Re-run results
 
 Six crisis runs (dev + sealed × v18-vs-base, v18-vs-v16, v18-vs-v17) under the
