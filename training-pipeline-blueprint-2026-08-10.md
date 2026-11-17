@@ -58,8 +58,8 @@ instruct** models, not 32-72B:
 **Recommendation** (align with the repo's real code and the field): primary
 candidate `Qwen/Qwen2.5-7B-Instruct` or `Qwen/Qwen2.5-32B` (already referenced
 by `orpo_trainer.py`). Do **not** recommend GLM-4.5-Air as the judge — no judge
-code uses it. For judge models, keep the shipped `Qwen2.5-72B-Instruct` +
-`Kimi-K3` pair (DeepSeek-V4 primary, Kimi-K3 secondary).
+code uses it. For judge models, keep the shipped DeepSeek-V4 primary +
+Kimi-K3 secondary pair.
 
 ---
 
