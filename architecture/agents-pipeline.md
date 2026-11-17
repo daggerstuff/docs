@@ -109,7 +109,7 @@ which uses **sync subagent delegation** because it blocks the promotion gate.
 | Component         | Integration                                              | Used By                                                       |
 | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------- |
 | **Foresight MCP** | HTTP/SSE via `foresight-client.ts`                       | All agents                                                    |
-| **Workers AI**    | MCP connection (`@cf/meta/llama-3.2-3b-instruct`)        | session-agent, qa-agent, content-agent                        |
+| **Workers AI**    | MCP connection (`@cf/mistralai/mistral-small-3.1-24b-instruct`)        | session-agent, qa-agent, content-agent                        |
 | **Memory MCP**    | MCP connection                                           | session-agent                                                 |
 | **Eve framework** | `defineAgent`, `defineTool`, `defineMcpClientConnection` | All agents                                                    |
 | **Linear**        | Channel                                                  | pipeline-agent, supervisor-agent, advisor-agent, intake-agent |
