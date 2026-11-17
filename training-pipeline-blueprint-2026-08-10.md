@@ -36,7 +36,7 @@ Not a recommendation list — a census of model IDs hardcoded in `ai/training`:
 | Model ID                            | Used by                                                    | Role                                                  |
 | ----------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------- |
 | `Qwen/Qwen2.5-32B`                  | `orpo_trainer.py`, `orpo_axolotl.yaml`, `prune_adapter.py` | SFT/ORPO base                                         |
-| `Qwen/Qwen2.5-72B-Instruct`         | `distill_model.py`, `llm_quality_judge.py`                 | teacher / primary judge                               |
+| `Qwen/Qwen2.5-72B-Instruct`         | `distill_model.py`                                         | teacher (distillation)                                |
 | `moonshotai/Kimi-K3` (secondary) + DeepSeek-V4 (primary) | `llm_quality_judge.py`, `dual_judge.py` | dual judge (superseded the earlier Llama secondary) |
 | `LatitudeGames/Wayfarer-2-12B`      | `configs/axolotl.yaml`                                     | the **only** config actually wired to a concrete base |
 | `@cf/zai-org/glm-5.2`               | `nightmare_fuel_generator.py`                              | adversarial SDG generator                             |
