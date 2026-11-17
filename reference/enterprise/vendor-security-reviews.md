@@ -129,7 +129,7 @@ baseline. Each will be re-reviewed quarterly.
 | **Data residency**            | US (default), EU (optional)                                                   |
 | **Security incidents (12mo)** | None publicly disclosed                                                       |
 | **Zero-retention mode**       | Available — must be enabled per-request or org-wide                           |
-| **Replacement vendor**        | Anthropic Claude, Google Gemini, self-hosted Llama                            |
+| **Replacement vendor**        | Anthropic Claude, Google Gemini, self-hosted Mistral/Qwen                            |
 | **Exit plan**                 | API account deletion + zero-retention confirmation                            |
 | **Initial review decision**   | **Watch** — BAA not yet executed                                              |
 

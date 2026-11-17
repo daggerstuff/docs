@@ -37,7 +37,7 @@ Not a recommendation list — a census of model IDs hardcoded in `ai/training`:
 | ----------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------- |
 | `Qwen/Qwen2.5-32B`                  | `orpo_trainer.py`, `orpo_axolotl.yaml`, `prune_adapter.py` | SFT/ORPO base                                         |
 | `Qwen/Qwen2.5-72B-Instruct`         | `distill_model.py`, `llm_quality_judge.py`                 | teacher / primary judge                               |
-| `meta-llama/Llama-3.3-70B-Instruct` | `llm_quality_judge.py`, `dual_judge.py` (`llama3.3:70b`)   | secondary judge                                       |
+| `moonshotai/Kimi-K3` (secondary) + DeepSeek-V4 (primary) | `llm_quality_judge.py`, `dual_judge.py` | dual judge (superseded the earlier Llama secondary) |
 | `LatitudeGames/Wayfarer-2-12B`      | `configs/axolotl.yaml`                                     | the **only** config actually wired to a concrete base |
 | `@cf/zai-org/glm-5.2`               | `nightmare_fuel_generator.py`                              | adversarial SDG generator                             |
 | `ornith:9b`                         | `generalized_sdg_pipeline.py`                              | multi-session SDG generator                           |
@@ -58,8 +58,8 @@ instruct** models, not 32-72B:
 **Recommendation** (align with the repo's real code and the field): primary
 candidate `Qwen/Qwen2.5-7B-Instruct` or `Qwen/Qwen2.5-32B` (already referenced
 by `orpo_trainer.py`). Do **not** recommend GLM-4.5-Air as the judge — no judge
-code uses it. For judge models, keep the shipped `Qwen2.5-72B-Instruct` +
-`Llama-3.3-70B-Instruct` pair.
+code uses it. For judge models, keep the shipped DeepSeek-V4 primary +
+Kimi-K3 secondary pair.
 
 ---
 
@@ -68,7 +68,7 @@ code uses it. For judge models, keep the shipped `Qwen2.5-72B-Instruct` +
 ### 2.1 SFT vs Preference Alignment (`SHIPPED`)
 
 - **SFT** — `finetune_model.py`, `mental_ift_trainer.py`,
-  `train_llama3_1_qlora_h100.py`. Default 3 epochs, LoRA.
+  the Qwen SFT scripts. Default 3 epochs, LoRA.
 - **DPO** — `dpo_trainer.py` (`--base_model_checkpoint`, preference pairs).
 - **ORPO** — `orpo_trainer.py` + `configs/orpo_axolotl.yaml` +
   `ds_config_zero3.json` (single-pass, no reference model). **Shipped and
