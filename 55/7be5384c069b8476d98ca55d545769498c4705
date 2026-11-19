@@ -1,0 +1,27 @@
+training/execution-2026-10-17/scenario-crisis-dev-v2.jsonl
+  s_e96f85d720e925::t_a37a54ff76f7df 1-9
+  s_e96f85d720e925::t_11215101695bb1 10-12
+training/execution-2026-10-17/scenario-crisis-suite-v2-manifest.json
+  s_e96f85d720e925::t_a37a54ff76f7df 10-349
+  s_e96f85d720e925::t_0b0dcbd3d95662 7-9
+  s_e96f85d720e925::t_d7842ed4b8eaba 350-351
+training/execution-2026-10-17/scenario-crisis-sealed-v2.jsonl
+  s_e96f85d720e925::t_a37a54ff76f7df 1-9
+  s_e96f85d720e925::t_d97443db31b875 10-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "557be5384c069b8476d98ca55d545769498c4705",
+  "prompts": {},
+  "sessions": {
+    "s_e96f85d720e925": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "spiffy-seagull",
+        "model": "unknown"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
