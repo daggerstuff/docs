@@ -7,7 +7,7 @@
   "metric_validity": "unvalidated_diagnostics",
   "rubric_revision": "synthetic-crisis-engagement-checks-v6-unvalidated",
   "generator": "ai/qa/validation/therapy_bench/generate_crisis_capability_v2.py",
-  "generator_sha256": "db1cb740ed0189790b6b3c00620395c71ab9e945e4e4b46e16318992c887209f",
+  "generator_sha256": "06096bbf3dcd33e1f7c33a52e81ef718691e368aca71ef430007e49ee695c18b",
   "inherited_register_rules": {
     "module": "ai/qa/validation/therapy_bench/generate_crisis_capability_v1.py",
     "module_sha256": "b353420a4e8fea14d7eeb368f74cb688cf160c4ec96eb1165935f4c818b16e2c",
