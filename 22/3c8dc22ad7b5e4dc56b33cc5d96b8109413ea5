@@ -1,0 +1,31 @@
+training/execution-2026-10-17/scenario-crisis-sealed-v2.jsonl
+  s_7d4811cf1b0ba7::t_b478722205c3f8 1-9
+training/execution-2026-10-17/scenario-crisis-suite-v1-manifest.json
+  s_7d4811cf1b0ba7::t_b478722205c3f8 10,196-205
+  s_7d4811cf1b0ba7::t_7816cd8a23fe90 206-208
+training/execution-2026-10-17/scenario-crisis-suite-v2-manifest.json
+  s_7d4811cf1b0ba7::t_b478722205c3f8 13,207-216
+  s_7d4811cf1b0ba7::t_5804a0619fa0f1 217-219
+training/execution-2026-10-17/scenario-crisis-dev-v1.jsonl
+  s_7d4811cf1b0ba7::t_b478722205c3f8 1-9
+training/execution-2026-10-17/scenario-crisis-sealed-v1.jsonl
+  s_7d4811cf1b0ba7::t_b478722205c3f8 1-9
+training/execution-2026-10-17/scenario-crisis-dev-v2.jsonl
+  s_7d4811cf1b0ba7::t_b478722205c3f8 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "223c8dc22ad7b5e4dc56b33cc5d96b8109413ea5",
+  "prompts": {},
+  "sessions": {
+    "s_7d4811cf1b0ba7": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "fa4a58ec-9e06-45bf-9ce6-8aa28e8d919e",
+        "model": "custom:9Router-cf-deepseek-v4.1-flash-1017"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
