@@ -70,3 +70,4 @@ training/agent-tool-sft-*/validation/trajectories.jsonl
 training/agent-tool-sft-*/test/trajectories.jsonl
 # Eval comparison outputs (regenerable run artifacts, not docs)
 training/execution-*/evals/
+research/
