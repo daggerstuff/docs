@@ -1,0 +1,23 @@
+training/execution-2026-10-17/scenario-crisis-dev-v2.jsonl
+  s_7d4811cf1b0ba7::t_934a3729f366f8 9
+training/execution-2026-10-17/scenario-crisis-sealed-v2.jsonl
+  s_7d4811cf1b0ba7::t_65a8bb095e1a5b 9
+training/execution-2026-10-17/scenario-crisis-suite-v2-manifest.json
+  s_7d4811cf1b0ba7::t_b7eab70ebfaf26 8,10,444-446,565-576,618,651
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "900669d3759a18be630804fa6437a53f17117549",
+  "prompts": {},
+  "sessions": {
+    "s_7d4811cf1b0ba7": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "fa4a58ec-9e06-45bf-9ce6-8aa28e8d919e",
+        "model": "custom:9Router-cf-deepseek-v4.1-flash-1017"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
