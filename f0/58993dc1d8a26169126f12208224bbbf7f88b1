@@ -1,0 +1,23 @@
+training/execution-2026-10-17/scenario-crisis-dev-v2.jsonl
+  s_b87e963288c693::t_8dff1e9f294f13 9
+training/execution-2026-10-17/scenario-crisis-sealed-v2.jsonl
+  s_b87e963288c693::t_2b07ec4d5ad1ac 9
+training/execution-2026-10-17/scenario-crisis-suite-v2-manifest.json
+  s_b87e963288c693::t_f792fcd3397063 10,608,641
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f058993dc1d8a26169126f12208224bbbf7f88b1",
+  "prompts": {},
+  "sessions": {
+    "s_b87e963288c693": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "cloudy-marten",
+        "model": "unknown"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
