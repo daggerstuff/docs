@@ -1,0 +1,16 @@
+training/execution-2026-10-17/scenario-crisis-sealed-v2.jsonl
+  h_07d84030f79d30 9
+training/execution-2026-10-17/scenario-crisis-suite-v2-manifest.json
+  h_07d84030f79d30 10,511-512,624
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "51074264418c5388c96602c39086a84c43418b37",
+  "prompts": {},
+  "humans": {
+    "h_07d84030f79d30": {
+      "author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
