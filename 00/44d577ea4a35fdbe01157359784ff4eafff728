@@ -1,0 +1,24 @@
+training/execution-2026-10-17/scenario-crisis-sealed-v2.jsonl
+  h_07d84030f79d30 1-9
+training/execution-2026-10-17/scenario-crisis-suite-v2-manifest.json
+  h_07d84030f79d30 10,13,333-349,608,641
+training/execution-2026-10-17/scenario-crisis-dev-v1.jsonl
+  h_07d84030f79d30 1-9
+training/execution-2026-10-17/scenario-crisis-sealed-v1.jsonl
+  h_07d84030f79d30 1-9
+training/execution-2026-10-17/scenario-crisis-suite-v1-manifest.json
+  h_07d84030f79d30 9-10,215-231,302,335
+training/execution-2026-10-17/scenario-crisis-dev-v2.jsonl
+  h_07d84030f79d30 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0044d577ea4a35fdbe01157359784ff4eafff728",
+  "prompts": {},
+  "humans": {
+    "h_07d84030f79d30": {
+      "author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
