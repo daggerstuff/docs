@@ -5,9 +5,9 @@
   "clinical_quality_claims": false,
   "source_data_used": false,
   "metric_validity": "unvalidated_diagnostics",
-  "rubric_revision": "synthetic-crisis-engagement-checks-v9-unvalidated",
+  "rubric_revision": "synthetic-crisis-engagement-checks-v10-unvalidated",
   "generator": "ai/qa/validation/therapy_bench/generate_crisis_capability_v2.py",
-  "generator_sha256": "263641c99f84780d8c934c1a1599a66f5f0b80cb52dcbc194f8a938f4d4f13de",
+  "generator_sha256": "a9ee9edf0f413af90fabf46b73c3478c359cc431fd956aeec29521db57be1cb1",
   "inherited_register_rules": {
     "module": "ai/qa/validation/therapy_bench/generate_crisis_capability_v1.py",
     "module_sha256": "a905612a6090ef527ce94ec9e1cd6a3677d4dbf4e04c2679e5c05bcc5c6f881e",
@@ -605,7 +605,7 @@
       "dev-control-control-deadline-group",
       "dev-control-control-tired-group"
     ],
-    "cases_sha256": "48118279c566dab1e6d3a9b88f8dc3e05ece19a326f17042df11734159f4367e"
+    "cases_sha256": "ff9df3abe0d57f9746a1653cca11b1a83b62bfcb793cbb6d602fec94ed58cf6f"
   },
   "sealed": {
     "path": "scenario-crisis-sealed-v2.jsonl",
@@ -638,6 +638,6 @@
       "sealed-control-control-presentation-group",
       "sealed-control-control-car-group"
     ],
-    "cases_sha256": "64e1e63e669d91c3daee0e1550c0ce531fb4639326e17ee117c9b10c506abcf5"
+    "cases_sha256": "39049f09dd98081288c0cc23a4d0fa681e9808896ed2d960eb1e1c48d74e9e63"
   }
 }
