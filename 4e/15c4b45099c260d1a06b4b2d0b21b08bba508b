@@ -1,0 +1,29 @@
+training/execution-2026-10-17/scenario-crisis-suite-v1-manifest.json
+  s_7d4811cf1b0ba7::t_26a974d56af06a 10,196-212,279,312
+training/execution-2026-10-17/scenario-crisis-suite-v2-manifest.json
+  s_7d4811cf1b0ba7::t_61d6075986a383 10,13,207-223,333,366
+training/execution-2026-10-17/scenario-crisis-sealed-v1.jsonl
+  s_7d4811cf1b0ba7::t_26a974d56af06a 1-9
+training/execution-2026-10-17/scenario-crisis-dev-v1.jsonl
+  s_7d4811cf1b0ba7::t_26a974d56af06a 1-9
+training/execution-2026-10-17/scenario-crisis-sealed-v2.jsonl
+  s_7d4811cf1b0ba7::t_61d6075986a383 1-9
+training/execution-2026-10-17/scenario-crisis-dev-v2.jsonl
+  s_7d4811cf1b0ba7::t_61d6075986a383 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4e15c4b45099c260d1a06b4b2d0b21b08bba508b",
+  "prompts": {},
+  "sessions": {
+    "s_7d4811cf1b0ba7": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "fa4a58ec-9e06-45bf-9ce6-8aa28e8d919e",
+        "model": "custom:9Router-cf-deepseek-v4.1-flash-1017"
+      },
+      "human_author": "Dagger <dagger@pixelated.love>"
+    }
+  }
+}
