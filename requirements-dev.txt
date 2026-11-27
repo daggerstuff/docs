@@ -1,6 +1,6 @@
 requests==2.34.2
 pytest==9.2.0
-ruff==0.17.5
+ruff==0.17.6
 pydantic==2.14.4
 pytest-cov==7.1.0
 bandit==1.9.4
